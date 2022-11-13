@@ -1,0 +1,150 @@
+
+carrier_early = {
+	category = naval
+	roles = { naval_carrier }
+	priority = {
+		base = 1
+	}
+
+	EARLY_CARRIER_1 = { # to make task force reinforcement work
+		role_icon_index = 1
+		priority = {
+			base = 0
+		}
+
+		target_variant = {
+			type = CV_equipment_1922
+			match_value = 1000
+		}
+		requirements = {
+			module = ship_deck_space
+		}
+	}
+	EARLY_CARRIER_2 = { # to make task force reinforcement work
+		role_icon_index = 1
+		priority = {
+			base = 0
+		}
+
+		target_variant = {
+			type = CV_equipment_1930
+			match_value = 1000
+		}
+		requirements = {
+			module = ship_deck_space
+		}
+	}
+	JAP_CV = {
+		role_icon_index = 1
+		priority = {
+			base = 1
+		}
+		enable = { original_tag = JAP }
+
+		target_variant = {
+			type = CV_equipment_1933
+			match_value = 1000
+
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_armor_carrier_deck
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = carrier_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries_1
+			}
+		}
+		requirements = {
+			module = ship_deck_space
+		}
+	}
+}
+
+carrier_A = {
+	category = naval
+	roles = { naval_carrier }
+	priority = {
+		base = 100
+	}
+
+	BASIC_CARRIER_A_1 = {
+		role_icon_index = 7
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = CV_1933 }
+			modifier = { add = -900 has_tech = CV_1936 }
+		}
+
+		target_variant = {
+			type = CV_equipment_1933
+			match_value = 2000
+
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_armor_carrier_deck
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = { module = carrier_ship_engine_2 upgrade = current }
+				fixed_ship_secondaries_slot = ship_secondaries
+			}
+		}
+
+		requirements = {
+			module = ship_deck_space
+		}
+	}
+
+	IMPROVED_CARRIER_A_1 = {
+		role_icon_index = 7
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = CV_1936 }
+			modifier = { add = -900 has_tech = CV_1940 }
+		}
+
+		target_variant = {
+			type = CV_equipment_1936
+			match_value = 4000
+
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_armor_carrier_deck
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = { module = carrier_ship_engine_3 upgrade = current }
+				fixed_ship_secondaries_slot = ship_secondaries
+			}
+		}
+
+		requirements = {
+			module = ship_deck_space
+		}
+	}
+
+	ADVANCED_CARRIER_A_1 = {
+		role_icon_index = 7
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = CV_1940 }
+		}
+
+		target_variant = {
+			type = CV_equipment_1940
+			match_value = 6000
+
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_armor_carrier_deck
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = { module = carrier_ship_engine_4 upgrade = current }
+				fixed_ship_secondaries_slot = ship_secondaries
+			}
+		}
+
+		requirements = {
+			module = ship_deck_space
+		}
+	}
+}
+

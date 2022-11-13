@@ -1,0 +1,40 @@
+﻿#########################################################################
+# Darkest Hour Events : East Turkestan
+#########################################################################
+add_namespace = ETS
+#########################################################################
+#  Khotan Miner Uprising
+#########################################################################
+country_event = {
+	id = ETS.1
+	title = ETS.1.t
+	desc = ETS.1.d
+	fire_only_once = yes
+	trigger = {
+		original_tag = SIK
+		date > 1933.2.19
+		has_start_date < 1933.1.30
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = ughyur_war
+			ETS = {
+				transfer_state = 619
+				declare_war_on = {
+					target = SIK
+					type = annex_everything
+				}
+				load_oob = "ETS_1933"
+			}
+		}
+	}
+	option = {
+		name = ETS.1.A
+	}
+	option = {
+		name = ETS.1.B
+		ETS = {
+			change_tag_from = SIK
+		}
+	}
+}

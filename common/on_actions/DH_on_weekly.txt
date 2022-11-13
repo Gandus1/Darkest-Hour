@@ -1,0 +1,203 @@
+on_actions = {
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = DH_Country_Optimised
+					}
+				}
+				# MONEY SYSTEM #
+				set_temp_variable = { gained_money = 0 }
+				if = {
+					limit = {
+						calculate_money_balance = yes # calculates the money
+						OR = {
+							check_variable = { money < 2000000 }
+							NOT = { check_variable = { total_balance_temp > 0 } }
+						}
+						OR = {
+							check_variable = { money > -2000000 }
+							NOT = { check_variable = { total_balance_temp < 0 } }
+						}
+					}
+					set_temp_variable = { gained_money = total_balance_temp }
+					add_to_variable = { money = gained_money }
+				}
+				if = {
+					limit = {
+						check_variable = { money > 2000000 }
+					}
+					set_variable = { money = 2000000 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { money < -2000000 }
+					}
+					set_variable = { money = -2000000 }
+				}
+				if = {
+					limit = {
+						calculate_inflation_change = yes # calculates the inflation change
+					}
+					add_to_variable = { current_inflation = daily_inflation_change }
+					set_variable = { inflation_effect_var = current_inflation }
+					divide_variable = { inflation_effect_var = -2 }
+				}
+				if = {
+					limit = {
+						check_variable = { current_inflation < 0 }
+					}
+					set_variable = { current_inflation = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { current_inflation > 20000 }
+					}
+					set_variable = { current_inflation = 20000 }
+				}
+				if = {
+					limit = {
+						check_variable = { money < 0 }
+					}
+					set_temp_variable = { loans_amount = 0 }
+					subtract_from_temp_variable = { loans_amount = money }
+					divide_temp_variable = { loans_amount = 100 }
+					add_to_temp_variable = { loans_amount = 0.5 }
+					round_temp_variable = loans_amount
+					take_loan_effect = yes
+					if = {
+						limit = {
+							is_ai = no
+							check_variable = { current_loans_sum > 0 }
+						}
+						set_variable = { show_automatic_loan_popup = 1 }
+						set_variable = { automatic_loan_amount = loans_amount }
+					}
+				}
+				# UNEMPLOYMENT SYSTEM #
+				set_temp_variable = { unemployment_value = modifier@weekly_unemployment_change }
+				if = {
+					limit = {
+						NOT = { check_variable = { unemployment_value = 0 } }
+						OR = {
+							AND = {
+								check_variable = { unemployment_value > 0 }
+								check_variable = { current_unemployment < 1 }
+							}
+							AND = {
+								check_variable = { unemployment_value < 0 }
+								check_variable = { current_unemployment > 0 }
+							}
+						}
+					}
+					add_unemployment_effect = yes
+				}
+			}
+			# USSR #
+			SOV = {
+				if = {
+					limit = {
+						has_country_flag = SOV_purge_started
+					}
+					add_to_variable = { SOV_Stalin_Paranoia = SOV_Stalin_Paranoia_Change }
+					clamp_variable = {
+						var = SOV_Stalin_Paranoia
+						min = 0
+						max = 100
+					}
+				}
+			}
+			# TURKEY #
+			#TUR  = {
+			#	set_temp_variable = { weekly_rebellion_progress_growth_temp = modifier@weekly_rebellion_progress_growth }
+			#	if = {
+			#		limit = {
+			#			NOT = { check_variable = { weekly_rebellion_progress_growth_temp = 0 } }
+			#		}
+			#		set_temp_variable = { progress_to_add = weekly_rebellion_progress_growth_temp }
+			#		add_minority_rebellion_progress = yes
+			#	}
+			#}
+			# GERMANY #
+			every_country = {
+				add_to_variable = { GER_Influence = modifier@weekly_influence_growth }
+				clamp_variable = {
+					var = GER_Influence
+					min = 0
+					max = 100
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+					date > 1944.1.1
+					date < 1944.1.10
+					has_start_date < 1944.1.1
+					has_country_leader = {
+						character = GER_Adolf_Hitler
+						ruling_only = yes
+					}
+				}
+				set_portraits = {
+					character = GER_Adolf_Hitler
+					civilian = { large ="GFX_P_F_Adolf_Hitler_1945" }
+				} 
+			}
+			if = {
+				limit = {
+					original_tag = ITA
+					GER = {
+						has_war_with = FRA
+						controls_state = 29
+					}
+					FRA = {
+						has_capitulated = no
+					}
+				}
+				add_to_war = { 
+					targeted_alliance = GER
+					enemy = FRA 
+					hostility_reason = asked_to_join
+				}
+				add_to_war = { 
+					targeted_alliance = GER
+					enemy = POL 
+					hostility_reason = asked_to_join
+				}
+			}
+			# FACTIONS #
+			if = {
+				limit = {
+					check_variable = { active_factions_array^num > 0 }
+				}
+				# weekly influence changes from modifiers
+				for_each_loop = {
+					array = active_factions_array
+					value = v
+					set_temp_variable = { faction_id = v }
+					if = {
+						limit = {
+							calculate_weekly_faction_influence_change = yes
+						}
+						set_temp_variable = { influence_to_add = weekly_faction_influence_change }
+						change_faction_influence = yes
+					}
+				}
+				# weekly loyalty changes from modifiers
+				for_each_loop = {
+					array = active_factions_array
+					value = v
+					set_temp_variable = { faction_id = v }
+					if = {
+						limit = {
+							calculate_weekly_faction_loyalty_change = yes
+						}
+						set_temp_variable = { loyalty_to_add = weekly_faction_loyalty_change }
+						change_faction_loyalty = yes
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,279 @@
+ENG_anglo_iraqi_treaty_category = {
+
+	IRQ_Crack_Down_on_Hardliners = {
+		icon = generic_construction
+		cost = 50
+		days_remove = 70
+		days_re_enable = 70
+		
+		allowed = {
+			original_tag = IRQ
+		}
+		visible = {
+			OR = {
+				has_idea = IRQ_HoG_Naji_Shawkat
+				has_idea = IRQ_HoG_Nuri_as_Said
+				has_idea = IRQ_HoG_Taha_Pasha_al_Hashimi
+				has_idea = IRQ_HoG_Yasin_Pasha_al_Hashimi
+				has_idea = IRQ_HoG_Hikmet_Suleyman
+			}
+		}
+		available = {
+		
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			set_temp_variable = { eng_power_in_iraq_to_gain = 5 }
+			add_eng_influence_with_tooltip_effect = yes
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.05
+			}
+		}
+	}
+	IRQ_Provide_Political_Prisoners = {
+		icon = generic_construction
+		cost = 50
+		days_remove = 70
+		days_re_enable = 70
+		
+		allowed = {
+			original_tag = IRQ
+		}
+		visible = {
+			OR = {
+				has_idea = IRQ_HoG_Naji_Shawkat
+				has_idea = IRQ_HoG_Nuri_as_Said
+				has_idea = IRQ_HoG_Taha_Pasha_al_Hashimi
+				has_idea = IRQ_HoG_Yasin_Pasha_al_Hashimi
+				has_idea = IRQ_HoG_Hikmet_Suleyman
+			}
+		}
+		available = {
+		
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			set_temp_variable = { eng_power_in_iraq_to_gain = 5 }
+			add_eng_influence_with_tooltip_effect = yes
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.05
+			}
+		}
+	}
+	 IRQ_Pro_Independence_Campaign = {
+		icon = generic_construction
+		cost = 50
+		days_remove = 70
+		days_re_enable = 70
+		
+		allowed = {
+			original_tag = IRQ
+		}
+		visible = {
+			NOT = {
+				OR = {
+					has_idea = IRQ_HoG_Naji_Shawkat
+					has_idea = IRQ_HoG_Nuri_as_Said
+					has_idea = IRQ_HoG_Taha_Pasha_al_Hashimi
+					has_idea = IRQ_HoG_Yasin_Pasha_al_Hashimi
+					has_idea = IRQ_HoG_Hikmet_Suleyman
+				}
+			}
+		}
+		available = {
+		
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		
+		remove_effect = {
+			set_temp_variable = { irq_power_in_iraq_to_gain = 5 }
+			add_irq_influence_with_tooltip_effect = yes
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+	IRQ_Request_Oil_Concessions = {
+		icon = generic_construction
+		cost = 50
+		days_remove = 70
+		days_re_enable = 70
+		
+		allowed = {
+			original_tag = IRQ
+		}
+		visible = {
+			NOT = {
+				OR = {
+					has_idea = IRQ_HoG_Naji_Shawkat
+					has_idea = IRQ_HoG_Nuri_as_Said
+					has_idea = IRQ_HoG_Taha_Pasha_al_Hashimi
+					has_idea = IRQ_HoG_Yasin_Pasha_al_Hashimi
+					has_idea = IRQ_HoG_Hikmet_Suleyman
+				}
+			}
+		}
+		available = {
+		
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		
+		remove_effect = {
+			set_temp_variable = { irq_power_in_iraq_to_gain = 5 }
+			add_irq_influence_with_tooltip_effect = yes
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+}
+
+IRQ_A_Religious_Schism_category = {
+
+	IRQ_establish_the_conversion_ministry = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		days_remove = 30
+		fire_only_once = yes
+
+		modifier = {
+			political_power_gain = -0.5
+		}
+
+		remove_effect = {
+			set_country_flag = IRQ_establish_the_conversion_ministry_completed
+		}
+	}
+
+	IRQ_begin_assimilation = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		visible = {
+			has_country_flag = IRQ_establish_the_conversion_ministry_completed
+		}
+
+		days_remove = 30
+		fire_only_once = yes
+
+		remove_effect = {
+			set_country_flag = IRQ_begin_assimilation_completed
+			add_stability = 0.05
+		}
+	}
+
+	IRQ_cursh_shiite_resistance = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		visible = {
+			has_country_flag = IRQ_establish_the_conversion_ministry_completed
+		}
+
+		days_remove = 30
+		fire_only_once = yes
+
+		remove_effect = {
+			set_country_flag = IRQ_cursh_shiite_resistance_completed
+			set_temp_variable = { faction_id = 21 }
+			set_temp_variable = { influence_to_add = 5 }
+			change_faction_influence = yes
+			set_temp_variable = { faction_id = 22 }
+			set_temp_variable = { influence_to_add = 5 }
+			change_faction_influence = yes
+		}
+	}
+
+	IRQ_arrest_prominent_clerics = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		visible = {
+			has_country_flag = IRQ_begin_assimilation_completed
+			has_country_flag = IRQ_cursh_shiite_resistance_completed
+		}
+
+		days_remove = 30
+		fire_only_once = yes
+
+		remove_effect = {
+			set_country_flag = IRQ_arrest_prominent_clerics_completed
+			#country_event = { id = }
+		}
+	}
+
+	IRQ_ban_ashora_commemorations = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		visible = {
+			has_country_flag = IRQ_cursh_shiite_resistance_completed
+		}
+
+		days_remove = 30
+		fire_only_once = yes
+
+		remove_effect = {
+			set_country_flag = IRQ_ban_ashora_commemorations_completed 
+			#country_event = { id = }
+		}
+	}
+
+	IRQ_restrict_shrine_entrances = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		visible = {
+			has_country_flag = IRQ_begin_assimilation_completed
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_country_flag = IRQ_restrict_shrine_entrances_completed
+			add_stability = -0.05
+		}
+	}
+
+	IRQ_begin_provinical_crackdown = {
+
+		allowed = {
+			original_tag = IRQ
+		}
+
+		visible = {
+			has_country_flag = IRQ_restrict_shrine_entrances_completed
+			has_country_flag = IRQ_arrest_prominent_clerics_completed
+			has_country_flag = IRQ_ban_ashora_commemorations_completed
+		}
+
+		complete_effect = {
+			set_country_flag = IRQ_begin_provinical_crackdown_completed
+		}
+	}
+}

@@ -1,0 +1,342 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+TMS_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { TMS_MOT_01 TMS_MEC_01 }
+
+	fallback_name = "%d-nji Pyýada Goşun Bölümi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Pyýada Goşun Bölümi" }
+		2 = { "%d-nji Pyýada Goşun Bölümi" }
+		3 = { "%d-nji Pyýada Goşun Bölümi" }
+		4 = { "%d-nji Pyýada Goşun Bölümi" }
+		5 = { "%d-nji Pyýada Goşun Bölümi" }
+		6 = { "%d-nji Pyýada Goşun Bölümi" }
+		7 = { "%d-nji Pyýada Goşun Bölümi" }
+		8 = { "%d-nji Pyýada Goşun Bölümi" }
+		9 = { "%d-nji Pyýada Goşun Bölümi" }
+		10 = { "%d-nji Pyýada Goşun Bölümi" }
+		11 = { "%d-nji Pyýada Goşun Bölümi" }
+		12 = { "%d-nji Pyýada Goşun Bölümi" }
+		13 = { "%d-nji Pyýada Goşun Bölümi" }
+		14 = { "%d-nji Pyýada Goşun Bölümi" }
+		15 = { "%d-nji Pyýada Goşun Bölümi" }
+		16 = { "%d-nji Pyýada Goşun Bölümi" }
+		17 = { "%d-nji Pyýada Goşun Bölümi" }
+		18 = { "%d-nji Pyýada Goşun Bölümi" }
+		19 = { "%d-nji Pyýada Goşun Bölümi" }
+		20 = { "%d-nji Pyýada Goşun Bölümi" }
+		21 = { "%d-nji Pyýada Goşun Bölümi" }
+		22 = { "%d-nji Pyýada Goşun Bölümi" }
+		23 = { "%d-nji Pyýada Goşun Bölümi" }
+		24 = { "%d-nji Pyýada Goşun Bölümi" }
+		25 = { "%d-nji Pyýada Goşun Bölümi" }
+
+	}
+}
+
+TMS_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { TMS_INF_01 }
+
+	fallback_name = "%d-nji Kawalry Bölümi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Kawalry Bölümi" }
+		2 = { "%d-nji Kawalry Bölümi" }
+		3 = { "%d-nji Kawalry Bölümi" }
+		4 = { "%d-nji Kawalry Bölümi" }
+		5 = { "%d-nji Kawalry Bölümi" }
+		6 = { "%d-nji Kawalry Bölümi" }
+		7 = { "%d-nji Kawalry Bölümi" }
+		8 = { "%d-nji Kawalry Bölümi" }
+		9 = { "%d-nji Kawalry Bölümi" }
+		10 = { "%d-nji Kawalry Bölümi" }
+
+	}
+}
+
+TMS_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { TMS_INF_01 TMS_MEC_01 }
+
+	fallback_name = "%d-nji Motor Tüpeň Bölümi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Motor Tüpeň Bölümi" }
+		2 = { "%d-nji Motor Tüpeň Bölümi" }
+		3 = { "%d-nji Motor Tüpeň Bölümi" }
+		4 = { "%d-nji Motor Tüpeň Bölümi" }
+		5 = { "%d-nji Motor Tüpeň Bölümi" }
+		6 = { "%d-nji Motor Tüpeň Bölümi" }
+		7 = { "%d-nji Motor Tüpeň Bölümi" }
+		8 = { "%d-nji Motor Tüpeň Bölümi" }
+		9 = { "%d-nji Motor Tüpeň Bölümi" }
+		10 = { "%d-nji Motor Tüpeň Bölümi" }
+		11 = { "%d-nji Motor Tüpeň Bölümi" }
+		12 = { "%d-nji Motor Tüpeň Bölümi" }
+		13 = { "%d-nji Motor Tüpeň Bölümi" }
+		14 = { "%d-nji Motor Tüpeň Bölümi" }
+		15 = { "%d-nji Motor Tüpeň Bölümi" }
+		16 = { "%d-nji Motor Tüpeň Bölümi" }
+		17 = { "%d-nji Motor Tüpeň Bölümi" }
+		18 = { "%d-nji Motor Tüpeň Bölümi" }
+		19 = { "%d-nji Motor Tüpeň Bölümi" }
+		20 = { "%d-nji Motor Tüpeň Bölümi" }
+		21 = { "%d-nji Motor Tüpeň Bölümi" }
+		22 = { "%d-nji Motor Tüpeň Bölümi" }
+		23 = { "%d-nji Motor Tüpeň Bölümi" }
+		24 = { "%d-nji Motor Tüpeň Bölümi" }
+		25 = { "%d-nji Motor Tüpeň Bölümi" }
+
+	}
+}
+
+TMS_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { TMS_INF_01 }
+
+	fallback_name = "%d-nji Panzer Bölümi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Panzer Bölümi" }
+		2 = { "%d-nji Panzer Bölümi" }
+		3 = { "%d-nji Panzer Bölümi" }
+		4 = { "%d-nji Panzer Bölümi" }
+		5 = { "%d-nji Panzer Bölümi" }
+		6 = { "%d-nji Panzer Bölümi" }
+		7 = { "%d-nji Panzer Bölümi" }
+		8 = { "%d-nji Panzer Bölümi" }
+		9 = { "%d-nji Panzer Bölümi" }
+		10 = { "%d-nji Panzer Bölümi" }
+
+	}
+}
+
+TMS_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { TMS_INF_01 TMS_MOT_01 }
+
+	fallback_name = "%d-nji Mehanizlenen Bölüm"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Mehanizlenen Bölüm" }
+		2 = { "%d-nji Mehanizlenen Bölüm" }
+		3 = { "%d-nji Mehanizlenen Bölüm" }
+		4 = { "%d-nji Mehanizlenen Bölüm" }
+		5 = { "%d-nji Mehanizlenen Bölüm" }
+		6 = { "%d-nji Mehanizlenen Bölüm" }
+		7 = { "%d-nji Mehanizlenen Bölüm" }
+		8 = { "%d-nji Mehanizlenen Bölüm" }
+		9 = { "%d-nji Mehanizlenen Bölüm" }
+		10 = { "%d-nji Mehanizlenen Bölüm" }
+		11 = { "%d-nji Mehanizlenen Bölüm" }
+		12 = { "%d-nji Mehanizlenen Bölüm" }
+		13 = { "%d-nji Mehanizlenen Bölüm" }
+		14 = { "%d-nji Mehanizlenen Bölüm" }
+		15 = { "%d-nji Mehanizlenen Bölüm" }
+		16 = { "%d-nji Mehanizlenen Bölüm" }
+		17 = { "%d-nji Mehanizlenen Bölüm" }
+		18 = { "%d-nji Mehanizlenen Bölüm" }
+		19 = { "%d-nji Mehanizlenen Bölüm" }
+		20 = { "%d-nji Mehanizlenen Bölüm" }
+		21 = { "%d-nji Mehanizlenen Bölüm" }
+		22 = { "%d-nji Mehanizlenen Bölüm" }
+		23 = { "%d-nji Mehanizlenen Bölüm" }
+		24 = { "%d-nji Mehanizlenen Bölüm" }
+		25 = { "%d-nji Mehanizlenen Bölüm" }
+
+	}
+}
+
+
+TMS_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { TMS_INF_01 }
+
+	fallback_name = "%d-nji Deňiz Bölümi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Deňiz Bölümi" }
+		2 = { "%d-nji Deňiz Bölümi" }
+		3 = { "%d-nji Deňiz Bölümi" }
+		4 = { "%d-nji Deňiz Bölümi" }
+		5 = { "%d-nji Deňiz Bölümi" }
+		6 = { "%d-nji Deňiz Bölümi" }
+		7 = { "%d-nji Deňiz Bölümi" }
+		8 = { "%d-nji Deňiz Bölümi" }
+		9 = { "%d-nji Deňiz Bölümi" }
+		10 = { "%d-nji Deňiz Bölümi" }
+
+	}
+}
+
+TMS_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { TMS_INF_01 }
+
+	fallback_name = "%d-nji Dag Tüpeň Bölümi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Dag Tüpeň Bölümi" }
+		2 = { "%d-nji Dag Tüpeň Bölümi" }
+		3 = { "%d-nji Dag Tüpeň Bölümi" }
+		4 = { "%d-nji Dag Tüpeň Bölümi" }
+		5 = { "%d-nji Dag Tüpeň Bölümi" }
+		6 = { "%d-nji Dag Tüpeň Bölümi" }
+		7 = { "%d-nji Dag Tüpeň Bölümi" }
+		8 = { "%d-nji Dag Tüpeň Bölümi" }
+		9 = { "%d-nji Dag Tüpeň Bölümi" }
+		10 = { "%d-nji Dag Tüpeň Bölümi" }
+
+	}
+}
+
+TMS_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { TMS GAG }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { TMS_INF_01 }
+
+	fallback_name = "%d-nji Howa Arkaly Bölünişik"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-nji Howa Arkaly Bölünişik" }
+		2 = { "%d-nji Howa Arkaly Bölünişik" }
+		3 = { "%d-nji Howa Arkaly Bölünişik" }
+		4 = { "%d-nji Howa Arkaly Bölünişik" }
+		5 = { "%d-nji Howa Arkaly Bölünişik" }
+		6 = { "%d-nji Howa Arkaly Bölünişik" }
+		7 = { "%d-nji Howa Arkaly Bölünişik" }
+		8 = { "%d-nji Howa Arkaly Bölünişik" }
+		9 = { "%d-nji Howa Arkaly Bölünişik" }
+		10 = { "%d-nji Howa Arkaly Bölünişik" }
+
+	}
+}

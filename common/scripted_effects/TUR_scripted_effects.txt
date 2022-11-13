@@ -1,0 +1,25 @@
+# example usage:
+## set_temp_variable = { progress_to_add = 100 }
+## add_minority_rebellion_progress = yes
+add_minority_rebellion_progress = {
+	custom_effect_tooltip = ADD_MINORITY_REBELLION_PROGRESS_TT
+	hidden_effect = {
+		add_to_variable = { rebelliousness_of_the_minorities_var = progress_to_add }
+		clamp_variable = {
+			var = rebelliousness_of_the_minorities_var
+			min = 0
+			max = 100
+		}
+		clamp_variable = {
+			var = tur_chp_influence_decrease_var
+			min = 0
+			max = 1
+		}
+		set_variable = { tur_rebelliousness_of_the_minorities_progress = rebelliousness_of_the_minorities_var }
+		divide_variable = { tur_rebelliousness_of_the_minorities_progress = 100 }
+		multiply_variable = { tur_rebelliousness_of_the_minorities_progress = 350 }
+		subtract_from_variable = { tur_rebelliousness_of_the_minorities_progress = 350 }
+		round_variable = tur_rebelliousness_of_the_minorities_progress
+
+	}
+}

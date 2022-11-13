@@ -1,0 +1,103 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+GER_SA_Sturm_01 = 
+{
+	name = "Sturm Divisions"
+
+	for_countries = { GER }
+
+	can_use = { 
+		has_government = fascist
+	}
+
+	division_types = { "infantry" "motorized" "medium_armor" "mechanized" }
+
+	fallback_name = "%d. Sturm-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Sturm-Division 'Blutfahne'" }
+		2 = { "%d. Sturm-Division 'Feldherrnhalle'" }
+		3 = { "%d. Sturm-Division 'Horst Wessel'" }
+		4 = { "%d. Sturm-Division 'Herbert Norkus'" }
+		6 = { "%d. Sturm-Division 'Felix Allfarth'" }
+		7 = { "%d. Sturm-Division 'Andreas Bauriedel'" }
+		8 = { "%d. Sturm-Division 'Theodor Casella'" }
+		9 = { "%d. Sturm-Division 'Wilhelm Ehrlich'" }
+		10 = { "%d. Sturm-Division 'Martin Faust'" }
+		11 = { "%d. Sturm-Division 'Anton Hechtenberger'" }
+		12 = { "%d. Sturm-Division 'Oskar Körner'" }
+		13 = { "%d. Sturm-Division 'Karl Kuhn'" }
+		14 = { "%d. Sturm-Division 'Karl Laforce'" }
+		15 = { "%d. Sturm-Division 'Kurt Neubauer'" }
+		16 = { "%d. Sturm-Division 'Klaus von Pape'" }
+		17 = { "%d. Sturm-Division 'Theodor von der Pfordten'" }
+		18 = { "%d. Sturm-Division 'Johann Rickmers'" }
+		19 = { "%d. Sturm-Division 'Max Erwin von Scheubner-Richter'" }
+		20 = { "%d. Sturm-Division 'Lorenz Ritter von Schansky-Griffenfeld'" }
+		21 = { "%d. Sturm-Division 'Wilhelm Wolf'" }
+		22 = { "%d. Sturm-Division 'Freikorps'" }
+		23 = { "%d. Sturm-Division 'Florian Geyer'" }
+		24 = { "%d. Sturm-Division 'Götz von Berlichingen'" }
+
+	}
+}
+GER_SA_Panzer_01 = 
+{
+	name = "Sturmpanzer Divisions"
+
+	for_countries = { GER }
+
+	can_use = { 
+		has_government = fascist
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "mechanized" }
+
+	fallback_name = "%d. Sturm-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Sturmpanzer-Division 'Thor's Hammer'" }
+		2 = { "%d. Sturmpanzer-Division 'Odin's Speer'" }
+		3 = { "%d. Sturmpanzer-Division 'Der Blitzkrieg'" }
+		4 = { "%d. Sturmpanzer-Division 'Deutsche Avantgarde'" }
+		5 = { "%d. Sturmpanzer-Division 'Preußisches Reich'" }
+
+		# Names list for Storm Tank Divisions, mainly for SA Germany. This is only intended by the SA's divisions, and of course is alt-history. I just hope 
+		# it will auto load it. 
+	}
+}

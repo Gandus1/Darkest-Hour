@@ -1,0 +1,1052 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a Divisióntemplate
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+SPR_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = no
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPR_MTN_01 }
+
+	fallback_name = "%d.ª División de Infantería"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División de Infantería" }
+		2 = { "%d.ª División de Infantería" }
+		3 = { "%d.ª División de Infantería" }
+		4 = { "%d.ª División de Infantería" }
+		5 = { "%d.ª División de Infantería" }
+		6 = { "%d.ª División de Infantería" }
+		7 = { "%d.ª División de Infantería" }
+		8 = { "%d.ª División de Infantería" }
+		9 = { "%d.ª División de Infantería" }
+		10 = { "%d.ª División de Infantería" }
+		11 = { "%d.ª División de Infantería" }
+		12 = { "%d.ª División de Infantería" }
+		13 = { "%d.ª División de Infantería" }
+		14 = { "%d.ª División de Infantería" }
+		15 = { "%d.ª División de Infantería" }
+		16 = { "%d.ª División de Infantería" }
+		17 = { "%d.ª División de Infantería" }
+		18 = { "%d.ª División de Infantería" }
+		19 = { "%d.ª División de Infantería" }
+		20 = { "%d.ª División de Infantería" }		
+	}
+}
+
+SPA_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist 
+		has_civil_war = no
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPR_MOT_01 SPR_MEC_01 }
+
+	fallback_name = "%d.ª División de Infantería"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		11 = { "%d.ª División de Infantería" }			# Re-ordered to be consistent with Nationalist Spain division naming 
+		12 = { "%d.ª División de Infantería" }
+		21 = { "%d.ª División de Infantería" }
+		22 = { "%d.ª División de Infantería" }
+		31 = { "%d.ª División de Infantería" }
+		32 = { "%d.ª División de Infantería" }
+		41 = { "%d.ª División de Infantería" }
+		42 = { "%d.ª División de Infantería" }
+		51 = { "%d.ª División de Infantería" }
+		52 = { "%d.ª División de Infantería" }
+		61 = { "%d.ª División de Infantería" }
+		62 = { "%d.ª División de Infantería" }
+		71 = { "%d.ª División de Infantería" }
+		72 = { "%d.ª División de Infantería" }
+		81 = { "%d.ª División de Infantería" }
+		82 = { "%d.ª División de Infantería" }
+		91 = { "%d.ª División de Infantería" }
+		92 = { "%d.ª División de Infantería" }
+		101 = { "%d.ª División de Infantería" }
+		102 = { "%d.ª División de Infantería" }		
+		13 = { "%d.ª División de Infantería" }
+		23 = { "%d.ª División de Infantería" }
+		43 = { "%d.ª División de Infantería" }
+		33 = { "%d.ª División de Infantería" }
+		53 = { "%d.ª División de Infantería" }
+		63 = { "%d.ª División de Infantería" }
+		73 = { "%d.ª División de Infantería" }
+		83 = { "%d.ª División de Infantería" }
+		93 = { "%d.ª División de Infantería" }
+		103 = { "%d.ª División de Infantería" }
+		14 = { "%d.ª División de Infantería" }
+		24 = { "%d.ª División de Infantería" }
+		44 = { "%d.ª División de Infantería" }
+		34 = { "%d.ª División de Infantería" }
+		54 = { "%d.ª División de Infantería" }
+		64 = { "%d.ª División de Infantería" }
+		74 = { "%d.ª División de Infantería" }
+		84 = { "%d.ª División de Infantería" }
+		15 = { "%d.ª División de Infantería" }
+		25 = { "%d.ª División de Infantería" }
+		45 = { "%d.ª División de Infantería" }
+		35 = { "%d.ª División de Infantería" }
+		55 = { "%d.ª División de Infantería" }
+		65 = { "%d.ª División de Infantería" }
+		75 = { "%d.ª División de Infantería" }
+		85 = { "%d.ª División de Infantería" }
+		94 = { "%d.ª División de Infantería" }
+		104 = { "%d.ª División de Infantería" }
+		16 = { "%d.ª División de Infantería" }
+		26 = { "%d.ª División de Infantería" }
+		46 = { "%d.ª División de Infantería" }
+		36 = { "%d.ª División de Infantería" }
+		56 = { "%d.ª División de Infantería" }
+		66 = { "%d.ª División de Infantería" }
+		76 = { "%d.ª División de Infantería" }
+	}
+}
+
+SPR_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { has_civil_war = no }
+
+	division_types = { "cavalry" "armored_car_battalion" "light_armor" } # Light Armored units are still Cavalry today
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SPR_INF_01 }
+
+	fallback_name = "%d.ª División de Caballería"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División de Caballería" }
+		2 = { "%d.ª División de Caballería" }
+		3 = { "%d.ª División de Caballería" }
+		4 = { "%d.ª División de Caballería" }
+		5 = { "%d.ª División de Caballería" }
+		6 = { "%d.ª División de Caballería" }
+		7 = { "%d.ª División de Caballería" }
+		8 = { "%d.ª División de Caballería" }
+		9 = { "%d.ª División de Caballería" }
+		10 = { "%d.ª División de Caballería" }
+	}
+}
+
+SPR_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = no
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPR_INF_01 SPR_MEC_01 }
+
+	fallback_name = "%d.ª División Motorizada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División Motorizada" }
+		2 = { "%d.ª División Motorizada" }
+		3 = { "%d.ª División Motorizada" }
+		4 = { "%d.ª División Motorizada" }
+		5 = { "%d.ª División Motorizada" }
+		6 = { "%d.ª División Motorizada" }
+		7 = { "%d.ª División Motorizada" }
+		8 = { "%d.ª División Motorizada" }
+		9 = { "%d.ª División Motorizada" }
+		10 = { "%d.ª División Motorizada" }
+	}
+}
+
+SPA_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = no
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPA_MEC_01 SPA_ARM_01 SPA_MTN_01 }
+
+	fallback_name = "División Motorizada n.º %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "División Motorizada «Brunete» n.º %d" }
+		2 = { "División Motorizada «Guzmán el Bueno» n.º %d" }
+		3 = { "División Motorizada «Maestrazgo» n.º %d" }
+		4 = { "División Motorizada «Urgel» n.º %d" }
+		5 = { "División Motorizada «Navarra» n.º %d" }
+		6 = { "División Motorizada «Jarama» n.º %d" }
+		7 = { "División Motorizada n.º %d" }
+		8 = { "División Motorizada n.º %d" }
+		9 = { "División Motorizada n.º %d" }
+		10 = { "División Motorizada n.º %d" }
+	}
+}
+
+SPR_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = no
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPR_INF_01 SPR_MOT_01 }
+
+	fallback_name = "%d.ª División Mecanizada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División Mecanizada" }
+		2 = { "%d.ª División Mecanizada" }
+		3 = { "%d.ª División Mecanizada" }
+		4 = { "%d.ª División Mecanizada" }
+		5 = { "%d.ª División Mecanizada" }
+		6 = { "%d.ª División Mecanizada" }
+		7 = { "%d.ª División Mecanizada" }
+		8 = { "%d.ª División Mecanizada" }
+		9 = { "%d.ª División Mecanizada" }
+		10 = { "%d.ª División Mecanizada" }
+	}
+}
+
+SPA_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = no
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPA_MOT_01 SPA_ARM_01 SPA_MTN_01 }
+
+	fallback_name = "División Mecanizada n.º %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "División Mecanizada «Brunete» n.º %d" }
+		2 = { "División Mecanizada «Guzmán el Bueno» n.º %d" }
+		3 = { "División Mecanizada «Maestrazgo» n.º %d" }
+		4 = { "División Mecanizada «Urgel» n.º %d" }
+		5 = { "División Mecanizada «Navarra» n.º %d" }
+		6 = { "División Mecanizada «Jarama» n.º %d" }
+		7 = { "División Mecanizada n.º %d" }
+		8 = { "División Mecanizada n.º %d" }
+		9 = { "División Mecanizada n.º %d" }
+		10 = { "División Mecanizada n.º %d" }
+	}
+}
+
+SPR_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = no
+	}
+
+	division_types = { "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SPR_INF_01 }
+
+	fallback_name = "%d.ª División Blindada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División Blindada" }
+		2 = { "%d.ª División Blindada" }
+		3 = { "%d.ª División Blindada" }
+		4 = { "%d.ª División Blindada" }
+		5 = { "%d.ª División Blindada" }
+		6 = { "%d.ª División Blindada" }
+		7 = { "%d.ª División Blindada" }
+		8 = { "%d.ª División Blindada" }
+		9 = { "%d.ª División Blindada" }
+		10 = { "%d.ª División Blindada" }
+	}
+}
+
+SPA_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = no
+	}
+
+	division_types = { "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPA_MOT_01 SPA_MEC_01 SPA_MTN_01 }
+
+	fallback_name = "División Acorazada n.º %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "División Acorazada «Brunete» n.º %d" }
+		2 = { "División Acorazada «Guzmán el Bueno» n.º %d" }
+		3 = { "División Acorazada «Maestrazgo» n.º %d" }
+		4 = { "División Acorazada «Urgel» n.º %d" }
+		5 = { "División Acorazada «Navarra» n.º %d" }
+		6 = { "División Acorazada «Jarama» n.º %d" }
+		7 = { "División Acorazada n.º %d" }
+		8 = { "División Acorazada n.º %d" }
+		9 = { "División Acorazada n.º %d" }
+		10 = { "División Acorazada n.º %d" }
+	}
+}
+
+SPR_PAR_01 = 
+{
+	name = "Airborne Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_civil_war = no
+	}
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SPR_INF_01 }
+
+	fallback_name = "%d.ª División Aerotransportada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División Aerotransportada" }
+		2 = { "%d.ª División Aerotransportada" }
+		3 = { "%d.ª División Aerotransportada" }
+		4 = { "%d.ª División Aerotransportada" }
+		5 = { "%d.ª División Aerotransportada" }
+		6 = { "%d.ª División Aerotransportada" }
+		7 = { "%d.ª División Aerotransportada" }
+		8 = { "%d.ª División Aerotransportada" }
+		9 = { "%d.ª División Aerotransportada" }
+		10 = { "%d.ª División Aerotransportada" }
+	}
+}
+
+SPR_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_civil_war = no
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SPR_INF_01 }
+
+	fallback_name = "%d.ª División de Infantería de Marina"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División de Infantería de Marina" }
+		2 = { "%d.ª División de Infantería de Marina" }
+		3 = { "%d.ª División de Infantería de Marina" }
+		4 = { "%d.ª División de Infantería de Marina" }
+		5 = { "%d.ª División de Infantería de Marina" }
+		6 = { "%d.ª División de Infantería de Marina" }
+		7 = { "%d.ª División de Infantería de Marina" }
+		8 = { "%d.ª División de Infantería de Marina" }
+		9 = { "%d.ª División de Infantería de Marina" }
+		10 = { "%d.ª División de Infantería de Marina" }
+	}
+}
+
+SPR_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = no
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SPR_INF_01 }
+
+	fallback_name = "%d.ª División de Montaña"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División de Montaña" }
+		2 = { "%d.ª División de Montaña" }
+		3 = { "%d.ª División de Montaña" }
+		4 = { "%d.ª División de Montaña" }
+		5 = { "%d.ª División de Montaña" }
+		6 = { "%d.ª División de Montaña" }
+		7 = { "%d.ª División de Montaña" }
+		8 = { "%d.ª División de Montaña" }
+		9 = { "%d.ª División de Montaña" }
+		10 = { "%d.ª División de Montaña" }
+	}
+}
+
+SPA_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = no
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPA_MOT_01 SPA_MEC_01 SPA_ARM_01 }
+
+	fallback_name = "División de Infantería de Montaña n.º %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "División de Infantería de Montaña «Brunete» n.º %d" }
+		2 = { "División de Infantería de Montaña «Guzmán el Bueno» n.º %d" }
+		3 = { "División de Infantería de Montaña «Maestrazgo» n.º %d" }
+		4 = { "División de Infantería de Montaña «Urgel» n.º %d" }
+		5 = { "División de Infantería de Montaña «Navarra» n.º %d" }
+		6 = { "División de Infantería de Montaña «Jarama» n.º %d" }
+		7 = { "División de Infantería de Montaña n.º %d" }
+		8 = { "División de Infantería de Montaña n.º %d" }
+		9 = { "División de Infantería de Montaña n.º %d" }
+		10 = { "División de Infantería de Montaña n.º %d" }
+	}
+}
+
+SPR_MTN_02 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_civil_war = no
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SPR_INF_01 }
+
+	fallback_name = "%d.ª Brigada de Montaña"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª Brigada de Montaña" }
+		2 = { "%d.ª Brigada de Montaña" }
+		3 = { "%d.ª Brigada de Montaña" }
+		4 = { "%d.ª Brigada de Montaña" }
+		5 = { "%d.ª Brigada de Montaña" }
+		6 = { "%d.ª Brigada de Montaña" }
+		7 = { "%d.ª Brigada de Montaña" }
+		8 = { "%d.ª Brigada de Montaña" }
+		9 = { "%d.ª Brigada de Montaña" }
+		10 = { "%d.ª Brigada de Montaña" }
+	}
+}
+
+SPR_CIV_01 = 
+{
+	name = "Mixed Brigades"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = yes
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" "cavalry" "armored_car_battalion" "motorized" "mechanized" "heavy_mechanized" "paratrooper" "marine" "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPR_CIV_02 }
+
+	fallback_name = "%d.ª Brigada Mixta"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª Brigada Mixta «Líster»" }
+		2 = { "%d.ª Brigada Mixta" }
+		3 = { "%d.ª Brigada Mixta" }
+		4 = { "%d.ª Brigada Mixta" }
+		5 = { "%d.ª Brigada Mixta" }
+		6 = { "%d.ª Brigada Mixta" }
+		7 = { "%d.ª Brigada Mixta" }
+		8 = { "%d.ª Brigada Mixta" }
+		9 = { "%d.ª Brigada Mixta" }
+		10 = { "%d.ª Brigada Mixta" }
+		16 = { "%d.ª Brigada Mixta" }
+		17 = { "%d.ª Brigada Mixta" }
+		18 = { "%d.ª Brigada Mixta" }
+		19 = { "%d.ª Brigada Mixta" }
+		20 = { "%d.ª Brigada Mixta" }		
+		21 = { "%d.ª Brigada Mixta" }
+		22 = { "%d.ª Brigada Mixta" }
+		23 = { "%d.ª Brigada Mixta" }
+		24 = { "%d.ª Brigada Mixta" }
+		25 = { "%d.ª Brigada Mixta" }
+		26 = { "%d.ª Brigada Mixta" }
+		27 = { "%d.ª Brigada Mixta" }
+		28 = { "%d.ª Brigada Mixta" }
+		29 = { "%d.ª Brigada Mixta" }
+		30 = { "%d.ª Brigada Mixta" }
+		31 = { "%d.ª Brigada Mixta" }
+		32 = { "%d.ª Brigada Mixta" }
+		33 = { "%d.ª Brigada Mixta" }
+		34 = { "%d.ª Brigada Mixta" }
+		35 = { "%d.ª Brigada Mixta" }
+		36 = { "%d.ª Brigada Mixta" }
+		37 = { "%d.ª Brigada Mixta" }
+		38 = { "%d.ª Brigada Mixta" }
+		39 = { "%d.ª Brigada Mixta" }
+		40 = { "%d.ª Brigada Mixta" }		
+		41 = { "%d.ª Brigada Mixta" }
+		42 = { "%d.ª Brigada Mixta" }
+		43 = { "%d.ª Brigada Mixta" }
+		44 = { "%d.ª Brigada Mixta" }
+		45 = { "%d.ª Brigada Mixta" }
+		46 = { "%d.ª Brigada Mixta" }
+		47 = { "%d.ª Brigada Mixta" }
+		48 = { "%d.ª Brigada Mixta" }
+		49 = { "%d.ª Brigada Mixta" }
+		50 = { "%d.ª Brigada Mixta" }
+		51 = { "%d.ª Brigada Mixta" }
+		52 = { "%d.ª Brigada Mixta" }
+		53 = { "%d.ª Brigada Mixta" }
+		54 = { "%d.ª Brigada Mixta" }
+		55 = { "%d.ª Brigada Mixta" }
+		56 = { "%d.ª Brigada Mixta" }
+		57 = { "%d.ª Brigada Mixta" }
+		58 = { "%d.ª Brigada Mixta" }
+		59 = { "%d.ª Brigada Mixta" }
+		60 = { "%d.ª Brigada Mixta" }
+		61 = { "%d.ª Brigada Mixta" }
+		62 = { "%d.ª Brigada Mixta" }
+		63 = { "%d.ª Brigada Mixta" }
+		64 = { "%d.ª Brigada Mixta" }
+		65 = { "%d.ª Brigada Mixta" }
+		66 = { "%d.ª Brigada Mixta" }
+		67 = { "%d.ª Brigada Mixta" }
+		68 = { "%d.ª Brigada Mixta" }
+		69 = { "%d.ª Brigada Mixta" }
+		70 = { "%d.ª Brigada Mixta" }		
+		71 = { "%d.ª Brigada Mixta" }
+		72 = { "%d.ª Brigada Mixta" }
+		73 = { "%d.ª Brigada Mixta" }
+		74 = { "%d.ª Brigada Mixta" }
+		75 = { "%d.ª Brigada Mixta" }
+		76 = { "%d.ª Brigada Mixta" }
+		77 = { "%d.ª Brigada Mixta" }
+		78 = { "%d.ª Brigada Mixta" }
+		79 = { "%d.ª Brigada Mixta" }
+		80 = { "%d.ª Brigada Mixta" }
+		81 = { "%d.ª Brigada Mixta" }
+		82 = { "%d.ª Brigada Mixta" }
+		83 = { "%d.ª Brigada Mixta" }
+		84 = { "%d.ª Brigada Mixta" }
+		85 = { "%d.ª Brigada Mixta" }
+		87 = { "%d.ª Brigada Mixta" }
+		88 = { "%d.ª Brigada Mixta" }
+		89 = { "%d.ª Brigada Mixta" }
+		90 = { "%d.ª Brigada Mixta" }		
+		91 = { "%d.ª Brigada Mixta" }
+		92 = { "%d.ª Brigada Mixta" }
+		93 = { "%d.ª Brigada Mixta" }
+		94 = { "%d.ª Brigada Mixta" }
+		95 = { "%d.ª Brigada Mixta" }
+		96 = { "%d.ª Brigada Mixta" }
+		97 = { "%d.ª Brigada Mixta" }
+		98 = { "%d.ª Brigada Mixta" }
+		99 = { "%d.ª Brigada Mixta" }
+		100 = { "%d.ª Brigada Mixta" }		
+		101 = { "%d.ª Brigada Mixta" }
+		102 = { "%d.ª Brigada Mixta" }
+		103 = { "%d.ª Brigada Mixta" }
+		104 = { "%d.ª Brigada Mixta" }
+		105 = { "%d.ª Brigada Mixta" }
+		106 = { "%d.ª Brigada Mixta" }
+		107 = { "%d.ª Brigada Mixta" }
+		108 = { "%d.ª Brigada Mixta" }
+		109 = { "%d.ª Brigada Mixta" }
+		110 = { "%d.ª Brigada Mixta" }
+		111 = { "%d.ª Brigada Mixta" }
+		112 = { "%d.ª Brigada Mixta" }
+		113 = { "%d.ª Brigada Mixta" }
+		114 = { "%d.ª Brigada Mixta" }
+		115 = { "%d.ª Brigada Mixta" }
+		116 = { "%d.ª Brigada Mixta" }
+		117 = { "%d.ª Brigada Mixta" }
+		118 = { "%d.ª Brigada Mixta" }
+		119 = { "%d.ª Brigada Mixta" }
+		120 = { "%d.ª Brigada Mixta" }		
+		121 = { "%d.ª Brigada Mixta" }
+		122 = { "%d.ª Brigada Mixta" }
+		123 = { "%d.ª Brigada Mixta" }
+		124 = { "%d.ª Brigada Mixta" }
+		125 = { "%d.ª Brigada Mixta" }
+		126 = { "%d.ª Brigada Mixta" }
+		127 = { "%d.ª Brigada Mixta" }
+		128 = { "%d.ª Brigada Mixta" }
+		130 = { "%d.ª Brigada Mixta" }
+		131 = { "%d.ª Brigada Mixta" }
+		132 = { "%d.ª Brigada Mixta" }
+		133 = { "%d.ª Brigada Mixta" }
+		134 = { "%d.ª Brigada Mixta" }
+		135 = { "%d.ª Brigada Mixta" }
+		136 = { "%d.ª Brigada Mixta" }
+		137 = { "%d.ª Brigada Mixta" }
+		138 = { "%d.ª Brigada Mixta" }
+		139 = { "%d.ª Brigada Mixta" }
+		140 = { "%d.ª Brigada Mixta" }		
+		141 = { "%d.ª Brigada Mixta" }
+		142 = { "%d.ª Brigada Mixta" }
+		143 = { "%d.ª Brigada Mixta" }
+		144 = { "%d.ª Brigada Mixta" }
+		145 = { "%d.ª Brigada Mixta" }
+		146 = { "%d.ª Brigada Mixta" }
+		147 = { "%d.ª Brigada Mixta" }
+		148 = { "%d.ª Brigada Mixta" }
+		149 = { "%d.ª Brigada Mixta" }
+		151 = { "%d.ª Brigada Mixta" }
+		152 = { "%d.ª Brigada Mixta" }
+		153 = { "%d.ª Brigada Mixta" }
+		154 = { "%d.ª Brigada Mixta" }
+		155 = { "%d.ª Brigada Mixta" }
+		156 = { "%d.ª Brigada Mixta" }
+		157 = { "%d.ª Brigada Mixta" }
+		158 = { "%d.ª Brigada Mixta" }
+		159 = { "%d.ª Brigada Mixta" }
+		160 = { "%d.ª Brigada Mixta" }
+		161 = { "%d.ª Brigada Mixta" }
+		162 = { "%d.ª Brigada Mixta" }
+		163 = { "%d.ª Brigada Mixta" }
+		164 = { "%d.ª Brigada Mixta" }
+		165 = { "%d.ª Brigada Mixta" }
+		166 = { "%d.ª Brigada Mixta" }
+		167 = { "%d.ª Brigada Mixta" }
+		168 = { "%d.ª Brigada Mixta" }
+		169 = { "%d.ª Brigada Mixta" }
+		170 = { "%d.ª Brigada Mixta" }		
+		171 = { "%d.ª Brigada Mixta" }
+		172 = { "%d.ª Brigada Mixta" }
+		173 = { "%d.ª Brigada Mixta" }
+		174 = { "%d.ª Brigada Mixta" }
+		175 = { "%d.ª Brigada Mixta" }
+		176 = { "%d.ª Brigada Mixta" }
+		177 = { "%d.ª Brigada Mixta" }
+		178 = { "%d.ª Brigada Mixta" }
+		179 = { "%d.ª Brigada Mixta" }
+		180 = { "%d.ª Brigada Mixta" }
+		181 = { "%d.ª Brigada Mixta" }
+		182 = { "%d.ª Brigada Mixta" }
+		183 = { "%d.ª Brigada Mixta" }
+		184 = { "%d.ª Brigada Mixta" }
+		185 = { "%d.ª Brigada Mixta" }
+		186 = { "%d.ª Brigada Mixta" }
+		187 = { "%d.ª Brigada Mixta" }
+		188 = { "%d.ª Brigada Mixta" }
+		189 = { "%d.ª Brigada Mixta" }
+		190 = { "%d.ª Brigada Mixta" }		
+		191 = { "%d.ª Brigada Mixta" }
+		192 = { "%d.ª Brigada Mixta" }
+		193 = { "%d.ª Brigada Mixta" }
+		194 = { "%d.ª Brigada Mixta" }
+		195 = { "%d.ª Brigada Mixta" }
+		196 = { "%d.ª Brigada Mixta" }
+		197 = { "%d.ª Brigada Mixta" }
+		198 = { "%d.ª Brigada Mixta" }
+		199 = { "%d.ª Brigada Mixta" }
+		200 = { "%d.ª Brigada Mixta" }		
+		201 = { "%d.ª Brigada Mixta" }
+		202 = { "%d.ª Brigada Mixta" }
+		203 = { "%d.ª Brigada Mixta" }
+		204 = { "%d.ª Brigada Mixta" }
+		205 = { "%d.ª Brigada Mixta" }
+		206 = { "%d.ª Brigada Mixta" }
+		207 = { "%d.ª Brigada Mixta" }
+		208 = { "%d.ª Brigada Mixta" }
+		209 = { "%d.ª Brigada Mixta" }
+		210 = { "%d.ª Brigada Mixta" }
+		211 = { "%d.ª Brigada Mixta" }
+		212 = { "%d.ª Brigada Mixta" }
+		213 = { "%d.ª Brigada Mixta" }
+		214 = { "%d.ª Brigada Mixta" }
+		215 = { "%d.ª Brigada Mixta" }
+		216 = { "%d.ª Brigada Mixta" }
+		217 = { "%d.ª Brigada Mixta" }
+		218 = { "%d.ª Brigada Mixta" }
+		219 = { "%d.ª Brigada Mixta" }
+		220 = { "%d.ª Brigada Mixta" }		
+		221 = { "%d.ª Brigada Mixta" }
+		222 = { "%d.ª Brigada Mixta" }
+		223 = { "%d.ª Brigada Mixta" }
+		224 = { "%d.ª Brigada Mixta" }
+		225 = { "%d.ª Brigada Mixta" }
+		226 = { "%d.ª Brigada Mixta" }
+		227 = { "%d.ª Brigada Mixta" }
+		228 = { "%d.ª Brigada Mixta" }
+		229 = { "%d.ª Brigada Mixta" }
+		230 = { "%d.ª Brigada Mixta" }
+		231 = { "%d.ª Brigada Mixta" }
+		232 = { "%d.ª Brigada Mixta" }
+		233 = { "%d.ª Brigada Mixta" }
+		234 = { "%d.ª Brigada Mixta" }
+		235 = { "%d.ª Brigada Mixta" }
+		236 = { "%d.ª Brigada Mixta" }
+		237 = { "%d.ª Brigada Mixta" }
+		238 = { "%d.ª Brigada Mixta" }
+		239 = { "%d.ª Brigada Mixta" }
+		240 = { "%d.ª Brigada Mixta" }		
+		241 = { "%d.ª Brigada Mixta" }
+		242 = { "%d.ª Brigada Mixta" }
+		243 = { "%d.ª Brigada Mixta" }
+		244 = { "%d.ª Brigada Mixta" }
+		245 = { "%d.ª Brigada Mixta" }
+		246 = { "%d.ª Brigada Mixta" }
+	}
+}
+
+SPR_CIV_02 = 
+{
+	name = "International Mixed Brigades"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = yes
+		has_country_flag = SPR_International_Brigades_Recruited
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" "cavalry" "armored_car_battalion" "motorized" "mechanized" "heavy_mechanized" "paratrooper" "marine" "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SPR_CIV_01 }
+
+	fallback_name = "%s Brigada Internacional"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		11 = { "%s Brigada Internacional «Thälmann»" }
+		12 = { "%s Brigada Internacional «Garibaldi»" }
+		13 = { "%s Brigada Internacional «Dombrowski»" }
+		14 = { "%s Brigada Internacional «La Marsellaise»" }
+		15 = { "%s Brigada Internacional «Abraham Lincoln»" }
+		86 = { "%s Brigada Internacional" }
+		129 = { "%s Brigada Internacional «Las Cuarenta Naciones»" }
+		150 = { "%s Brigada Internacional «Dombrowski»" }
+	}
+}
+
+SPR_CIVA_01 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		NOT = { has_government = fascist } 
+		has_civil_war = yes
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { SPR_MTN_01 }
+
+	fallback_name = "%d.ª Brigada Blindada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª Brigada Blindada" }
+		2 = { "%d.ª Brigada Blindada" }
+		3 = { "%d.ª Brigada Blindada" }
+		4 = { "%d.ª Brigada Blindada" }
+		5 = { "%d.ª Brigada Blindada" }
+		6 = { "%d.ª Brigada Blindada" }
+		7 = { "%d.ª Brigada Blindada" }
+		8 = { "%d.ª Brigada Blindada" }
+		9 = { "%d.ª Brigada Blindada" }
+		10 = { "%d.ª Brigada Blindada" }
+		11 = { "%d.ª Brigada Blindada" }
+		12 = { "%d.ª Brigada Blindada" }
+		13 = { "%d.ª Brigada Blindada" }
+		14 = { "%d.ª Brigada Blindada" }
+		15 = { "%d.ª Brigada Blindada" }
+		16 = { "%d.ª Brigada Blindada" }
+		17 = { "%d.ª Brigada Blindada" }
+		18 = { "%d.ª Brigada Blindada" }
+		19 = { "%d.ª Brigada Blindada" }
+		20 = { "%d.ª Brigada Blindada" }		
+	}
+}
+
+SPA_CIV_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = yes
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" "cavalry" "armored_car_battalion" "light_armor" "medium_armor" "heavy_armor" "motorized" "mechanized" "heavy_mechanized" "paratrooper" "marine" "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { SPR_MTN_01 }
+
+	fallback_name = "%d.ª División"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División" }
+		2 = { "%d.ª División" }
+		3 = { "%d.ª División" }
+		4 = { "%d.ª División" }
+		5 = { "%d.ª División" }
+		11 = { "%d.ª División" }
+		12 = { "%d.ª División" }
+		13 = { "%d.ª División «La Mano Negra»" }
+		14 = { "%d.ª División" }
+		15 = { "%d.ª División" }
+		16 = { "%d.ª División" }
+		17 = { "%d.ª División" }
+		18 = { "%d.ª División" }
+		19 = { "%d.ª División" }
+		20 = { "%d.ª División" }		
+		21 = { "%d.ª División" }
+		22 = { "%d.ª División" }
+		23 = { "%d.ª División" }
+		26 = { "%d.ª División" }
+		31 = { "%d.ª División" }
+		32 = { "%d.ª División" }
+		33 = { "%d.ª División" }
+		34 = { "%d.ª División" }
+		40 = { "%d.ª División" }
+		50 = { "%d.ª División" }
+		51 = { "%d.ª División" }
+		52 = { "%d.ª División" }
+		53 = { "%d.ª División «Soria»" }
+		54 = { "%d.ª División" }
+		55 = { "%d.ª División" }
+		56 = { "%d.ª División" }
+		57 = { "%d.ª División" }
+		58 = { "%d.ª División" }
+		60 = { "%d.ª División" }		
+		61 = { "%d.ª División" }
+		62 = { "%d.ª División" }
+		63 = { "%d.ª División" }
+		71 = { "%d.ª División" }
+		72 = { "%d.ª División" }
+		73 = { "%d.ª División" }
+		74 = { "%d.ª División «La Leona»" }
+		75 = { "%d.ª División «Ávila»" }
+		81 = { "%d.ª División" }
+		82 = { "%d.ª División" }
+		83 = { "%d.ª División" }
+		84 = { "%d.ª División" }
+		85 = { "%d.ª División" }
+		102 = { "%d.ª División" }
+		105 = { "%d.ª División" }
+		107 = { "%d.ª División" }
+		108 = { "%d.ª División" }
+		112 = { "%d.ª División" }		
+		122 = { "%d.ª División" }
+		150 = { "%d.ª División" }
+		151 = { "%d.ª División" }
+		152 = { "%d.ª División" }
+		154 = { "%d.ª División" }
+	}
+}
+
+SPA_CIVC_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = yes
+	}
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { SPR_MTN_01 }
+
+	fallback_name = "%d.ª División de Caballería"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d.ª División de Caballería" }
+		2 = { "%d.ª División de Caballería" }
+	}
+}
+
+SPA_CIVM_01 = 
+{
+	name = "Militia Brigades"
+
+	for_countries = { SPR SPA }
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = yes
+	}
+
+	division_types = { "shock_infantry" "militia" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { SPR_MTN_01 }
+
+	fallback_name = "%d.ª Brigada de Navarra"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%s Brigada de Navarra" }
+		2 = { "%s Brigada de Navarra" }
+		3 = { "%s Brigada de Navarra" }
+		4 = { "%s Brigada de Navarra" }
+		5 = { "%s Brigada de Navarra" }
+		6 = { "%s Brigada de Navarra" }
+	}
+}

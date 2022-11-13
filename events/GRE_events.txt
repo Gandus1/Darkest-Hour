@@ -1,0 +1,53 @@
+﻿###########################
+# Darkest Hour Events : Greece
+###########################
+add_namespace = GRE_Politics
+###########################
+# End of Republic
+###########################
+country_event = {
+	id = GRE_Politics.1
+	title = GRE_Politics.1.t
+	desc = GRE_Politics.1.d
+	#picture = 
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = GRE_Politics.1.A
+		set_cosmetic_tag = GRE_Monarchy
+		remove_ideas = GRE_D_Alexandros_Zaimis
+		add_ideas = GRE_D_George_II
+	}
+}
+
+########################
+# Metexas Dictatorship
+########################
+country_event = {
+	id = GRE_Politics.2
+	title = GRE_Politics.2.t
+	desc = GRE_Politics.2.d
+	#picture =
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GRE
+		date > 1936.4.12
+		has_start_date < 1936.4.12
+	}
+	
+	option = {
+		name = GRE_Politics.2.a
+		kill_country_leader = yes
+		set_politics = {
+			ruling_party = authoritarian
+		}
+		create_country_leader = {
+			name = "Ioannis Metaxas"
+			desc = Ioannis_Metaxas_desc
+			picture = GFX_P_A_Ioannis_Metaxas
+			ideology = military_dictatorship
+			traits =  { POSITION_President SUBIDEOLOGY_military_dictatorship }		
+		}
+	}
+}

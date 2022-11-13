@@ -1,0 +1,774 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+### Generic German division and brigade names for German-speaking minors and releasable nations
+
+GERM_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Infanterie-Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Infanterie-Division" }
+		2 = { "%d. Infanterie-Division" }
+		3 = { "%d. Infanterie-Division" }
+		4 = { "%d. Infanterie-Division" }
+		5 = { "%d. Infanterie-Division" }
+		6 = { "%d. Infanterie-Division" }
+		7 = { "%d. Infanterie-Division" }
+		8 = { "%d. Infanterie-Division" }
+		9 = { "%d. Infanterie-Division" }
+		10 = { "%d. Infanterie-Division" }
+		11 = { "%d. Infanterie-Division" }
+		12 = { "%d. Infanterie-Division" }
+		13 = { "%d. Infanterie-Division" }
+		14 = { "%d. Infanterie-Division" }
+		15 = { "%d. Infanterie-Division" }
+		16 = { "%d. Infanterie-Division" }
+		17 = { "%d. Infanterie-Division" }
+		18 = { "%d. Infanterie-Division" }
+		19 = { "%d. Infanterie-Division" }
+		20 = { "%d. Infanterie-Division" }
+	}
+}
+
+GERM_INF_02 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_01 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Infanterie-Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Infanterie-Brigade" }
+		2 = { "%d. Infanterie-Brigade" }
+		3 = { "%d. Infanterie-Brigade" }
+		4 = { "%d. Infanterie-Brigade" }
+		5 = { "%d. Infanterie-Brigade" }
+		6 = { "%d. Infanterie-Brigade" }
+		7 = { "%d. Infanterie-Brigade" }
+		8 = { "%d. Infanterie-Brigade" }
+		9 = { "%d. Infanterie-Brigade" }
+		10 = { "%d. Infanterie-Brigade" }
+		11 = { "%d. Infanterie-Brigade" }
+		12 = { "%d. Infanterie-Brigade" }
+		13 = { "%d. Infanterie-Brigade" }
+		14 = { "%d. Infanterie-Brigade" }
+		15 = { "%d. Infanterie-Brigade" }
+		16 = { "%d. Infanterie-Brigade" }
+		17 = { "%d. Infanterie-Brigade" }
+		18 = { "%d. Infanterie-Brigade" }
+		19 = { "%d. Infanterie-Brigade" }
+		20 = { "%d. Infanterie-Brigade" }
+	}
+}
+
+GERM_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_INF_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Motorisierte Infanterie-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Motorisierte Infanterie-Division" }
+		2 = { "%d. Motorisierte Infanterie-Division" }
+		3 = { "%d. Motorisierte Infanterie-Division" }
+		4 = { "%d. Motorisierte Infanterie-Division" }
+		5 = { "%d. Motorisierte Infanterie-Division" }
+		6 = { "%d. Motorisierte Infanterie-Division" }
+		7 = { "%d. Motorisierte Infanterie-Division" }
+		8 = { "%d. Motorisierte Infanterie-Division" }
+		9 = { "%d. Motorisierte Infanterie-Division" }
+		10 = { "%d. Motorisierte Infanterie-Division" }
+		11 = { "%d. Motorisierte Infanterie-Division" }
+		12 = { "%d. Motorisierte Infanterie-Division" }
+		13 = { "%d. Motorisierte Infanterie-Division" }
+		14 = { "%d. Motorisierte Infanterie-Division" }
+		15 = { "%d. Motorisierte Infanterie-Division" }
+		16 = { "%d. Motorisierte Infanterie-Division" }
+		17 = { "%d. Motorisierte Infanterie-Division" }
+		18 = { "%d. Motorisierte Infanterie-Division" }
+		19 = { "%d. Motorisierte Infanterie-Division" }
+		20 = { "%d. Motorisierte Infanterie-Division" }
+	}
+}
+
+GERM_MOT_02 = 
+{
+	name = "Motorized Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_INF_01 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Motorisierte Infanterie-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Motorisierte Infanterie-Brigade" }
+		2 = { "%d. Motorisierte Infanterie-Brigade" }
+		3 = { "%d. Motorisierte Infanterie-Brigade" }
+		4 = { "%d. Motorisierte Infanterie-Brigade" }
+		5 = { "%d. Motorisierte Infanterie-Brigade" }
+		6 = { "%d. Motorisierte Infanterie-Brigade" }
+		7 = { "%d. Motorisierte Infanterie-Brigade" }
+		8 = { "%d. Motorisierte Infanterie-Brigade" }
+		9 = { "%d. Motorisierte Infanterie-Brigade" }
+		10 = { "%d. Motorisierte Infanterie-Brigade" }
+		11 = { "%d. Motorisierte Infanterie-Brigade" }
+		12 = { "%d. Motorisierte Infanterie-Brigade" }
+		13 = { "%d. Motorisierte Infanterie-Brigade" }
+		14 = { "%d. Motorisierte Infanterie-Brigade" }
+		15 = { "%d. Motorisierte Infanterie-Brigade" }
+		16 = { "%d. Motorisierte Infanterie-Brigade" }
+		17 = { "%d. Motorisierte Infanterie-Brigade" }
+		18 = { "%d. Motorisierte Infanterie-Brigade" }
+		19 = { "%d. Motorisierte Infanterie-Brigade" }
+		20 = { "%d. Motorisierte Infanterie-Brigade" }
+	}
+}
+
+GERM_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_INF_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Panzerschützen-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Panzerschützen-Division" }
+		2 = { "%d. Panzerschützen-Division" }
+		3 = { "%d. Panzerschützen-Division" }
+		4 = { "%d. Panzerschützen-Division" }
+		5 = { "%d. Panzerschützen-Division" }
+		6 = { "%d. Panzerschützen-Division" }
+		7 = { "%d. Panzerschützen-Division" }
+		8 = { "%d. Panzerschützen-Division" }
+		9 = { "%d. Panzerschützen-Division" }
+		10 = { "%d. Panzerschützen-Division" }
+		11 = { "%d. Panzerschützen-Division" }
+		12 = { "%d. Panzerschützen-Division" }
+		13 = { "%d. Panzerschützen-Division" }
+		14 = { "%d. Panzerschützen-Division" }
+		15 = { "%d. Panzerschützen-Division" }
+		16 = { "%d. Panzerschützen-Division" }
+		17 = { "%d. Panzerschützen-Division" }
+		18 = { "%d. Panzerschützen-Division" }
+		19 = { "%d. Panzerschützen-Division" }
+		20 = { "%d. Panzerschützen-Division" }
+	}
+}
+
+GERM_MEC_02 = 
+{
+	name = "Mechanized Brgades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_INF_01 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Panzerschützen-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Panzerschützen-Brigade" }
+		2 = { "%d. Panzerschützen-Brigade" }
+		3 = { "%d. Panzerschützen-Brigade" }
+		4 = { "%d. Panzerschützen-Brigade" }
+		5 = { "%d. Panzerschützen-Brigade" }
+		6 = { "%d. Panzerschützen-Brigade" }
+		7 = { "%d. Panzerschützen-Brigade" }
+		8 = { "%d. Panzerschützen-Brigade" }
+		9 = { "%d. Panzerschützen-Brigade" }
+		10 = { "%d. Panzerschützen-Brigade" }
+		11 = { "%d. Panzerschützen-Brigade" }
+		12 = { "%d. Panzerschützen-Brigade" }
+		13 = { "%d. Panzerschützen-Brigade" }
+		14 = { "%d. Panzerschützen-Brigade" }
+		15 = { "%d. Panzerschützen-Brigade" }
+		16 = { "%d. Panzerschützen-Brigade" }
+		17 = { "%d. Panzerschützen-Brigade" }
+		18 = { "%d. Panzerschützen-Brigade" }
+		19 = { "%d. Panzerschützen-Brigade" }
+		20 = { "%d. Panzerschützen-Brigade" }
+	}
+}
+
+GERM_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_INF_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Gebirgs-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Gebirgs-Division" }
+		2 = { "%d. Gebirgs-Division" }
+		3 = { "%d. Gebirgs-Division" }
+		4 = { "%d. Gebirgs-Division" }
+		5 = { "%d. Gebirgs-Division" }
+		6 = { "%d. Gebirgs-Division" }
+		7 = { "%d. Gebirgs-Division" }
+		8 = { "%d. Gebirgs-Division" }
+		9 = { "%d. Gebirgs-Division" }
+		10 = { "%d. Gebirgs-Division" }
+		11 = { "%d. Gebirgs-Division" }
+		12 = { "%d. Gebirgs-Division" }
+		13 = { "%d. Gebirgs-Division" }
+		14 = { "%d. Gebirgs-Division" }
+		15 = { "%d. Gebirgs-Division" }
+		16 = { "%d. Gebirgs-Division" }
+		17 = { "%d. Gebirgs-Division" }
+		18 = { "%d. Gebirgs-Division" }
+		19 = { "%d. Gebirgs-Division" }
+		20 = { "%d. Gebirgs-Division" }
+	}
+}
+
+GERM_MTN_02 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_INF_01 GERM_PAR_02 }
+
+	fallback_name = "%d. Gebirgs-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Gebirgs-Brigade" }
+		2 = { "%d. Gebirgs-Brigade" }
+		3 = { "%d. Gebirgs-Brigade" }
+		4 = { "%d. Gebirgs-Brigade" }
+		5 = { "%d. Gebirgs-Brigade" }
+		6 = { "%d. Gebirgs-Brigade" }
+		7 = { "%d. Gebirgs-Brigade" }
+		8 = { "%d. Gebirgs-Brigade" }
+		9 = { "%d. Gebirgs-Brigade" }
+		10 = { "%d. Gebirgs-Brigade" }
+		11 = { "%d. Gebirgs-Brigade" }
+		12 = { "%d. Gebirgs-Brigade" }
+		13 = { "%d. Gebirgs-Brigade" }
+		14 = { "%d. Gebirgs-Brigade" }
+		15 = { "%d. Gebirgs-Brigade" }
+		16 = { "%d. Gebirgs-Brigade" }
+		17 = { "%d. Gebirgs-Brigade" }
+		18 = { "%d. Gebirgs-Brigade" }
+		19 = { "%d. Gebirgs-Brigade" }
+		20 = { "%d. Gebirgs-Brigade" }
+	}
+}
+
+GERM_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MAR_02 }
+
+	fallback_name = "%d. Marine-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Marine-Division" }
+		2 = { "%d. Marine-Division" }
+		3 = { "%d. Marine-Division" }
+		4 = { "%d. Marine-Division" }
+		5 = { "%d. Marine-Division" }
+		6 = { "%d. Marine-Division" }
+		7 = { "%d. Marine-Division" }
+		8 = { "%d. Marine-Division" }
+		9 = { "%d. Marine-Division" }
+		10 = { "%d. Marine-Division" }
+		11 = { "%d. Marine-Division" }
+		12 = { "%d. Marine-Division" }
+		13 = { "%d. Marine-Division" }
+		14 = { "%d. Marine-Division" }
+		15 = { "%d. Marine-Division" }
+		16 = { "%d. Marine-Division" }
+		17 = { "%d. Marine-Division" }
+		18 = { "%d. Marine-Division" }
+		19 = { "%d. Marine-Division" }
+		20 = { "%d. Marine-Division" }
+	}
+}
+
+GERM_MAR_02 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MAR_01 }
+
+	fallback_name = "%d. Marine-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Marine-Brigade" }
+		2 = { "%d. Marine-Brigade" }
+		3 = { "%d. Marine-Brigade" }
+		4 = { "%d. Marine-Brigade" }
+		5 = { "%d. Marine-Brigade" }
+		6 = { "%d. Marine-Brigade" }
+		7 = { "%d. Marine-Brigade" }
+		8 = { "%d. Marine-Brigade" }
+		9 = { "%d. Marine-Brigade" }
+		10 = { "%d. Marine-Brigade" }
+		11 = { "%d. Marine-Brigade" }
+		12 = { "%d. Marine-Brigade" }
+		13 = { "%d. Marine-Brigade" }
+		14 = { "%d. Marine-Brigade" }
+		15 = { "%d. Marine-Brigade" }
+		16 = { "%d. Marine-Brigade" }
+		17 = { "%d. Marine-Brigade" }
+		18 = { "%d. Marine-Brigade" }
+		19 = { "%d. Marine-Brigade" }
+		20 = { "%d. Marine-Brigade" }
+	}
+}
+
+GERM_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_INF_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Luftlande-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Luftlande-Division" }
+		2 = { "%d. Luftlande-Division" }
+		3 = { "%d. Luftlande-Division" }
+		4 = { "%d. Luftlande-Division" }
+		5 = { "%d. Luftlande-Division" }
+		6 = { "%d. Luftlande-Division" }
+		7 = { "%d. Luftlande-Division" }
+		8 = { "%d. Luftlande-Division" }
+		9 = { "%d. Luftlande-Division" }
+		10 = { "%d. Luftlande-Division" }
+		11 = { "%d. Luftlande-Division" }
+		12 = { "%d. Luftlande-Division" }
+		13 = { "%d. Luftlande-Division" }
+		14 = { "%d. Luftlande-Division" }
+		15 = { "%d. Luftlande-Division" }
+		16 = { "%d. Luftlande-Division" }
+		17 = { "%d. Luftlande-Division" }
+		18 = { "%d. Luftlande-Division" }
+		19 = { "%d. Luftlande-Division" }
+		20 = { "%d. Luftlande-Division" }
+	}
+}
+
+GERM_PAR_02 = 
+{
+	name = "Paratrooper Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_INF_01 }
+
+	fallback_name = "%d. Luftlande-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Luftlande-Brigade" }
+		2 = { "%d. Luftlande-Brigade" }
+		3 = { "%d. Luftlande-Brigade" }
+		4 = { "%d. Luftlande-Brigade" }
+		5 = { "%d. Luftlande-Brigade" }
+		6 = { "%d. Luftlande-Brigade" }
+		7 = { "%d. Luftlande-Brigade" }
+		8 = { "%d. Luftlande-Brigade" }
+		9 = { "%d. Luftlande-Brigade" }
+		10 = { "%d. Luftlande-Brigade" }
+		11 = { "%d. Luftlande-Brigade" }
+		12 = { "%d. Luftlande-Brigade" }
+		13 = { "%d. Luftlande-Brigade" }
+		14 = { "%d. Luftlande-Brigade" }
+		15 = { "%d. Luftlande-Brigade" }
+		16 = { "%d. Luftlande-Brigade" }
+		17 = { "%d. Luftlande-Brigade" }
+		18 = { "%d. Luftlande-Brigade" }
+		19 = { "%d. Luftlande-Brigade" }
+		20 = { "%d. Luftlande-Brigade" }
+	}
+}
+
+GERM_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_INF_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_GAR_02 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Landwehrinfanterie-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Landwehrinfanterie-Division" }
+		2 = { "%d. Landwehrinfanterie-Division" }
+		3 = { "%d. Landwehrinfanterie-Division" }
+		4 = { "%d. Landwehrinfanterie-Division" }
+		5 = { "%d. Landwehrinfanterie-Division" }
+		6 = { "%d. Landwehrinfanterie-Division" }
+		7 = { "%d. Landwehrinfanterie-Division" }
+		8 = { "%d. Landwehrinfanterie-Division" }
+		9 = { "%d. Landwehrinfanterie-Division" }
+		10 = { "%d. Landwehrinfanterie-Division" }
+		11 = { "%d. Landwehrinfanterie-Division" }
+		12 = { "%d. Landwehrinfanterie-Division" }
+		13 = { "%d. Landwehrinfanterie-Division" }
+		14 = { "%d. Landwehrinfanterie-Division" }
+		15 = { "%d. Landwehrinfanterie-Division" }
+		16 = { "%d. Landwehrinfanterie-Division" }
+		17 = { "%d. Landwehrinfanterie-Division" }
+		18 = { "%d. Landwehrinfanterie-Division" }
+		19 = { "%d. Landwehrinfanterie-Division" }
+		20 = { "%d. Landwehrinfanterie-Division" }
+	}
+}
+
+GERM_GAR_02 = 
+{
+	name = "Garrison Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_MOT_01 GERM_MEC_01 GERM_GAR_01 GERM_MTN_01 GERM_PAR_01 GERM_INF_02 GERM_MOT_02 GERM_MEC_02 GERM_INF_01 GERM_MTN_02 GERM_PAR_02 }
+
+	fallback_name = "%d. Landwehrinfanterie-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Landwehrinfanterie-Brigade" }
+		2 = { "%d. Landwehrinfanterie-Brigade" }
+		3 = { "%d. Landwehrinfanterie-Brigade" }
+		4 = { "%d. Landwehrinfanterie-Brigade" }
+		5 = { "%d. Landwehrinfanterie-Brigade" }
+		6 = { "%d. Landwehrinfanterie-Brigade" }
+		7 = { "%d. Landwehrinfanterie-Brigade" }
+		8 = { "%d. Landwehrinfanterie-Brigade" }
+		9 = { "%d. Landwehrinfanterie-Brigade" }
+		10 = { "%d. Landwehrinfanterie-Brigade" }
+		11 = { "%d. Landwehrinfanterie-Brigade" }
+		12 = { "%d. Landwehrinfanterie-Brigade" }
+		13 = { "%d. Landwehrinfanterie-Brigade" }
+		14 = { "%d. Landwehrinfanterie-Brigade" }
+		15 = { "%d. Landwehrinfanterie-Brigade" }
+		16 = { "%d. Landwehrinfanterie-Brigade" }
+		17 = { "%d. Landwehrinfanterie-Brigade" }
+		18 = { "%d. Landwehrinfanterie-Brigade" }
+		19 = { "%d. Landwehrinfanterie-Brigade" }
+		20 = { "%d. Landwehrinfanterie-Brigade" }
+	}
+}
+
+GERM_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_ARM_02 }
+
+	fallback_name = "%d. Panzer-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Panzer-Division" }
+		2 = { "%d. Panzer-Division" }
+		3 = { "%d. Panzer-Division" }
+		4 = { "%d. Panzer-Division" }
+		5 = { "%d. Panzer-Division" }
+		6 = { "%d. Panzer-Division" }
+		7 = { "%d. Panzer-Division" }
+		8 = { "%d. Panzer-Division" }
+		9 = { "%d. Panzer-Division" }
+		10 = { "%d. Panzer-Division" }
+		11 = { "%d. Panzer-Division" }
+		12 = { "%d. Panzer-Division" }
+		13 = { "%d. Panzer-Division" }
+		14 = { "%d. Panzer-Division" }
+		15 = { "%d. Panzer-Division" }
+		16 = { "%d. Panzer-Division" }
+		17 = { "%d. Panzer-Division" }
+		18 = { "%d. Panzer-Division" }
+		19 = { "%d. Panzer-Division" }
+		20 = { "%d. Panzer-Division" }
+	}
+}
+
+GERM_ARM_02 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_ARM_01 }
+
+	fallback_name = "%d. Panzer-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Panzer-Brigade" }
+		2 = { "%d. Panzer-Brigade" }
+		3 = { "%d. Panzer-Brigade" }
+		4 = { "%d. Panzer-Brigade" }
+		5 = { "%d. Panzer-Brigade" }
+		6 = { "%d. Panzer-Brigade" }
+		7 = { "%d. Panzer-Brigade" }
+		8 = { "%d. Panzer-Brigade" }
+		9 = { "%d. Panzer-Brigade" }
+		10 = { "%d. Panzer-Brigade" }
+		11 = { "%d. Panzer-Brigade" }
+		12 = { "%d. Panzer-Brigade" }
+		13 = { "%d. Panzer-Brigade" }
+		14 = { "%d. Panzer-Brigade" }
+		15 = { "%d. Panzer-Brigade" }
+		16 = { "%d. Panzer-Brigade" }
+		17 = { "%d. Panzer-Brigade" }
+		18 = { "%d. Panzer-Brigade" }
+		19 = { "%d. Panzer-Brigade" }
+		20 = { "%d. Panzer-Brigade" }
+	}
+}
+
+GERM_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_CAV_02 }
+
+	fallback_name = "%d. Kavallerie-Division"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Kavallerie-Division" }
+		2 = { "%d. Kavallerie-Division" }
+		3 = { "%d. Kavallerie-Division" }
+		4 = { "%d. Kavallerie-Division" }
+		5 = { "%d. Kavallerie-Division" }
+		6 = { "%d. Kavallerie-Division" }
+		7 = { "%d. Kavallerie-Division" }
+		8 = { "%d. Kavallerie-Division" }
+		9 = { "%d. Kavallerie-Division" }
+		10 = { "%d. Kavallerie-Division" }
+		11 = { "%d. Kavallerie-Division" }
+		12 = { "%d. Kavallerie-Division" }
+		13 = { "%d. Kavallerie-Division" }
+		14 = { "%d. Kavallerie-Division" }
+		15 = { "%d. Kavallerie-Division" }
+		16 = { "%d. Kavallerie-Division" }
+		17 = { "%d. Kavallerie-Division" }
+		18 = { "%d. Kavallerie-Division" }
+		19 = { "%d. Kavallerie-Division" }
+		20 = { "%d. Kavallerie-Division" }
+	}
+}
+
+GERM_CAV_02 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { BAD BAV BOH DNZ GGP MTA RHI RKA RMO ROS RSB RTU RUK RUR SAX SSB SSP WUR }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GERM_CAV_01 }
+
+	fallback_name = "%d. Kavallerie-Brigade"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Kavallerie-Brigade" }
+		2 = { "%d. Kavallerie-Brigade" }
+		3 = { "%d. Kavallerie-Brigade" }
+		4 = { "%d. Kavallerie-Brigade" }
+		5 = { "%d. Kavallerie-Brigade" }
+		6 = { "%d. Kavallerie-Brigade" }
+		7 = { "%d. Kavallerie-Brigade" }
+		8 = { "%d. Kavallerie-Brigade" }
+		9 = { "%d. Kavallerie-Brigade" }
+		10 = { "%d. Kavallerie-Brigade" }
+		11 = { "%d. Kavallerie-Brigade" }
+		12 = { "%d. Kavallerie-Brigade" }
+		13 = { "%d. Kavallerie-Brigade" }
+		14 = { "%d. Kavallerie-Brigade" }
+		15 = { "%d. Kavallerie-Brigade" }
+		16 = { "%d. Kavallerie-Brigade" }
+		17 = { "%d. Kavallerie-Brigade" }
+		18 = { "%d. Kavallerie-Brigade" }
+		19 = { "%d. Kavallerie-Brigade" }
+		20 = { "%d. Kavallerie-Brigade" }
+	}
+}

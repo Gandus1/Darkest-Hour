@@ -1,0 +1,37 @@
+#########################################################################
+# Darkest Hour Events : Egypt
+#########################################################################
+add_namespace = EGY_Monarchy
+#########################################################################
+#  Death of King Fuad I
+#########################################################################
+country_event = {
+	id = EGY_Monarchy.1
+	title = EGY_Monarchy.1.t
+	desc = EGY_Monarchy.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	trigger = {
+		original_tag = EGY
+		has_country_leader = {
+			name = "Fuad I"
+			ruling_only = yes
+		}
+		date > 1936.4.28
+		has_start_date < 1936.4.28
+	}
+	option = {
+		name = EGY_Monarchy.1.A
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Farouk I"
+			desc = ""
+			picture = GFX_P_A_Farouk_I
+			ideology = monarchism
+			traits = {
+				POSITION_King
+				SUBIDEOLOGY_Monarchism
+			}
+		}
+	}
+}

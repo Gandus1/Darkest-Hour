@@ -1,0 +1,27 @@
+﻿add_namespace = Parliament_Events
+
+country_event = {
+	id = Parliament_Events.1
+	title = Parliament_Events.EVTNAME1
+	desc = Parliament_Events.EVTDESC1
+	picture = GFX_report_event_election_vote
+
+	is_triggered_only = yes
+
+	trigger = {
+		country_has_parliament = yes
+		NOT = { original_tag = GER }
+	}
+
+	option = {
+		name = Parliament_Events1.EVTOPT1
+
+		if = {
+			limit = {
+				always = no # conditions for not increasing new ruling party support
+			}
+			set_country_flag = dont_increase_new_ruling_party_support
+		}
+		set_parliament_parties_influence = yes
+	}
+}

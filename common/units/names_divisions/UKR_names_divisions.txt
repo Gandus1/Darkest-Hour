@@ -1,0 +1,700 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a Dyv.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+UKR_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "shock_infantry" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_MOT_01 UKR_MEC_01 UKR_MAR_01 UKR_MTN_01 UKR_PAR_01 UKR_LGH_01 }
+
+	fallback_name = "%d-ta Striletska Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		97 = { "%d-ma Striletska Poltavska Dyviziya" }
+		15 = { "%d-ta Striletska Dyviziya" }
+		52 = { "%d-ha Striletska Cherkaska Dyviziya" }
+		72 = { "%d-ha Striletska Dyviziya imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Striletska Dyviziya" }
+		28 = { "%d-ma Striletska Dyviziya imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Striletska Dyviziya imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Striletska Volynska Dyviziya" }
+		93 = { "%d-tya Striletska Dyviziya «Kholodnyy Yar»" }
+		24 = { "%d-ta Striletska Dyviziya imeni Korolya Danyla" }
+		30 = { "%d-ta Striletska Dyviziya imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Striletska Dyviziya imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Striletska Dyviziya imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Striletska Dyviziya imeni Hetmana Ivana Mazepy" }
+		57 = { "%d-ma Striletska Dyviziya imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Striletska Dyviziya imeni Yakova Handzyuka" }
+		56 = { "%d-ta Striletska Mariupolska Dyviziya" }
+		58 = { "%d-ma Striletska Dyviziya imeni Hetmana Ivana Vyhovskoho" }
+		60 = { "%d-ta Striletska Inhuletska Dyviziya" }
+		61 = { "%d-sha Striletska Stepova Dyviziya" }
+		62 = { "%d-ha Striletska Dyviziya" }
+		33 = { "%d-tya Striletska Dyviziya" }
+		63 = { "%d-tya Striletska Dyviziya" }
+		11 = { "%d-ta Striletska Dyviziya" }
+		 6 = { "%d-ta Striletska Dyviziya" }
+		 7 = { "%d-ma Striletska Dyviziya" }
+		12 = { "%d-ta Striletska Dyviziya" }
+		16 = { "%d-ta Striletska Dyviziya «Brody»" }
+		18 = { "%d-ta Striletska Dyviziya" }
+		19 = { "%d-ta Striletska Dyviziya «Svyata Varvara»" }
+		26 = { "%d-ta Striletska Dyviziya imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Striletska Sumska Dyviziya" }
+		38 = { "%d-ma Striletska Dyviziya" }
+		40 = { "%d-ya Striletska Dyviziya" }
+		43 = { "%d-tya Striletska Dyviziya" }
+		44 = { "%d-ta Striletska Dyviziya" }
+		47 = { "%d-ma Striletska Dyviziya" }
+		48 = { "%d-ma Striletska Kamyanets-Podilska Dyviziya" }
+		55 = { "%d-ta Striletska Dyviziya «Zaporizka Sich»" }
+		66 = { "%d-ta Striletska Poltavsko-Bukovynska Dyviziya" }
+		70 = { "%d-ta Striletska Hlukhivska Dyviziya" }
+		101 = { "%d-sha Striletska Dyviziya" }
+		107 = { "%d-ma Striletska Dyviziya" }
+		123 = { "%d-tya Striletska Dyviziya" }
+		159 = { "%d-ta Striletska Dyviziya" }
+		25 = { "%d-ta Striletska Dnipropetrovska Dyviziya" }
+		81 = { "%d-sha Striletska Dyviziya" }
+		80 = { "%d-ta Striletska Dyviziya" }
+		45 = { "%d-ta Striletska Dyviziya" }
+		46 = { "%d-ta Striletska Dyviziya" }
+		79 = { "%d-ta Striletska Dyviziya" }
+		95 = { "%d-ta Striletska Zhytomyrska Dyviziya" }
+		39 = { "%d-ta Striletska Dyviziya" }
+		10 = { "%d-ta Striletska Dyviziya" }
+		128 = { "%d-ma Striletska Zakarpatska Dyviziya" }
+		36 = { "%d-ta Striletska Dyviziya imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Striletska Dyviziya" }
+		68 = { "%d-ma Striletska Dyviziya imeni Oleksy Dovbusha" }
+		110 = { "%d-ta Striletska Dyviziya imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Striletska Dyviziya" }
+	}
+}
+
+UKR_LGH_01 = 
+{
+	name = "Light Infantry Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "light_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_INF_01 UKR_MOT_01 UKR_MEC_01 UKR_MAR_01 UKR_MTN_01 UKR_PAR_01 }
+
+	fallback_name = "%d-ta Yeherska Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		68 = { "%d-ma Yeherska Dyviziya imeni Oleksy Dovbusha" }
+		97 = { "%d-ma Yeherska Poltavska Dyviziya" }
+		15 = { "%d-ta Yeherska Dyviziya" }
+		52 = { "%d-ha Yeherska Cherkaska Dyviziya" }
+		72 = { "%d-ha Yeherska Dyviziya imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Yeherska Dyviziya" }
+		28 = { "%d-ma Yeherska Dyviziya imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Yeherska Dyviziya imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Yeherska Volynska Dyviziya" }
+		93 = { "%d-tya Yeherska Dyviziya «Kholodnyy Yar»" }
+		24 = { "%d-ta Yeherska Dyviziya imeni Korolya Danyla" }
+		30 = { "%d-ta Yeherska Dyviziya imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Yeherska Dyviziya imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Yeherska Dyviziya imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Yeherska Dyviziya imeni Hetmana Ivana Mazepy" }
+		57 = { "%d-ma Yeherska Dyviziya imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Yeherska Dyviziya imeni Yakova Handzyuka" }
+		56 = { "%d-ta Yeherska Mariupolska Dyviziya" }
+		58 = { "%d-ma Yeherska Dyviziya imeni Hetmana Ivana Vyhovskoho" }
+		60 = { "%d-ta Yeherska Inhuletska Dyviziya" }
+		61 = { "%d-sha Yeherska Stepova Dyviziya" }
+		62 = { "%d-ha Yeherska Dyviziya" }
+		33 = { "%d-tya Yeherska Dyviziya" }
+		63 = { "%d-tya Yeherska Dyviziya" }
+		11 = { "%d-ta Yeherska Dyviziya" }
+		 6 = { "%d-ta Yeherska Dyviziya" }
+		 7 = { "%d-ma Yeherska Dyviziya" }
+		12 = { "%d-ta Yeherska Dyviziya" }
+		16 = { "%d-ta Yeherska Dyviziya «Brody»" }
+		18 = { "%d-ta Yeherska Dyviziya" }
+		19 = { "%d-ta Yeherska Dyviziya «Svyata Varvara»" }
+		26 = { "%d-ta Yeherska Dyviziya imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Yeherska Sumska Dyviziya" }
+		38 = { "%d-ma Yeherska Dyviziya" }
+		40 = { "%d-ya Yeherska Dyviziya" }
+		43 = { "%d-tya Yeherska Dyviziya" }
+		44 = { "%d-ta Yeherska Dyviziya" }
+		47 = { "%d-ma Yeherska Dyviziya" }
+		48 = { "%d-ma Yeherska Kamyanets-Podilska Dyviziya" }
+		55 = { "%d-ta Yeherska Dyviziya «Zaporizka Sich»" }
+		66 = { "%d-ta Yeherska Poltavsko-Bukovynska Dyviziya" }
+		70 = { "%d-ta Yeherska Hlukhivska Dyviziya" }
+		101 = { "%d-sha Yeherska Dyviziya" }
+		107 = { "%d-ma Yeherska Dyviziya" }
+		123 = { "%d-tya Yeherska Dyviziya" }
+		159 = { "%d-ta Yeherska Dyviziya" }
+		25 = { "%d-ta Yeherska Dnipropetrovska Dyviziya" }
+		81 = { "%d-sha Yeherska Dyviziya" }
+		80 = { "%d-ta Yeherska Dyviziya" }
+		45 = { "%d-ta Yeherska Dyviziya" }
+		46 = { "%d-ta Yeherska Dyviziya" }
+		79 = { "%d-ta Yeherska Dyviziya" }
+		95 = { "%d-ta Yeherska Zhytomyrska Dyviziya" }
+		39 = { "%d-ta Yeherska Dyviziya" }
+		10 = { "%d-ta Yeherska Dyviziya" }
+		128 = { "%d-ma Yeherska Zakarpatska Dyviziya" }
+		36 = { "%d-ta Yeherska Dyviziya imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Yeherska Dyviziya" }
+		110 = { "%d-ta Yeherska Dyviziya imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Yeherska Dyviziya" }
+	}
+}
+
+UKR_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { UKR_INF_01 }
+
+	fallback_name = "%d-ta Kavaleriyska Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-sha Kinyy Dyviziya «Chornykh Zaporozhtsiv»" }
+		2 = { "%d-ha Kozatska Kavaleriyska Dyviziya imeni Hetmana Pavla Polubotka" }
+		3 = { "%d-ya Kavaleriyska Dyviziya" }
+		4 = { "%d-ta Kavaleriyska Dyviziya" }
+		5 = { "%d-ta Kavaleriyska Dyviziya" }
+		6 = { "%d-ta Kavaleriyska Dyviziya" }
+		7 = { "%d-ma Kavaleriyska Dyviziya" }
+		8 = { "%d-ma Kavaleriyska Dyviziya" }
+		9 = { "%d-ta Kavaleriyska Dyviziya" }
+		10 = { "%d-ta Kavaleriyska Dyviziya" }
+		}
+}
+
+UKR_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_INF_01 UKR_MEC_01 UKR_MAR_01 UKR_MTN_01 UKR_PAR_01 UKR_LGH_01 }
+
+	fallback_name = "%d-ta Motopikhotna Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		57 = { "%d-ma Motopikhotna Dyviziya imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Motopikhotna Dyviziya imeni Yakova Handzyuka" }
+		56 = { "%d-ta Motopikhotna Mariupolska Dyviziya" }
+		58 = { "%d-ma Motopikhotna Dyviziya imeni Hetmana Ivana Vyhovskoho" }
+		11 = { "%d-ta Motopikhotna Dyviziya" }
+		97 = { "%d-ma Motopikhotna Poltavska Dyviziya" }
+		15 = { "%d-ta Motopikhotna Dyviziya" }
+		52 = { "%d-ha Motopikhotna Cherkaska Dyviziya" }
+		72 = { "%d-ha Motopikhotna Dyviziya imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Motopikhotna Dyviziya" }
+		28 = { "%d-ma Motopikhotna Dyviziya imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Motopikhotna Dyviziya imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Motopikhotna Volynska Dyviziya" }
+		93 = { "%d-tya Motopikhotna Dyviziya «Kholodnyy Yar»" }
+		24 = { "%d-ta Motopikhotna Dyviziya imeni Korolya Danyla" }
+		30 = { "%d-ta Motopikhotna Dyviziya imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Motopikhotna Dyviziya imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Motopikhotna Dyviziya imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Motopikhotna Dyviziya imeni Hetmana Ivana Mazepy" }
+		60 = { "%d-ta Motopikhotna Inhuletska Dyviziya" }
+		61 = { "%d-sha Motopikhotna Stepova Dyviziya" }
+		62 = { "%d-ha Motopikhotna Dyviziya" }
+		33 = { "%d-tya Motopikhotna Dyviziya" }
+		63 = { "%d-tya Motopikhotna Dyviziya" }
+		 6 = { "%d-ta Motopikhotna Dyviziya" }
+		 7 = { "%d-ma Motopikhotna Dyviziya" }
+		12 = { "%d-ta Motopikhotna Dyviziya" }
+		16 = { "%d-ta Motopikhotna Dyviziya «Brody»" }
+		18 = { "%d-ta Motopikhotna Dyviziya" }
+		19 = { "%d-ta Motopikhotna Dyviziya «Svyata Varvara»" }
+		26 = { "%d-ta Motopikhotna Dyviziya imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Motopikhotna Sumska Dyviziya" }
+		38 = { "%d-ma Motopikhotna Dyviziya" }
+		40 = { "%d-ya Motopikhotna Dyviziya" }
+		43 = { "%d-tya Motopikhotna Dyviziya" }
+		44 = { "%d-ta Motopikhotna Dyviziya" }
+		47 = { "%d-ma Motopikhotna Dyviziya" }
+		48 = { "%d-ma Motopikhotna Kamyanets-Podilska Dyviziya" }
+		55 = { "%d-ta Motopikhotna Dyviziya «Zaporizka Sich»" }
+		66 = { "%d-ta Motopikhotna Poltavsko-Bukovynska Dyviziya" }
+		70 = { "%d-ta Motopikhotna Hlukhivska Dyviziya" }
+		101 = { "%d-sha Motopikhotna Dyviziya" }
+		107 = { "%d-ma Motopikhotna Dyviziya" }
+		123 = { "%d-tya Motopikhotna Dyviziya" }
+		159 = { "%d-ta Motopikhotna Dyviziya" }
+		25 = { "%d-ta Motopikhotna Dnipropetrovska Dyviziya" }
+		81 = { "%d-sha Motopikhotna Dyviziya" }
+		80 = { "%d-ta Motopikhotna Dyviziya" }
+		45 = { "%d-ta Motopikhotna Dyviziya" }
+		46 = { "%d-ta Motopikhotna Dyviziya" }
+		79 = { "%d-ta Motopikhotna Dyviziya" }
+		95 = { "%d-ta Motopikhotna Zhytomyrska Dyviziya" }
+		39 = { "%d-ta Motopikhotna Dyviziya" }
+		10 = { "%d-ta Motopikhotna Dyviziya" }
+		128 = { "%d-ma Motopikhotna Zakarpatska Dyviziya" }
+		36 = { "%d-ta Motopikhotna Dyviziya imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Motopikhotna Dyviziya" }
+		68 = { "%d-ma Motopikhotna Dyviziya imeni Oleksy Dovbusha" }
+		110 = { "%d-ta Motopikhotna Dyviziya imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Motopikhotna Dyviziya" }
+	}
+}
+
+UKR_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { UKR_INF_01 }
+
+	fallback_name = "%d-ta Tankova Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-sha Tankova Siverska Dyviziya" }
+		17 = { "%d-ta Tankova Kryvorizka Dyviziya imeni Kostyantyna Pestushka" }
+		14 = { "%d-ta Tankova Dyviziya" }
+		3 = { "%d-tya Tankova Zalizna Dyviziya" }
+		5 = { "%d-ta Tankova Dyviziya" }
+		4 = { "%d-ta Tankova Dyviziya" }
+	}
+}
+
+UKR_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_INF_01 UKR_MOT_01 UKR_MAR_01 UKR_MTN_01 UKR_PAR_01 UKR_LGH_01 }
+
+	fallback_name = "%d-ta Mekhanizovana Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		97 = { "%d-ma Mekhanizovana Poltavska Dyviziya" }
+		15 = { "%d-ta Mekhanizovana Dyviziya" }
+		52 = { "%d-ha Mekhanizovana Cherkaska Dyviziya" }
+		72 = { "%d-ha Mekhanizovana Dyviziya imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Mekhanizovana Dyviziya" }
+		28 = { "%d-ma Mekhanizovana Dyviziya imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Mekhanizovana Dyviziya imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Mekhanizovana Volynska Dyviziya" }
+		93 = { "%d-tya Mekhanizovana Dyviziya «Kholodnyy Yar»" }
+		24 = { "%d-ta Mekhanizovana Dyviziya imeni Korolya Danyla" }
+		30 = { "%d-ta Mekhanizovana Dyviziya imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Mekhanizovana Dyviziya imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Mekhanizovana Dyviziya imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Mekhanizovana Dyviziya imeni Hetmana Ivana Mazepy" }
+		60 = { "%d-ta Mekhanizovana Inhuletska Dyviziya" }
+		62 = { "%d-ha Mekhanizovana Dyviziya" }
+		33 = { "%d-tya Mekhanizovana Dyviziya" }
+		63 = { "%d-tya Mekhanizovana Dyviziya" }
+		57 = { "%d-ma Mekhanizovana Dyviziya imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Mekhanizovana Dyviziya imeni Yakova Handzyuka" }
+		56 = { "%d-ta Mekhanizovana Mariupolska Dyviziya" }
+		58 = { "%d-ma Mekhanizovana Dyviziya imeni Hetmana Ivana Vyhovskoho" }
+		61 = { "%d-sha Mekhanizovana Stepova Dyviziya" }
+		11 = { "%d-ta Mekhanizovana Dyviziya" }
+		 6 = { "%d-ta Mekhanizovana Dyviziya" }
+		 7 = { "%d-ma Mekhanizovana Dyviziya" }
+		12 = { "%d-ta Mekhanizovana Dyviziya" }
+		16 = { "%d-ta Mekhanizovana Dyviziya «Brody»" }
+		18 = { "%d-ta Mekhanizovana Dyviziya" }
+		19 = { "%d-ta Mekhanizovana Dyviziya «Svyata Varvara»" }
+		26 = { "%d-ta Mekhanizovana Dyviziya imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Mekhanizovana Sumska Dyviziya" }
+		38 = { "%d-ma Mekhanizovana Dyviziya" }
+		40 = { "%d-ya Mekhanizovana Dyviziya" }
+		43 = { "%d-tya Mekhanizovana Dyviziya" }
+		44 = { "%d-ta Mekhanizovana Dyviziya" }
+		47 = { "%d-ma Mekhanizovana Dyviziya" }
+		48 = { "%d-ma Mekhanizovana Kamyanets-Podilska Dyviziya" }
+		55 = { "%d-ta Mekhanizovana Dyviziya «Zaporizka Sich»" }
+		66 = { "%d-ta Mekhanizovana Poltavsko-Bukovynska Dyviziya" }
+		70 = { "%d-ta Mekhanizovana Hlukhivska Dyviziya" }
+		101 = { "%d-sha Mekhanizovana Dyviziya" }
+		107 = { "%d-ma Mekhanizovana Dyviziya" }
+		123 = { "%d-tya Mekhanizovana Dyviziya" }
+		159 = { "%d-ta Mekhanizovana Dyviziya" }
+		25 = { "%d-ta Mekhanizovana Dnipropetrovska Dyviziya" }
+		81 = { "%d-sha Mekhanizovana Dyviziya" }
+		80 = { "%d-ta Mekhanizovana Dyviziya" }
+		45 = { "%d-ta Mekhanizovana Dyviziya" }
+		46 = { "%d-ta Mekhanizovana Dyviziya" }
+		79 = { "%d-ta Mekhanizovana Dyviziya" }
+		95 = { "%d-ta Mekhanizovana Zhytomyrska Dyviziya" }
+		39 = { "%d-ta Mekhanizovana Dyviziya" }
+		10 = { "%d-ta Mekhanizovana Dyviziya" }
+		128 = { "%d-ma Mekhanizovana Zakarpatska Dyviziya" }
+		36 = { "%d-ta Mekhanizovana Dyviziya imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Mekhanizovana Dyviziya" }
+		68 = { "%d-ma Mekhanizovana Dyviziya imeni Oleksy Dovbusha" }
+		110 = { "%d-ta Mekhanizovana Dyviziya imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Mekhanizovana Dyviziya" }
+	}
+}
+
+UKR_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { UKR_INF_01 }
+
+	fallback_name = "%d-ta Dyviziya Okhorony Hromadskoho Poryadku"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-sha Prezydentska Dyviziya Operatyvnoho Pryznachennya imeni Hetmana Petra Doroshenka" }
+		2 = { "%d-ha Halytska Dyviziya" }
+		3 = { "%d-tya Dyviziya Operatyvnoho Pryznachennya" }
+		4 = { "%d-ta Dyviziya Shvydkoho Reahuvannya" }
+		5 = { "%d-ta Slobozhanska Dyviziya" }
+		11 = { "%d-ta Dyviziya Okhorony Hromadskoho Poryadku" }
+		12 = { "%d-ta Dyviziya Operatyvnoho Pryznachennya imeni Dmytra Vyshnevetskoho" }
+		21 = { "%d-sha Dyviziya Okhorony Hromadskoho Poryadku imeni Petra Kalnyshevskoho" }
+		22 = { "%d-ha Dyviziya Okhorony Dyplomatychnykh Predstavnytstv i Konsulskykh Ustanov" }
+		23 = { "%d-tya Dyviziya Okhorony Hromadskoho Poryadku" }
+		25 = { "%d-ta Dyviziya Okhorony Hromadskoho Poryadku" }
+		27 = { "%d-ma Dyviziya (Konvoina)" }
+	}
+}
+
+UKR_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_INF_01 UKR_MOT_01 UKR_MEC_01 UKR_MTN_01 UKR_PAR_01 UKR_LGH_01 }
+
+	fallback_name = "%d-ta Dyviziya Morskoyi Pikhoty"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		36 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		38 = { "%d-ma Dyviziya Morskoyi Pikhoty" }
+		33 = { "%d-tya Dyviziya Morskoyi Pikhoty" }
+		97 = { "%d-ma Poltavska Dyviziya Morskoyi Pikhoty" }
+		15 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		52 = { "%d-ha Cherkaska Dyviziya Morskoyi Pikhoty" }
+		72 = { "%d-ha Dyviziya Morskoyi Pikhoty imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		28 = { "%d-ma Dyviziya Morskoyi Pikhoty imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Dyviziya Morskoyi Pikhoty imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Volynska Dyviziya Morskoyi Pikhoty" }
+		93 = { "%d-tya Dyviziya Morskoyi Pikhoty «Kholodnyy Yar»" }
+		24 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Korolya Danyla" }
+		30 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Dyviziya Morskoyi Pikhoty imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Hetmana Ivana Mazepy" }
+		57 = { "%d-ma Dyviziya Morskoyi Pikhoty imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Yakova Handzyuka" }
+		56 = { "%d-ta Mariupolska Dyviziya Morskoyi Pikhoty" }
+		58 = { "%d-ma Dyviziya Morskoyi Pikhoty imeni Hetmana Ivana Vyhovskoho" }
+		60 = { "%d-ta Inhuletska Dyviziya Morskoyi Pikhoty" }
+		61 = { "%d-sha Stepova Dyviziya Morskoyi Pikhoty" }
+		62 = { "%d-ha Dyviziya Morskoyi Pikhoty" }
+		63 = { "%d-tya Dyviziya Morskoyi Pikhoty" }
+		11 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		 6 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		 7 = { "%d-ma Dyviziya Morskoyi Pikhoty" }
+		12 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		16 = { "%d-ta Dyviziya Morskoyi Pikhoty «Brody»" }
+		18 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		19 = { "%d-ta Dyviziya Morskoyi Pikhoty «Svyata Varvara»" }
+		26 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Sumska Dyviziya Morskoyi Pikhoty" }
+		40 = { "%d-ya Dyviziya Morskoyi Pikhoty" }
+		43 = { "%d-tya Dyviziya Morskoyi Pikhoty" }
+		44 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		47 = { "%d-ma Dyviziya Morskoyi Pikhoty" }
+		48 = { "%d-ma Kamyanets-Podilska Dyviziya Morskoyi Pikhoty" }
+		55 = { "%d-ta Dyviziya Morskoyi Pikhoty «Zaporizka Sich»" }
+		66 = { "%d-ta Poltavsko-Bukovynska Dyviziya Morskoyi Pikhoty" }
+		70 = { "%d-ta Hlukhivska Dyviziya Morskoyi Pikhoty" }
+		101 = { "%d-sha Dyviziya Morskoyi Pikhoty" }
+		107 = { "%d-ma Dyviziya Morskoyi Pikhoty" }
+		123 = { "%d-tya Dyviziya Morskoyi Pikhoty" }
+		159 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		25 = { "%d-ta Dnipropetrovska Dyviziya Morskoyi Pikhoty" }
+		81 = { "%d-sha Dyviziya Morskoyi Pikhoty" }
+		80 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		45 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		46 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		79 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		95 = { "%d-ta Zhytomyrska Dyviziya Morskoyi Pikhoty" }
+		39 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		10 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+		128 = { "%d-ma Zakarpatska Dyviziya Morskoyi Pikhoty" }
+		68 = { "%d-ma Dyviziya Morskoyi Pikhoty imeni Oleksy Dovbusha" }
+		110 = { "%d-ta Dyviziya Morskoyi Pikhoty imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Dyviziya Morskoyi Pikhoty" }
+	}
+}
+
+UKR_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_INF_01 UKR_MOT_01 UKR_MEC_01 UKR_MAR_01 UKR_PAR_01 UKR_LGH_01 }
+
+	fallback_name = "%d-ta Hirsko-Sturmova Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		10 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		128 = { "%d-ma Hirsko-Shturmova Zakarpatska Dyviziya" }
+		97 = { "%d-ma Hirsko-Shturmova Poltavska Dyviziya" }
+		15 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		52 = { "%d-ha Hirsko-Shturmova Cherkaska Dyviziya" }
+		72 = { "%d-ha Hirsko-Shturmova Dyviziya imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		28 = { "%d-ma Hirsko-Shturmova Dyviziya imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Hirsko-Shturmova Dyviziya imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Hirsko-Shturmova Volynska Dyviziya" }
+		93 = { "%d-tya Hirsko-Shturmova Dyviziya «Kholodnyy Yar»" }
+		24 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Korolya Danyla" }
+		30 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Hirsko-Shturmova Dyviziya imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Hetmana Ivana Mazepy" }
+		57 = { "%d-ma Hirsko-Shturmova Dyviziya imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Yakova Handzyuka" }
+		56 = { "%d-ta Hirsko-Shturmova Mariupolska Dyviziya" }
+		58 = { "%d-ma Hirsko-Shturmova Dyviziya imeni Hetmana Ivana Vyhovskoho" }
+		60 = { "%d-ta Hirsko-Shturmova Inhuletska Dyviziya" }
+		61 = { "%d-sha Hirsko-Shturmova Stepova Dyviziya" }
+		62 = { "%d-ha Hirsko-Shturmova Dyviziya" }
+		33 = { "%d-tya Hirsko-Shturmova Dyviziya" }
+		63 = { "%d-tya Hirsko-Shturmova Dyviziya" }
+		11 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		 6 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		 7 = { "%d-ma Hirsko-Shturmova Dyviziya" }
+		12 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		16 = { "%d-ta Hirsko-Shturmova Dyviziya «Brody»" }
+		18 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		19 = { "%d-ta Hirsko-Shturmova Dyviziya «Svyata Varvara»" }
+		26 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Hirsko-Shturmova Sumska Dyviziya" }
+		38 = { "%d-ma Hirsko-Shturmova Dyviziya" }
+		40 = { "%d-ya Hirsko-Shturmova Dyviziya" }
+		43 = { "%d-tya Hirsko-Shturmova Dyviziya" }
+		44 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		47 = { "%d-ma Hirsko-Shturmova Dyviziya" }
+		48 = { "%d-ma Hirsko-Shturmova Kamyanets-Podilska Dyviziya" }
+		55 = { "%d-ta Hirsko-Shturmova Dyviziya «Zaporizka Sich»" }
+		66 = { "%d-ta Hirsko-Shturmova Poltavsko-Bukovynska Dyviziya" }
+		70 = { "%d-ta Hirsko-Shturmova Hlukhivska Dyviziya" }
+		101 = { "%d-sha Hirsko-Shturmova Dyviziya" }
+		107 = { "%d-ma Hirsko-Shturmova Dyviziya" }
+		123 = { "%d-tya Hirsko-Shturmova Dyviziya" }
+		159 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		25 = { "%d-ta Hirsko-Shturmova Dnipropetrovska Dyviziya" }
+		81 = { "%d-sha Hirsko-Shturmova Dyviziya" }
+		80 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		45 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		46 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		79 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		95 = { "%d-ta Hirsko-Shturmova Zhytomyrska Dyviziya" }
+		39 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		36 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+		68 = { "%d-ma Hirsko-Shturmova Dyviziya imeni Oleksy Dovbusha" }
+		110 = { "%d-ta Hirsko-Shturmova Dyviziya imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Hirsko-Shturmova Dyviziya" }
+	}
+}
+
+UKR_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { UKR }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { UKR_INF_01 UKR_MOT_01 UKR_MEC_01 UKR_MAR_01 UKR_MTN_01 UKR_LGH_01 }
+
+	fallback_name = "%d-ta Povitryanodesantna Dyviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		25 = { "%d-ta Povitryanodesantna Dnipropetrovska Dyviziya" }
+		81 = { "%d-sha Povitryanodesantna Dyviziya" }
+		80 = { "%d-ta Povitryanodesantna Dyviziya" }
+		45 = { "%d-ta Povitryanodesantna Dyviziya" }
+		46 = { "%d-ta Povitryanodesantna Dyviziya" }
+		79 = { "%d-ta Povitryanodesantna Dyviziya" }
+		95 = { "%d-ta Povitryanodesantna Zhytomyrska Dyviziya" }
+		39 = { "%d-ta Povitryanodesantna Dyviziya" }
+		97 = { "%d-ma Povitryanodesantna Poltavska Dyviziya" }
+		15 = { "%d-ta Povitryanodesantna Dyviziya" }
+		52 = { "%d-ha Povitryanodesantna Cherkaska Dyviziya" }
+		72 = { "%d-ha Povitryanodesantna Dyviziya imeni Chornykh Zaporozhtsiv" }
+		84 = { "%d-ta Povitryanodesantna Dyviziya" }
+		28 = { "%d-ma Povitryanodesantna Dyviziya imeni Lytsariv Zymovoho Pokhodu" }
+		92 = { "%d-ha Povitryanodesantna Dyviziya imeni Koshovoho Otamana Ivana Sirka" }
+		51 = { "%d-sha Povitryanodesantna Volynska Dyviziya" }
+		93 = { "%d-tya Povitryanodesantna Dyviziya «Kholodnyy Yar»" }
+		24 = { "%d-ta Povitryanodesantna Dyviziya imeni Korolya Danyla" }
+		30 = { "%d-ta Povitryanodesantna Dyviziya imeni Knyazya Kostyantyna Ostrozkoho" }
+		14 = { "%d-ta Povitryanodesantna Dyviziya imeni Knyazya Romana Velykoho" }
+		53 = { "%d-tya Povitryanodesantna Dyviziya imeni Knyazya Volodymyra Monomakha" }
+		54 = { "%d-ta Povitryanodesantna Dyviziya imeni Hetmana Ivana Mazepy" }
+		57 = { "%d-ma Povitryanodesantna Dyviziya imeni Koshovoho Otamana Kostya Hordiyenka" }
+		59 = { "%d-ta Povitryanodesantna Dyviziya imeni Yakova Handzyuka" }
+		56 = { "%d-ta Povitryanodesantna Mariupolska Dyviziya" }
+		58 = { "%d-ma Povitryanodesantna Dyviziya imeni Hetmana Ivana Vyhovskoho" }
+		60 = { "%d-ta Povitryanodesantna Inhuletska Dyviziya" }
+		61 = { "%d-sha Povitryanodesantna Stepova Dyviziya" }
+		62 = { "%d-ha Povitryanodesantna Dyviziya" }
+		33 = { "%d-tya Povitryanodesantna Dyviziya" }
+		63 = { "%d-tya Povitryanodesantna Dyviziya" }
+		11 = { "%d-ta Povitryanodesantna Dyviziya" }
+		 6 = { "%d-ta Povitryanodesantna Dyviziya" }
+		 7 = { "%d-ma Povitryanodesantna Dyviziya" }
+		12 = { "%d-ta Povitryanodesantna Dyviziya" }
+		16 = { "%d-ta Povitryanodesantna Dyviziya «Brody»" }
+		18 = { "%d-ta Povitryanodesantna Dyviziya" }
+		19 = { "%d-ta Povitryanodesantna Dyviziya «Svyata Varvara»" }
+		26 = { "%d-ta Povitryanodesantna Dyviziya imeni Henerala-Khorunzholo Romana Dashkevycha" }
+		27 = { "%d-ma Povitryanodesantna Sumska Dyviziya" }
+		38 = { "%d-ma Povitryanodesantna Dyviziya" }
+		40 = { "%d-ya Povitryanodesantna Dyviziya" }
+		43 = { "%d-tya Povitryanodesantna Dyviziya" }
+		44 = { "%d-ta Povitryanodesantna Dyviziya" }
+		47 = { "%d-ma Povitryanodesantna Dyviziya" }
+		48 = { "%d-ma Povitryanodesantna Kamyanets-Podilska Dyviziya" }
+		55 = { "%d-ta Povitryanodesantna Dyviziya «Zaporizka Sich»" }
+		66 = { "%d-ta Povitryanodesantna Poltavsko-Bukovynska Dyviziya" }
+		70 = { "%d-ta Povitryanodesantna Hlukhivska Dyviziya" }
+		101 = { "%d-sha Povitryanodesantna Dyviziya" }
+		107 = { "%d-ma Povitryanodesantna Dyviziya" }
+		123 = { "%d-tya Povitryanodesantna Dyviziya" }
+		159 = { "%d-ta Povitryanodesantna Dyviziya" }
+		10 = { "%d-ta Povitryanodesantna Dyviziya" }
+		128 = { "%d-ma Povitryanodesantna Zakarpatska Dyviziya" }
+		36 = { "%d-ta Povitryanodesantna Dyviziya imeni Kontr-Admirala Mykhayla Bilynskoho" }
+		35 = { "%d-ta Povitryanodesantna Dyviziya" }
+		68 = { "%d-ma Povitryanodesantna Dyviziya imeni Oleksy Dovbusha" }
+		110 = { "%d-ta Povitryanodesantna Dyviziya imeni Heneral-Khorunzhoho Marka Bezruchka" }
+		115 = { "%d-ta Povitryanodesantna Dyviziya" }
+		}
+}

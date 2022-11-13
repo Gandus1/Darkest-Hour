@@ -1,0 +1,7798 @@
+#########################################################################
+#  WPA
+#########################################################################
+USA_New_Deal_Category = {
+	USA_The_First_100_Days = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			has_completed_focus = USA_Employment_for_the_Youth
+			has_completed_focus = USA_Alleviate_Household_Unemployment
+			has_completed_focus = USA_Reduce_Agricultural_Surplus
+			has_completed_focus = USA_Invest_in_Public_Works
+			has_completed_focus = USA_Provide_Affordable_Power
+		}
+		activation = {
+			has_country_flag = USA_100_Days_Mission
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_First_100_Days_Failed
+			}
+			NOT = {
+				has_country_flag = USA_First_100_Days_Completed
+			}
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 100
+		timeout_effect = {
+			add_stability = -0.15
+			add_political_power = -100
+			clr_country_flag = USA_100_Days_Mission
+			set_country_flag = USA_First_100_Days_Failed
+		}
+		complete_effect = {
+			add_stability = 0.1
+			add_political_power = 75
+			clr_country_flag = USA_100_Days_Mission
+			set_country_flag = USA_First_100_Days_Completed
+		}
+	}
+	USA_Public_Works_in_the_Northeast = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 150
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Improve_Nation_Infrastructure
+		}
+		available = {
+			controls_state = 360			#PA
+			controls_state = 359			#NJ
+			controls_state = 358			#NY
+			controls_state = 357			#NE
+			controls_state = 777			#VT
+			controls_state = 778			#NH
+			controls_state = 779			#ME
+			controls_state = 781			#RI
+			controls_state = 782			#CT
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			360 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			359 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			358 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			782 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			777 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			778 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			357 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			781 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			779 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_Public_Works_in_the_Midwest = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 150
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Improve_Nation_Infrastructure
+		}
+		available = {
+			controls_state = 261
+			controls_state = 393
+			controls_state = 394
+			controls_state = 395
+			controls_state = 396
+			controls_state = 391
+			controls_state = 392
+			controls_state = 373
+			controls_state = 389
+			controls_state = 390
+			controls_state = 383
+			controls_state = 384
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 261
+						state = 393
+						state = 394
+						state = 395
+						state = 396
+						state = 391
+						state = 392
+						state = 373
+						state = 389
+						state = 390
+						state = 383
+						state = 384
+					}
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_Public_Works_in_the_South = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 250
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Improve_Nation_Infrastructure
+		}
+		available = {
+			controls_state = 783
+			controls_state = 361
+			controls_state = 362
+			controls_state = 780
+			controls_state = 369
+			controls_state = 363
+			controls_state = 368
+			controls_state = 364
+			controls_state = 365
+			controls_state = 366
+			controls_state = 367
+			controls_state = 370
+			controls_state = 371
+			controls_state = 372
+			controls_state = 374
+			controls_state = 375
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 783
+						state = 361
+						state = 362
+						state = 780
+						state = 369
+						state = 363
+						state = 368
+						state = 364
+						state = 365
+						state = 366
+						state = 367
+						state = 370
+						state = 371
+						state = 372
+						state = 374
+						state = 375
+					}
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_Public_Works_in_the_West = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 200
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Improve_Nation_Infrastructure
+		}
+		available = {
+			controls_state = 385
+			controls_state = 386
+			controls_state = 387
+			controls_state = 388
+			controls_state = 376
+			controls_state = 377
+			controls_state = 378
+			controls_state = 379
+			controls_state = 380
+			controls_state = 381
+			controls_state = 382
+			controls_state = 463
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 385
+						state = 386
+						state = 387
+						state = 388
+						state = 376
+						state = 377
+						state = 378
+						state = 379
+						state = 380
+						state = 381
+						state = 382
+						state = 463
+					}
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_Federal_Art_Project = {
+		icon = GFX_decision_USA_Federal_Art_Project
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 75
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 50
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Support_American_Artisans
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Another_Project_is_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -75
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				unemployment_value = -0.013
+			}
+			add_unemployment_effect = yes
+			add_stability = 0.005
+			set_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+	}
+	USA_Federal_Music_Project = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 75
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 50
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Support_American_Artisans
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Another_Project_is_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -75
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				unemployment_value = -0.012
+			}
+			add_unemployment_effect = yes
+			add_stability = 0.005
+			set_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+	}
+	USA_Federal_Theater_Project = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 75
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 50
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Support_American_Artisans
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Another_Project_is_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -75
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				unemployment_value = -0.011
+			}
+			add_unemployment_effect = yes
+			add_stability = 0.005
+			set_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+	}
+	USA_Federal_Writers_Project = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 75
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 50
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Support_American_Artisans
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Another_Project_is_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -75
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				unemployment_value = -0.013
+			}
+			add_unemployment_effect = yes
+			add_stability = 0.005
+			set_country_flag = USA_Another_Project_is_Being_Enacted
+			set_country_flag = USA_Historical_Records_Survey_Unlock
+			unlock_decision_tooltip = USA_Historical_Records_Survey
+		}
+		remove_effect = {
+			clr_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+	}
+	USA_Historical_Records_Survey = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 75
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 50
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_country_flag = USA_Historical_Records_Survey_Unlock
+			has_completed_focus = USA_Support_American_Artisans
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Another_Project_is_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -75
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+			add_stability = 0.005
+			set_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Another_Project_is_Being_Enacted
+		}
+	}
+}
+USA_Mobilization_Category = {
+	USA_Call_National_Guard_Decision = {
+		icon = generic_construction
+		fire_only_once = yes
+		cost = 50
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Call_National_Guard_into_Active_Service
+		}
+		available = {
+			threat > 0.4
+		}
+		complete_effect = {
+			country_event = USA_Army.2
+		}
+	}
+}
+USA_Defence_Against_Agression_Category = {
+	# A Defense Against Aggression
+	USA_Defence_Against_Agression_Mission = {
+		allowed = {
+			original_tag = USA
+		}
+		available = {
+			has_country_flag = USA_Shield_of_Liberty_Completed
+			has_country_flag = USA_Exercise_Military_Completed
+			has_country_flag = USA_Military_Quotas_Completed
+			has_country_flag = USA_Isolationists_Completed
+			has_country_flag = USA_Appeal_People_Completed
+		}
+		activation = {
+			has_completed_focus = USA_A_Defense_Against_Agression
+		}
+		is_good = no
+		days_mission_timeout = 365
+		timeout_effect = {
+			add_political_power = -100
+			add_stability = -0.1
+		}
+		complete_effect = {
+		}
+	}
+	# The Shield of Liberty Military Construction Program
+	USA_Shield_Of_Liberty_Military_Construction_Program = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 40
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_political_power = -80
+			set_temp_variable = {
+				unemployment_value = -0.02
+			}
+			add_unemployment_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			set_country_flag = USA_Shield_of_Liberty_Completed
+			set_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+	}
+	# Exercise the Military
+	USA_Exercise_Military = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 50
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 0
+		days_remove = 40
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -50
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_political_power = -40
+			army_experience = 15
+			air_experience = 15
+			navy_experience = 15
+			set_country_flag = USA_Exercise_Military_Completed
+			set_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+	}
+	# Establish New Rearmament Quotas
+	USA_Enact_New_Military_Quotas = {
+		icon = generic_construction
+		fire_only_once = yes
+		cost = 0
+		days_remove = 40
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			unlock_decision_category_tooltip = USA_Military_Rearmament_Category
+			set_country_flag = USA_Military_Quotas_Completed
+			set_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+		remove_effect = {
+			clr_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+	}
+	# Convince the Isolationists
+	USA_Convince_Isolationists = {
+		icon = generic_construction
+		cost = 100
+		days_remove = 40
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA_Isolationist_Decision_Count < 5
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_war_support = 0.01
+			set_temp_variable = {
+				party_id = 1
+			}
+			set_temp_variable = {
+				support_to_add = 0.01
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 2
+			}
+			set_temp_variable = {
+				support_to_add = 0.01
+			}
+			set_country_flag = USA_Isolationists_Completed
+			set_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			set_variable = {
+				var = USA_Convince_Isolationists
+				value = 0
+			}
+			add_to_variable = {
+				USA_Isolationist_Decision_Count = 1
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+	}
+	# Appeal To the People
+	USA_Appeal_to_the_People = {
+		icon = generic_construction
+		cost = 75
+		days_remove = 40
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA_People_Decision_Count < 6
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_war_support = 0.01
+			set_temp_variable = {
+				party_id = 1
+			}
+			set_temp_variable = {
+				support_to_add = 0.01
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 2
+			}
+			set_temp_variable = {
+				support_to_add = 0.01
+			}
+			set_country_flag = USA_Appeal_People_Completed
+			set_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+			set_variable = {
+				var = USA_Convince_Isolationists
+				value = 0
+			}
+			add_to_variable = {
+				USA_People_Decision_Count = 1
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Other_Defence_Against_Agression_Decision_Being_Enacted
+		}
+	}
+}
+USA_Military_Rearmament_Category = {
+	USA_Focus_on_Assembling_Infantry_And_Heavy_Weapons_Idea_2 = {
+		icon = generic_construction
+		cost = 75
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Weapons_and_Support_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_on_Weapons_and_Support
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Weapons_and_Support_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_on_Weapons_and_Support
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_Big_Guns = {
+		icon = generic_construction
+		cost = 75
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Big_Guns_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_Big_Guns_Idea
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Big_Guns_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_Big_Guns_Idea
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_Armoured_Vehicles = {
+		icon = generic_construction
+		cost = 100
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Armoured_Vehicles_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_Armoured
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Armoured_Vehicles_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_Armoured
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_Motorized_Vehicles = {
+		icon = generic_construction
+		cost = 90
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Motorized_Vehicles_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_Motorized
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Motorized_Vehicles_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_Motorized
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_Fighter_Planes = {
+		icon = generic_construction
+		cost = 100
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Fighter_Planes_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_Fighters
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Fighter_Planes_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_Fighters
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_CAS_Planes = {
+		icon = generic_construction
+		cost = 75
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_CAS_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_CAS
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_CAS_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_CAS
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_Bomber_Planes = {
+		icon = generic_construction
+		cost = 90
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Bombers_Planes_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_Bombers
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Bombers_Planes_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_Bombers
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+	USA_Focus_on_Naval_Planes = {
+		icon = generic_construction
+		cost = 100
+		days_remove = 100
+		visible = {
+			original_tag = USA
+			check_variable = {
+				USA.Focus_on_Naval_Planes_Count < 4
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			}
+		}
+		complete_effect = {
+			add_ideas = USA_Focus_On_Naval
+			set_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+			add_to_variable = {
+				USA.Focus_on_Naval_Planes_Count = 1
+			}
+		}
+		remove_effect = {
+			remove_ideas = USA_Focus_On_Naval
+			clr_country_flag = USA_Other_Military_Rearmament_Decision_Being_Enacted
+		}
+	}
+}
+USA_Reciprocal_Deals_Category = {
+	USA_Reciprocal_Deal_Belgium = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 6
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = BEL
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = BEL
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = BEL
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = BEL
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = BEL
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Brazil = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 500
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = BRA
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = BRA
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = BRA
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = BRA
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = BRA
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_France = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 16
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = FRA
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = FRA
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = FRA
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Canada = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 276
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = CAN
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = CAN
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = CAN
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = CAN
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = CAN
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Colombia = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 306
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = COL
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = COL
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = COL
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Guatemala = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 313
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = GUA
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = GUA
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = GUA
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = GUA
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = GUA
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Costa_Rica = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 316
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = COS
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = COS
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = COS
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = COS
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = COS
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Cuba = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 315
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = CUB
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = CUB
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = CUB
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Haiti = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 318
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = HAI
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = HAI
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = HAI
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Czechoslovakia = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 9
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = CZE
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = CZE
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = CZE
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = CZE
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = CZE
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Ecuador = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 305
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = ECU
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = ECU
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = ECU
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = ECU
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = ECU
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Honduras = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 312
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = HON
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = HON
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = HON
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = HON
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = HON
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_El_Salvador = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 314
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = ELS
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = ELS
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = ELS
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = ELS
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = ELS
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Finland = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 111
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = FIN
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = FIN
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = FIN
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = FIN
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = FIN
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Netherlands = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 7
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = HOL
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = HOL
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = HOL
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = HOL
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = HOL
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Nicaragua = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 317
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = NIC
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = NIC
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = NIC
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = NIC
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = NIC
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Sweden = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 141
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = SWE
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = SWE
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = SWE
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = SWE
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = SWE
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_Switzerland = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 151
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = SWI
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = SWI
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = SWI
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = SWI
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = SWI
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+	USA_Reciprocal_Deal_United_Kingdom = {
+		icon = GFX_decision_USA_Reciprocal_Trade_Agreement
+		cost = 30
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 126
+			}
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_Reciprocal_Deal
+			}
+			country_exists = ENG
+		}
+		complete_effect = {
+			reverse_add_opinion_modifier = {
+				target = ENG
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = USA_Trade_Agreement_Reciprocal
+			}
+			reverse_add_opinion_modifier = {
+				target = ENG
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = USA_Trade_Agreement_Reciprocal_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_Reciprocal_Deal
+			}
+		}
+		days_remove = 40
+		remove_effect = {
+			clr_country_flag = USA_Doing_Reciprocal_Deal
+		}
+	}
+}
+USA_the_Good_Neighbour_Category = {
+	USA_Withdraw_From_Haiti = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_the_Good_Neighbour
+			}
+			country_exists = HAI
+			HAI = {
+				is_subject_of = USA
+			}
+		}
+		complete_effect = {
+			end_puppet = HAI
+			give_guarantee = HAI
+			add_political_power = 25
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = medium_increase
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_the_Good_Neighbour
+			}
+		}
+		days_remove = 50
+		remove_effect = {
+			clr_country_flag = USA_Doing_the_Good_Neighbour
+			set_country_flag = USA_Withdrawed_From_Haiti
+		}
+	}
+	USA_End_The_Platt_Amendment = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_the_Good_Neighbour
+			}
+			country_exists = CUB
+		}
+		complete_effect = {
+			add_political_power = 40
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = USA_End_The_Platt_Amendment_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_the_Good_Neighbour
+			}
+		}
+		days_remove = 50
+		remove_effect = {
+			clr_country_flag = USA_Doing_the_Good_Neighbour
+			set_country_flag = USA_Ended_the_Platt_Amendment
+		}
+	}
+	USA_The_Montevideo_Convention = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Doing_the_Good_Neighbour
+			}
+		}
+		complete_effect = {
+			news_event = {
+				id = USA_FDR_New_Deal.9
+			}
+			add_political_power = 50
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = BRA
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = CHL
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = COS
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = DOM
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = ECU
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = ELS
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = GUA
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = HON
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = MEX
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = NIC
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = PAN
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = VEN
+				modifier = USA_The_Montevideo_Convention_opinion
+			}
+			hidden_effect = {
+				set_country_flag = USA_Doing_the_Good_Neighbour
+			}
+		}
+		days_remove = 50
+		remove_effect = {
+			clr_country_flag = USA_Doing_the_Good_Neighbour
+			set_country_flag = USA_Montevideo_Convention
+		}
+	}
+	USA_Bad_Neighbour = {
+		icon = generic_construction
+		fire_only_once = yes
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			has_country_flag = USA_Withdrawed_From_Haiti
+			has_country_flag = USA_Ended_the_Platt_Amendment
+			has_country_flag = USA_Montevideo_Convention
+		}
+		activation = {
+			has_completed_focus = USA_the_Good_Neighbour
+		}
+		complete_effect = {
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 365
+		timeout_effect = {
+			add_political_power = -150
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = BRA
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = CHL
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = COS
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = DOM
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = ECU
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = ELS
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = GUA
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = HON
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = MEX
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = NIC
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = PAN
+				modifier = large_decrease
+			}
+			reverse_add_opinion_modifier = {
+				target = VEN
+				modifier = large_decrease
+			}
+		}
+		complete_effect = {
+		}
+	}
+}
+USA_The_Office_of_the_Coordinator_of_Inter_American_Affairs_Category = {
+	USA_Counter_Foreign_Influences_In_Latin_America = {
+		icon = generic_military
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		cost = 50
+		days_remove = 100
+		remove_effect = {
+			CUB = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			BRA = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			CHL = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			COL = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			COS = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			DOM = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			ECU = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			ELS = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			GUA = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			HAI = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			HON = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			MEX = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			NIC = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			PAN = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+			VEN = {
+				add_ideas = USA_US_Backed_Anti_Foreign_Influence_Efforts
+			}
+		}
+	}
+	USA_Improve_US_Latin_American_Relations = {
+		icon = generic_military
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+		}
+		complete_effect = {
+		}
+		cost = 100
+		days_remove = 1
+		remove_effect = {
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = BRA
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = CHL
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = COS
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = DOM
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = ECU
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = ELS
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = GUA
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = HON
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = MEX
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = NIC
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = PAN
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+			reverse_add_opinion_modifier = {
+				target = VEN
+				modifier = USA_Improve_US_Latin_American_Relations_opinion
+			}
+		}
+	}
+}
+USA_Landon_Private_Investments_Category = {
+	USA_Encourage_Investment_In_Ford_Motors = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = USA_Landon_Private_Investments_Selected
+				}
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_country_flag = USA_Landon_Private_Investments_Selected
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		cost = 75
+		days_remove = 60
+		remove_effect = {
+			393 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			clr_country_flag = USA_Landon_Private_Investments_Selected
+		}
+	}
+	USA_Encourage_Investment_In_Southwestern_Bell = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = USA_Landon_Private_Investments_Selected
+				}
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_country_flag = USA_Landon_Private_Investments_Selected
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		cost = 75
+		days_remove = 60
+		remove_effect = {
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = electronics
+			}
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			clr_country_flag = USA_Landon_Private_Investments_Selected
+		}
+	}
+	USA_Encourage_Investment_In_US_Steel = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = USA_Landon_Private_Investments_Selected
+				}
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_country_flag = USA_Landon_Private_Investments_Selected
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		cost = 75
+		days_remove = 60
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 16
+				state = 360
+			}
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			clr_country_flag = USA_Landon_Private_Investments_Selected
+		}
+	}
+	USA_Encourage_Investment_In_JP_Morgan = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = USA_Landon_Private_Investments_Selected
+				}
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_country_flag = USA_Landon_Private_Investments_Selected
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		cost = 75
+		days_remove = 60
+		remove_effect = {
+			add_ideas = USA_Investments_In_JP_Morgan
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			clr_country_flag = USA_Landon_Private_Investments_Selected
+		}
+	}
+}
+USA_USACE_Projects_Category = {
+	USA_USACE_Projects_In_the_Northeast = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_USACE_Selected_Decision
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = USA_USACE_Selected_Decision
+		}
+		days_remove = 250
+		remove_effect = {
+			clr_country_flag = USA_USACE_Selected_Decision
+			779 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			778 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			777 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			357 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			781 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			782 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			385 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			359 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			360 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_USACE_Projects_In_the_South = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_USACE_Selected_Decision
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = USA_USACE_Selected_Decision
+		}
+		days_remove = 250
+		remove_effect = {
+			clr_country_flag = USA_USACE_Selected_Decision
+			783 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			361 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			362 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			780 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			369 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			363 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			364 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			368 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			365 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			366 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			367 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			372 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			371 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			375 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			374 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_USACE_Projects_In_the_Midwest = {
+		icon = generic_construction
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_USACE_Selected_Decision
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = USA_USACE_Selected_Decision
+		}
+		days_remove = 250
+		remove_effect = {
+			clr_country_flag = USA_USACE_Selected_Decision
+			261 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			393 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			396 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			394 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			395 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			391 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			392 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			373 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			389 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			390 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			384 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			383 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	USA_USACE_Projects_In_the_West = {
+		icon = generic_construction
+		fire_only_once = yes
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_USACE_Selected_Decision
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = USA_USACE_Selected_Decision
+		}
+		days_remove = 250
+		remove_effect = {
+			clr_country_flag = USA_USACE_Selected_Decision
+			388 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			387 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			381 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			382 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			376 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			377 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			380 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			379 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			378 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			385 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			386 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			463 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}
+propaganda_efforts = {
+	USA_Mass_Produce_Pro_War_Posters = {
+		icon = generic_military
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Pro_War_Propaganda
+		}
+		available = {
+			NOT = {
+				has_war_support > 0.5
+			}
+		}
+		complete_effect = {
+		}
+		days_remove = 80
+		remove_effect = {
+			add_political_power = -50
+			add_stability = -0.01
+			add_war_support = 0.03
+		}
+	}
+	USA_Pro_War_Radio_Speeches = {
+		icon = generic_military
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Pro_War_Propaganda
+		}
+		available = {
+			NOT = {
+				has_war_support > 0.5
+			}
+		}
+		complete_effect = {
+		}
+		days_remove = 100
+		remove_effect = {
+			add_political_power = -80
+			add_stability = -0.03
+			add_war_support = 0.05
+		}
+	}
+	USA_Hold_Pro_War_Rallies = {
+		icon = generic_military
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			original_tag = USA
+			has_completed_focus = USA_Pro_War_Propaganda
+		}
+		available = {
+			NOT = {
+				has_war_support > 0.5
+			}
+		}
+		complete_effect = {
+		}
+		days_remove = 120
+		remove_effect = {
+			add_political_power = -100
+			add_stability = -0.05
+			add_war_support = 0.08
+		}
+	}
+}
+USA_Military_Rearmament_1940_Category = {
+	USA_Focus_on_Assembling_Infantry_And_Support_Weapons = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Assembling_Infantry_And_Support_Weapons_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Assembling_Infantry_And_Heavy_Weapons_Idea
+				days = 100
+			}
+		}
+		cost = 75
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Assembling_Infantry_And_Support_Weapons_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Assembling_Infantry_And_Support_Weapons_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Assembling_Infantry_And_Support_Weapons_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Assembling_Infantry_And_Support_Weapons_One
+				}
+				set_country_flag = USA_Focus_on_Assembling_Infantry_And_Support_Weapons_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Making_Big_Guns = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Making_Big_Guns_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Making_Big_Guns_Idea
+				days = 100
+			}
+		}
+		cost = 75
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Making_Big_Guns_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Making_Big_Guns_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Making_Big_Guns_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Making_Big_Guns_One
+				}
+				set_country_flag = USA_Focus_on_Making_Big_Guns_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Manufacturing_Armoured_Vehicles = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Manufacturing_Armoured_Vehicles_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Manufacturing_Armoured_Vehicles_Idea
+				days = 100
+			}
+		}
+		cost = 100
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Manufacturing_Armoured_Vehicles_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Manufacturing_Armoured_Vehicles_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Manufacturing_Armoured_Vehicles_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Manufacturing_Armoured_Vehicles_One
+				}
+				set_country_flag = USA_Focus_on_Manufacturing_Armoured_Vehicles_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Producing_Motorised_Vehicles = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Producing_Motorised_Vehicles_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Producing_Motorised_Vehicles_Idea
+				days = 100
+			}
+		}
+		cost = 100
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Producing_Motorised_Vehicles_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Producing_Motorised_Vehicles_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Producing_Motorised_Vehicles_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Producing_Motorised_Vehicles_One
+				}
+				set_country_flag = USA_Focus_on_Producing_Motorised_Vehicles_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Assembling_Fighter_Planes = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Assembling_Fighter_Planes_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Assembling_Fighter_Planes_Idea
+				days = 100
+			}
+		}
+		cost = 100
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Assembling_Fighter_Planes_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Assembling_Fighter_Planes_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Assembling_Fighter_Planes_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Assembling_Fighter_Planes_One
+				}
+				set_country_flag = USA_Focus_on_Assembling_Fighter_Planes_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Assembling_CAS_Planes = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Assembling_CAS_Planes_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Assembling_CAS_Planes_Idea
+				days = 100
+			}
+		}
+		cost = 75
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Assembling_CAS_Planes_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Assembling_CAS_Planes_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Assembling_CAS_Planes_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Assembling_CAS_Planes_One
+				}
+				set_country_flag = USA_Focus_on_Assembling_CAS_Planes_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Constructing_Bombers = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Constructing_Bombers_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Constructing_Bombers_Idea
+				days = 100
+			}
+		}
+		cost = 90
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Constructing_Bombers_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Constructing_Bombers_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Constructing_Bombers_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Constructing_Bombers_One
+				}
+				set_country_flag = USA_Focus_on_Constructing_Bombers_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+	USA_Focus_on_Building_Naval_Aircraft = {
+		icon = generic_military
+		fire_only_once = no
+		visible = {
+			original_tag = USA
+			NOT = {
+				has_country_flag = USA_Focus_on_Building_Naval_Aircraft_Two
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Miltiary_Rearmament_Selected
+			}
+		}
+		complete_effect = {
+			set_country_flag = USA_Miltiary_Rearmament_Selected
+			add_timed_idea = {
+				idea = USA_Focus_on_Building_Naval_Aircraft_Idea
+				days = 100
+			}
+		}
+		cost = 100
+		days_remove = 100
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_Focus_on_Building_Naval_Aircraft_Two
+					}
+					NOT = {
+						has_country_flag = USA_Focus_on_Building_Naval_Aircraft_One
+					}
+				}
+				set_country_flag = USA_Focus_on_Building_Naval_Aircraft_One
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_Focus_on_Building_Naval_Aircraft_One
+				}
+				set_country_flag = USA_Focus_on_Building_Naval_Aircraft_Two
+			}
+			clr_country_flag = USA_Miltiary_Rearmament_Selected
+		}
+	}
+}
+USA_Wartime_Economic_Recovery_Category = {
+	USA_Wartime_Economic_Recovery = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			has_war = yes
+		}
+		visible = {
+			has_war = yes
+		}
+		days_remove = 98
+		complete_effect = {
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					set_temp_variable = {
+						unemployment_value = 0.02
+					}
+					has_less_than_unemployment_value = yes
+				}
+				set_temp_variable = {
+					unemployment_value = -0.019
+				}
+				add_unemployment_effect = yes
+			}
+			else = {
+				set_temp_variable = {
+					unemployment_value = -0.025
+				}
+				add_unemployment_effect = yes
+			}
+		}
+	}
+}
+USA_The_War_Production_Board_Category = {
+	USA_Focus_On_Producing_For_the_Infantry = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_War_Production_Board_Decision_Selected
+			}
+		}
+		visible = {
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_ideas = USA_Focus_On_Producing_For_the_Infantry_Idea
+			set_country_flag = USA_War_Production_Board_Decision_Selected
+		}
+		remove_effect = {
+			clr_country_flag = USA_War_Production_Board_Decision_Selected
+		}
+	}
+	USA_Focus_On_Producing_Armoured_Vehicles = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_War_Production_Board_Decision_Selected
+			}
+		}
+		visible = {
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_ideas = USA_Focus_On_Producing_Armoured_Vehicles_Idea
+			set_country_flag = USA_War_Production_Board_Decision_Selected
+		}
+		remove_effect = {
+			clr_country_flag = USA_War_Production_Board_Decision_Selected
+		}
+	}
+	USA_Focus_On_Producing_Aircraft = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_War_Production_Board_Decision_Selected
+			}
+		}
+		visible = {
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_ideas = USA_Focus_On_Producing_Aircraft_Idea
+			set_country_flag = USA_War_Production_Board_Decision_Selected
+		}
+		remove_effect = {
+			clr_country_flag = USA_War_Production_Board_Decision_Selected
+		}
+	}
+}
+USA_The_Reserve_Companies_Category = {
+	USA_Establish_the_Rubber_Reserve_Company = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		visible = {
+		}
+		cost = 50
+		days_remove = 130
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+	USA_Establish_the_Petroleum_Reserve_Company = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		visible = {
+		}
+		cost = 50
+		days_remove = 130
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+	USA_Establish_the_Metals_Reserve_Company = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 450
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		visible = {
+		}
+		cost = 75
+		days_remove = 280
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -450
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = aluminium
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = aluminium
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = tungsten
+					amount = 10
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = tungsten
+					amount = 10
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = tungsten
+					amount = 10
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = chromium
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_resource = {
+					type = chromium
+					amount = 15
+				}
+			}
+		}
+	}
+}
+USA_Occupied_Economic_Stabilisation_Category = {
+	USA_Make_Use_of_POW_Labor_For_Infrastructure_Reconstruction = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_Already_Doing_Stabilisation_Decision
+			}
+		}
+		visible = {
+		}
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				economic_stabilisation_progress_to_add = 5
+			}
+			custom_effect_tooltip = add_economic_stabilisation_progress_tt
+			USA_add_economic_stabilisation_progress = yes
+			set_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+	}
+	USA_Introduce_A_Standard_Currency = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Already_Doing_Stabilisation_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 200
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				economic_stabilisation_progress_to_add = 40
+			}
+			USA_add_economic_stabilisation_progress = yes
+			custom_effect_tooltip = add_economic_stabilisation_progress_tt
+			set_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+	}
+	USA_Make_Use_of_POW_Labor_For_Industrial_Reconstruction = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_Already_Doing_Stabilisation_Decision
+			}
+		}
+		visible = {
+		}
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -1000
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				economic_stabilisation_progress_to_add = 10
+			}
+			USA_add_economic_stabilisation_progress = yes
+			custom_effect_tooltip = add_economic_stabilisation_progress_tt
+			set_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+	}
+	USA_Enact_Anti_Hyperinflation_Measures = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Already_Doing_Stabilisation_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 50
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				economic_stabilisation_progress_to_add = 10
+			}
+			USA_add_economic_stabilisation_progress = yes
+			custom_effect_tooltip = add_economic_stabilisation_progress_tt
+			set_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+	}
+	USA_Decartelize_the_Steel_Industry = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 1000
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_Already_Doing_Stabilisation_Decision
+			}
+		}
+		visible = {
+		}
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				economic_stabilisation_progress_to_add = 20
+			}
+			USA_add_economic_stabilisation_progress = yes
+			custom_effect_tooltip = add_economic_stabilisation_progress_tt
+			set_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+	}
+	USA_Limit_the_Black_Market = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Already_Doing_Stabilisation_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				economic_stabilisation_progress_to_add = 15
+			}
+			USA_add_economic_stabilisation_progress = yes
+			custom_effect_tooltip = add_economic_stabilisation_progress_tt
+			set_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Already_Doing_Stabilisation_Decision
+		}
+	}
+}
+USA_Gradual_Occupied_De_Militarization_Category = {
+	USA_Ask_To_Fill_In_Questionnaires = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Alrady_Doing_Militarization_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				de_militarization_progress_to_add = -15
+			}
+			USA_add_de_militarization_progress = yes
+			custom_effect_tooltip = add_de_militarization_progress_tt
+			set_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+	}
+	USA_Verify_Claims_of_Participation = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Alrady_Doing_Militarization_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				de_militarization_progress_to_add = -15
+			}
+			USA_add_de_militarization_progress = yes
+			custom_effect_tooltip = add_de_militarization_progress_tt
+			set_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+	}
+	USA_Take_Control_of_the_German_Media = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Alrady_Doing_Militarization_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				de_militarization_progress_to_add = -15
+			}
+			USA_add_de_militarization_progress = yes
+			custom_effect_tooltip = add_de_militarization_progress_tt
+			set_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+	}
+	USA_Propagate_Anti_Authoritarian_Messages = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Alrady_Doing_Militarization_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 50
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				de_militarization_progress_to_add = -10
+			}
+			USA_add_de_militarization_progress = yes
+			custom_effect_tooltip = add_de_militarization_progress_tt
+			set_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+	}
+	USA_Confiscate_Militarist_Literature_and_Art = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Alrady_Doing_Militarization_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 125
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				de_militarization_progress_to_add = -25
+			}
+			USA_add_de_militarization_progress = yes
+			custom_effect_tooltip = add_de_militarization_progress_tt
+			set_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+	}
+	USA_Confiscate_Militarist_Media = {
+		fire_only_once = no
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_Alrady_Doing_Militarization_Decision
+			}
+		}
+		visible = {
+		}
+		cost = 125
+		days_remove = 50
+		complete_effect = {
+			set_temp_variable = {
+				de_militarization_progress_to_add = -25
+			}
+			USA_add_de_militarization_progress = yes
+			custom_effect_tooltip = add_de_militarization_progress_tt
+			set_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+		remove_effect = {
+			clr_country_flag = USA_Alrady_Doing_Militarization_Decision
+		}
+	}
+}
+USA_Cash_and_Carry_Category = {
+	USA_Sell_Fighters_to_UK = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = ENG
+			}
+			ENG = {
+				has_government = democratic
+			}
+			threat > 0.2
+			has_equipment = {
+				Fighter_equipment > 49
+			}
+		}
+		visible = {
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			ENG = {
+				country_event = {
+					id = USA_Cash_and_Carry.1
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_Send_Aid_to_China = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = CHI
+			}
+			threat > 0.2
+			CHI = {
+				OR = {
+					has_war_with = JAP
+					has_war_with = SOV
+				}
+			}
+			has_equipment = {
+				convoy > 24
+			}
+			has_equipment = {
+				infantry_equipment > 2499
+			}
+			has_equipment = {
+				Heavy_Weapons_equipment > 249
+			}
+			has_equipment = {
+				support_equipment > 249
+			}
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			CHI = {
+				country_event = {
+					id = USA_Cash_and_Carry.4
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_Send_Aid_to_FRA = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = FRA
+			}
+			FRA = {
+				has_government = democratic
+			}
+			threat > 0.2
+			has_equipment = {
+				convoy > 24
+			}
+			has_equipment = {
+				infantry_equipment > 2499
+			}
+			has_equipment = {
+				Heavy_Weapons_equipment > 249
+			}
+			has_equipment = {
+				support_equipment > 249
+			}
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			FRA = {
+				country_event = {
+					id = USA_Cash_and_Carry.4
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_Send_Aid_to_GER = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = GER
+			}
+			GER = {
+				has_government = democratic
+			}
+			threat > 0.2
+			has_equipment = {
+				convoy > 24
+			}
+			has_equipment = {
+				infantry_equipment > 2499
+			}
+			has_equipment = {
+				Heavy_Weapons_equipment > 249
+			}
+			has_equipment = {
+				support_equipment > 249
+			}
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			GER = {
+				country_event = {
+					id = USA_Cash_and_Carry.4
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_Send_Aid_to_ITA = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = ITA
+			}
+			ITA = {
+				has_government = democratic
+			}
+			threat > 0.2
+			has_equipment = {
+				convoy > 24
+			}
+			has_equipment = {
+				infantry_equipment > 2499
+			}
+			has_equipment = {
+				Heavy_Weapons_equipment > 249
+			}
+			has_equipment = {
+				support_equipment > 249
+			}
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			ITA = {
+				country_event = {
+					id = USA_Cash_and_Carry.4
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_Send_Aid_to_JAP = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = JAP
+			}
+			JAP = {
+				has_government = democratic
+			}
+			threat > 0.2
+			has_equipment = {
+				convoy > 24
+			}
+			has_equipment = {
+				infantry_equipment > 2499
+			}
+			has_equipment = {
+				Heavy_Weapons_equipment > 249
+			}
+			has_equipment = {
+				support_equipment > 249
+			}
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			JAP = {
+				country_event = {
+					id = USA_Cash_and_Carry.4
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_Send_Aid_to_SPR = {
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = SPR
+			}
+			SPR = {
+				has_government = democratic
+			}
+			threat > 0.2
+			has_equipment = {
+				convoy > 24
+			}
+			has_equipment = {
+				infantry_equipment > 2499
+			}
+			has_equipment = {
+				Heavy_Weapons_equipment > 249
+			}
+			has_equipment = {
+				support_equipment > 249
+			}
+		}
+		cost = 25
+		days_remove = 60
+		complete_effect = {
+			SPR = {
+				country_event = {
+					id = USA_Cash_and_Carry.4
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+}
+USA_Expand_the_Pacific_Defenses_Category = {
+	USA_Fortify_the_Bataan_Peninsula = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 4000
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_Selected_Luzon
+			}
+		}
+		cost = 75
+		days_remove = 300
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -4000
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = USA_Selected_Bataan
+		}
+		remove_effect = {
+			327 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 10236
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 10265
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 1221
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 12236
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 10306
+				}
+			}
+			1457 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 7323
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 7351
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 7275
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 10280
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 1415
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 1388
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = 1288
+				}
+			}
+		}
+	}
+	USA_Reinforce_Luzon = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 12000
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			NOT = {
+				has_country_flag = USA_Selected_Bataan
+			}
+		}
+		cost = 150
+		days_remove = 350
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -12000
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = USA_Selected_Luzon
+		}
+		remove_effect = {
+			327 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10236
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10265
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 1221
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 12236
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10306
+				}
+			}
+			1457 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 7323
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 7351
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 7275
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10280
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 1415
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 1388
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 1288
+				}
+			}
+			623 = {
+				add_building_construction = {
+					type = air_base
+					level = 4
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 12253
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4350
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4368
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10241
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 12213
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4101
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4214
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10252
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 7439
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4233
+				}
+			}
+			626 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4429
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10145
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 7419
+				}
+			}
+			624 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4288
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 1372
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 12279
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4377
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 7307
+				}
+			}
+			1456 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 4228
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 10272
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 14677
+				}
+			}
+		}
+	}
+	USA_Expand_Pearl_Harbour = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 2000
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 50
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			629 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 4180
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 4180
+				}
+			}
+		}
+	}
+	USA_Reinforce_the_Atolls = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 1500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 50
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -1500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			631 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 13052
+				}
+			}
+			1315 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 13048
+				}
+			}
+			630 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 13051
+				}
+			}
+		}
+	}
+	USA_Fortify_the_Polynesian_Holdings = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 1500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 50
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -1500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			1318 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 13080
+				}
+			}
+			1314 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 14289
+				}
+			}
+			632 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 13047
+				}
+			}
+		}
+	}
+	USA_Fortress_Guam = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 4000
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 75
+		days_remove = 350
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -4000
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			638 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					instant_build = yes
+					province = 12140
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 4
+					instant_build = yes
+					province = 12140
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+#########################################################################
+#  Air War Plans Division
+#########################################################################
+USA_Air_War_Plans_Division_Category = {
+	USA_Prepare_AWPD_1 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 45
+			}
+		}
+		custom_cost_text = USA_Air_War_Plans_cost
+		cost = 75
+		days_remove = 250
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -45
+			}
+		}
+		remove_effect = {
+			set_country_flag = USA_Prepared_AWPD_1
+			unlock_decision_tooltip = USA_Enact_AWPD_1
+			unlock_decision_tooltip = USA_Improve_AWPD_1
+		}
+	}
+	USA_Enact_AWPD_1 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		visible = {
+			has_country_flag = USA_Prepared_AWPD_1
+		}
+		available = {
+			has_war = yes
+		}
+		days_remove = 5
+		remove_effect = {
+			add_timed_idea = {
+				idea = USA_AWPD_1
+				days = 300
+			}
+		}
+	}
+	USA_Improve_AWPD_1 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		visible = {
+			has_country_flag = USA_Prepared_AWPD_1
+		}
+		available = {
+			has_war = no
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 45
+			}
+		}
+		custom_cost_text = USA_Air_War_Plans_cost
+		cost = 70
+		days_remove = 200
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -45
+			}
+		}
+		remove_effect = {
+			set_country_flag = USA_Improved_AWPD_1
+			unlock_decision_tooltip = USA_Enact_AWPD_2
+		}
+	}
+	USA_Enact_AWPD_2 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		visible = {
+			has_country_flag = USA_Improved_AWPD_1
+		}
+		available = {
+			has_war = yes
+		}
+		days_remove = 5
+		remove_effect = {
+			add_timed_idea = {
+				idea = USA_AWPD_2
+				days = 300
+			}
+		}
+	}
+	USA_Prepare_AWPD_4 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			AND = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 45
+			}
+		}
+		custom_cost_text = USA_Air_War_Plans_cost
+		cost = 70
+		days_remove = 300
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -45
+			}
+		}
+		remove_effect = {
+			unlock_decision_tooltip = USA_Enact_AWPD_4
+			set_country_flag = USA_Prepared_AWPD_4
+		}
+	}
+	USA_Enact_AWPD_4 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		visible = {
+			has_country_flag = USA_Prepared_AWPD_4
+		}
+		available = {
+		}
+		days_remove = 5
+		remove_effect = {
+			add_timed_idea = {
+				idea = USA_AWPD_4
+				days = 365
+			}
+			set_country_flag = USA_Enacted_AWPD_4
+			unlock_decision_tooltip = USA_Prepare_AWPD_42
+		}
+	}
+	USA_Prepare_AWPD_42 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		visible = {
+			has_country_flag = USA_Enacted_AWPD_4
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 45
+			}
+		}
+		custom_cost_text = USA_Air_War_Plans_cost
+		cost = 100
+		available = {
+		}
+		days_remove = 300
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -45
+			}
+		}
+		remove_effect = {
+			unlock_decision_tooltip = USA_Enact_AWPD_42
+			set_country_flag = USA_Prepared_AWPD_42
+		}
+	}
+	USA_Enact_AWPD_42 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		allowed = {
+			tag = USA
+		}
+		visible = {
+			has_country_flag = USA_Prepared_AWPD_42
+		}
+		available = {
+			NOT = {
+				has_idea = USA_AWPD_4
+			}
+		}
+		days_remove = 5
+		complete_effect = {
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = USA_AWPD_42
+				days = 730
+			}
+		}
+	}
+}
+USA_OSS_Category = {
+	USA_Sow_Distrust = {
+		visible = {
+			has_completed_focus = USA_Sow_Distrust_Among_the_Enemy
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		available = {
+		}
+		custom_cost_text = USA_Sow_Distrust_cost
+		cost = 0
+		days_remove = 60
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+		remove_effect = {
+			every_country = {
+				limit = {
+					has_war_with = USA
+				}
+				add_war_support = -0.025
+			}
+		}
+	}
+	USA_Terror_Propaganda_at_Home = {
+		visible = {
+			has_completed_focus = USA_Use_Terror_Propaganda_At_Home
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+		}
+		cost = 50
+		days_remove = 60
+		remove_effect = {
+			add_war_support = 0.05
+			add_stability = -0.025
+		}
+	}
+	USA_Advanced_OSS_Training_Camps = {
+		visible = {
+			has_completed_focus = USA_Establish_Advanced_OSS_Training_Camps
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 45
+			}
+		}
+		custom_cost_text = USA_Advanced_OSS_Training_Camps_cost
+		cost = 100
+		days_remove = 60
+		remove_effect = {
+			hidden_effect = {
+				add_command_power = -45
+			}
+			upgrade_intelligence_agency = upgrade_training_centers
+		}
+	}
+	USA_Resistance_Movement_Training = {
+		visible = {
+			has_completed_focus = USA_Train_Resistance_Movements
+		}
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 25
+			}
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 1999
+			}
+		}
+		custom_cost_text = USA_Resistance_Movement_Training_cost
+		cost = 0
+		days_remove = 90
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -2000
+			}
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		remove_effect = {
+			every_country = {
+				limit = {
+					is_in_faction_with = USA
+					has_capitulated = yes
+				}
+				add_ideas = USA_Resistance_Movement
+			}
+		}
+	}
+}
+USA_War_Plans_Category = {
+	USA_War_Plan_Black = {
+		visible = {
+			has_completed_focus = USA_European_Theater
+		}
+		fire_only_once = yes
+		target_trigger = {
+			FROM = {
+				tag = GER
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Red = {
+		visible = {
+			has_completed_focus = USA_European_Theater
+		}
+		fire_only_once = yes
+		target_trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Gold = {
+		visible = {
+			has_completed_focus = USA_European_Theater
+		}
+		fire_only_once = yes
+		target_trigger = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Green = {
+		visible = {
+			has_completed_focus = USA_American_Theater
+		}
+		fire_only_once = yes
+		target_trigger = {
+			FROM = {
+				tag = MEX
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Tan = {
+		visible = {
+			has_completed_focus = USA_American_Theater
+		}
+		target_trigger = {
+			FROM = {
+				tag = CUB
+			}
+		}
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_2_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Crimson = {
+		visible = {
+			has_completed_focus = USA_American_Theater
+		}
+		target_trigger = {
+			FROM = {
+				tag = CAN
+			}
+		}
+		fire_only_once = yes
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Gray = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_American_Theater
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = HAI
+					tag = DOM
+					tag = ELS
+					tag = HON
+					tag = NIC
+					tag = COS
+					tag = PAN
+				}
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_2_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Purple = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_American_Theater
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = COL
+					tag = VEN
+					tag = ECU
+					tag = PRU
+					tag = BOL
+					tag = CHL
+					tag = URG
+					tag = PAR
+					tag = BRA
+				}
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_2_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Orange = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_Pacific_Theater
+		}
+		target_trigger = {
+			FROM = {
+				tag = JAP
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Yellow = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_Pacific_Theater
+		}
+		target_trigger = {
+			FROM = {
+				tag = CHI
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Scarlet = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_Pacific_Theater
+		}
+		target_trigger = {
+			FROM = {
+				tag = AST
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+			OR = {
+				FROM = {
+					is_puppet_of = ENG
+				}
+				FROM = {
+					is_in_faction_with = ENG
+				}
+			}
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_War_Plan_Ruby = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = USA_Pacific_Theater
+		}
+		target_trigger = {
+			FROM = {
+				tag = RAJ
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		available = {
+			has_war_with = FROM
+			OR = {
+				FROM = {
+					is_puppet_of = ENG
+				}
+				FROM = {
+					is_in_faction_with = ENG
+				}
+			}
+		}
+		custom_cost_text = USA_War_Plans_cost
+		cost = 100
+		days_remove = 200
+		targeted_modifier = {
+			tag = FROM
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+		}
+		remove_effect = {
+		}
+	}
+}
+USA_The_Rainbow_Plans_Category = {
+	USA_Rainbow_1 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			any_country = {
+				is_major = yes
+				has_war_with = ROOT
+			}
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		cost = 100
+		days_remove = 730
+		custom_cost_text = USA_War_Plans_cost
+		modifier = {
+			industrial_capacity_factory = 0.05
+			army_core_defence_factor = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+			set_country_flag = USA_Rainbow_Plan_Selected
+		}
+		remove_effect = {
+		}
+	}
+	USA_Rainbow_2 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			AND = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+				NOT = {
+					has_country_flag = USA_Rainbow_Plan_Selected
+				}
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		cost = 100
+		days_remove = 730
+		custom_cost_text = USA_War_Plans_cost
+		modifier = {
+			industrial_capacity_factory = 0.05
+			army_core_defence_factor = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+			set_country_flag = USA_Rainbow_Plan_Selected
+		}
+		remove_effect = {
+		}
+	}
+	USA_Rainbow_3 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			has_war_with = JAP
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		cost = 100
+		days_remove = 730
+		custom_cost_text = USA_War_Plans_cost
+		targeted_modifier = {
+			tag = JAP
+			defense_bonus_against = 0.1
+			attack_bonus_against = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+			set_country_flag = USA_Rainbow_Plan_Selected
+		}
+		remove_effect = {
+		}
+	}
+	USA_Rainbow_4 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			AND = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+				is_in_faction = no
+				NOT = {
+					has_country_flag = USA_Rainbow_Plan_Selected
+				}
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		cost = 100
+		days_remove = 730
+		custom_cost_text = USA_War_Plans_cost
+		modifier = {
+			industrial_capacity_factory = 0.1
+			army_core_defence_factor = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+			set_country_flag = USA_Rainbow_Plan_Selected
+		}
+		remove_effect = {
+		}
+	}
+	USA_Rainbow_5 = {
+		fire_only_once = yes
+		ai_will_do = {
+			base = 500
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_Rainbow_Plan_Selected
+			}
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			AND = {
+				any_country = {
+					is_major = yes
+					has_war_with = ROOT
+				}
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+				NOT = {
+					has_country_flag = USA_Rainbow_Plan_Selected
+				}
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 100
+			}
+		}
+		cost = 100
+		days_remove = 730
+		custom_cost_text = USA_War_Plans_cost
+		modifier = {
+			industrial_capacity_factory = 0.15
+			army_core_defence_factor = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -100
+			}
+			set_country_flag = USA_Rainbow_Plan_Selected
+		}
+		remove_effect = {
+		}
+	}
+}
+USA_PHI_Situation_Category = {
+	USA_Reexamine_Dorr_V_USA = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		visible = {
+
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = USA_Reexamine_Dorr_V_USA.tt
+			add_stability = -0.05
+			set_country_flag = USA_Reexamined_Dorr_V_USA
+		}
+	}
+	USA_Repeal_Tariffs_on_Filipino_Trade = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = yes
+		visible = {
+			has_country_flag = USA_Reexamined_Dorr_V_USA
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+		}
+		remove_effect = {
+			add_opinion_modifier = {
+				target = PHI
+				modifier = USA_PHI_Repealed_Tariffs
+			}
+			PHI = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = USA_PHI_Repealed_Tariffs
+				}
+			}
+			set_country_flag = USA_Repealed_Tariffs
+		}
+	}
+	USA_Destroy_Nationalist_Parties = {
+		icon = GFX_decision_oppression
+		fire_only_once = yes
+		visible = {
+			has_country_flag = USA_Repealed_Tariffs
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+		}
+		remove_effect = {
+			PHI = {
+				add_popularity = {
+					ideology = fascist
+    				popularity = -0.1
+				}
+				add_popularity = {
+					ideology = authoritarian
+    				popularity = -0.1
+				}
+			}
+			country_event = { id = USA_Philippines.10 }
+			set_country_flag = USA_Destroyed_Nationalist_Parties
+		}
+	}
+	USA_Extend_American_Citizenship = {
+		icon = GFX_decision_ger_mefo_bills
+		fire_only_once = yes
+		visible = {
+			has_country_flag = USA_Destroyed_Nationalist_Parties
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		cost = 50
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = PHI
+				}
+				add_claim_by = USA
+			}
+			add_stability = -0.05
+			set_country_flag = USA_Exended_Citizenship
+		}
+	}
+	USA_Incorporate_the_Philippine_Islands = {
+		icon = GFX_decision_eng_puppet_usa
+		fire_only_once = yes
+		visible = {
+			has_country_flag = USA_Exended_Citizenship
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+			NOT = {
+				has_active_mission = USA_The_Sakdalista_Rebellion
+				has_country_flag = USA_Sakdalista_Rebellion_Active
+			}
+		}
+		cost = 150
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+		}
+		remove_effect = {
+			country_event = { id = USA_Philippines.11 }
+			set_country_flag = USA_Incorporated_PHI
+		}
+	}
+	USA_Police_Action_in_327 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 327
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_623 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 623
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_624 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 624
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_625 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 625
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_626 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 626
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_627 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 627
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_628 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 628
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_1453 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1453
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_1454 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1454
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_1455 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1455
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_1456 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1456
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Police_Action_in_1457 = {
+		icon = GFX_decision_generic_police_action
+		available = {
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			NOT = {
+				has_country_flag = USA_Police_Action_Active
+			}
+		}
+		fire_only_once = yes
+		days_remove = 21
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1457
+			}
+		}
+		on_map_mode = map_only
+		complete_effect = {
+			set_country_flag = USA_Police_Action_Active
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+    			amount = -250
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_Police_Action_Active
+			add_to_variable = {
+				var = USA_PHI_States_Pacified
+				value = 1
+			}
+		}
+	}
+	USA_Reintroduce_the_Tydings_McDuffie_Act = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		visible = {
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			
+		}
+		complete_effect = {
+			custom_effect_tooltip = USA_Reintroduce_the_Tydings_McDuffie_Act.tt
+			country_event = { id = USA_Philippines.3 days = 30 }
+			set_country_flag = USA_Reintroduced_Tydings_McDuffie
+		}
+	}
+	USA_The_Sakdalista_Rebellion = {
+		icon = GFX_decision_generic_nationalism
+		fire_only_once = yes
+		activation = {
+			has_country_flag = USA_PHI_Trouble
+		}
+		visible = {
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = USA_Police_Actions_Done.tt
+					check_variable = {
+						var = USA_PHI_States_Pacified
+						value = 12
+						compare = equals
+					}
+				}
+				has_country_flag = USA_Reintroduced_Tydings_McDuffie
+			}
+		}
+		days_mission_timeout = 300
+		is_good = yes
+		timeout_effect = {
+			country_event = { id = USA_Philippines.12 }
+			set_country_flag = USA_Sakdalista_Rebellion_Active
+		}
+	}
+	USA_Take_Manila= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		activation = {
+			has_country_flag = USA_Sakdalista_Rebellion_Active
+		}
+		visible = {
+		}
+		allowed = {
+			tag = USA
+		}
+		available = {
+			controls_state = 327
+		}
+		days_mission_timeout = 120
+		is_good = yes
+		complete_effect = {
+			country_event = { id = USA_Philippines.16 }
+		}
+		timeout_effect = {
+			country_event = { id = USA_Philippines.15 }
+		}
+	}
+}
+USA_Status_of_the_New_Territories_Category = {
+	USA_Reintegrate_Bermuda_into_Virginia = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 25
+		visible = {
+		}
+		available = {
+			362 = {
+				is_owned_and_controlled_by = USA
+			}
+			696 = {
+				is_owned_and_controlled_by = USA
+			}
+		}
+		days_remove = 30
+		remove_effect = {
+			696 = {
+				add_core_of = USA
+			}
+		}
+	}
+	USA_Insular_Government_of_Guyana = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 25
+		visible = {
+		}
+		available = {
+			687 = {
+				is_owned_and_controlled_by = USA
+			}
+			1147 = {
+				is_owned_and_controlled_by = USA
+			}
+			1148 = {
+				is_owned_and_controlled_by = USA
+			}
+		}
+		days_remove = 30
+		remove_effect = {
+			release_autonomy = {
+				target = GUY
+				autonomy_state = AUTONOMY_Insular_Government
+				freedom_level = 0.5
+			}
+			hidden_effect = {
+				set_nationality = {
+					target_country = GUY
+					character = USA_James_Farley
+				}
+			}
+			GUY = {
+				set_cosmetic_tag = GUY_USA_Insular
+				add_country_leader_role = {
+					character = USA_James_Farley
+					promote_leader = yes
+					country_leader = {
+						ideology = social_democracy
+						expire = "1964.1.1"
+						traits = { 
+							SUBIDEOLOGY_Social_Democracy
+							POSITION_Governor_General
+						}
+					}
+				}
+			}
+		}
+	}
+	USA_The_Question_of_the_Indies = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 25
+		visible = {
+		}
+		available = {
+			308 = {
+				is_owned_and_controlled_by = USA
+			}
+			311 = {
+				is_owned_and_controlled_by = USA
+			}
+			689 = {
+				is_owned_and_controlled_by = USA
+			}
+			690 = {
+				is_owned_and_controlled_by = USA
+			}
+			691 = {
+				is_owned_and_controlled_by = USA
+			}
+			692 = {
+				is_owned_and_controlled_by = USA
+			}
+			693 = {
+				is_owned_and_controlled_by = USA
+			}
+			929 = {
+				is_owned_and_controlled_by = USA
+			}
+			930 = {
+				is_owned_and_controlled_by = USA
+			}
+			931 = {
+				is_owned_and_controlled_by = USA
+			}
+			933 = {
+				is_owned_and_controlled_by = USA
+			}
+			934 = {
+				is_owned_and_controlled_by = USA
+			}
+			935 = {
+				is_owned_and_controlled_by = USA
+			}
+			937 = {
+				is_owned_and_controlled_by = USA
+			}
+			1149 = {
+				is_owned_and_controlled_by = USA
+			}
+			1151 = {
+				is_owned_and_controlled_by = USA
+			}
+			1550 = {
+				is_owned_and_controlled_by = USA
+			}
+		}
+		days_remove = 30
+		remove_effect = {
+			country_event = { id = USA_Status_New_Territories.1 }
+		}
+	}
+}

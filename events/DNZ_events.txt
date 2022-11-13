@@ -1,0 +1,98 @@
+#########################################################################
+# Darkest Hour Events : Danzig
+#########################################################################
+add_namespace = DNZ_Politics
+add_namespace = DNZ_LoN
+######################################
+# Resignation of Hermann Rauschning
+######################################
+country_event = {
+	id = DNZ_Politics.1
+	title = DNZ_Politics.1.t
+	desc = DNZ_Politics.1.d
+	is_triggered_only = yes
+	option = {
+		name = DNZ_Politics.1.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Arthur Greiser"
+			desc = ""
+			picture = GFX_P_F_Arthur_Greiser
+			ideology = national_socialism
+			traits = {
+				POSITION_Senate_President
+				SUBIDEOLOGY_National_Socialism
+				L_PowerHungry_Demagogue
+			}
+		}
+		add_ideas = repressive_system
+	}
+}
+
+######################################
+# Nazi takeover in Danzig
+######################################
+news_event = {
+	id = DNZ_Politics.2
+	title = DNZ_Politics.2.t
+	desc = DNZ_Politics.2.d
+	picture = GFX_news_DNZ_Nazi_Leadership
+	is_triggered_only = yes
+	major=yes
+	option = {
+		name = DNZ_Politics.2.A
+		trigger = {
+			has_government = fascist
+		}
+	}
+	option = {
+		name = DNZ_Politics.2.B
+		trigger = {
+			NOT = {
+				has_government = fascist
+			}
+		}
+	}
+}
+
+######################################
+# New High Commissioner Appointed - Sean Lester
+######################################
+country_event = {
+	id = DNZ_LoN.1
+	title = DNZ_LoN.1.t
+	desc = DNZ_LoN.1.d
+	fire_only_once = yes
+	trigger = {
+		original_tag = DNZ
+		has_idea = DNZ_D_Helmer_Rosting_HoG
+		date > 1934.1.15
+		has_start_date < 1934.1.15
+	}
+	option = {
+		name = DNZ_LoN.1.A
+		remove_ideas = DNZ_D_Helmer_Rosting_HoG
+		add_ideas = DNZ_D_Sean_Lester_HoG
+	}
+}
+
+######################################
+# New High Commissioner Appointed - Carl Jakob Burckhardt
+######################################
+country_event = {
+	id = DNZ_LoN.2
+	title = DNZ_LoN.2.t
+	desc = DNZ_LoN.2.d
+	fire_only_once = yes
+	trigger = {
+		original_tag = DNZ
+		has_idea = DNZ_D_Sean_Lester_HoG
+		date > 1937.2.18
+		has_start_date < 1937.2.18
+	}
+	option = {
+		name = DNZ_LoN.2.A
+		remove_ideas = DNZ_D_Sean_Lester_HoG
+		add_ideas = DNZ_D_Carl_Jakob_Burckhardt_HoG
+	}
+}

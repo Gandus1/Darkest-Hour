@@ -1,0 +1,181 @@
+﻿division_template = {
+	name = "Divisão de Infanteria"		# Infantry Division
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Divisão de Infantaria com Artilharia"		# Infantry Division with Artillery
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		artillery_battalion = { x = 2 y = 0 }
+		artillery_battalion = { x = 2 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Cavalaria" 		# Cavalry Brigade
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Milícia" 		# Militia Brigade
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+    ##### 1a Regiao Militar #####
+    division = {
+        name = "1a Divisao de Infantaria"
+        location = 9817 # Porto
+        division_template = "Divisão de Infantaria com Artilharia"
+        start_experience_factor = 0.2
+        start_equipment_factor = 0.6
+    }
+    ##### 2a Regiao Militar #####
+    division = {
+        name = "2a Divisao de Infantaria"
+        location = 3798 # Coimbra
+        division_template = "Divisão de Infanteria"
+        start_experience_factor = 0.2
+        start_equipment_factor = 0.6
+    }
+    ##### 3a Regiao Militar #####
+    division = {
+        name = "3a Divisao de Infantaria"
+        location = 6996 # Covilha
+        division_template = "Divisão de Infanteria"
+        start_experience_factor = 0.2
+        start_equipment_factor = 0.6
+    }
+    ##### 4a Regiao Militar #####
+    division = {
+        name = "4a Divisao de Infantaria"
+        location = 9869 # Evora
+        division_template = "Divisão de Infanteria"
+        start_experience_factor = 0.2
+        start_equipment_factor = 0.6
+    }
+
+    division = {
+        name = "2a Brigada de Cavalaria"
+        location = 9869 # Evora
+        division_template = "Brigada de Cavalaria"
+        start_experience_factor = 0.1
+        start_equipment_factor = 0.35
+    }
+    ##### Governo Militar de Lisboa #####
+    division = {
+        name = "Divisao de Lisboa"
+        location = 11805 # Lisbon
+        division_template = "Divisão de Infantaria com Artilharia"
+        start_experience_factor = 0.2
+        start_equipment_factor = 0.6
+    }
+
+    division = {
+        name = "1a Brigada de Cavalaria"
+        location = 11805 # Lisbon
+        division_template = "Brigada de Cavalaria"
+        start_experience_factor = 0.1
+        start_equipment_factor = 0.35
+    }
+    ##### Comando Militar de Angola #####
+    division = {
+        name = "Comando Militar de Angola"
+        location = 14364 # Luanda
+        division_template = "Brigada de Milícia"
+        start_experience_factor = 0.1
+    }
+    ##### Comando Militar, Estado Portugues da India #####
+    division = {
+        name = "Comando Militar da India"
+        location = 1273 # Panjim (Goa)
+        division_template = "Brigada de Milícia"
+        start_experience_factor = 0.1
+        start_equipment_factor = 0.6
+    }
+    ##### Comando Militar de Moçambique #####
+    division = {
+        name = "Comando Militar de Moçambique"
+        location = 8245 # Lourenco Marque
+        division_template = "Brigada de Milícia"
+        start_experience_factor = 0.1
+        start_equipment_factor = 0.5
+    }
+    ##### navy oob #####
+    fleet = {
+        name = "Marinha Portuguesa"
+        naval_base = 11805 # Lisbon
+        task_force = {
+            name = "Marinha Portuguesa"
+            location = 11805 # Lisbon
+            ship = { name = "NRP Vasco da Gama" definition = heavy_cruiser equipment = { CA_equipment_1906 = { amount = 1 owner = POR } } }
+            ship = { name = "NRP Adamastor" definition = light_cruiser equipment = { CL_equipment_1900 = { amount = 1 owner = POR } } }
+            ship = { name = "1a Flotilha de Contratorpedeiros" definition = destroyer equipment = { DD_equipment_1916 = { amount = 1 owner = POR } } }
+            ship = { name = "1a Flotilha de Torpedeiros" definition = destroyer equipment = { DD_equipment_1885 = { amount = 1 owner = POR } } }
+            ship = { name = "1a Flotilha de Submarinos" definition = submarine equipment = { SS_equipment_1912 = { amount = 1 owner = POR } } }
+        }
+    }
+}
+
+air_wings = {
+    112 = {
+        # 1a Esquadra de Aviaçao Naval
+        Tactical_Bomber_equipment_1925 = { # Experimental Bomber
+            owner = "POR"
+            amount = 20
+        }
+    }
+}
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = Small_Arms_equipment_1916
+			creator = "POR"
+		}
+		requested_factories = 1
+		progress = 0.38
+		efficiency = 100
+    }
+    
+	add_equipment_production = {
+		equipment = {
+			type = Artillery_equipment_1916
+			creator = "POR"
+		}
+		requested_factories = 1
+		progress = 0.65
+		efficiency = 100
+    }
+    
+    add_equipment_production = {
+        equipment = {
+            type = DD_equipment_1916
+            creator = "POR"
+        }
+        requested_factories = 2
+        progress = 0.4
+        amount = 2
+    }
+}

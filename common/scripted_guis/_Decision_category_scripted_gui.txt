@@ -1,0 +1,512 @@
+scripted_gui = {
+	decision_ruler_mood_window = {
+		context_type = decision_category
+
+		window_name = "decision_ruler_mood_window"
+
+		properties = {
+			leader_mood_bar_red = {
+				x = leader_mood_bar_red_position
+			}
+			leader_mood_bar_green = {
+				x = leader_mood_bar_green_position
+			}
+		}
+	}
+
+	decision_assassination_window = {
+		context_type = decision_category
+
+		window_name = "decision_assassination_window"
+
+		effects = {
+			select_method_button_click = {
+				set_variable = { assassination_method = v }
+				set_base_success_chance_of_assassination = yes
+			}
+			unselect_method_button_click = {
+				clear_variable = assassination_method
+				clear_variable = assassination_success_chance
+			}
+			select_situation_button_click = {
+				set_variable = { assassination_situation = v }
+				set_base_success_chance_of_assassination = yes
+			}
+			unselect_situation_button_click = {
+				clear_variable = assassination_situation
+				clear_variable = assassination_success_chance
+			}
+		}
+
+		triggers = {
+			no_methods_info_text_visible = {
+				check_variable = { dh_assassination_methods_array^num < 1 }
+			}
+			no_situations_info_text_visible = {
+				check_variable = { dh_assassination_situations_array^num < 1 }
+			}
+
+			select_method_button_visible = {
+				NOT = { check_variable = { assassination_method = v } }
+			}
+			select_method_button_click_enabled = {
+				if = {
+					limit = {
+						check_variable = { v = 6 }
+					}
+					NOT = { check_variable = { assassination_situation = 2 } }
+					NOT = { check_variable = { assassination_situation = 3 } }
+					NOT = { check_variable = { assassination_situation = 4 } }
+				}
+			}
+			unselect_method_button_visible = {
+				check_variable = { assassination_method = v }
+			}
+			select_situation_button_visible = {
+				NOT = { check_variable = { assassination_situation = v } }
+			}
+			select_situation_button_click_enabled = {
+				if = {
+					limit = {
+						check_variable = { assassination_method = 6 }
+					}
+					check_variable = { v = 1 }
+				}
+			}
+			unselect_situation_button_visible = {
+				check_variable = { assassination_situation = v }
+			}
+		}
+
+		properties = {
+			method_icon = {
+				frame = v
+			}
+			situation_icon = {
+				frame = v
+			}
+		}
+
+		dynamic_lists = {
+			dh_assassination_methods_gridbox = {
+				array = dh_assassination_methods_array
+				entry_container = decision_assassination_methods_entry
+			}
+			dh_assassination_situations_gridbox = {
+				array = dh_assassination_situations_array
+				entry_container = decision_assassination_situations_entry
+			}
+		}
+	}
+
+	parliament_decision_category_scripted_gui = {
+		context_type = decision_category
+
+		window_name = "parliament_decision_category_scripted_gui"
+
+		properties = {
+			parliament_support_bar_green = {
+				x = parliament_support_bar_x_position
+			}
+			piechart_item = {
+				frame = v
+			}
+			party_color_icon = {
+				frame = v
+			}
+		}
+
+		dynamic_lists = {
+			parliament_piechart_gridbox = {
+				array = parliament_piechart_array
+				entry_container = "parliament_piechart_entry_[?i]"
+			}
+			parliament_party_gridbox = {
+				array = parliament_array
+				entry_container = parliament_party_entry
+			}
+		}
+	}
+
+	factions_decision_category_scripted_gui = {
+		context_type = decision_category
+
+		window_name = "factions_decision_category_scripted_gui"
+
+		effects = {
+			faction_ghost_button_for_effects_click = {
+				faction_effect_tooltip = yes
+			}
+		}
+
+		triggers = {
+			faction_ghost_button_for_effects_visible = {
+				always = no
+			}
+			faction_background_red_visible = {
+				is_ai = no
+				NOT = { check_variable = { faction_in_power = v } }
+				meta_trigger = {
+					text = {
+						check_variable = { faction_loyalty_[FACTION] < 50 }
+					}
+					FACTION = "[?v]"
+				}
+			}
+			faction_background_green_visible = {
+				is_ai = no
+				NOT = { check_variable = { faction_in_power = v } }
+				meta_trigger = {
+					text = {
+						NOT = { check_variable = { faction_loyalty_[FACTION] < 50 } }
+					}
+					FACTION = "[?v]"
+				}
+			}
+			faction_loyalty_indicator_visible = {
+				is_ai = no
+				set_temp_variable = { faction_id = v }
+				calculate_weekly_faction_loyalty_change = yes
+				if = {
+					limit = {
+						check_variable = { weekly_faction_loyalty_change > 0 }
+					}
+					set_temp_variable = { faction_loyalty_indicator_frame = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { weekly_faction_loyalty_change < 0 }
+					}
+					set_temp_variable = { faction_loyalty_indicator_frame = 3 }
+				}
+				else = {
+					set_temp_variable = { faction_loyalty_indicator_frame = 2 }
+				}
+			}
+			faction_influence_indicator_visible = {
+				is_ai = no
+				set_temp_variable = { faction_id = v }
+				calculate_weekly_faction_influence_change = yes
+				if = {
+					limit = {
+						check_variable = { weekly_faction_influence_change > 0 }
+					}
+					set_temp_variable = { faction_influence_indicator_frame = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { weekly_faction_influence_change < 0 }
+					}
+					set_temp_variable = { faction_influence_indicator_frame = 3 }
+				}
+				else = {
+					set_temp_variable = { faction_influence_indicator_frame = 2 }
+				}
+			}
+		}
+
+		properties = {
+			leading_faction_icon = {
+				image = [This.GetLeadingFactionIcon]
+			}
+			faction_icon = {
+				image = [This.GetActiveFactionIcon]
+			}
+			faction_loyalty_indicator = {
+				frame = faction_loyalty_indicator_frame
+			}
+			faction_influence_indicator = {
+				frame = faction_influence_indicator_frame
+			}
+		}
+
+		dynamic_lists = {
+			active_factions_gridbox = {
+				array = active_factions_array
+				entry_container = active_factions_entry
+			}
+		}
+	}
+
+	tur_rebelliousness_of_the_minorities_decision_gui = {
+		context_type = decision_category
+
+		window_name = "tur_rebelliousness_of_the_minorities_decision_gui"
+
+		properties = {
+			progress_bar = {
+				x = tur_rebelliousness_of_the_minorities_progress?-350
+			}
+		}
+	}
+
+	fra_reform_of_the_state_decision_gui = {
+		context_type = decision_category
+
+		window_name = "fra_reform_of_the_state_decision_gui"
+
+		properties = {
+			progress_bar = {
+				x = fra_reform_of_the_state_progress?-350
+			}
+		}
+	}
+
+	ita_drain_swamps_gui = {
+		context_type = decision_category
+
+		window_name = "ita_drain_swamps_gui"
+
+		properties = {
+			progress_bar = {
+				x = ita_drain_swamps_gui_progress?-350
+			}
+		}
+	}
+
+	usa_economic_stabilisation_decision_gui = {
+		context_type = decision_category
+
+		window_name = "usa_economic_stabilisation_decision_gui"
+
+		properties = {
+			progress_bar = {
+				x = usa_economic_stabilisation_progress?-350
+			}
+		}
+	}
+
+	usa_demilitarization_decision_gui = {
+		context_type = decision_category
+
+		window_name = "usa_demilitarization_decision_gui"
+
+		properties = {
+			progress_bar = {
+				x = usa_de_militarization_progress_progress?-350
+			}
+		}
+	}
+
+	sov_public_loans_decision_gui = {
+		context_type = decision_category
+
+		window_name = "sov_public_loans_decision_gui"
+
+		triggers = {
+			issue_new_loans_button_click_enabled = {
+				has_political_power > 99
+				NOT = { has_country_flag = SOV_Issue_New_Loans_Time }
+			}
+			repay_old_loans_button_click_enabled = {
+				set_temp_variable = { amount_of_money_to_check = 600 }
+				has_specific_amount_of_money_with_inflation_included = yes
+				NOT = { check_variable = { var = SOV_Total_Loans_Taken value = 0 compare = equals } }
+			}
+			convert_old_loans_button_click_enabled = {
+				has_political_power > 99
+				NOT = { check_variable = { var = SOV_Total_Loans_Taken value = 0 compare = equals } }
+			}
+		}
+
+		effects = {
+			issue_new_loans_button_click = {
+				if = {
+					limit = {
+						check_variable = { var = SOV_Current_Population_Suspicion value = 0 compare = equals }
+					}
+					set_temp_variable = { money_to_gain = 500 }
+					add_money_with_inflation_included_with_tooltip_effect = yes
+				}
+				else_if = {
+					limit = {
+						check_variable = { var = SOV_Current_Population_Suspicion value = 1 compare = equals }
+					}
+					set_temp_variable = { money_to_gain = 450 }
+					add_money_with_inflation_included_with_tooltip_effect = yes
+				}
+				else_if = {
+					limit = {
+						check_variable = { var = SOV_Current_Population_Suspicion value = 2 compare = equals }
+					}
+					set_temp_variable = { money_to_gain = 350 }
+					add_money_with_inflation_included_with_tooltip_effect = yes
+				}
+				else_if = {
+					limit = {
+						check_variable = { var = SOV_Current_Population_Suspicion value = 3 compare = equals }
+					}
+					set_temp_variable = { money_to_gain = 250 }
+					add_money_with_inflation_included_with_tooltip_effect = yes
+				}
+				else_if = {
+					limit = {
+						check_variable = { var = SOV_Current_Population_Suspicion value = 4 compare = equals }
+					}
+					set_temp_variable = { money_to_gain = 150 }
+					add_money_with_inflation_included_with_tooltip_effect = yes
+				}
+				else_if = {
+					limit = {
+						check_variable = { var = SOV_Current_Population_Suspicion value = 5 compare = equals }
+					}
+					set_temp_variable = { money_to_gain = 50 }
+					add_money_with_inflation_included_with_tooltip_effect = yes
+				}
+				set_temp_variable = { inflation_to_gain = -0.01 }
+				add_inflation_with_tooltip_effect = yes
+				set_country_flag = { flag = SOV_Issue_New_Loans_Time days = 365 value = 1 }
+				custom_effect_tooltip = SOV_Loan_Counter_Reset
+				hidden_effect = {
+					remove_mission = SOV_Loans_Due_Date
+					activate_mission = SOV_Loans_Due_Date
+				}
+				add_to_variable = { SOV_Total_Loans_Taken = 500 }
+				clamp_variable = {
+					var = SOV_Total_Loans_Taken
+					min = 0
+					max = 50000
+				}
+				add_political_power = -100
+				add_stability = -0.02
+			}
+			repay_old_loans_button_click = {
+				set_temp_variable = { money_to_gain = -600 }
+				add_money_with_inflation_included_with_tooltip_effect = yes
+				add_stability = -0.02
+				custom_effect_tooltip = SOV_Population_Suspicion_Decrease
+				add_to_variable = { SOV_Current_Population_Suspicion = -1 }
+				set_temp_variable = { inflation_to_gain = 0.02 }
+				add_inflation_with_tooltip_effect = yes
+				clamp_variable = {
+					var = SOV_Current_Population_Suspicion
+					min = 0
+					max = 5
+				}
+				subtract_from_variable = { SOV_Total_Loans_Taken = 500 }
+				clamp_variable = {
+					var = SOV_Total_Loans_Taken
+					min = 0
+					max = 50000
+				}
+			}
+			convert_old_loans_button_click = {
+				custom_effect_tooltip = SOV_Loan_Counter_Reset
+				hidden_effect = {
+					remove_mission = SOV_Loans_Due_Date
+					activate_mission = SOV_Loans_Due_Date
+				}
+				custom_effect_tooltip = SOV_Population_Suspicion_Raises
+				add_to_variable = { SOV_Current_Population_Suspicion = 1 }
+				clamp_variable = {
+					var = SOV_Current_Population_Suspicion
+					min = 0
+					max = 5
+				}
+				add_political_power = -100
+			}
+		}
+	}
+
+	fra_1936_electtion_decision_gui = {
+		context_type = decision_category
+
+		window_name = "fra_1936_electtion_decision_gui"
+
+		triggers = {
+			fp_support_bar_visible = {
+				check_variable = { FRA_FP_Support > 0 }
+			}
+			nbn_support_bar_visible = {
+				check_variable = { FRA_NBN_Support > 0 }
+			}
+			other_support_bar_visible = {
+				check_variable = { FRA_Undecided_Support > 0 }
+			}
+		}
+
+		properties = {
+			fp_support_bar = {
+				frame = FRA_FP_Support
+			}
+			nbn_support_bar = {
+				frame = FRA_NBN_Support
+			}
+			other_support_bar = {
+				frame = FRA_Undecided_Support
+			}
+		}
+	}
+
+	jap_sov_incidents_decision_gui = {
+		context_type = decision_category
+
+		window_name = "jap_sov_incidents_decision_gui"
+
+		effects = {
+			left_flag_icon_click = {
+				SOV = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			right_flag_icon_click = {
+				JAP = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+		}
+
+		triggers = {
+			progress_bar_visible = {
+				check_variable = { JAP_SOV_Balance_of_Power > 0 }
+			}
+		}
+
+		properties = {
+			left_flag_icon = {
+				image = "[SOV.GetFlag]"
+			}
+			right_flag_icon = {
+				image = "[JAP.GetFlag]"
+			}
+			progress_bar = {
+				frame = JAP_SOV_Balance_of_Power
+			}
+		}
+	}
+	
+	sov_operation_groza_decision_gui = {
+		context_type = decision_category
+
+		window_name = "sov_operation_groza_decision_gui"
+	}
+
+	jap_faction_list_decision_gui = {
+		context_type = decision_category
+
+		window_name = "jap_faction_list_decision_gui"
+
+		dynamic_lists = {
+			jap_faction_list_gridbox = {
+				array = faction_members
+				entry_container = jap_faction_list_entry
+				change_scope = yes
+			}
+		}
+	}
+
+	eng_shadow_scheme_gui = {
+		context_type = decision_category
+
+		window_name = "eng_shadow_scheme_gui"
+
+	}
+}

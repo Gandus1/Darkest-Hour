@@ -1,0 +1,269 @@
+﻿#########################################################################
+# Darkest Hour Events : East Turkestan
+#########################################################################
+add_namespace = MEN_Politics
+#########################################################################
+#  Japan Offers East Cahar / Mongol Military Government
+#########################################################################
+country_event = {
+	id = MEN_Politics.1
+	title = MEN_Politics.1.t
+	desc = MEN_Politics.1.d
+	picture = GFX_report_MEN_Demchungdongrub
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.1.A
+		ai_chance = { factor = 20 }
+		custom_effect_tooltip = jap_puppet_tt
+		hidden_effect = {
+			MEN = {
+				set_global_flag = Pailingmiao_Defects
+				JAP = { country_event = { days = 1 id = MEN_Politics.3 } }
+				MEN = { set_cosmetic_tag = MEN_MILITARY }
+				create_country_leader = {
+					name = "Yondonwangchug"
+					desc = ""
+					picture = GFX_P_A_Yondonwangchug
+					ideology = fascism
+					traits = { POSITION_Chairman spirit_of_genghis }
+				}
+			}
+		}
+	}
+	option = {
+		name = MEN_Politics.1.B
+		hidden_effect = {
+			JAP = { country_event = { days = 1 id = MEN_Politics.4 } }
+		}
+		ai_chance = { factor = 0 }
+	}
+}
+#########################################################################
+# Suiyan War
+#########################################################################
+country_event = {
+	id = MEN_Politics.2
+	title = MEN_Politics.2.t
+	desc = MEN_Politics.2.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.2.A
+		start_border_war = {
+			change_state_after_war = yes
+			attacker = {
+				state = 827
+				num_provinces = 2
+				on_win = MEN_Politics.8 #Win
+				on_lose = MEN_Politics.9 #Lose
+				on_cancel = MEN_Politics.10 #Cancel
+			}
+			defender = {
+				state = 621
+				num_provinces = 2
+				on_win = MEN_Politics.11
+				on_lose = MEN_Politics.12
+				on_cancel = MEN_Politics.13
+			}
+		}
+	}
+}
+#########################################################################
+#  Japanese Reaction
+#########################################################################
+#Accept
+country_event = {
+	id = MEN_Politics.3
+	title = MEN_Politics.3.t
+	desc = MEN_Politics.3.d
+	fire_only_once = yes
+	picture = GFX_report_MEN_Demchungdongrub
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.3.A
+	}
+}
+#Refusal
+country_event = {
+	id = MEN_Politics.4
+	title = MEN_Politics.4.t
+	desc = MEN_Politics.4.d
+	picture = GFX_report_MEN_Yondonwangchug_Passes_Away
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.4.A
+	}
+}
+#########################################################################
+# Yondonwangchug Dies
+#########################################################################
+country_event = {
+	id = MEN_Politics.5
+	title = MEN_Politics.5.t
+	desc = MEN_Politics.5.d
+	picture = GFX_report_MEN_Yondonwangchug_Passes_Away
+	fire_only_once = yes
+	trigger = {
+		country_exists = MEN
+		NOT = {
+			has_global_flag = Yondonwangchug_dies
+		}
+		tag = MEN
+		has_global_flag = Pailingmiao_Defects
+		date > 1938.3.18
+		date < 1939.3.18
+	}
+	option = {
+		name = MEN_Politics.5.A
+		hidden_effect = {
+			kill_country_leader = yes
+			create_country_leader = {
+				name = "Prince Demchugdongrub"
+				desc = ""
+				picture = GFX_P_A_Demchugdongrub
+				ideology = authoritarian_democracy
+				traits = { spirit_of_genghis }
+			}
+		}
+		set_global_flag = Yondonwangchug_dies
+	}
+}
+#########################################################################
+# Mongol Empire Formation
+#########################################################################
+country_event = {
+	id = MEN_Politics.6
+	title = MEN_Politics.6.t
+	desc = MEN_Politics.6.d
+	picture = GFX_report_MEN_Demchungdongrub
+	fire_only_once = yes
+	trigger = {
+		tag = MEN
+		NOT = { has_global_flag = Mongol_Empire_Creation }
+		MEN = { controls_state = 330 }
+	}
+	option = {
+		name = MEN_Politics.6.A
+		hidden_effect = {
+			set_cosmetic_tag = MEN_EMPIRE
+			set_global_flag = Mongol_Empire_Creation
+			set_global_flag = Mengkukuo_Formed
+			set_global_flag = Mongol_Second_Assembly
+		}
+	}
+}
+#########################################################################
+# Mengkukuo Formation
+#########################################################################
+country_event = {
+	id = MEN_Politics.7
+	title = MEN_Politics.7.t
+	desc = MEN_Politics.7.d
+	picture = GFX_report_MEN_Mengkukuo_Founding_Ceremony
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			MEN = {
+				transfer_state = 825
+				transfer_state = 611
+				add_state_core = 616
+				add_state_core = 330
+			}
+		}
+	}
+	option = {
+		name = MEN_Politics.7.A
+	}
+}
+###############################
+# Suiyan events
+################
+country_event = {
+	id = MEN_Politics.8
+	title = MEN_Politics.8.t
+	desc = MEN_Politics.8.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		MEN = {
+			transfer_state = 746
+		}
+	}
+	option = {
+		name = MEN_Politics.8.A
+	}
+}
+country_event = {
+	id = MEN_Politics.9
+	title = MEN_Politics.9.t
+	desc = MEN_Politics.9.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.9.A
+	}
+}
+country_event = {
+	id = MEN_Politics.10
+	title = MEN_Politics.10.t
+	desc = MEN_Politics.10.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.10.A
+	}
+}
+country_event = {
+	id = MEN_Politics.11
+	title = MEN_Politics.11.t
+	desc = MEN_Politics.11.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.11.A
+	}
+}
+country_event = {
+	id = MEN_Politics.12
+	title = MEN_Politics.12.t
+	desc = MEN_Politics.12.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.12.A
+	}
+}
+country_event = {
+	id = MEN_Politics.13
+	title = MEN_Politics.13.t
+	desc = MEN_Politics.13.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MEN_Politics.13.A
+	}
+}
+#####################
+country_event = {
+	id = MEN_Politics.14
+	title = MEN_Politics.14.t
+	desc = MEN_Politics.14.d
+	fire_only_once = yes
+	trigger = {
+		tag = MEN
+		has_global_flag = Pailingmiao_Defects
+	}
+	option = {
+		name = MEN_Politics.14.A
+	}
+}

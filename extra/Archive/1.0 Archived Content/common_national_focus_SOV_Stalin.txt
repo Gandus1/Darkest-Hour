@@ -1,0 +1,388 @@
+# focus_tree = {
+# 	id = SOV_Politics
+# 	country = {
+# 		factor = 0
+# 		modifier = {
+# 			add = 10
+# 			tag = SOV
+# 		}
+# 	}
+#	default = no
+	shared_focus = {
+		id = SOV_Reaffirm_Role_of_The_Politburo
+		icon = GFX_focus_generic_join_comintern
+		cost = 10.00
+		mutually_exclusive = {
+			focus = SOV_Reduce_The_Power_of_The_Politburo
+		}
+		x = 4
+		y = 0
+
+	}
+	shared_focus = {
+		id = SOV_Reduce_The_Power_of_The_Politburo
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 10.00
+		mutually_exclusive = {
+			focus = SOV_Reaffirm_Role_of_The_Politburo
+		}
+		x = 6
+		y = 0
+
+	}
+	shared_focus = {
+		id = SOV_Maintain_the_Litvinov_Protocol
+		icon = GFX_goal_unknown
+		cost = 10.00
+		mutually_exclusive = {
+			focus = SOV_Replace_Litvinov
+		}
+		x = 11
+		y = 0
+
+	}
+	shared_focus = {
+		id = SOV_Replace_Litvinov
+		icon = GFX_goal_unknown
+		cost = 10.00
+		mutually_exclusive = {
+			focus = SOV_Maintain_the_Litvinov_Protocol
+		}
+		x = 14
+		y = 0
+
+	}
+	shared_focus = {
+		id = SOV_XVII_Congress
+		icon = GFX_SOV_Soviet_Democracy
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Reaffirm_Role_of_The_Politburo
+			focus = SOV_Reduce_The_Power_of_The_Politburo
+		}
+		x = 5
+		y = 1
+
+	}
+	shared_focus = {
+		id = SOV_Stalin_Outmaneuvered
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Kirov_Assassination
+			focus = SOV_Rule_By_Force
+		}
+		x = 3
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_A_Second_Powerstruggle
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Stalin_Outmaneuvered
+		}
+		x = 3
+		y = 3
+
+	}
+	shared_focus = {
+		id = SOV_The_Kirov_Assassination
+		icon = GFX_goal_generic_major_war
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_Stalin_Outmaneuvered
+			focus = SOV_Rule_By_Force
+		}
+		x = 5
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Denounce_The_Fascist_Plot
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Kirov_Assassination
+		}
+		x = 5
+		y = 3
+
+	}
+	shared_focus = {
+		id = SOV_Get_Rid_of_Opposition
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Denounce_The_Fascist_Plot
+		}
+		x = 5
+		y = 4
+
+	}
+	shared_focus = {
+		id = SOV_Rule_By_Force
+		icon = GFX_goal_generic_demand_territory
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Kirov_Assassination
+			focus = SOV_Stalin_Outmaneuvered
+		}
+		x = 7
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Force_The_Politburo_to_Cooperate
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Rule_By_Force
+		}
+		x = 7
+		y = 3
+
+	}
+	shared_focus = {
+		id = SOV_Order_The_Execution_of_The_Opposition_Leaders
+		icon = GFX_SOV_Moscow_Trials
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Force_The_Politburo_to_Cooperate
+		}
+		x = 7
+		y = 4
+
+	}
+	shared_focus = {
+		id = SOV_Consolidate_Power
+		icon = GFX_SOV_Proletariat_Dictatorship
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Get_Rid_of_Opposition
+			focus = SOV_Order_The_Execution_of_The_Opposition_Leaders
+		}
+		x = 6
+		y = 5
+
+	}
+	shared_focus = {
+		id = SOV_The_Stalin_Constitution
+		icon = GFX_focus_generic_soviet_politics
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Consolidate_Power
+		}
+		x = 4
+		y = 6
+
+	}
+	shared_focus = {
+		id = SOV_Start_the_Great_Purge
+		icon = GFX_SOV_Great_Purge
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Consolidate_Power
+		}
+		x = 6
+		y = 6
+		select_effect = {
+			country_event = {
+				id = DH_Soviet_Purge.5
+				days = 14
+			}
+			set_country_flag = SOV_purge_started
+		}
+		completion_reward = {
+			country_event = {
+				id = DH_Soviet_Purge.6
+				hours = 6
+			}
+			hidden_effect = {
+				news_event = {
+					hours = 6
+					id = news.219
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_The_Leningrad_Circle
+		icon = GFX_SOV_Leningrad_Circle
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Moscow_Trials
+		}
+		x = 8
+		y = 7
+
+	}
+	shared_focus = {
+		id = SOV_Abandon_the_Third_Period
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Maintain_the_Litvinov_Protocol
+		}
+		x = 11
+		y = 1
+
+	}
+	shared_focus = {
+		id = SOV_Collective_Security
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Abandon_the_Third_Period
+		}
+		x = 9
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Peoples_Front_Theory
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Abandon_the_Third_Period
+		}
+		x = 11
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Reinforce_Third_Periodism
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Replace_Litvinov
+		}
+		mutually_exclusive = {
+			focus = SOV_Ignore_the_Kellogg_Briand_Pact
+		}
+		x = 13
+		y = 1
+
+	}
+	shared_focus = {
+		id = SOV_Ignore_the_Kellogg_Briand_Pact
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Replace_Litvinov
+		}
+		mutually_exclusive = {
+			focus = SOV_Reinforce_Third_Periodism
+		}
+		x = 15
+		y = 1
+
+	}
+	shared_focus = {
+		id = SOV_Worldwide_Overlook
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Reinforce_Third_Periodism
+			focus = SOV_Ignore_the_Kellogg_Briand_Pact
+		}
+		x = 14
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Seventh_World_Congress_of_the_Comintern
+		icon = GFX_SOV_Portray_A_Global_Soviet_Image
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Peoples_Front_Theory
+			focus = SOV_Worldwide_Overlook
+		}
+		x = 12
+		y = 3
+
+	}
+	shared_focus = {
+		id = SOV_The_Litvinov_Doctrine
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Seventh_World_Congress_of_the_Comintern
+		}
+		mutually_exclusive = {
+			focus = SOV_New_Minister_New_Direction
+		}
+		x = 11
+		y = 4
+
+	}
+	shared_focus = {
+		id = SOV_New_Minister_New_Direction
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Seventh_World_Congress_of_the_Comintern
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Litvinov_Doctrine
+		}
+		x = 13
+		y = 4
+
+	}
+	shared_focus = {
+		id = SOV_The_Moscow_Trials
+		icon = GFX_SOV_Moscow_Trials
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Leningrad_Circle
+		}
+		x = 6
+		y = 7
+
+	}
+	shared_focus = {
+		id = SOV_NKVD_Primacy
+		icon = GFX_SOV_NKVD
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Moscow_Trials
+		}
+		mutually_exclusive = {
+			focus = SOV_Rehabilitate_The_Red_Army
+		}
+		x = 7
+		y = 8
+
+	}
+	shared_focus = {
+		id = SOV_Rehabilitate_The_Red_Army
+		icon = GFX_SOV_Red_Army
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Moscow_Trials
+		}
+		mutually_exclusive = {
+			focus = SOV_NKVD_Primacy
+		}
+		x = 5
+		y = 8
+
+	}
+#}

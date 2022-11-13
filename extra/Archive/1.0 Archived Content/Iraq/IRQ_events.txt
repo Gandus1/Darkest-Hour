@@ -1,0 +1,409 @@
+##############################
+# Darkest Hour Events : Iraq #
+##############################
+
+add_namespace = IRQ_Shawkat
+add_namespace = IRQ_Faisal
+add_namespace = IRQ_Muharram
+
+### ------------------------- Iraq -------------------------###
+
+#########################################################################
+#  Resignation of Shawkat event chain
+#########################################################################
+
+# A crisis in the Government Bloc
+country_event = { 
+	id = IRQ_Shawkat.1 
+	title = IRQ_Shawkat.1.t
+	desc = IRQ_Shawkat.1.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	mean_time_to_happen = { days = 14 }
+
+	trigger = {tag = IRQ}
+
+	option = { # Mission failed we'll get them next time
+		name = IRQ_Shawkat.1.A
+		hidden_effect = {
+			random_list = {
+	    		50 = {
+	        		country_event = {
+	    				id = IRQ_Shawkat.2
+	    				days = 14
+	        		}
+	    		}
+	    		50 = {
+	        		country_event = {
+	    				id = IRQ_Shawkat.3
+	    				days = 14
+					}
+	    		}
+			}
+		}
+	}
+
+	option = { #Stay
+		name = IRQ_Shawkat.1.A
+		hidden_effect = {
+			country_event = {
+				id = IRQ_Shawkat.4
+				days = 14
+			}
+		}
+	}
+}
+
+country_event = { #Al-Said demands a resignation! 
+	id = IRQ_Shawkat.2
+	title = IRQ_Shawkat.2.t
+	desc = IRQ_Shawkat.2.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = DH.IRQ_Shawkat.2.A
+		country_event = {
+			id = IRQ_Shawkat.5
+			days = 14
+		}
+	}
+}
+
+country_event = { #Al-Gaylani demands a resignation! 
+	id = IRQ_Shawkat.3
+	title = IRQ_Shawkat.3.t
+	desc = IRQ_Shawkat.3.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = DH.IRQ_Shawkat.3.A
+		country_event = {
+			id = IRQ_Shawkat.5
+			days = 14
+		}
+	}
+}
+
+country_event = { #Assasination of Naji
+	id = IRQ_Shawkat.4
+	title = IRQ_Shawkat.4.t
+	desc = IRQ_Shawkat.4.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Begin an investigation
+		name = IRQ_Shawkat.4.A
+
+		#ALT Hist, not available
+	}
+
+	option = { #Let it slide
+		name = IRQ_Shawkat.4.B
+		set_country_flag = IRQ_Crisis_Gov_Solved
+	}
+}
+
+country_event = { #Naji resigns
+	id = IRQ_Shawkat.5
+	title = IRQ_Shawkat.5.t
+	desc = IRQ_Shawkat.5.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Shawkat.5.A
+
+		hidden_effect = { set_country_flag = IRQ_Crisis_Gov_Solved }
+	}
+}
+
+
+#########################################################################
+#  Death of Faisal I
+#########################################################################
+
+country_event = { #A visit to Switzerland
+	id = IRQ_Faisal.1
+	title = IRQ_Faisal.1.t
+	desc = IRQ_Faisal.1.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = DH.IRQ_Faisal.1.A
+		country_event = {
+			id = IRQ_Faisal.2
+			days = 14
+		}
+	}
+}
+
+country_event = { #Our king is poisoned!
+	id = IRQ_Faisal.2
+	title = IRQ_Faisal.2.t
+	desc = IRQ_Faisal.2.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #It was an investigation!
+		name = DH.IRQ_Faisal.2.A
+		country_event = {
+			id = IRQ_Faisal.4
+			days = 14
+		}
+		news_event = {
+			id = IRQ_Faisal.3
+			days = 7
+		}
+	}
+	option = { #Fate is unescapable...
+		name = DH.IRQ_Faisal.2.B
+		country_event = {
+			id = IRQ_Faisal.5
+			days = 14
+		}
+		news_event = {
+			id = IRQ_Faisal.3
+			days = 7
+		}		
+	}
+}
+
+news_event = { #Death of Faisal I
+	id = IRQ_Faisal.3
+	title = IRQ_Faisal.3.t
+	desc = IRQ_Faisal.3.d
+	picture = GFX_news_GER_von_Schleicher_Dismissed #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Faisal.3.A
+	}
+}
+
+country_event = { #Begin an investigation
+	id = IRQ_Faisal.4
+	title = IRQ_Faisal.4.t
+	desc = IRQ_Faisal.4.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = DH.IRQ_Faisal.4.A
+		news_event = {
+			id = IRQ_Faisal.6
+			days = 14
+		}
+	}
+}
+
+country_event = { #A great funeral
+	id = IRQ_Faisal.5
+	title = IRQ_Faisal.5.t
+	desc = IRQ_Faisal.5.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = DH.IRQ_Faisal.5.A
+		news_event = {
+			id = IRQ_Faisal.6
+			days = 14
+		}
+	}
+}
+
+news_event = { #Coronation
+	id = IRQ_Faisal.6
+	title = IRQ_Faisal.6.t
+	desc = IRQ_Faisal.6.d
+	picture = GFX_news_GER_von_Schleicher_Dismissed #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Faisal.6.A
+	}
+}
+
+#########################################################################
+#  Ban on Ashora Commemorations
+#########################################################################
+
+country_event = { #Muharram begins
+	id = IRQ_Muharram.1
+	title = IRQ_Muharram.1.t
+	desc = IRQ_Muharram.1.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Muharram.1.A
+		country_event = {
+			id = IRQ_Muharram.2
+			days = 14
+		}
+	}
+}
+
+country_event = { #Shiite commemorating
+	id = IRQ_Muharram.2
+	title = IRQ_Muharram.2.t
+	desc = IRQ_Muharram.2.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Crackdown
+		name = IRQ_Muharram.2.A
+		country_event = {
+			id = IRQ_Muharram.3
+			days = 14
+		}
+	}
+	option = { #Lift the ban
+		name = IRQ_Muharram.2.B
+		country_event = {
+			id = IRQ_Muharram.8
+			days = 14
+		}
+	}
+}
+
+country_event = { #Shia unrest
+	id = IRQ_Muharram.3
+	title = IRQ_Muharram.3.t
+	desc = IRQ_Muharram.3.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Assault
+		name = IRQ_Muharram.3.A
+		country_event = {
+			id = IRQ_Muharram.4
+			days = 14
+		}
+	}
+	option = { #Ignore
+		name = IRQ_Muharram.3.B
+		country_event = {
+			id = IRQ_Muharram.5
+			days = 14
+		}
+	}
+}
+
+country_event = { #Fatwa against us
+	id = IRQ_Muharram.4
+	title = IRQ_Muharram.4.t
+	desc = IRQ_Muharram.4.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Muharram.4.A
+		country_event = {
+			id = IRQ_Muharram.6
+			days = 14
+		}
+	}
+}
+
+country_event = { #Youth begin destruction
+	id = IRQ_Muharram.5
+	title = IRQ_Muharram.5.t
+	desc = IRQ_Muharram.5.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Send in the army
+		name = IRQ_Muharram.5.A
+		country_event = {
+			id = IRQ_Muharram.4
+			days = 14
+		}
+	}
+	option = { #Lift the ban
+		name = IRQ_Muharram.2.B
+		country_event = {
+			id = IRQ_Muharram.7
+			days = 14
+		}
+	}
+}
+
+country_event = { #1920 2 : the electric boogaloo
+	id = IRQ_Muharram.6
+	title = IRQ_Muharram.6.t
+	desc = IRQ_Muharram.6.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Muharram.6.A
+		news_event = {
+			id = IRQ_Muharram.9
+			days = 14
+		}
+	}
+}
+
+country_event = { #Abortion of stupidity
+	id = IRQ_Muharram.7
+	title = IRQ_Muharram.7.t
+	desc = IRQ_Muharram.7.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Muharram.7.A
+		country_event = {
+			id = IRQ_Muharram.8
+			days = 14
+		}
+	}
+}
+
+country_event = { #Ashora goes peacefully
+	id = IRQ_Muharram.8
+	title = IRQ_Muharram.8.t
+	desc = IRQ_Muharram.8.d
+	picture = GFX_Generic_Elections #PLACEHOLDER
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = DH.IRQ_Muharram.8.A
+	}
+}
+
+news_event = { #Ashora revolution
+	id = IRQ_Muharram.9
+	title = IRQ_Muharram.9.t
+	desc = IRQ_Muharram.9.d
+	picture = GFX_news_GER_von_Schleicher_Dismissed
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = IRQ_Muharram.9.A
+	}	
+}

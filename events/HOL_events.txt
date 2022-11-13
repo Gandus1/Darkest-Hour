@@ -1,0 +1,230 @@
+﻿###########################
+# Darkest Hour Events : Netherlands
+###########################
+add_namespace = HOL_Return_of_the_Kaiser
+add_namespace = HOL_Election_1933
+add_namespace = HOL_Election_1937
+#########################################################################
+# Netherlands General Election, 1933
+#########################################################################
+country_event = {
+	id = HOL_Election_1933.1
+	title = HOL_Election_1933.1.t
+	desc = HOL_Election_1933.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = HOL
+		date > 1933.1.1
+		date < 1934.1.1
+	}
+	# Hendricu Colijn - Roman Catholic State Party (Conservative)
+	option = {
+		name = HOL_Election_1933.1.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = democratic long_name = "Roman Catholic State Party" name = "RKST" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Hendricu Colijn"
+				picture = GFX_P_D_Hendricu_Colijn
+				ideology = social_conservatism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Conservatism
+				}
+			}
+			set_politics = { ruling_party = democratic elections_allowed = yes election_frequency = 48 }
+		}
+	}
+	# Johan Willem Albarda - Social Democratic Workers Party (Socialism)
+	option = {
+		name = HOL_Election_1933.1.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = democratic long_name = "Social Democratic Workers Party" name = "SDAP" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Johan Willem Albarda"
+				picture = GFX_P_D_Johan_Willem_Albarda
+				ideology = democratic_socialism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Democratic_Socialism
+				}
+			}
+		}
+	}
+}
+#########################################################################
+# Netherlands General Election, 1937
+#########################################################################
+country_event = {
+	id = HOL_Election_1937.1
+	title = HOL_Election_1937.1.t
+	desc = HOL_Election_1937.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = HOL
+		date > 1937.1.1
+		date < 1938.1.1
+	}
+	# Hendricu Colijn - Roman Catholic State Party (Conservative)
+	option = {
+		name = HOL_Election_1937.1.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = democratic long_name = "Roman Catholic State Party" name = "RKST" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Hendricu Colijn"
+				picture = GFX_P_D_Hendricu_Colijn
+				ideology = social_conservatism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Conservatism
+				}
+			}
+			set_politics = { ruling_party = democratic elections_allowed = yes election_frequency = 48 }
+		}
+	}
+	# Johan Willem Albarda - Social Democratic Workers Party (Socialism)
+	option = {
+		name = HOL_Election_1933.1.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = democratic long_name = "Social Democratic Workers Party" name = "SDAP" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Johan Willem Albarda"
+				picture = GFX_P_D_Johan_Willem_Albarda
+				ideology = democratic_socialism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Democratic_Socialism
+				}
+			}
+		}
+	}
+}
+#########################################################################
+#  Germany is asking for the return of the Kaiser
+#########################################################################
+country_event = {
+	id = HOL_Return_of_the_Kaiser.1
+	title = HOL_Return_of_the_Kaiser.1.t
+	desc = HOL_Return_of_the_Kaiser.1.d
+	picture = GFX_report_event_soviet_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Accept demands
+		name = HOL_Return_of_the_Kaiser.1.A
+		hidden_effect = {
+			GER = {
+				news_event = {
+					id = GER_KR.94
+					hours = 6
+				}
+			}
+		}
+	}
+	option = { # Refuse
+		name = HOL_Return_of_the_Kaiser.1.B
+	}
+}
+#########################################################################
+# Shootout in the Border Checkpoint (Failed espionage)
+#########################################################################
+country_event = {
+	id = HOL_Return_of_the_Kaiser.2
+	title = HOL_Return_of_the_Kaiser.2.t
+	desc = HOL_Return_of_the_Kaiser.2.d
+	picture = GFX_report_event_soviet_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	# This act is an act of war, and we should respond as such
+	option = {
+		name = HOL_Return_of_the_Kaiser.2.A
+	}
+	# We may declare war, but we should consult our Allies first
+	option = {
+		name = HOL_Return_of_the_Kaiser.2.B
+	}
+}
+#########################################################################
+# The Kaiser has returned to Germany! (success espionage)
+#########################################################################
+country_event = {
+	id = HOL_Return_of_the_Kaiser.3
+	title = HOL_Return_of_the_Kaiser.3.t
+	desc = HOL_Return_of_the_Kaiser.3.d
+	picture = GFX_report_event_soviet_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We need to calm down, it’s just a foreign ruler, right?
+	option = {
+		name = HOL_Return_of_the_Kaiser.3.A
+	}
+}
+#########################################################################
+# The Germans have sent an Ultimatum! (Dutch event regarding ultimatum)
+#########################################################################
+country_event = {
+	id = HOL_Return_of_the_Kaiser.4
+	title = HOL_Return_of_the_Kaiser.4.t
+	desc = HOL_Return_of_the_Kaiser.4.d
+	picture = GFX_report_event_soviet_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	# War is messy, and we should exert all efforts in avoiding it
+	option = {
+		name = HOL_Return_of_the_Kaiser.4.A
+		hidden_effect = {
+			GER = {
+				country_event = {
+					id = GER_OKH.16
+					hours = 6
+				}
+			}
+		}
+	}
+	# How dare they attempt to influence us, decline it immediately!
+	option = {
+		name = HOL_Return_of_the_Kaiser.4.B
+		hidden_effect = {
+			GER = {
+				country_event = {
+					id = GER_OKH.17
+					hours = 6
+				}
+			}
+		}
+	}
+}

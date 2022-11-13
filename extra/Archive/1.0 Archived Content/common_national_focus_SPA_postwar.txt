@@ -1,0 +1,633 @@
+focus_tree = {
+	id = SPA_postwar
+	country = {
+		factor = 0
+	}
+	default = no
+	focus = {
+		id = SPA_The_Crusade_is_Over
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		x = 8
+		y = 0
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_ideas = SPA_reconstruction
+		}
+	}
+	focus = {
+		id = SPA_Ley_de_Responsabilidades_Politicas
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_The_Crusade_is_Over
+		}
+		x = 4
+		y = 1
+		completion_reward = {
+			add_ideas = SPA_white_terror_1
+		}
+	}
+	focus = {
+		id = SPA_Centralize_Unions
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Ley_de_Responsabilidades_Politicas
+		}
+		x = 4
+		y = 2
+		completion_reward = {
+			add_ideas = SPA_sindicato_vertical
+			
+		}
+	}
+	focus = {
+		id = SPA_Support_from_the_Military
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Ley_de_Responsabilidades_Politicas
+		}
+		x = 2
+		y = 2
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SPA_white_terror_1
+				}
+				swap_ideas = {
+					remove_idea = SPA_white_terror_1
+					add_idea = SPA_white_terror_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SPA_white_terror_3
+				}
+				swap_ideas = {
+					remove_idea = SPA_white_terror_3
+					add_idea = SPA_white_terror_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_Support_from_the_Church
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Ley_de_Responsabilidades_Politicas
+		}
+		x = 6
+		y = 2
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SPA_white_terror_1
+				}
+				swap_ideas = {
+					remove_idea = SPA_white_terror_1
+					add_idea = SPA_white_terror_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SPA_white_terror_2
+				}
+				swap_ideas = {
+					remove_idea = SPA_white_terror_2
+					add_idea = SPA_white_terror_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_Desktop_Diplomacy
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Support_from_the_Military }
+		prerequisite = { focus = SPA_Centralize_Unions }
+		prerequisite = { focus = SPA_Support_from_the_Church }
+		x = 4
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_civil_war_scars_1
+				add_idea = SPA_civil_war_scars_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Labor_Discrimination
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Desktop_Diplomacy
+		}
+		x = 1
+		y = 4
+		completion_reward = {
+			add_ideas = SPA_labor_discrimination_idea
+		}
+	}
+	focus = {
+		id = SPA_Our_Camps
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Desktop_Diplomacy
+		}
+		mutually_exclusive = { focus = SPA_Nazi_Specialists }
+		x = 3
+		y = 4
+		completion_reward = {
+			add_ideas = SPA_our_camps_idea
+		}
+	}
+	focus = {
+		id = SPA_Nazi_Specialists
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Desktop_Diplomacy
+		}
+		mutually_exclusive = { focus = SPA_Our_Camps }
+		x = 5
+		y = 4
+		completion_reward = {
+			add_ideas = SPA_nazi_specialists_idea
+		}
+	}
+	focus = {
+		id = SPA_Christian_Family_Laws
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_Desktop_Diplomacy
+		}
+		x = 7
+		y = 4
+		completion_reward = {
+			add_ideas = SPA_christian_family_laws_idea
+		}
+	}
+	focus = {
+		id = SPA_Mass_Exile
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Labor_Discrimination }
+		prerequisite = { focus = SPA_Our_Camps focus = SPA_Nazi_Specialists }
+		prerequisite = { focus = SPA_Christian_Family_Laws }
+		x = 4
+		y = 5
+		completion_reward = {
+			add_ideas = SPA_mass_exile_idea
+		}
+	}
+	focus = {
+		id = SPA_Valle_de_los_Caidos
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Mass_Exile }
+		x = 4
+		y = 6
+		completion_reward = {
+			remove_ideas = SPA_civil_war_scars_2
+			hidden_effect = {
+				remove_ideas = SPA_labor_discrimination_idea
+				remove_ideas = SPA_our_camps_idea
+				remove_ideas = SPA_nazi_specialists_idea
+				remove_ideas = SPA_christian_family_laws_idea
+				remove_ideas = SPA_mass_exile_idea
+			}
+		}
+	}
+	focus = {
+		id = SPA_Autarky
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPA_The_Crusade_is_Over
+		}
+		x = 12
+		y = 1
+		completion_reward = {
+			add_ideas = SPA_Autarky_1
+			add_ideas = limited_exports
+		}
+	}
+	focus = {
+		id = SPA_Mass_Agrarianism
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Autarky }
+		x = 10
+		y = 2
+		completion_reward = {
+			167 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			170 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = SPA_Autarky_1
+				add_idea = SPA_Autarky_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Corporate_Principles
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Autarky }
+		prerequisite = { focus = SPA_Mass_Agrarianism }
+		x = 12
+		y = 2
+		completion_reward = {
+			add_popularity = { ideology = authoritarian popularity = 0.05 }
+			swap_ideas = {
+				remove_idea = SPA_Autarky_2
+				add_idea = SPA_Autarky_3
+			}
+		}
+	}
+	focus = {
+		id = SPA_New_Mines_in_Castille
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Autarky }
+		prerequisite = { focus = SPA_Corporate_Principles }
+		x = 14
+		y = 2
+		completion_reward = {
+			176 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+				add_resource = {
+					type = tungsten
+					amount = 10
+				}
+			}
+			swap_ideas = {
+				remove_idea = SPA_Autarky_3
+				add_idea = SPA_Autarky_4
+			}
+		}
+	}
+	focus = {
+		id = SPA_Isolation
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Mass_Agrarianism }
+		prerequisite = { focus = SPA_Corporate_Principles }
+		prerequisite = { focus = SPA_New_Mines_in_Castille }
+		x = 12
+		y = 3
+		completion_reward = {
+			add_ideas = closed_economy
+		}
+	}
+	focus = {
+		id = SPA_An_Introverted_Spain
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Isolation }
+		x = 12
+		y = 4
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.05
+			remove_ideas = SPA_reconstruction
+		}
+	}
+	focus = {
+		id = SPA_Reorganize_the_Spanish_Army
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		x = 22
+		y = 0
+		available = { has_army_experience > 50 }
+		completion_reward = {
+			add_stability = 0.05
+			army_experience = -50
+		}
+	}
+	focus = {
+		id = SPA_Demobilization
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Reorganize_the_Spanish_Army }
+		mutually_exclusive = { focus = SPA_Return_the_Favor }
+		available = { has_army_experience > 50 }
+		x = 18
+		y = 1
+		completion_reward = {
+			army_experience = -50
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_1
+				add_idea = SPA_disorganized_army_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Straighten_the_Army
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Demobilization }
+		mutually_exclusive = { focus = SPA_A_Pragmatic_Restructuring }
+		available = { has_army_experience > 50 }
+		x = 17
+		y = 2
+		completion_reward = {
+			army_experience = -50
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_2
+				add_idea = SPA_disorganized_army_3
+			}
+		}
+	}
+	focus = {
+		id = SPA_A_Political_Force
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Straighten_the_Army }
+		x = 16
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_3
+				add_idea = SPA_disorganized_army_5
+			}
+		}
+	}
+	focus = {
+		id = SPA_Standardized_Military_Cycles
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Straighten_the_Army focus = SPA_A_Pragmatic_Restructuring }
+		prerequisite = { focus = SPA_A_Political_Force focus = SPA_An_Unbiased_Command }
+		x = 18
+		y = 3
+		completion_reward = {
+			if = {
+				limit = { has_idea = SPA_disorganized_army_5 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_5
+					add_idea = SPA_disorganized_army_6
+				}
+			}
+			else_if = {
+				limit = { has_idea = SPA_disorganized_army_9 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_9
+					add_idea = SPA_disorganized_army_10
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_An_Unbiased_Command
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_A_Pragmatic_Restructuring }
+		x = 20
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_4
+				add_idea = SPA_disorganized_army_9
+			}
+		}
+	}
+	focus = {
+		id = SPA_A_Professional_Force
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_A_Political_Force focus = SPA_An_Unbiased_Command }
+		prerequisite = { focus = SPA_Standardized_Military_Cycles }
+		x = 18
+		y = 4
+		completion_reward = {
+			if = {
+				limit = { has_idea = SPA_disorganized_army_6 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_6
+					add_idea = SPA_disorganized_army_7
+				}
+			}
+			else_if = {
+				limit = { has_idea = SPA_disorganized_army_10 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_10
+					add_idea = SPA_disorganized_army_11
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_A_Pragmatic_Restructuring
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Demobilization }
+		mutually_exclusive = { focus = SPA_Straighten_the_Army }
+		x = 19
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_2
+				add_idea = SPA_disorganized_army_4
+			}
+		}
+	}
+	focus = {
+		id = SPA_Return_the_Favor
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Reorganize_the_Spanish_Army }
+		mutually_exclusive = { focus = SPA_Demobilization }
+		x = 26
+		y = 1
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = SPA_Meet_with_the_Wehrmacht
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Return_the_Favor }
+		available = { has_army_experience > 50 }
+		x = 26
+		y = 2
+		completion_reward = {
+			army_experience = -50
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_1
+				add_idea = SPA_disorganized_army_12
+			}
+		}
+	}
+	focus = {
+		id = SPA_Announce_a_New_Crusade
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Meet_with_the_Wehrmacht }
+		x = 26
+		y = 3
+		completion_reward = {
+			add_political_power = -150
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_12
+				add_idea = SPA_disorganized_army_13
+			}
+		}
+	}
+	focus = {
+		id = SPA_Meet_with_Total_War_Theorists
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Announce_a_New_Crusade }
+		available = { has_army_experience > 50 }
+		x = 26
+		y = 4
+		completion_reward = {
+			add_political_power = -50
+			if = {
+				limit = { has_idea = SPA_disorganized_army_13 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_13
+					add_idea = SPA_disorganized_army_15
+				}
+			}
+			else_if = {
+				limit = { has_idea = SPA_disorganized_army_14 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_14
+					add_idea = SPA_disorganized_army_16
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_Indoctrination_Standards
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Announce_a_New_Crusade }
+		available = { has_army_experience > 50 }
+		x = 24
+		y = 4
+		completion_reward = {
+			add_political_power = -50
+			if = {
+				limit = { has_idea = SPA_disorganized_army_13 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_13
+					add_idea = SPA_disorganized_army_14
+				}
+			}
+			else_if = {
+				limit = { has_idea = SPA_disorganized_army_15 }
+				swap_ideas = {
+					remove_idea = SPA_disorganized_army_15
+					add_idea = SPA_disorganized_army_16
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_Expand_the_Verdeja_Program
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Announce_a_New_Crusade }
+		x = 28
+		y = 4
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
+		}
+	}
+	focus = {
+		id = SPA_Iberische_Wall
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = { focus = SPA_Meet_with_Total_War_Theorists }
+		prerequisite = { focus = SPA_Expand_the_Verdeja_Program }
+		prerequisite = { focus = SPA_Indoctrination_Standards }
+		x = 26
+		y = 5
+		completion_reward = {
+			add_political_power = -50
+			swap_ideas = {
+				remove_idea = SPA_disorganized_army_16
+				add_idea = SPA_disorganized_army_17
+			}
+			custom_effect_tooltip = iberischewall_tooltip
+			hidden_effect = {
+				171 = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = {
+							all_provinces = yes
+							limit_to_coastal = yes
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				775 = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = {
+							all_provinces = yes
+							limit_to_coastal = yes
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				776 = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = {
+							all_provinces = yes
+							limit_to_coastal = yes
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				172 = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = {
+							all_provinces = yes
+							limit_to_coastal = yes
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}

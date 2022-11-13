@@ -1,0 +1,1034 @@
+#########################################################################
+#  Position Christianity Effects
+#########################################################################
+###########################
+# Irreligious Pop
+###########################
+# example usage:
+## set_temp_variable = { GER_Irreligious_Population_gain = 0.5 }
+## add_unemployment_effect = yes
+add_irreligious_population_effect = {
+	clamp_temp_variable = {
+		var = GER_Irreligious_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { GER_Irreligious_Population = GER_Irreligious_Population_gain }
+	custom_effect_tooltip = GER_Irreligious_Population_gain_tt
+}
+###########################
+# Irreligious Pop
+###########################
+add_positive_christian_effect = {
+	clamp_temp_variable = {
+		var = GER_Positive_Christian_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { GER_Positive_Christian_Population = GER_Positive_Christian_Population_gain }
+	custom_effect_tooltip = GER_Positive_Christian_Population_gain_tt
+}
+###########################
+# Irreligious Pop
+###########################
+add_protestant_effect = {
+	clamp_temp_variable = {
+		var = GER_Protestant_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { GER_Protestant_Population = GER_Protestant_Population_gain }
+	custom_effect_tooltip = GER_Protestant_Population_gain_tt
+}
+###########################
+# Irreligious Pop
+###########################
+add_catholic_effect = {
+	clamp_temp_variable = {
+		var = GER_Catholic_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { GER_Catholic_Population = GER_Catholic_Population_gain }
+	custom_effect_tooltip = GER_Catholic_Population_gain_tt
+}
+#########################################################################
+#  Custom Effects
+#########################################################################
+
+###########################
+# Ostmark Integration Effect
+###########################
+GER_Ostmark_Integration_effect = {
+	# Add Core to the states if the Owner isn't Austria
+	if = {
+		limit = {
+			4 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 4
+	}
+	if = {
+		limit = {
+			152 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 152
+	}
+	if = {
+		limit = {
+			153 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 153
+	}
+	if = {
+		limit = {
+			774 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 774
+	}
+	if = {
+		limit = {
+			973 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 973
+	}
+	if = {
+		limit = {
+			974 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 974
+	}
+	if = {
+		limit = {
+			977 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 977
+	}
+	if = {
+		limit = {
+			1416 = {
+				owner = {
+					NOT = {
+						tag = AUS
+					}
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		add_state_core = 1416
+	}
+}
+###########################
+# Demand Sudetenland Effect
+###########################
+GER_Demand_Sudetenland_effect = {
+	if =  {
+		limit = {
+			OR = {
+				ENG = { exists = no }
+				ENG = {
+					is_subject = yes
+				}
+				has_war_with = ENG
+				has_war_with = FRA
+				AND = {
+					CZE = { is_subject = yes }
+					OR = {
+						CZE = {
+							NOT = {
+								is_puppet_of = HUN
+							}
+						}
+						NOT = { has_dlc = "Death or Dishonor" }
+					}
+				}
+				CZE = { has_war_with = ENG }
+				CZE = { has_war_with = FRA }
+				CZE = { is_in_faction_with = GER }
+			}
+			CZE = { 
+				controls_state = 69 
+				controls_state = 74 
+				controls_state = 1105 
+			}
+		}
+		if = {
+			limit = {
+				CZE = { is_subject = no }
+			}
+			CZE = {
+				country_event = { id = GER_Munich_Conference.18 days = 1 }
+			}
+			else = {
+				CZE = {
+					OVERLORD = { country_event = { id = GER_Munich_Conference.18 days = 1 } }
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			ENG = { exists = yes }
+			ENG = { is_subject = no }
+			NOT = { has_war_with = ENG }
+			NOT = { has_war_with = FRA }
+			CZE = { is_subject = no }
+			CZE = { NOT = { is_in_faction_with = GER } }
+			CZE = { NOT = { has_war_with = ENG } }
+			CZE = { controls_state = 69 }
+			CZE = { controls_state = 74 }
+			CZE = { controls_state = 1105 }
+		}
+		ENG = {
+			country_event = { id = GER_Munich_Conference.1 days = 1 }
+		}
+		add_named_threat = { threat = 5 name = GER_demand_sudetenland_threat }
+	}
+	else_if = {
+		limit = {
+			NOT = { 
+				CZE = { 
+					controls_state = 69 
+					controls_state = 74 
+					controls_state = 1105 
+				} 
+			}
+			NOT = {
+				69 = {
+					is_controlled_by = HUN 
+				}
+				74 = {
+					is_controlled_by = HUN 
+				}
+				1105 = {
+					is_controlled_by = HUN 
+				}
+			}
+			69 = {
+				controller = {
+					NOT = { is_in_faction_with = GER }
+				}
+			}
+			74 = {
+				controller = {
+					NOT = { is_in_faction_with = GER }
+				}
+			}
+			1105 = {
+				controller = {
+					NOT = { is_in_faction_with = GER }
+				}
+			}
+		}
+		add_named_threat = { threat = 3 name = GER_demand_sudetenland_threat }
+		69 = {
+			controller = {
+				GER = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						generator = { 69 74 1105 }
+					}
+				}
+			}
+		}
+	}
+}
+###########################
+# Influence
+###########################
+# example usage:
+## set_temp_variable = { GER_Influence_to_add = 5 }
+## add_influence = yes
+add_influence = {	
+	add_to_variable = { GER_Influence = GER_Influence_to_add }
+	set_temp_variable = { GER_Influence_to_add_display = GER_Influence_to_add }
+	clamp_temp_variable = {
+		var = GER_Influence
+		min = 0
+		max = 100
+	}
+	divide_temp_variable = { GER_Influence_to_add_display = 100 }
+	set_variable = { GER_Influence_display = GER_Influence }
+	divide_variable = { GER_Influence_display = 100 }
+	if = {
+		limit = {
+			check_variable = { GER_Influence_to_add > 0 }
+
+		}
+		custom_effect_tooltip = GER_Influence_Gain
+	} 
+	if = {
+		limit = {
+			check_variable = { GER_Influence_to_add < 0 }
+
+		}
+		custom_effect_tooltip = GER_Influence_Loss
+	} 
+}
+#########################################################################
+#  MEFO Bills
+#########################################################################
+#Important to put HIGHEST first
+GER_mefo_bills_level_up = {
+	if = {
+		limit = { has_idea = GER_mefo_bills_22 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_22
+			add_idea = GER_mefo_bills_23
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_21 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_21
+			add_idea = GER_mefo_bills_22
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_20 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_20
+			add_idea = GER_mefo_bills_21
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_19 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_19
+			add_idea = GER_mefo_bills_20
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_18 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_18
+			add_idea = GER_mefo_bills_19
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_17 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_17
+			add_idea = GER_mefo_bills_18
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_16 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_16
+			add_idea = GER_mefo_bills_17
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_15 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_15
+			add_idea = GER_mefo_bills_16
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_14 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_14
+			add_idea = GER_mefo_bills_15
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_13 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_13
+			add_idea = GER_mefo_bills_14
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_12 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_12
+			add_idea = GER_mefo_bills_13
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_11 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_11
+			add_idea = GER_mefo_bills_12
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_10 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_10
+			add_idea = GER_mefo_bills_11
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_9 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_9
+			add_idea = GER_mefo_bills_10
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_8 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_8
+			add_idea = GER_mefo_bills_9
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_7 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_7
+			add_idea = GER_mefo_bills_8
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_6 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_6
+			add_idea = GER_mefo_bills_7
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_5 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_5
+			add_idea = GER_mefo_bills_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_4 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_4
+			add_idea = GER_mefo_bills_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_3 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_3
+			add_idea = GER_mefo_bills_4
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_2 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_2
+			add_idea = GER_mefo_bills_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_1 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_1
+			add_idea = GER_mefo_bills_2
+		}
+	}
+}
+
+#Important to put HIGHEST first
+GER_remove_mefo_bills = {
+	if = {
+		limit = { has_idea = GER_mefo_bills_1 }
+		remove_ideas = GER_mefo_bills_1
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_2 }
+		remove_ideas = GER_mefo_bills_2
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_3 }
+		remove_ideas = GER_mefo_bills_3
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_4 }
+		remove_ideas = GER_mefo_bills_4
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_5 }
+		remove_ideas = GER_mefo_bills_5
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_6 }
+		remove_ideas = GER_mefo_bills_6
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_7 }
+		remove_ideas = GER_mefo_bills_7
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_8 }
+		remove_ideas = GER_mefo_bills_8
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_9 }
+		remove_ideas = GER_mefo_bills_9
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_10 }
+		remove_ideas = GER_mefo_bills_10
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_11 }
+		remove_ideas = GER_mefo_bills_11
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_12 }
+		remove_ideas = GER_mefo_bills_12
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_13 }
+		remove_ideas = GER_mefo_bills_13
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_14 }
+		remove_ideas = GER_mefo_bills_14
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_15 }
+		remove_ideas = GER_mefo_bills_15
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_16 }
+		remove_ideas = GER_mefo_bills_16
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_17 }
+		remove_ideas = GER_mefo_bills_17
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_18 }
+		remove_ideas = GER_mefo_bills_18
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_19 }
+		remove_ideas = GER_mefo_bills_19
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_20 }
+		remove_ideas = GER_mefo_bills_20
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_21 }
+		remove_ideas = GER_mefo_bills_21
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_22 }
+		remove_ideas = GER_mefo_bills_22
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_23 }
+		remove_ideas = GER_mefo_bills_23
+	}
+}
+
+# Like the level up effect except it runs in reverse
+# For use when annexing the gold reserves of Austria, Czechoslovakia and Yugoslavia
+
+GER_mefo_bills_level_down = {
+	if = {
+		limit = { has_idea = GER_mefo_bills_1 }
+		remove_ideas = GER_mefo_bills_1
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_2 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_2
+			add_idea = GER_mefo_bills_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_3 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_3
+			add_idea = GER_mefo_bills_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_4 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_4
+			add_idea = GER_mefo_bills_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_5 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_5
+			add_idea = GER_mefo_bills_4
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_6 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_6
+			add_idea = GER_mefo_bills_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_7 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_7
+			add_idea = GER_mefo_bills_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_8 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_8
+			add_idea = GER_mefo_bills_7
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_9 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_9
+			add_idea = GER_mefo_bills_8
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_10 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_10
+			add_idea = GER_mefo_bills_9
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_11 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_11
+			add_idea = GER_mefo_bills_10
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_12 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_12
+			add_idea = GER_mefo_bills_11
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_13 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_13
+			add_idea = GER_mefo_bills_12
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_14 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_14
+			add_idea = GER_mefo_bills_13
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_15 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_15
+			add_idea = GER_mefo_bills_14
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_16 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_16
+			add_idea = GER_mefo_bills_15
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_17 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_17
+			add_idea = GER_mefo_bills_16
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_18 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_18
+			add_idea = GER_mefo_bills_17
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_19 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_19
+			add_idea = GER_mefo_bills_18
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_20 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_20
+			add_idea = GER_mefo_bills_19
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_21 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_21
+			add_idea = GER_mefo_bills_20
+		}		
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_22 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_22
+			add_idea = GER_mefo_bills_21
+		}
+	}
+	else_if = {
+		limit = { has_idea = GER_mefo_bills_23 }
+		swap_ideas = {
+			remove_idea = GER_mefo_bills_23
+			add_idea = GER_mefo_bills_22
+		}
+	}
+}
+GER_move_preparation_level_up = {
+	if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_0_flag
+		}
+		clr_country_flag = GER_Aufbau_Ost_0_flag
+		set_country_flag = GER_Aufbau_Ost_1_flag
+		custom_effect_tooltip = GER_Give_Idea_at_the_start_of_War
+		effect_tooltip = {
+			add_ideas = GER_Aufbau_Ost_1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_1_flag
+		}
+		clr_country_flag = GER_Aufbau_Ost_1_flag
+		set_country_flag = GER_Aufbau_Ost_2_flag
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_Aufbau_Ost_1
+				add_idea = GER_Aufbau_Ost_2
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_2_flag
+		}
+		clr_country_flag = GER_Aufbau_Ost_2_flag
+		set_country_flag = GER_Aufbau_Ost_3_flag
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_Aufbau_Ost_2
+				add_idea = GER_Aufbau_Ost_3
+			}
+		}
+		hidden_effect = {
+			GER = {
+				country_event = { id = GER_Barbarossa.3 }
+			}
+			SOV = {
+				country_event = { id = GER_Barbarossa.3 }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_3_flag
+		}
+		clr_country_flag = GER_Aufbau_Ost_3_flag
+		set_country_flag = GER_Aufbau_Ost_4_flag
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_Aufbau_Ost_3
+				add_idea = GER_Aufbau_Ost_4
+			}
+		}
+		custom_effect_tooltip = GER_Invite_to_the_Crusade_tt
+		set_country_flag = GER_Invite_Finland_and_Romania_to_the_Crusade
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_4_flag
+		}
+		clr_country_flag = GER_Aufbau_Ost_4_flag
+		set_country_flag = GER_Aufbau_Ost_5_flag
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_Aufbau_Ost_4
+				add_idea = GER_Aufbau_Ost_5
+			}
+		}
+		custom_effect_tooltip = GER_Soviet_Shattered_Airfroce_tt
+		set_country_flag = GER_Shattered_Soviet_Airforce
+		effect_tooltip = {
+			SOV = {
+				add_timed_idea = {
+					idea = GER_Soviet_Shattered_Airfroce
+					days = 400
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_5_flag
+		}
+		clr_country_flag = GER_Aufbau_Ost_5_flag
+		set_country_flag = GER_Aufbau_Ost_6_flag
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_Aufbau_Ost_5
+				add_idea = GER_Aufbau_Ost_6
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_6_flag
+		}
+	}
+}
+GER_give_barbarossa_invasion_spirit = {
+	if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_1_flag
+		}
+		add_ideas = GER_Aufbau_Ost_1
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_2_flag
+		}
+		add_ideas = GER_Aufbau_Ost_2
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_3_flag
+		}
+		add_ideas = GER_Aufbau_Ost_3
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_4_flag
+		}
+		add_ideas = GER_Aufbau_Ost_4
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_5_flag
+		}
+		add_ideas = GER_Aufbau_Ost_5
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_Aufbau_Ost_6_flag
+		}
+		add_ideas = GER_Aufbau_Ost_6
+	}
+}
+GER_remove_barbarossa_invasion_spirit = {
+	if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_1
+		}
+		remove_ideas = GER_Aufbau_Ost_1
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_2
+		}
+		remove_ideas = GER_Aufbau_Ost_2
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_3
+		}
+		remove_ideas = GER_Aufbau_Ost_3
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_4
+		}
+		remove_ideas = GER_Aufbau_Ost_4
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_5
+		}
+		remove_ideas = GER_Aufbau_Ost_5
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_6
+		}
+		remove_ideas = GER_Aufbau_Ost_6
+	}
+}
+GER_lower_barbarossa_invasion_spirit = {
+	if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_1
+		}
+		remove_ideas = GER_Aufbau_Ost_1
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_2
+		}
+		swap_ideas = {
+			add_idea = GER_Aufbau_Ost_1
+			remove_idea = GER_Aufbau_Ost_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_3
+		}
+		swap_ideas = {
+			add_idea = GER_Aufbau_Ost_2
+			remove_idea = GER_Aufbau_Ost_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_4
+		}
+		swap_ideas = {
+			add_idea = GER_Aufbau_Ost_3
+			remove_idea = GER_Aufbau_Ost_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_5
+		}
+		swap_ideas = {
+			add_idea = GER_Aufbau_Ost_4
+			remove_idea = GER_Aufbau_Ost_5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_Aufbau_Ost_6
+		}
+		swap_ideas = {
+			add_idea = GER_Aufbau_Ost_5
+			remove_idea = GER_Aufbau_Ost_6
+		}
+	}
+}
+GER_lower_preparation_spirit_basing_on_casualties = {
+	if = {
+		limit = {
+			casualties > 999999
+			NOT = { has_country_flag = GER_1_million_casualties }
+		}
+		set_country_flag = GER_1_million_casualties
+		GER_lower_barbarossa_invasion_spirit = yes
+	}
+	if = {
+		limit = {
+			casualties > 1999999
+			NOT = { has_country_flag = GER_2_million_casualties }
+		}
+		set_country_flag = GER_2_million_casualties
+		GER_lower_barbarossa_invasion_spirit = yes
+	}
+	if = {
+		limit = {
+			casualties > 2999999
+			NOT = { has_country_flag = GER_3_million_casualties }
+		}
+		set_country_flag = GER_3_million_casualties
+		GER_lower_barbarossa_invasion_spirit = yes
+	}
+	if = {
+		limit = {
+			casualties > 3999999
+			NOT = { has_country_flag = GER_4_million_casualties }
+		}
+		set_country_flag = GER_4_million_casualties
+		GER_lower_barbarossa_invasion_spirit = yes
+	}
+	if = {
+		limit = {
+			casualties > 4999999
+			NOT = { has_country_flag = GER_5_million_casualties }
+		}
+		set_country_flag = GER_5_million_casualties
+		GER_lower_barbarossa_invasion_spirit = yes
+	}
+	if = {
+		limit = {
+			casualties > 5999999
+			NOT = { has_country_flag = GER_6_million_casualties }
+		}
+		set_country_flag = GER_5_million_casualties
+		GER_lower_barbarossa_invasion_spirit = yes
+	}
+}

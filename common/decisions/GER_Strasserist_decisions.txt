@@ -1,0 +1,596 @@
+foreign_politics = {
+	###########################
+	# Support Volkisch Ideology
+	###########################
+	GER_Strasserist_support_volkisch_ideology = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			always = no
+			#has_completed_focus =GER_Embrace_Ultranationalism
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_war_support = 0.1
+			set_country_flag = GER_Strasserist_volkisch_supported
+		}
+	}
+	###########################
+	# Agitate Holstein Germans
+	###########################
+	GER_Strasserist_support_holstein_germans = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_volkisch_supported
+			always = no
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_war_support = 0.05
+			804 = {
+				add_core_of = ROOT
+			}
+			set_country_flag = GER_Strasserist_agitate_holstein_germans
+		}
+	}
+	###########################
+	# Restore Order to Denmark
+	###########################
+	GER_Strasserist_restore_order_to_denmark = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_agitate_holstein_germans
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = DEN
+				type = annex_everything
+			}
+			add_tech_bonus = {
+				#name = landing_stuff
+				uses = 1
+				bonus = 0.5
+				category = tp_tech
+			}
+			set_country_flag = GER_Strasserist_restore_order_to_denmark
+		}
+	}
+	###########################
+	# Instigate Nordism in Denmark
+	###########################
+	GER_Strasserist_instigate_nordism_in_denmark = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 150
+		days_remove = 360
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_restore_order_to_denmark
+			OR = {
+				#has_completed_focus =GER_A_Nations_Struggle
+				#has_completed_focus =GER_A_Workers_Struggle
+			}
+		}
+		available = {
+			has_army_manpower = {
+				size > 249999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		remove_effect = {
+			99 = {
+				add_core_of = ROOT
+			}
+			37 = {
+				add_core_of = ROOT
+			}
+		}
+	}
+	###########################
+	# Support Sudeten Germans
+	###########################
+	GER_Strasserist_support_sudeten_germans = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_restore_order_to_denmark
+			OR = {
+				#has_completed_focus =GER_A_Nations_Struggle
+				#has_completed_focus =GER_A_Workers_Struggle
+			}
+		}
+		available = {
+			has_army_manpower = {
+				size > 249999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#CZE = { country_event = somthing }
+			set_country_flag = GER_Strasserist_support_sudeten_germans
+		}
+	}
+	###########################
+	# Advocate Sudeten Independence
+	###########################
+	GER_Strasserist_advocate_sudeten_independence = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_support_sudeten_germans
+		}
+		available = {
+			has_army_manpower = {
+				size > 299999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#CZE = { country_event = somthing }
+			set_country_flag = GER_Strasserist_advocate_sudeten_independence
+		}
+	}
+	###########################
+	# Cooperate with Slovaks
+	###########################
+	GER_Strasserist_cooperate_with_slovaks = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_advocate_sudeten_independence
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#slovakia declares independence?????
+			set_country_flag = GER_Strasserist_cooperate_with_slovaks
+		}
+	}
+	###########################
+	# Abolish Czechoslovakia!
+	###########################
+	GER_Strasserist_abolish_czechoslovakia = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_advocate_sudeten_independence
+		}
+		available = {
+			has_army_manpower = {
+				size > 349999
+			}
+			AND = {
+				has_country_flag = GER_Strasserist_advocate_sudeten_independence
+				has_country_flag = GER_Strasserist_cooperate_with_slovaks
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = CZE
+				type = annex_everything
+			}
+			set_country_flag = GER_Strasserist_abolish_czechoslovakia
+		}
+	}
+	###########################
+	# Threaten Artificial States
+	###########################
+	GER_Strasserist_threaten_artificial_states = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_abolish_czechoslovakia
+		}
+		available = {
+			has_army_manpower = {
+				size > 449999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#POL = { country_event = stuff }
+			#BEL = { country_event = stuff }
+			#YUG = { country_event = stuff }
+			set_country_flag = GER_Strasserist_threaten_artificial_states
+		}
+	}
+	###########################
+	# Denounce Silesian Referendum
+	###########################
+	GER_Strasserist_denounce_silesian_referendum = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_threaten_artificial_states
+		}
+		available = {
+			has_army_manpower = {
+				size > 499999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			766 = {
+				add_core_of = ROOT
+			}
+			#POL = { country_event = stuff }
+			set_country_flag = GER_Strasserist_denounce_silesian_referendum
+		}
+	}
+	###########################
+	# Silesia or War
+	###########################
+	GER_Strasserist_silesia_or_war = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_denounce_silesian_referendum
+		}
+		available = {
+			has_army_manpower = {
+				size > 499999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#POL = { country_event = stuff }
+			set_country_flag = GER_Strasserist_silesia_or_war
+		}
+	}
+	###########################
+	# Anti-Soviet Rhetoric
+	###########################
+	GER_Strasserist_anti_soviet_rhetoric = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_abolish_czechoslovakia
+			NOT = {
+				has_country_flag = GER_Strasserist_a_union_of_workers
+			}
+		}
+		available = {
+			has_army_manpower = {
+				size > 499999
+			}
+			NOT = {
+				has_country_flag = GER_Strasserist_a_union_of_workers
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_ideas = GER_Strasserist_anti_soviet_policy
+			set_country_flag = GER_Strasserist_anti_soviet_rhetoric
+		}
+	}
+	###########################
+	# Incite Ukrainian Nationalists
+	###########################
+	GER_Strasserist_incite_ukrainian_nationalists = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_anti_soviet_rhetoric
+		}
+		available = {
+			has_army_manpower = {
+				size > 499999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#Ukrainian Dissidents join you in a war against the soviets?
+			#SOV = { country_event = stuff }
+			set_country_flag = GER_Strasserist_incite_ukrainian_nationalists
+		}
+	}
+	###########################
+	# Fall Dorpat
+	###########################
+	GER_Strasserist_fall_dorpat = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_incite_ukrainian_nationalists
+		}
+		available = {
+			has_army_manpower = {
+				size > 749999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = land_doctrine
+			}
+			set_country_flag = GER_Strasserist_fall_dorpat
+		}
+	}
+	###########################
+	# Promote Leftist Unity
+	###########################
+	GER_Strasserist_promote_leftist_unity = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			#has_completed_focus =GER_Workers_Solidarity
+			always = no
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_opinion_modifier = {
+				target = SOV
+				modifier = GER_Strasserist_leftist_unity
+			}
+			reverse_add_opinion_modifier = {
+				target = SOV
+				modifier = GER_Strasserist_leftist_unity
+			}
+			set_country_flag = GER_Strasserist_promote_leftist_unity
+		}
+	}
+	###########################
+	# Meet with Molotov
+	###########################
+	GER_Strasserist_meet_with_molotov = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_promote_leftist_unity
+		}
+		available = {
+			has_army_manpower = {
+				size > 249999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#SOV = { country_event = stuff }
+			set_country_flag = GER_Strasserist_meet_with_molotov
+		}
+	}
+	###########################
+	# Isolate Anti-Communists
+	###########################
+	GER_Strasserist_isolate_anti_communists = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_promote_leftist_unity
+		}
+		available = {
+			has_army_manpower = {
+				size > 249999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_war_support = -0.05
+			set_country_flag = GER_Strasserist_isolate_anti_communists
+		}
+	}
+	###########################
+	# Formalize Non-Aggression
+	###########################
+	GER_Strasserist_formalize_non_aggression = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_meet_with_molotov
+		}
+		available = {
+			has_army_manpower = {
+				size > 349999
+			}
+			OR = {
+				has_country_flag = GER_Strasserist_meet_with_molotov
+				has_country_flag = GER_Strasserist_isolate_anti_communists
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#SOV = { country_event = stuff }
+			set_country_flag = GER_Strasserist_formalize_non_aggression
+		}
+	}
+	###########################
+	# Defensive Agreements
+	###########################
+	GER_Strasserist_defensive_agreements = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 75
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_formalize_non_aggression
+		}
+		available = {
+			has_army_manpower = {
+				size > 449999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#SOV = { country_event = stuff }
+			set_country_flag = GER_Strasserist_defensive_agreements
+		}
+	}
+	###########################
+	# Military Cooperation
+	###########################
+	GER_Strasserist_military_cooperation = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_formalize_non_aggression
+		}
+		available = {
+			has_army_manpower = {
+				size > 449999
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_tech_bonus = {
+				uses = 1
+				ahead_reduction = 1
+				category = armor
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = land_doctrine
+			}
+			#SOV = { country_event = stuff }
+			set_country_flag = GER_Strasserist_military_cooperation
+		}
+	}
+	###########################
+	# A Union of Workers
+	###########################
+	GER_Strasserist_a_union_of_workers = {
+		icon = GER_Anschluss
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = GER
+			is_puppet = no
+			has_country_flag = GER_Strasserist_military_cooperation
+			has_country_flag = GER_Strasserist_defensive_agreements
+			NOT = {
+				has_country_flag = GER_Strasserist_anti_soviet_rhetoric
+			}
+		}
+		available = {
+			has_army_manpower = {
+				size > 699999
+			}
+			NOT = {
+				has_country_flag = GER_Strasserist_anti_soviet_rhetoric
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			#SOV = { country_event = stuff }
+			set_country_flag = GER_Strasserist_a_union_of_workers
+		}
+	}
+}

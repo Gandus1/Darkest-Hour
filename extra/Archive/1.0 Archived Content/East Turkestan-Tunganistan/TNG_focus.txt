@@ -1,0 +1,783 @@
+focus_tree = {
+	id = TNG
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TNG
+		}
+	}
+	default = no
+	focus = {
+		id = TNG_The_Frontier
+		icon = GFX_TNG_The_Frontier
+		cost = 10.00
+		x = 14
+		y = 0
+		completion_reward = { 
+			add_political_power = 200 
+		}
+	}
+	focus = {
+		id = TNG_Kidnapping_and_Ransoms
+		icon = GFX_TNG_Kidnapping_and_Ransoms
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_The_Frontier
+		}
+		x = 12
+		y = 1
+		completion_reward = { 
+			add_political_power = 140
+			add_stability = -0.04
+		}
+	}
+	focus = {
+		id = TNG_Crush_the_Uyghur_Revolt
+		icon = GFX_TNG_Supress_Uyghur_Population
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Kidnapping_and_Ransoms
+		}
+		x = 13
+		y = 2
+		available = {
+			ETS = {
+				exists = yes
+			}		
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = ETS
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+		id = TNG_Search_for_Recruits
+		icon = GFX_focus_chi_army_reform
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_The_Frontier
+		}
+		x = 14
+		y = 1
+		completion_reward = {
+			add_manpower = 300
+		}
+	}
+	focus = {
+		id = TNG_Backing_from_the_Ma_Cliques
+		icon = GFX_TNG_Align_with_Ma_Cliques
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_The_Frontier
+		}
+		x = 16
+		y = 1
+		completion_reward = {
+			XSM = { country_event = { days = 1 id = TNG_Politics.2 } }
+		}
+	}
+	focus = {
+		id = TNG_Destroy_the_Soviet_Puppet
+		icon = GFX_focus_ger_strike_at_the_source
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Backing_from_the_Ma_Cliques
+		}
+		x = 15
+		y = 2
+		
+	}
+	focus = {
+		id = TNG_Xinjiang_is_Ours
+		icon = GFX_TNG_Jihad_Against_Sinkiang
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Crush_the_Uyghur_Revolt
+		}
+		prerequisite = {
+			focus = TNG_Destroy_the_Soviet_Puppet
+		}
+		x = 14
+		y = 3
+		available = {
+			SIK = {
+				exists = no
+			}
+		}
+		completion_reward = {
+		    every_state = {
+				limit = {
+					is_core_of = SIK
+				}
+				TNG = {
+					add_state_core = PREV
+				}
+			}
+			TNG = { 
+				set_capital = 864
+			}
+		}
+	}
+	focus = {
+		id = TNG_Reward_the_Defectors
+		icon = GFX_GENERIC_Money
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Xinjiang_is_Ours
+		}
+		x = 13
+		y = 4
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.1
+		}
+	}
+	focus = {
+		id = TNG_Power_to_Our_Commanders
+		icon = GFX_focus_generic_military_mission
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Xinjiang_is_Ours
+		}
+		x = 15
+		y = 4
+		completion_reward = {
+			add_command_power = 80
+			add_political_power = -100
+		}
+	}
+	focus = {
+		id = TNG_Banquet_of_Death
+		icon = GFX_goal_generic_CAS
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Reward_the_Defectors
+		}
+		prerequisite = {
+			focus = TNG_Power_to_Our_Commanders
+		}
+		x = 14
+		y = 5
+
+	}
+	focus = {
+		id = TNG_Where_is_Ma_Zhongying
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Banquet_of_Death
+		}
+		mutually_exclusive = {
+			focus = TNG_Rule_of_the_Young_General
+		}
+		x = 21
+		y = 6
+
+	}
+	focus = {
+		id = TNG_Rule_of_the_Young_General
+		icon = GFX_TNG_The_Young_General
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Banquet_of_Death
+		}
+		mutually_exclusive = {
+			focus = TNG_Where_is_Ma_Zhongying
+		}
+		x = 7
+		y = 6
+
+	}
+	focus = {
+		id = TNG_Centralize_Province_Affairs
+		icon = GFX_GENERIC_Centralization
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Rule_of_the_Young_General
+		}
+		x = 5
+		y = 7
+
+	}
+	focus = {
+		id = TNG_Shuffle_and_Topple_Officials
+		icon = GFX_goal_continuous_suppression
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Centralize_Province_Affairs
+		}
+		x = 4
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Dominate_Trade
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Rule_of_the_Young_General
+		}
+		x = 9
+		y = 7
+
+	}
+	focus = {
+		id = TNG_A_Tax_For_Everything
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Dominate_Trade
+		}
+		x = 10
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Ma_Hushans_Claws
+		icon = GFX_TNG_Ma_Hushan
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Where_is_Ma_Zhongying
+		}
+		mutually_exclusive = {
+			focus = TNG_Ma_Zhancangs_Gun
+		}
+		x = 17
+		y = 7
+
+	}
+	focus = {
+		id = TNG_Terror_in_Dihua
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Ma_Hushans_Claws
+		}
+		mutually_exclusive = {
+			focus = TNG_New_Dihua_Plan
+		}
+		x = 15
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Commercial_Profitering
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Terror_in_Dihua
+		}
+		x = 16
+		y = 9
+
+	}
+	focus = {
+		id = TNG_New_Dihua_Plan
+		icon = GFX_focus_renounce_the_treaty_of_triannon
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Ma_Hushans_Claws
+		}
+		mutually_exclusive = {
+			focus = TNG_Terror_in_Dihua
+		}
+		x = 19
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Metal_Smelting
+		icon = GFX_focus_generic_steel
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_New_Dihua_Plan
+		}
+		x = 18
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Invest_in_the_Silk_Industry
+		icon = GFX_GENERIC_Silk_Industry
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_New_Dihua_Plan
+		}
+		x = 20
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Ma_Zhancangs_Gun
+		icon = GFX_TNG_Ma_Zhancang
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Where_is_Ma_Zhongying
+		}
+		mutually_exclusive = {
+			focus = TNG_Ma_Hushans_Claws
+		}
+		x = 25
+		y = 7
+
+	}
+	focus = {
+		id = TNG_Exploit_the_Economy
+		icon = GFX_focus_AST_squander_bug
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Ma_Zhancangs_Gun
+		}
+		mutually_exclusive = {
+			focus = TNG_Opportunity_and_Banditry
+		}
+		x = 23
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Excavate_Raw_Materials
+		icon = GFX_goal_generic_construction2
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Exploit_the_Economy
+		}
+		x = 22
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Double_The_Taxes
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Exploit_the_Economy
+		}
+		x = 24
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Economic_Buildup
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Double_The_Taxes
+		}
+		x = 24
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Opportunity_and_Banditry
+		icon = GFX_focus_prc_infiltration
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Ma_Zhancangs_Gun
+		}
+		mutually_exclusive = {
+			focus = TNG_Exploit_the_Economy
+		}
+		x = 28
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Connect_the_Gansu_Corridor
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Opportunity_and_Banditry
+		}
+		x = 26
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Links_with_the_Soviets
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Opportunity_and_Banditry
+		}
+		x = 28
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Accumulate_Wealth
+		icon = GFX_focus_mex_privatisation
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Connect_the_Gansu_Corridor
+		}
+		prerequisite = {
+			focus = TNG_Links_with_the_Soviets
+		}
+		x = 27
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Military_Loyalists
+		icon = GFX_focus_generic_military_mission
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Opportunity_and_Banditry
+		}
+		x = 30
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Economic_Monopoly
+		icon = GFX_focus_generic_self_management
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Links_with_the_Soviets
+		}
+		prerequisite = {
+			focus = TNG_Military_Loyalists
+		}
+		x = 29
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Make_Everything_Work
+		icon = GFX_goal_generic_production
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Rule_of_the_Young_General
+		}
+		x = 7
+		y = 7
+
+	}
+	focus = {
+		id = TNG_The_Book_of_Lord_Shang
+		icon = GFX_TNG_Book_of_Lord_Sheng
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Make_Everything_Work
+		}
+		mutually_exclusive = {
+			focus = TNG_Damaged_Beyond_Recovery
+		}
+		x = 6
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Damaged_Beyond_Recovery
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Make_Everything_Work
+		}
+		mutually_exclusive = {
+			focus = TNG_The_Book_of_Lord_Shang
+		}
+		x = 8
+		y = 8
+
+	}
+	focus = {
+		id = TNG_Massacre_the_South
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Damaged_Beyond_Recovery
+		}
+		x = 8
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Break_the_KMT
+		icon = GFX_TNG_Break_off_from_the_KMT
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Damaged_Beyond_Recovery
+		}
+		x = 10
+		y = 9
+
+	}
+	focus = {
+		id = TNG_New_National_Symbols
+		icon = GFX_TNG_Tungan_Identity
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Break_the_KMT
+		}
+		x = 10
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Public_Trial_Showcases
+		icon = GFX_focus_CZE_german_puppet
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Break_the_KMT
+		}
+		x = 8
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Erect_Statues
+		icon = GFX_TNG_Erect_Statues
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Massacre_the_South
+		}
+		prerequisite = {
+			focus = TNG_Break_the_KMT
+		}
+		x = 12
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Rotting_in_Sinkiang
+		icon = GFX_focus_chi_proclaim_rival_government
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Erect_Statues
+		}
+		prerequisite = {
+			focus = TNG_New_National_Symbols
+		}
+		prerequisite = {
+			focus = TNG_Public_Trial_Showcases
+		}
+		mutually_exclusive = {
+			focus = TNG_Claim_the_Mandate
+		}
+		x = 9
+		y = 11
+
+	}
+	focus = {
+		id = TNG_Claim_the_Mandate
+		icon = GFX_focus_chi_one_china_policy
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Erect_Statues
+		}
+		prerequisite = {
+			focus = TNG_New_National_Symbols
+		}
+		prerequisite = {
+			focus = TNG_Public_Trial_Showcases
+		}
+		mutually_exclusive = {
+			focus = TNG_Rotting_in_Sinkiang
+		}
+		x = 11
+		y = 11
+
+	}
+	focus = {
+		id = TNG_Rulers_Absolutism
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_The_Book_of_Lord_Shang
+		}
+		x = 6
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Technique_in_Ruling
+		icon = GFX_focus_generic_self_management
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Rulers_Absolutism
+		}
+		prerequisite = {
+			focus = TNG_Redraft_Laws_and_Regulations
+		}
+		x = 6
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Redraft_Laws_and_Regulations
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_The_Book_of_Lord_Shang
+		}
+		x = 4
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Personal_Courting
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Redraft_Laws_and_Regulations
+		}
+		x = 4
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Submission_to_Authority
+		icon = GFX_focus_CZE_german_puppet
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Redraft_Laws_and_Regulations
+		}
+		x = 2
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Legalism_in_Practice
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Submission_to_Authority
+		}
+		prerequisite = {
+			focus = TNG_Personal_Courting
+		}
+		prerequisite = {
+			focus = TNG_Technique_in_Ruling
+		}
+		x = 4
+		y = 11
+
+	}
+	focus = {
+		id = TNG_Rule_by_Fear
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Terror_in_Dihua
+		}
+		x = 14
+		y = 9
+
+	}
+	focus = {
+		id = TNG_Spies_Everywhere
+		icon = GFX_focus_hol_war_on_pacifism
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Rule_by_Fear
+		}
+		x = 14
+		y = 10
+
+	}
+	focus = {
+		id = TNG_The_Dream_of_a_Khanate
+		icon = GFX_TNG_Proclaim_the_Tungan_Empire
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Spies_Everywhere
+		}
+		prerequisite = {
+			focus = TNG_Slave_Driven_Economy
+		}
+		x = 15
+		y = 11
+
+	}
+	focus = {
+		id = TNG_Slave_Driven_Economy
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Commercial_Profitering
+		}
+		x = 16
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Expand_Local_Arsenals
+		icon = GFX_GENERIC_Military_Production
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Metal_Smelting
+		}
+		x = 18
+		y = 10
+
+	}
+	focus = {
+		id = TNG_Laying_the_Roads
+		icon = GFX_GENERIC_Road_Construction
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Invest_in_the_Silk_Industry
+		}
+		x = 20
+		y = 10
+
+	}
+	focus = {
+		id = TNG_The_Model_Province
+		icon = GFX_focus_generic_china1
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Expand_Local_Arsenals
+		}
+		prerequisite = {
+			focus = TNG_Laying_the_Roads
+		}
+		x = 19
+		y = 11
+
+	}
+	focus = {
+		id = TNG_Massive_Arsenal_Production
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Excavate_Raw_Materials
+		}
+		x = 22
+		y = 10
+
+	}
+	focus = {
+		id = TNG_A_State_of_Despair
+		icon = GFX_focus_CZE_german_puppet
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Massive_Arsenal_Production
+		}
+		prerequisite = {
+			focus = TNG_Economic_Buildup
+		}
+		x = 23
+		y = 11
+
+	}
+	focus = {
+		id = TNG_The_Sellout
+		icon = GFX_GENERIC_Money
+		cost = 10.00
+		prerequisite = {
+			focus = TNG_Accumulate_Wealth
+		}
+		prerequisite = {
+			focus = TNG_Economic_Monopoly
+		}
+		x = 28
+		y = 11
+
+	}
+}

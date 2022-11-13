@@ -1,0 +1,2590 @@
+#########################################################################
+#  Chinese Diplomactic Decisions
+#########################################################################
+CHI_Factions_category = {
+	CHI_Bribe_Yu_Hanmou = {
+		icon = generic_independence
+		fire_only_once = yes
+		cost = 100
+		visible = {
+			original_tag = CHI
+			has_country_flag = liangguang_incident
+		}
+		available = {
+			has_country_flag = victory_in_hunan
+		}
+		complete_effect = {
+			country_event = {
+				id = CHI_Liangguang.6
+				hours = 12
+			}
+		}
+	}
+	CHI_Generalissimo_Law = {
+		icon = generic_independence
+		fire_only_once = yes
+		cost = 260
+		#days_re_enable = 0
+		#days_remove = 0
+		visible = {
+			original_tag = CHI
+			date > 1935.1.1
+		}
+		available = {
+			date > 1935.1.1
+		}
+		complete_effect = {
+			add_stability = 0.1
+		}
+	}
+	CHI_Purge_Generals = {
+		icon = generic_independence
+		fire_only_once = no
+		days_remove = 30
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Remove_Opposition
+		}
+		available = {
+			has_completed_focus = CHI_Remove_Opposition
+		}
+		complete_effect = {
+			add_stability = -0.1
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = faction_loyalty_kuomintang
+				value = 10
+			}
+			add_timed_idea = {
+				idea = CHI_Purge_1
+				days = 100
+			}
+		}
+	}
+	CHI_Reconcile_Zhang_Fakui = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Reconcile_Opposition
+		}
+		available = {
+			has_completed_focus = CHI_Reconcile_Opposition
+		}
+		complete_effect = {
+			create_corps_commander = {
+				name = "Zhang Fakui"
+				skill = 4
+				attack_skill = 4
+				defense_skill = 3
+				planning_skill = 2
+				logistics_skill = 3
+			}
+			custom_effect_tooltip = CHI_Reconcile_Opposition_Risk_Low
+		}
+	}
+	CHI_Reconcile_Tang_Shengzi = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Reconcile_Opposition
+		}
+		available = {
+			has_completed_focus = CHI_Reconcile_Opposition
+		}
+		complete_effect = {
+			create_corps_commander = {
+				name = "Tang Shengzi"
+				skill = 4
+				attack_skill = 4
+				defense_skill = 3
+				planning_skill = 2
+				logistics_skill = 3
+			}
+		}
+	}
+	CHI_Reconcile_Li_Jishen = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Reconcile_Opposition
+		}
+		available = {
+			has_completed_focus = CHI_Reconcile_Opposition
+		}
+		complete_effect = {
+			create_corps_commander = {
+				name = "Li Jishen"
+				skill = 4
+				attack_skill = 4
+				defense_skill = 3
+				planning_skill = 2
+				logistics_skill = 3
+			}
+			custom_effect_tooltip = CHI_Reconcile_Opposition_Risk_High
+		}
+	}
+}
+#########################################################################
+#  Tutelage
+#########################################################################
+CHI_Peoples_Tutelage_category = {
+	###########################
+	# Corruption Missions
+	###########################
+	CHI_Corruption_Timer_Mission = {
+		icon = generic_independence
+		priority = 10
+		allowed = {
+			original_tag = CHI
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		activation = {
+			NOT = {
+				has_country_flag = CHI_max_corruption
+			}
+		}
+		is_good = no
+		days_mission_timeout = 40
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						CHI_Corruption_Political_Power > CHI_Max_Political_Corruption
+					}
+					check_variable = {
+						CHI_Corruption_Build_Speed > CHI_Max_Build_Corruption
+					}
+					check_variable = {
+						CHI_Corruption_Consumer_Goods > CHI_Max_Consumer_Corruption
+					}
+					check_variable = {
+						CHI_Corruption_Stability > CHI_Max_Stability_Corruption
+					}
+					check_variable = {
+						CHI_Corruption_War_Support > CHI_Max_War_Corruption
+					}
+				}
+				set_country_flag = CHI_max_corruption
+			}
+			custom_effect_tooltip = CHI_Corruption_Mission_tt
+			if = {
+				limit = {
+					check_variable = {
+						CHI_Corruption_Political_Power > -0.5
+					}
+				}
+				add_to_variable = {
+					CHI_Corruption_Political_Power = -0.05
+				}
+				custom_effect_tooltip = CHI_Corruption_Mission_Political_tt
+			}
+			if = {
+				limit = {
+					check_variable = {
+						CHI_Corruption_Build_Speed > -0.1
+					}
+				}
+				add_to_variable = {
+					CHI_Corruption_Build_Speed = -0.01
+				}
+				custom_effect_tooltip = CHI_Corruption_Mission_Build_tt
+			}
+			if = {
+				limit = {
+					check_variable = {
+						CHI_Corruption_Consumer_Goods < 0.2
+					}
+				}
+				add_to_variable = {
+					CHI_Corruption_Consumer_Goods = 0.02
+				}
+				custom_effect_tooltip = CHI_Corruption_Mission_Consumer_tt
+			}
+			if = {
+				limit = {
+					check_variable = {
+						CHI_Corruption_Stability > -0.3
+					}
+				}
+				add_to_variable = {
+					CHI_Corruption_Stability = -0.03
+				}
+				custom_effect_tooltip = CHI_Corruption_Mission_Stability_tt
+			}
+			if = {
+				limit = {
+					check_variable = {
+						CHI_Corruption_War_Support > -0.3
+					}
+				}
+				add_to_variable = {
+					CHI_Corruption_War_Support = -0.03
+				}
+				custom_effect_tooltip = CHI_Corruption_Mission_War_tt
+			}
+		}
+	}
+	# Provincial Authority
+	CHI_Provincial_Representatives = {
+		icon = generic_nationalism
+		fire_only_once = yes
+		days_remove = 20
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Provincial_Authority
+		}
+		available = {
+			has_completed_focus = CHI_Provincial_Authority
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = CHI_Corruption_Timer_Mission
+				days = 30
+			}
+			custom_effect_tooltip = CHI_Corruption_Mission_Lower_Decision
+			custom_effect_tooltip = CHI_Corruption_Mission_Political_Lower
+			custom_effect_tooltip = CHI_Corruption_Mission_Stability_Lower
+			custom_effect_tooltip = CHI_Corruption_Mission_War_Lower
+			clr_country_flag = CHI_max_corruption
+			add_to_variable = {
+				CHI_Corruption_Political_Power = 0.05
+			}
+			add_to_variable = {
+				CHI_Max_Political_Corruption = 0.05
+			}
+			add_to_variable = {
+				CHI_Corruption_Stability = 0.03
+			}
+			add_to_variable = {
+				CHI_Max_Stability_Corruption = 0.03
+			}
+			add_to_variable = {
+				CHI_Corruption_War_Support = 0.03
+			}
+			add_to_variable = {
+				CHI_Max_War_Corruption = 0.03
+			}
+			if = {
+				limit = {
+					has_country_flag = provincial_authority_1
+				}
+				clr_country_flag = provincial_authority_1
+				set_country_flag = provincial_authority_2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = provincial_authority_2
+				}
+				clr_country_flag = provincial_authority_2
+				set_country_flag = provincial_authority_3
+			}
+			else = {
+				set_country_flag = provincial_authority_1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Provincial_Taxes = {
+		icon = eng_trade_unions_demand
+		fire_only_once = yes
+		days_remove = 20
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Provincial_Authority
+		}
+		available = {
+			has_completed_focus = CHI_Provincial_Authority
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = CHI_Corruption_Timer_Mission
+				days = 30
+			}
+			custom_effect_tooltip = CHI_Corruption_Mission_Lower_Decision
+			custom_effect_tooltip = CHI_Corruption_Mission_Political_Lower
+			custom_effect_tooltip = CHI_Corruption_Mission_Build_Lower
+			custom_effect_tooltip = CHI_Corruption_Mission_Consumer_Lower
+			clr_country_flag = CHI_max_corruption
+			add_to_variable = {
+				CHI_Corruption_Political_Power = 0.05
+			}
+			add_to_variable = {
+				CHI_Corruption_Build_Speed = 0.01
+			}
+			add_to_variable = {
+				CHI_Corruption_Consumer_Goods = -0.02
+			}
+			if = {
+				limit = {
+					has_country_flag = provincial_authority_1
+				}
+				clr_country_flag = provincial_authority_1
+				set_country_flag = provincial_authority_2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = provincial_authority_2
+				}
+				clr_country_flag = provincial_authority_2
+				set_country_flag = provincial_authority_3
+			}
+			else = {
+				set_country_flag = provincial_authority_1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Provincial_Station_Troops = {
+		icon = eng_blackshirt_march
+		fire_only_once = yes
+		days_remove = 20
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Provincial_Authority
+		}
+		available = {
+			has_completed_focus = CHI_Provincial_Authority
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = CHI_Corruption_Timer_Mission
+				days = 30
+			}
+			custom_effect_tooltip = CHI_Corruption_Mission_Lower_Decision
+			custom_effect_tooltip = CHI_Corruption_Mission_Stability_Lower
+			custom_effect_tooltip = CHI_Corruption_Mission_War_Lower
+			clr_country_flag = CHI_max_corruption
+			add_to_variable = {
+				CHI_Corruption_Stability = 0.03
+			}
+			add_to_variable = {
+				CHI_Corruption_War_Support = 0.03
+			}
+			if = {
+				limit = {
+					has_country_flag = provincial_authority_1
+				}
+				clr_country_flag = provincial_authority_1
+				set_country_flag = provincial_authority_2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = provincial_authority_2
+				}
+				clr_country_flag = provincial_authority_2
+				set_country_flag = provincial_authority_3
+			}
+			else = {
+				set_country_flag = provincial_authority_1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	# Administrators
+	CHI_Administrators_Law = {
+		icon = generic_political_discourse
+		fire_only_once = yes
+		days_remove = 120
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Skilled_Administrators
+		}
+		available = {
+			has_completed_focus = CHI_Skilled_Administrators
+		}
+		modifier = {
+			political_power_gain = -0.3
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = CHI_Government_Purge_1
+				}
+				swap_ideas = {
+					remove_idea = CHI_Government_Purge_1
+					add_idea = CHI_Government_Purge_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_Government_Purge_2
+				}
+				swap_ideas = {
+					remove_idea = CHI_Government_Purge_2
+					add_idea = CHI_Government_Purge_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_Government_Purge_3
+				}
+				remove_ideas = CHI_Government_Purge_3
+			}
+			if = {
+				limit = {
+					has_country_flag = administrators_1
+				}
+				clr_country_flag = administrators_1
+				set_country_flag = administrators_2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = administrators_2
+				}
+				clr_country_flag = administrators_2
+				set_country_flag = administrators_3
+			}
+			else = {
+				set_country_flag = administrators_1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Administrators_Political = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		days_remove = 120
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Skilled_Administrators
+		}
+		available = {
+			has_completed_focus = CHI_Skilled_Administrators
+		}
+		modifier = {
+			political_power_gain = -0.3
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = CHI_Government_Purge_1
+				}
+				swap_ideas = {
+					remove_idea = CHI_Government_Purge_1
+					add_idea = CHI_Government_Purge_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_Government_Purge_2
+				}
+				swap_ideas = {
+					remove_idea = CHI_Government_Purge_2
+					add_idea = CHI_Government_Purge_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_Government_Purge_3
+				}
+				remove_ideas = CHI_Government_Purge_3
+			}
+			if = {
+				limit = {
+					has_country_flag = administrators_1
+				}
+				clr_country_flag = administrators_1
+				set_country_flag = administrators_2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = administrators_2
+				}
+				clr_country_flag = administrators_2
+				set_country_flag = administrators_3
+			}
+			else = {
+				set_country_flag = administrators_1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Administrators_Training = {
+		icon = hol_draw_up_staff_plans
+		fire_only_once = yes
+		days_remove = 120
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Skilled_Administrators
+		}
+		available = {
+			has_completed_focus = CHI_Skilled_Administrators
+		}
+		modifier = {
+			political_power_gain = -0.3
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = CHI_Government_Purge_1
+				}
+				swap_ideas = {
+					remove_idea = CHI_Government_Purge_1
+					add_idea = CHI_Government_Purge_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_Government_Purge_2
+				}
+				swap_ideas = {
+					remove_idea = CHI_Government_Purge_2
+					add_idea = CHI_Government_Purge_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_Government_Purge_3
+				}
+				remove_ideas = CHI_Government_Purge_3
+			}
+			if = {
+				limit = {
+					has_country_flag = administrators_1
+				}
+				clr_country_flag = administrators_1
+				set_country_flag = administrators_2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = administrators_2
+				}
+				clr_country_flag = administrators_2
+				set_country_flag = administrators_3
+			}
+			else = {
+				set_country_flag = administrators_1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	###########################
+	# Political Mobilization
+	###########################
+	CHI_Mobilize_Trade_Unions = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Political_Mobilization
+		}
+		available = {
+			has_completed_focus = CHI_Political_Mobilization
+		}
+		modifier = {
+			industrial_capacity_factory = 0.05
+			production_factory_efficiency_gain_factor = 0.03
+			line_change_production_efficiency_factor = 0.03
+		}
+		complete_effect = {
+			add_manpower = -20000
+		}
+		remove_effect = {
+			add_war_support = 0.01
+			add_stability = -0.01
+			set_country_flag = chi_trade_unions_mobilized
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Mobilize_Student_Associations = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Political_Mobilization
+		}
+		available = {
+			has_completed_focus = CHI_Political_Mobilization
+		}
+		modifier = {
+			political_power_gain = 0.3
+			research_speed_factor = 0.05
+		}
+		remove_effect = {
+			add_manpower = 50000
+			add_war_support = 0.01
+			add_stability = -0.01
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Mobilize_Newspaper_Companies = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Political_Mobilization
+		}
+		available = {
+			has_completed_focus = CHI_Political_Mobilization
+		}
+		modifier = {
+			political_power_gain = 0.3
+		}
+		remove_effect = {
+			add_manpower = 50000
+			add_war_support = 0.05
+			add_stability = -0.01
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	###########################
+	# Absorb Organizations
+	###########################
+	CHI_Absorb_Trade_Unions = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Absorb_Civilian_Orgs
+		}
+		available = {
+			has_completed_focus = CHI_Absorb_Civilian_Orgs
+		}
+		remove_effect = {
+			add_war_support = 0.01
+			add_stability = -0.01
+		}
+		modifier = {
+			industrial_capacity_factory = 0.03
+			line_change_production_efficiency_factor = 0.03
+			production_factory_efficiency_gain_factor = 0.03
+		}
+		complete_effect = {
+			add_manpower = -50000
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Absorb_Student_Associations = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Absorb_Civilian_Orgs
+		}
+		available = {
+			has_completed_focus = CHI_Absorb_Civilian_Orgs
+		}
+		remove_effect = {
+			add_war_support = 0.01
+			add_stability = -0.01
+			add_manpower = 20000
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Absorb_Newspaper_Companies = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Absorb_Civilian_Orgs
+		}
+		available = {
+			has_completed_focus = CHI_Absorb_Civilian_Orgs
+		}
+		remove_effect = {
+			add_war_support = 0.03
+			add_stability = -0.01
+			add_manpower = 50000
+		}
+		modifier = {
+			political_power_gain = 0.03
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	###########################
+	# Centralization Decisions
+	###########################
+	CHI_Centralise_Taxation_Offices = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Centralization
+		}
+		available = {
+			has_completed_focus = CHI_Centralization
+			NOT = {
+				has_country_flag = CHI_ongoing_centralization_effort
+			}
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+			set_country_flag = CHI_ongoing_centralization_effort
+		}
+		remove_effect = {
+			clr_country_flag = CHI_ongoing_centralization_effort
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Centralise_Customs_Offices = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Centralization
+		}
+		available = {
+			has_completed_focus = CHI_Centralization
+			NOT = {
+				has_country_flag = CHI_ongoing_centralization_effort
+			}
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+			set_country_flag = CHI_ongoing_centralization_effort
+		}
+		remove_effect = {
+			clr_country_flag = CHI_ongoing_centralization_effort
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Centralise_Banking_Offices = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Centralization
+		}
+		available = {
+			has_completed_focus = CHI_Centralization
+			NOT = {
+				has_country_flag = CHI_ongoing_centralization_effort
+			}
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+			set_country_flag = CHI_ongoing_centralization_effort
+		}
+		remove_effect = {
+			clr_country_flag = CHI_ongoing_centralization_effort
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	CHI_Centralise_Transportation_Offices = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Centralization
+		}
+		available = {
+			has_completed_focus = CHI_Centralization
+			NOT = {
+				has_country_flag = CHI_ongoing_centralization_effort
+			}
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+			set_country_flag = CHI_ongoing_centralization_effort
+		}
+		remove_effect = {
+			clr_country_flag = CHI_ongoing_centralization_effort
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+#########################################################################
+#  Military Reform
+#########################################################################
+CHI_Army_Reform_Actions = {
+	###########################
+	# Foriegn Assistance
+	###########################
+	CHI_American_Assistance = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		days_remove = 30
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Foreign_Assistance
+		}
+		available = {
+			has_completed_focus = CHI_Foreign_Assistance
+		}
+		remove_effect = {
+			add_political_power = 10
+		}
+	}
+	CHI_German_Assistance = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		days_remove = 30
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Foreign_Assistance
+		}
+		available = {
+			has_completed_focus = CHI_Foreign_Assistance
+		}
+		remove_effect = {
+			add_political_power = 10
+		}
+	}
+	CHI_Soviet_Assistance = {
+		icon = decision_ger_military_buildup
+		fire_only_once = yes
+		days_remove = 30
+		cost = 150
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Foreign_Assistance
+		}
+		available = {
+			has_completed_focus = CHI_Foreign_Assistance
+		}
+		remove_effect = {
+			add_political_power = 10
+		}
+	}
+}
+#########################################################################
+#  Modernisation 
+#########################################################################
+CHI_Economic_Reform_Actions = {
+	CHI_Show_Economic_Actions = {
+		icon = ger_mefo_bills
+		priority = 100
+		available = {
+			NOT = {
+				has_country_flag = show_economy
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = show_economy
+			}
+		}
+		complete_effect = {
+			set_country_flag = show_economy
+		}
+	}
+	CHI_Hide_Economic_Actions = {
+		icon = ger_mefo_bills
+		priority = 100
+		available = {
+			has_country_flag = show_economy
+		}
+		visible = {
+			has_country_flag = show_economy
+		}
+		complete_effect = {
+			clr_country_flag = show_economy
+		}
+	}
+	CHI_Invest_in_Trade = {
+		icon = hol_attract_foreign_investors
+		days_remove = 121
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				AND = {
+					CONTROLLER = {
+						OR = {
+							tag = ROOT
+							is_puppet_of = ROOT
+						}
+					}
+					OR = {
+						state = 613
+						state = 868
+						state = 608
+						state = 605
+						state = 592
+					}
+				}
+			}
+		}
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Invest_Major_Trade
+			has_country_flag = show_economy
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Invest_Major_Trade
+			FROM = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 2
+				}
+			}
+			NOT = {
+				has_idea = bankruptcy
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = 150
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			add_stability = 0.01
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			FROM = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+	}
+	CHI_Nationalize_Key_Industry = {
+		icon = hol_draw_up_staff_plans
+		days_remove = 60
+		cost = 50
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			original_tag = CHI
+			has_country_flag = show_economy
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		available = {
+			has_completed_focus = CHI_Commission_Industry_Mining
+			FROM = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+				}
+			}
+		}
+		modifier = {
+			political_power_gain = -0.05
+		}
+		remove_effect = {
+			FROM = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+	CHI_Nationalize_Mining = {
+		icon = eng_trade_unions_demand
+		fire_only_once = yes
+		days_remove = 120
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_country_flag = show_economy
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		available = {
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = CHI_ROC_Commission_1
+				add_idea = CHI_ROC_Commission_2
+			}
+		}
+	}
+	CHI_Expand_State_Steel_Mining = {
+		icon = steel
+		fire_only_once = yes
+		days_remove = 60
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					OR = {
+						OR = {
+							has_idea = CHI_Autonomous_Province
+							has_idea = CHI_Regional_Army
+						}
+						tag = ROOT
+					}
+				}
+				has_resources_amount = {
+					resource = steel
+					amount > 1
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		visible = {
+			original_tag = CHI
+			has_country_flag = show_economy
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		available = {
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = 150
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+		}
+		modifier = {
+			civilian_factory_use = 1
+			stability_factor = -0.01
+		}
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 10
+				state = FROM
+			}
+		}
+	}
+	CHI_Expand_State_Tungsten_Mining = {
+		icon = tungsten
+		fire_only_once = yes
+		days_remove = 60
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					OR = {
+						has_idea = CHI_Autonomous_Province
+						tag = ROOT
+					}
+				}
+				has_resources_amount = {
+					resource = tungsten
+					amount > 1
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		visible = {
+			original_tag = CHI
+			has_country_flag = show_economy
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		available = {
+			has_completed_focus = CHI_Commission_Industry_Mining
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = 150
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+		}
+		modifier = {
+			civilian_factory_use = 1
+			stability_factor = -0.01
+		}
+		remove_effect = {
+			add_resource = {
+				type = tungsten
+				amount = 10
+				state = FROM
+			}
+		}
+	}
+	CHI_Militarize_Private_Business = {
+		icon = ger_military_buildup
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_Militarize_Private_Business
+			has_country_flag = show_economy
+			has_war = yes
+			FROM = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 2
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			FROM = {
+				free_building_slots = {
+					building = arms_factory
+					size > 2
+				}
+			}
+			has_completed_focus = CHI_Militarize_Private_Business
+			NOT = {
+				has_idea = bankruptcy
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = 150
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			FROM = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			}
+		}
+	}
+	CHI_Expand_State_Business = {
+		icon = hol_draw_up_staff_plans
+		days_remove = 90
+		fire_only_once = yes
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_Expand_State_Industry
+			has_country_flag = show_economy
+			check_variable = {
+				money > 0
+			}
+			FROM = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+				}
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			FROM = {
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+				}
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+				}
+			}
+			has_completed_focus = CHI_Expand_State_Industry
+			NOT = {
+				has_idea = bankruptcy
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = 150
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+	CHI_Introduce_Fabi_Currency = {
+		icon = hol_attract_foreign_investors
+		fire_only_once = yes
+		days_remove = 30
+		cost = 50
+		visible = {
+			original_tag = CHI
+			has_completed_focus = CHI_Banking_Coup
+		}
+		available = {
+			has_completed_focus = CHI_Banking_Coup
+		}
+		remove_effect = {
+			news_event = CHI_Economy.8
+		}
+	}
+}
+CHI_Rural_Reconstruction_Actions = {
+	CHI_Show_Reconstruction_Actions = {
+		icon = ger_mefo_bills
+		priority = 100
+		available = {
+			NOT = {
+				has_country_flag = show_reconstruction
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = show_reconstruction
+			}
+		}
+		complete_effect = {
+			set_country_flag = show_reconstruction
+		}
+	}
+	CHI_Hide_Reconstruction_Actions = {
+		icon = ger_mefo_bills
+		priority = 100
+		available = {
+			has_country_flag = show_reconstruction
+		}
+		visible = {
+			has_country_flag = show_reconstruction
+		}
+		complete_effect = {
+			clr_country_flag = show_reconstruction
+		}
+	}
+	CHI_Reconstruct_Infrastructure = {
+		icon = generic_operation
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+			has_completed_focus = CHI_Invest_Rural_Infrastructure
+			check_variable = {
+				money > 0
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				amount_of_money_to_check = 2
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Invest_Rural_Infrastructure
+			NOT = {
+				has_idea = bankruptcy
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			set_country_flag = rural_reconstruction_in_progress
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			clr_country_flag = rural_reconstruction_in_progress
+			FROM = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+				}
+			}
+		}
+	}
+	CHI_Reconstruct_Industry = {
+		icon = hol_draw_up_staff_plans
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+			has_completed_focus = CHI_Connect_Villages
+			check_variable = {
+				money > 0
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				amount_of_money_to_check = 3
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Connect_Villages
+			NOT = {
+				has_idea = bankruptcy
+			}
+			NOT = {
+				has_country_flag = rural_reconstruction_in_progress
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			set_country_flag = rural_reconstruction_in_progress
+		}
+		remove_effect = {
+			FROM = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	CHI_Reconstruct_Mil_Industry = {
+		icon = ger_military_buildup
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+			has_completed_focus = CHI_Prepare_Countryside_for_War
+			check_variable = {
+				money > 0
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				amount_of_money_to_check = 2
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Prepare_Countryside_for_War
+			NOT = {
+				has_idea = bankruptcy
+			}
+			NOT = {
+				has_country_flag = rural_reconstruction_in_progress
+			}
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			set_country_flag = rural_reconstruction_in_progress
+			add_war_support = 0.01
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			FROM = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	CHI_Reconstruct_Administration = {
+		priority = 100
+		#days_remove = 365
+		cost = 200
+		visible = {
+			#has_completed_focus = CHI_Expand_Rural_Administration
+			check_variable = {
+				money > 0
+			}
+			original_tag = CHI
+		}
+		available = {
+			has_completed_focus = CHI_Expand_Rural_Administration
+			NOT = {
+				has_idea = bankruptcy
+			}
+		}
+		#modifier = { stability_factor = -0.05 }
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			add_to_variable = {
+				CHI_Admin_Chaos_Build_Speed = CHI_Admin
+			}
+			add_to_variable = {
+				CHI_Admin_Chaos_Political_Power = CHI_Political
+			}
+			add_to_variable = {
+				CHI_Admin_Chaos_Resources = CHI_Resources
+			}
+			add_to_variable = {
+				CHI_Admin_Chaos_Stablity = CHI_Stability
+			}
+			custom_effect_tooltip = CHI_Reconstruct_Administration_tt
+		}
+	}
+	CHI_Reconstruct_Literacy = {
+		icon = eng_propaganda_campaigns
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+			has_completed_focus = CHI_Mass_Literacy
+			check_variable = {
+				money > 0
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				amount_of_money_to_check = 2
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Mass_Literacy
+			NOT = {
+				has_idea = bankruptcy
+			}
+			NOT = {
+				has_country_flag = rural_reconstruction_in_progress
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			set_country_flag = rural_reconstruction_in_progress
+		}
+	}
+	CHI_Prepare_Partisans = {
+		icon = ger_mefo_bills
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+			has_completed_focus = CHI_Lure_Them_In
+			check_variable = {
+				money > 0
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				amount_of_money_to_check = 2
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Lure_Them_In
+			NOT = {
+				has_idea = bankruptcy
+			}
+			NOT = {
+				has_country_flag = rural_reconstruction_in_progress
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			set_country_flag = rural_reconstruction_in_progress
+		}
+	}
+	CHI_Efforts_of_the_Four = {
+		icon = ger_mefo_bills
+		days_remove = 90
+		state_target = yes
+		on_map_mode = map_only
+		target_trigger = {
+			FROM = {
+				CONTROLLER = {
+					tag = ROOT
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = show_reconstruction
+			}
+			has_completed_focus = CHI_Efforts_of_the_Four
+			check_variable = {
+				money > 0
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				amount_of_money_to_check = 2
+			}
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = CREATE_PUBLIC_WORKS_CUSTOM_COST_TEXT
+		available = {
+			has_completed_focus = CHI_Efforts_of_the_Four
+			NOT = {
+				has_idea = bankruptcy
+			}
+			NOT = {
+				has_country_flag = rural_reconstruction_in_progress
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = rural_reconstruction_cost
+			}
+			multiply_temp_variable = {
+				money_to_gain = 2
+			}
+			multiply_temp_variable = {
+				money_to_gain = -1
+			}
+			add_money_with_tooltip_effect = yes
+			set_country_flag = rural_reconstruction_in_progress
+		}
+	}
+}
+#########################################################################
+#  Liangguang Decisions 
+#########################################################################
+CHI_Liangguang_Incident = {
+	CHI_Liangguang_War = {
+		icon = generic_independence
+		priority = 10
+		allowed = {
+			original_tag = CHI
+		}
+		available = {
+			ROOT = {
+				AND = {
+					controls_state = 750
+					controls_state = 602
+					controls_state = 593
+					controls_state = 592
+				}
+			}
+		}
+		activation = {
+			has_war_with = GXC
+		}
+		is_good = no
+		days_mission_timeout = 120
+		timeout_effect = {
+			add_political_power = -100
+			white_peace = GXC
+			white_peace = HNN
+			white_peace = NEA
+		}
+		complete_effect = {
+			country_event = CHI_Liangguang.13
+		}
+	}
+	GXC_Liangguang_War = {
+		icon = generic_independence
+		priority = 10
+		allowed = {
+			original_tag = GXC
+		}
+		available = {
+			603 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}			# Guizhou
+			748 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}			# Zunyi
+			592 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}			# Guangzhou
+			593 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}			# Guangdong
+		}
+		activation = {
+			has_war_with = CHI
+		}
+		is_good = no
+		days_mission_timeout = 120
+		timeout_effect = {
+			add_political_power = -100
+			white_peace = CHI
+		}
+		complete_effect = {
+			CHI = {
+				country_event = CHI_Liangguang.22
+			}
+		}
+	}
+}
+###########################
+# Foreign Aid
+###########################
+CHI_Sino_Japanese_War = {
+	###########################
+	# Recruit Overseas Chinese Volunteers
+	###########################
+	CHI_Recruit_Overseas_Chinese_Volunteers = {
+		icon = GFX_decision_CHI_Recruit_Overseas_Chinese_Volunteers
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+		}
+		available = {
+		}
+		cost = 30
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 100
+				producer = CHI
+			}
+			add_ideas = CHI_Overseas_Chinese_Drivers_and_Mechanics
+		}
+	}
+	###########################
+	# Centralise the Air Force
+	###########################
+	CHI_Centralise_the_Air_Force = {
+		icon = generic_army_support
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			date > 1936.5.1
+			has_start_date < 1936.5.1
+			has_war_with = JAP
+		}
+		available = {
+			has_war_with = JAP
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 100
+				has_war_with = JAP
+			}
+		}
+		complete_effect = {
+			add_ace = {
+				name = "Huang"
+				surname = "Xinrui"
+				callsign = "John Buffalo Wong"
+				type = fighter_good
+			}
+			add_ace = {
+				name = "Arthur"
+				surname = "Chin"
+				callsign = "Tien"
+				type = fighter_good
+			}
+			add_ace = {
+				name = "Hazel"
+				surname = "Lee"
+				callsign = "Ying"
+				type = fighter_good
+			}
+			add_ace = {
+				name = "Jurong"
+				surname = "Chuyung"
+				callsign = "Airfield"
+				type = fighter_good
+			}
+		}
+	}
+	###########################
+	# Send Pilots for Aerial Gunnery Training 
+	###########################
+	CHI_Send_Pilots_for_Aerial_Gunnery_Training = {
+		icon = GFX_decision_CHI_Send_Pilots_for_Aerial_Gunnery_Training
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+		}
+		available = {
+			has_war_with = JAP
+			613 = {
+				is_controlled_by = CHI
+			}
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		custom_cost_text = CHI_Recruit_Chinese_American_Aviator_Volunteers_cost
+		cost = 30
+		days_remove = 365
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 100
+				has_war_with = JAP
+			}
+		}
+		modifier = {
+			air_attack_factor = 0.05
+			fighter_sortie_efficiency = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+	}
+	###########################
+	# Sign a Non-Aggression Pact with the Soviets
+	###########################
+	CHI_Sign_a_Non_Aggression_Pact_with_the_Soviets = {
+		icon = GFX_decision_CHI_Sign_a_Non_Aggression_Pact_with_Soviets
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+		}
+		available = {
+			has_war_with = JAP
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			custom_effect_tooltip = CHI_NAP_with_Soviets_tt
+			add_stability = 0.05
+			country_event = {
+				id = JAP_CHI_Sino_Japanese_War.1
+				days = 5
+			}
+			SOV = {
+				country_event = {
+					id = JAP_CHI_Sino_Japanese_War.2
+					days = 5
+				}
+			}
+			PRC = {
+				add_opinion_modifier = {
+					target = SOV
+					modifier = PRC_Non_Aggression_Pact_with_China
+				}
+			}
+		}
+	}
+	###########################
+	# Build a Highway Through Xianjiang
+	###########################
+	CHI_Build_a_Highway_Through_Xianjiang = {
+		icon = GFX_decision_CHI_Build_a_Highway_Through_Xianjian
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		cost = 10
+		days_remove = 100
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {
+			production_speed_infrastructure_factor = 0.1
+		}
+		complete_effect = {
+			619 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			287 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			831 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			617 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			867 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			830 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			618 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			865 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			866 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			864 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			759 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			760 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			829 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			860 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			755 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			604 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			754 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			920 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1035 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			753 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			874 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			912 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			605 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	###########################
+	# Build a Refinery with Soviet Assistance
+	###########################
+	CHI_Build_a_Refinery_with_Soviet_Assistance = {
+		icon = GFX_decision_CHI_Build_a_Refinery_with_Soviet_Assistance
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		cost = 10
+		days_remove = 180
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 8
+				state = 755
+			}
+		}
+	}
+	###########################
+	# Ask the Soviets for Loans
+	###########################
+	CHI_Ask_the_Soviets_for_Loans = {
+		icon = GFX_decision_CHI_Ask_the_Soviets_for_Loans
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		cost = 10
+		days_remove = 10
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			SOV = {
+				country_event = {
+					id = JAP_CHI_Sino_Japanese_War.3
+					days = 1
+				}
+			}
+		}
+	}
+	###########################
+	# Buy Tanks
+	###########################
+	CHI_Buy_Tanks = {
+		icon = GFX_decision_CHI_Buy_Tanks
+		fire_only_once = no
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		days_remove = 120
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					set_temp_variable = {
+						amount_of_money_to_check = 300
+					}
+					has_specific_amount_of_money_with_inflation_included = yes
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -50
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = Light_Tank_equipment_1926
+				amount = 86
+			}
+		}
+	}
+	###########################
+	# Buy Infantry Weapons
+	###########################
+	CHI_Buy_Infantry_Weapons = {
+		icon = GFX_decision_CHI_Buy_Infantry_Weapons
+		fire_only_once = no
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		days_remove = 120
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					set_temp_variable = {
+						amount_of_money_to_check = 200
+					}
+					has_specific_amount_of_money_with_inflation_included = yes
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 4000
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 1000
+			}
+			add_equipment_to_stockpile = {
+				type = Heavy_Weapons_equipment
+				amount = 500
+			}
+		}
+	}
+	###########################
+	# Buy Artillery Guns
+	###########################
+	CHI_Buy_Artillery_Guns = {
+		icon = GFX_decision_CHI_Buy_Artillery_Guns
+		fire_only_once = no
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		days_remove = 120
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					set_temp_variable = {
+						amount_of_money_to_check = 200
+					}
+					has_specific_amount_of_money_with_inflation_included = yes
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+			}
+		}
+	}
+	###########################
+	# Buy Fighters
+	###########################
+	CHI_Buy_Fighters = {
+		icon = GFX_decision_CHI_Buy_Fighters
+		fire_only_once = no
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		days_remove = 120
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					set_temp_variable = {
+						amount_of_money_to_check = 300
+					}
+					has_specific_amount_of_money_with_inflation_included = yes
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+			}
+		}
+	}
+	###########################
+	# Buy Bombers
+	###########################
+	CHI_Buy_Bombers = {
+		icon = GFX_decision_CHI_Buy_Bombers
+		fire_only_once = no
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		days_remove = 120
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 50
+			}
+		}
+	}
+	###########################
+	# Use the Soviet Air Volunteers
+	###########################
+	CHI_Use_the_Soviet_Air_Volunteers = {
+		icon = GFX_decision_CHI_Use_the_Soviet_Air_Volunteers
+		fire_only_once = yes
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_war_with = JAP
+			has_country_flag = CHI_NAP_with_Soviets
+		}
+		available = {
+			has_war_with = JAP
+		}
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		custom_cost_text = CHI_Recruit_Chinese_American_Aviator_Volunteers_cost
+		days_remove = 50
+		ai_will_do = {
+			factor = 10
+		}
+		modifier = {
+			sortie_efficiency = 0.1
+			air_range_factor = 0.1
+			air_intercept_efficiency = 0.1
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+		remove_effect = {
+		}
+	}
+}

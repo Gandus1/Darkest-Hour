@@ -1,0 +1,449 @@
+add_namespace = PRU_Liticia_Dispute
+add_namespace = PRU_1939_Election
+add_namespace = PRU_Ecuador_War
+
+######################################
+# Assassination of Luis Miguel Sanchez
+######################################
+country_event = {
+	id = PRU_Liticia_Dispute.1
+	title = PRU_Liticia_Dispute.1.t
+	desc = PRU_Liticia_Dispute.1.d
+	picture = GFX_report_SPR_Political_Killings
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRU
+		has_start_date < 1933.4.30
+		date > 1933.4.30
+	}
+	
+	option = {
+		name = PRU_Liticia_Dispute.1.a
+		custom_effect_tooltip = PRU_Liticia_Dispute.1.tt
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Oscar R. Benavides"
+			desc = Oscar_Benevides_desc
+			picture = GFX_P_A_Oscar_R_Benavides
+			ideology = military_dictatorship
+			traits =  { POSITION_President SUBIDEOLOGY_military_dictatorship }		
+		}
+		add_stability = -0.10
+		hidden_effect = {
+			set_politics = {
+				ruling_party = authoritarian	
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.50
+			}
+			add_popularity = {
+				ideology = authoritarian 
+				popularity = 0.50
+			}
+			COL = {
+				country_event = {
+					id = PRU_Liticia_Dispute.2
+					days = 14
+				}
+			}
+		}
+	}
+}
+################################
+# Peru Surrenders Liticia!
+################################
+country_event = {
+	id = PRU_Liticia_Dispute.2
+	title = PRU_Liticia_Dispute.2.t
+	desc = PRU_Liticia_Dispute.2.d
+	picture = GFX_report_FRA_French_Troops_Rhineland
+	is_triggered_only = yes
+	
+	option = {
+		name = PRU_Liticia_Dispute.2.a
+		custom_effect_tooltip = PRU_Liticia_Dispute.2.tt
+		add_stability = 0.05
+		hidden_effect = {
+			COL = {
+				transfer_state = 1430
+			}
+			1430 = {
+				remove_core_of = PRU
+				set_demilitarized_zone = yes
+			}
+		}
+	}
+}
+################################
+# 1939 Peruvian Election
+################################
+country_event = {
+	id = PRU_1939_Election.1
+	title = PRU_1939_Election.1.t
+	desc = PRU_1939_Election.1.d
+	picture = GFX_report_USA_Congress
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRU
+		has_war = no
+		has_start_date < 1939.10.21
+		date > 1939.10.21
+		has_country_leader = {
+			name = "Oscar R. Benavides"
+			ruling_only = yes
+		}
+	}
+	
+	option = {
+		name = PRU_1939_Election.1.a
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Manuel Prado Ugarteche"
+			desc = Manuel_Prado_Ugarteche_desc
+			picture = GFX_P_D_Manuel_Prado_Ugarteche
+			ideology = national_conservatism
+			traits =  { POSITION_President SUBIDEOLOGY_national_conservatism }	
+		}
+		custom_effect_tooltip = PRU_1939_Election.1.tt
+		hidden_effect = {
+			set_politics = {
+				ruling_party = democratic
+			}
+			add_stability = 0.05
+		}
+	}
+}
+#############################
+# La Guerra del 41
+#############################
+country_event = {
+	id = PRU_Ecuador_War.1
+	title = PRU_Ecuador_War.1.t
+	desc = PRU_Ecuador_War.1.d
+	picture = GFX_report_PRU_Invasion_of_Ecuador
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRU
+		has_start_date < 1941.7.4
+		date > 1941.7.4
+		NOT = {
+			is_in_faction_with = ECU
+			ECU = {
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = {
+		name = PRU_Ecuador_War.1.a 
+		ai_chance = {
+			factor = 100
+		}
+		add_war_support = 0.15
+		custom_effect_tooltip = PRU_Ecuador_War.1.tt
+		hidden_effect = {
+			declare_war_on = {
+				target = ECU
+				type = take_state
+				generator = {
+					490
+				}
+			}
+			set_country_flag = PRU_Ecuador_War
+			ECU = {
+				country_event = {
+					id = PRU_Ecuador_War.2
+					days = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.1.b
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+##############################
+# Peruvian Forces Mobilize!
+##############################
+country_event = {
+	id = PRU_Ecuador_War.2
+	title = PRU_Ecuador_War.2.t
+	desc = PRU_Ecuador_War.2.d
+	picture = GFX_report_PRU_Invasion_of_Ecuador
+	is_triggered_only = yes
+	
+	option = {
+		name = PRU_Ecuador_War.2.a
+		add_war_support = 0.15
+		custom_effect_tooltip = PRU_Ecuador_War.2.tt
+		hidden_effect = {
+			news_event = {
+				id = PRU_Ecuador_War.3
+				hours = 6
+			}
+		}
+	}
+}
+##############################
+# Peru Invades Ecuador - News
+##############################
+news_event = {
+	id = PRU_Ecuador_War.3
+	title = PRU_Ecuador_War.3.t
+	desc = PRU_Ecuador_War.3.d
+	picture = GFX_news_PRU_Peru_Invades_Ecuador
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = PRU_Ecuador_War.3.a
+		trigger = {
+			original_tag = PRU
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.3.b
+		trigger = {
+			original_tag = ECU
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.3.c
+		trigger = {
+			NOT = {
+				original_tag = PRU
+				original_tag = ECU
+			}
+			has_war = yes
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.3.e
+		trigger = {
+			NOT = {
+				original_tag = PRU
+				original_tag = ECU
+			}
+			has_war = no
+		}
+	}
+}
+###################################################
+# Guerra del '41 - Peruvian victory (Historical)
+###################################################
+country_event = {
+	id = PRU_Ecuador_War.4
+	title = PRU_Ecuador_War.4.t
+	desc = PRU_Ecuador_War.4.d
+	picture = GFX_report_PRU_Invasion_of_Ecuador
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRU
+		has_war_with = ECU
+		has_country_flag = PRU_Ecuador_War
+		controls_state = 490 #Maynas
+		controls_state = 1478 #Tumbes
+		NOT = {
+			date > 1941.8.15
+		}
+	}
+	
+	option = {
+		name = PRU_Ecuador_War.4.a
+		PRU = {
+			transfer_state = 490
+			transfer_state = 1478
+		}
+		hidden_effect = {
+			clr_country_flag = PRU_Ecuador_War
+			set_country_flag = PRU_End_Ecuador_War
+			white_peace = ECU
+			ECU = {
+				country_event = {
+					id = PRU_Ecuador_War.5
+					days = 1
+				}
+			}
+		}
+	}
+}
+###########################################
+# Peruvian Victory - Ecuadorian Response
+###########################################
+country_event = {
+	id = PRU_Ecuador_War.5
+	title = PRU_Ecuador_War.5.t
+	desc = PRU_Ecuador_War.5.d
+	picture = GFX_report_PRU_Invasion_of_Ecuador
+	is_triggered_only = yes
+	
+	option = {
+		name = PRU_Ecuador_War.5.a
+		add_stability = -0.1
+		add_war_support = -0.1
+		hidden_effect = {
+			news_event = {
+				id = PRU_Ecuador_War.6
+				hours = 6
+			}
+		}
+	}
+}
+########################################
+# Global News - Peru Defeats Ecuador
+########################################
+news_event = {
+	id = PRU_Ecuador_War.6
+	title = PRU_Ecuador_War.6.t
+	desc = PRU_Ecuador_War.6.d
+	picture = GFX_news_PRU_Peruvian_Victory
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = PRU_Ecuador_War.6.a
+		trigger = {
+			original_tag = PRU
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.6.b
+		trigger = {
+			original_tag = ECU
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.6.c
+		trigger = {
+			NOT = {
+				original_tag = PRU
+				original_tag = ECU
+			}
+			has_war = yes
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.6.e
+		trigger = {
+			NOT = {
+				original_tag = PRU
+				original_tag = ECU
+			}
+			has_war = no
+		}
+	}
+}
+########################################
+# Guerra del '41 - Ecuadorian Victory
+########################################
+country_event = {
+	id = PRU_Ecuador_War.7
+	title = PRU_Ecuador_War.7.t
+	desc = PRU_Ecuador_War.7.d
+	picture = GFX_report_PRU_Invasion_of_Ecuador
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRU
+		has_war_with = ECU
+		has_country_flag = PRU_Ecuador_War
+		NOT = {
+			controls_state = 490
+			controls_state = 1478
+		}
+		date > 1941.8.15
+	}
+	
+	option = {
+		name = PRU_Ecuador_War.7.a
+		add_stability = -0.10
+		add_war_support = -0.10
+		hidden_effect = {
+			white_peace = ECU
+			clr_country_flag = PRU_Ecuador_War
+			set_country_flag = PRU_End_Ecuador_War
+			ECU = {
+				country_event = {
+					id = PRU_Ecuador_War.8
+					days = 1
+				}
+			}
+		}
+	}
+}
+#############################################
+# Ecuadorian Victory - Ecuadorian Response
+#############################################
+country_event = {
+	id = PRU_Ecuador_War.8
+	title = PRU_Ecuador_War.8.t
+	desc = PRU_Ecuador_War.8.d
+	picture = GFX_report_PRU_Invasion_of_Ecuador
+	is_triggered_only = yes
+	
+	option = {
+		name = PRU_Ecuador_War.8.a
+		491 = {
+			set_demilitarized_zone = yes
+		}
+		hidden_effect = {
+			news_event = {
+				id = PRU_Ecuador_War.9
+				hours = 6
+			}
+		}
+	}
+}
+########################################
+# Global News - Ecuador Defeats Peru
+########################################
+news_event = {
+	id = PRU_Ecuador_War.9
+	title = PRU_Ecuador_War.9.t
+	desc = PRU_Ecuador_War.9.d
+	picture = GFX_news_PRU_Ecuadorian_Victory
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = PRU_Ecuador_War.9.a
+		trigger = {
+			original_tag = PRU
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.9.b
+		trigger = {
+			original_tag = ECU
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.9.c
+		trigger = {
+			NOT = {
+				original_tag = PRU
+				original_tag = ECU
+			}
+			has_war = yes
+		}
+	}
+	option = {
+		name = PRU_Ecuador_War.9.e
+		trigger = {
+			NOT = {
+				original_tag = PRU
+				original_tag = ECU
+			}
+			has_war = no
+		}
+	}
+}

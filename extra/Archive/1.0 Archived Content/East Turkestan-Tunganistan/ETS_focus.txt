@@ -1,0 +1,439 @@
+focus_tree = {
+	id = ETS
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = ETS
+		}
+	}
+	default = no
+	focus = {
+		id = ETS_The_Khotan_Emirate
+		icon = GFX_ETS_The_Khotan_Emirate
+		cost = 10
+		x = 7
+		y = 0
+		completion_reward = {
+			add_political_power = 200
+		}
+	}
+	focus = {
+		id = ETS_Proclaim_East_Turkestan
+		icon = GFX_ETS_Establish_East_Turkestan
+		cost = 10
+		prerequisite = {
+			focus = ETS_The_Khotan_Emirate
+		}
+		x = 7
+		y = 1
+		completion_reward = {
+			set_cosmetic_tag = ETS_FIRSTREP
+			add_political_power = 50
+			create_country_leader = {
+				name = "Khoja Niyaz"
+				desc = "Khoja_Niyaz_desc"
+				picture = "P_A_Hoja_Niyaz.tga"
+				expire = "1965.1.1"
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_President
+				}
+			}
+		}
+	}
+	focus = {
+		id = ETS_Fight_for_East_Turkestan
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		cost = 10
+		prerequisite = {
+			focus = ETS_Proclaim_East_Turkestan
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = ETS_National_Army
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		prerequisite = {
+			focus = ETS_Fight_for_East_Turkestan
+		}
+		x = 5
+		y = 3
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = ETS_Alliances_and_Pacts
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 10
+		prerequisite = {
+			focus = ETS_Proclaim_East_Turkestan
+		}
+		x = 7
+		y = 2
+	}
+	focus = {
+		id = ETS_Unite_Rebel_Units
+		icon = GFX_focus_generic_little_entente
+		cost = 10
+		prerequisite = {
+			focus = ETS_Proclaim_East_Turkestan
+		}
+		x = 9
+		y = 2
+		completion_reward = {
+			13 = {
+				create_unit = {
+					division = "name = \"Rebel Unit\" division_template = \"Infantry Division\" start_experience_factor = 0.5 start_equipment_factor = 0.5"
+					owner = ETS
+				}
+			}
+		}
+	}
+	focus = {
+		id = ETS_Freedom_from_Han_Tyranny
+		icon = GFX_focus_cze_german_puppet
+		cost = 10
+		prerequisite = {
+			focus = ETS_Fight_for_East_Turkestan
+			focus = ETS_Alliances_and_Pacts
+			focus = ETS_Unite_Rebel_Units
+		}
+		x = 7
+		y = 3
+	}
+	focus = {
+		id = ETS_The_Republic
+		icon = GFX_ETS_The_Republic
+		cost = 10
+		prerequisite = {
+			focus = ETS_Freedom_from_Han_Tyranny
+		}
+		mutually_exclusive = {
+			focus = ETS_The_Islamic_Republic
+		}
+		x = 6
+		y = 4
+	}
+	focus = {
+		id = ETS_5_Main_Principles_and_Objectives
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		prerequisite = {
+			focus = ETS_The_Republic
+		}
+		x = 2
+		y = 5
+	}
+	focus = {
+		id = ETS_Restore_Peace_and_Put_down_Lawlessness
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 10
+		prerequisite = {
+			focus = ETS_5_Main_Principles_and_Objectives
+		}
+		x = 1
+		y = 6
+	}
+	focus = {
+		id = ETS_Encourage_and_Restore_Trade
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10
+		prerequisite = {
+			focus = ETS_5_Main_Principles_and_Objectives
+		}
+		x = 3
+		y = 6
+	}
+	focus = {
+		id = ETS_Recognition_from_China
+		icon = GFX_focus_chi_cooperation_with_the_nationalists
+		cost = 10
+		prerequisite = {
+			focus = ETS_The_Republic
+		}
+		x = 6
+		y = 5
+	}
+	focus = {
+		id = ETS_Cooperate_with_Ma_Cliques
+		icon = GFX_TNG_Align_with_Ma_Cliques
+		cost = 10
+		prerequisite = {
+			focus = ETS_Recognition_from_China
+		}
+		x = 5
+		y = 6
+	}
+	focus = {
+		id = ETS_The_Islamic_Republic
+		icon = GFX_ETS_The_Islamic_Republic
+		cost = 10
+		prerequisite = {
+			focus = ETS_Freedom_from_Han_Tyranny
+		}
+		mutually_exclusive = {
+			focus = ETS_The_Republic
+		}
+		x = 8
+		y = 4
+	}
+	focus = {
+		id = ETS_Pan_Islamic_Assistance
+		icon = GFX_GENERIC_Pan_Islamic_Assistance
+		cost = 10
+		prerequisite = {
+			focus = ETS_The_Islamic_Republic
+		}
+		x = 8
+		y = 5
+	}
+	focus = {
+		id = ETS_Turkic_Intellectual_Exodus
+		icon = GFX_focus_research
+		cost = 10
+		prerequisite = {
+			focus = ETS_Recognition_from_China
+			focus = ETS_Pan_Islamic_Assistance
+		}
+		x = 7
+		y = 6
+	}
+	focus = {
+		id = ETS_Balanced_Stances
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 10
+		prerequisite = {
+			focus = ETS_Pan_Islamic_Assistance
+		}
+		x = 9
+		y = 6
+	}
+	focus = {
+		id = ETS_Turkic_Brotherhood
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = ETS_Balanced_Stances
+		}
+		prerequisite = {
+			focus = ETS_Turkic_Intellectual_Exodus
+		}
+		x = 8
+		y = 7
+	}
+	focus = {
+		id = ETS_Contribute_your_Assets
+		icon = GFX_focus_generic_concessions
+		cost = 10
+		prerequisite = {
+			focus = ETS_Unite_Rebel_Units
+		}
+		x = 9
+		y = 3
+	}
+	focus = {
+		id = ETS_Constitutional_Draft
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 10
+		prerequisite = {
+			focus = ETS_The_Islamic_Republic
+		}
+		x = 12
+		y = 5
+	}
+	focus = {
+		id = ETS_Sharia_Law
+		icon = GFX_GENERIC_Sharia_Law
+		cost = 10
+		prerequisite = {
+			focus = ETS_Constitutional_Draft
+		}
+		x = 11
+		y = 6
+	}
+	focus = {
+		id = ETS_Village_and_Nomadic_Autonomy
+		icon = GFX_goal_continuous_boost_freedom
+		cost = 10
+		prerequisite = {
+			focus = ETS_Constitutional_Draft
+		}
+		x = 13
+		y = 6
+	}
+	focus = {
+		id = ETS_Islamic_Taxation_System
+		icon = GFX_focus_mex_privatisation
+		cost = 10
+		prerequisite = {
+			focus = ETS_Village_and_Nomadic_Autonomy
+		}
+		prerequisite = {
+			focus = ETS_Sharia_Law
+		}
+		x = 12
+		y = 7
+	}
+	focus = {
+		id = ETS_Sino_Turkic_Mutual_Assistance_Treaties
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 10
+		prerequisite = {
+			focus = ETS_Cooperate_with_Ma_Cliques
+		}
+		prerequisite = {
+			focus = ETS_Turkic_Intellectual_Exodus
+		}
+		x = 6
+		y = 7
+	}
+	focus = {
+		id = ETS_East_Turkestan_Security_Force
+		icon = GFX_goal_generic_small_arms
+		cost = 10
+		prerequisite = {
+			focus = ETS_Restore_Peace_and_Put_down_Lawlessness
+		}
+		prerequisite = {
+			focus = ETS_Encourage_and_Restore_Trade
+		}
+		x = 2
+		y = 7
+	}
+	focus = {
+		id = ETS_Modernization_Programs
+		icon = GFX_GENERIC_Westernization
+		cost = 10
+		prerequisite = {
+			focus = ETS_Islamic_Taxation_System
+			focus = ETS_East_Turkestan_Security_Force
+		}
+		x = 7
+		y = 8
+	}
+	focus = {
+		id = ETS_State_Printing_Press
+		icon = GFX_focus_generic_treaty
+		cost = 10
+		prerequisite = {
+			focus = ETS_Modernization_Programs
+		}
+		x = 4
+		y = 9
+	}
+	focus = {
+		id = ETS_Nationalize_Public_Services
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 10
+		prerequisite = {
+			focus = ETS_Modernization_Programs
+		}
+		x = 10
+		y = 9
+	}
+	focus = {
+		id = ETS_Advanced_Animal_Husbandry
+		icon = GFX_GENERIC_Animal_Husbandry
+		cost = 10
+		prerequisite = {
+			focus = ETS_Nationalize_Public_Services
+		}
+		x = 8
+		y = 10
+	}
+	focus = {
+		id = ETS_Agricultural_Techniques
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 10
+		prerequisite = {
+			focus = ETS_Nationalize_Public_Services
+		}
+		x = 12
+		y = 10
+	}
+	focus = {
+		id = ETS_Businesses_in_East_Turkestan
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		prerequisite = {
+			focus = ETS_Nationalize_Public_Services
+		}
+		x = 10
+		y = 10
+	}
+	focus = {
+		id = ETS_Increased_Living_Standards
+		icon = GFX_goal_generic_consumer_goods
+		cost = 10
+		prerequisite = {
+			focus = ETS_Advanced_Animal_Husbandry
+		}
+		prerequisite = {
+			focus = ETS_Agricultural_Techniques
+		}
+		prerequisite = {
+			focus = ETS_Businesses_in_East_Turkestan
+		}
+		x = 10
+		y = 11
+	}
+	focus = {
+		id = ETS_Scientific_and_Religious_Education
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 10
+		prerequisite = {
+			focus = ETS_State_Printing_Press
+		}
+		x = 2
+		y = 10
+	}
+	focus = {
+		id = ETS_Telegraph_Lines
+		icon = GFX_GENERIC_Electric_Grid
+		cost = 10
+		prerequisite = {
+			focus = ETS_State_Printing_Press
+		}
+		x = 6
+		y = 10
+	}
+	focus = {
+		id = ETS_Post_Office_Roads
+		icon = GFX_GENERIC_Road_Construction
+		cost = 10
+		prerequisite = {
+			focus = ETS_State_Printing_Press
+		}
+		x = 4
+		y = 10
+	}
+	focus = {
+		id = ETS_Literacy_Programs
+		icon = GFX_focus_generic_military_academy
+		cost = 10
+		prerequisite = {
+			focus = ETS_Post_Office_Roads
+		}
+		prerequisite = {
+			focus = ETS_Telegraph_Lines
+		}
+		prerequisite = {
+			focus = ETS_Scientific_and_Religious_Education
+		}
+		x = 4
+		y = 11
+	}
+}

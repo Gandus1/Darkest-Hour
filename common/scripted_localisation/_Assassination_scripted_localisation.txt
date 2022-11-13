@@ -1,0 +1,279 @@
+defined_text = {
+	name = GetAssassinationTarget
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { assassination_target_other_context = assassination_target }
+		}
+		localization_key = "[This.GetAssassinationTargetOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetAssassinationTargetOtherContext
+	
+	text = {
+		trigger = {
+			check_variable = { assassination_target_other_context = 1 }
+		}
+		localization_key = "Reinhard Heydrich"
+	}
+	
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "---"
+	}
+}
+
+defined_text = {
+	name = GetAssassinationTargetCountry
+	
+	text = {
+		trigger = {
+			has_variable = assassination_target_country
+		}
+		localization_key = "[?assassination_target_country.GetName]"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "---"
+	}
+}
+
+defined_text = {
+	name = GetSelectAssassinationMethodTooltip
+	
+	text = {
+		trigger = {
+			check_variable = { v = 6 }
+			OR = {
+				check_variable = { assassination_situation = 2 }
+				check_variable = { assassination_situation = 3 }
+				check_variable = { assassination_situation = 4 }
+			}
+			set_temp_variable = { assassination_situation_other_context = 1 }
+		}
+		localization_key = string_cannot_select_assassination_method_with_other_situation_than_this
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GetSelectAssassinationMethodTooltipDelayed
+	
+	text = {
+		trigger = {
+			check_variable = { v = 3 }
+		}
+		localization_key = string_special_effect_of_method_poison
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 4 }
+		}
+		localization_key = string_special_effect_of_method_bomb
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 6 }
+		}
+		localization_key = string_special_effect_of_method_kidnap
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GetAssassinationMethod
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { assassination_method_other_context = assassination_method }
+		}
+		localization_key = "[This.GetAssassinationMethodNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetAssassinationMethodName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { assassination_method_other_context = v }
+		}
+		localization_key = "[This.GetAssassinationMethodNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetAssassinationMethodNameOtherContext
+	
+	text = {
+		trigger = {
+			check_variable = { assassination_method_other_context = 1 }
+		}
+		localization_key = string_assassination_method_shoot
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_method_other_context = 2 }
+		}
+		localization_key = string_assassination_method_stab
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_method_other_context = 3 }
+		}
+		localization_key = string_assassination_method_poison
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_method_other_context = 4 }
+		}
+		localization_key = string_assassination_method_plant_bomb
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_method_other_context = 5 }
+		}
+		localization_key = string_assassination_method_sabotage_car
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_method_other_context = 6 }
+		}
+		localization_key = string_assassination_method_kidnap
+	}
+	
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "---"
+	}
+}
+
+defined_text = {
+	name = GetSelectAssassinationSituationTooltip
+	
+	text = {
+		trigger = {
+			check_variable = { assassination_method = 6 }
+			NOT = { check_variable = { v = 1 } }
+		}
+		localization_key = string_cannot_select_assassination_situation_with_current_method
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GetSelectAssassinationSituationTooltipDelayed
+	
+	text = {
+		trigger = {
+			check_variable = { v = 2 }
+			set_temp_variable = { assassination_method_other_context = 4 }
+		}
+		localization_key = string_special_effect_of_situation_speech
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 3 }
+		}
+		localization_key = string_special_effect_of_situation_meeting
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 4 }
+			set_temp_variable = { assassination_method_other_context = 4 }
+		}
+		localization_key = string_special_effect_of_situation_meeting_with_fuhrer
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = ""
+	}
+}
+
+defined_text = {
+	name = GetAssassinationSituation
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { assassination_situation_other_context = assassination_situation }
+		}
+		localization_key = "[This.GetAssassinationSituationNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetAssassinationSituationName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { assassination_situation_other_context = v }
+		}
+		localization_key = "[This.GetAssassinationSituationNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetAssassinationSituationNameOtherContext
+	
+	text = {
+		trigger = {
+			check_variable = { assassination_situation_other_context = 1 }
+		}
+		localization_key = string_assassination_situation_private
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_situation_other_context = 2 }
+		}
+		localization_key = string_assassination_situation_speech
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_situation_other_context = 3 }
+		}
+		localization_key = string_assassination_situation_meeting
+	}
+	text = {
+		trigger = {
+			check_variable = { assassination_situation_other_context = 4 }
+		}
+		localization_key = string_assassination_situation_meeting_with_fuhrer
+	}
+	
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "---"
+	}
+}

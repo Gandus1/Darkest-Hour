@@ -1,0 +1,5618 @@
+focus_tree = {
+	id = USA_Democracy
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = USA
+		}
+	}
+	default = no
+	focus = {
+		id = USA_issue_war_bonds
+		icon = GFX_goal_generic_national_unity
+		cost = 10.00
+		x = 1
+		y = 0
+			available = {
+					OR = {
+							has_war_with = GER
+							has_war_with = JAP
+							has_war_with = ITA
+							has_war_with = SOV
+							has_war_with = FRA
+							has_war_with = ENG
+							any_other_country = {
+									has_offensive_war_with = ROOT
+									strength_ratio = {
+											tag = ROOT
+											ratio > 0.75
+										}
+								}
+							threat > 0.95
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					add_ideas = war_bonds_focus
+					if = {
+							limit = {
+									has_idea = great_depression
+								}
+							remove_ideas = great_depression
+						}
+				}
+
+	}
+	focus = {
+		id = USA_wpa
+		icon = GFX_goal_support_democracy
+		cost = 10.00
+		x = 4
+		y = 0
+			available_if_capitulated = yes
+			completion_reward = {
+					add_political_power = 150
+				}
+
+	}
+	focus = {
+		id = USA_war_propaganda
+		icon = GFX_goal_generic_propaganda
+		cost = 10.00
+		x = 8
+		y = 0
+			available = {
+					OR = {
+							OR = {
+									ENG = {
+											has_added_tension_amount > 20
+										}
+									SOV = {
+											has_added_tension_amount > 20
+										}
+									GER = {
+											has_added_tension_amount > 20
+										}
+									JAP = {
+											has_added_tension_amount > 20
+										}
+									ITA = {
+											has_added_tension_amount > 20
+										}
+								}
+							OR = {
+									ENG = {
+											has_offensive_war = yes
+										}
+									SOV = {
+											has_offensive_war = yes
+										}
+									GER = {
+											has_offensive_war = yes
+										}
+									JAP = {
+											has_offensive_war = yes
+										}
+								}
+						}
+				}
+			available_if_capitulated = yes
+			continue_if_invalid = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					add_ideas = volunteer_only
+				}
+
+	}
+	focus = {
+		id = USA_air_war_plans_division
+		icon = GFX_USA_US_Army_Air_Corps
+		cost = 10.00
+		x = 17
+		y = 0
+			available_if_capitulated = yes
+			completion_reward = {
+					air_experience = 25
+					add_tech_bonus = {
+							bonus = 0.5
+							uses = 2
+							category = air_doctrine
+						}
+					add_ideas = air_war_plans_division_focus
+				}
+
+	}
+	focus = {
+		id = USA_bureau_of_ships
+		icon = GFX_USA_US_Navy
+		cost = 10.00
+		x = 23
+		y = 0
+			available_if_capitulated = yes
+			completion_reward = {
+					navy_experience = 50
+					add_ideas = bureau_of_ships_focus
+				}
+
+	}
+	focus = {
+		id = USA_reinforce_monroe_doctrine
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10.00
+		x = 31
+		y = 0
+			ai_will_do = {
+					factor = 2
+				}
+			completion_reward = {
+					custom_effect_tooltip = USA_reinforce_monroe_doctrine_tt
+					hidden_effect = {
+							CUB = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							HAI = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							DOM = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							GUA = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							ELS = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							HON = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							NIC = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							COS = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							CAN = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							MEX = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							COL = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							VEN = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							ECU = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							PRU = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							BRA = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							BOL = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							PAR = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							URG = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							ARG = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							CHL = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+							"PAN" = {
+									add_opinion_modifier = {
+											target = USA
+											modifier = monroe_doctrine_trade
+										}
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_office_of_strategic_services
+		icon = GFX_goal_generic_position_armies
+		cost = 10.00
+		prerequisite = {
+			focus = USA_issue_war_bonds
+		}
+		x = 0
+		y = 1
+			available = {
+					OR = {
+							has_war_with = GER
+							has_war_with = JAP
+							has_war_with = ITA
+							has_war_with = SOV
+							has_war_with = FRA
+							has_war_with = ENG
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					add_ideas = office_of_strategic_services
+				}
+
+	}
+	focus = {
+		id = USA_first_special_service_force
+		icon = GFX_goal_generic_special_forces
+		cost = 10.00
+		prerequisite = {
+			focus = USA_office_of_strategic_services
+		}
+		x = 0
+		y = 2
+			available_if_capitulated = yes
+			completion_reward = {
+					army_experience = 5
+					add_tech_bonus = {
+							name = special_bonus
+							bonus = 0.5
+							uses = 1
+							technology = paratroopers
+							technology = paratroopers2
+							technology = tech_mountaineers
+							technology = tech_mountaineers2
+							technology = tech_engineers
+							technology = tech_engineers2
+							technology = tech_engineers3
+							technology = tech_recon
+							technology = tech_recon2
+							technology = tech_recon3
+						}
+				}
+
+	}
+	focus = {
+		id = USA_wartime_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10.00
+		prerequisite = {
+			focus = USA_issue_war_bonds
+		}
+		x = 2
+		y = 1
+			available_if_capitulated = yes
+			completion_reward = {
+					add_ideas = wartime_industry_focus
+				}
+
+	}
+	focus = {
+		id = USA_rubber_reserve_company
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10.00
+		prerequisite = {
+			focus = USA_wartime_industry
+		}
+		x = 2
+		y = 2
+			available = {
+					is_democratic = yes
+					controls_state = 369
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					add_resource = {
+							type = rubber
+							amount = 10
+							state = 369
+						}
+				}
+
+	}
+	focus = {
+		id = USA_manifest_destiny
+		icon = GFX_goal_generic_political_pressure
+		cost = 10.00
+		prerequisite = {
+			focus = USA_office_of_strategic_services
+		}
+		prerequisite = {
+			focus = USA_rubber_reserve_company
+		}
+		x = 1
+		y = 3
+			available = {
+					is_democratic = yes
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					add_ideas = USA_world_police
+				}
+
+	}
+	focus = {
+		id = USA_support_rock_island
+		icon = GFX_goal_generic_army_artillery
+		cost = 10.00
+		prerequisite = {
+			focus = USA_wpa
+		}
+		x = 3
+		y = 3
+			ai_will_do = {
+					factor = 5
+				}
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							name = USA_support_rock_island
+							uses = 3
+							bonus = 0.5
+							category = artillery
+							category = support_tech
+						}
+				}
+
+	}
+	focus = {
+		id = USA_committee_on_technocracy
+		icon = GFX_goal_generic_production2
+		cost = 10.00
+		prerequisite = {
+			focus = USA_wpa
+		}
+		x = 4
+		y = 2
+			ai_will_do = {
+					factor = 5
+				}
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							name = USA_committee_on_technocracy
+							uses = 3
+							bonus = 0.5
+							category = electronics
+							category = support_tech
+						}
+				}
+
+	}
+	focus = {
+		id = USA_military_construction
+		icon = GFX_goal_generic_build_tank
+		cost = 10.00
+		prerequisite = {
+			focus = USA_wpa
+		}
+		prerequisite = {
+			focus = USA_war_propaganda
+		}
+		x = 5
+		y = 1
+			available = {
+					OR = {
+							threat > 0.3
+							has_war = yes
+						}
+				}
+			continue_if_invalid = yes
+			available_if_capitulated = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			complete_tooltip = {
+					army_experience = 10
+					every_state = {
+							limit = {
+									has_state_flag = USA_military_construction_5MF
+								}
+							add_extra_state_shared_building_slots = 5
+							add_building_construction = {
+									type = arms_factory
+									level = 5
+									instant_build = yes
+								}
+						}
+					every_state = {
+							limit = {
+									has_state_flag = USA_military_construction_3Inf
+								}
+							add_building_construction = {
+									type = infrastructure
+									level = 3
+									instant_build = yes
+								}
+						}
+				}
+			completion_reward = {
+					army_experience = 10
+					random_owned_controlled_state = {
+							limit = {
+									arms_factory > 0
+									free_building_slots = {
+											building = arms_factory
+											size > 4
+											include_locked = yes
+										}
+									OR = {
+											region = 117
+											region = 118
+											region = 119
+											region = 120
+										}
+								}
+							add_extra_state_shared_building_slots = 5
+							add_building_construction = {
+									type = arms_factory
+									level = 5
+									instant_build = yes
+								}
+							set_state_flag = USA_military_construction_5MF
+						}
+					if = {
+							limit = {
+									371 = {
+											OR = {
+													NOT = {
+															is_owned_and_controlled_by = USA
+														}
+													AND = {
+															is_owned_and_controlled_by = USA
+															free_building_slots = {
+																	building = infrastructure
+																	size < 3
+																}
+														}
+												}
+										}
+								}
+							random_owned_controlled_state = {
+									limit = {
+											free_building_slots = {
+													building = infrastructure
+													size > 2
+												}
+											OR = {
+													region = 117
+													region = 118
+													region = 119
+													region = 120
+												}
+										}
+									add_building_construction = {
+											type = infrastructure
+											level = 3
+											instant_build = yes
+										}
+									set_state_flag = USA_military_construction_3Inf
+								}
+						}
+					371 = {
+							if = {
+									limit = {
+											is_owned_and_controlled_by = USA
+											free_building_slots = {
+													building = infrastructure
+													size > 2
+												}
+										}
+									add_building_construction = {
+											type = infrastructure
+											level = 3
+											instant_build = yes
+										}
+									set_state_flag = USA_military_construction_3Inf
+								}
+						}
+					if = {
+							limit = {
+									375 = {
+											OR = {
+													NOT = {
+															is_owned_and_controlled_by = USA
+														}
+													AND = {
+															is_owned_and_controlled_by = USA
+															free_building_slots = {
+																	building = infrastructure
+																	size < 3
+																}
+														}
+												}
+										}
+								}
+							random_owned_controlled_state = {
+									limit = {
+											free_building_slots = {
+													building = infrastructure
+													size > 2
+												}
+											OR = {
+													region = 117
+													region = 118
+													region = 119
+													region = 120
+												}
+										}
+									add_building_construction = {
+											type = infrastructure
+											level = 3
+											instant_build = yes
+										}
+									set_state_flag = USA_military_construction_3Inf
+								}
+						}
+					375 = {
+							if = {
+									limit = {
+											is_owned_and_controlled_by = USA
+											free_building_slots = {
+													building = infrastructure
+													size > 2
+												}
+										}
+									add_building_construction = {
+											type = infrastructure
+											level = 3
+											instant_build = yes
+										}
+									set_state_flag = USA_military_construction_3Inf
+								}
+						}
+					if = {
+							limit = {
+									378 = {
+											OR = {
+													NOT = {
+															is_owned_and_controlled_by = USA
+														}
+													AND = {
+															is_owned_and_controlled_by = USA
+															free_building_slots = {
+																	building = infrastructure
+																	size < 3
+																}
+														}
+												}
+										}
+								}
+							random_owned_controlled_state = {
+									limit = {
+											free_building_slots = {
+													building = infrastructure
+													size > 2
+												}
+											OR = {
+													region = 117
+													region = 118
+													region = 119
+													region = 120
+												}
+										}
+									add_building_construction = {
+											type = infrastructure
+											level = 3
+											instant_build = yes
+										}
+									set_state_flag = USA_military_construction_3Inf
+								}
+						}
+					378 = {
+							if = {
+									limit = {
+											is_owned_and_controlled_by = USA
+											free_building_slots = {
+													building = infrastructure
+													size > 2
+												}
+										}
+									add_building_construction = {
+											type = infrastructure
+											level = 3
+											instant_build = yes
+										}
+									set_state_flag = USA_military_construction_3Inf
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_USACE_projects
+		icon = GFX_goal_generic_production
+		cost = 10.00
+		prerequisite = {
+			focus = USA_military_construction
+		}
+		x = 5
+		y = 3
+			available = {
+					OR = {
+							threat > 0.8
+							has_war = yes
+						}
+				}
+			continue_if_invalid = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			complete_tooltip = {
+					every_state = {
+							limit = {
+									has_state_flag = USA_USACE_projects_3AF
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = arms_factory
+									level = 3
+									instant_build = yes
+								}
+						}
+					every_state = {
+							limit = {
+									has_state_flag = USA_USACE_projects_3Inf
+								}
+							add_building_construction = {
+									type = infrastructure
+									level = 3
+									instant_build = yes
+								}
+						}
+					add_ideas = extensive_conscription
+				}
+			completion_reward = {
+					random_owned_controlled_state = {
+							limit = {
+									arms_factory > 0
+									free_building_slots = {
+											building = arms_factory
+											size > 2
+											include_locked = yes
+										}
+									OR = {
+											region = 117
+											region = 118
+											region = 119
+											region = 120
+										}
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = arms_factory
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_USACE_projects_3AF
+						}
+					random_owned_controlled_state = {
+							limit = {
+									free_building_slots = {
+											building = infrastructure
+											size > 2
+											include_locked = yes
+										}
+									OR = {
+											region = 117
+											region = 118
+											region = 119
+											region = 120
+										}
+									state_population > 3000000
+								}
+							add_building_construction = {
+									type = infrastructure
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_USACE_projects_3Inf
+						}
+					random_owned_controlled_state = {
+							limit = {
+									free_building_slots = {
+											building = infrastructure
+											size > 2
+											include_locked = yes
+										}
+									OR = {
+											region = 117
+											region = 118
+											region = 119
+											region = 120
+										}
+									state_population > 3000000
+								}
+							add_building_construction = {
+									type = infrastructure
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_USACE_projects_3Inf
+						}
+					air_experience = 50
+					navy_experience = 50
+					army_experience = 10
+				}
+
+	}
+	focus = {
+		id = USA_prepare_intervention
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 10.00
+		prerequisite = {
+			focus = USA_war_propaganda
+		}
+		x = 10
+		y = 1
+			available = {
+					threat > 0.25
+				}
+			continue_if_invalid = yes
+			available_if_capitulated = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					if = {
+							limit = {
+									NOT = {
+											has_idea = undisturbed_isolation
+										}
+									NOT = {
+											has_country_flag = USA_prepare_intervention_added_isolation
+										}
+								}
+							add_political_power = 100
+						}
+					if = {
+							limit = {
+									OR = {
+											has_idea = undisturbed_isolation
+											has_country_flag = USA_prepare_intervention_added_isolation
+										}
+								}
+							add_ideas = isolation
+							set_country_flag = USA_prepare_intervention_added_isolation
+						}
+					add_ideas = USA_prepare_intervention
+				}
+
+	}
+	focus = {
+		id = USA_the_giant_wakes
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 10.00
+		prerequisite = {
+			focus = USA_prepare_intervention
+		}
+		x = 6
+		y = 2
+			available = {
+					OR = {
+							threat > 0.6
+							has_war = yes
+						}
+				}
+			continue_if_invalid = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					if = {
+							limit = {
+									NOT = {
+											has_idea = undisturbed_isolation
+										}
+									NOT = {
+											has_idea = isolation
+										}
+									NOT = {
+											has_country_flag = USA_the_giant_wakes_added_civ_eco
+										}
+								}
+							add_political_power = 100
+						}
+					if = {
+							limit = {
+									OR = {
+											has_idea = isolation
+											has_idea = undisturbed_isolation
+											has_country_flag = USA_the_giant_wakes_added_civ_eco
+										}
+								}
+							add_ideas = civilian_economy
+							set_country_flag = USA_the_giant_wakes_added_civ_eco
+						}
+				}
+
+	}
+	focus = {
+		id = USA_limited_intervention
+		icon = GFX_goal_generic_more_territorial_claims
+		cost = 10.00
+		prerequisite = {
+			focus = USA_the_giant_wakes
+		}
+		x = 6
+		y = 4
+			available = {
+					OR = {
+							threat > 0.75
+							has_war = yes
+						}
+				}
+			continue_if_invalid = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					if = {
+							limit = {
+									OR = {
+											has_idea = disarmed_nation
+											has_idea = volunteer_only
+										}
+								}
+							add_ideas = limited_conscription
+						}
+					add_ideas = limited_interventionism
+					set_rule = {
+							can_send_volunteers = yes
+						}
+				}
+
+	}
+	focus = {
+		id = USA_arsenal_of_democracy
+		icon = GFX_goal_support_democracy
+		cost = 10.00
+		prerequisite = {
+			focus = USA_USACE_projects
+		}
+		prerequisite = {
+			focus = USA_limited_intervention
+		}
+		x = 4
+		y = 5
+			bypass = {
+					AND = {
+							custom_trigger_tooltip = {
+									tooltip = production_effort_tt
+									all_owned_state = {
+											free_building_slots = {
+													building = industrial_complex
+													size < 3
+													include_locked = yes
+												}
+										}
+								}
+							custom_trigger_tooltip = {
+									tooltip = naval_effort_tt
+									all_owned_state = {
+											free_building_slots = {
+													building = dockyard
+													size < 3
+													include_locked = yes
+												}
+										}
+								}
+						}
+				}
+			complete_tooltip = {
+					air_experience = 50
+					navy_experience = 50
+					army_experience = 10
+					every_state = {
+							limit = {
+									has_state_flag = USA_arsenal_of_democracy_3AF
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = arms_factory
+									level = 3
+									instant_build = yes
+								}
+						}
+				}
+			completion_reward = {
+					navy_experience = 50
+					army_experience = 50
+					air_experience = 10
+					random_owned_controlled_state = {
+							limit = {
+									free_building_slots = {
+											building = arms_factory
+											size > 2
+											include_locked = yes
+										}
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = arms_factory
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_arsenal_of_democracy_3AF
+						}
+					random_owned_controlled_state = {
+							limit = {
+									free_building_slots = {
+											building = arms_factory
+											size > 2
+											include_locked = yes
+										}
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = arms_factory
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_arsenal_of_democracy_3AF
+						}
+					random_owned_controlled_state = {
+							limit = {
+									dockyard > 0
+									free_building_slots = {
+											building = dockyard
+											size > 2
+											include_locked = yes
+										}
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = dockyard
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_arsenal_of_democracy_3AF
+						}
+					random_owned_controlled_state = {
+							limit = {
+									dockyard > 0
+									free_building_slots = {
+											building = dockyard
+											size > 2
+											include_locked = yes
+										}
+								}
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+									type = dockyard
+									level = 3
+									instant_build = yes
+								}
+							set_state_flag = USA_arsenal_of_democracy_3AF
+						}
+				}
+
+	}
+	focus = {
+		id = USA_extra_tech_team
+		text = extra_tech_slot
+		icon = GFX_focus_research
+		cost = 10.00
+		prerequisite = {
+			focus = USA_limited_intervention
+		}
+		x = 6
+		y = 5
+			available_if_capitulated = yes
+			completion_reward = {
+					add_research_slot = 1
+				}
+
+	}
+	focus = {
+		id = USA_war_plan_black
+		icon = GFX_goal_generic_position_armies
+		cost = 10.00
+		prerequisite = {
+			focus = USA_prepare_intervention
+		}
+		x = 8
+		y = 2
+			available = {
+					GER = {
+							exists = yes
+							has_government = fascist
+							OR = {
+									has_offensive_war = yes
+									has_added_tension_amount > 30
+								}
+						}
+					NOT = {
+							has_government = fascist
+							has_government = fascist
+						}
+				}
+			continue_if_invalid = yes
+			available_if_capitulated = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					GER = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = war_plan_black
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_embargo_germany
+		icon = GFX_goal_generic_trade
+		cost = 10.00
+		prerequisite = {
+			focus = USA_war_plan_black
+		}
+		x = 8
+		y = 3
+			available = {
+					country_exists = GER
+					OR = {
+							GER = {
+									has_added_tension_amount > 30
+								}
+							threat > 0.6
+						}
+				}
+			continue_if_invalid = yes
+			available_if_capitulated = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					GER = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = embargo
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_destroyers_for_bases
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 10.00
+		prerequisite = {
+			focus = USA_embargo_germany
+		}
+		x = 8
+		y = 4
+			available = {
+					country_exists = GER
+					is_puppet = no
+					ENG = {
+							NOT = {
+									is_in_faction_with = GER
+								}
+						}
+					is_democratic = yes
+				}
+			bypass = {
+					NOT = {
+							696 = {
+									is_controlled_by = ENG
+								}
+						}
+					NOT = {
+							331 = {
+									is_controlled_by = ENG
+								}
+						}
+					NOT = {
+							308 = {
+									is_controlled_by = ENG
+								}
+						}
+					NOT = {
+							693 = {
+									is_controlled_by = ENG
+								}
+						}
+					NOT = {
+							689 = {
+									is_controlled_by = ENG
+								}
+						}
+					NOT = {
+							691 = {
+									is_controlled_by = ENG
+								}
+						}
+					ENG = {
+							exists = no
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					ENG = {
+							custom_effect_tooltip = needs_approval
+							country_event = {
+									id = usa.4
+									days = 1
+								}
+						}
+					effect_tooltip = {
+							custom_effect_tooltip = USA_destroyers_for_bases_tt
+							transfer_state = 696
+							transfer_state = 331
+							transfer_state = 308
+							transfer_state = 693
+							transfer_state = 689
+							transfer_state = 691
+						}
+				}
+
+	}
+	focus = {
+		id = USA_fascist_menace
+		icon = GFX_goal_support_democracy
+		cost = 10.00
+		prerequisite = {
+			focus = USA_destroyers_for_bases
+		}
+		prerequisite = {
+			focus = USA_limited_intervention
+		}
+		x = 8
+		y = 5
+			available = {
+					GER = {
+							exists = yes
+							NOT = {
+									has_government = ROOT
+								}
+						}
+					date > 1942.1.1
+				}
+			will_lead_to_war_with = GER
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					create_wargoal = {
+							type = puppet_wargoal_focus
+							target = GER
+						}
+					hidden_effect = {
+							news_event = {
+									hours = 6
+									id = news.213
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_war_plan_white
+		icon = GFX_goal_generic_position_armies
+		cost = 10.00
+		prerequisite = {
+			focus = USA_prepare_intervention
+		}
+		x = 10
+		y = 2
+			available = {
+					country_exists = SOV
+					OR = {
+							SOV = {
+									has_offensive_war = yes
+								}
+							OR = {
+									communist > 0.3
+									communist > 0.3
+									socialist > 0.3
+								}
+						}
+					NOT = {
+							OR = {
+									has_government = communist
+									has_government = communist
+									has_government = socialist
+								}
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					SOV = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = war_plan_white
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_embargo_USSR
+		icon = GFX_goal_generic_trade
+		cost = 10.00
+		prerequisite = {
+			focus = USA_war_plan_white
+		}
+		x = 10
+		y = 3
+			available = {
+					country_exists = SOV
+					OR = {
+							SOV = {
+									has_added_tension_amount > 30
+								}
+							threat > 0.6
+						}
+				}
+			continue_if_invalid = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					SOV = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = embargo
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_unholy_alliance
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 10.00
+		prerequisite = {
+			focus = USA_embargo_USSR
+		}
+		x = 10
+		y = 4
+			available = {
+					GER = {
+							has_war_with = SOV
+						}
+					OR = {
+							has_government = fascist
+							has_government = fascist
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					add_opinion_modifier = {
+							target = GER
+							modifier = unholy_alliance_opinion
+						}
+					add_opinion_modifier = {
+							target = GER
+							modifier = unholy_alliance_trade
+						}
+				}
+
+	}
+	focus = {
+		id = USA_crusade_against_communism
+		icon = GFX_goal_support_fascism
+		cost = 10.00
+		prerequisite = {
+			focus = USA_unholy_alliance
+		}
+		prerequisite = {
+			focus = USA_limited_intervention
+		}
+		x = 10
+		y = 5
+			available = {
+					SOV = {
+							exists = yes
+							NOT = {
+									has_government = ROOT
+								}
+						}
+					date > 1942.1.1
+				}
+			will_lead_to_war_with = SOV
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					create_wargoal = {
+							type = take_state_focus
+							target = SOV
+							generator = { 644  637  562 }
+						}
+					hidden_effect = {
+							news_event = {
+									hours = 6
+									id = news.207
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_war_plan_red
+		icon = GFX_goal_generic_position_armies
+		cost = 10.00
+		prerequisite = {
+			focus = USA_prepare_intervention
+		}
+		x = 12
+		y = 2
+			available = {
+					country_exists = ENG
+					NOT = {
+							is_democratic = yes
+						}
+				}
+			available_if_capitulated = yes
+			completion_reward = {
+					ENG = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = war_plan_red
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_embargo_the_empire
+		icon = GFX_goal_generic_trade
+		cost = 10.00
+		prerequisite = {
+			focus = USA_war_plan_red
+		}
+		x = 12
+		y = 3
+			available = {
+					country_exists = ENG
+					OR = {
+							ENG = {
+									has_added_tension_amount > 30
+								}
+							threat > 0.6
+						}
+				}
+			continue_if_invalid = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					ENG = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = embargo
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_anti_imperialism
+		icon = GFX_goal_generic_military_sphere
+		cost = 10.00
+		prerequisite = {
+			focus = USA_embargo_the_empire
+		}
+		x = 12
+		y = 4
+			available = {
+					country_exists = ENG
+					OR = {
+							has_government = communist
+							has_government = communist
+							has_government = socialist
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					SOV = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = anti_imperialist
+								}
+						}
+					hidden_effect = {
+							news_event = {
+									hours = 6
+									id = news.206
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_strike_at_the_empire
+		icon = GFX_goal_support_communism
+		cost = 10.00
+		prerequisite = {
+			focus = USA_anti_imperialism
+		}
+		prerequisite = {
+			focus = USA_limited_intervention
+		}
+		x = 12
+		y = 5
+			available = {
+					OR = {
+							ENG = {
+									exists = yes
+									NOT = {
+											has_government = ROOT
+										}
+								}
+							CAN = {
+									exists = yes
+									NOT = {
+											has_government = ROOT
+										}
+								}
+						}
+					date > 1942.1.1
+				}
+			will_lead_to_war_with = ENG
+			will_lead_to_war_with = CAN
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					create_wargoal = {
+							type = take_state_focus
+							target = CAN
+							generator = { 276 }
+						}
+					create_wargoal = {
+							type = take_state_focus
+							target = ENG
+							generator = { 689  690  693  308  691  692  696 }
+						}
+				}
+
+	}
+	focus = {
+		id = USA_war_plan_orange
+		icon = GFX_goal_generic_position_armies
+		cost = 10.00
+		prerequisite = {
+			focus = USA_prepare_intervention
+		}
+		x = 14
+		y = 2
+			available = {
+					JAP = {
+							country_exists = JAP
+							OR = {
+									has_offensive_war = yes
+									has_added_tension_amount > 30
+								}
+						}
+					NOT = {
+							OR = {
+									has_government = fascist
+									has_government = fascist
+								}
+						}
+				}
+			continue_if_invalid = yes
+			available_if_capitulated = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					JAP = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = war_plan_orange
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_embargo_japan
+		icon = GFX_goal_generic_trade
+		cost = 10.00
+		prerequisite = {
+			focus = USA_war_plan_orange
+		}
+		x = 14
+		y = 3
+			available = {
+					country_exists = JAP
+					OR = {
+							JAP = {
+									has_added_tension_amount > 30
+								}
+							threat > 0.6
+						}
+				}
+			continue_if_invalid = yes
+			available_if_capitulated = yes
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					JAP = {
+							add_opinion_modifier = {
+									target = USA
+									modifier = embargo
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_pearl_harbor_gambit
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 10.00
+		prerequisite = {
+			focus = USA_embargo_japan
+		}
+		x = 14
+		y = 4
+			available = {
+					country_exists = JAP
+					ships_in_state_ports = {
+							type = capital_ship
+							state = 629
+							size > 8
+						}
+				}
+			cancel = {
+					NOT = {
+							ships_in_state_ports = {
+									type = capital_ship
+									state = 629
+									size > 8
+								}
+						}
+				}
+			bypass = {
+					has_war_with = JAP
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					custom_effect_tooltip = USA_pearl_harbor_gambit_tt
+				}
+
+	}
+	focus = {
+		id = USA_defense_of_the_pacific
+		icon = GFX_goal_generic_occupy_states_coastal
+		cost = 10.00
+		prerequisite = {
+			focus = USA_pearl_harbor_gambit
+		}
+		prerequisite = {
+			focus = USA_limited_intervention
+		}
+		x = 14
+		y = 5
+			available = {
+					JAP = {
+							exists = yes
+							NOT = {
+									has_government = ROOT
+								}
+						}
+					date > 1942.1.1
+				}
+			will_lead_to_war_with = JAP
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					create_wargoal = {
+							type = puppet_wargoal_focus
+							target = JAP
+						}
+					add_state_claim = 633
+					add_state_claim = 684
+					add_state_claim = 645
+					add_state_claim = 646
+					add_state_claim = 647
+					add_state_claim = 648
+				}
+
+	}
+	focus = {
+		id = USA_air_support
+		icon = GFX_goal_generic_air_fighter
+		cost = 10.00
+		prerequisite = {
+			focus = USA_air_war_plans_division
+		}
+		mutually_exclusive = {
+			focus = USA_strategic_bombing
+		}
+		x = 16
+		y = 1
+			available_if_capitulated = yes
+			completion_reward = {
+					air_experience = 25
+					add_ideas = air_support_focus
+				}
+
+	}
+	focus = {
+		id = USA_CAS
+		text = CAS_effort
+		icon = GFX_goal_generic_CAS
+		cost = 10.00
+		prerequisite = {
+			focus = USA_air_support
+		}
+		x = 16
+		y = 2
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							name = USA_CAS
+							uses = 1
+							bonus = 0.5
+							category = cas_bomber
+						}
+				}
+
+	}
+	focus = {
+		id = USA_TAC
+		icon = GFX_goal_generic_air_doctrine
+		cost = 10.00
+		prerequisite = {
+			focus = USA_air_support
+		}
+		x = 17
+		y = 3
+			available_if_capitulated = yes
+			completion_reward = {
+					air_experience = 25
+					add_tech_bonus = {
+							name = USA_TAC
+							uses = 1
+							bonus = 0.5
+							category = tactical_bomber
+						}
+				}
+
+	}
+	focus = {
+		id = USA_strategic_bombing
+		icon = GFX_goal_generic_occupy_start_war
+		cost = 10.00
+		prerequisite = {
+			focus = USA_air_war_plans_division
+		}
+		mutually_exclusive = {
+			focus = USA_air_support
+		}
+		x = 18
+		y = 1
+			available_if_capitulated = yes
+			completion_reward = {
+					air_experience = 25
+					add_ideas = strategic_bombing_focus
+				}
+
+	}
+	focus = {
+		id = USA_combined_bomber_offensive
+		icon = GFX_goal_generic_air_bomber
+		cost = 10.00
+		prerequisite = {
+			focus = USA_strategic_bombing
+		}
+		x = 18
+		y = 2
+			available = {
+					has_war = yes
+					OR = {
+							is_in_faction_with = GER
+							is_in_faction_with = JAP
+							is_in_faction_with = ITA
+							is_in_faction_with = SOV
+							is_in_faction_with = FRA
+							is_in_faction_with = ENG
+						}
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			available_if_capitulated = yes
+			completion_reward = {
+					air_experience = 25
+					add_tech_bonus = {
+							name = USA_combined_bomber_offensive
+							bonus = 0.5
+							uses = 1
+							category = heavy_air
+						}
+					add_ideas = combined_bomber_offensive
+				}
+
+	}
+	focus = {
+		id = USA_battleship_primacy
+		icon = GFX_GENERIC_Battleship
+		cost = 10.00
+		prerequisite = {
+			focus = USA_bureau_of_ships
+		}
+		mutually_exclusive = {
+			focus = USA_carrier_primacy
+		}
+		x = 20
+		y = 1
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							bonus = 0.5
+							uses = 2
+							category = bb_tech
+						}
+				}
+
+	}
+	focus = {
+		id = USA_advanced_mahanian_doctrine
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 10.00
+		prerequisite = {
+			focus = USA_battleship_primacy
+		}
+		x = 20
+		y = 2
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							bonus = 0.5
+							category = base_strike_main
+						}
+				}
+
+	}
+	focus = {
+		id = USA_carrier_primacy
+		icon = GFX_GENERIC_Carrier
+		cost = 10.00
+		prerequisite = {
+			focus = USA_bureau_of_ships
+		}
+		mutually_exclusive = {
+			focus = USA_battleship_primacy
+		}
+		x = 22
+		y = 1
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							bonus = 0.5
+							uses = 2
+							category = cv_tech
+						}
+				}
+
+	}
+	focus = {
+		id = USA_bureau_of_aeronautics
+		icon = GFX_goal_generic_air_naval_bomber
+		cost = 10.00
+		prerequisite = {
+			focus = USA_carrier_primacy
+		}
+		x = 22
+		y = 2
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							name = USA_bureau_of_aeronautics
+							bonus = 0.5
+							uses = 1
+							category = naval_bomber
+						}
+				}
+
+	}
+	focus = {
+		id = USA_escort_effort
+		icon = GFX_goal_generic_navy_anti_submarine
+		cost = 10.00
+		prerequisite = {
+			focus = USA_bureau_of_ships
+		}
+		x = 24
+		y = 1
+			available_if_capitulated = yes
+			completion_reward = {
+					add_ideas = escort_effort_focus
+				}
+
+	}
+	focus = {
+		id = USA_convoy_tactics
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 10.00
+		prerequisite = {
+			focus = USA_escort_effort
+		}
+		x = 24
+		y = 2
+			available_if_capitulated = yes
+			completion_reward = {
+					navy_experience = 25
+					add_tech_bonus = {
+							bonus = 0.5
+							uses = 2
+							category = convoy_defense_tree
+						}
+				}
+
+	}
+	focus = {
+		id = USA_fund_the_navy
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10.00
+		prerequisite = {
+			focus = USA_bureau_of_ships
+		}
+		x = 26
+		y = 1
+			ai_will_do = {
+					factor = 1
+				}
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							name = USA_fund_the_navy
+							uses = 3
+							bonus = 0.5
+							category = naval_doctrine
+						}
+				}
+
+	}
+	focus = {
+		id = USA_expand_the_USMC
+		icon = GFX_USA_USMC
+		cost = 10.00
+		prerequisite = {
+			focus = USA_fund_the_navy
+		}
+		x = 26
+		y = 2
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							bonus = 0.5
+							uses = 1
+							technology = marines
+							technology = marines2
+						}
+				}
+
+	}
+	focus = {
+		id = USA_amphibious_operations
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 10.00
+		prerequisite = {
+			focus = USA_expand_the_USMC
+		}
+		x = 26
+		y = 3
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							bonus = 0.5
+							uses = 2
+							category = tp_tech
+						}
+				}
+
+	}
+	focus = {
+		id = USA_carribean_sphere
+		icon = GFX_goal_generic_political_pressure
+		cost = 10.00
+		prerequisite = {
+			focus = USA_reinforce_monroe_doctrine
+		}
+		x = 28
+		y = 1
+			completion_reward = {
+					if = {
+							limit = {
+									is_democratic = yes
+								}
+							CUB = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							HAI = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							DOM = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_democratic
+													has_idea = american_influence_drift_democratic
+												}
+										}
+									country_event = {
+											id = usa.20
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = communist
+								}
+							CUB = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							HAI = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							DOM = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_communist
+													has_idea = american_influence_drift_communist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = socialist
+								}
+							CUB = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							HAI = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							DOM = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_socialist
+													has_idea = american_influence_drift_socialist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = fascist
+								}
+							CUB = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascism
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascism
+										}
+								}
+							HAI = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascism
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascism
+										}
+								}
+							DOM = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascism
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascism
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_fascism
+													has_idea = american_influence_drift_fascism
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = authoritarian
+								}
+							CUB = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							HAI = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							DOM = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_authoritarian
+													has_idea = american_influence_drift_authoritarian
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					add_political_power = 150
+				}
+
+	}
+	focus = {
+		id = USA_central_america
+		icon = GFX_goal_generic_political_pressure
+		cost = 10.00
+		prerequisite = {
+			focus = USA_reinforce_monroe_doctrine
+		}
+		x = 30
+		y = 1
+			completion_reward = {
+					if = {
+							limit = {
+									is_democratic = yes
+								}
+							GUA = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							ELS = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							HON = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							NIC = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							COS = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							"PAN" = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_democratic
+													has_idea = american_influence_drift_democratic
+												}
+										}
+									country_event = {
+											id = usa.20
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = communist
+								}
+							GUA = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							ELS = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							HON = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							NIC = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							COS = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							"PAN" = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_communist
+													has_idea = american_influence_drift_communist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = socialist
+								}
+							GUA = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							ELS = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							HON = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							NIC = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							COS = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							"PAN" = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_socialist
+													has_idea = american_influence_drift_socialist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = fascist
+								}
+							GUA = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							ELS = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							HON = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							NIC = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							COS = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							"PAN" = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_fascist
+													has_idea = american_influence_drift_fascist
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = authoritarian
+								}
+							GUA = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							ELS = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							HON = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							NIC = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							COS = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							"PAN" = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_authoritarian
+													has_idea = american_influence_drift_authoritarian
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					add_political_power = 150
+				}
+
+	}
+	focus = {
+		id = USA_south_america
+		icon = GFX_goal_generic_political_pressure
+		cost = 10.00
+		prerequisite = {
+			focus = USA_reinforce_monroe_doctrine
+		}
+		x = 34
+		y = 1
+			completion_reward = {
+					if = {
+							limit = {
+									is_democratic = yes
+								}
+							COL = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							VEN = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							ECU = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							PRU = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							BRA = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							BOL = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							PAR = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							URG = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							ARG = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							CHL = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_democratic
+													has_idea = american_influence_drift_democratic
+												}
+										}
+									country_event = {
+											id = usa.20
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = communist
+								}
+							COL = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							VEN = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							ECU = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							PRU = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							BRA = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							BOL = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							PAR = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							URG = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							ARG = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							CHL = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_communist
+													has_idea = american_influence_drift_communist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = socialist
+								}
+							COL = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							VEN = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							ECU = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							PRU = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							BRA = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							BOL = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							PAR = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							URG = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							ARG = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							CHL = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_socialist
+													has_idea = american_influence_drift_socialist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = fascist
+								}
+							COL = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							VEN = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							ECU = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							PRU = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							BRA = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							BOL = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							PAR = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							URG = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							ARG = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							CHL = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_fascist
+													has_idea = american_influence_drift_fascist
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = authoritarian
+								}
+							COL = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							VEN = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							ECU = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							PRU = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							BRA = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							BOL = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							PAR = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							URG = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							ARG = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							CHL = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_authoritarian
+													has_idea = american_influence_drift_authoritarian
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					add_political_power = 150
+				}
+
+	}
+	focus = {
+		id = USA_the_neighbors
+		icon = GFX_goal_generic_political_pressure
+		cost = 10.00
+		prerequisite = {
+			focus = USA_reinforce_monroe_doctrine
+		}
+		x = 32
+		y = 1
+			ai_will_do = {
+					factor = 2
+				}
+			completion_reward = {
+					if = {
+							limit = {
+									is_democratic = yes
+								}
+							CAN = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							MEX = {
+									if = {
+											limit = {
+													is_democratic = yes
+												}
+											add_ideas = american_influence_defence_democratic
+										}
+									if = {
+											limit = {
+													NOT = {
+															is_democratic = yes
+														}
+												}
+											add_ideas = american_influence_drift_democratic
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_democratic
+													has_idea = american_influence_drift_democratic
+												}
+										}
+									country_event = {
+											id = usa.20
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = communist
+								}
+							CAN = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							MEX = {
+									if = {
+											limit = {
+													has_government = communist
+												}
+											add_ideas = american_influence_defence_communist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = communist
+														}
+												}
+											add_ideas = american_influence_drift_communist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_communist
+													has_idea = american_influence_drift_communist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = socialist
+								}
+							CAN = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							MEX = {
+									if = {
+											limit = {
+													has_government = socialist
+												}
+											add_ideas = american_influence_defence_socialist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = socialist
+														}
+												}
+											add_ideas = american_influence_drift_socialist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_socialist
+													has_idea = american_influence_drift_socialist
+												}
+										}
+									country_event = {
+											id = usa.21
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = fascist
+								}
+							CAN = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							MEX = {
+									if = {
+											limit = {
+													has_government = fascist
+												}
+											add_ideas = american_influence_defence_fascist
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = fascist
+														}
+												}
+											add_ideas = american_influence_drift_fascist
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_fascist
+													has_idea = american_influence_drift_fascist
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = authoritarian
+								}
+							CAN = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							MEX = {
+									if = {
+											limit = {
+													has_government = authoritarian
+												}
+											add_ideas = american_influence_defence_authoritarian
+										}
+									if = {
+											limit = {
+													NOT = {
+															has_government = authoritarian
+														}
+												}
+											add_ideas = american_influence_drift_authoritarian
+										}
+								}
+							every_other_country = {
+									limit = {
+											NOT = {
+													has_country_flag = usa_influence_fired
+												}
+											OR = {
+													has_idea = american_influence_defence_authoritarian
+													has_idea = american_influence_drift_authoritarian
+												}
+										}
+									country_event = {
+											id = usa.22
+										}
+								}
+						}
+					add_political_power = 150
+				}
+
+	}
+	focus = {
+		id = USA_pax_americana
+		icon = GFX_goal_support_democracy
+		cost = 10.00
+		prerequisite = {
+			focus = USA_south_america
+		}
+		prerequisite = {
+			focus = USA_the_neighbors
+		}
+		prerequisite = {
+			focus = USA_central_america
+		}
+		prerequisite = {
+			focus = USA_carribean_sphere
+		}
+		x = 31
+		y = 2
+			available = {
+					is_puppet = no
+				}
+			#ai_will_do = {
+			# factor = 1
+			#}
+			completion_reward = {
+					if = {
+							limit = {
+									is_democratic = yes
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											is_democratic = yes
+										}
+									add_ideas = american_protection_defence_democratic
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											NOT = {
+													is_democratic = yes
+												}
+										}
+									add_ideas = american_protection_drift_democratic
+									country_event = {
+											id = usa.23
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = communist
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											has_government = communist
+										}
+									add_ideas = american_protection_defence_communist
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											NOT = {
+													has_government = communist
+												}
+										}
+									add_ideas = american_protection_drift_communist
+									country_event = {
+											id = usa.23
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = socialist
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											has_government = socialist
+										}
+									add_ideas = american_protection_defence_socialist
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											NOT = {
+													has_government = socialist
+												}
+										}
+									add_ideas = american_protection_drift_socialist
+									country_event = {
+											id = usa.23
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = fascist
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											has_government = fascist
+										}
+									add_ideas = american_protection_defence_fascist
+									country_event = {
+											id = usa.23
+										}
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											NOT = {
+													has_government = fascist
+												}
+										}
+									add_ideas = american_protection_drift_fascist
+									country_event = {
+											id = usa.23
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = authoritarian
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											has_government = authoritarian
+										}
+									add_ideas = american_protection_defence_authoritarian
+									country_event = {
+											id = usa.23
+										}
+								}
+							every_other_country = {
+									limit = {
+											has_country_flag = monroe_doctrine
+											NOT = {
+													has_government = authoritarian
+												}
+										}
+									add_ideas = american_protection_drift_authoritarian
+									country_event = {
+											id = usa.23
+										}
+								}
+						}
+					hidden_effect = {
+							every_other_country = {
+									limit = {
+											any_other_country = {
+													has_country_flag = monroe_doctrine
+												}
+										}
+									remove_ideas = american_influence_defence_democratic
+									remove_ideas = american_influence_drift_democratic
+									remove_ideas = american_influence_defence_communist
+									remove_ideas = american_influence_drift_communist
+									remove_ideas = american_influence_defence_socialist
+									remove_ideas = american_influence_drift_socialist
+									remove_ideas = american_influence_defence_fascist
+									remove_ideas = american_influence_drift_fascist
+									remove_ideas = american_influence_defence_authoritarian
+									remove_ideas = american_influence_drift_authoritarian
+								}
+							news_event = {
+									hours = 6
+									id = news.205
+								}
+						}
+					custom_effect_tooltip = USA_pax_americana_tt
+				}
+
+	}
+	focus = {
+		id = USA_preemptive_intervention
+		icon = GFX_goal_generic_territory_or_war
+		cost = 10.00
+		prerequisite = {
+			focus = USA_pax_americana
+		}
+		x = 30
+		y = 3
+			ai_will_do = {
+					factor = 1
+					modifier = {
+							factor = 0
+							is_democratic = yes
+						}
+				}
+			completion_reward = {
+					add_named_threat = {
+							threat = 1
+							name = USA_preemptive_intervention
+						}
+					if = {
+							limit = {
+									OR = {
+											is_democratic = yes
+											is_democratic = yes
+											is_democratic = yes
+										}
+								}
+							if = {
+									limit = {
+											VEN = {
+													OR = {
+															has_government = fascist
+															has_government = fascist
+															has_government = authoritarian
+															has_government = communist
+															has_government = communist
+															has_government = socialist
+														}
+												}
+										}
+									create_wargoal = {
+											type = puppet_wargoal_focus
+											target = VEN
+										}
+								}
+							if = {
+									limit = {
+											VEN = {
+													OR = {
+															is_democratic = yes
+															is_democratic = yes
+															is_democratic = yes
+														}
+												}
+										}
+									random_other_country = {
+											limit = {
+													has_country_flag = monroe_doctrine
+													OR = {
+															has_government = fascist
+															has_government = fascist
+															has_government = authoritarian
+															has_government = communist
+															has_government = communist
+															has_government = socialist
+														}
+												}
+											country_event = {
+													id = usa.19
+												}
+										}
+								}
+						}
+					if = {
+							limit = {
+									OR = {
+											has_government = communist
+											has_government = communist
+											has_government = socialist
+										}
+								}
+							if = {
+									limit = {
+											CHL = {
+													OR = {
+															is_democratic = yes
+															is_democratic = yes
+															is_democratic = yes
+															has_government = fascist
+															has_government = fascist
+															has_government = authoritarian
+														}
+												}
+										}
+									create_wargoal = {
+											type = puppet_wargoal_focus
+											target = CHL
+										}
+								}
+							if = {
+									limit = {
+											CHL = {
+													OR = {
+															has_government = communist
+															has_government = communist
+															has_government = socialist
+														}
+												}
+										}
+									random_other_country = {
+											limit = {
+													has_country_flag = monroe_doctrine
+													OR = {
+															is_democratic = yes
+															is_democratic = yes
+															is_democratic = yes
+															has_government = fascist
+															has_government = fascist
+															has_government = authoritarian
+														}
+												}
+											country_event = {
+													id = usa.19
+												}
+										}
+								}
+						}
+					if = {
+							limit = {
+									has_government = fascist
+									has_government = fascist
+									has_government = authoritarian
+								}
+							if = {
+									limit = {
+											CHL = {
+													OR = {
+															is_democratic = yes
+															is_democratic = yes
+															is_democratic = yes
+															has_government = communist
+															has_government = communist
+															has_government = socialist
+														}
+												}
+										}
+									create_wargoal = {
+											type = puppet_wargoal_focus
+											target = CHL
+										}
+								}
+							if = {
+									limit = {
+											CHL = {
+													has_government = fascist
+													has_government = fascist
+													has_government = authoritarian
+												}
+										}
+									random_other_country = {
+											limit = {
+													has_country_flag = monroe_doctrine
+													OR = {
+															is_democratic = yes
+															is_democratic = yes
+															is_democratic = yes
+															has_government = communist
+															has_government = communist
+															has_government = socialist
+														}
+												}
+											country_event = {
+													id = usa.19
+												}
+										}
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_black_chamber
+		icon = GFX_goal_generic_demand_territory
+		cost = 10.00
+		prerequisite = {
+			focus = USA_pax_americana
+		}
+		x = 32
+		y = 3
+			available = {
+					is_puppet = no
+				}
+			ai_will_do = {
+					factor = 1
+					modifier = {
+							factor = 0
+							OR = {
+									is_democratic = yes
+									is_democratic = yes
+									is_democratic = yes
+								}
+						}
+				}
+			complete_tooltip = {
+					custom_effect_tooltip = USA_black_chamber_complete
+				}
+			completion_reward = {
+					hidden_effect = {
+							news_event = {
+									hours = 12
+									id = news.230
+								}
+						}
+					add_named_threat = {
+							threat = 1
+							name = USA_black_chamber
+						}
+					set_rule = {
+							can_boost_other_ideologies = yes
+						}
+					if = {
+							limit = {
+									OR = {
+											is_democratic = yes
+											is_democratic = yes
+											is_democratic = yes
+										}
+								}
+							random_other_country = {
+									limit = {
+											has_government = authoritarian
+											OR = {
+													tag = BRA
+													tag = MEX
+												}
+										}
+									if = {
+											limit = {
+													OR = {
+															democratic > 0.5
+															democratic > 0.5
+															democratic > 0.5
+														}
+												}
+											if = {
+													limit = {
+															has_government = fascist
+														}
+													add_timed_idea = {
+															idea = fascism_defeated
+															days = 540
+														}
+												}
+											if = {
+													limit = {
+															has_government = fascist
+														}
+													add_timed_idea = {
+															idea = fascism_defeated
+															days = 540
+														}
+												}
+											if = {
+													limit = {
+															has_government = communist
+														}
+													add_timed_idea = {
+															idea = communism_defeated
+															days = 540
+														}
+												}
+											if = {
+													limit = {
+															has_government = communist
+														}
+													add_timed_idea = {
+															idea = communism_defeated
+															days = 540
+														}
+												}
+											if = {
+													limit = {
+															has_government = socialist
+														}
+													add_timed_idea = {
+															idea = communism_defeated
+															days = 540
+														}
+												}
+											limit = {
+													AND = {
+															democratic > democratic
+															democratic > democratic
+															NOT = {
+																	is_democratic = yes
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = democratic
+													elections_allowed = yes
+												}
+											limit = {
+													AND = {
+															democratic > democratic
+															democratic > democratic
+															NOT = {
+																	is_democratic = yes
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = democratic
+													elections_allowed = yes
+												}
+											limit = {
+													AND = {
+															democratic > democratic
+															democratic > democratic
+															NOT = {
+																	is_democratic = yes
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = democratic
+													elections_allowed = yes
+												}
+											else = {
+													set_politics = {
+															ruling_party = democratic
+															elections_allowed = yes
+														}
+												}
+											set_country_flag = USA_black_chamber_social_conservatism_SetGov
+										}
+									if = {
+											limit = {
+													AND = {
+															NOT = {
+																	democratic > 0.5
+																}
+															AND = {
+																	democratic > democratic
+																	democratic > democratic
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = democratic
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	democratic > 0.5
+																}
+															AND = {
+																	democratic > democratic
+																	democratic > democratic
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = democratic
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	democratic > 0.5
+																}
+															AND = {
+																	democratic > democratic
+																	democratic > democratic
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = democratic
+													size = 0.5
+												}
+											else = {
+													start_civil_war = {
+															ideology = ROOT
+															size = 0.5
+														}
+												}
+											set_country_flag = USA_black_chamber_social_conservatism_CivWar
+										}
+								}
+							if = {
+									limit = {
+											NOT = {
+													any_other_country = {
+															has_government = authoritarian
+															OR = {
+																	tag = BRA
+																	tag = MEX
+																	tag = ARG
+																	tag = COL
+																	tag = BOL
+																}
+														}
+												}
+										}
+									random_other_country = {
+											limit = {
+													has_country_flag = monroe_doctrine
+													NOT = {
+															OR = {
+																	is_democratic = yes
+																	is_democratic = yes
+																	is_democratic = yes
+																}
+														}
+												}
+											if = {
+													limit = {
+															OR = {
+																	democratic > 0.5
+																	democratic > 0.5
+																	democratic > 0.5
+																}
+														}
+													if = {
+															limit = {
+																	has_government = fascist
+																}
+															add_timed_idea = {
+																	idea = fascism_defeated
+																	days = 540
+																}
+														}
+													if = {
+															limit = {
+																	has_government = fascist
+																}
+															add_timed_idea = {
+																	idea = fascism_defeated
+																	days = 540
+																}
+														}
+													if = {
+															limit = {
+																	has_government = communist
+																}
+															add_timed_idea = {
+																	idea = communism_defeated
+																	days = 540
+																}
+														}
+													if = {
+															limit = {
+																	has_government = communist
+																}
+															add_timed_idea = {
+																	idea = communism_defeated
+																	days = 540
+																}
+														}
+													if = {
+															limit = {
+																	has_government = socialist
+																}
+															add_timed_idea = {
+																	idea = communism_defeated
+																	days = 540
+																}
+														}
+													limit = {
+															AND = {
+																	democratic > democratic
+																	democratic > democratic
+																	NOT = {
+																			is_democratic = yes
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = democratic
+															elections_allowed = yes
+														}
+													limit = {
+															AND = {
+																	democratic > democratic
+																	democratic > democratic
+																	NOT = {
+																			is_democratic = yes
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = democratic
+															elections_allowed = yes
+														}
+													limit = {
+															AND = {
+																	democratic > democratic
+																	democratic > democratic
+																	NOT = {
+																			is_democratic = yes
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = democratic
+															elections_allowed = yes
+														}
+													else = {
+															set_politics = {
+																	ruling_party = democratic
+																	elections_allowed = yes
+																}
+														}
+												}
+											if = {
+													limit = {
+															AND = {
+																	NOT = {
+																			democratic > 0.5
+																		}
+																	AND = {
+																			democratic > democratic
+																			democratic > democratic
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = democratic
+															size = 0.5
+														}
+													limit = {
+															AND = {
+																	NOT = {
+																			democratic > 0.5
+																		}
+																	AND = {
+																			democratic > democratic
+																			democratic > democratic
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = democratic
+															size = 0.5
+														}
+													limit = {
+															AND = {
+																	NOT = {
+																			democratic > 0.5
+																		}
+																	AND = {
+																			democratic > democratic
+																			democratic > democratic
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = democratic
+															size = 0.5
+														}
+													else = {
+															start_civil_war = {
+																	ideology = democratic
+																	size = 0.5
+																}
+														}
+												}
+										}
+								}
+						}
+					if = {
+							limit = {
+									OR = {
+											has_government = communist
+											has_government = communist
+											has_government = socialist
+										}
+								}
+							random_other_country = {
+									limit = {
+											has_government = authoritarian
+											OR = {
+													tag = BRA
+													tag = MEX
+												}
+										}
+									if = {
+											limit = {
+													OR = {
+															communist > 0.5
+															communist > 0.5
+															socialist > 0.5
+														}
+												}
+											add_timed_idea = {
+													idea = reign_of_terror
+													days = 540
+												}
+											remove_ideas = communist_revolutionaries
+											limit = {
+													AND = {
+															communist > communist
+															communist > socialist
+															NOt = {
+																	has_government = communist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = communist
+													elections_allowed = no
+												}
+											limit = {
+													AND = {
+															communist > communist
+															communist > socialist
+															NOt = {
+																	has_government = communist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = communist
+													elections_allowed = no
+												}
+											limit = {
+													AND = {
+															socialist > communist
+															socialist > communist
+															NOt = {
+																	has_government = socialist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = socialist
+													elections_allowed = no
+												}
+											else = {
+													set_politics = {
+															ruling_party = communist
+															elections_allowed = no
+														}
+												}
+										}
+									if = {
+											limit = {
+													AND = {
+															NOT = {
+																	communist > 0.5
+																}
+															AND = {
+																	communist > communist
+																	communist > socialist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = communist
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	communist > 0.5
+																}
+															AND = {
+																	communist > communist
+																	communist > socialist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = communist
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	socialist > 0.5
+																}
+															AND = {
+																	socialist > communist
+																	socialist > communist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = socialist
+													size = 0.5
+												}
+											else = {
+													start_civil_war = {
+															ideology = communist
+															size = 0.5
+														}
+												}
+										}
+								}
+							random_other_country = {
+									limit = {
+											has_government = authoritarian
+											OR = {
+													tag = ARG
+													tag = COL
+													tag = BOL
+												}
+										}
+									if = {
+											limit = {
+													OR = {
+															communist > 0.5
+															socialist > 0.5
+														}
+												}
+											add_timed_idea = {
+													idea = reign_of_terror
+													days = 540
+												}
+											remove_ideas = communist_revolutionaries
+											limit = {
+													AND = {
+															communist > socialist
+															NOt = {
+																	has_government = communist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = communist
+													elections_allowed = no
+												}
+											limit = {
+													AND = {
+															communist > socialist
+															NOt = {
+																	has_government = communist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = communist
+													elections_allowed = no
+												}
+											limit = {
+													AND = {
+															socialist > communist
+															NOt = {
+																	has_government = socialist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = socialist
+													elections_allowed = no
+												}
+											else = {
+													set_politics = {
+															ruling_party = communist
+															elections_allowed = no
+														}
+												}
+										}
+									if = {
+											limit = {
+													AND = {
+															NOT = {
+																	communist > 0.5
+																}
+															AND = {
+																	communist > communist
+																	communist > socialist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = communist
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	communist > 0.5
+																}
+															AND = {
+																	communist > communist
+																	communist > socialist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = communist
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	socialist > 0.5
+																}
+															AND = {
+																	socialist > communist
+																	socialist > communist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = socialist
+													size = 0.5
+												}
+											else = {
+													start_civil_war = {
+															ideology = communist
+															size = 0.5
+														}
+												}
+										}
+								}
+							if = {
+									limit = {
+											NOT = {
+													any_other_country = {
+															has_government = authoritarian
+															OR = {
+																	tag = BRA
+																	tag = MEX
+																	tag = ARG
+																	tag = COL
+																	tag = BOL
+																}
+														}
+												}
+										}
+									random_other_country = {
+											limit = {
+													has_country_flag = monroe_doctrine
+													NOT = {
+															OR = {
+																	has_government = communist
+																	has_government = communist
+																	has_government = socialist
+																}
+														}
+												}
+											if = {
+													limit = {
+															OR = {
+																	communist > 0.5
+																	communist > 0.5
+																	socialist > 0.5
+																}
+														}
+													add_timed_idea = {
+															idea = reign_of_terror
+															days = 540
+														}
+													remove_ideas = communist_revolutionaries
+													limit = {
+															AND = {
+																	communist > communist
+																	communist > socialist
+																	NOt = {
+																			has_government = communist
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = communist
+															elections_allowed = no
+														}
+													limit = {
+															AND = {
+																	communist > communist
+																	communist > socialist
+																	NOt = {
+																			has_government = communist
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = communist
+															elections_allowed = no
+														}
+													limit = {
+															AND = {
+																	socialist > communist
+																	socialist > communist
+																	NOt = {
+																			has_government = socialist
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = socialist
+															elections_allowed = no
+														}
+													else = {
+															set_politics = {
+																	ruling_party = communist
+																	elections_allowed = no
+																}
+														}
+												}
+											if = {
+													limit = {
+															AND = {
+																	NOT = {
+																			communist > 0.5
+																		}
+																	AND = {
+																			communist > communist
+																			communist > socialist
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = communist
+															size = 0.5
+														}
+													limit = {
+															AND = {
+																	NOT = {
+																			communist > 0.5
+																		}
+																	AND = {
+																			communist > communist
+																			communist > socialist
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = communist
+															size = 0.5
+														}
+													limit = {
+															AND = {
+																	NOT = {
+																			socialist > 0.5
+																		}
+																	AND = {
+																			socialist > communist
+																			socialist > communist
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = socialist
+															size = 0.5
+														}
+													else = {
+															start_civil_war = {
+																	ideology = communist
+																	size = 0.5
+																}
+														}
+												}
+										}
+								}
+						}
+					if = {
+							limit = {
+									OR = {
+											has_government = fascist
+											has_government = fascist
+										}
+								}
+							random_other_country = {
+									limit = {
+											has_government = authoritarian
+											OR = {
+													tag = BRA
+													tag = MEX
+												}
+										}
+									if = {
+											limit = {
+													OR = {
+															fascist > 0.5
+															fascist > 0.5
+														}
+												}
+											add_timed_idea = {
+													idea = reign_of_terror
+													days = 540
+												}
+											remove_ideas = fascist_revolutionaries
+											limit = {
+													AND = {
+															fascist > fascist
+															NOT = {
+																	has_government = fascist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = fascist
+													elections_allowed = no
+												}
+											limit = {
+													AND = {
+															fascist > fascist
+															NOT = {
+																	has_government = fascist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = fascist
+													elections_allowed = no
+												}
+											else = {
+													set_politics = {
+															ruling_party = fascist
+															elections_allowed = no
+														}
+												}
+										}
+									if = {
+											limit = {
+													AND = {
+															NOT = {
+																	fascist > 0.5
+																}
+															AND = {
+																	fascist > fascist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = fascist
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	fascist > 0.5
+																}
+															AND = {
+																	fascist > fascist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = fascist
+													size = 0.5
+												}
+											else = {
+													start_civil_war = {
+															ideology = fascist
+															size = 0.5
+														}
+												}
+										}
+								}
+							random_other_country = {
+									limit = {
+											has_government = authoritarian
+											OR = {
+													tag = ARG
+													tag = COL
+													tag = BOL
+												}
+										}
+									if = {
+											limit = {
+													OR = {
+															fascist > 0.5
+															fascist > 0.5
+														}
+												}
+											add_timed_idea = {
+													idea = reign_of_terror
+													days = 540
+												}
+											remove_ideas = fascist_revolutionaries
+											limit = {
+													AND = {
+															fascist > fascist
+															NOT = {
+																	has_government = fascist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = fascist
+													elections_allowed = no
+												}
+											limit = {
+													AND = {
+															fascist > fascist
+															NOT = {
+																	has_government = fascist
+																}
+														}
+												}
+											set_politics = {
+													ruling_party = fascist
+													elections_allowed = no
+												}
+											else = {
+													set_politics = {
+															ruling_party = fascist
+															elections_allowed = no
+														}
+												}
+										}
+									if = {
+											limit = {
+													AND = {
+															NOT = {
+																	fascist > 0.5
+																}
+															AND = {
+																	fascist > fascist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = fascist
+													size = 0.5
+												}
+											limit = {
+													AND = {
+															NOT = {
+																	fascist > 0.5
+																}
+															AND = {
+																	fascist > fascist
+																}
+														}
+												}
+											start_civil_war = {
+													ideology = fascist
+													size = 0.5
+												}
+											else = {
+													start_civil_war = {
+															ideology = fascist
+															size = 0.5
+														}
+												}
+										}
+								}
+							if = {
+									limit = {
+											NOT = {
+													any_other_country = {
+															has_government = authoritarian
+															OR = {
+																	tag = BRA
+																	tag = MEX
+																	tag = ARG
+																	tag = COL
+																	tag = BOL
+																}
+														}
+												}
+										}
+									random_other_country = {
+											limit = {
+													has_country_flag = monroe_doctrine
+													NOT = {
+															OR = {
+																	has_government = fascist
+																	has_government = fascist
+																}
+														}
+												}
+											if = {
+													limit = {
+															OR = {
+																	fascist > 0.5
+																	fascist > 0.5
+																}
+														}
+													add_timed_idea = {
+															idea = reign_of_terror
+															days = 540
+														}
+													remove_ideas = fascist_revolutionaries
+													limit = {
+															AND = {
+																	fascist > fascist
+																	NOT = {
+																			has_government = fascist
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = fascist
+															elections_allowed = no
+														}
+													limit = {
+															AND = {
+																	fascist > fascist
+																	NOT = {
+																			has_government = fascist
+																		}
+																}
+														}
+													set_politics = {
+															ruling_party = fascist
+															elections_allowed = no
+														}
+													else = {
+															set_politics = {
+																	ruling_party = fascist
+																	elections_allowed = no
+																}
+														}
+												}
+											if = {
+													limit = {
+															AND = {
+																	NOT = {
+																			fascist > 0.5
+																		}
+																	AND = {
+																			fascist > fascist
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = fascist
+															size = 0.5
+														}
+													limit = {
+															AND = {
+																	NOT = {
+																			fascist > 0.5
+																		}
+																	AND = {
+																			fascist > fascist
+																		}
+																}
+														}
+													start_civil_war = {
+															ideology = fascist
+															size = 0.5
+														}
+													else = {
+															start_civil_war = {
+																	ideology = fascist
+																	size = 0.5
+																}
+														}
+												}
+										}
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = USA_scientist_haven
+		icon = GFX_focus_research
+		cost = 10.00
+		prerequisite = {
+			focus = USA_manifest_destiny
+		}
+		x = 1
+		y = 4
+			available_if_capitulated = yes
+			completion_reward = {
+					add_research_slot = 1
+				}
+
+	}
+	focus = {
+		id = USA_liberty_ships
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 10.00
+		prerequisite = {
+			focus = USA_arsenal_of_democracy
+		}
+		x = 4
+		y = 6
+			available_if_capitulated = yes
+			completion_reward = {
+					add_ideas = liberty_ships_focus
+				}
+
+	}
+	focus = {
+		id = USA_manhattan_project
+		icon = GFX_focus_wonderweapons
+		cost = 10.00
+		prerequisite = {
+			focus = USA_extra_tech_team
+		}
+		prerequisite = {
+			focus = USA_arsenal_of_democracy
+		}
+		x = 6
+		y = 6
+			available_if_capitulated = yes
+			completion_reward = {
+					add_tech_bonus = {
+							name = USA_manhattan_project
+							bonus = 0.5
+							uses = 1
+							category = nuclear
+						}
+					add_tech_bonus = {
+							name = USA_manhattan_project
+							bonus = 0.5
+							uses = 1
+							category = nuclear
+						}
+				}
+
+	}
+}

@@ -1,0 +1,2073 @@
+focus_tree = {
+	id = BUL_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = BUL
+		}
+	}
+	continuous_focus_position = {
+		x = 1
+		y = 3000
+	}
+	default = no
+	focus = {
+		id = BUL_The_Second_National_Catastrophe
+		icon = GFX_GENERIC_Urban_Warfare
+		cost = 10
+		x = 33
+		y = 0
+
+	}
+	focus = {
+		id = BUL_Combat_the_Great_Depression
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10
+		x = 22
+		y = 0
+
+	}
+	focus = {
+		id = BUL_Legionary_Government
+		icon = GFX_goal_support_fascism
+		cost = 10
+		x = 16
+		y = 9
+		allow_branch = {	
+			has_country_flag = BUL_Fascist_Focus_Show
+		}
+	}
+	focus = {
+		id = BUL_Back_in_Control
+		icon = GFX_focus_generic_home_defense
+		cost = 35
+		x = 5
+		y = 0
+		allow_branch = {
+			has_country_flag = BUL_Tzar_Focus_Show
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			custom_effect_tooltip = BUL_Remove_Zveno_Influence
+			hidden_effect = {
+				remove_ideas = {
+					BUL_Zveno_Reforms_6
+					BUL_Zveno_Reforms_5
+					BUL_Zveno_Reforms_4_B
+					BUL_Zveno_Reforms_4_A
+					BUL_Zveno_Reforms_3
+					BUL_Zveno_Reforms_2
+					BUL_Zveno_Reforms
+				}
+			}
+		}
+	}
+	focus = {
+		id = BUL_Zveno_Government
+		icon = GFX_BUL_Zveno_Coup
+		cost = 10
+		x = 13
+		y = 0
+		allow_branch = {
+			has_country_flag = BUL_Zevno_Focus_Show
+		}
+		bypass = {
+			has_country_flag = BUL_Zevno_Focus_Show
+		}
+	}
+	focus = {
+		id = BUL_Fatherland_Front_Coup
+		icon = GFX_BUL_Fatherland_Front_Coup
+		cost = 10
+		x = 25
+		y = 6
+		allow_branch = {
+			has_country_flag = BUL_Fatherland_Front_Focus_Show
+		}
+	}
+	focus = {
+		id = BUL_Combat_Anti_Monarchism
+		icon = GFX_focus_rom_abdicate
+		cost = 21
+		prerequisite = {
+			focus = BUL_Back_in_Control
+		}
+		x = 4
+		y = 1
+		completion_reward = {	
+			add_ideas = BUL_Tzar_in_Control
+		}
+
+	}
+	focus = {
+		id = BUL_A_Parliament_without_Parties
+		icon = GFX_GENERIC_Parliament
+		cost = 21
+		prerequisite = {
+			focus = BUL_Back_in_Control
+		}
+		x = 6
+		y = 1
+		completion_reward = {
+			add_popularity = {
+			    ideology = communist
+			    popularity = -0.02
+			}	
+			add_popularity = {
+			    ideology = socialist
+			    popularity = -0.02
+			}	
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.02
+			}	
+			set_party_name = { 
+			    ideology = authoritarian 
+			    name = BUL_Zlatev_Gov_party 
+			    long_name = BUL_Zlatev_Gov_party_long
+			}	
+		}
+
+	}
+	focus = {
+		id = BUL_The_Second_Transitional_Government
+		icon = GFX_focus_generic_self_management
+		cost = 14
+		prerequisite = {
+			focus = BUL_Combat_Anti_Monarchism
+		}
+		prerequisite = {
+			focus = BUL_A_Parliament_without_Parties
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			add_stability = 0.02
+			add_war_support = -0.02
+			set_party_name = { 
+			    ideology = authoritarian 
+			    name = BUL_Toshev_Gov_party 
+			    long_name = BUL_Toshev_Gov_party_long
+			}	
+			country_event = BUL_Tzar.1
+		}
+	}
+	focus = {
+		id = BUL_Increase_Role_State_in_Economy
+		icon = GFX_focus_renounce_the_treaty_of_triannon
+		cost = 120
+		prerequisite = {
+			focus = BUL_The_Second_Transitional_Government
+		}
+		x = 4
+		y = 3
+		completion_reward = {
+			add_ideas = industrializing_economy
+			set_temp_variable = { money_to_gain = -120 }
+			add_money_with_tooltip_effect = yes			
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 1
+				    instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 1
+				    instant_build = yes
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Depersonalize_Political_Formations
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 42
+		prerequisite = {
+			focus = BUL_The_Second_Transitional_Government
+		}
+		x = 6
+		y = 3
+		completion_reward = {
+			add_popularity = {
+			    ideology = authoritarian
+			    popularity = 0.02
+			}
+			swap_ideas = {
+				remove_idea = BUL_Tzar_in_Control
+				add_idea = BUL_Tzar_in_Control_2
+			}
+		}
+	}
+	focus = {
+		id = BUL_The_Third_Transitional_Government
+		icon = GFX_focus_generic_self_management
+		cost = 49
+		prerequisite = {
+			focus = BUL_Increase_Role_State_in_Economy
+		}
+		prerequisite = {
+			focus = BUL_Depersonalize_Political_Formations
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			add_political_power = 75
+			set_party_name = { 
+			    ideology = authoritarian 
+			    name = BUL_Kyoseivanov_Gov_party 
+			    long_name = BUL_Kyoseivanov_Gov_party_long
+			}	
+			country_event = BUL_Tzar.2
+		}
+
+	}
+	focus = {
+		id = BUL_Liquidate_the_Military_Union
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 35
+		prerequisite = {
+			focus = BUL_The_Third_Transitional_Government
+		}
+		x = 2
+		y = 5
+		completion_reward = {
+			country_event = BUL_Tzar.4
+		}
+
+	}
+	focus = {
+		id = BUL_Restoration_of_Limited_Civil_Liberties
+		icon = GFX_goal_continuous_boost_freedom
+		cost = 21
+		prerequisite = {
+			focus = BUL_The_Third_Transitional_Government
+		}
+		x = 4
+		y = 5
+		completion_reward = {
+			clr_country_flag = research_spending_slider_decrease_blocked
+			add_ideas = limited_civil_liberties
+		}
+
+	}
+	focus = {
+		id = BUL_Re_chamber_the_National_Assembly
+		icon = GFX_GENERIC_Parliament
+		cost = 35
+		prerequisite = {
+			focus = BUL_The_Third_Transitional_Government
+		}
+		x = 6
+		y = 5
+		completion_reward = {
+			country_event = BUL_Tzar.5	
+		}
+
+	}
+	focus = {
+		id = BUL_Weather_the_Coming_Storm
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 21
+		prerequisite = {
+			focus = BUL_The_Third_Transitional_Government
+		}
+		x = 8
+		y = 5
+		completion_reward = {
+			add_ideas = cooperation
+			country_event = BUL_Tzar.6	
+			hidden_effect = {	
+				add_ideas = BUL_German_Influence
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_In_the_Name_of_the_Tzar
+		icon = GFX_BUL_Greater_Bulgaria
+		cost = 10
+		prerequisite = {
+			focus = BUL_Liquidate_the_Military_Union
+		}
+		prerequisite = {
+			focus = BUL_Restoration_of_Limited_Civil_Liberties
+		}
+		prerequisite = {
+			focus = BUL_Re_chamber_the_National_Assembly
+		}
+		prerequisite = {
+			focus = BUL_Weather_the_Coming_Storm
+		}
+		x = 5
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BUL_Tzar_in_Control_2
+				add_idea = BUL_Tzar_in_Control_3
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Reform_Kyosivanov_Government
+		icon = GFX_goal_unknown
+		cost = 35
+		prerequisite = {
+			focus = BUL_In_the_Name_of_the_Tzar
+		}
+		x = 5
+		y = 7
+		completion_reward = {
+			country_event = BUL_Tzar.7
+		}
+
+	}
+	focus = {
+		id = BUL_Balkan_Pact_Rapprochement
+		icon = GFX_goal_unknown
+		cost = 84
+		prerequisite = {
+			focus = BUL_Reform_Kyosivanov_Government
+		}
+		x = 1
+		y = 8
+
+	}
+	focus = {
+		id = BUL_Compulsory_Education
+		icon = GFX_BUL_Compulsory_Education
+		cost = 56
+		prerequisite = {
+			focus = BUL_Reform_Kyosivanov_Government
+		}
+		x = 3
+		y = 8
+		completion_reward = {
+			add_political_power = 50
+			set_country_flag = research_spending_slider_decrease_blocked
+			if = {
+				limit =  {
+					has_idea = research_spending_level_4
+				}
+				swap_ideas = {
+					remove_idea = research_spending_level_4		
+					add_idea = research_spending_level_5
+				}
+			}
+			if = {
+				limit =  {
+					has_idea = research_spending_level_3
+				}
+				swap_ideas = {
+					remove_idea = research_spending_level_3		
+					add_idea = research_spending_level_4
+				}
+			}
+			if = {
+				limit =  {
+					has_idea = research_spending_level_2
+				}
+				swap_ideas = {
+					remove_idea = research_spending_level_2	
+					add_idea = research_spending_level_3
+				}
+			}
+			if = {
+				limit =  {
+					has_idea = research_spending_level_1
+				}
+				swap_ideas = {
+					remove_idea = research_spending_level_1		
+					add_idea = research_spending_level_2
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_The_Institution_of_Bulgarian_Democracy
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_Reform_Kyosivanov_Government
+		}
+		x = 5
+		y = 8
+		completion_reward = {
+			country_event = BUL_Tzar.8
+		}
+
+	}
+	focus = {
+		id = BUL_Reform_Electoral_Laws
+		icon = GFX_goal_unknown
+		cost = 56
+		prerequisite = {
+			focus = BUL_Compulsory_Education
+		}
+		prerequisite = {
+			focus = BUL_The_Institution_of_Bulgarian_Democracy
+		}
+		x = 4
+		y = 9
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.1
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = BUL
+					modifier = BUL_Electoral_Laws
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = BUL
+					modifier = BUL_Electoral_Laws
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Organize_Controlled_Elections
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_The_Institution_of_Bulgarian_Democracy
+		}
+		x = 6
+		y = 9
+		completion_reward = {
+			country_event = BUL_Tzar.9
+		}
+
+	}
+	focus = {
+		id = BUL_Issue_Decree_No_169
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_Reform_Electoral_Laws
+		}
+		prerequisite = {
+			focus = BUL_Organize_Controlled_Elections
+		}
+		x = 5
+		y = 10
+		completion_reward = {
+			add_stability = 0.02
+			add_political_power = 20
+			country_event = BUL_Tzar.10
+		}
+
+	}
+	focus = {
+		id = BUL_Secret_Rearmement
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Reform_Kyosivanov_Government
+		}
+		mutually_exclusive = {
+			focus = BUL_Remilitarization_of_Bulgaria
+		}
+		x = 7
+		y = 8
+		completion_reward =  {
+			add_ideas = BUL_Secret_Rearmement
+		}
+
+	}
+	focus = {
+		id = BUL_Remilitarization_of_Bulgaria
+		icon = GFX_BUL_Remilitarization_of_Bulgaria
+		cost = 10
+		prerequisite = {
+			focus = BUL_Reform_Kyosivanov_Government
+		}
+		mutually_exclusive = {
+			focus = BUL_Secret_Rearmement
+		}
+		x = 9
+		y = 8
+		available = {
+			has_global_flag = Salonika_Agreement
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = BUL_Rapid_Military_Growth
+				days = 280
+			}
+		}
+
+	}
+	focus = {
+		id = BUl_Invest_in_DVF_Plants_79
+		icon = GFX_goal_unknown
+		cost = 56
+		prerequisite = {
+			focus = BUL_Secret_Rearmement
+			focus = BUL_Remilitarization_of_Bulgaria
+		}
+		x = 8
+		y = 9
+		completion_reward = {
+			212 = {
+				add_building_construction  = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+			    }
+			    add_extra_state_shared_building_slots = 2
+			}
+			set_temp_variable = { money_to_gain = -100 }
+			add_money_with_inflation_included_with_tooltip_effect = yes			
+		}
+
+	}
+	focus = {
+		id = BUL_Expand_Railways_for_Logistics
+		icon = GFX_goal_unknown
+		cost = 56
+		prerequisite = {
+			focus = BUl_Invest_in_DVF_Plants_79
+		}
+		x = 7
+		y = 10
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = BUL
+				}
+				add_building_construction  = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+			    }
+			}
+			set_temp_variable = { money_to_gain = -50 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = BUL_Upgrade_the_Equipment
+		icon = GFX_goal_unknown
+		cost = 56
+		prerequisite = {
+			focus = BUl_Invest_in_DVF_Plants_79
+		}
+		x = 9
+		y = 10
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -15 }
+			add_money_with_inflation_included_with_tooltip_effect = yes	
+			add_tech_bonus = {
+			    bonus = 0.5
+			    uses = 1
+			    category = land_doctrine				
+			}	
+			add_tech_bonus = {
+			    bonus = 0.5
+			    uses = 1
+			    category = infantry_weapons				
+			}	
+
+		}
+
+	}
+	focus = {
+		id = BUL_Remove_General_Lukov
+		icon = GFX_goal_unknown
+		cost = 56
+		prerequisite = {
+			focus = BUL_Remilitarization_of_Bulgaria
+		}
+		x = 10
+		y = 9
+		completion_reward = {
+			country_event = BUL_Tzar.11
+		}
+
+	}
+	focus = {
+		id = BUL_Dissolve_the_National_Assembly
+		icon = GFX_BUL_Dissolve_the_National_Assembly
+		cost = 14
+		prerequisite = {
+			focus = BUL_Zveno_Government
+		}
+		x = 12
+		y = 1
+		completion_reward = {
+			country_event = BUL_Politics.16
+		}
+
+	}
+	focus = {
+		id = BUL_Ban_Political_Parties_and_Unions
+		icon = GFX_BUL_Ban_Political_Parties_and_Unions
+		cost = 10
+		prerequisite = {
+			focus = BUL_Dissolve_the_National_Assembly
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			country_event = BUL_Politics.17
+			set_temp_variable = { money_to_gain = 50 }
+			add_money_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = BUL_Crackdown_on_the_BCP
+		icon = GFX_BUL_Crack_Down_on_the_BCP
+		cost = 10
+		prerequisite = {
+			focus = BUL_Zveno_Government
+		}
+		x = 14
+		y = 1
+		completion_reward = {
+			add_popularity = {
+			    ideology = communist
+			    popularity = -0.07
+			}
+		}
+	}
+	focus = {
+		id = BUL_Appoint_Loyal_Officers
+		icon = GFX_BUL_Appoint_Loyal_Officials
+		cost = 14
+		prerequisite = {
+			focus = BUL_Dissolve_the_National_Assembly
+		}
+		prerequisite = {
+			focus = BUL_Crackdown_on_the_BCP
+		}
+		x = 13
+		y = 2
+		completion_reward = {
+			country_event = BUL_Politics.18
+			add_ideas = BUL_Zveno_Reforms
+		}
+	}
+	focus = {
+		id = BUL_Standardize_Settlement_Names
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		cost = 10
+		prerequisite = {
+			focus = BUL_Crackdown_on_the_BCP
+		}
+		x = 15
+		y = 2
+		completion_reward = {
+			country_event = BUL_Politics.19
+		}
+	}
+	focus = {
+		id = BUL_Directorate_for_Public_Renewal
+		icon = GFX_BUL_Form_the_Directorate_of_Public_Renewal
+		cost = 14
+		prerequisite = {
+			focus = BUL_Ban_Political_Parties_and_Unions
+		}
+		prerequisite = {
+			focus = BUL_Appoint_Loyal_Officers
+		}
+		prerequisite = {
+			focus = BUL_Standardize_Settlement_Names
+		}
+		x = 13
+		y = 3
+		completion_reward = {
+		    set_temp_variable = { money_to_gain = -20 }
+			add_money_with_tooltip_effect = yes	
+			add_popularity = {
+			    ideology = authoritarian
+			    popularity = 0.03
+			}
+			swap_ideas = {
+				remove_idea = BUL_Zveno_Reforms
+				add_idea = BUL_Zveno_Reforms_2
+			}			
+			country_event = BUL_Politics.20				
+		}
+
+	}
+	focus = {
+		id = BUL_Pro_Government_Unions
+		icon = GFX_BUL_Establish_Pro_Government_Unions
+		cost = 10
+		prerequisite = {
+			focus = BUL_Directorate_for_Public_Renewal
+		}
+		x = 12
+		y = 4
+		completion_reward = {
+		    set_temp_variable = { money_to_gain = -15 }
+			add_money_with_tooltip_effect = yes	
+			add_stability = 0.02
+			add_popularity = {
+			    ideology = authoritarian
+			    popularity = 0.01
+			}
+			
+			country_event = BUL_Politics.21				
+		}
+	}
+	focus = {
+		id = BUL_Bulgarian_Credit_Bank
+		icon = GFX_BUL_Bulgarian_Credit_Bank
+		cost = 10
+		prerequisite = {
+			focus = BUL_Pro_Government_Unions
+		}
+		x = 11
+		y = 5
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = BUL_Zveno_Reforms_3
+				}
+				swap_ideas = {
+					remove_idea = BUL_Zveno_Reforms_3
+					add_idea = BUL_Zveno_Reforms_4_A
+				}
+			}
+			if = {
+				limit = {
+					has_idea = BUL_Zveno_Reforms_4_A
+				}
+				swap_ideas = {
+					remove_idea = BUL_Zveno_Reforms_4_B
+					add_idea = BUL_Zveno_Reforms_5
+				}
+			}
+		}
+	}
+	focus = {
+		id = BUL_Takeover_Grain_Alcohol_Tobacco
+		icon = GFX_BUL_Takeover_of_Grain_Alcohol_and_Tobacco
+		cost = 10
+		prerequisite = {
+			focus = BUL_Directorate_for_Public_Renewal
+		}
+		x = 14
+		y = 4
+		completion_reward = {
+		    set_temp_variable = { money_to_gain = 65 }
+			add_money_with_tooltip_effect = yes	
+			swap_ideas = {
+				remove_idea = BUL_Zveno_Reforms_2
+				add_idea = BUL_Zveno_Reforms_3
+			}
+			country_event = BUL_Politics.22			
+		}
+	}
+	focus = {
+		id = BUL_Obliterate_IMRO
+		icon = GFX_BUL_Obliterate_IMRO
+		cost = 21
+		prerequisite = {
+			focus = BUL_Pro_Government_Unions
+		}
+		prerequisite = {
+			focus = BUL_Takeover_Grain_Alcohol_Tobacco
+		}
+		x = 13
+		y = 5
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = BUL_Zveno_Reforms_3
+				}
+				swap_ideas = {
+					remove_idea = BUL_Zveno_Reforms_3
+					add_idea = BUL_Zveno_Reforms_4_B
+				}
+			}
+			if = {
+				limit = {
+					has_idea = BUL_Zveno_Reforms_4_A
+				}
+				swap_ideas = {
+					remove_idea = BUL_Zveno_Reforms_4_A
+					add_idea = BUL_Zveno_Reforms_5
+				}
+			}
+			country_event = BUL_Politics.23
+		}
+
+	}
+	focus = {
+		id = BUL_Consolidate_Banking_Sector
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 35
+		prerequisite = {
+			focus = BUL_Bulgarian_Credit_Bank
+		}
+		prerequisite = {
+			focus = BUL_Obliterate_IMRO
+		}
+		x = 12
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BUL_Zveno_Reforms_5
+				add_idea = BUL_Zveno_Reforms_6
+			}			
+		}
+
+	}
+	focus = {
+		id = BUL_Improve_Relations_with_Yugoslavia
+		icon = GFX_BUL_Improve_Relations_with_Yugoslavia
+		cost = 21
+		prerequisite = {
+			focus = BUL_Takeover_Grain_Alcohol_Tobacco
+		}
+		x = 15
+		y = 5
+		completion_reward = {
+			unlock_decision_tooltip = BUL_Begin_Trade_Negotiations_with_Yugoslavia
+			unlock_decision_tooltip = BUL_Invite_Alexander_I
+		}
+
+	}
+	focus = {
+		id = BUL_Reform_Wellfare_and_Education
+		icon = GFX_BUL_Reform_Welfare_and_Education
+		cost = 10
+		prerequisite = {
+			focus = BUL_Obliterate_IMRO
+		}
+		prerequisite = {
+			focus = BUL_Improve_Relations_with_Yugoslavia
+		}
+		x = 14
+		y = 6
+		completion_reward = {
+			country_event = BUL_Politics.25
+		}
+
+	}
+	focus = {
+		id = BUL_Schism_in_Military_Union
+		icon = GFX_BUL_The_Schism_in_the_Military_Union
+		cost = 70
+		cancelable = no
+		bypass = {
+			has_country_flag = BUL_Republic
+		}
+		prerequisite = {
+			focus = BUL_Consolidate_Banking_Sector
+		}
+		prerequisite = {
+			focus = BUL_Reform_Wellfare_and_Education
+		}
+		x = 13
+		y = 7
+		select_effect = {
+			country_event = BUL_Politics.26
+		}
+
+	}
+	focus = {
+		id = BUL_Expunge_the_Socialists
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 10
+		prerequisite = {
+			focus = BUL_Legionary_Government
+		}
+		x = 14
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Remove_the_Center
+		icon = GFX_focus_SAF_colonialist_crusade
+		cost = 10
+		prerequisite = {
+			focus = BUL_Legionary_Government
+		}
+		x = 16
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Massive_Rallies_in_Sofia
+		icon = GFX_focus_generic_little_entente
+		cost = 10
+		prerequisite = {
+			focus = BUL_Legionary_Government
+		}
+		x = 20
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Disband_the_Military_Union
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 10
+		prerequisite = {
+			focus = BUL_Legionary_Government
+		}
+		x = 18
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Ban_the_Communists
+		icon = GFX_goal_anti_comintern_pact
+		cost = 10
+		prerequisite = {
+			focus = BUL_Legionary_Government
+		}
+		x = 12
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Lukov_Tsankov
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Massive_Rallies_in_Sofia
+		}
+		prerequisite = {
+			focus = BUL_Disband_the_Military_Union
+		}
+		prerequisite = {
+			focus = BUL_Remove_the_Center
+		}
+		prerequisite = {
+			focus = BUL_Expunge_the_Socialists
+		}
+		prerequisite = {
+			focus = BUL_Ban_the_Communists
+		}
+		x = 16
+		y = 11
+
+	}
+	focus = {
+		id = BUL_Lukovs_Leadership
+		icon = GFX_BUL_Hristo_Lukov
+		cost = 10
+		prerequisite = {
+			focus = BUL_Lukov_Tsankov
+		}
+		mutually_exclusive = {
+			focus = BUL_Tsankovs_Leadership
+		}
+		x = 15
+		y = 12
+
+	}
+	focus = {
+		id = BUL_The_Bulgarian_Blackshirts
+		icon = GFX_focus_generic_air_defense
+		cost = 10
+		prerequisite = {
+			focus = BUL_Lukovs_Leadership
+		}
+		x = 14
+		y = 13
+
+	}
+	focus = {
+		id = BUL_Tsankovs_Leadership
+		icon = GFX_BUL_Aleksandar_Tsankov
+		cost = 10
+		prerequisite = {
+			focus = BUL_Lukov_Tsankov
+		}
+		mutually_exclusive = {
+			focus = BUL_Lukovs_Leadership
+		}
+		x = 17
+		y = 12
+
+	}
+	focus = {
+		id = BUL_The_Monarchy_Question
+		icon = GFX_goal_tfv_sever_ties_with_uk
+		cost = 10
+		prerequisite = {
+			focus = BUL_Lukovs_Leadership
+			focus = BUL_Tsankovs_Leadership
+		}
+		x = 16
+		y = 14
+
+	}
+	focus = {
+		id = BUL_The_End_of_the_Tzar
+		icon = GFX_focus_rom_abdicate
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Monarchy_Question
+		}
+		mutually_exclusive = {
+			focus = BUL_The_Figurehead
+		}
+		x = 17
+		y = 15
+
+	}
+	focus = {
+		id = BUL_The_Bulgarian_Stormtroopers
+		icon = GFX_GER_Rhineland_Remilitarization
+		cost = 10
+		prerequisite = {
+			focus = BUL_Tsankovs_Leadership
+		}
+		x = 18
+		y = 13
+
+	}
+	focus = {
+		id = BUL_Retain_Agrarianism
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 10
+		prerequisite = {
+			focus = BUL_Combat_the_Great_Depression
+		}
+		mutually_exclusive = {
+			focus = BUL_An_Industrialized_Bulgaria
+		}
+		x = 20
+		y = 1
+
+	}
+	focus = {
+		id = BUL_Diversify_Crop_Production
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Retain_Agrarianism
+		}
+		x = 20
+		y = 2
+
+	}
+	focus = {
+		id = BUL_Land_Redistribution
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 10
+		prerequisite = {
+			focus = BUL_Diversify_Crop_Production
+		}
+		x = 19
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Agriculture_Subsidies
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 10
+		prerequisite = {
+			focus = BUL_Diversify_Crop_Production
+		}
+		x = 21
+		y = 3
+
+	}
+	focus = {
+		id = BUL_The_Breadbasket_of_the_Balkans
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Land_Redistribution
+		}
+		prerequisite = {
+			focus = BUL_Agriculture_Subsidies
+		}
+		x = 20
+		y = 4
+
+	}
+	focus = {
+		id = BUL_NSM_Supremacy
+		icon = GFX_BUL_NSM_Supremacy
+		cost = 10
+		prerequisite = {
+			focus = BUL_Tsankovs_Leadership
+		}
+		x = 20
+		y = 13
+
+	}
+	focus = {
+		id = BUL_New_Infrastructure_Projects
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 10
+		prerequisite = {
+			focus = BUL_Combat_the_Great_Depression
+		}
+		x = 22
+		y = 2
+
+	}
+	focus = {
+		id = BUL_New_Connected_Cities
+		icon = GFX_focus_generic_industry_2
+		cost = 10
+		prerequisite = {
+			focus = BUL_New_Infrastructure_Projects
+		}
+		x = 22
+		y = 4
+
+	}
+	focus = {
+		id = BUL_An_Industrialized_Bulgaria
+		icon = GFX_focus_generic_industry_2
+		cost = 10
+		prerequisite = {
+			focus = BUL_Combat_the_Great_Depression
+		}
+		mutually_exclusive = {
+			focus = BUL_Retain_Agrarianism
+		}
+		x = 24
+		y = 1
+
+	}
+	focus = {
+		id = BUL_Mechanize_Agriculture
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_An_Industrialized_Bulgaria
+		}
+		x = 24
+		y = 2
+
+	}
+	focus = {
+		id = BUL_A_Civilian_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 10
+		prerequisite = {
+			focus = BUL_Mechanize_Agriculture
+		}
+		x = 23
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Invest_in_Arsenal_AD
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10
+		prerequisite = {
+			focus = BUL_Mechanize_Agriculture
+		}
+		x = 25
+		y = 3
+
+	}
+	focus = {
+		id = BUL_A_New_Bulgarian_Economy
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 10
+		prerequisite = {
+			focus = BUL_A_Civilian_Industry
+		}
+		prerequisite = {
+			focus = BUL_Invest_in_Arsenal_AD
+		}
+		x = 24
+		y = 4
+
+	}
+	focus = {
+		id = BUL_Organize_Peoples_Militia_And_National_Guard
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Fatherland_Front_Coup
+		}
+		x = 25
+		y = 7
+
+	}
+	focus = {
+		id = BUL_Purge_Reactionaries_Fascists
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Fatherland_Front_Coup
+		}
+		x = 27
+		y = 7
+
+	}
+	focus = {
+		id = BUL_Establish_Troikas
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Fatherland_Front_Coup
+		}
+		x = 23
+		y = 7
+
+	}
+	focus = {
+		id = BUL_Soviet_Military_Help
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Purge_Reactionaries_Fascists
+		}
+		prerequisite = {
+			focus = BUL_Organize_Peoples_Militia_And_National_Guard
+		}
+		prerequisite = {
+			focus = BUL_Establish_Troikas
+		}
+		x = 25
+		y = 8
+
+	}
+	focus = {
+		id = BUL_Begin_Peoples_Court_Trial
+		icon = GFX_GENERIC_Justice_System_Socialist
+		cost = 10
+		prerequisite = {
+			focus = BUL_Soviet_Military_Help
+		}
+		x = 25
+		y = 9
+
+	}
+	focus = {
+		id = BUL_Mass_Expropriation
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Begin_Peoples_Court_Trial
+		}
+		x = 25
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Establish_University_of_Ruse
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Begin_Peoples_Court_Trial
+		}
+		x = 23
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Establish_Supreme_Economic_Council
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Begin_Peoples_Court_Trial
+		}
+		x = 27
+		y = 10
+
+	}
+	focus = {
+		id = BUL_Organize_Elections
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Establish_University_of_Ruse
+		}
+		prerequisite = {
+			focus = BUL_Mass_Expropriation
+		}
+		prerequisite = {
+			focus = BUL_Establish_Supreme_Economic_Council
+		}
+		x = 25
+		y = 11
+
+	}
+	focus = {
+		id = BUL_Purge_Educational_Institutions
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Establish_University_of_Ruse
+		}
+		prerequisite = {
+			focus = BUL_Mass_Expropriation
+		}
+		prerequisite = {
+			focus = BUL_Establish_Supreme_Economic_Council
+		}
+		x = 23
+		y = 11
+
+	}
+	focus = {
+		id = BUL_Confiscate_More_Property
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Establish_Supreme_Economic_Council
+		}
+		prerequisite = {
+			focus = BUL_Mass_Expropriation
+		}
+		prerequisite = {
+			focus = BUL_Establish_University_of_Ruse
+		}
+		x = 27
+		y = 11
+
+	}
+	focus = {
+		id = BUL_Establish_Communist_Dominated_Cabinet
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Purge_Educational_Institutions
+		}
+		prerequisite = {
+			focus = BUL_Organize_Elections
+		}
+		prerequisite = {
+			focus = BUL_Confiscate_More_Property
+		}
+		x = 25
+		y = 12
+
+	}
+	focus = {
+		id = BUL_Limit_Land_Ownership
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Establish_Communist_Dominated_Cabinet
+		}
+		x = 24
+		y = 13
+
+	}
+	focus = {
+		id = BUL_Purge_the_Army
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Establish_Communist_Dominated_Cabinet
+		}
+		x = 26
+		y = 13
+
+	}
+	focus = {
+		id = BUL_Referundum_on_the_Monarchy
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Limit_Land_Ownership
+		}
+		prerequisite = {
+			focus = BUL_Purge_the_Army
+		}
+		x = 25
+		y = 14
+
+	}
+	focus = {
+		id = BUL_Declare_the_Peoples_Republic
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Referundum_on_the_Monarchy
+		}
+		x = 25
+		y = 15
+
+	}
+	focus = {
+		id = BUL_Bulgarian_Land_Forces
+		icon = GFX_BUL_Bulgarian_Army
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Second_National_Catastrophe
+		}
+		x = 29
+		y = 1
+
+	}
+	focus = {
+		id = BUL_A_Defensive_Army
+		icon = GFX_goal_generic_build_tank
+		cost = 10
+		prerequisite = {
+			focus = BUL_Bulgarian_Land_Forces
+		}
+		mutually_exclusive = {
+			focus = BUL_An_Offensive_Army
+		}
+		x = 28
+		y = 2
+
+	}
+	focus = {
+		id = BUL_Fortify_the_Borders
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 10
+		prerequisite = {
+			focus = BUL_A_Defensive_Army
+		}
+		x = 28
+		y = 3
+
+	}
+	focus = {
+		id = BUL_An_Offensive_Army
+		icon = GFX_goal_generic_axis_build_infantry
+		cost = 10
+		prerequisite = {
+			focus = BUL_Bulgarian_Land_Forces
+		}
+		mutually_exclusive = {
+			focus = BUL_A_Defensive_Army
+		}
+		x = 30
+		y = 2
+
+	}
+	focus = {
+		id = BUL_Acquire_Tank_Blueprints
+		icon = GFX_goal_generic_army_tanks
+		cost = 10
+		prerequisite = {
+			focus = BUL_An_Offensive_Army
+		}
+		x = 30
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Military_Exercises
+		icon = GFX_focus_generic_little_entente
+		cost = 10
+		prerequisite = {
+			focus = BUL_Fortify_the_Borders
+			focus = BUL_Acquire_Tank_Blueprints
+		}
+		x = 29
+		y = 4
+
+	}
+	focus = {
+		id = BUL_Bulgarian_Navy
+		icon = GFX_BUL_Bulgarian_Navy
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Second_National_Catastrophe
+		}
+		x = 33
+		y = 1
+
+	}
+	focus = {
+		id = BUL_Create_a_Naval_Industry
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10
+		prerequisite = {
+			focus = BUL_Bulgarian_Navy
+		}
+		x = 33
+		y = 2
+
+	}
+	focus = {
+		id = BUL_Contest_the_Black_Sea
+		icon = GFX_GENERIC_Navy
+		cost = 10
+		prerequisite = {
+			focus = BUL_Create_a_Naval_Industry
+		}
+		mutually_exclusive = {
+			focus = BUL_Defend_of_Shores
+		}
+		x = 32
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Defend_of_Shores
+		icon = GFX_focus_generic_coastal_fort
+		cost = 10
+		prerequisite = {
+			focus = BUL_Create_a_Naval_Industry
+		}
+		mutually_exclusive = {
+			focus = BUL_Contest_the_Black_Sea
+		}
+		x = 34
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Update_the_Textbooks
+		icon = GFX_GENERIC_Naval_School
+		cost = 10
+		prerequisite = {
+			focus = BUL_Contest_the_Black_Sea
+			focus = BUL_Defend_of_Shores
+		}
+		x = 33
+		y = 4
+
+	}
+	focus = {
+		id = BUL_Bulgarian_Airforce
+		icon = GFX_BUL_Bulgarian_Air_Force
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Second_National_Catastrophe
+		}
+		x = 37
+		y = 1
+
+	}
+	focus = {
+		id = BUL_Expand_the_Airfields
+		icon = GFX_GENERIC_Militarize_Civilian_Airports
+		cost = 10
+		prerequisite = {
+			focus = BUL_Bulgarian_Airforce
+		}
+		x = 37
+		y = 2
+
+	}
+	focus = {
+		id = BUL_Indigenous_Designs
+		icon = GFX_focus_chi_flying_tigers
+		cost = 10
+		prerequisite = {
+			focus = BUL_Expand_the_Airfields
+		}
+		mutually_exclusive = {
+			focus = BUL_Import_Foreign_Designs
+		}
+		x = 36
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Import_Foreign_Designs
+		icon = GFX_GENERIC_Import_Fighters
+		cost = 10
+		prerequisite = {
+			focus = BUL_Expand_the_Airfields
+		}
+		mutually_exclusive = {
+			focus = BUL_Indigenous_Designs
+		}
+		x = 38
+		y = 3
+
+	}
+	focus = {
+		id = BUL_Secure_the_Skies
+		icon = GFX_focus_generic_air_defense
+		cost = 10
+		prerequisite = {
+			focus = BUL_Indigenous_Designs
+			focus = BUL_Import_Foreign_Designs
+		}
+		x = 37
+		y = 4
+
+	}
+	focus = {
+		id = BUL_Na_Noch
+		icon = GFX_BUL_Na_Nozh
+		cost = 10
+		prerequisite = {
+			focus = BUL_Military_Exercises
+		}
+		prerequisite = {
+			focus = BUL_Update_the_Textbooks
+		}
+		prerequisite = {
+			focus = BUL_Secure_the_Skies
+		}
+		x = 33
+		y = 5
+
+	}
+	focus = {
+		id = BUL_Expand_the_UBNL_Youth_Legion
+		icon = GFX_BUL_UBNL_Youth_Legion
+		cost = 10
+		prerequisite = {
+			focus = BUL_Lukovs_Leadership
+		}
+		x = 12
+		y = 13
+
+	}
+	focus = {
+		id = BUL_Integration_into_Yugoslavia
+		icon = GFX_focus_generic_treaty
+		cost = 10
+		prerequisite = {
+			focus = BUL_Schism_in_Military_Union
+		}
+		x = 13
+		y = 8
+		allow_branch = {
+			has_cosmetic_tag = BUL_Republic
+		}
+		completion_reward = {
+			unlock_decision_tooltip = BUL_Begin_Integration_into_Yugoslavia
+		}
+
+	}
+	focus = {
+		id = BUL_The_Figurehead
+		icon = GFX_focus_rom_handle_king
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Monarchy_Question
+		}
+		mutually_exclusive = {
+			focus = BUL_The_End_of_the_Tzar
+		}
+		x = 15
+		y = 15
+
+	}
+	focus = {
+		id = BUL_The_Legionary_State
+		icon = GFX_BUL_Greater_Bulgaria
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Figurehead
+			focus = BUL_The_End_of_the_Tzar
+		}
+		prerequisite = {
+			focus = BUL_The_Corporate_Economy
+		}
+		prerequisite = {
+			focus = BUL_Cooperative_Agriculture
+		}
+		x = 14
+		y = 16
+
+
+	}
+	focus = {
+		id = BUL_Consolidate_the_Legion
+		icon = GFX_GENERIC_Ideology_Fascism
+		cost = 10
+		prerequisite = {
+			focus = BUL_Expand_the_UBNL_Youth_Legion
+		}
+		prerequisite = {
+			focus = BUL_The_Bulgarian_Blackshirts
+		}
+		x = 13
+		y = 14
+
+	}
+	focus = {
+		id = BUL_The_Corporate_Economy
+		icon = GFX_focus_mex_privatisation
+		cost = 10
+		prerequisite = {
+			focus = BUL_Consolidate_the_Legion
+		}
+		x = 13
+		y = 15
+
+	}
+	focus = {
+		id = BUL_National_Socialism_with_Bulgarian_Characteristics
+		icon = GFX_GENERIC_Ideology_National_Socialism
+		cost = 10
+		prerequisite = {
+			focus = BUL_The_Bulgarian_Stormtroopers
+		}
+		prerequisite = {
+			focus = BUL_NSM_Supremacy
+		}
+		x = 19
+		y = 14
+
+	}
+	focus = {
+		id = BUL_Cooperative_Agriculture
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 10
+		prerequisite = {
+			focus = BUL_National_Socialism_with_Bulgarian_Characteristics
+		}
+		x = 19
+		y = 15
+
+	}
+	focus = {
+		id = BUL_Neutral_Foreign_Policy
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Balkan_Pact_Rapprochement
+		}
+		x = 2
+		y = 9
+		bypass = {
+			has_idea = neutrality
+		}
+		completion_reward = {
+			add_ideas = neutrality
+		}
+
+	}
+	focus = {
+		id = BUL_Trade_With_Axis
+		icon = GFX_goal_unknown
+		cost = 56
+		prerequisite = {
+			focus = BUL_Neutral_Foreign_Policy
+		}
+		mutually_exclusive = {	
+			focus = BUL_Trade_With_Allies
+		}
+		x = 1
+		y = 10
+		completion_reward = {
+			add_opinion_modifier = {
+				target = ITA
+				modifier = BUL_Trade_Axis
+			}		
+			add_opinion_modifier = {
+				target = GER
+				modifier = BUL_Trade_Axis
+			}
+			swap_ideas = {
+				remove_idea = BUL_German_Influence
+				add_idea = BUL_German_Influence_2
+			}			
+		}
+
+	}
+	focus = {
+		id = BUL_Trade_With_Allies
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_Neutral_Foreign_Policy
+		}
+		mutually_exclusive = {	
+			focus = BUL_Trade_With_Axis
+		}
+		x = 3
+		y = 10
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.05
+			}	
+			add_opinion_modifier = {
+				target = ENG
+				modifier = BUL_Trade_Allies
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = BUL_Trade_Allies
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = BUL_Trade_Allies_US
+			}	
+		}
+
+	}
+	focus = {
+		id = BUL_1939_Elections
+		icon = GFX_goal_unknown
+		cost = 1
+		prerequisite = {
+			focus = BUL_Trade_With_Axis
+		}
+		prerequisite = {
+			focus = BUL_Trade_With_Allies
+		}
+		prerequisite = {
+			focus = BUL_Issue_Decree_No_169
+		}
+		prerequisite = {
+			focus = BUL_Expand_Railways_for_Logistics
+		}
+		prerequisite = {
+			focus = BUL_Upgrade_the_Equipment
+		}
+		x = 5
+		y = 11
+		bypass = {
+			has_country_flag = BUL_1939_Elections
+		}
+
+	}
+	focus = {
+		id = BUL_Bogdan_Filov_Government
+		icon = GFX_goal_unknown
+		cost = 14
+		prerequisite = {
+			focus = BUL_1939_Elections
+		}
+		mutually_exclusive = {
+			focus = BUL_United_Democratic_Opposition_Governement
+		}
+		x = 5
+		y = 12
+		completion_reward = {
+			country_event = BUL_Tzar.13
+			swap_ideas = {
+				remove_idea = BUL_Tzar_in_Control_3
+				add_idea = BUL_Tzar_in_Control_4
+			}
+			set_party_name = { 
+			    ideology = authoritarian 
+			    name = BUL_Filov_Gov_party 
+			    long_name = BUL_Filov_Gov_party_long
+			}	
+		}
+
+	}
+	focus = {
+		id = BUL_United_Democratic_Opposition_Governement
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_1939_Elections
+		}
+		mutually_exclusive = {
+			focus = BUL_Bogdan_Filov_Government
+		}
+		x = 7
+		y = 12
+
+	}
+	focus = {
+		id = BUL_Directorate_for_Civil_Mobilization
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_Bogdan_Filov_Government
+		}
+		x = 3
+		y = 13
+		completion_reward = {	
+			add_ideas = BUL_Directorate_for_Civil_Mobilization
+		}
+
+	}
+	focus = {
+		id = BUL_Create_Brannik
+		icon = GFX_goal_unknown
+		cost = 35
+		prerequisite = {
+			focus = BUL_Bogdan_Filov_Government
+		}
+		x = 5
+		y = 13
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BUL_Tzar_in_Control_4
+				add_idea = BUL_Tzar_in_Control_5
+			}
+			swap_ideas = {
+				remove_idea = BUL_German_Influence_2
+				add_idea = BUL_German_Influence_3
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Protection_of_the_Nation_Act
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Bogdan_Filov_Government
+		}
+		x = 7
+		y = 13
+		completion_reward = {	
+			add_ideas = BUL_German_Supported_Racial_Laws
+			set_temp_variable = { money_to_gain = 170 }
+			add_money_with_tooltip_effect = yes		
+			hidden_effect = {
+				# add_ideas = 
+			}			
+		}
+
+	}
+	focus = {
+		id = BUL_Pro_Axis_Diplomacy
+		icon = GFX_goal_unknown
+		cost = 42
+		prerequisite = {
+			focus = BUL_Directorate_for_Civil_Mobilization
+		}
+		prerequisite = {
+			focus = BUL_Create_Brannik
+		}
+		x = 4
+		y = 14
+
+	}
+	focus = {
+		id = BUL_Crackdown_on_BRP
+		icon = GFX_goal_unknown
+		cost = 42
+		prerequisite = {
+			focus = BUL_Create_Brannik
+		}
+		prerequisite = {
+			focus = BUL_Protection_of_the_Nation_Act
+		}
+		x = 6
+		y = 14
+		completion_reward = {	
+			swap_ideas = {
+				remove_idea = BUL_Communist_Insurgency
+				add_idea = BUL_Communist_Insurgency_2
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Invest_in_our_new_Territories
+		icon = GFX_goal_unknown
+		cost = 35
+		prerequisite = {
+			focus = BUL_Pro_Axis_Diplomacy
+		}
+		x = 3
+		y = 15
+		available = {
+			controls_state = 184
+			controls_state = 106
+		}
+		completion_reward = {
+			184 = {
+				add_building_construction = {
+				    type = infrastructure
+				    level = 1
+				    instant_build = yes
+				}
+				add_resistance = -12
+			}
+			106 = {
+				add_building_construction = {
+				    type = infrastructure
+				    level = 1
+				    instant_build = yes
+				}		
+				add_resistance = -12	
+			}
+			1110 = {
+				add_resistance = -12
+			}
+			1093 = {
+				add_resistance = -12
+			}
+			1094 = {
+				add_resistance = -12
+			}
+			1446 = {
+				add_resistance = -12
+			}
+			958 = {
+				add_resistance = -12
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Ammend_the_state_protection_act
+		icon = GFX_goal_unknown
+		cost = 42
+		prerequisite = {
+			focus = BUL_Pro_Axis_Diplomacy
+		}
+		prerequisite = {
+			focus = BUL_Crackdown_on_BRP
+		}
+		x = 5
+		y = 15
+		completion_reward = {
+			add_ideas = legalistic_restrictions	
+		}
+
+	}
+	focus = {
+		id = BUL_Filov_Second_Government
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = BUL_Ammend_the_state_protection_act
+		}
+		x = 5
+		y = 16
+		completion_reward = {
+			country_event = BUL_Tzar.14
+		}
+
+	}
+	focus = {
+		id = BUL_Reduce_Civilian_Consuption
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_Filov_Second_Government
+		}
+		x = 4
+		y = 17
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BUL_Directorate_for_Civil_Mobilization
+				add_idea = BUL_Directorate_for_Civil_Mobilization_2
+			}
+		}
+
+	}
+	focus = {
+		id = BUL_Execute_BRP_Leadership
+		icon = GFX_goal_unknown
+		cost = 70
+		prerequisite = {
+			focus = BUL_Filov_Second_Government
+		}
+		x = 6
+		y = 17
+		completion_reward = {
+			country_event = BUL_Tzar.15 
+			swap_ideas  ={
+				remove_idea = BUL_Communist_Insurgency_2
+				add_idea = BUL_Communist_Insurgency_3
+			}
+		}
+
+	}
+}

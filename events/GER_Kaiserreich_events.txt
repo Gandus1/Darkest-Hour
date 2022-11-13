@@ -1,0 +1,771 @@
+﻿###########################
+# Darkest Hour Events : German Kaiserreich
+###########################
+add_namespace = GER_OKH
+add_namespace = GER_KR
+add_namespace = GER_KR_OKH
+add_namespace = GER_KR_Bundesrat
+add_namespace = GER_KR_EconomicCoop
+###########################
+# Restoring the Kaiserreich?
+###########################
+country_event = {
+	id = GER_OKH.1
+	title = GER_OKH.1.t
+	desc = GER_OKH.1.d
+	picture = GFX_report_GER_Restoring_the_Kaiserreich
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We shall meet with the Crown Prince
+	option = {
+		name = GER_OKH.1.A
+		custom_effect_tooltip = GER_OKH.1.A.tt
+		country_event = {
+			id = GER_OKH.2
+			days = 2
+		}
+	}
+	#We shall send a letter to the Kaiser in Holland
+	option = {
+		name = GER_OKH.1.B
+		custom_effect_tooltip = GER_OKH.1.B.tt
+		country_event = {
+			id = GER_OKH.4
+			days = 2
+		}
+	}
+}
+###########################
+# Meeting with the Crown Prince
+###########################
+country_event = {
+	id = GER_OKH.2
+	title = GER_OKH.2.t
+	desc = GER_OKH.2.d
+	picture = GFX_report_GER_Meeting_The_Crown_Prince
+	fire_only_once = yes
+	is_triggered_only = yes
+	#As expected, he took the offer
+	option = {
+		name = GER_OKH.2.A
+		set_party_name = {
+			ideology = authoritarian
+			long_name = "Deutschnationale Volkspartei"
+			name = "DNVP"
+		}
+		news_event = {
+			id = GER_OKH.3
+			days = 16
+		}
+	}
+}
+###########################
+# The Coronation
+###########################
+news_event = {
+	id = GER_OKH.3
+	title = GER_OKH.3.t
+	desc = GER_OKH.3.d
+	picture = GFX_news_GER_Kaiser_March
+	fire_only_once = yes
+	is_triggered_only = yes
+	#The Kaiserreich Stands Strong!
+	option = {
+		name = GER_OKH.3.A
+		drop_cosmetic_tag = yes
+		create_country_leader = {
+			name = "Wilhelm III"
+			desc = "Wilhelm_III_desc"
+			picture = GFX_P_A_Wilhelm_III
+			ideology = monarchism
+			traits = { POSITION_GER_Kaiser SUBIDEOLOGY_Monarchism L_Benevolent_Gentleman }
+		}
+	}
+}
+###########################
+# Letter of Reconcilliation
+###########################
+country_event = {
+	id = GER_OKH.4
+	title = GER_OKH.4.t
+	desc = GER_OKH.4.d
+	picture = GFX_report_GER_Wilhelm_II
+	fire_only_once = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = GER_OKH.4.A
+		country_event = {
+			id = GER_OKH.5
+			hours = 12
+		}
+	}
+}
+###########################
+# The Exiled Kaiser
+###########################
+country_event = {
+	id = GER_OKH.5
+	title = GER_OKH.5.t
+	desc = GER_OKH.5.d
+	picture = GFX_report_GER_Wilhelm_II
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Grant the concessions
+	option = {
+		name = GER_OKH.5.A
+		custom_effect_tooltip = GER_OKH.5.A.tt
+		hidden_effect = {
+			HOL = {
+				country_event = {
+					id = HOL_Return_of_the_Kaiser.1
+					hours = 6
+				}
+			}
+		}
+	}
+	# Send the Ultimatum!
+	option = {
+		name = GER_OKH.5.B
+		custom_effect_tooltip = GER_OKH.5.B.tt
+		hidden_effect = {
+			HOL = {
+				country_event = {
+					id = HOL_Return_of_the_Kaiser.4
+					hours = 6
+				}
+			}
+		}
+	}
+	# Sneak him out of there!
+	option = {
+		name = GER_OKH.5.C
+		custom_effect_tooltip = GER_OKH.5.C.tt
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.6
+				hours = 6
+			}
+		}
+	}
+}
+################################################
+# Preparation: Cover Story
+################################################
+country_event = {
+	id = GER_OKH.6
+	title = GER_OKH.6.t
+	desc = GER_OKH.6.d
+	picture = GFX_report_GER_Abwehr
+	fire_only_once = yes
+	is_triggered_only = yes
+	# I heard Rotterdam is lovely this time of year
+	option = {
+		name = GER_OKH.6.A
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.7
+				hours = 6
+			}
+		}
+	}
+	# We need to help critically injured and terminally ill
+	option = {
+		name = GER_OKH.6.B
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.7
+				hours = 6
+			}
+		}
+	}
+}
+################################################
+# Preparation: Entry Point
+################################################
+country_event = {
+	id = GER_OKH.7
+	title = GER_OKH.7.t
+	desc = GER_OKH.7.d
+	picture = GFX_report_GER_Rotterdam_1930s
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Land is the cheaper and faster option
+	option = {
+		name = GER_OKH.7.A
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.8
+				hours = 6
+			}
+		}
+	}
+	# I've always wanted to ride a ship
+	option = {
+		name = GER_OKH.7.B
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.8
+				hours = 6
+			}
+		}
+	}
+	# The advancements in aviation will bring our Kaiser home
+	option = {
+		name = GER_OKH.7.C
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.8
+				hours = 6
+			}
+		}
+	}
+}
+################################################
+# Entering the Kaiser's Residence
+################################################
+country_event = {
+	id = GER_OKH.8
+	title = GER_OKH.8.t
+	desc = GER_OKH.8.d
+	picture = GFX_report_GER_Huis_Doorn
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Thank god this didn't end up badly
+	option = {
+		name = GER_OKH.8.A
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.9
+				hours = 6
+			}
+		}
+	}
+}
+################################################
+# The Border Checkpoint
+################################################
+country_event = {
+	id = GER_OKH.9
+	title = GER_OKH.9.t
+	desc = GER_OKH.9.d
+	picture = GFX_report_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Tread carefully everyone, we will be fine
+	option = {
+		name = GER_OKH.9.A
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.10
+				hours = 6
+			}
+		}
+	}
+}
+################################################
+# First Question: What is your purpose visiting the Netherlands?
+################################################
+country_event = {
+	id = GER_OKH.10
+	title = GER_OKH.10.t
+	desc = GER_OKH.10.d
+	picture = GFX_report_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Vacation
+	option = {
+		name = GER_OKH.10.A
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.11
+				hours = 6
+			}
+		}
+	}
+	# Medical Mission to the Netherlands from Germany
+	option = {
+		name = GER_OKH.10.B
+		hidden_effect = {
+			country_event = {
+				id = GER_OKH.12
+				hours = 6
+			}
+		}
+	}
+}
+################################################
+# Second Question (if you chose vacation as answer): Where did you go exactly?
+################################################
+country_event = {
+	id = GER_OKH.11
+	title = GER_OKH.11.t
+	desc = GER_OKH.11.d
+	picture = GFX_report_GER_Rotterdam_1930s
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We went to Rotterdam, it’s a lovely place - correct
+	option = {
+		name = GER_OKH.11.A
+		hidden_effect = {
+			news_event = {
+				id = GER_OKH.14
+				hours = 6
+			}
+			HOL = {
+				country_event = {
+					id = HOL_Return_of_the_Kaiser.3
+					hours = 6
+				}
+			}
+		}
+	}
+	# Why, Nuremberg is beautiful - wrong
+	option = {
+		name = GER_OKH.11.B
+		hidden_effect = {
+			news_event = {
+				id = GER_OKH.13
+				hours = 6
+			}
+			HOL = {
+				country_event = {
+					id = HOL_Return_of_the_Kaiser.2
+					hours = 6
+				}
+			}
+		}
+	}
+}
+################################################
+# Second Question (if you chose medical mission as answer): Do you have any patients with you?
+################################################
+country_event = {
+	id = GER_OKH.12
+	title = GER_OKH.12.t
+	desc = GER_OKH.12.d
+	picture = GFX_report_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Yes we do, he’s sedated at the moment but here are his travel papers - correct
+	option = {
+		name = GER_OKH.12.A
+		hidden_effect = {
+			news_event = {
+				id = GER_OKH.14
+				hours = 6
+			}
+			HOL = {
+				country_event = {
+					id = HOL_Return_of_the_Kaiser.3
+					hours = 6
+				}
+			}
+		}
+	}
+	# We do not have any patients with us - wrong
+	option = {
+		name = GER_OKH.12.B
+		hidden_effect = {
+			news_event = {
+				id = GER_OKH.13
+				hours = 6
+			}
+			HOL = {
+				country_event = {
+					id = HOL_Return_of_the_Kaiser.2
+					hours = 6
+				}
+			}
+		}
+	}
+}
+################################################
+# Results (wrong vacation/medical mission answers): Shootout in Border Checkpoint
+################################################
+news_event = {
+	id = GER_OKH.13
+	title = GER_OKH.13.t
+	desc = GER_OKH.13.d
+	picture = GFX_news_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# This never should’ve happened
+	option = {
+		name = GER_OKH.13.A
+	}
+}
+################################################
+# Results (correct vacation/medical mission answers): Return of Kaiser Wilhelm II
+################################################
+news_event = {
+	id = GER_OKH.14
+	title = GER_OKH.14.t
+	desc = GER_OKH.14.d
+	picture = GFX_news_GER_Wilhelm_II
+	fire_only_once = yes
+	is_triggered_only = yes
+	# It was a long journey, but we can finally sleep peacefully at night
+	option = {
+		name = GER_OKH.14.A
+		drop_cosmetic_tag = yes
+		create_country_leader = {
+			name = "Wilhelm II"
+			desc = ""
+			picture = GFX_P_A_Wilhelm_II
+			ideology = monarchism
+			traits = { POSITION_GER_Kaiser SUBIDEOLOGY_Monarchism L_Weary_Stiff_Neck }
+		}
+	}
+}
+################################################
+# The Netherlands has accepted our concessions (Diplomacy/Guarantee)
+################################################
+country_event = {
+	id = GER_OKH.15
+	title = GER_OKH.15.t
+	desc = GER_OKH.15.d
+	picture = GFX_report_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# This better be worth it, otherwise, it's all for nothing..
+	option = {
+		name = GER_OKH.15.A
+		give_guarantee = HOL
+		create_country_leader = {
+			name = "Wilhelm II"
+			desc = ""
+			picture = GFX_P_A_Wilhelm_II
+			ideology = monarchism
+			traits = { POSITION_GER_Kaiser SUBIDEOLOGY_Monarchism L_Weary_Stiff_Neck }
+		}
+	}
+}
+################################################
+# The Netherlands Acquiesced to our Demands (Ultimatum)
+################################################
+country_event = {
+	id = GER_OKH.16
+	title = GER_OKH.16.t
+	desc = GER_OKH.16.d
+	picture = GFX_report_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# The old man surely can make a fiery speech
+	option = {
+		name = GER_OKH.16.A
+		drop_cosmetic_tag = yes
+		create_country_leader = {
+			name = "Wilhelm II"
+			desc = ""
+			picture = GFX_P_A_Wilhelm_II
+			ideology = monarchism
+			traits = { POSITION_GER_Kaiser SUBIDEOLOGY_Monarchism L_Weary_Stiff_Neck }
+		}
+	}
+}
+################################################
+# The Netherlands Ignored our Ultimatum
+################################################
+country_event = {
+	id = GER_OKH.17
+	title = GER_OKH.17.t
+	desc = GER_OKH.17.d
+	picture = GFX_report_GER_Dutch_Border
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We cannot risk war with the Allies, we must back down
+	option = {
+		name = GER_OKH.17.A
+		drop_cosmetic_tag = yes
+		create_country_leader = {
+			name = "Wilhelm III"
+			desc = "Wilhelm_III_desc"
+			picture = GFX_P_A_Wilhelm_III
+			ideology = monarchism
+			traits = { POSITION_GER_Kaiser SUBIDEOLOGY_Monarchism L_Benevolent_Gentleman }
+		}
+	}
+	# How dare they ignore us! They shall see the full might of the Wehrmacht!
+	option = {
+		name = GER_OKH.17.B
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = HOL
+		}
+	}
+}
+################################################
+# What Doctrine should the Reichswehr follow ?
+################################################
+country_event = {
+	id = GER_KR_OKH.1
+	title = GER_KR_OKH.1.t
+	desc = GER_KR_OKH.1.d
+	picture = GFX_report_GER_Reichswehr
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Grand Battleplan
+	option = {
+		name = GER_KR_OKH.1.A
+		set_country_flag = GER_Grand_Battleplan
+		custom_effect_tooltip = GER_allows_lesson_of_the_weltkrieg_focus
+	}
+	# Mobile Warfare
+	option = {
+		name = GER_KR_OKH.1.B
+		set_country_flag = GER_Mobile_Warfare
+		custom_effect_tooltip = GER_allows_return_to_prussian_roots_focus
+	}
+}
+################################################
+# OKH asks for greater autonomy and lack of civilian oversight over the army
+################################################
+country_event = {
+	id = GER_KR_OKH.2
+	title = GER_KR_OKH.2.t
+	desc = GER_KR_OKH.2.d
+	picture = GFX_report_GER_Reichswehr
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Side with the OKH
+	option = {
+		name = GER_KR_OKH.2.A
+		add_ideas = GER_Untamed_Army
+	}
+	# Side with the civilian government
+	option = {
+		name = GER_KR_OKH.2.B
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_2
+			}
+		}
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag_3
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag_3
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_5
+			}
+		}
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag_4
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag_4
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_6
+			}
+		}
+		set_temp_variable = { faction_id = 18 }
+		set_temp_variable = { influence_to_add = -10}
+		change_faction_influence = yes
+	}
+}
+################################################
+# Reestablish the Bundesrat ?
+################################################
+country_event = {
+	id = GER_KR_Bundesrat.1
+	title = GER_KR_Bundesrat.1.t
+	desc = GER_KR_Bundesrat.1.d
+	picture = GFX_report_GER_Bundesrat
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Yes
+	option = {
+		name = GER_KR_Bundesrat.1.A
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_3
+			}
+		}
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag_2
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag_2
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_5
+			}
+		}
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.05
+		}
+	}
+	# No
+	option = {
+		name = GER_KR.2.B
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_4
+			}
+		}
+		if = {
+			limit = {
+				has_idea = GER_Kaiserreich_Restore_the_Reichstag_2
+			}
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Restore_the_Reichstag_2
+				add_idea = GER_Kaiserreich_Restore_the_Reichstag_6
+			}
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+	}
+}
+################################################
+# Politicians angry about power given to the cabinet and not the Reichstag
+################################################
+country_event = {
+	id = GER_KR_Bundesrat.2
+	title = GER_KR_Bundesrat.2.t
+	desc = GER_KR_Bundesrat.2.d
+	picture = GFX_report_GER_Reichstag_Weimar
+	fire_only_once = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = GER_KR_Bundesrat.2.A
+		add_political_power = 100
+		add_popularity = {
+			ideology = authoritarian
+			popularity = -0.02
+		}
+	}
+}
+#########################################################################
+# Economic Cooperation with Italy
+#########################################################################
+country_event = {
+	id = GER_KR_EconomicCoop.1
+	title = GER_KR_EconomicCoop.1.t
+	desc = GER_KR_EconomicCoop.1.desc
+	picture = GFX_report_GER_Tripartite_Pact
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Excellent
+	option = {
+		name = GER_KR_EconomicCoop.1.A
+		ITA = {
+			add_opinion_modifier = { target = GER modifier = medium_increase }
+		}
+		64 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		59 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	#decline
+	option = {
+		name = GER_KR_EconomicCoop.1.B
+		ITA = {
+			add_opinion_modifier = { target = GER modifier = medium_decrease }
+		}
+	}
+}
+#########################################################################
+# Economic Cooperation with Germany(italy event)
+#########################################################################
+country_event = {
+	id = GER_KR_EconomicCoop.2
+	title = GER_KR_EconomicCoop.2.t
+	desc = GER_KR_EconomicCoop.2.desc
+	picture = GFX_report_GER_Tripartite_Pact
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Excellent
+	option = {
+		name = GER_KR_EconomicCoop.2.A
+		GER = {
+			add_opinion_modifier = { target = ITA modifier = medium_increase }
+		}
+		2 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		160 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	#decline
+	option = {
+		name = GER_KR_EconomicCoop.2.B
+		GER = {
+			add_opinion_modifier = { target = ITA modifier = medium_decrease }
+		}
+	}
+}

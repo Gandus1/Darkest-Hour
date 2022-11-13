@@ -1,0 +1,95 @@
+#Peruvian/Ecuadorian War - Neither side should join a faction
+PRU_Prepare_for_Ecuadorian_War = {
+	allowed = {
+		original_tag = PRU
+	}
+	enable = {
+		NOT = {
+			has_country_flag = PRU_Ecuador_War
+		}
+	}
+	abort = {
+		has_country_flag = PRU_End_Ecuador_War
+	}
+	
+	ai_strategy = {
+		type = prepare_for_war
+		id = "ECU"
+		value = 1000
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "ECU"
+		value = 250
+	}
+}
+PRU_Ecuadorian_War = {
+	allowed = {
+		original_tag = PRU
+	}
+	enable = {
+		has_country_flag = PRU_Ecuador_War
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = conquer
+		id = "ECU"
+		value = 1000
+	}
+}
+ECU_Prepare_for_Peruvian_War = {
+	allowed = {
+		original_tag = ECU
+	}
+	enable = {
+		NOT = {
+			has_war_with = PRU
+		}
+	}
+	abort = {
+		OR = {
+			PRU = {
+				has_country_flag = PRU_Ecuador_War
+			}
+			PRU = {
+				has_country_flag = PRU_End_Ecuador_War
+			}
+		}
+	}
+	
+	ai_strategy = {
+		type = prepare_for_war
+		id = "PRU"
+		value = 500
+	}
+}
+Foreign_Noninterventionism = {
+	enable = {
+		NOT = {
+			original_tag = PRU
+			original_tag = ECU
+		}
+	}
+	abort = {
+		OR = {
+			PRU = {
+				has_country_flag = PRU_Ecuador_War
+			}
+			PRU = {
+				has_country_flag = PRU_End_Ecuador_War
+			}
+		}	
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = "PRU"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ECU"
+		value = -1000
+	}
+}

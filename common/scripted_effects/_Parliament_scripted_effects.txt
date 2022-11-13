@@ -1,0 +1,1341 @@
+# example usage:
+##	set_parliament_parties_influence = yes
+set_parliament_parties_influence = {
+	custom_effect_tooltip = SET_PARLIAMENT_PARTIES_INFLUENCE_TT
+	hidden_effect = {
+		# set relative party popularity, in case it is not set
+		initiate_parliament_party_relative_party_popularities = yes
+
+		# calculate individual party influences
+		set_temp_variable = { fascist_total_popularity = party_popularity@fascist }
+		set_temp_variable = { authoritarian_total_popularity = party_popularity@authoritarian }
+		set_temp_variable = { democratic_total_popularity = party_popularity@democratic }
+		set_temp_variable = { socialist_total_popularity = party_popularity@socialist }
+		set_temp_variable = { communist_total_popularity = party_popularity@communist }
+		set_temp_variable = { parliament_total_influence = 1 }
+		for_each_loop = {
+			array = parliament_array
+			value = v
+			set_temp_variable = { party_id = v }
+			meta_effect = {
+				text = {
+					set_variable = { party_influence_[PARTY] = party_relative_popularity_[PARTY] }
+					if = {
+						limit = {
+							OR = {
+								check_variable = { party_id = 1 }
+								check_variable = { party_id = 2 }
+							}
+						}
+						multiply_variable = { party_influence_[PARTY] = fascist_total_popularity }
+					}
+					else_if = {
+						limit = {
+							check_variable = { party_id = 3 }
+						}
+						multiply_variable = { party_influence_[PARTY] = authoritarian_total_popularity }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								check_variable = { party_id = 4 }
+								check_variable = { party_id = 5 }
+								check_variable = { party_id = 6 }
+								check_variable = { party_id = 7 }
+								check_variable = { party_id = 10 }
+							}
+						}
+						multiply_variable = { party_influence_[PARTY] = democratic_total_popularity }
+					}
+					else_if = {
+						limit = {
+							check_variable = { party_id = 8 }
+						}
+						multiply_variable = { party_influence_[PARTY] = socialist_total_popularity }
+					}
+					else = {
+						multiply_variable = { party_influence_[PARTY] = communist_total_popularity }
+					}
+					subtract_from_temp_variable = { parliament_total_influence = party_influence_[PARTY] }
+				}
+				PARTY = "[?party_id]"
+			}
+		}
+		# add rest to leading party, if there is rest
+		set_temp_variable = { most_influence_party = 0 }
+		for_each_loop = {
+			array = parliament_array
+			value = v
+			set_temp_variable = { party_id = v }
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							check_variable = { party_influence_[PARTY] > party_influence_[MOST_INFLUENCE_PARTY] }
+						}
+						PARTY = "[?party_id]"
+						MOST_INFLUENCE_PARTY = "[?most_influence_party]"
+					}
+				}
+				set_temp_variable = { most_influence_party = party_id }
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { parliament_total_influence > 0 }
+			}
+			set_temp_variable = { parliament_total_influence_temp = parliament_total_influence }
+			divide_temp_variable = { parliament_total_influence_temp = parliament_array^num }
+			for_each_loop = {
+				array = parliament_array
+				value = v
+				set_temp_variable = { party_id = v }
+				meta_effect = {
+					text = {
+						add_to_variable = { party_influence_[PARTY] = parliament_total_influence_temp }
+					}
+					PARTY = "[?party_id]"
+				}
+				subtract_from_temp_variable = { parliament_total_influence = parliament_total_influence_temp }
+			}
+			if = {
+				limit = {
+					check_variable = { parliament_total_influence > 0 }
+				}
+				meta_effect = {
+					text = {
+						add_to_variable = { party_influence_[PARTY] = parliament_total_influence }
+					}
+					PARTY = "[?most_influence_party]"
+				}
+			}
+		}
+
+		# set leading party to highest influence party of highest influence ideology
+		clear_array = ideology_popularities_temp
+		add_to_array = { ideology_popularities_temp = fascist_total_popularity }
+		add_to_array = { ideology_popularities_temp = authoritarian_total_popularity }
+		add_to_array = { ideology_popularities_temp = democratic_total_popularity }
+		add_to_array = { ideology_popularities_temp = socialist_total_popularity }
+		add_to_array = { ideology_popularities_temp = communist_total_popularity }
+		find_highest_in_array = {
+			array = ideology_popularities_temp
+			index = highest_ideology_index
+		}
+		clear_array = ideology_popularities_temp
+		if = {
+			limit = {
+				check_variable = { highest_ideology_index = 0 }
+				OR = {
+					is_in_array = { parliament_array = 1 }
+					is_in_array = { parliament_array = 2 }
+				}
+			}
+			if = {
+				limit = {
+					is_in_array = { parliament_array = 1 }
+					check_variable = { party_influence_1 > party_influence_2 }
+				}
+				set_temp_variable = { party_id = 1 }
+			}
+			else_if = {
+				limit = {
+					is_in_array = { parliament_array = 2 }
+				}
+				set_temp_variable = { party_id = 2 }
+			}
+			else = {
+				set_temp_variable = { party_id = 1 }
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { highest_ideology_index = 1 }
+				is_in_array = { parliament_array = 3 }
+			}
+			set_temp_variable = { party_id = 3 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { highest_ideology_index = 2 }
+				OR = {
+					is_in_array = { parliament_array = 4 }
+					is_in_array = { parliament_array = 5 }
+					is_in_array = { parliament_array = 6 }
+					is_in_array = { parliament_array = 7 }
+					is_in_array = { parliament_array = 10 }
+				}
+			}
+			if = {
+				limit = {
+					is_in_array = { parliament_array = 4 }
+					check_variable = { party_influence_4 > party_influence_5 }
+					check_variable = { party_influence_4 > party_influence_6 }
+					check_variable = { party_influence_4 > party_influence_7 }
+					check_variable = { party_influence_4 > party_influence_10 }
+				}
+				set_temp_variable = { party_id = 4 }
+			}
+			else_if = {
+				limit = {
+					is_in_array = { parliament_array = 5 }
+					check_variable = { party_influence_5 > party_influence_6 }
+					check_variable = { party_influence_5 > party_influence_7 }
+					check_variable = { party_influence_5 > party_influence_10 }
+				}
+				set_temp_variable = { party_id = 5 }
+			}
+			else_if = {
+				limit = {
+					is_in_array = { parliament_array = 6 }
+					check_variable = { party_influence_6 > party_influence_7 }
+					check_variable = { party_influence_6 > party_influence_10 }
+				}
+				set_temp_variable = { party_id = 6 }
+			}
+			else_if = {
+				limit = {
+					is_in_array = { parliament_array = 7 }
+					check_variable = { party_influence_7 > party_influence_10 }
+				}
+				set_temp_variable = { party_id = 7 }
+			}
+			else_if = {
+				limit = {
+					is_in_array = { parliament_array = 10 }
+				}
+				set_temp_variable = { party_id = 7 }
+			}
+			else = {
+				if = {
+					limit = {
+						is_in_array = { parliament_array = 4 }
+					}
+					set_temp_variable = { party_id = 4 }
+				}
+				else_if = {
+					limit = {
+						is_in_array = { parliament_array = 5 }
+					}
+					set_temp_variable = { party_id = 5 }
+				}
+				else_if = {
+					limit = {
+						is_in_array = { parliament_array = 6 }
+					}
+					set_temp_variable = { party_id = 6 }
+				}
+				else_if = {
+					limit = {
+						is_in_array = { parliament_array = 7 }
+					}
+					set_temp_variable = { party_id = 7 }
+				}
+				else = {
+					set_temp_variable = { party_id = 10 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { highest_ideology_index = 3 }
+				is_in_array = { parliament_array = 8 }
+			}
+			set_temp_variable = { party_id = 8 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { highest_ideology_index = 4 }
+				is_in_array = { parliament_array = 9 }
+			}
+			set_temp_variable = { party_id = 9 }
+		}
+		else = {
+			set_temp_variable = { party_id = most_influence_party }
+		}
+		# set ruling party
+		set_parliament_ruling_party = yes
+		# calculate total parliament support
+		calculate_total_parliament_support = yes
+		# update pie chart
+		update_parliament_piechart = yes
+	}
+}
+
+# example usage:
+## initiate_parliament_party_relative_party_popularities = yes
+initiate_parliament_party_relative_party_popularities = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = party_relative_popularity_1 }
+				NOT = { has_variable = party_relative_popularity_2 }
+			}
+		}
+		if = {
+			limit = {
+				is_in_array = { parliament_array = 1 }
+				is_in_array = { parliament_array = 2 }
+			}
+			set_variable = { party_relative_popularity_1 = 0.5 }
+			set_variable = { party_relative_popularity_2 = 0.5 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 1 }
+			}
+			set_variable = { party_relative_popularity_1 = 1 }
+			set_variable = { party_relative_popularity_2 = 0 }
+		}
+		else = {
+			set_variable = { party_relative_popularity_1 = 0 }
+			set_variable = { party_relative_popularity_2 = 1 }
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_variable = party_relative_popularity_3 }
+		}
+		if = {
+			limit = {
+				is_in_array = { parliament_array = 3 }
+			}
+			set_variable = { party_relative_popularity_3 = 1 }
+		}
+		else = {
+			set_variable = { party_relative_popularity_3 = 0 }
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = party_relative_popularity_4 }
+				NOT = { has_variable = party_relative_popularity_5 }
+				NOT = { has_variable = party_relative_popularity_6 }
+				NOT = { has_variable = party_relative_popularity_7 }
+				NOT = { has_variable = party_relative_popularity_10 }
+			}
+		}
+		if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.2 }
+			set_variable = { party_relative_popularity_5 = 0.2 }
+			set_variable = { party_relative_popularity_6 = 0.2 }
+			set_variable = { party_relative_popularity_7 = 0.2 }
+			set_variable = { party_relative_popularity_10 = 0.2 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.25 }
+			set_variable = { party_relative_popularity_6 = 0.25 }
+			set_variable = { party_relative_popularity_7 = 0.25 }
+			set_variable = { party_relative_popularity_10 = 0.25 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.25 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0.25 }
+			set_variable = { party_relative_popularity_7 = 0.25 }
+			set_variable = { party_relative_popularity_10 = 0.25 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.25 }
+			set_variable = { party_relative_popularity_5 = 0.25 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0.25 }
+			set_variable = { party_relative_popularity_10 = 0.25 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.25 }
+			set_variable = { party_relative_popularity_5 = 0.25 }
+			set_variable = { party_relative_popularity_6 = 0.25 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0.25 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.25 }
+			set_variable = { party_relative_popularity_5 = 0.25 }
+			set_variable = { party_relative_popularity_6 = 0.25 }
+			set_variable = { party_relative_popularity_7 = 0.25 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0.33 }
+			set_variable = { party_relative_popularity_7 = 0.33 }
+			set_variable = { party_relative_popularity_10 = 0.33 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.33 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0.33 }
+			set_variable = { party_relative_popularity_10 = 0.33 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.33 }
+			set_variable = { party_relative_popularity_6 = 0.33 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0.33 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.33 }
+			set_variable = { party_relative_popularity_6 = 0.33 }
+			set_variable = { party_relative_popularity_7 = 0.33 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.33 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0.33 }
+			set_variable = { party_relative_popularity_10 = 0.33 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.33 }
+			set_variable = { party_relative_popularity_5 = 0.33 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0.33 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.33 }
+			set_variable = { party_relative_popularity_5 = 0.33 }
+			set_variable = { party_relative_popularity_6 = 0.33 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 5 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.5 }
+			set_variable = { party_relative_popularity_5 = 0.5 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 6 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.5 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0.5 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 7 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.5 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0.5 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0.5 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0.5 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 6 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.5 }
+			set_variable = { party_relative_popularity_6 = 0.5 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 7 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.5 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0.5 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0.5 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0.5 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 7 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0.5 }
+			set_variable = { party_relative_popularity_7 = 0.5 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 6 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0.5 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0.5 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 7 }
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0.5 }
+			set_variable = { party_relative_popularity_10 = 0.5 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 4 }
+			}
+			set_variable = { party_relative_popularity_4 = 1 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 5 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 1 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 6 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 1 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 7 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 1 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+		else_if = {
+			limit = {
+				is_in_array = { parliament_array = 10 }
+			}
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 1 }
+		}
+		else = {
+			set_variable = { party_relative_popularity_4 = 0 }
+			set_variable = { party_relative_popularity_5 = 0 }
+			set_variable = { party_relative_popularity_6 = 0 }
+			set_variable = { party_relative_popularity_7 = 0 }
+			set_variable = { party_relative_popularity_10 = 0 }
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_variable = party_relative_popularity_8 }
+		}
+		if = {
+			limit = {
+				is_in_array = { parliament_array = 8 }
+			}
+			set_variable = { party_relative_popularity_8 = 1 }
+		}
+		else = {
+			set_variable = { party_relative_popularity_8 = 0 }
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_variable = party_relative_popularity_9 }
+		}
+		if = {
+			limit = {
+				is_in_array = { parliament_array = 9 }
+			}
+			set_variable = { party_relative_popularity_9 = 1 }
+		}
+		else = {
+			set_variable = { party_relative_popularity_9 = 0 }
+		}
+	}
+}
+
+# example usage:
+##	calculate_total_parliament_support = yes
+calculate_total_parliament_support = {
+	set_variable = { total_parliament_support = 0 }
+	for_each_loop = {
+		array = parliament_array
+		value = v
+		meta_effect = {
+			text = {
+				set_temp_variable = { support_from_party_temp = party_support_[PARTY] }
+				multiply_temp_variable = { support_from_party_temp = party_influence_[PARTY] }
+			}
+			PARTY = "[?v]"
+		}
+		add_to_variable = { total_parliament_support = support_from_party_temp }
+	}
+	clamp_variable = {
+		var = total_parliament_support
+		min = 0
+		max = 1
+	}
+	set_variable = { parliament_support_bar_x_position = total_parliament_support }
+	multiply_variable = { parliament_support_bar_x_position = 488 }
+	subtract_from_variable = { parliament_support_bar_x_position = 488 }
+	clamp_variable = {
+		var = parliament_support_bar_x_position
+		min = -488
+		max = 0
+	}
+	if = {
+		limit = {
+			check_variable = { parliament_array^num < 1 }
+		}
+		clear_variable = total_parliament_support
+		clear_variable = parliament_support_bar_x_position
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	set_temp_variable = { support_to_add = 0.25 }
+##	change_party_support = yes
+change_party_support = {
+	if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		if = {
+			limit = {
+				check_variable = { support_to_add < 0 }
+			}
+			custom_effect_tooltip = DECREASE_PARTY_SUPPORT_TT
+		}
+		else = {
+			custom_effect_tooltip = INCREASE_PARTY_SUPPORT_TT
+		}
+		hidden_effect = {
+			# add support to selected party
+			meta_effect = {
+				text = {
+					add_to_variable = { party_support_[PARTY] = support_to_add }
+					clamp_variable = {
+						var = party_support_[PARTY]
+						min = 0
+						max = 1
+					}
+				}
+				PARTY = "[?party_id]"
+			}
+		}
+	}
+	# calculate total parliament support
+	calculate_total_parliament_support = yes
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	add_party_to_parliament = yes
+add_party_to_parliament = {
+	if = {
+		limit = {
+			NOT = { is_in_array = { parliament_array = party_id } }
+		}
+		custom_effect_tooltip = ADD_PARTY_TO_PARLIAMENT_TT
+		hidden_effect = {
+			add_to_array = { parliament_array = party_id }
+			set_temp_variable = { support_to_add = 0 }
+			change_party_support = yes
+			set_temp_variable = { popularity_to_add = 0 }
+			add_relative_popularity_to_parliament_party = yes
+			if = {
+				limit = {
+					is_in_array = { parliament_array = 10 }
+				}
+				for_each_loop = {
+					array = parliament_array
+					break = break_temp
+					if = {
+						limit = {
+							check_variable = { v = 10 }
+						}
+						set_temp_variable = { index_temp = i }
+						set_temp_variable = { break_temp = 1 }
+					}
+				}
+				set_variable = { parliament_array^index_temp = 7.5 } # for sorting
+			}
+			for_loop_effect = {
+				start = 1
+				end = parliament_array^num
+				value = v
+				set_temp_variable = { j = v }
+				set_temp_variable = { j_minus = j }
+				subtract_from_temp_variable = { j_minus = 1 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { j > 0 }
+						check_variable = { parliament_array^j_minus > parliament_array^j }
+					}
+					# swap j-1 with j if value of j-1 > j
+					set_temp_variable = { temp = parliament_array^j }
+					set_variable = { parliament_array^j = parliament_array^j_minus }
+					set_variable = { parliament_array^j_minus = temp }
+					subtract_from_temp_variable = { j = 1 }
+					subtract_from_temp_variable = { j_minus = 1 }
+				}
+			}
+			if = {
+				limit = {
+					is_in_array = { parliament_array = 7.5 }
+				}
+				for_each_loop = {
+					array = parliament_array
+					break = break_temp
+					if = {
+						limit = {
+							check_variable = { v = 7.5 }
+						}
+						set_temp_variable = { index_temp = i }
+						set_temp_variable = { break_temp = 1 }
+					}
+				}
+				set_variable = { parliament_array^index_temp = 10 } # for right ID after sorting
+			}
+		}
+		# calculate total parliament support
+		calculate_total_parliament_support = yes
+		# update piechart
+		update_parliament_piechart = yes
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	remove_party_from_parliament = yes
+remove_party_from_parliament = {
+	set_temp_variable = { party_id_temp = party_id }
+	if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		if = {
+			limit = {
+				check_variable = { parliament_ruling_party = party_id }
+			}
+			set_temp_variable = { party_id = 0 }
+			set_parliament_ruling_party = yes
+			set_temp_variable = { party_id = party_id_temp }
+		}
+		custom_effect_tooltip = REMOVE_PARTY_FROM_PARLIAMENT_TT
+		hidden_effect = {
+			set_temp_variable = { popularity_to_add = -1 }
+			add_relative_popularity_to_parliament_party = yes
+			remove_from_array = { parliament_array = party_id }
+			meta_effect = {
+				text = {
+					set_temp_variable = { influence_to_add = party_influence_[PARTY] }
+					divide_temp_variable = { influence_to_add = parliament_array^num }
+					clear_variable = party_influence_[PARTY]
+					clear_variable = party_support_[PARTY]
+					clear_variable = party_relative_popularity_[PARTY]
+				}
+				PARTY = "[?party_id]"
+			}
+			if = {
+				limit = {
+					check_variable = { parliament_array^num > 0 }
+				}
+				for_each_loop = {
+					array = parliament_array
+					value = v
+					set_temp_variable = { party_id = v }
+					meta_effect = {
+						text = {
+							add_to_variable = { party_influence_[PARTY] = influence_to_add }
+						}
+						PARTY = "[?party_id]"
+					}
+				}
+			}
+		}
+		# calculate total parliament support
+		calculate_total_parliament_support = yes
+		# update piechart
+		update_parliament_piechart = yes
+	}
+	set_temp_variable = { party_id = party_id_temp }
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	set_temp_variable = { popularity_to_add = 0.1 }
+##	add_relative_popularity_to_parliament_party = yes
+add_relative_popularity_to_parliament_party = {
+	custom_effect_tooltip = ADD_RELATIVE_POPULARITY_TO_PARLIAMENT_PARTY_TT
+	hidden_effect = {
+		set_temp_variable = { total_popularity_of_ideology = 1 }
+		if = {
+			limit = {
+				check_variable = { party_id = 1 }
+				is_in_array = { parliament_array = 2 }
+			}
+			subtract_from_variable = { party_relative_popularity_2 = popularity_to_add }
+			clamp_variable = {
+				var = party_relative_popularity_2
+				min = 0
+				max = 1
+			}
+			subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_2 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { party_id = 2 }
+				is_in_array = { parliament_array = 1 }
+			}
+			subtract_from_variable = { party_relative_popularity_1 = popularity_to_add }
+			clamp_variable = {
+				var = party_relative_popularity_1
+				min = 0
+				max = 1
+			}
+			subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { party_id = 4 }
+				OR = {
+					is_in_array = { parliament_array = 5 }
+					is_in_array = { parliament_array = 6 }
+					is_in_array = { parliament_array = 7 }
+					is_in_array = { parliament_array = 10 }
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+			for_each_loop = {
+				array = parliament_array
+				if = {
+					limit = {
+						OR = {
+							check_variable = { v = 5 }
+							check_variable = { v = 6 }
+							check_variable = { v = 7 }
+							check_variable = { v = 10 }
+						}
+					}
+					add_to_temp_array = { demo_parties_array_temp = v }
+				}
+			}
+			set_temp_variable = { popularity_to_distribute_divider = demo_parties_array_temp^num }
+			set_temp_variable = { popularity_to_distribute = popularity_to_add }
+			divide_temp_variable = { popularity_to_distribute = popularity_to_distribute_divider }
+			for_each_loop = {
+				array = demo_parties_array_temp
+				meta_effect = {
+					text = {
+						subtract_from_variable = { party_relative_popularity_[ID] = popularity_to_distribute }
+						clamp_variable = {
+							var = party_relative_popularity_[ID]
+							min = 0
+							max = 1
+						}
+						subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_[ID] }
+					}
+					ID = [?v]
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+		}
+		else_if = {
+			limit = {
+				check_variable = { party_id = 5 }
+				OR = {
+					is_in_array = { parliament_array = 4 }
+					is_in_array = { parliament_array = 6 }
+					is_in_array = { parliament_array = 7 }
+					is_in_array = { parliament_array = 10 }
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+			for_each_loop = {
+				array = parliament_array
+				if = {
+					limit = {
+						OR = {
+							check_variable = { v = 4 }
+							check_variable = { v = 6 }
+							check_variable = { v = 7 }
+							check_variable = { v = 10 }
+						}
+					}
+					add_to_temp_array = { demo_parties_array_temp = v }
+				}
+			}
+			set_temp_variable = { popularity_to_distribute_divider = demo_parties_array_temp^num }
+			set_temp_variable = { popularity_to_distribute = popularity_to_add }
+			divide_temp_variable = { popularity_to_distribute = popularity_to_distribute_divider }
+			for_each_loop = {
+				array = demo_parties_array_temp
+				meta_effect = {
+					text = {
+						subtract_from_variable = { party_relative_popularity_[ID] = popularity_to_distribute }
+						clamp_variable = {
+							var = party_relative_popularity_[ID]
+							min = 0
+							max = 1
+						}
+						subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_[ID] }
+					}
+					ID = [?v]
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+		}
+		else_if = {
+			limit = {
+				check_variable = { party_id = 6 }
+				OR = {
+					is_in_array = { parliament_array = 4 }
+					is_in_array = { parliament_array = 5 }
+					is_in_array = { parliament_array = 7 }
+					is_in_array = { parliament_array = 10 }
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+			for_each_loop = {
+				array = parliament_array
+				if = {
+					limit = {
+						OR = {
+							check_variable = { v = 4 }
+							check_variable = { v = 5 }
+							check_variable = { v = 7 }
+							check_variable = { v = 10 }
+						}
+					}
+					add_to_temp_array = { demo_parties_array_temp = v }
+				}
+			}
+			set_temp_variable = { popularity_to_distribute_divider = demo_parties_array_temp^num }
+			set_temp_variable = { popularity_to_distribute = popularity_to_add }
+			divide_temp_variable = { popularity_to_distribute = popularity_to_distribute_divider }
+			for_each_loop = {
+				array = demo_parties_array_temp
+				meta_effect = {
+					text = {
+						subtract_from_variable = { party_relative_popularity_[ID] = popularity_to_distribute }
+						clamp_variable = {
+							var = party_relative_popularity_[ID]
+							min = 0
+							max = 1
+						}
+						subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_[ID] }
+					}
+					ID = [?v]
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+		}
+		else_if = {
+			limit = {
+				check_variable = { party_id = 7 }
+				OR = {
+					is_in_array = { parliament_array = 4 }
+					is_in_array = { parliament_array = 5 }
+					is_in_array = { parliament_array = 6 }
+					is_in_array = { parliament_array = 10 }
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+			for_each_loop = {
+				array = parliament_array
+				if = {
+					limit = {
+						OR = {
+							check_variable = { v = 4 }
+							check_variable = { v = 5 }
+							check_variable = { v = 6 }
+							check_variable = { v = 10 }
+						}
+					}
+					add_to_temp_array = { demo_parties_array_temp = v }
+				}
+			}
+			set_temp_variable = { popularity_to_distribute_divider = demo_parties_array_temp^num }
+			set_temp_variable = { popularity_to_distribute = popularity_to_add }
+			divide_temp_variable = { popularity_to_distribute = popularity_to_distribute_divider }
+			for_each_loop = {
+				array = demo_parties_array_temp
+				meta_effect = {
+					text = {
+						subtract_from_variable = { party_relative_popularity_[ID] = popularity_to_distribute }
+						clamp_variable = {
+							var = party_relative_popularity_[ID]
+							min = 0
+							max = 1
+						}
+						subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_[ID] }
+					}
+					ID = [?v]
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+		}
+		else_if = {
+			limit = {
+				check_variable = { party_id = 10 }
+				OR = {
+					is_in_array = { parliament_array = 4 }
+					is_in_array = { parliament_array = 5 }
+					is_in_array = { parliament_array = 6 }
+					is_in_array = { parliament_array = 7 }
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+			for_each_loop = {
+				array = parliament_array
+				if = {
+					limit = {
+						OR = {
+							check_variable = { v = 4 }
+							check_variable = { v = 5 }
+							check_variable = { v = 6 }
+							check_variable = { v = 7 }
+						}
+					}
+					add_to_temp_array = { demo_parties_array_temp = v }
+				}
+			}
+			set_temp_variable = { popularity_to_distribute_divider = demo_parties_array_temp^num }
+			set_temp_variable = { popularity_to_distribute = popularity_to_add }
+			divide_temp_variable = { popularity_to_distribute = popularity_to_distribute_divider }
+			for_each_loop = {
+				array = demo_parties_array_temp
+				meta_effect = {
+					text = {
+						subtract_from_variable = { party_relative_popularity_[ID] = popularity_to_distribute }
+						clamp_variable = {
+							var = party_relative_popularity_[ID]
+							min = 0
+							max = 1
+						}
+						subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_[ID] }
+					}
+					ID = [?v]
+				}
+			}
+			clear_temp_array = demo_parties_array_temp
+		}
+
+		meta_effect = {
+			text = {
+				add_to_variable = { party_relative_popularity_[PARTY] = popularity_to_add }
+				clamp_variable = {
+					var = party_relative_popularity_[PARTY]
+					min = 0
+					max = 1
+				}
+				subtract_from_temp_variable = { total_popularity_of_ideology = party_relative_popularity_[PARTY] }
+				if = {
+					limit = {
+						NOT = { check_variable = { total_popularity_of_ideology = 0 } }
+					}
+					add_to_variable = { party_relative_popularity_[PARTY] = total_popularity_of_ideology }
+				}
+			}
+			PARTY = "[?party_id]"
+		}
+	}
+}
+
+# example usage:
+## update_parliament_piechart = yes
+update_parliament_piechart = {
+	clear_array = parliament_piechart_array
+	if = {
+		limit = {
+			check_variable = { parliament_array^num > 0 }
+		}
+		for_each_loop = {
+			array = parliament_array
+			value = v
+			set_temp_variable = { party_id = v }
+			meta_effect = {
+				text = {
+					set_temp_variable = { num_of_piechart_segments = party_influence_[PARTY] }
+				}
+				PARTY = "[?party_id]"
+			}
+			multiply_temp_variable = { num_of_piechart_segments = 100 }
+			round_temp_variable = num_of_piechart_segments
+			for_loop_effect = {
+				start = 0
+				end = num_of_piechart_segments
+				add_to_array = { parliament_piechart_array = party_id }
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { parliament_piechart_array^num < 100 }
+			}
+			set_temp_variable = { missing_num_of_piechart_segments = 100 }
+			subtract_from_temp_variable = { missing_num_of_piechart_segments = num_of_piechart_segments }
+			set_temp_variable = { missing_num_of_piechart_segments_divisor = 0 }
+			for_each_loop = {
+				array = parliament_array
+				value = v
+				set_temp_variable = { party_id = v }
+				meta_effect = {
+					text = {
+						if = {
+							limit = {
+								check_variable = { party_influence_[PARTY] > 0 }
+							}
+							add_to_temp_variable = { missing_num_of_piechart_segments_divisor = 1 }
+						}
+					}
+					PARTY = "[?party_id]"
+				}
+			}
+			divide_temp_variable = { missing_num_of_piechart_segments = missing_num_of_piechart_segments_divisor }
+			round_temp_variable = missing_num_of_piechart_segments
+			for_loop_effect = {
+				start = 0
+				end = missing_num_of_piechart_segments
+				for_each_loop = {
+					array = parliament_array
+					value = v
+					set_temp_variable = { party_id = v }
+					meta_effect = {
+						text = {
+							if = {
+								limit = {
+									check_variable = { party_influence_[PARTY] > 0 }
+								}
+								add_to_array = { parliament_piechart_array = v }
+							}
+						}
+						PARTY = "[?party_id]"
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { parliament_piechart_array^num < 100 }
+				}
+				set_temp_variable = { most_influence_party = 0 }
+				for_each_loop = {
+					array = parliament_array
+					value = v
+					set_temp_variable = { party_id = v }
+					if = {
+						limit = {
+							meta_trigger = {
+								text = {
+									check_variable = { party_influence_[PARTY] > party_influence_[MOST_INFLUENCE_PARTY] }
+								}
+								PARTY = "[?party_id]"
+								MOST_INFLUENCE_PARTY = "[?most_influence_party]"
+							}
+						}
+						set_temp_variable = { most_influence_party = party_id }
+					}
+				}
+				resize_array = {
+					array = parliament_piechart_array
+					value = most_influence_party
+					size = 100
+				}
+			}
+		}
+		resize_array = { parliament_piechart_array = 100 }
+		for_loop_effect = {
+			start = 1
+			end = parliament_piechart_array^num
+			value = v
+			set_temp_variable = { j = v }
+			set_temp_variable = { j_minus = j }
+			subtract_from_temp_variable = { j_minus = 1 }
+			while_loop_effect = {
+				limit = {
+					check_variable = { j > 0 }
+					check_variable = { parliament_piechart_array^j_minus < parliament_piechart_array^j }
+				}
+				# swap j-1 with j if value of j-1 < j
+				set_temp_variable = { temp = parliament_piechart_array^j }
+				set_variable = { parliament_piechart_array^j = parliament_piechart_array^j_minus }
+				set_variable = { parliament_piechart_array^j_minus = temp }
+				subtract_from_temp_variable = { j = 1 }
+				subtract_from_temp_variable = { j_minus = 1 }
+			}
+		}
+	}
+}
+
+# example usage:
+## set_temp_variable = { party_id = 1 }
+## set_parliament_ruling_party = yes
+set_parliament_ruling_party = {
+	if = {
+		limit = {
+			check_variable = { party_id = 0 }
+		}
+		custom_effect_tooltip = SET_PARLIAMENT_RULING_PARTY_TT_NO_RULING_PARTY
+		set_variable = { parliament_ruling_party = party_id }
+	}
+	else_if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		custom_effect_tooltip = SET_PARLIAMENT_RULING_PARTY_TT
+		set_variable = { parliament_ruling_party = party_id }
+		if = {
+			limit = {
+				NOT = { has_country_flag = dont_increase_new_ruling_party_support }
+			}
+			set_temp_variable = { support_to_add = 0.25 }
+			change_party_support = yes
+		}
+	}
+	clr_country_flag = dont_increase_new_ruling_party_support
+}
+
+# example usage:
+## dissolve_parliament = yes
+dissolve_parliament = {
+	custom_effect_tooltip = DISSOLVE_PARLIAMENT_TT
+	hidden_effect = {
+		clear_temp_array = parliament_array_temp
+		for_each_loop = {
+			array = parliament_array
+			value = j
+			add_to_temp_array = { parliament_array_temp = j }
+		}
+		for_each_loop = {
+			array = parliament_array_temp
+			value = j
+			set_temp_variable = { party_id = j }
+			remove_party_from_parliament = yes
+		}
+		clear_temp_array = parliament_array_temp
+	}
+}

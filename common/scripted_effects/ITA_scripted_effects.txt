@@ -1,0 +1,91 @@
+ITA_add_swamp_progress = {
+	add_to_variable = { Swamps_Progress = swamp_progress_to_add }
+	clamp_variable = {
+		var = Swamps_Progress
+		min = 0
+		max = 100
+	}
+	custom_effect_tooltip = add_swamp_progress_changes_tt
+	set_variable = { ita_drain_swamps_gui_progress = Swamps_Progress }
+	divide_variable = { ita_drain_swamps_gui_progress = 100 }
+	multiply_variable = { ita_drain_swamps_gui_progress = 350 }
+	subtract_from_variable = { ita_drain_swamps_gui_progress = 350 }
+	round_variable = ita_drain_swamps_gui_progress
+}
+ITA_change_cohesion_values = {
+	if = {
+		limit = { check_variable = { var = ITA_Stresa_Front_Cohesion value = 0 compare = equals } }
+		set_variable = {
+				var = ITA_Stresa_Political_Power_Gain
+				value = 0
+		}
+		set_variable = {
+			var = ITA_Stresa_Stability_Gain
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 0.5 compare = equals }
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 1 compare = equals } 
+			}
+		}
+		set_variable = {
+				var = ITA_Stresa_Political_Power_Gain
+				value = -0.1
+		}
+		set_variable = {
+			var = ITA_Stresa_Stability_Gain
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 1.5 compare = equals }
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 2 compare = equals } 
+			}
+		}
+		set_variable = {
+				var = ITA_Stresa_Political_Power_Gain
+				value = 0
+		}
+		set_variable = {
+			var = ITA_Stresa_Stability_Gain
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 2.5 compare = equals }
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 3 compare = equals } 
+			}
+		}
+		set_variable = {
+				var = ITA_Stresa_Political_Power_Gain
+				value = 0.05
+		}
+		set_variable = {
+			var = ITA_Stresa_Stability_Gain
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 3.5 compare = equals }
+				check_variable = { var = ITA_Stresa_Front_Cohesion value = 4 compare = equals } 
+			}
+		}
+		set_variable = {
+				var = ITA_Stresa_Political_Power_Gain
+				value = 0.05
+		}
+		set_variable = {
+			var = ITA_Stresa_Stability_Gain
+			value = 0.05
+		}
+	}
+}

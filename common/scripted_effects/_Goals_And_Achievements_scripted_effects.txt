@@ -1,0 +1,109 @@
+set_up_goals_and_achievements = {
+	clear_array = global.dh_all_goals_and_achievements_array
+	add_to_array = { global.dh_all_goals_and_achievements_array = 1 }
+	add_to_array = { global.dh_all_goals_and_achievements_array = 2 }
+	add_to_array = { global.dh_all_goals_and_achievements_array = 3 }
+	add_to_array = { global.dh_all_goals_and_achievements_array = 4 }
+	add_to_array = { global.dh_all_goals_and_achievements_array = 5 }
+	add_to_array = { global.dh_all_goals_and_achievements_array = 6 }
+	add_to_array = { global.dh_all_goals_and_achievements_array = 7 }
+}
+
+set_up_own_goals_and_achievements = {
+	clear_array = dh_goals_and_achievements_array
+	for_each_loop = {
+		array = global.dh_all_goals_and_achievements_array
+		value = v
+		set_temp_variable = { goal_or_achievement_id = v }
+		if = {
+			limit = {
+				OR = {
+					is_valid_goal_or_achievement = yes
+					has_completed_goal_or_achievement = yes
+				}
+			}
+			add_to_array = { dh_goals_and_achievements_array = goal_or_achievement_id }
+		}
+	}
+}
+
+complete_goal_or_achievement = {
+	if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 1 }
+		}
+		add_timed_idea = {
+			idea = goal_idea_high_stalinism
+			days = 730
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 2 }
+		}
+		add_political_power = 50
+		army_experience = 10
+		# load naval OOBs of EST, LIT and LAT
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 3 }
+		}
+		add_political_power = 200
+		add_tech_bonus = {
+			name = goal_tech_bonus_victory_in_finland
+			bonus = 0.25
+			uses = 2
+			category = land_doctrine
+		}
+		add_timed_idea = {
+			idea = goal_idea_victory_in_finland
+			days = 300
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 4 }
+		}
+		add_tech_bonus = {
+			name = goal_tech_bonus_lessons_of_war
+			bonus = 1
+			uses = 1
+			category = land_doctrine
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 5 }
+		}
+		army_experience = 100
+		add_timed_idea = {
+			idea = goal_idea_invincible_and_legendary
+			days = 730
+		}
+		hidden_effect = {
+			set_up_own_goals_and_achievements = yes
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 6 }
+		}
+		add_timed_idea = {
+			idea = goal_idea_the_red_crusade
+			days = 365
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 7 }
+		}
+		add_timed_idea = {
+			idea = goal_idea_the_ultimate_victory_against_fascism
+			days = 1825
+		}
+	}
+	else = {
+		custom_effect_tooltip = GOAL_OR_ACHIEVEMENT_HAS_NO_EFFECT
+	}
+}

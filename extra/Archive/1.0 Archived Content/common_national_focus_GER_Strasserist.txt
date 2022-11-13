@@ -1,0 +1,763 @@
+focus_tree = {
+	id = GER_Strasserist
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GER
+			always = no
+		}
+	}
+	default = no
+	focus = {
+		id = GER_Zweite_Revolution
+		icon = GFX_GER_The_Second_Revolution
+		cost = 0.14
+		x = 7
+		y = 0
+		completion_reward = {
+			add_political_power = -200
+			create_country_leader = {
+				name = "KGRNS"
+				desc = ""
+				picture = "P_F_KGRNS.tga"
+				expire = "1965.1.1"
+				ideology = strasserism
+				traits = { }
+			}
+			set_party_name = { 
+				ideology = fascist 
+				long_name = "Kampfgemeinschaft Revolutionarer Nationalsozialisten" 
+				name = "KGRNS" 
+			}
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = GER_STRASSER
+		}
+	}
+	focus = {
+		id = GER_Advocate_for_Paligenesis
+		icon = GFX_GER_Advocate_for_Paligenesis
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Zweite_Revolution
+		}
+		x = 3
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = GER_Embrace_Ultranationalism
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Advocate_for_Paligenesis
+		}
+		mutually_exclusive = {
+			focus = GER_A_Socialist_Outlook
+		}
+		x = 1
+		y = 2
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			create_country_leader = {
+				name = "Gregor Strasser"
+				desc = ""
+				picture = "P_F_Gregor_Strasser.tga"
+				expire = "1965.1.1"
+				ideology = strasserism
+				traits = { }
+			}
+			unlock_decision_tooltip = GER_Strasserist_support_volkisch_ideology
+		}
+	}
+	focus = {
+		id = GER_Consolidate_Irrendentism
+		icon = GFX_HUN_Irredentism_is_the_Way
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Embrace_Ultranationalism
+		}
+		x = 2
+		y = 3
+		completion_reward = {
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GER_Radical_Pan_Germanism
+		icon = GFX_GER_Radical_Pan_Germanism
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Consolidate_Irrendentism
+		}
+		x = 2
+		y = 4
+		completion_reward = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			add_ideas = GER_Radical_Pan_Germanism_idea
+		}
+	}
+	focus = {
+		id = GER_A_Socialist_Outlook
+		icon = GFX_GER_A_Socialist_Outlook
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Advocate_for_Paligenesis
+		}
+		mutually_exclusive = {
+			focus = GER_Embrace_Ultranationalism
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			add_political_power = -50
+			add_war_support = 0.10
+			hidden_effect = {
+				set_politics = {
+					ruling_party = communist
+					last_election = "1933.3.5"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities= {
+					fascist = 33
+					authoritarian = 8
+					democratic = 16
+					socialist = 2
+					communist = 41
+				}				
+				set_party_name = { 
+					ideology = communist 
+					long_name = "Kampfgemeinschaft Revolutionarer Nationalsozialisten - Leftist Faction" 
+					name = "KGRNS-L" 
+				}
+			}
+
+			create_country_leader = {
+				name = "Otto Strasser"
+				desc = ""
+				picture = "P_F_Otto_Strasser.tga"
+				expire = "1965.1.1"
+				ideology = national_communism
+				traits = { }
+			}
+		}
+	}
+	focus = {
+		id = GER_A_Workers_Revolution
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_A_Socialist_Outlook
+		}
+		x = 4
+		y = 3
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			add_ideas = GER_A_Workers_Revolution_idea
+		}
+	}
+	focus = {
+		id = GER_Socialist_Culture
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_A_Workers_Revolution
+		}
+		x = 4
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_A_Workers_Revolution_idea
+				add_idea = GER_Socialist_Culture_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_Collectivist_Policies
+		icon = GFX_focus_prc_agrarian_socialism
+		cost = 10.00
+		prerequisite = {
+			focus = GER_A_Socialist_Outlook
+		}
+		x = 6
+		y = 3
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+		id = GER_Workers_Solidarity
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Collectivist_Policies
+		}
+		x = 6
+		y = 4
+		completion_reward = {
+			add_political_power = -100
+			unlock_decision_tooltip = GER_Strasserist_promote_leftist_unity
+		}
+	}
+	focus = {
+		id = GER_A_Workers_Struggle
+		icon = GFX_GER_A_Workers_Struggle
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Socialist_Culture
+		}
+		prerequisite = {
+			focus = GER_Workers_Solidarity
+		}
+		x = 5
+		y = 5
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.10
+			unlock_decision_tooltip = GER_Strasserist_support_sudeten_germans
+			unlock_decision_tooltip = GER_Strasserist_instigate_nordism_in_denmark
+		}
+	}
+	focus = {
+		id = GER_Mass_Nationalization
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Zweite_Revolution
+		}
+		x = 12
+		y = 1
+		completion_reward = {
+			add_ideas = GER_Abrupt_Nationalization_1
+		}
+	}
+	focus = {
+		id = GER_Dethrone_German_Elites
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Mass_Nationalization
+		}
+		x = 9
+		y = 2
+		completion_reward = {
+			add_political_power = -150
+			if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_1 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_1
+					add_idea = GER_Abrupt_Nationalization_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_2 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_2
+					add_idea = GER_Abrupt_Nationalization_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_3 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_3
+					add_idea = GER_Abrupt_Nationalization_4
+				}
+			}
+			swap_ideas = {
+				remove_idea = GER_Mass_Unemployment
+				add_idea = GER_Dethrone_German_Elites_Mass_unemploymnet_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_Organize_Class_Redistribution
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Dethrone_German_Elites
+		}
+		x = 8
+		y = 3
+		completion_reward = {
+			add_political_power = -150
+			64 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			65 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			59 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			52 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Create_the_Gilde_System
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Dethrone_German_Elites
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			remove_ideas = GER_Dethrone_German_Elites_Mass_unemploymnet_idea
+		}
+	}
+	focus = {
+		id = GER_Centralize_Industrial_Research
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Organize_Class_Redistribution
+		}
+		prerequisite = {
+			focus = GER_Create_the_Gilde_System
+		}
+		x = 9
+		y = 4
+		completion_reward = {
+			add_tech_bonus = {
+				#name = toasters
+				uses = 1
+				bonus = 0.50
+				category = industry
+			}
+			add_tech_bonus = {
+				#name = oil/rubber
+				uses = 1
+				bonus = 0.50
+				category = synth_resources
+			}
+		}
+	}
+	focus = {
+		id = GER_Convert_the_Arbeitsfront
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Mass_Nationalization
+		}
+		x = 12
+		y = 2
+		completion_reward = {
+			add_political_power = -150
+			add_stability = -0.05
+			remove_ideas = GER_Deutsche_Arbeitsfront
+			add_ideas = GER_Convert_the_Arbeitsfront_idea
+		}
+	}
+	focus = {
+		id = GER_Construct_the_Reichgenossenschaft
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Convert_the_Arbeitsfront
+		}
+		x = 12
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			add_tech_bonus = {
+				#name = FACTORIES
+				uses = 2
+				bonus = 0.5
+				category = industry
+			}
+			add_ideas = GER_Construct_the_Reichgenossenschaft_idea
+		}
+	}
+	focus = {
+		id = GER_Eliminate_Capitalist_Organizations
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Mass_Nationalization
+		}
+		x = 15
+		y = 2
+		completion_reward = {
+			add_political_power = -150
+			swap_ideas = {
+				remove_idea = GER_Great_Depression
+				add_idea = GER_Eliminate_Capitalist_Organizations_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_Promote_Socialist_Fraternities
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Eliminate_Capitalist_Organizations
+		}
+		x = 14
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			remove_ideas = GER_Eliminate_Capitalist_Organizations_idea
+			if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_1 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_1
+					add_idea = GER_Abrupt_Nationalization_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_2 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_2
+					add_idea = GER_Abrupt_Nationalization_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_3 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_3
+					add_idea = GER_Abrupt_Nationalization_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Embrace_Dialectal_Analysis
+		icon = GFX_GER_Embrace_Ultranationalism
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Eliminate_Capitalist_Organizations
+		}
+		x = 16
+		y = 3
+		completion_reward = {
+			add_political_power = -150
+			if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_1 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_1
+					add_idea = GER_Abrupt_Nationalization_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_2 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_2
+					add_idea = GER_Abrupt_Nationalization_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = GER_Abrupt_Nationalization_3 }
+				swap_ideas = {
+					remove_idea = GER_Abrupt_Nationalization_3
+					add_idea = GER_Abrupt_Nationalization_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Support_Revolutionary_Electronics
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Promote_Socialist_Fraternities
+		}
+		prerequisite = {
+			focus = GER_Embrace_Dialectal_Analysis
+		}
+		x = 15
+		y = 4
+		completion_reward = {
+			add_tech_bonus = {
+				#name = ELECTRONICS BRO
+				uses = 2
+				bonus = 0.5
+				category = electronics
+			}
+		}
+	}
+	focus = {
+		id = GER_A_Social_Revolution
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Construct_the_Reichgenossenschaft
+		}
+		prerequisite = {
+			focus = GER_Create_the_Gilde_System
+		}
+		prerequisite = {
+			focus = GER_Organize_Class_Redistribution
+		}
+		prerequisite = {
+			focus = GER_Promote_Socialist_Fraternities
+		}
+		prerequisite = {
+			focus = GER_Embrace_Dialectal_Analysis
+		}
+		x = 12
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Abrupt_Nationalization_4
+				add_idea = GER_A_Social_Revolution_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_Militarize_Industrial_Guilds
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_A_Social_Revolution
+		}
+		x = 11
+		y = 5
+		completion_reward = {
+			54 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			51 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			808 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Kriegwohlfahrt
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_A_Social_Revolution
+		}
+		x = 13
+		y = 5
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.10
+			add_ideas = GER_Kreigwohlfahrt_idea
+		}
+	}
+	focus = {
+		id = GER_Ethnic_Nationalism
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Embrace_Ultranationalism
+		}
+		x = 0
+		y = 3
+		completion_reward = {
+			add_ideas = GER_Ethnic_Nationalism_idea
+		}
+	}
+	focus = {
+		id = GER_Collective_Values
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Ethnic_Nationalism
+		}
+		x = 0
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Ethnic_Nationalism_idea
+				add_idea = GER_Collective_Values_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_A_Nations_Struggle
+		icon = GFX_GER_A_Nations_Struggle
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Radical_Pan_Germanism
+		}
+		prerequisite = {
+			focus = GER_Collective_Values
+		}
+		x = 1
+		y = 5
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			unlock_decision_tooltip = GER_Strasserist_support_sudeten_germans
+			unlock_decision_tooltip = GER_Strasserist_instigate_nordism_in_denmark
+		}
+	}
+	focus = {
+		id = GER_Formalize_Combat_Leagues
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Militarize_Industrial_Guilds
+		}
+		prerequisite = {
+			focus = GER_Kriegwohlfahrt
+		}
+		x = 12
+		y = 6
+		completion_reward = {
+			add_ideas = GER_Formalize_Combat_Leagues_idea
+		}
+	}
+	focus = {
+		id = GER_Institute_Energy_Austerity
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Formalize_Combat_Leagues
+		}
+		x = 11
+		y = 7
+		completion_reward = {
+			add_ideas = GER_Institue_Energy_Austerity_idea
+			add_tech_bonus = {
+				#name = UNLIMITED OIL
+				uses = 1
+				bonus = 0.5
+				category = synth_resources
+			}
+		}
+	}
+	focus = {
+		id = GER_Economic_Nationalism
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Formalize_Combat_Leagues
+		}
+		x = 13
+		y = 7
+		completion_reward = {
+			add_war_support = 0.05
+			move_economic_level_down_one = yes
+			move_conscription_law_down_one = yes
+		}
+	}
+}

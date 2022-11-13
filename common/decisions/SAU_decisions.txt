@@ -1,0 +1,92 @@
+#########################################################################
+#  Foreign Policy
+#########################################################################
+foreign_politics = {
+	###########################
+	# Reclaim the Highlands of Tehama
+	###########################
+	SAU_Reclaim_the_Highlands_of_Tehama = {
+		icon = border_war
+		allowed = {
+			original_tag = SAU
+		}
+		visible = {
+			original_tag = SAU
+			has_country_flag = SAU_Reclaim_the_Highlands_of_Tehama
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1073
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 500
+				date > 1934.3.1
+			}
+		}
+		cost = 75
+		days_remove = 10
+		fire_only_once = yes
+		war_with_on_remove = YEM
+		complete_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = "YEM"
+				value = 500
+			}
+		}
+		remove_effect = {
+			news_event = {
+				id = SAU_YEM_War.6
+				hours = 6
+			}
+			declare_war_on = {
+				target = YEM
+				type = annex_everything
+			}
+		}
+	}
+	###########################
+	# Re-Occupy Najran & Jizan
+	###########################
+	SAU_ReOccupy_Najran_and_Jizan = {
+		icon = border_war
+		allowed = {
+			original_tag = SAU
+		}
+		available = {
+			1073 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			1074 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+		}
+		activation = {
+			has_offensive_war_with = YEM
+			has_country_flag = SAU_Reclaim_the_Highlands_of_Tehama
+		}
+		cancel_trigger = {
+			NOT = {
+				has_offensive_war_with = YEM
+			}
+		}
+		days_mission_timeout = 120
+		fire_only_once = yes
+		is_good = no
+		complete_effect = {
+			add_war_support = 0.05
+		}
+		timeout_effect = {
+			add_war_support = -0.05
+			hidden_effect = {
+				activate_mission = SAU_ReOccupy_Najran_and_Jizan
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

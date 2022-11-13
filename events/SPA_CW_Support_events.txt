@@ -1,0 +1,549 @@
+﻿###########################
+# Darkest Hour Events : Spanish Civil War
+###########################
+add_namespace = SPA_CW
+add_namespace = SPR_CW
+add_namespace = SPA_Civil_War # Use only this when reworking Spain, remove everything else
+
+#########################################################################
+# Italian Corpo Truppe Volontarie Arrives
+#########################################################################
+country_event = {
+	id = SPA_Civil_War.1
+	title = SPA_Civil_War.1.t
+	desc = SPA_Civil_War.1.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We need to deter the rise of Communism!
+	option = {
+		name = SPA_Civil_War.1.A
+		hidden_effect = {
+			set_technology = {
+				CRO_BlackLegion = 1
+			}
+			load_oob = SPA_CTV
+			add_manpower = 40000
+			country_event = { id = SPA_Civil_War.2 days = 730 }
+		}
+	}
+}
+#########################################################################
+# Flechas Azules Mixed Brigade Arrives
+#########################################################################
+country_event = {
+	id = SPA_Civil_War.2
+	title = SPA_Civil_War.2.t
+	desc = SPA_Civil_War.2.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = SPA_Civil_War.2.A
+		hidden_effect = {
+			load_oob = SPA_Flechas
+			add_manpower = 3000
+		}
+	}
+}
+#########################################################################
+# Nationalists Request Equipment
+#########################################################################
+country_event = {
+	id = SPA_CW.1
+	title = SPA_CW.1.t
+	desc = SPA_CW.1.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We need to deter the rise of Communism!
+	option = {
+		name = SPA_CW.1.A
+		ai_chance = {
+			factor = 100
+		}
+		send_equipment = {
+			target = SPA type = Small_Arms_equipment_1900 amount = 1000
+		}
+		SPA = { add_opinion_modifier = { target = ITA modifier = SPA_italy_help_1 } }
+	}
+	#Don't Bother
+	option = {
+		name = SPA_CW.1.B
+	}
+}
+#########################################################################
+# Spain needs Naval Support
+#########################################################################
+country_event = {
+	id = SPA_CW.2
+	title = SPA_CW.2.t
+	desc = SPA_CW.2.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Sell them submarines!
+	option = {
+		name = SPA_CW.2.A
+		custom_effect_tooltip = SPA_regia_marina_tt
+		ITA = {
+			transfer_ship = {
+				prefer_name = "LI Squadriglia Sottomarini"
+				type = submarine
+				target = SPA
+			}
+			transfer_ship = {
+				prefer_name = "LII Squadriglia Sottomarini"
+				type = submarine
+				target = SPA
+			}
+			transfer_ship = {
+				prefer_name = "LXXXI Squadra"
+				type = submarine
+				target = SPA
+			}
+			transfer_ship = {
+				prefer_name = "LXXXII Squadra"
+				type = submarine
+				target = SPA
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		SPA = {
+			random_owned_controlled_state = {
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+		SPA = { add_opinion_modifier = { target = ITA modifier = SPA_regia_marina } }
+	}
+	#We shouldn't send them aid
+	option = {
+		name = SPA_CW.2.B
+	}
+}
+#########################################################################
+# A Spanish Volunteer Corps?
+#########################################################################
+country_event = {
+	id = SPA_CW.3
+	title = SPA_CW.3.t
+	desc = SPA_CW.3.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Begin the Project!
+	option = {
+		name = SPA_CW.3.A
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50
+		add_equipment_to_stockpile = {
+			type = Small_Arms_equipment_1900 amount = -1000
+		}
+		SPA = { add_opinion_modifier = { target = ITA modifier = SPA_italy_volunteer_1 } }
+		custom_effect_tooltip = SPA_corpo_truppe_1
+		hidden_effect = {
+			SPA = { load_oob = "SPA_corpo_truppe_voluntarie" }
+		}
+	}
+	#Don't Bother
+	option = {
+		name = SPA_CW.3.B
+	}
+}
+#########################################################################
+# Advisors from Ethiopia
+#########################################################################
+country_event = {
+	id = SPA_CW.4
+	title = SPA_CW.4.t
+	desc = SPA_CW.4.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Send them the experts!
+	option = {
+		name = SPA_CW.4.A
+		ai_chance = {
+			factor = 100
+		}
+		army_experience = 20
+		SPA = { add_war_support = 0.05 }
+		SPA = { add_opinion_modifier = { target = ITA modifier = SPA_ethiopian_advisors } }
+	}
+	#It's not worth our time
+	option = {
+		name = SPA_CW.4.B
+	}
+}
+#########################################################################
+# Corpo Truppe Voluntarie (Since Franco thought Italy's army was helpful)
+#########################################################################
+country_event = {
+	id = SPA_CW.5
+	title = SPA_CW.5.t
+	desc = SPA_CW.5.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Expand the Project!
+	option = {
+		name = SPA_CW.5.A
+		add_political_power = -50
+		add_equipment_to_stockpile = {
+			type = Small_Arms_equipment_1900 amount = -1000
+		}
+		SPA = { add_opinion_modifier = { target = ITA modifier = SPA_italy_volunteer_2 } }
+		custom_effect_tooltip = SPA_corpo_truppe_2
+		hidden_effect = {
+			SPA = { load_oob = "SPA_corpo_truppe_voluntarie2" }
+		}
+	}
+	#We shouldn't continue
+	option = {
+		name = SPA_CW.5.B
+	}
+}
+#########################################################################
+# Nationalists Request Further Equipment
+#########################################################################
+country_event = {
+	id = SPA_CW.6
+	title = SPA_CW.6.t
+	desc = SPA_CW.6.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Anything for our Mediterranean Brothers
+	option = {
+		name = SPA_CW.6.A
+		send_equipment = {
+			target = SPA type = Small_Arms_equipment_1900 amount = 1000
+		}
+		SPA = { add_opinion_modifier = { target = ITA modifier = SPA_italy_help_2 } }
+	}
+	#Don't Bother
+	option = {
+		name = SPA_CW.6.B
+	}
+}
+#########################################################################
+# Spain Requests Air Support
+#########################################################################
+country_event = {
+	id = SPA_CW.7
+	title = SPA_CW.7.t
+	desc = SPA_CW.7.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#The Condor Legion will be entasked
+	option = {
+		name = SPA_CW.7.A
+		send_equipment = {
+			target = SPA type = Fighter_equipment_1933 amount = 100
+		}
+		SPA = { add_opinion_modifier = { target = GER modifier = SPA_condor } }
+	}
+	#It's not worth our time
+	option = {
+		name = SPA_CW.7.B
+	}
+}
+#########################################################################
+# Spain Requests Advisors
+#########################################################################
+country_event = {
+	id = SPA_CW.8
+	title = SPA_CW.8.t
+	desc = SPA_CW.8.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Send Himmler and a few Generals
+	option = {
+		name = SPA_CW.8.A
+		army_experience = 20
+		SPA = { add_war_support = 0.05 }
+		SPA = { add_opinion_modifier = { target = GER modifier = SPA_german_advisors } }
+		GER = {
+			set_rule = {
+				can_send_volunteers = yes
+			}
+		}
+	}
+	#Don't bother
+	option = {
+		name = SPA_CW.8.B
+	}
+}
+#########################################################################
+# Spanish Nationalists meet with Salazar
+#########################################################################
+country_event = {
+	id = SPA_CW.9
+	title = SPA_CW.9.t
+	desc = SPA_CW.9.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Nossos amigos Iberianos!
+	option = {
+		name = SPA_CW.9.A
+		SPA = { add_opinion_modifier = { target = POR modifier = SPA_amigos } }
+		POR = { add_opinion_modifier = { target = SPA modifier = SPA_amigos } }
+	}
+	#Uma mala influencia para o Chefe
+	option = {
+		name = SPA_CW.9.B
+	}
+}
+#########################################################################
+# Pick between Soviets and Americans
+#########################################################################
+country_event = {
+	id = SPR_CW.1
+	title = SPR_CW.1.t
+	desc = SPR_CW.1.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Pick the USA
+	option = {
+		name = SPR_CW.1.A
+		add_popularity = { ideology = democratic popularity = 0.05 }
+		hidden_effect = { unlock_decision_tooltip = SPR_influence_british_legislation }
+		USA = { country_event = { hours = 2 id = SPR_CW.2 } }
+	}
+	#Pick the USSR
+	option = {
+		name = SPR_CW.1.B
+		add_popularity = { ideology = communist popularity = 0.05 }
+		hidden_effect = { unlock_decision_tooltip = SPR_illegal_british_volunteers }
+		SOV = { country_event = { hours = 2 id = SPR_CW.3 } }
+	}
+}
+#########################################################################
+# International Brigades Depart
+#########################################################################
+country_event = {
+	id = SPR_CW.2
+	title = SPR_CW.2.t
+	desc = SPR_CW.2.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Let the radicals leave America
+	option = {
+		name = SPR_CW.2.A
+		hidden_effect = { SPR = { load_oob = "SPR_support_USA" } }
+		custom_effect_tooltip = SPR_USA_volunteers
+		SPR = { add_opinion_modifier = { target = USA modifier = SPR_USA_sent_volunteers } }
+		SPR = {
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1900
+				amount = 500
+				producer = USA
+			}
+		}
+	}
+}
+#########################################################################
+# More Arms for Spain
+#########################################################################
+country_event = {
+	id = SPR_CW.3
+	title = SPR_CW.3.t
+	desc = SPR_CW.3.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Aid our Socialist comrades!
+	option = {
+		name = SPR_CW.3.A
+		add_war_support = 0.05
+		SPR = { add_opinion_modifier = { target = SOV modifier = SPR_SOV_sent_rifles } }
+		send_equipment = {
+			target = SPR type = Small_Arms_equipment_1900 amount = 1000
+		}
+	}
+}
+#########################################################################
+# Arms for Spain
+#########################################################################
+country_event = {
+	id = SPR_CW.4
+	title = SPR_CW.4.t
+	desc = SPR_CW.4.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Support the Fight against Fascism!
+	option = {
+		name = SPR_CW.4.A
+		add_war_support = 0.05
+		send_equipment = {
+			target = SPR type = Small_Arms_equipment_1900 amount = 500
+		}
+	}
+}
+#########################################################################
+# Heavy Weapons for Spain?
+#########################################################################
+country_event = {
+	id = SPR_CW.5
+	title = SPR_CW.5.t
+	desc = SPR_CW.5.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Bombard the Reactionaries Today!
+	option = {
+		name = SPR_CW.5.A
+		add_war_support = 0.05
+		SPR = { add_opinion_modifier = { target = SOV modifier = SPR_SOV_sent_artillery } }
+		send_equipment = {
+			target = SPR type = Fighter_equipment_1933 amount = 200
+		}
+		send_equipment = {
+			target = SPR type = artillery_equipment amount = 300
+		}
+	}
+}
+#########################################################################
+# Military Leadership in Spain
+#########################################################################
+country_event = {
+	id = SPR_CW.6
+	title = SPR_CW.6.t
+	desc = SPR_CW.6.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Teach them how to command the working class!
+	option = {
+		name = SPR_CW.6.A
+		army_experience = 25
+		SPR = { add_ideas = SPR_Soviet_Military_Leadership }
+	}
+}
+#########################################################################
+# Political Doctrine in Spain
+#########################################################################
+country_event = {
+	id = SPR_CW.7
+	title = SPR_CW.7.t
+	desc = SPR_CW.7.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Let us assume political control in Spain!
+	option = {
+		name = SPR_CW.7.A
+		army_experience = 25
+		SPR = { add_ideas = SPR_Soviet_Political_Leadership }
+	}
+}
+#########################################################################
+# Volunteer Law?
+#########################################################################
+country_event = {
+	id = SPR_CW.8
+	title = SPR_CW.8.t
+	desc = SPR_CW.8.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We should support democratic movements in Europe
+	option = {
+		name = SPR_CW.8.A
+		add_war_support = 0.05
+		hidden_effect = { SPR = { load_oob = "SPR_support_ENG_1" } }
+		custom_effect_tooltip = SPR_ENG_volunteers_1
+		SPR = { add_opinion_modifier = { target = ENG modifier = SPR_ENG_sent_volunteers } }
+		SPR = {
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1900
+				amount = 500
+				producer = ENG
+			}
+		}
+	}
+	#These are Soviet activists!
+	option = {
+		name = SPR_CW.8.B
+		add_political_power = 50
+	}
+}
+#########################################################################
+# Mass volunteers leave to Spain
+#########################################################################
+country_event = {
+	id = SPR_CW.9
+	title = SPR_CW.9.t
+	desc = SPR_CW.9.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Let the extremists die in Spain
+	option = {
+		name = SPR_CW.9.A
+		hidden_effect = { SPR = { load_oob = "SPR_support_ENG_2" } }
+		custom_effect_tooltip = SPR_ENG_volunteers_2
+	}
+}
+#########################################################################
+# The International Mexican Brigades
+#########################################################################
+country_event = {
+	id = SPR_CW.10
+	title = SPR_CW.10.t
+	desc = SPR_CW.10.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Support the Fight Against Fascism!
+	option = {
+		name = SPR_CW.10.A
+		hidden_effect = { SPR = { load_oob = "SPR_support_MEX_1" } }
+		custom_effect_tooltip = SPR_MEX_volunteers_1
+		SPR = { add_opinion_modifier = { target = MEX modifier = SPR_MEX_sent_volunteers } }
+		add_war_support = 0.05
+		SPR = {
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1900
+				amount = 500
+				producer = ENG
+			}
+		}
+	}
+}
+#########################################################################
+# The Ideological Struggle Expands
+#########################################################################
+country_event = {
+	id = SPR_CW.11
+	title = SPR_CW.11.t
+	desc = SPR_CW.11.d
+	picture = GFX_Sanjurjo_Final_Flight
+	fire_only_once = yes
+	is_triggered_only = yes
+	#No Pasaran!
+	option = {
+		name = SPR_CW.11.A
+		hidden_effect = { SPR = { load_oob = "SPR_support_MEX_2" } }
+		custom_effect_tooltip = SPR_MEX_volunteers_2
+		add_war_support = 0.05
+	}
+}

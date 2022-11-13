@@ -1,0 +1,4100 @@
+#!gfx:interface\_Goals.gfx
+focus_tree = {
+	id = SOV_Stalin
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SOV
+		}
+	}
+	continuous_focus_position = {
+		x = 20
+		y = 2500
+	}
+	default = no
+	focus = {
+		id = SOV_Overcome_Dizziness_from_Success
+		icon = GFX_SOV_Reduce_Power_of_the_Politburo
+		cost = 30
+		mutually_exclusive = {
+			focus = SOV_Continue_Hard_Line
+		}
+		x = 8
+		y = 0
+		completion_reward = {
+			add_political_power = 50
+			hidden_effect = {
+				set_country_flag = all_quite_in_party
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Continue_Hard_Line
+		icon = GFX_SOV_Reaffirm_Role_of_the_Politburo
+		cost = 60
+		mutually_exclusive = {
+			focus = SOV_Overcome_Dizziness_from_Success
+		}
+		available = {
+			always = no
+		}
+		x = 12
+		y = 0
+		completion_reward = {
+			#add_political_power = -50
+			#hidden_effect = {
+			#	set_country_flag = continue_the_hard_line
+			#}
+			custom_effect_tooltip = DH_FOR_0.2
+		}
+	}
+	focus = {
+		id = SOV_Maintain_the_Litvinov_Protocol
+		icon = GFX_SOV_Maintain_Litvinov
+		cost = 30
+		mutually_exclusive = {
+			focus = SOV_Replace_Litvinov
+		}
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		x = 2
+		y = 3
+		available = {
+			has_war = no
+			threat < 0.25
+		}
+		completion_reward = {
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Replace_Litvinov
+		icon = GFX_SOV_Replace_Litvinov
+		cost = 30
+		mutually_exclusive = {
+			focus = SOV_Maintain_the_Litvinov_Protocol
+		}
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		x = 4
+		y = 0
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		available = {
+			OR = {
+				NOT = {
+					has_country_leader = {
+						name = "Joseph Stalin"
+					}
+				}
+				threat > 0.3
+				has_completed_focus = SOV_Tukhachevskys_Reformists
+			}
+		}
+		completion_reward = {
+			add_political_power = 150
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Red_Army_Airforce
+		icon = GFX_SOV_Red_Airforce
+		cost = 60
+		x = 54
+		y = 0
+		offset = {
+			x = 0
+			y = 0
+			trigger = {
+				always = yes
+			}
+		}
+		allow_branch = {
+			NOT = {
+				has_civil_war = yes
+			}
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = SOV_Red_Army_Airforce
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Red_Army
+		icon = GFX_SOV_Red_Army
+		cost = 30
+		x = 45
+		y = 0
+		offset = {
+			x = 0
+			y = 0
+			trigger = {
+				always = yes
+			}
+		}
+		allow_branch = {
+			NOT = {
+				has_civil_war = yes
+			}
+		}
+		completion_reward = {
+			army_experience = 30
+		}
+		search_filters = { }
+	}
+	focus = {
+		id = SOV_Red_Fleet
+		icon = GFX_SOV_Red_Fleet
+		cost = 60
+		x = 63
+		y = 0
+		offset = {
+			x = 0
+			y = 0
+			trigger = {
+				always = yes
+			}
+		}
+		allow_branch = {
+			NOT = {
+				has_civil_war = yes
+			}
+		}
+		completion_reward = {
+			country_event = SOV_Repurpose_Naval_Guns.1
+		}
+	}
+	focus = {
+		id = SOV_Kirov_Cruisers
+		icon = GFX_GENERIC_Cruiser
+		cost = 60
+		x = -3
+		y = 1
+		prerequisite = {
+			focus = SOV_Red_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Malyutka_Small_Submarines
+		icon = GFX_GENERIC_Submarine
+		cost = 60
+		x = -1
+		y = 1
+		mutually_exclusive = {
+			focus = SOV_Shchuka_Medium_Submarines
+		}
+		prerequisite = {
+			focus = SOV_Red_Fleet
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_Malyutka_Small_Submarines_tt
+			hidden_effect = {
+				set_technology = {
+					SS_1933 = 1
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Shchuka_Medium_Submarines
+		icon = GFX_GENERIC_Attack_Sub
+		cost = 60
+		x = 1
+		y = 1
+		mutually_exclusive = {
+			focus = SOV_Malyutka_Small_Submarines
+		}
+		prerequisite = {
+			focus = SOV_Red_Fleet
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_Shchuka_Medium_Submarines_tt
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			hidden_effect = {
+				set_technology = {
+					SS_1933 = 1
+				}
+			}
+			add_tech_bonus = {
+				name = SOV_Shchuka_Medium_Submarines
+				uses = 1
+				bonus = 1
+				technology = SS_1936
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Leningrad_Destroyers
+		icon = GFX_GENERIC_Destroyer
+		cost = 60
+		x = 3
+		y = 1
+		prerequisite = {
+			focus = SOV_Red_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Modernist_Fleet
+		icon = GFX_GENERIC_Navy
+		cost = 60
+		x = -2
+		y = 2
+		mutually_exclusive = {
+			focus = SOV_Large_Oceangoing_Fleet
+		}
+		prerequisite = {
+			focus = SOV_Malyutka_Small_Submarines
+			focus = SOV_Shchuka_Medium_Submarines
+		}
+		prerequisite = {
+			focus = SOV_Kirov_Cruisers
+		}
+		prerequisite = {
+			focus = SOV_Leningrad_Destroyers
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Morskoy_Bombardirovshchik
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 60
+		x = -4
+		y = 3
+		prerequisite = {
+			focus = SOV_Modernist_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Chapaev_Light_Cruisers
+		icon = GFX_GENERIC_Missile_Cruiser
+		cost = 60
+		x = -2
+		y = 3
+		prerequisite = {
+			focus = SOV_Modernist_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Black_Sea_Young_School
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 60
+		x = -3
+		y = 4
+		prerequisite = {
+			focus = SOV_Morskoy_Bombardirovshchik
+		}
+		prerequisite = {
+			focus = SOV_Chapaev_Light_Cruisers
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Submarine_Revolution
+		icon = GFX_GENERIC_Heavy_Submarine
+		cost = 60
+		x = 0
+		y = 3
+		prerequisite = {
+			focus = SOV_Modernist_Fleet
+			focus = SOV_Large_Oceangoing_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Sevastopol_Krepost
+		icon = GFX_GENERIC_Anti_Air_Units
+		cost = 60
+		x = -1
+		y = 4
+		prerequisite = {
+			focus = SOV_Submarine_Revolution
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Morskaya_Pekhota
+		icon = GFX_SOV_Red_Marines
+		cost = 60
+		x = 1
+		y = 4
+		prerequisite = {
+			focus = SOV_Submarine_Revolution
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Sovetsky_Soyuz_Super_Dreadnoughts
+		icon = GFX_GENERIC_Battleship
+		cost = 60
+		x = 2
+		y = 3
+		prerequisite = {
+			focus = SOV_Large_Oceangoing_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Kronshtadt_Battle_Cruisers
+		icon = GFX_GENERIC_Missile_Battlecruiser
+		cost = 60
+		x = 4
+		y = 3
+		prerequisite = {
+			focus = SOV_Large_Oceangoing_Fleet
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Pacific_Military_School
+		icon = GFX_GENERIC_Naval_School
+		cost = 60
+		x = 3
+		y = 4
+		prerequisite = {
+			focus = SOV_Sovetsky_Soyuz_Super_Dreadnoughts
+		}
+		prerequisite = {
+			focus = SOV_Kronshtadt_Battle_Cruisers
+		}
+		completion_reward = {
+		}
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_Large_Oceangoing_Fleet
+		icon = GFX_GENERIC_Fleet_in_Being
+		cost = 60
+		x = 2
+		y = 2
+		mutually_exclusive = {
+			focus = SOV_Modernist_Fleet
+		}
+		prerequisite = {
+			focus = SOV_Malyutka_Small_Submarines
+			focus = SOV_Shchuka_Medium_Submarines
+		}
+		prerequisite = {
+			focus = SOV_Kirov_Cruisers
+		}
+		prerequisite = {
+			focus = SOV_Leningrad_Destroyers
+		}
+		completion_reward = {
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = SOV_Red_Fleet
+	}
+	focus = {
+		id = SOV_The_Second_Five_Year_Plan
+		icon = GFX_SOV_Five_Year_Plan
+		cost = 40
+		x = 32
+		y = 0
+		allow_branch = {
+			NOT = {
+				has_country_flag = SOV_Five_Year_Plan_Completed_flag
+			}
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_Second_Five_Year_Plan_category
+			set_variable = {
+				var = SOV_Number_of_Completed_Decisions
+				value = 0
+			}
+			custom_effect_tooltip = SOV_Locking_of_Second_Five_Year_Plan
+		}
+	}
+	focus = {
+		id = SOV_The_Third_Five_Year_Plan
+		icon = GFX_SOV_Portray_A_Global_Soviet_Image
+		cost = 40
+		x = 32
+		y = 4
+		offset = {
+			trigger = {
+				has_country_flag = SOV_Five_Year_Plan_Completed_flag
+			}
+			y = -4
+		}
+		available = {
+			has_country_flag = SOV_Five_Year_Plan_Completed_flag
+			date > 1938.1.1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SOV_Soviet_Collectivization
+				}
+				remove_ideas = SOV_Soviet_Collectivization
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_Soviet_Collectivization1
+				}
+				remove_ideas = SOV_Soviet_Collectivization1
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_Soviet_Collectivization2
+				}
+				remove_ideas = SOV_Soviet_Collectivization2
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_Soviet_Collectivization3
+				}
+				remove_ideas = SOV_Soviet_Collectivization3
+			}
+			add_ideas = SOV_Promote_Kolkoz_farms_1
+		}
+	}
+	focus = {
+		id = SOV_BT_Cavalry_Tanks
+		icon = GFX_SOV_BT_Cavalry_Tanks
+		cost = 60
+		prerequisite = {
+			focus = SOV_Red_Army
+		}
+		mutually_exclusive = {
+			focus = SOV_Multi_Turreted_Tanks
+		}
+		x = -1
+		y = 1
+		relative_position_id = SOV_Red_Army
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = cat_light_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Aviation_Cult
+		icon = GFX_focus_YUG_ikarus
+		cost = 60
+		prerequisite = {
+			focus = SOV_Red_Army_Airforce
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Red_Army_Airforce
+	}
+	focus = {
+		id = SOV_Women_in_Aviation
+		icon = GFX_focus_SOV_women_in_aviation
+		cost = 60
+		prerequisite = {
+			focus = SOV_Aviation_Cult
+		}
+		x = 0
+		y = 2
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			set_rule = {
+				can_generate_female_aces = yes
+			}
+		}
+	}
+	focus = {
+		id = SOV_Multi_Turreted_Tanks
+		icon = GFX_SOV_Multi_Turreted_Tanks
+		cost = 60
+		prerequisite = {
+			focus = SOV_Red_Army
+		}
+		mutually_exclusive = {
+			focus = SOV_BT_Cavalry_Tanks
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_Red_Army
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = cat_heavy_armor
+				category = cat_medium_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Tupovlev_SB
+		icon = GFX_goal_generic_air_bomber
+		cost = 60
+		prerequisite = {
+			focus = SOV_Red_Army_Airforce
+		}
+		x = 2
+		y = 1
+		relative_position_id = SOV_Red_Army_Airforce
+	}
+	focus = {
+		id = SOV_Transpolar_Flight
+		icon = GFX_SOV_Transpolar_Flight
+		cost = 60
+		prerequisite = {
+			focus = SOV_Tupovlev_SB
+		}
+		x = 2
+		y = 2
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			custom_effect_tooltip = SOV_Transpolar_Flight_tt
+			random_list = {
+				80 = {
+					news_event = {
+						id = SOV_Transpolar_Flight.1
+						days = 1
+					}
+				}
+				20 = {
+					country_event = {
+						id = SOV_Transpolar_Flight.2
+						days = 1
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_Propagate_an_Industrial_Ethos
+		icon = GFX_focus_eng_crush_the_dream
+		cost = 60
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		x = 5
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_ideas = SOV_Industrial_Ethos
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Experiment_with_Material_Incentives_for_Labor
+		icon = GFX_SOV_Soldidifying_our_Gains
+		cost = 60
+		prerequisite = {
+			focus = SOV_Propagate_an_Industrial_Ethos
+		}
+		x = 6
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_political_power = -50
+			swap_ideas = {
+				remove_idea = SOV_Industrial_Ethos
+				add_idea = SOV_Industrial_Ethos1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Soften_AntiPeasent_Legislation
+		icon = GFX_SOV_Soften_AP_Leagues
+		cost = 35
+		prerequisite = {
+			focus = SOV_Overcome_Dizziness_from_Success
+		}
+		relative_position_id = SOV_Overcome_Dizziness_from_Success
+		x = -1
+		y = 1
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			#country_event = SOV_amendments_to_the_law_on_three_spiketeta_chain
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = SOV_Prepare_Return_of_Citizens_Rights_for_Kulaks
+		icon = GFX_SOV_Kulak_Rights
+		cost = 35
+		prerequisite = {
+			focus = SOV_Overcome_Dizziness_from_Success
+		}
+		relative_position_id = SOV_Overcome_Dizziness_from_Success
+		x = 1
+		y = 1
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			#country_event = SOV_discussion_on_return_of_zitizens_rights_for_llehental_chain
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = SOV_Gigantonmanic_Agrotowns
+		icon = GFX_SOV_Giga_Agrotowns
+		cost = 60
+		prerequisite = {
+			focus = SOV_Continue_Hard_Line
+		}
+		relative_position_id = SOV_Continue_Hard_Line
+		x = -1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = DH_FOR_0.2
+			#add_political_power = 75
+			#add_stability = -0.05
+			#200 = {
+			#	add_extra_state_shared_building_slots = 4
+			#	add_building_construction = {
+			#		type = industrial_complex
+			#		level = 2
+			#		instant_build = yes
+			#	}
+			#}
+			#259 = {
+			#	add_extra_state_shared_building_slots = 4
+			#	add_building_construction = {
+			#		type = industrial_complex
+			#		level = 2
+			#		instant_build = yes
+			#	}
+			#}
+			#225 = {
+			#	add_extra_state_shared_building_slots = 4
+			#	add_building_construction = {
+			#		type = industrial_complex
+			#		level = 2
+			#		instant_build = yes
+			#	}
+			#}
+			#country_event = SOV_growing_peasent_discontent_chain
+		}
+	}
+	focus = {
+		id = SOV_Toughen_AntiPeasent_Legislation
+		icon = GFX_SOV_Thoughten_AP_Leagues
+		cost = 60
+		prerequisite = {
+			focus = SOV_Continue_Hard_Line
+		}
+		relative_position_id = SOV_Continue_Hard_Line
+		x = 1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = DH_FOR_0.2
+			#add_political_power = 50
+			#add_stability = -0.05
+			#add_war_support = -0.05
+			#country_event = SOV_amendements_to_the_law_on_three_spiketeta_chain
+		}
+	}
+	focus = {
+		id = SOV_XVII_Congress
+		icon = GFX_SOV_XVII_Congress
+		cost = 0
+		prerequisite = {
+			focus = SOV_Soften_AntiPeasent_Legislation
+			focus = SOV_Toughen_AntiPeasent_Legislation
+		}
+		prerequisite = {
+			focus = SOV_Prepare_Return_of_Citizens_Rights_for_Kulaks
+			focus = SOV_Gigantonmanic_Agrotowns
+		}
+		available = {
+			has_country_flag = SOV_XVII_Congress_complete
+		}
+		relative_position_id = SOV_Prepare_Return_of_Citizens_Rights_for_Kulaks
+		x = 1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = SOV_XVII_Congress.tt
+		}
+	}
+	focus = {
+		id = SOV_NKVD_Agency
+		icon = GFX_SOV_NKVD
+		cost = 40
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		x = 8
+		y = 1
+		relative_position_id = SOV_XVII_Congress
+		completion_reward = {
+			create_intelligence_agency = {
+				name = "NKVD"
+				icon = "GFX_intelligence_agency_logo_sov"
+			}
+			add_ideas = SOV_NKVD_1
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Yagodas_Iron_Fist
+		icon = GFX_SOV_NKVD_Yagoda
+		cost = 35
+		available = {
+			date > 1934.07.01
+		}
+		prerequisite = {
+			focus = SOV_NKVD_Agency
+		}
+		mutually_exclusive = {
+			focus = SOV_Agranovs_Pragmatic_Approach
+		}
+		relative_position_id = SOV_NKVD_Agency
+		x = -1
+		y = 1
+		completion_reward = {
+			add_political_power = -50
+			add_ideas = SOV_Genrikh_G_Yagoda_MoS
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Agranovs_Pragmatic_Approach
+		icon = GFX_SOV_NKVD_Agranov
+		cost = 35
+		available = {
+			date > 1934.07.01
+		}
+		prerequisite = {
+			focus = SOV_NKVD_Agency
+		}
+		mutually_exclusive = {
+			focus = SOV_Yagodas_Iron_Fist
+		}
+		relative_position_id = SOV_NKVD_Agency
+		x = 1
+		y = 1
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = SOV_Yakov_Agranov_MoS
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Gulag_Based_Economic_Programs
+		icon = GFX_SOV_Gulag
+		cost = 40
+		prerequisite = {
+			focus = SOV_Agranovs_Pragmatic_Approach
+			focus = SOV_Yagodas_Iron_Fist
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Yagodas_Iron_Fist
+		completion_reward = {
+			add_ideas = SOV_Gulag_Based_Economy_Projects
+		}
+	}
+	focus = {
+		id = SOV_Socialist_Justice
+		icon = GFX_SOV_Socialist_Justice
+		cost = 40
+		available = {
+			date > 1935.03.01
+		}
+		prerequisite = {
+			focus = SOV_Agranovs_Pragmatic_Approach
+			focus = SOV_Yagodas_Iron_Fist
+		}
+		relative_position_id = SOV_Agranovs_Pragmatic_Approach
+		x = 0
+		y = 1
+		completion_reward = {
+			add_political_power = 125
+			add_stability = 0.05
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = SOV_Maksim_M_Litvinov_FM
+			clr_country_flag = Maksim_M_Litvinov_unavailable
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = SOV_Stability_in_the_State_Change_in_the_Party
+		icon = GFX_SOV_Stability_in_the_State_Change_in_the_Party
+		cost = 40
+		bypass = {
+			has_country_leader = {
+	            character = SOV_Sergey_Kirov
+	            ruling_only = yes
+           }
+		}
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_Return_to_Lenins_Traditions
+			focus = SOV_Navigating_the_Storm
+		}
+		relative_position_id = SOV_XVII_Congress
+		x = 3
+		y = 1
+		available = {
+			always = no
+		}
+		completion_reward = {
+			custom_effect_tooltip = DH_FOR_0.2
+		}
+	}
+	focus = {
+		id = SOV_Return_to_Lenins_Traditions
+		icon = GFX_SOV_Return_to_Lenins_Traditions
+		cost = 40
+		bypass = {
+			has_country_leader = {
+	            character = SOV_Nikolai_Bukharin
+	            ruling_only = yes
+           }
+		}
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_Stability_in_the_State_Change_in_the_Party
+			focus = SOV_Navigating_the_Storm
+		}
+		relative_position_id = SOV_XVII_Congress
+		x = 5
+		y = 1
+		available = {
+			OR = {
+				has_idea = SOV_MoS_Yakov_Agranov
+				has_idea = SOV_MoS_Genrikh_G_Yagoda
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = DH_FOR_0.2
+		}
+	}
+	focus = {
+		id = SOV_Crises_in_the_Kremlin
+		icon = GFX_SOV_Rule_by_Force
+		cost = 40
+		prerequisite = {
+			focus = SOV_Return_to_Lenins_Traditions
+			focus = SOV_Stability_in_the_State_Change_in_the_Party
+		}
+		relative_position_id = SOV_Stability_in_the_State_Change_in_the_Party
+		x = 1
+		y = 1
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = SOV_Reign_of_Terror
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Stalin_Outmaneuvered
+		icon = GFX_SOV_Stalin_Outmaneuvered
+		cost = 60
+		prerequisite = {
+			focus = SOV_Crises_in_the_Kremlin
+		}
+		relative_position_id = SOV_Crises_in_the_Kremlin
+		x = 0
+		y = 1
+		available = {
+			always = no
+		}
+	}
+	focus = {
+		id = SOV_Navigating_the_Storm
+		icon = GFX_SOV_Navigating_the_Storm
+		cost = 40
+		prerequisite = {
+			focus = SOV_XVII_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_Return_to_Lenins_Traditions
+			focus = SOV_Stability_in_the_State_Change_in_the_Party
+		}
+		available = {
+			has_country_flag = SOV_Navigating_the_Storm_flag
+		}
+		relative_position_id = SOV_XVII_Congress
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Denounce_the_Zinovievites
+		icon = GFX_focus_CZE_german_puppet
+		cost = 25
+		prerequisite = {
+			focus = SOV_Navigating_the_Storm
+		}
+		available = {
+			date > 1934.12.28
+		}
+		relative_position_id = SOV_Navigating_the_Storm
+		x = -1
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+			country_event = { id = SOV_Moscow_Trials.1 days = 1}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Supress_Socially_Alien_Elements
+		icon = GFX_SOV_Proletariat_Dictatorship
+		cost = 25
+		prerequisite = {
+			focus = SOV_Navigating_the_Storm
+		}
+		relative_position_id = SOV_Navigating_the_Storm
+		x = 1
+		y = 1
+		completion_reward = {
+			#Repression of 12k people in response to murder
+		}
+	}
+	# focus = {
+	# 	id = SOV_Order_The_Execution_of_The_Opposition_Leaders
+	# 	icon = GFX_SOV_Moscow_Trials
+	# 	cost = 60
+	# 	prerequisite = {
+	# 		focus = SOV_Denounce_the_Zinovievites
+	# 	}
+	# 	prerequisite = {
+	# 		focus = SOV_Supress_Socially_Alien_Elements
+	# 	}
+	# 	relative_position_id = SOV_Denounce_the_Zinovievites
+	# 	x = 1
+	# 	y = 1
+	# 	available = {
+	# 		has_political_power > 149
+	# 	}
+	# 	completion_reward = {
+	# 		add_political_power = -150
+	# 		remove_ideas = {
+	# 			SOV_MoS_Nikolai_Bukharin
+	# 			SOV_AM_Lev_Kamenev
+	# 			SOV_D_Sergey_Kirov
+	# 		}
+	# 	}
+	# }
+	focus = {
+		id = SOV_Consolidate_Power
+		icon = GFX_SOV_Stalin_Solidifed
+		cost = 45
+		prerequisite = {
+			focus = SOV_Denounce_the_Zinovievites
+		}
+		prerequisite = {
+			focus = SOV_Supress_Socially_Alien_Elements
+		}
+		relative_position_id = SOV_Denounce_the_Zinovievites
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = { idea = SOV_Unity_Achieved  days = 120 }
+		}
+	}
+	focus = {
+		id = SOV_Contain_the_German_Threat
+		icon = GFX_ITA_Stressa_Front
+		cost = 30
+		prerequisite = {
+			focus = SOV_Maintain_the_Litvinov_Protocol
+		}
+		x = -1
+		y = 1
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			add_opinion_modifier = { target = GER modifier = small_decrease }
+			GER = {
+				add_opinion_modifier = { target = SOV modifier = small_decrease }
+			}
+			country_event = { id = SOV_Great_Purge.5 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_Collective_Security
+		icon = GFX_GER_Collective_Values
+		cost = 30
+		prerequisite = {
+			focus = SOV_Maintain_the_Litvinov_Protocol
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			add_political_power = 50
+			add_opinion_modifier = { target = FRA modifier = small_increase }
+			add_opinion_modifier = { target = ENG modifier = small_increase }
+			add_opinion_modifier = { target = CZE modifier = small_increase }
+			country_event = { id = SOV_Great_Purge.6 days = 1 }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Peoples_Front_Theory
+		icon = GFX_SOV_Peoples_Front_Theory
+		cost = 40
+		prerequisite = {
+			focus = SOV_Contain_the_German_Threat
+		}
+		prerequisite = {
+			focus = SOV_Collective_Security
+		}
+		x = 0
+		y = 2
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = comintern_people_front
+			add_ideas = SOV_Peoples_Front_Theory
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Reinforce_Third_Periodism
+		icon = GFX_SOV_Reinforce_the_Third_Periodist_Theory
+		cost = 30
+		prerequisite = {
+			focus = SOV_Replace_Litvinov
+		}
+		mutually_exclusive = {
+			focus = SOV_Ignore_the_Kellogg_Briand_Pact
+		}
+		x = 3
+		y = 1
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		available = {
+			NOT = {
+				OR = {
+					has_country_leader = {
+						name = "Joseph Stalin"
+					}
+					has_country_leader = {
+						name = "Sergey Kirov"
+					}
+				}
+			}
+		}
+		completion_reward = {
+			set_country_flag = comintern_third_periodism
+		}
+		search_filters = { FOCUS_FILTER_RESISTANCE }
+	}
+	focus = {
+		id = SOV_Ignore_the_Kellogg_Briand_Pact
+		icon = GFX_SOV_Ignore_the_Kellog_Briand_Pact
+		cost = 30
+		prerequisite = {
+			focus = SOV_Replace_Litvinov
+		}
+		mutually_exclusive = {
+			focus = SOV_Reinforce_Third_Periodism
+		}
+		x = 5
+		y = 1
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = comintern_warmonger
+			add_war_support = 0.1
+			add_opinion_modifier = { target = POL modifier = small_decrease }
+			add_opinion_modifier = { target = EST modifier = small_decrease }
+			add_opinion_modifier = { target = LIT modifier = small_decrease }
+			add_opinion_modifier = { target = LAT modifier = small_decrease }
+			add_opinion_modifier = { target = ENG modifier = small_decrease }
+			add_opinion_modifier = { target = FRA modifier = small_decrease }
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = SOV_Direct_Rule_from_Moscow
+		icon = GFX_SOV_Direct_Rule_from_Moscow
+		cost = 40
+		prerequisite = {
+			focus = SOV_Reinforce_Third_Periodism
+			focus = SOV_Ignore_the_Kellogg_Briand_Pact
+		}
+		x = 4
+		y = 2
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			add_political_power = 100
+			country_event = { id = SOV_Great_Purge.21 days = 1 }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Seventh_World_Congress_of_the_Comintern
+		icon = GFX_SOV_Portray_A_Global_Soviet_Image
+		cost = 50
+		prerequisite = {
+			focus = SOV_Peoples_Front_Theory
+			focus = SOV_Direct_Rule_from_Moscow
+		}
+		x = 0
+		y = 3
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			add_political_power = 75
+			add_popularity = {
+	           ideology = communist
+	           popularity = 0.1
+            }
+			country_event = { id = SOV_Great_Purge.7 days = 1 }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Molotov_Doctrine
+		icon = GFX_SOV_Molotov_Doctrine
+		cost = 30
+		prerequisite = {
+			focus = SOV_Seventh_World_Congress_of_the_Comintern
+		}
+		x = 0
+		y = 4
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			country_event = { id = SOV_Great_Purge.9 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_Peoples_Commissariat_of_Defense
+		icon = GFX_SOV_Peoples_Army
+		cost = 40
+		prerequisite = {
+			focus = SOV_BT_Cavalry_Tanks
+			focus = SOV_Multi_Turreted_Tanks
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_BT_Cavalry_Tanks
+		completion_reward = {
+			army_experience = 10
+			add_political_power = 125
+			add_doctrine_cost_reduction = {
+				name = SOV_Peoples_Commissariat_of_Defense
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Reorganize_the_Red_Army
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 60
+		cancelable = no
+		prerequisite = {
+			focus = SOV_Peoples_Commissariat_of_Defense
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Peoples_Commissariat_of_Defense
+		completion_reward = {
+			add_political_power = 100
+			#event to reform the red army
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Kiev_Maneuvers
+		icon = GFX_SOV_Kiev_Maneuvers
+		cost = 40
+		prerequisite = {
+			focus = SOV_Reorganize_the_Red_Army
+		}
+		x = -2
+		y = 1
+		relative_position_id = SOV_Reorganize_the_Red_Army
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = SOV_Kiev_Maneuvers
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = SOV_Kiev_Maneuvers
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = paratroopers3
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Mass_Mechanization
+		icon = GFX_GENERIC_Mechanization
+		cost = 40
+		prerequisite = {
+			focus = SOV_Reorganize_the_Red_Army
+		}
+		x = 2
+		y = 1
+		relative_position_id = SOV_Reorganize_the_Red_Army
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cat_mechanized_equipment
+			}
+			add_timed_idea = {
+				idea = SOV_Mass_Mechanization_idea
+				days = 300
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Tukhachevskys_Reformists
+		icon = GFX_SOV_Tukhachevskys_Reformists
+		cost = 35
+		prerequisite = {
+			focus = SOV_Kiev_Maneuvers
+		}
+		prerequisite = {
+			focus = SOV_Mass_Mechanization
+		}
+		mutually_exclusive = {
+			focus = SOV_Voroshilovs_Old_Guard
+		}
+		x = -4
+		y = 1
+		relative_position_id = SOV_Mass_Mechanization
+		available = {
+			NOT = {
+				has_country_flag = Mikhail_N_Tukhatchevskiy_unavailable
+			}
+		}
+		completion_reward = {
+			add_ideas = SOV_Mikhail_N_Tukhatchevskiy_CoStaff
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Voroshilovs_Old_Guard
+		icon = GFX_SOV_Voroshilovs_Old_Guard
+		cost = 35
+		prerequisite = {
+			focus = SOV_Reorganize_the_Red_Army
+		}
+		prerequisite = {
+			focus = SOV_Mass_Mechanization
+		}
+		mutually_exclusive = {
+			focus = SOV_Tukhachevskys_Reformists
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Mass_Mechanization
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_Voroshilovtchina
+				days = 600
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Tactical_Deep_Battle
+		icon = GFX_GENERIC_Grand_Battleplan
+		cost = 50
+		prerequisite = {
+			focus = SOV_Tukhachevskys_Reformists
+		}
+		x = -2
+		y = 1
+		relative_position_id = SOV_Tukhachevskys_Reformists
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = SOV_Tactical_Deep_Battle
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Koshkins_Tank_Design
+		icon = GFX_GENERIC_Tank_Destroyers
+		cost = 50
+		prerequisite = {
+			focus = SOV_Tukhachevskys_Reformists
+		}
+		available = {
+			has_tech = Medium_Tank_1936
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Tukhachevskys_Reformists
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = cat_medium_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Reaktivnyy_Snaryad
+		icon = GFX_GENERIC_Rocket_Artillery
+		cost = 50
+		prerequisite = {
+			focus = SOV_Tukhachevskys_Reformists
+			focus = SOV_Voroshilovs_Old_Guard
+		}
+		x = 2
+		y = 1
+		relative_position_id = SOV_Tukhachevskys_Reformists
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1.5
+				technology = motorized_rocket_unit
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Mass_Mobilization
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 50
+		prerequisite = {
+			focus = SOV_Voroshilovs_Old_Guard
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Voroshilovs_Old_Guard
+		bypass = {
+			has_idea = three_year_service
+		}
+		completion_reward = {
+			add_ideas = three_year_service
+		}
+	}
+	focus = {
+		id = SOV_Defense_in_Depth
+		icon = GFX_goal_generic_fortify_city
+		cost = 50
+		prerequisite = {
+			focus = SOV_Voroshilovs_Old_Guard
+		}
+		x = 2
+		y = 1
+		relative_position_id = SOV_Voroshilovs_Old_Guard
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_Voroshilovtchina
+				add_idea = SOV_Voroshilovtchina_2
+			}
+		}
+	}
+	focus = {
+		id = SOV_STAVKA
+		icon = GFX_focus_generic_military_mission
+		cost = 30
+		prerequisite = {
+			focus = SOV_Tactical_Deep_Battle
+			focus = SOV_Mass_Mobilization
+		}
+		prerequisite = {
+			focus = SOV_Koshkins_Tank_Design
+			focus = SOV_Defense_in_Depth
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Reaktivnyy_Snaryad
+		completion_reward = {
+			add_ideas = SOV_STAVKA
+		}
+	}
+	focus = {
+		id = SOV_Deep_Battle_Plan
+		icon = GFX_SOV_Mechanized_Wave
+		cost = 40
+		prerequisite = {
+			focus = SOV_STAVKA
+		}
+		mutually_exclusive = {
+			focus = SOV_Human_Wave_Tactics
+		}
+		x = -1
+		y = 1
+		relative_position_id = SOV_STAVKA
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = SOV_Deep_Battle_Plan
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = SOV_Deep_Battle_Plan
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = SOV_Deep_Battle_Plan
+				cost_reduction = 0.25
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Human_Wave_Tactics
+		icon = GFX_SOV_Human_Wave
+		cost = 40
+		prerequisite = {
+			focus = SOV_STAVKA
+		}
+		mutually_exclusive = {
+			focus = SOV_Deep_Battle_Plan
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_STAVKA
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.5
+				category = cat_mass_assault
+			}
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.5
+				category = air_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.5
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = SOV_Samokhodnaya_Ustanovka
+		icon = GFX_GENERIC_MBT
+		cost = 40
+		prerequisite = {
+			focus = SOV_Deep_Battle_Plan
+			focus = SOV_Human_Wave_Tactics
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_Deep_Battle_Plan
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1
+				technology = Main_Battle_Tank_1952
+			}
+		}
+	}
+	focus = {
+		id = SOV_Reinvigorate_Heavy_Tank_Designs
+		icon = GFX_GENERIC_Military_Academy
+		cost = 40
+		prerequisite = {
+			focus = SOV_Deep_Battle_Plan
+		}
+		x = -3
+		y = 1
+		relative_position_id = SOV_Deep_Battle_Plan
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1
+				technology = Heavy_Tank_1943
+				technology = Heavy_Tank_1945
+			}
+		}
+	}
+	focus = {
+		id = SOV_Guard_Units
+		icon = GFX_SOV_Red_Guard
+		cost = 30
+		prerequisite = {
+			focus = SOV_Deep_Battle_Plan
+		}
+		x = -1
+		y = 1
+		relative_position_id = SOV_Deep_Battle_Plan
+		available = {
+			has_war = yes
+		}
+		completion_reward = {
+			army_experience = 50
+		}
+		search_filters = { }
+	}
+	focus = {
+		id = SOV_Shock_Army
+		icon = GFX_focus_generic_combined_arms
+		cost = 30
+		prerequisite = {
+			focus = SOV_Human_Wave_Tactics
+		}
+		x = 3
+		y = 1
+		relative_position_id = SOV_Deep_Battle_Plan
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1
+				category = support_tech
+			}
+			add_timed_idea = { 
+				idea = SOV_Shock_Troops
+				days = 300
+			}
+		}
+	}
+	focus = {
+		id = SOV_Massive_Partisan_Effort
+		icon = GFX_focus_prc_infiltration
+		cost = 40
+		prerequisite = {
+			focus = SOV_Human_Wave_Tactics
+		}
+		x = 3
+		y = 1
+		relative_position_id = SOV_Human_Wave_Tactics
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = SOV_Morozovs_Armored_Evolution
+		icon = GFX_SOV_T55
+		cost = 50
+		prerequisite = {
+			focus = SOV_Guard_Units
+		}
+		prerequisite = {
+			focus = SOV_Reinvigorate_Heavy_Tank_Designs
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Guard_Units
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 0.75
+				technology = Rocket_Artillery_1940
+				technology = Rocket_Artillery_1942
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Concentrated_Artillery_Barrages
+		icon = GFX_USA_Make_Thunder_Louder
+		cost = 50
+		prerequisite = {
+			focus = SOV_Shock_Army
+		}
+		prerequisite = {
+			focus = SOV_Massive_Partisan_Effort
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_Shock_Army
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.75
+				ahead_reduction = 0.75
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Abolish_System_of_Rationing
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60
+		prerequisite = {
+			focus = SOV_Introduce_Childcare
+		}
+		prerequisite = {
+			focus = SOV_Experiment_with_Material_Incentives_for_Labor
+		}
+		x = 5
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			swap_ideas = {
+				remove_idea = SOV_Industrial_Ethos1
+				add_idea = SOV_Industrial_Ethos2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_The_Stalin_Constitution
+		icon = GFX_SOV_Stalin_Constitution
+		cost = 40
+		prerequisite = {
+			focus = SOV_Consolidate_Power
+		}
+		prerequisite = {
+			focus = SOV_Peoples_Front_Theory
+			focus = SOV_Direct_Rule_from_Moscow
+		}
+		relative_position_id = SOV_Consolidate_Power
+		x = -5
+		y = 1
+		available = {
+			date > 1936.7.1
+		}
+		completion_reward = {
+			news_event = {
+				id = SOV_Stalin_Constitution.1
+				hours = 6
+			}
+		}
+	}
+	focus = {
+		id = SOV_Start_the_Great_Purge
+		icon = GFX_SOV_Great_Purge
+		cost = 56
+		prerequisite = {
+			focus = SOV_Consolidate_Power
+		}
+		prerequisite = {
+			focus = SOV_Socialist_Justice
+			focus = SOV_Gulag_Based_Economic_Programs
+		}
+		relative_position_id = SOV_Consolidate_Power
+		available = {
+			date > 1936.1.1
+		}
+		x = 5
+		y = 1
+		select_effect = {
+			set_country_flag = SOV_purge_started
+			set_country_flag = SOV_Great_Purge_Phase_1
+			set_country_flag = SOV_Yagoda_Chief_of_NKVD
+			set_country_flag = SOV_Agranov_Deputy_of_NKVD
+			country_event = {
+				id = SOV_Great_Purge.1
+				hours = 6
+			}
+			set_variable = {
+				var = SOV_Stalin_Paranoia
+				value = 75
+			}
+			if = {
+				limit = {
+					is_ai = yes
+					is_historical_focus_on = yes
+				}
+				set_variable = {
+					var = SOV_Stalin_Paranoia_Change
+					value = -0.015
+				}
+			}
+			else = {
+				set_variable = {
+					var = SOV_Stalin_Paranoia_Change
+					value = 0.01
+				}
+			}
+			clamp_variable = {
+				var = SOV_Stalin_Paranoia
+				min = 0
+				max = 100
+			}
+			clamp_variable = {
+				var = SOV_Stalin_Paranoia_Change
+				min = -1
+				max = 0.05
+			}
+			add_ideas = {
+				SOV_The_Great_Terror_1
+			}
+		}
+		completion_reward = {
+			country_event = { id = SOV_Great_Purge.2 hours = 6 }
+			country_event = { id = SOV_Great_Purge.14 days = 3}
+			unlock_decision_category_tooltip = SOV_The_Great_Purge
+		}
+	}
+	focus = {
+		id = SOV_The_Leningrad_Circle
+		icon = GFX_SOV_Leningrad_Circle
+		cost = 60
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Moscow_Trials
+			focus = SOV_The_Manchurian_Candidate
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = -1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = DH_FOR_0.2
+			country_event = { id = SOV_Leningrad_Circle.1 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_The_Moscow_Trials
+		icon = GFX_SOV_Moscow_Trials
+		cost = 60
+		available = {
+			date > 1936.05.01
+		}
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Leningrad_Circle
+			focus = SOV_The_Manchurian_Candidate
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = 1
+		y = 1
+		completion_reward = {
+			set_country_flag = SOV_Trial_of_the_Sixteen
+			add_ideas = SOV_Mass_Political_Repression
+			country_event = {
+				id = SOV_Moscow_Trials.1
+				hours = 6
+			}
+			set_temp_variable = {
+				SOV_Stalin_Paranoia_gain = -5
+			}
+			add_to_variable = {
+				SOV_Stalin_Paranoia = SOV_Stalin_Paranoia_gain
+			}
+			clamp_variable = {
+				var = SOV_Stalin_Paranoia
+				min = 0
+				max = 100
+			}
+			custom_effect_tooltip = SOV_Stalin_Paranoia_Change_tt
+			unlock_decision_tooltip = SOV_Case_of_the_Anti_Soviet_Trotskyist_Center
+			unlock_decision_tooltip = SOV_Anti_Soviet_Military_Organisation
+			unlock_decision_tooltip = SOV_Repress_Political_Enemies
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_The_Manchurian_Candidate
+		icon = GFX_SOV_Manchurian_Candidate
+		cost = 60
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Leningrad_Circle
+			focus = SOV_The_Moscow_Trials
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = 3
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = DH_FOR_0.2
+		}
+	}
+	focus = {
+		id = SOV_Total_Party_Censorship
+		icon = GFX_SOV_Total_Party_Censorship
+		cost = 40
+		prerequisite = {
+			focus = SOV_The_Stalin_Constitution
+		}
+		relative_position_id = SOV_The_Stalin_Constitution
+		x = -1
+		y = 1
+		completion_reward = {
+			add_stability = 0.1
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = SOV_1937_Constitutional_Elections
+		icon = GFX_SOV_Constitution
+		cost = 50
+		available = {
+			date > 1937.12.12
+		}
+		prerequisite = {
+			focus = SOV_Total_Party_Censorship
+		}
+		prerequisite = {
+			focus = SOV_Arrest_Political_Enemies
+		}
+		relative_position_id = SOV_Total_Party_Censorship
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = { id = SOV_Stalin_Constitution.2 days = 1 }
+		}	
+	}
+	focus = {
+		id = SOV_The_Bloody_Dwarf
+		icon = GFX_SOV_The_Bloody_Dwarf
+		cost = 60
+		available = {
+			date > 1936.09.01
+		}
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = -4
+		y = 1
+		completion_reward = {
+			add_ideas = SOV_Nikolai_I_Yezhov_MoS
+			set_temp_variable = {
+				SOV_Stalin_Paranoia_gain = -5
+			}
+			add_to_variable = {
+				SOV_Stalin_Paranoia = SOV_Stalin_Paranoia_gain
+			}
+			clamp_variable = {
+				var = SOV_Stalin_Paranoia
+				min = 0
+				max = 100
+			}
+			custom_effect_tooltip = SOV_Stalin_Paranoia_Change_tt
+			unlock_decision_tooltip = SOV_Liquidate_the_Menshevik_Underground
+			unlock_decision_tooltip = SOV_Replace_Agranov
+			unlock_decision_tooltip = SOV_Intensify_NKVD_Work_Against_the_Churches
+		}
+	}
+	focus = {
+		id = SOV_Begin_Ethnic_Operations
+		icon = GFX_SOV_Begin_Ethnic_Operations
+		cost = 60
+		prerequisite = {
+			focus = SOV_Start_the_Great_Purge
+		}
+		available = {
+			has_country_flag = SOV_Great_Purge_Phase_2
+		}
+		bypass = {
+			has_country_flag = SOV_Great_Purge_Phase_3
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = -6
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Start_the_German_Operation
+			unlock_decision_tooltip = SOV_Launch_Latvian_Operation
+			unlock_decision_tooltip = SOV_Purge_Estonians_Finns_Bulgarians_and_Greeks
+		}
+	}
+	focus = {
+		id = SOV_NKVD_Order_N_00447
+		icon = GFX_SOV_NKVD_Order_No_00447
+		cost = 40
+		prerequisite = {
+			focus = SOV_Begin_Ethnic_Operations
+		}
+		available = {
+			has_country_flag = SOV_Great_Purge_Phase_2
+		}
+		bypass = {
+			has_country_flag = SOV_Great_Purge_Phase_3
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = -6
+		y = 2
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Send_Frinovsky_to_the_Far_East
+			country_event = { id = SOV_Great_Purge.22 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_Form_Mass_NKVD_Troikas
+		icon = GFX_SOV_Form_Mass_NKVD_Troikas
+		cost = 40
+		available = {
+			date > 1937.07.01
+		}
+		prerequisite = {
+			focus = SOV_Begin_Ethnic_Operations
+		}
+		available = {
+			has_country_flag = SOV_Great_Purge_Phase_2
+		}
+		bypass = {
+			has_country_flag = SOV_Great_Purge_Phase_3
+		}
+		relative_position_id = SOV_Start_the_Great_Purge
+		x = -8
+		y = 2
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Form_Local_Special_Troikas
+		}
+	}
+	focus = {
+		id = SOV_Further_Expand_Kulak_and_Ethnic_Operations
+		icon = GFX_SOV_Stalins_Shooting_List
+		cost = 50
+		available = {
+			date > 1937.08.01
+		}
+		prerequisite = {
+			focus = SOV_The_Bloody_Dwarf
+		}
+		available = {
+			has_country_flag = SOV_Great_Purge_Phase_2
+		}
+		bypass = {
+			has_country_flag = SOV_Great_Purge_Phase_3
+		}
+		relative_position_id = SOV_The_Bloody_Dwarf
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Execute_the_Kulak_Operation
+			unlock_decision_tooltip = SOV_Deport_Koreans_to_Central_Asia
+			unlock_decision_tooltip = SOV_Deport_Kurds_from_Azerbaijan
+		}
+	}
+	focus = {
+		id = SOV_NKVD_Primacy
+		icon = GFX_SOV_NKVD
+		cost = 50
+		available = {
+			date > 1937.06.01
+		}
+		prerequisite = {
+			focus = SOV_The_Bloody_Dwarf
+		}
+		available = {
+			has_country_flag = SOV_Great_Purge_Phase_2
+		}
+		bypass = {
+			has_country_flag = SOV_Great_Purge_Phase_3
+		}
+		relative_position_id = SOV_The_Bloody_Dwarf
+		x = 2
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Step_up_Mass_Operations
+		}
+	}
+	focus = {
+		id = SOV_Purges_in_the_Red_Army
+		icon = GFX_SOV_Purges_in_the_Red_Army
+		cost = 60
+		available = {
+			date > 1937.02.01
+		}
+		prerequisite = {
+			focus = SOV_The_Moscow_Trials
+		}
+		relative_position_id = SOV_The_Moscow_Trials
+		x = -1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Purge_Anti_Soviet_Army_Officers_2
+		}
+	}
+	focus = {
+		id = SOV_Tying_Loose_Ends
+		icon = GFX_SOV_Red_Army
+		cost = 40
+		prerequisite = {
+			focus = SOV_Purges_in_the_Red_Army
+		}
+		relative_position_id = SOV_Purges_in_the_Red_Army
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Expel_Officers_Excluded_from_the_Party
+		}
+	}
+	focus = {
+		id = SOV_NKVD_Internal_Troops
+		icon = GFX_GENERIC_Political_Army
+		cost = 40
+		available = {
+			date > 1938.10.01
+		}
+		prerequisite = {
+			focus = SOV_NKVD_Primacy
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_NKVD_Primacy
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_NKVD_1
+				add_idea = SOV_NKVD_2
+			}
+		}
+	}
+	focus = {
+		id = SOV_The_Vanishment_of_the_The_Vanishing_Commissar
+		icon = GFX_SOV_Vanishment_of_the_Vanishing_Commisar
+		cost = 50
+		available = {
+			date > 1940.02.01
+		}
+		prerequisite = {
+			focus = SOV_Stalins_Protege
+			focus = SOV_The_Beria_Flight
+			focus = SOV_Yezhovchina
+		}
+		prerequisite = {
+			focus = SOV_NKVD_Internal_Troops
+		}
+		prerequisite = {
+			focus = SOV_Tying_Loose_Ends
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 7
+		y = 2
+
+		completion_reward = {
+			custom_effect_tooltip = SOV_The_Vanishment_of_the_The_Vanishing_Commissar_tt
+			hidden_effect = {
+				retire_character = SOV_Nikolai_I_Yezhov
+				retire_character = SOV_Mikhail_Frinovsky
+			}
+		}
+	}
+	focus = {
+		id = SOV_Closed_Cities
+		icon = GFX_goal_continuous_research
+		cost = 60
+		prerequisite = {
+			focus = SOV_OKB
+		}
+		x = 0
+		y = 4
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			add_research_slot = 1
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = nuclear
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_A_Bomb
+		icon = GFX_GENERIC_ABomb
+		cost = 60
+		prerequisite = {
+			focus = SOV_Closed_Cities
+		}
+		x = -1
+		y = 5
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = nuclear
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Red_Rockets
+		icon = GFX_SOV_Red_Rockets
+		cost = 60
+		prerequisite = {
+			focus = SOV_Closed_Cities
+		}
+		x = 1
+		y = 5
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = rocketry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Develop_Aeroflot
+		icon = GFX_SOV_Aeroflot
+		cost = 60
+		prerequisite = {
+			focus = SOV_Red_Army_Airforce
+		}
+		x = -2
+		y = 1
+		relative_position_id = SOV_Red_Army_Airforce
+		available = {
+			219 = {
+				is_owned_and_Controlled_by = SOV
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_Develop_Aeroflot_tt
+			hidden_effect = {
+				load_oob = "SOV_Aeroflot"
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+	}
+	focus = {
+		id = SOV_VDV
+		icon = GFX_SOV_VDV
+		cost = 60
+		prerequisite = {
+			focus = SOV_Develop_Aeroflot
+		}
+		x = -2
+		y = 2
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = paratroopers
+				technology = paratroopers2
+				technology = paratroopers3
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_OKB
+		icon = GFX_SOV_OKBs
+		cost = 60
+		prerequisite = {
+			focus = SOV_Transpolar_Flight
+		}
+		prerequisite = {
+			focus = SOV_VDV
+		}
+		x = 0
+		y = 3
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = SOV_AM_Sergey_Korolev
+			custom_effect_tooltip = SOV_OKB_tt
+		}
+	}
+	focus = {
+		id = SOV_Frontline_Aviation
+		icon = GFX_SOV_Sturmovik
+		cost = 60
+		prerequisite = {
+			focus = SOV_OKB
+		}
+		x = 2
+		y = 4
+		relative_position_id = SOV_Red_Army_Airforce
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				ahead_reduction = 0.4
+				technology = Attacker_1940
+				technology = Attacker_1943
+				technology = Attacker_1945
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Long_Range_Aviation
+		icon = GFX_SOV_Tu4
+		cost = 60
+		prerequisite = {
+			focus = SOV_OKB
+		}
+		x = -2
+		y = 4
+		relative_position_id = SOV_Red_Army_Airforce
+	}
+	focus = {
+		id = SOV_Emphasis_on_Heavy_Industry
+		icon = GFX_SOV_Sovkhoz_Farms
+		cost = 40
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		mutually_exclusive = {
+			focus = SOV_Emphasis_on_Light_Industry
+		}
+		x = -1
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			219 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			195 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			202 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Emphasis_on_Light_Industry
+		icon = GFX_SOV_Kolkhoz_Farms
+		cost = 40
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		mutually_exclusive = {
+			focus = SOV_Emphasis_on_Heavy_Industry
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			set_temp_variable = {
+				money_to_gain = 200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				inflation_to_gain = -0.01
+			}
+			add_inflation_with_tooltip_effect = yes
+			swap_ideas = {
+				remove_idea = SOV_Deficient_Economy
+				add_idea = SOV_Deficient_Economy_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Stakhanovite_Movement
+		icon = GFX_SOV_Stakhanovite_Movement
+		cost = 50
+		available = {
+			has_completed_focus = SOV_Propagate_an_Industrial_Ethos
+		}
+		prerequisite = {
+			focus = SOV_Emphasis_on_Heavy_Industry
+		}
+		x = -2
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			add_timed_idea = {
+				idea = SOV_Stakhanovite_Movement
+				days = 365
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Pragmatic_Approach_to_Target_Figures
+		icon = GFX_SOV_Reverse_Korenizatsiya
+		cost = 60
+		prerequisite = {
+			focus = SOV_Emphasis_on_Heavy_Industry
+			focus = SOV_Emphasis_on_Light_Industry
+		}
+		x = 0
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			swap_ideas = {
+				remove_idea = industrializing_economy
+				add_idea = planned_economy
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Issue_Compulsory_Government_Loan
+		icon = GFX_SOV_Compulsory_Government_Loans
+		cost = 50
+		prerequisite = {
+			focus = SOV_Emphasis_on_Light_Industry
+		}
+		x = 2
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_Soviet_Public_Loans_category
+			set_variable = {
+				var = SOV_Total_Loans_Taken
+				value = 3000
+			}
+			set_variable = {
+				var = SOV_Current_Population_Suspicion
+				value = 0
+			}
+			clamp_variable = {
+				var = SOV_Current_Population_Suspicion
+				min = 0
+				max = 5
+			}
+			clamp_variable = {
+				var = SOV_Total_Loans_Taken
+				min = 0
+				max = 50000
+			}
+		}
+	}
+	focus = {
+		id = SOV_The_Second_Baku
+		icon = GFX_SOV_Second_Baku
+		cost = 50
+		mutually_exclusive = {
+			focus = SOV_Synthetic_Oil_Production
+		}
+		prerequisite = {
+			focus = SOV_Pragmatic_Approach_to_Target_Figures
+		}
+		x = 1
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 12
+				state = 651
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Liquidate_Khutors
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 30
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		x = -5
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 20
+			country_event = {
+				id = SOV_Second_Year_Plan.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Promote_Machine_Tractor_Stations
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 40
+		available = {
+			has_equipment = {
+				motorized_equipment > 2999
+			}
+		}
+		prerequisite = {
+			focus = SOV_Liquidate_Khutors
+		}
+		x = -6
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_Soviet_Collectivization
+				add_idea = SOV_Soviet_Collectivization1
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = -3000
+				producer = SOV
+			}
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = SOV_Establish_Central_Asian_Estates
+		icon = GFX_SOV_Russification_Policies
+		cost = 40
+		prerequisite = {
+			focus = SOV_Liquidate_Khutors
+		}
+		x = -4
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = -0.05
+			589 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			1406 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_Differentiate_the_Trudodni_System
+		icon = GFX_GENERIC_Army
+		cost = 50
+		prerequisite = {
+			focus = SOV_Promote_Machine_Tractor_Stations
+		}
+		prerequisite = {
+			focus = SOV_Establish_Central_Asian_Estates
+		}
+		x = -5
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = -0.05
+			swap_ideas = {
+				remove_idea = SOV_Soviet_Collectivization1
+				add_idea = SOV_Soviet_Collectivization2
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = SOV_Support_Zveno_and_Brigadir_Structrures
+		icon = GFX_SOV_Support_Zveno_and_Brigadir_Structrures
+		cost = 50
+		prerequisite = {
+			focus = SOV_Stakhanovite_Movement
+		}
+		prerequisite = {
+			focus = SOV_Establish_Central_Asian_Estates
+		}
+		x = -3
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_High_Agricultural_Employment1
+				add_idea = SOV_High_Agricultural_Employment2
+			}
+		}
+	}
+	focus = {
+		id = SOV_Synthetic_Oil_Production
+		icon = GFX_goal_generic_oil_refinery
+		cost = 50
+		mutually_exclusive = {
+			focus = SOV_The_Second_Baku
+		}
+		prerequisite = {
+			focus = SOV_Pragmatic_Approach_to_Target_Figures
+		}
+		available = {
+			has_tech = Oil_Distillation
+		}
+		x = -1
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			195 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			260 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			248 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_Female_Tractor_Operators_Movement
+		icon = GFX_SOV_Female_Tractor_Operators
+		cost = 40
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = -4
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			news_event = {
+				id = SOV_Second_Year_Plan.8
+			}
+		}
+	}
+	focus = {
+		id = SOV_Improved_Agricultural_Tractors
+		icon = GFX_SOV_Gigatomaniac_Agrotowns
+		cost = 30
+		prerequisite = {
+			focus = SOV_Female_Tractor_Operators_Movement
+		}
+		x = -3
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_Promote_Kolkoz_farms_1
+				add_idea = SOV_Promote_Kolkoz_farms_2
+			}
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = SOV_Invest_into_Sovkhozes
+		icon = GFX_SOV_Sovkhoz_Farms
+		cost = 30
+		available = {
+			has_equipment = {
+				motorized_equipment > 2999
+			}
+		}
+		prerequisite = {
+			focus = SOV_Female_Tractor_Operators_Movement
+		}
+		x = -5
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = -3000
+				producer = SOV
+			}
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment2
+				}
+				swap_ideas = {
+					remove_idea = SOV_High_Agricultural_Employment2
+					add_idea = SOV_High_Agricultural_Employment3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment1
+				}
+				swap_ideas = {
+					remove_idea = SOV_High_Agricultural_Employment1
+					add_idea = SOV_High_Agricultural_Employment4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment
+				}
+				swap_ideas = {
+					remove_idea = SOV_High_Agricultural_Employment
+					add_idea = SOV_High_Agricultural_Employment5
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_Invest_in_VASKhNIL
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 50
+		prerequisite = {
+			focus = SOV_Invest_into_Sovkhozes
+		}
+		prerequisite = {
+			focus = SOV_Improved_Agricultural_Tractors
+		}
+		x = -4
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment
+				}
+				remove_ideas = SOV_High_Agricultural_Employment
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment1
+				}
+				remove_ideas = SOV_High_Agricultural_Employment1
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment2
+				}
+				remove_ideas = SOV_High_Agricultural_Employment2
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment3
+				}
+				remove_ideas = SOV_High_Agricultural_Employment3
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment4
+				}
+				remove_ideas = SOV_High_Agricultural_Employment4
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_High_Agricultural_Employment5
+				}
+				remove_ideas = SOV_High_Agricultural_Employment5
+			}
+			swap_ideas = {
+				remove_idea = SOV_Promote_Kolkoz_farms_2
+				add_idea = SOV_Promote_Kolkoz_farms_3
+			}
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = SOV_Shadow_Factories
+		icon = GFX_GENERIC_Military_Production
+		cost = 45
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = -2
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			unlock_decision_category_tooltip = SOV_Evacuation_of_Industry_category
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Tankograd
+		icon = GFX_SOV_Tankograd
+		cost = 50
+		prerequisite = {
+			focus = SOV_Shadow_Factories
+		}
+		x = -2
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			572 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_Fragmentation_of_Industrial_Peoples_Commissariats
+		icon = GFX_GENERIC_Abolish_the_Agrarian_Decrees
+		cost = 50
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			country_event = {
+				id = SOV_Second_Year_Plan.9
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Increase_Synthetic_Rubber_Production
+		icon = GFX_SOV_Increase_Synthetic_Rubber_Production
+		cost = 50
+		mutually_exclusive = {
+			focus = SOV_The_Third_Baku
+		}
+		prerequisite = {
+			focus = SOV_Fragmentation_of_Industrial_Peoples_Commissariats
+		}
+		available = {
+			has_completed_focus = SOV_Synthetic_Oil_Production
+		}
+		x = -1
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			260 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			249 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			651 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_The_Third_Baku
+		icon = GFX_SOV_Third_Baku
+		cost = 50
+		mutually_exclusive = {
+			focus = SOV_Increase_Synthetic_Rubber_Production
+		}
+		prerequisite = {
+			focus = SOV_Fragmentation_of_Industrial_Peoples_Commissariats
+		}
+		available = {
+			has_completed_focus = SOV_The_Second_Baku
+		}
+		x = 1
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 6
+				state = 249
+			}
+			add_resource = {
+				type = oil
+				amount = 6
+				state = 405
+			}
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Ural_Aluminium_Factory
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 45
+		prerequisite = {
+			focus = SOV_Increase_Synthetic_Rubber_Production
+			focus = SOV_The_Third_Baku
+		}
+		x = 0
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			653 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_resource = {
+				type = aluminium
+				amount = 15
+				state = 653
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_First_Stage_of_Baikal_Amur_Mainline
+		icon = GFX_GENERIC_Road_Construction
+		cost = 45
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = 2
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			567 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			566 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			568 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_Komsomolsk_on_Amur
+		icon = GFX_GENERIC_Marines
+		cost = 50
+		prerequisite = {
+			focus = SOV_First_Stage_of_Baikal_Amur_Mainline
+		}
+		x = 2
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			560 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = SOV_Tighten_Work_Discipline
+		icon = GFX_goal_demand_sudetenland
+		cost = 50
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = 4
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_ideas = SOV_Soviet_Work_Discipline
+		}
+	}
+	focus = {
+		id = SOV_Vocational_Training_Reform
+		icon = GFX_SOV_Vocational_Training_Refrom
+		cost = 40
+		prerequisite = {
+			focus = SOV_Tighten_Work_Discipline
+		}
+		x = 3
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_Vocational_Training_System
+				days = 365
+			}
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = SOV_Introduce_8_hour_Working_Day
+		icon = GFX_GENERIC_New_Constitution
+		cost = 40
+		prerequisite = {
+			focus = SOV_Tighten_Work_Discipline
+		}
+		x = 5
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			swap_ideas = {
+				remove_idea = SOV_Soviet_Work_Discipline
+				add_idea = SOV_Soviet_Work_Discipline_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Criminal_Liability_for_Quality_of_Industrial_Production
+		icon = GFX_GENERIC_Forced_Labour
+		cost = 50
+		prerequisite = {
+			focus = SOV_Vocational_Training_Reform
+		}
+		prerequisite = {
+			focus = SOV_Introduce_8_hour_Working_Day
+		}
+		x = 4
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			add_timed_idea = {
+				idea = SOV_Struggle_for_Quality_of_Production
+				days = 365
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = SOV_Mechanized_Steel_Rolling
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 50
+		prerequisite = {
+			focus = SOV_Invest_in_VASKhNIL
+		}
+		prerequisite = {
+			focus = SOV_Tankograd
+		}
+		prerequisite = {
+			focus = SOV_Ural_Aluminium_Factory
+		}
+		x = -2
+		y = 4
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			swap_ideas = {
+				remove_idea = SOV_Promote_Kolkoz_farms_3
+				add_idea = SOV_Promote_Kolkoz_farms_4
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = SOV_Transformation_of_Nature
+		icon = GFX_PRC_Fortify_Jiangxi_Soviet
+		cost = 50
+		prerequisite = {
+			focus = SOV_Tankograd
+		}
+		prerequisite = {
+			focus = SOV_Ural_Aluminium_Factory
+		}
+		prerequisite = {
+			focus = SOV_Komsomolsk_on_Amur
+		}
+		x = 0
+		y = 4
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_Trasformation_of_Nature_category
+			set_variable = {
+				var = SOV_Number_of_Completed_Decisions_TN
+				value = 0
+			}
+		}
+	}
+	focus = {
+		id = SOV_Construct_Palace_of_the_Soviets
+		icon = GFX_SOV_Palace_of_the_Soviets
+		cost = 50
+		prerequisite = {
+			focus = SOV_Ural_Aluminium_Factory
+		}
+		prerequisite = {
+			focus = SOV_Komsomolsk_on_Amur
+		}
+		prerequisite = {
+			focus = SOV_Criminal_Liability_for_Quality_of_Industrial_Production
+		}
+		x = 2
+		y = 4
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = SOV_The_Enemy_of_my_Enemy
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 30
+		prerequisite = {
+			focus = SOV_Molotov_Doctrine
+		}
+		x = 0
+		y = 6
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = SOV_Intervene_in_Spain
+		icon = GFX_SOV_Intervene_in_Spain
+		cost = 40
+		available = {
+			SPR = {
+				has_war_with = SPA
+	        }
+		}
+		prerequisite = {
+			focus = SOV_Seventh_World_Congress_of_the_Comintern
+		}
+		x = 1
+		y = 5
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_intervention_in_spain
+			set_country_flag = SOV_support_SPR
+		}
+	}
+	focus = {
+		id = SOV_Intervene_in_China
+		icon = GFX_SOV_Intervene_in_China
+		cost = 40
+		available = {
+			CHI = {
+				has_war_with = JAP
+			}
+		}
+		prerequisite = {
+			focus = SOV_Seventh_World_Congress_of_the_Comintern
+		}
+		x = -1
+		y = 5
+		relative_position_id = SOV_Maintain_the_Litvinov_Protocol
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_intervention_in_china
+		}
+	}
+	focus = {
+		id = SOV_Introduce_Childcare
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 60
+		prerequisite = {
+			focus = SOV_Propagate_an_Industrial_Ethos
+		}
+		x = 4
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			country_event = {
+				id = SOV_Second_Year_Plan.4
+			}
+		}
+	}
+	focus = {
+		id = SOV_Stalins_Protege
+		icon = GFX_SOV_Stalin_Protegee
+		cost = 50
+		available = {
+			date > 1937.11.01
+		}
+		prerequisite = {
+			focus = SOV_Form_Mass_NKVD_Troikas
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Beria_Flight
+			focus = SOV_Yezhovchina
+		}
+		relative_position_id = SOV_The_Bloody_Dwarf
+		x = -4
+		y = 2
+		completion_reward = {
+			remove_ideas = SOV_Vyacheslav_Menzhinsky_MoS
+			add_ideas = SOV_Georgy_Malenkov_MoS
+			country_event = { id = SOV_Great_Purge.15 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_The_Beria_Flight
+		icon = GFX_SOV_Beria_Flight
+		cost = 50
+		available = {
+			date > 1937.11.01
+		}
+		prerequisite = {
+			focus = SOV_NKVD_Order_N_00447
+		}
+		mutually_exclusive = {
+			focus = SOV_Stalins_Protege
+			focus = SOV_Yezhovchina
+		}
+		relative_position_id = SOV_The_Bloody_Dwarf
+		x = -2
+		y = 2
+		completion_reward = {
+			remove_ideas = SOV_Vyacheslav_Menzhinsky_MoS
+			add_ideas = SOV_Lavrentiy_Beria_MoS
+			country_event = {
+				id = SOV_Great_Purge.15
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Yezhovchina
+		icon = GFX_SOV_Yezhovchina
+		cost = 50
+		available = {
+			date > 1937.11.01
+		}
+		prerequisite = {
+			focus = SOV_Further_Expand_Kulak_and_Ethnic_Operations
+		}
+		mutually_exclusive = {
+			focus = SOV_Stalins_Protege
+			focus = SOV_The_Beria_Flight
+		}
+		relative_position_id = SOV_The_Bloody_Dwarf
+		x = 0
+		y = 2
+		completion_reward = {
+			remove_ideas = SOV_Vyacheslav_Menzhinsky_MoS
+			add_ideas = SOV_Nikolai_I_Yezhov_MoS
+			country_event = { id = SOV_Great_Purge.16 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_Arrest_Political_Enemies
+		icon = GFX_SOV_Mass_Arrest_Political_Enemies
+		cost = 40
+		prerequisite = {
+			focus = SOV_The_Stalin_Constitution
+		}
+		relative_position_id = SOV_The_Stalin_Constitution
+		x = 1
+		y = 1
+		available = {
+			date > 1937.1.1
+		}
+		completion_reward = {
+			add_popularity = {
+	           ideology = communist
+	           popularity = 0.1
+            }
+			   add_popularity = {
+	           ideology = fascist
+	           popularity = -0.05
+            }
+			add_popularity = {
+	           ideology = socialist
+	           popularity = -0.05
+            }
+		}
+	}
+	focus = {
+		id = SOV_Socialism_Achieved
+		icon = GFX_SOV_Socialism_Achieved
+		cost = 60
+		prerequisite = {
+			focus = SOV_1937_Constitutional_Elections
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 0
+		y = 1
+		completion_reward = {
+			country_event = { id = SOV_Stalin_Constitution.3 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_XVIII_Congress
+		icon = GFX_SOV_XVIII_Congress
+		cost = 0
+		available = {
+			has_country_flag = SOV_XVIII_Congress_done
+		}
+		prerequisite = {
+			focus = SOV_Socialism_Achieved
+		}
+		prerequisite = {
+			focus = SOV_Stalins_Protege
+			focus = SOV_The_Beria_Flight
+			focus = SOV_Yezhovchina
+		}
+		prerequisite = {
+			focus = SOV_NKVD_Internal_Troops
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 3
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = SOV_XVIII_Congress.tt
+		}
+	}
+
+	focus = {
+		id = SOV_Expand_Cult_of_Personality
+		icon = GFX_SOV_Expand_the_Cult_of_Personality
+		cost = 30
+		prerequisite = {
+			focus = SOV_XVIII_Congress
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 3
+		y = 3
+		completion_reward = {
+			country_event = { id = SOV_Great_Purge.18 days = 1 }
+			add_stability = 0.05
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = SOV_Expansion_of_the_Soviet_Sphere
+		icon = GFX_SOV_Expansion_of_the_Soviet_Sphere
+		cost = 30
+		prerequisite = {
+			focus = SOV_Expand_Cult_of_Personality
+		}
+		available = {
+			date > 1939.4.1
+		}
+		bypass = {
+			date > 1939.9.1
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 2
+		y = 4
+		completion_reward = {
+			unlock_decision_tooltip = SOV_Baltic_Basing_Rights
+			unlock_decision_tooltip = SOV_Occupy_Estonia_And_Latvia
+			unlock_decision_tooltip = SOV_Occupy_Lithuania
+			unlock_decision_tooltip = SOV_Demand_Bessarabia
+			unlock_decision_tooltip = SOV_Demand_Karjala
+		}
+	}
+	focus = {
+		id = SOV_Promote_Young_Pioneers
+		icon = GFX_SOV_Promote_the_Young_Pioneers
+		cost = 30
+		prerequisite = {
+			focus = SOV_Expand_Cult_of_Personality
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 4
+		y = 4
+		completion_reward = {
+			country_event = { id = SOV_Great_Purge.19 days = 1 }
+		}
+	}
+	focus = {
+		id = SOV_Stalin_and_the_Role_of_Lenin
+		icon = GFX_SOV_Stalin_and_the_Role_of_Lenin
+		cost = 40
+		prerequisite = {
+			focus = SOV_Promote_Young_Pioneers
+		}
+		relative_position_id = SOV_1937_Constitutional_Elections
+		x = 4
+		y = 5
+		completion_reward = {
+			country_event = { id = SOV_Great_Purge.20 days = 1 }
+		}
+	}
+
+	focus = {
+		id = SOV_Preparing_for_War
+		icon = GFX_SOV_Preparing_for_War
+		cost = 50
+		available = {
+			NOT = {
+				country_exists = LIT
+				country_exists = LAT
+				country_exists = EST
+			}
+			owns_state = 95
+		}
+		prerequisite = {
+			focus = SOV_Stalin_and_the_Role_of_Lenin
+			focus = SOV_Expansion_of_the_Soviet_Sphere
+		}
+		relative_position_id = SOV_Stalin_and_the_Role_of_Lenin
+		x = -1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_Preparing_for_War
+				days = 100
+			}
+		}
+	}
+
+	# The Great Patriotic War
+	focus = {
+		id = SOV_The_Revolution_Marches_West
+		icon = GFX_SOV_The_Revolution_Marches_West
+		cost = 35
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 100
+				date > 1942.1.1
+				NOT = {
+					has_global_flag = Barbarossa_Initiated
+				}
+			}
+		}
+		available = {
+			has_completed_focus = SOV_Preparing_for_War
+			OR = {
+				has_completed_focus = SOV_Tukhachevskys_Reformists
+				has_completed_focus = SOV_Voroshilovs_Old_Guard
+			}
+			is_neighbor_of = GER
+			NOT = {
+				has_war_with = GER
+			}
+		}
+		prerequisite = {
+			
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Great_Patriotic_War
+		}
+		x = 7
+		y = 16
+		completion_reward = {
+			add_ideas = SOV_The_Great_Patriotic_War
+			unlock_decision_category_tooltip = SOV_Operation_Groza_category
+		}
+	}
+	focus = {
+		id = SOV_The_Great_Patriotic_War
+		icon = GFX_SOV_The_Great_Patriotic_War
+		cost = 35
+		available = {
+			always = no
+		}
+		prerequisite = {
+			
+		}
+		mutually_exclusive = {
+			focus = SOV_The_Revolution_Marches_West
+		}
+		x = 9
+		y = 16
+		completion_reward = {
+			add_ideas = SOV_The_Great_Patriotic_War
+			unlock_decision_category_tooltip = SOV_The_Great_Patriotic_War_category
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = SOV_Arise_Our_Mighty_Land
+		icon = GFX_SOV_Arise_Our_Mighty_Land
+		cost = 40
+		available = {
+			has_war_with = GER
+			NOT = {
+				has_idea = SOV_The_German_Betrayal 
+			}
+			controls_state = 202
+			controls_state = 206
+			controls_state = 263
+		}
+		prerequisite = {
+			focus = SOV_The_Revolution_Marches_West
+			focus = SOV_The_Great_Patriotic_War
+		}
+		relative_position_id = SOV_The_Great_Patriotic_War
+		x = -3
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = SOV_Arise_Our_Mighty_Land.tt
+			if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War
+					add_idea = SOV_The_Great_Patriotic_War_Offence_1
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Defence_1
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Defence_1
+					add_idea = SOV_The_Great_Patriotic_War_Offence_1
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Defence_2
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Defence_2
+					add_idea = SOV_The_Great_Patriotic_War_Offence_1
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_The_Slaughterers_of_Men
+		icon = GFX_SOV_The_Slaughteres_of_Men
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		prerequisite = {
+			focus = SOV_Arise_Our_Mighty_Land
+		}
+		relative_position_id = SOV_Arise_Our_Mighty_Land
+		x = -1
+		y = 1
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = SOV_Fighting_on_Their_Ground
+		icon = GFX_SOV_Fighting_on_Their_Ground
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		prerequisite = {
+			focus = SOV_Arise_Our_Mighty_Land
+		}
+		relative_position_id = SOV_Arise_Our_Mighty_Land
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_Fighting_on_Their_Ground
+				days = 100
+			}
+		}
+	}
+	focus = {
+		id = SOV_Drive_Them_to_Their_Tombs
+		icon = GFX_SOV_Drive_them_to_their_Tombs
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		prerequisite = {
+			focus = SOV_The_Slaughterers_of_Men
+		}
+		relative_position_id = SOV_The_Slaughterers_of_Men
+		x = -1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_From_Forts_to_Tombs
+				days = 150
+			}
+		}
+	}
+	focus = {
+		id = SOV_Shoot_Down_the_Black_Wings
+		icon = GFX_SOV_Shoot_Down_the_Black_Wings
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		prerequisite = {
+			focus = SOV_The_Slaughterers_of_Men
+		}
+		relative_position_id = SOV_The_Slaughterers_of_Men
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_Shoot_Down_the_Black_Wings
+				days = 100
+			}
+		}
+	}
+	focus = {
+		id = SOV_Our_Noble_Anger
+		icon = GFX_SOV_Our_Noble_Anger
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		prerequisite = {
+			focus = SOV_Fighting_on_Their_Ground
+		}
+		relative_position_id = SOV_Fighting_on_Their_Ground
+		x = 0
+		y = 2
+		completion_reward = {
+			add_war_support = 0.2
+			add_stability = 0.1
+			country_event = { id = GER_SOV_War.10 }
+		}
+	}
+	focus = {
+		id = SOV_Arise_for_Sacred_War
+		icon = GFX_SOV_Arise_for_Sacred_War
+		cost = 50
+		available = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		prerequisite = {
+			focus = SOV_Shoot_Down_the_Black_Wings
+		}
+		prerequisite = {
+			focus = SOV_Our_Noble_Anger
+		}
+		relative_position_id = SOV_Shoot_Down_the_Black_Wings
+		x = 0
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = SOV_Arise_for_Sacred_War.tt
+			if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War
+					add_idea = SOV_The_Great_Patriotic_War_Offence_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Offence_1
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Offence_1
+					add_idea = SOV_The_Great_Patriotic_War_Offence_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Defence_1
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Defence_1
+					add_idea = SOV_The_Great_Patriotic_War_Offence_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Defence_2
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Defence_2
+					add_idea = SOV_The_Great_Patriotic_War_Offence_2
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_A_Meeting_In_Yalta
+		icon = GFX_SOV_A_Meeting_in_Yalta
+		cost = 50
+		available = {
+			USA = {
+				has_capitulated = no
+				has_war_with = GER
+			}
+			ENG = {
+				has_capitulated = no
+				has_war_with = GER
+			}
+			controls_state = 137
+			GER = {
+				surrender_progress > 0.5
+			}
+		}
+		prerequisite = {
+			focus = SOV_The_Revolution_Marches_West
+			focus = SOV_The_Great_Patriotic_War
+		}
+		relative_position_id = SOV_The_Great_Patriotic_War
+		x = -1
+		y = 1
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = SOV_For_The_Motherland
+		icon = GFX_SOV_For_the_Motherland
+		cost = 40
+		available = {
+			OR = {
+				NOT = {
+					controls_state = 202
+				}
+				NOT = {
+					controls_state = 206
+				}
+				NOT = {
+					controls_state = 263
+				}
+			}
+		}
+		prerequisite = {
+			focus = SOV_The_Revolution_Marches_West
+			focus = SOV_The_Great_Patriotic_War
+		}
+		relative_position_id = SOV_The_Great_Patriotic_War
+		x = 1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = SOV_For_The_Motherland.tt
+			if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War
+					add_idea = SOV_The_Great_Patriotic_War_Defence_1
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Offence_1
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Offence_1
+					add_idea = SOV_The_Great_Patriotic_War_Defence_1
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Offence_2
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Offence_2
+					add_idea = SOV_The_Great_Patriotic_War_Defence_1
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_The_Defense_of_the_Union
+		icon = GFX_SOV_Defense_of_the_Union
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_For_The_Motherland
+		}
+		relative_position_id = SOV_For_The_Motherland
+		x = -1
+		y = 1
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = SOV_Fighting_on_Familiar_Ground
+		icon = GFX_SOV_Fighting_on_Familiar_Ground
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_For_The_Motherland
+		}
+		relative_position_id = SOV_For_The_Motherland
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_Fighting_on_Familiar_Ground
+				days = 200
+			}
+		}
+	}
+	focus = {
+		id = SOV_From_Cities_to_Fortresses
+		icon = GFX_SOV_From_Cities_to_Fortresses
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_Fighting_on_Familiar_Ground
+		}
+		prerequisite = {
+			focus = SOV_The_Defense_of_the_Union
+		}
+		relative_position_id = SOV_The_Defense_of_the_Union
+		x = -1
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					202 = {
+						is_controlled_by = SOV
+					}
+				}
+				202 = {
+					add_building_construction = {
+						type = bunker
+        				province = 525 
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					242 = {
+						is_controlled_by = SOV
+					}
+				}
+				242 = {
+					add_building_construction = {
+						type = bunker
+        				province = 306 
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					137 = {
+						is_controlled_by = SOV
+					}
+				}
+				137 = {
+					add_building_construction = {
+						type = bunker
+        				province = 3686 
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					206 = {
+						is_controlled_by = SOV
+					}
+				}
+				206 = {
+					add_building_construction = {
+						type = bunker
+        				province = 11370 
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					221 = {
+						is_controlled_by = SOV
+					}
+				}
+				221 = {
+					add_building_construction = {
+						type = bunker
+        				province = 418 
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					263 = {
+						is_controlled_by = SOV
+					}
+				}
+				263 = {
+					add_building_construction = {
+						type = bunker
+        				province = 117 
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_Secure_the_Far_East
+		icon = GFX_SOV_Secure_the_Far_East
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_Fighting_on_Familiar_Ground
+		}
+		prerequisite = {
+			focus = SOV_The_Defense_of_the_Union
+		}
+		relative_position_id = SOV_The_Defense_of_the_Union
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = { id = GER_SOV_War.12 }
+		}
+	}
+	focus = {
+		id = SOV_General_Winter
+		icon = GFX_SOV_General_Winter
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_Fighting_on_Familiar_Ground
+		}
+		prerequisite = {
+			focus = SOV_The_Defense_of_the_Union
+		}
+		relative_position_id = SOV_The_Defense_of_the_Union
+		x = 3
+		y = 1
+		completion_reward = {
+			add_ideas = SOV_General_Winter
+		}
+	}
+	focus = {
+		id = SOV_The_Peoples_War
+		icon = GFX_SOV_The_Peoples_War
+		cost = 40
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_Fighting_on_Familiar_Ground
+		}
+		prerequisite = {
+			focus = SOV_The_Defense_of_the_Union
+		}
+		relative_position_id = SOV_The_Defense_of_the_Union
+		x = 0
+		y = 2
+		completion_reward = {
+			add_war_support = 0.15
+			add_stability = 0.1
+			country_event = { id = GER_SOV_War.11 }
+		}
+	}
+	focus = {
+		id = SOV_For_the_Soviet_Union
+		icon = GFX_SOV_For_the_Soviet_Union
+		cost = 50
+		available = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		prerequisite = {
+			focus = SOV_Secure_the_Far_East
+		}
+		prerequisite = {
+			focus = SOV_The_Peoples_War
+		}
+		relative_position_id = SOV_The_Peoples_War
+		x = 1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = SOV_For_the_Soviet_Union.tt
+			if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War
+					add_idea = SOV_The_Great_Patriotic_War_Defence_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Defence_1
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Defence_1
+					add_idea = SOV_The_Great_Patriotic_War_Defence_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Offence_1
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Offence_1
+					add_idea = SOV_The_Great_Patriotic_War_Defence_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SOV_The_Great_Patriotic_War_Offence_2
+				}
+				swap_ideas = {
+					remove_idea = SOV_The_Great_Patriotic_War_Offence_2
+					add_idea = SOV_The_Great_Patriotic_War_Defence_2
+				}
+			}
+		}
+	}
+	#focus = {
+	#	id = SOV_The_Deal
+	#	icon = GFX_SOV_The_Deal
+	#	cost = 25
+	#	available = {
+	#		hidden_trigger = {
+	#			is_ai = no
+	#		}
+	#	}
+	#	relative_position_id = SOV_The_Peoples_War
+	#	x = 65
+	#	y = 30
+	#	completion_reward = {
+	#		add_ideas = SOV_The_Deal_idea
+	#	}
+	#}
+}

@@ -1,0 +1,1222 @@
+focus_tree = {
+	id = SPR_1933
+	country = {
+		factor = 0
+		modifier = {
+			add = 15
+			tag = SPR
+		}
+	}
+	continuous_focus_position = {
+		x = 250
+		y = 1100
+	}	
+	default = no
+	focus = { #Marina Republicana
+		id = SPR_1933_Marina_Republicana
+		icon = GFX_SPR_Spanish_Republican_Navy
+		cost = 35
+		x = 29
+		y = 0
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Renew The 1906 Jurisdiction Law
+		id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		icon = GFX_GENERIC_Small_Navy
+		cost = 35
+		relative_position_id = SPR_1933_Marina_Republicana
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Marina_Republicana
+		}
+		available = {
+		}
+		completion_reward = { #Reduces the size of the navy
+			set_temp_variable = { money_to_gain = 500 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = { #Construct The Canarias Class
+		id = SPR_1933_Construct_The_Canarias_Class
+		icon = GFX_GENERIC_Cruiser
+		cost = 35
+		relative_position_id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		}
+		available = {
+		}
+		completion_reward = {
+			add_equipment_production = {
+				equipment = {
+					type = CL_equipment_1933
+					creator = "SPA" 
+				}
+				progress = 1
+				amount = 2
+			}
+		}
+	}
+	focus = { #The C-3 Submarine
+		id = SPR_1933_The_C3_Submarine
+		icon = GFX_GENERIC_Submarine
+		cost = 35
+		relative_position_id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		x = -2
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Construct_The_Canarias_Class
+		}
+		available = {
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = ss_tech
+			}
+		}
+	}
+	focus = { #Reduce Funding
+		id = SPR_1933_Reduce_Funding
+		icon = GFX_GENERIC_Money
+		cost = 35
+		relative_position_id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		}
+		available = {
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = 500 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = { #Expand The Euskalduna
+		id = SPR_1933_Expand_The_Euskalduna
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 35
+		relative_position_id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Reduce_Funding
+		}
+		available = {
+		}
+		completion_reward = {
+            776 = { #Basque Country
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+            }
+		}
+	}
+	focus = { #Astilleros de Cartagena
+		id = SPR_1933_Astilleros_de_Cartagena
+		icon = GFX_goal_generic_build_navy
+		cost = 35
+		relative_position_id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		x = 2
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		}
+		available = {
+		}
+		completion_reward = {
+            168 = { #Mercia
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+            }
+		}
+	}
+	focus = { #Modernise The España Class
+		id = SPR_1933_Modernise_The_Espana_Class
+		icon = GFX_GENERIC_Battleship
+		cost = 35
+		relative_position_id = SPR_1933_Renew_the_1906_Jurisdiction_Law
+		x = 2
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Astilleros_de_Cartagena
+		}
+		available = {
+		}
+		completion_reward = { 
+			add_tech_bonus = {
+				uses = 2
+				bonus = 1
+				category = bb_tech
+			}
+			create_equipment_variant = { 
+				name = "Clase España model 1933" 
+				type = CL_equipment_1933
+				upgrades = { }
+			}
+		}
+	}
+	focus = { #Fuerza Aerea Republicana
+		id = SPR_1933_Fuerza_Aerea_Republicana
+		icon = GFX_SPR_Spanish_Republican_Air_Force
+		cost = 35
+		x = 22
+		y = 0
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 50
+			air_experience = 10
+		}
+	}
+	focus = { #Appoint Sáenz de Buruaga
+		id = SPR_1933_Appoint_Saenz_de_Buruaga
+		icon = GFX_SPR_CEDA_Victory
+		cost = 45
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Fuerza_Aerea_Republicana
+		}
+		available = {
+		}
+		completion_reward = {
+			air_experience = 40
+			add_ideas = SPR_Saenz_de_Buruaga
+		}
+	}
+	focus = { #Deal With The French
+		id = SPR_1933_Deal_With_The_French
+		icon = GFX_focus_chi_reach_out_to_france
+		cost = 35
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = -1
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Appoint_Saenz_de_Buruaga
+		}
+		mutually_exclusive = {
+			focus = SPR_1933_Focus_On_License_Production
+		}
+		available = {
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = Fighter_equipment_1933
+				amount = 50
+				producer = FRA
+			}
+		}
+	}
+	focus = { #Restructure The Air Force
+		id = SPR_1933_Restructure_The_Air_Force
+		icon = GFX_goal_generic_air_doctrine
+		cost = 70
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Fuerza_Aerea_Republicana
+		}
+		available = {
+		}
+		completion_reward = { #Removes national spirit "Disfunctional air force structure" (Which doesn't exist rn)
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.1
+				category = light_air
+				category = medium_air
+				category = heavy_air
+			}
+		}
+	}
+	focus = { #Focus On License Production
+		id = SPR_1933_Focus_On_License_Production
+		icon = GFX_GENERIC_Import_Fighters
+		cost = 35
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = 1
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Restructure_The_Air_Force
+		}
+		mutually_exclusive = {
+			focus = SPR_1933_Deal_With_The_French
+		}
+		available = {
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1.0
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1.0
+				category = light_fighter
+			}
+			FRA = {
+				create_production_license = {
+					target = ROOT
+					equipment = {
+						type = Fighter_equipment_1933
+					}
+					cost_factor = 0
+				}
+				create_production_license = {
+					target = ROOT
+					equipment = {
+						type = CAS_equipment_1933
+					}
+					cost_factor = 0
+				}
+			}
+		}
+	}
+	focus = { #Hispano-Aviación
+		id = SPR_1933_Hispano_Aviacion
+		icon = GFX_goal_generic_air_production
+		cost = 35
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = -2
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Deal_With_The_French
+		}
+		available = {
+		}
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			air_experience = 10
+		}
+	}
+	focus = { #Develop The Hispano E-30
+		id = SPR_1933_Develop_The_Hispano_E30
+		icon = GFX_goal_generic_air_fighter
+		cost = 35
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = 0
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Deal_With_The_French
+			focus = SPR_1933_Focus_On_License_Production
+		}
+		available = {
+		}
+		completion_reward = {
+			add_tech_bonus = { #100% research bonus for  Hispano E-30
+				uses = 1
+				bonus = 1.0
+				category = light_fighter
+			#	technology =
+			}
+		}
+	}
+	focus = { #We Need Bombers!
+		id = SPR_1933_We_Need_Bombers
+		icon = GFX_GENERIC_Strategic_Bombing
+		cost = 35
+		relative_position_id = SPR_1933_Fuerza_Aerea_Republicana
+		x = 2
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Focus_On_License_Production
+		}
+		available = {
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1.0
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 1.0
+				category = cat_heavy_fighter
+			}
+		}
+	}
+	focus = { #El Ejercito Republicano
+		id = SPR_1933_El_Ejercito_Republicano
+		icon = GFX_SPR_Spanish_Republican_Army
+		cost = 35
+		x = 15
+		y = 0
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = { #Reduce The Size Of The Army
+		id = SPR_1933_Reduce_The_Size_Of_the_Army
+		icon = GFX_focus_CZE_german_puppet
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_El_Ejercito_Republicano
+		}
+		available = {
+		}
+		completion_reward = { #Divisions go from 16 to 8
+			add_ideas = SPR_disgruntled_military_1
+			delete_units = { division_template = "División de Infantería" disband = no }
+			delete_units = { division_template = "División de Infantería (reforzada)" disband = no }
+		}
+	}
+	focus = { #Close The Military Academy Of Zaragoza
+		id = SPR_1933_Close_The_Military_Academy_Of_Zaragoza
+		icon = GFX_focus_generic_military_mission
+		cost = 200
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = -1
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Reduce_The_Size_Of_the_Army
+		}
+		available = {
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPR_disgruntled_military_1
+				add_idea = SPR_disgruntled_military_2
+			}
+			set_temp_variable = { money_to_gain = 100 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = { #The Junteros And Africanistas
+		id = SPR_1933_The_Junteros_And_Africanistas
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 1
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Reduce_The_Size_Of_the_Army
+		}
+		available = {
+		}
+		completion_reward = { #Chain of events concerning the NS "Junteros and africanistas"
+		}
+	}
+	focus = { #Increase The Military Budget
+		id = SPR_1933_Increase_The_Military_Budget
+		icon = GFX_goal_generic_military_sphere
+		cost = 70
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 0
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Close_The_Military_Academy_Of_Zaragoza
+		}
+		prerequisite = {
+			focus = SPR_1933_The_Junteros_And_Africanistas
+		}
+		available = {
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPR_disgruntled_military_2
+				add_idea = SPR_disgruntled_military_3
+			}
+			set_temp_variable = { money_to_gain = -250 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = { #Quality Against Quantity
+		id = SPR_1933_Quality_Against_Quantity
+		icon = GFX_GENERIC_Grand_Battleplan
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = -2
+		y = 4
+		prerequisite = {
+			focus = SPR_1933_Increase_The_Military_Budget
+		}
+		mutually_exclusive = {
+			focus = SPR_1933_Focus_On_Size
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Focus On Size
+		id = SPR_1933_Focus_On_Size
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 2
+		y = 4
+		prerequisite = {
+			focus = SPR_1933_Increase_The_Military_Budget
+		}
+		mutually_exclusive = {
+			focus = SPR_1933_Quality_Against_Quantity
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Urgent Mechanization
+		id = SPR_1933_Urgent_Mechanization
+		icon = GFX_GENERIC_Mechanization
+		cost = 70
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = -3
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Quality_Against_Quantity
+			focus = SPR_1933_Focus_On_Size
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Troops For The Pyrenees
+		id = SPR_1933_Brigades_De_Montana
+		icon = GFX_GENERIC_Mountain_Warfare
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = -1
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Quality_Against_Quantity
+			focus = SPR_1933_Focus_On_Size
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Expand The Army Of Africa
+		id = SPR_1933_Moroccan_Mercenaries
+		icon = GFX_focus_secret_rearmament
+		cost = 70
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 1
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Quality_Against_Quantity
+			focus = SPR_1933_Focus_On_Size
+		}
+		available = {
+		}
+		completion_reward = { #Adds a few elite divisions in Morocco (Which I don't know how. Sorry)
+
+		}
+	}
+	focus = { #Back To The 16 
+		id = SPR_1933_Widespread_Conscription
+		icon = GFX_goal_generic_small_arms
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 3
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Quality_Against_Quantity
+			focus = SPR_1933_Focus_On_Size
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = two_year_service
+		}
+	}
+	focus = { #QF 4.5-Inch Howitzer
+		id = SPR_1933_QF_4_5_Inch_Howitzer
+		icon = GFX_goal_generic_army_artillery2
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = -3
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Urgent_Mechanization
+		}
+		prerequisite = {
+			focus = SPR_1933_Brigades_De_Montana
+		}
+		prerequisite = {
+			focus = SPR_1933_Moroccan_Mercenaries
+		}
+		prerequisite = {
+			focus = SPR_1933_Widespread_Conscription
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Around A Core Of Professionals
+		id = SPR_1933_Extend_The_Professional_Core
+		icon = GFX_GENERIC_Professional_Army
+		cost = 70
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = -1
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Urgent_Mechanization
+		}
+		prerequisite = {
+			focus = SPR_1933_Brigades_De_Montana
+		}
+		prerequisite = {
+			focus = SPR_1933_Moroccan_Mercenaries
+		}
+		prerequisite = {
+			focus = SPR_1933_Widespread_Conscription
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Overwhelm The Enemy
+		id = SPR_1933_Overwhelm_The_Enemy
+		icon = GFX_focus_generic_combined_arms
+		cost = 45
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 1
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Urgent_Mechanization
+		}
+		prerequisite = {
+			focus = SPR_1933_Brigades_De_Montana
+		}
+		prerequisite = {
+			focus = SPR_1933_Moroccan_Mercenaries
+		}
+		prerequisite = {
+			focus = SPR_1933_Widespread_Conscription
+		}
+		available = {
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				technology = Firepower_Focus
+			}
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				technology = Grand_Battle_Plan
+			}
+		}
+	}
+	focus = { #Reinstate The Old Officer Core
+		id = SPR_1933_Reinstate_The_Old_Officer_Core
+		icon = GFX_focus_chi_army_reform
+		cost = 45
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 3
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Urgent_Mechanization
+		}
+		prerequisite = {
+			focus = SPR_1933_Brigades_De_Montana
+		}
+		prerequisite = {
+			focus = SPR_1933_Moroccan_Mercenaries
+		}
+		prerequisite = {
+			focus = SPR_1933_Widespread_Conscription
+		}
+		available = {
+		}
+		completion_reward = {
+			army_experience = 10
+			remove_ideas = SPR_disgruntled_military_3
+		}
+	}
+	focus = { #Replace The FT-17
+		id = SPR_1933_Replace_The_FT_17
+		icon = GFX_focus_generic_army_tanks2
+		cost = 35
+		relative_position_id = SPR_1933_El_Ejercito_Republicano
+		x = 0
+		y = 7
+		prerequisite = {
+			focus = SPR_1933_QF_4_5_Inch_Howitzer
+		}
+		prerequisite = {
+			focus = SPR_1933_Overwhelm_The_Enemy
+		}
+		prerequisite = {
+			focus = SPR_1933_Extend_The_Professional_Core
+		}
+		prerequisite = {
+			focus = SPR_1933_Reinstate_The_Old_Officer_Core
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Azaña's Cabinet
+		id = SPR_1933_Elect_The_President
+		icon = GFX_SPR_CEDA_Victory
+		x = 5
+		y = 0
+		cost = 35
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = { #Combat la España Vacía
+		id = SPR_1933_Combat_Rural_Desolation
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -4
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Elect_The_President
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = SPR_Combat_la_Espana_Vacia_1
+			170 = { #Extremadura
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			174 = { #León
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			175 = { #La Mancha
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = { #Foment Exportation
+		id = SPR_1933_Promote_Exportation
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -5
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Combat_Rural_Desolation
+		}
+		available = {
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPR_riveras_debt_1
+				add_idea = SPR_riveras_debt_2
+			}
+			swap_ideas = {
+				remove_idea = SPR_Combat_la_Espana_Vacia_1
+				add_idea = SPR_Combat_la_Espana_Vacia_2
+			}
+		}
+	}
+	focus = { #Industria Regeneracionista
+		id = SPR_1933_Industria_Regeneracionista
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -3
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Combat_Rural_Desolation
+		}
+		available = {
+		}
+		completion_reward = {
+			167 = { #Valencia
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			170 = { #Extremadura
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = { #Cooperate With The syndicates
+		id = SPR_1933_Cooperate_With_The_Syndicates
+		icon = SPR_1933_Cooperate_With_The_Syndicates
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -4
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Industria_Regeneracionista
+		}
+		prerequisite = {
+			focus = SPR_1933_Promote_Exportation
+		}
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 50
+			swap_ideas = {
+				remove_idea = SPR_Combat_la_Espana_Vacia_2
+				add_idea = SPR_Combat_la_Espana_Vacia_3
+			}
+		}
+	}
+	focus = { #The Agrarian Reform
+		id = SPR_1933_The_Agrarian_Reform
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Elect_The_President
+		}
+		available = {
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+	}
+	focus = { #Reduce The Landowner's Powers
+		id = SPR_1933_Reduce_The_Landowners_Powers
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -1
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_The_Agrarian_Reform
+		}
+		available = {
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = 25 }
+			add_money_with_tooltip_effect = yes
+			add_popularity = {
+				ideology = authoritarian
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.025
+			}
+		}
+	}
+	focus = { #Continue The School Program
+		id = SPR_1933_Continue_The_School_Program
+		icon = GFX_SPR_CEDA_Victory
+		cost = 45
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 1
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_The_Agrarian_Reform
+		}
+		available = {
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+	focus = { #4th Radical Government
+		id = SPR_1933_4th_Radical_Government
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 0
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Reduce_The_Landowners_Powers
+		}
+		prerequisite = {
+			focus = SPR_1933_Continue_The_School_Program
+		}
+		available = {
+			date > 1934.10.04
+		}
+		bypass = {
+			date > 1934.10.04
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Devaluate The Peseta
+		id = SPR_1933_Devaluate_The_Peseta
+		icon = GFX_focus_fra_devalue_the_franc
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 4
+		y = 1
+		prerequisite = {
+			focus = SPR_1933_Elect_The_President
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Instalaza
+		id = SPR_1933_Instalaza
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 3
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Devaluate_The_Peseta
+		}
+		available = {
+		}
+		completion_reward = {
+			166 = { #Aragon
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = { #Altos Hornos de Vizcaya
+		id = SPR_1933_Altos_Hornos_De_Vizcaya
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 5
+		y = 2
+		prerequisite = {
+			focus = SPR_1933_Devaluate_The_Peseta
+		}
+		available = {
+		}
+		completion_reward = {
+			776 = { #País Vasco
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = { #Revive The Internal Economy
+		id = SPR_1933_Industrial_Protectionism
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 4
+		y = 3
+		prerequisite = {
+			focus = SPR_1933_Instalaza
+		}
+		prerequisite = {
+			focus = SPR_1933_Altos_Hornos_De_Vizcaya
+		}
+		available = {
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = 50 }
+			add_money_with_tooltip_effect = yes
+			add_ideas = SPR_Industrial_Protectionism 
+		}
+	}
+	
+	focus = { #Maintain Our Political Independence
+		id = SPR_1933_Maintain_Our_Political_Independence
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -3
+		y = 4
+		prerequisite = {
+			focus = SPR_1933_Cooperate_With_The_Syndicates
+		}
+		prerequisite = {
+			focus = SPR_1933_4th_Radical_Government
+		}
+		mutually_exclusive = {
+			focus = SPR_1933_Align_With_The_Right
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = SPR_maintain_our_political_independence
+			add_political_power = 50
+		}
+	}
+	focus = { #Embrace CEDA
+		id = SPR_1933_Align_With_The_Right
+		icon = GFX_SPR_CEDA_Victory
+		cost = 10
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 3
+		y = 4
+		prerequisite = {
+			focus = SPR_1933_4th_Radical_Government
+		}
+		prerequisite = {
+			focus = SPR_1933_Industrial_Protectionism
+		}
+		mutually_exclusive = {
+			focus = SPR_1933_Maintain_Our_Political_Independence
+		}
+		available = {
+		}
+		completion_reward = { #+0,2 daily conservatism (NS)
+			add_ideas = SPR_align_with_the_right
+			add_political_power = 50
+		}
+	}
+	focus = { #Abolish The Agrarian Decrees
+		id = SPR_1933_Abolish_The_Agrarian_Decrees
+		icon = GFX_goal_generic_demand_territory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -4
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Maintain_Our_Political_Independence
+		}
+		available = {
+			
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SPR_social_unrest
+				days = 30
+			}
+			add_popularity = {
+				ideology = authoritarian
+				popularity = 0.05
+			}
+			set_temp_variable = { money_to_gain = 50 }
+			add_money_with_tooltip_effect = yes
+		}
+	}
+	focus = { #Regain The Favor Of The Generals
+		id = SPR_1933_Regain_The_Favor_Of_The_Generals
+		icon = GFX_GENERIC_Military_State
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -2
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Maintain_Our_Political_Independence
+		}
+		available = {
+		}
+		completion_reward = { #Several generals, zet to be chosen will become generals
+			add_stability = 0.025
+		}
+	}
+	focus = { #Amnesty For The Sanjurjada
+		id = SPR_1933_Pass_The_Amnesty_Law
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 0
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Maintain_Our_Political_Independence
+			focus = SPR_1933_Align_With_The_Right
+		}
+		available = {
+		}
+		completion_reward = {
+			add_stability = 0.025
+			add_political_power = 50
+		}
+	}
+	focus = { #Appoint CEDA Ministers
+		id = SPR_1933_Appoint_CEDA_Ministers
+		icon = GFX_GENERIC_Cabinet
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 2
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Align_With_The_Right
+		}
+		available = {
+		}
+		completion_reward = { #+5% conservatism (Which doesn't exist afaik)
+			add_popularity = {
+				ideology = authoritarian
+				popularity = 0.05
+			}
+			add_stability = -0.05
+		}
+	}
+	focus = { #Negotiate A Concordate With The Vatican
+		id = SPR_1933_Negotiate_The_Vatican
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 4
+		y = 5
+		prerequisite = {
+			focus = SPR_1933_Align_With_The_Right
+		}
+		available = {
+		}
+		completion_reward = { 
+			add_popularity = {
+				ideology = authoritarian
+				popularity = 0.25
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.25
+			}
+		}
+	}
+	focus = { #Destitute Left-Wing Governors
+		id = SPR_1933_Rid_The_Countryside_Of_Socialism
+		icon = GFX_SPR_CEDA_Victory
+		cost = 35
+		relative_position_id = SPR_1933_Elect_The_President
+		x = -2
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Abolish_The_Agrarian_Decrees
+		}
+		prerequisite = {
+			focus = SPR_1933_Regain_The_Favor_Of_The_Generals
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = SPR_rid_the_countryside_of_socialism
+			add_stability = 0.05
+		}
+	}
+	focus = { #Revoke The Integral State
+		id = SPR_1933_Revoke_The_Integral_State
+		icon = GFX_SPR_CEDA_Victory
+		cost = 70
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 0
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Pass_The_Amnesty_Law
+		}
+		prerequisite = {
+			focus = SPR_1933_Abolish_The_Agrarian_Decrees
+			focus = SPR_1933_Negotiate_The_Vatican
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #Enforce Labour Regulations
+		id = SPR_1933_Enforce_Labour_Regulations
+		icon = GFX_focus_generic_industry_3
+		cost = 70
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 2
+		y = 6
+		prerequisite = {
+			focus = SPR_1933_Appoint_CEDA_Ministers
+		}
+		prerequisite = {
+			focus = SPR_1933_Negotiate_The_Vatican
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = { #February Elections
+		id = SPR_1933_February_Elections
+		icon = GFX_SPR_Spanish_Elections
+		cost = 0
+		relative_position_id = SPR_1933_Elect_The_President
+		x = 0
+		y = 7
+		prerequisite = {
+			focus = SPR_1933_Rid_The_Countryside_Of_Socialism
+			focus = SPR_1933_Enforce_Labour_Regulations
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+}

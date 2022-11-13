@@ -1,0 +1,402 @@
+shared_focus = {
+	id = GER_Auf_zum_Marsch
+	icon = GFX_GER_Auf_zum_Marsch
+	cost = 10.00
+	x = 5
+	y = 0
+	completion_reward = {
+		add_ideas = GER_Kaiserreich_Auf_zum_Marsch
+	}
+}
+shared_focus = {
+	id = GER_The_Popular_Monarch
+	icon = GFX_GER_Return_of_the_Kaiser_Wilhelm_III
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Auf_zum_Marsch
+	}
+	x = 2
+	y = 1
+	completion_reward = {
+		add_political_power = 100
+	}
+}
+shared_focus = {
+	id = GER_The_New_Monarchist_Movement
+	icon = GFX_focus_generic_home_defense
+	cost = 10.00
+	prerequisite = {
+		focus = GER_The_Popular_Monarch
+	}
+	mutually_exclusive = {
+		focus = GER_The_New_Nationalist_Movement
+	}
+	x = 1
+	y = 2
+	completion_reward = {
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.1
+		}
+		add_war_support = 0.05
+	}
+}
+shared_focus = {
+	id = GER_Populist_Politics
+	icon = GFX_goal_unknown
+	cost = 10.00
+	prerequisite = {
+		focus = GER_The_New_Monarchist_Movement
+	}
+	x = 1
+	y = 3
+	completion_reward = {
+		add_stability = -0.05
+		add_ideas = GER_Kaiserreich_Populist_Politics
+	}
+}
+shared_focus = {
+	id = GER_The_New_Nationalist_Movement
+	icon = GFX_focus_generic_support_the_left_right
+	cost = 10.00
+	prerequisite = {
+		focus = GER_The_Popular_Monarch
+	}
+	mutually_exclusive = {
+		focus = GER_The_New_Monarchist_Movement
+	}
+	x = 3
+	y = 2
+	completion_reward = {
+		add_war_support = 0.10
+		add_stability = -0.05
+	}
+}
+shared_focus = {
+	id = GER_Loyalty_to_the_Fatherland
+	icon = GFX_goal_unknown
+	cost = 10.00
+	prerequisite = {
+		focus = GER_The_New_Nationalist_Movement
+	}
+	x = 3
+	y = 3
+	completion_reward = {
+		add_political_power = 100
+		add_ideas = GER_Kaiserreich_Loyalty_to_the_Fatherland
+	}
+}
+shared_focus = {
+	id = GER_A_National_Monarch
+	icon = GFX_focus_ger_return_of_the_kaiser
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Loyalty_to_the_Fatherland
+		focus = GER_Populist_Politics
+	}
+	x = 2
+	y = 4
+	completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.10
+	}
+}
+shared_focus = {
+	id = GER_Synchretic_Economics
+	icon = GFX_GER_Synchretic_Economics
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Auf_zum_Marsch
+	}
+	x = 8
+	y = 1
+	completion_reward = {
+		add_political_power = 50
+	}
+}
+shared_focus = {
+	id = GER_Technocratic_Principles
+	icon = GFX_GENERIC_Technocratic_Principles
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Synchretic_Economics
+	}
+	mutually_exclusive = {
+		focus = GER_Hierarchical_Economics
+	}
+	x = 6
+	y = 2
+	completion_reward = {
+		add_ideas = GER_Kaiserreich_Tehcnocratic_Principles
+	}
+}
+shared_focus = {
+	id = GER_Subsidize_Innovative_Buisnesses
+	icon = GFX_focus_generic_industry_3
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Technocratic_Principles
+	}
+	x = 5
+	y = 3
+	completion_reward = {
+		64 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		52 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		52 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = GER_Expand_the_Kiel_Kanal
+	icon = GFX_GENERIC_Expand_the_Canal
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Synchretic_Economics
+	}
+	x = 8
+	y = 3
+	completion_reward = {
+		58 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = GER_Expand_the_Radio_Industry
+	icon = GFX_goal_generic_radar
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Expand_the_Kiel_Kanal
+	}
+	mutually_exclusive = {
+		focus = GER_Economic_Cooperation_with_Our_Neighbors
+	}
+	x = 7
+	y = 4
+	completion_reward = {
+		add_political_power = 100
+		59 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = GER_Economic_Cooperation_with_Our_Neighbors
+	icon = GFX_GENERIC_Economic_Cooperation
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Expand_the_Kiel_Kanal
+	}
+	mutually_exclusive = {
+		focus = GER_Expand_the_Radio_Industry
+	}
+	x = 9
+	y = 4
+	completion_reward = {
+		country_event = { id = DH_German_Kaiserreich.1 }
+		ITA = { country_event = { id = DH_German_Kaiserreich.2 } }
+	}
+}
+shared_focus = {
+	id = GER_Hierarchical_Economics
+	icon = GFX_GENERIC_Hierarchical_Economics
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Synchretic_Economics
+	}
+	mutually_exclusive = {
+		focus = GER_Technocratic_Principles
+	}
+	x = 10
+	y = 2
+	completion_reward = {
+		add_political_power = 100
+		add_stability = -0.05
+	}
+}
+shared_focus = {
+	id = GER_Create_a_Technocratic_Leadership
+	icon = GFX_goal_generic_production2
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Subsidize_Innovative_Buisnesses
+	}
+	x = 5
+	y = 4
+	completion_reward = {
+		add_political_power = -100
+		add_ideas = GER_Kaiserreich_Create_a_Technocratic_Leadership
+		custom_effect_tooltip = democratic_ministers_allowed_tt
+		hidden_effect = {
+			set_country_flag = Allows_Democratic_Ministers
+		}
+	}
+}
+shared_focus = {
+	id = GER_Modern_Elitism
+	icon = GFX_GENERIC_Modern_Elitism
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Hierarchical_Economics
+	}
+	x = 11
+	y = 3
+	completion_reward = {
+		add_ideas = GER_Kaiserreich_Modern_Elitism
+	}
+}
+shared_focus = {
+	id = GER_Reform_the_Volskgemeinschaft
+	icon = GFX_goal_generic_neutrality_focus
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Modern_Elitism
+	}
+	x = 11
+	y = 4
+	completion_reward = {
+		add_ideas = GER_Kaiserreich_Reform_the_Volskgemeinschaft
+	}
+}
+shared_focus = {
+	id = GER_A_Popular_Welfare
+	icon = GFX_goal_generic_consumer_goods
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Economic_Cooperation_with_Our_Neighbors
+	}
+	prerequisite = {
+		focus = GER_Reform_the_Volskgemeinschaft
+	}
+	x = 10
+	y = 5
+	completion_reward = {
+		add_political_power = 100
+		add_ideas = GER_Kaiserreich_A_Popular_Welfare
+	}
+}
+shared_focus = {
+	id = GER_Military_Industrial_Complex
+	icon = GFX_goal_generic_construct_mil_factory
+	cost = 10.00
+	prerequisite = {
+		focus = GER_Expand_the_Radio_Industry
+	}
+	prerequisite = {
+		focus = GER_Create_a_Technocratic_Leadership
+	}
+	x = 6
+	y = 5
+	completion_reward = {
+		add_ideas = GER_Kaiserreich_Military_Industrial_Complex
+		64 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		54 = {
+			if = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+}

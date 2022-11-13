@@ -1,0 +1,493 @@
+@MAX_AMOUNT_OF_FACTIONS = 35
+@MAX_AMOUNT_OF_PARTIES = 9
+
+# usage without the "d_" in the console
+## general command that lists all commands
+d_darkest_hour_console_commands = {
+	log = D_DARKEST_HOUR_CONSOLE_COMMANDS_TT
+	log = D_DARKEST_HOUR_CONSOLE_COMMANDS_TT_2
+	## Money Console Commands
+	log = "   darkest_hour_console_commands"
+	log = "   add_money"
+	log = "   add_inflation"
+	log = "   set_unemployment"
+	log = "   add_unemployment"
+	log = "   change_unemployment_impact"
+	## Faction Console Commands
+	log = "   add_faction_influence"
+	log = "   add_faction_loyalty"
+	log = "   add_faction_to_country"
+	log = "   remove_faction_from_country"
+	## Parliament Console Commands
+	log = "   add_party_support"
+	log = "   set_parliament_ruling_party"
+	log = "   add_party_to_parliament"
+	log = "   remove_party_from_parliament"
+	log = "   add_relative_party_popularity"
+	## Other Console Commands
+	log = "   add_research_slot"
+	log = "   log_country_factories"
+	log = " "
+	log = D_DARKEST_HOUR_CONSOLE_COMMANDS_TT_3
+	log = D_DARKEST_HOUR_CONSOLE_COMMANDS_TT_4
+}
+
+## Money Console Commands
+d_add_money = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		set_temp_variable = { money_to_gain = args^0?1000 }
+		add_money_with_tooltip_effect = yes
+		if = {
+			limit = {
+				check_variable = { money_to_gain > 0 }
+			}
+			log = D_ADD_MONEY_TT
+		}
+		else = {
+			log = D_SUBTRACT_MONEY_TT
+		}
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_add_inflation = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		set_temp_variable = { inflation_to_gain = args^0?0.1 }
+		add_inflation_with_tooltip_effect = yes
+		log = D_ADD_INFLATION_TT
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_set_unemployment = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		set_temp_variable = { unemployment_value = args^0?0.1 }
+		set_unemployment_effect = yes
+		log = D_SET_UNEMPLOYMENT_TT
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_add_unemployment = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		set_temp_variable = { unemployment_value = args^0?0.1 }
+		add_unemployment_effect = yes
+		log = D_ADD_UNEMPLOYMENT_TT
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_change_unemployment_impact = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		set_temp_variable = { modifier_value = args^0?0.1 }
+		change_unemployment_value_modifier = yes
+		log = D_CHANGE_UNEMPLOYMENT_IMPACT_TT
+		log = D_CHANGE_UNEMPLOYMENT_IMPACT_TT_2
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+## Faction Console Commands
+d_add_faction_influence = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		if = {
+			limit = {
+				check_variable = { args^num = 2 }
+			}
+			set_temp_variable = { faction_id = args^0 }
+			set_temp_variable = { influence_to_add = args^1 }
+			if = {
+				limit = {
+					is_in_array = { active_factions_array = faction_id }
+				}
+				log = D_ADD_FACTION_INFLUENCE_TT
+				change_faction_influence = yes
+				log = D_ADD_FACTION_INFLUENCE_TT_2
+			}
+			else = {
+				log = D_ADD_FACTION_INFLUENCE_TT_FACTION_NOT_ACTIVE
+			}
+		}
+		else = {
+			log = D_ADD_FACTION_INFLUENCE_TT_FACTION_NOT_SPECIFIED
+		}
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_add_faction_loyalty = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		if = {
+			limit = {
+				check_variable = { args^num = 2 }
+			}
+			set_temp_variable = { faction_id = args^0 }
+			set_temp_variable = { loyalty_to_add = args^1 }
+			if = {
+				limit = {
+					is_in_array = { active_factions_array = faction_id }
+				}
+				log = D_ADD_FACTION_LOYALTY_TT
+				change_faction_loyalty = yes
+			}
+			else = {
+				log = D_ADD_FACTION_LOYALTY_TT_FACTION_NOT_ACTIVE
+			}
+		}
+		else = {
+			log = D_ADD_FACTION_LOYALTY_TT_FACTION_NOT_SPECIFIED
+		}
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_add_faction_to_country = {
+	if = {
+		limit = {
+			is_debug = yes
+		}
+		if = {
+			limit = {
+				exists = yes
+			}
+			if = {
+				limit = {
+					check_variable = { args^num = 1 }
+				}
+				clamp_temp_variable = {
+					var = args^0
+					min = 1
+					max = @MAX_AMOUNT_OF_FACTIONS
+				}
+				set_temp_variable = { faction_id = args^0 }
+				if = {
+					limit = {
+						NOT = { is_in_array = { active_factions_array = faction_id } }
+					}
+					add_active_faction = yes
+					log = D_ADD_FACTION_TO_COUNTRY_TT
+					log = D_ADD_FACTION_TO_COUNTRY_TT_2
+				}
+				else = {
+					log = D_ADD_FACTION_TO_COUNTRY_TT_FACTION_IS_ACTIVE
+				}
+			}
+			else = {
+				log = D_ADD_FACTION_TO_COUNTRY_TT_FACTION_NOT_SPECIFIED
+			}
+		}
+		else = {
+			log = "Command was used in wrong scope!"
+		}
+	}
+	else = {
+		log = "The game must be in debug mode to use this command."
+	}
+}
+
+d_remove_faction_from_country = {
+	if = {
+		limit = {
+			is_debug = yes
+		}
+		if = {
+			limit = {
+				exists = yes
+			}
+			if = {
+				limit = {
+					check_variable = { args^num = 1 }
+				}
+				set_temp_variable = { faction_id = args^0 }
+				if = {
+					limit = {
+						is_in_array = { active_factions_array = faction_id }
+					}
+					remove_active_faction = yes
+					log = D_REMOVE_FACTION_FROM_COUNTRY_TT
+					log = D_REMOVE_FACTION_FROM_COUNTRY_TT_2
+				}
+				else = {
+					log = D_REMOVE_FACTION_FROM_COUNTRY_TT_FACTION_NOT_ACTIVE
+				}
+			}
+			else = {
+				log = D_REMOVE_FACTION_FROM_COUNTRY_TT_FACTION_NOT_SPECIFIED
+			}
+		}
+		else = {
+			log = "Command was used in wrong scope!"
+		}
+	}
+	else = {
+		log = "The game must be in debug mode to use this command."
+	}
+}
+
+d_add_research_slot = {
+	if = {
+		limit = {
+			is_debug = yes
+		}
+		log = D_ADD_RESEARCH_SLOT_TT
+		meta_effect = {
+			text = {
+				FROM = {
+					add_research_slot = [NUM]
+				}
+			}
+			NUM = "[?args^0?1]"
+		}
+	}
+	else = {
+		log = "The game must be in debug mode to use this command."
+	}
+}
+
+d_add_party_support = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		if = {
+			limit = {
+				check_variable = { args^num = 2 }
+			}
+			clamp_temp_variable = {
+				var = args^1
+				min = -1
+				max = 1
+			}
+			set_temp_variable = { party_id = args^0 }
+			set_temp_variable = { support_to_add = args^1 }
+			if = {
+				limit = {
+					is_in_array = { parliament_array = party_id }
+				}
+				log = D_ADD_PARTY_SUPPORT_TT
+				change_party_support = yes
+			}
+			else = {
+				log = D_ADD_PARTY_SUPPORT_TT_PARTY_NOT_ACTIVE
+			}
+		}
+		else = {
+			log = D_ADD_PARTY_SUPPORT_TT_PARTY_NOT_SPECIFIED
+		}
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_set_parliament_ruling_party = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		if = {
+			limit = {
+				check_variable = { args^num = 1 }
+			}
+			set_temp_variable = { party_id = args^0 }
+			if = {
+				limit = {
+					OR = {
+						check_variable = { party_id = 0 }
+						is_in_array = { parliament_array = party_id }
+					}
+				}
+				set_parliament_ruling_party = yes
+				if = {
+					limit = {
+						check_variable = { party_id = 0 }
+					}
+					log = D_SET_PARLIAMENT_RULING_PARTY_TT_NO_RULING_PARTY
+				}
+				else = {
+					log = D_SET_PARLIAMENT_RULING_PARTY_TT
+				}
+			}
+			else = {
+				log = D_SET_PARLIAMENT_RULING_PARTY_TT_INVALID_PARTY
+			}
+		}
+		else = {
+			log = D_SET_PARLIAMENT_RULING_PARTY_TT_INVALID_ARGUMENTS
+		}
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_add_party_to_parliament = {
+	if = {
+		limit = {
+			is_debug = yes
+		}
+		if = {
+			limit = {
+				exists = yes
+			}
+			if = {
+				limit = {
+					check_variable = { args^num = 1 }
+				}
+				clamp_temp_variable = {
+					var = args^0
+					min = 1
+					max = @MAX_AMOUNT_OF_PARTIES
+				}
+				set_temp_variable = { party_id = args^0 }
+				if = {
+					limit = {
+						NOT = { is_in_array = { parliament_array = party_id } }
+					}
+					log = D_ADD_PARTY_TO_PARLIAMENT_TT
+					add_party_to_parliament = yes
+				}
+				else = {
+					log = D_ADD_PARTY_TO_PARLIAMENT_TT_PARTY_IS_ACTIVE
+				}
+			}
+			else = {
+				log = D_ADD_PARTY_TO_PARLIAMENT_TT_PARTY_NOT_SPECIFIED
+			}
+		}
+		else = {
+			log = "Command was used in wrong scope!"
+		}
+	}
+	else = {
+		log = "The game must be in debug mode to use this command."
+	}
+}
+
+d_remove_party_from_parliament = {
+	if = {
+		limit = {
+			is_debug = yes
+		}
+		if = {
+			limit = {
+				exists = yes
+			}
+			if = {
+				limit = {
+					check_variable = { args^num = 1 }
+				}
+				set_temp_variable = { party_id = args^0 }
+				if = {
+					limit = {
+						is_in_array = { parliament_array = party_id }
+					}
+					if = {
+						limit = {
+							check_variable = { parliament_ruling_party = party_id }
+						}
+						log = D_REMOVE_PARTY_FROM_PARLIAMENT_TT_FACTION_IS_RULING_PARTY
+					}
+					remove_party_from_parliament = yes
+					log = D_REMOVE_PARTY_FROM_PARLIAMENT_TT
+				}
+				else = {
+					log = D_REMOVE_PARTY_FROM_PARLIAMENT_TT_PARTY_NOT_ACTIVE
+				}
+			}
+			else = {
+				log = D_REMOVE_PARTY_FROM_PARLIAMENT_TT_PARTY_NOT_SPECIFIED
+			}
+		}
+		else = {
+			log = "Command was used in wrong scope!"
+		}
+	}
+	else = {
+		log = "The game must be in debug mode to use this command."
+	}
+}
+
+d_add_relative_party_popularity = {
+	if = {
+		limit = {
+			exists = yes
+		}
+		if = {
+			limit = {
+				check_variable = { args^num = 2 }
+			}
+			set_temp_variable = { party_id = args^0 }
+			if = {
+				limit = {
+					is_in_array = { parliament_array = party_id }
+				}
+				clamp_temp_variable = {
+					var = args^1
+					min = -1
+					max = 1
+				}
+				set_temp_variable = { popularity_to_add = args^1 }
+				add_relative_popularity_to_parliament_party = yes
+				log = D_ADD_RELATIVE_PARTY_POPULARITY_TT
+				log = D_ADD_RELATIVE_PARTY_POPULARITY_TT_2
+			}
+			else = {
+				log = D_ADD_RELATIVE_PARTY_POPULARITY_TT_INVALID_PARTY
+			}
+		}
+		else = {
+			log = D_ADD_RELATIVE_PARTY_POPULARITY_TT_INVALID_ARGUMENTS
+		}
+	}
+	else = {
+		log = "Command was used in wrong scope!"
+	}
+}
+
+d_log_country_factories = {
+	every_country = {
+		log = "D_LOG_COUNTRY_FACTORIES_CIVILIAN_FACTORIES"
+		log = "D_LOG_COUNTRY_FACTORIES_MILITARY_FACTORIES"
+		log = "D_LOG_COUNTRY_FACTORIES_DOCKYARDS"
+		log = "D_LOG_COUNTRY_TOTAL_FACTORIES"
+		log = " "
+	}
+	log = "D_LOG_COUNTRY_FACTORIES_1"
+	log = "D_LOG_COUNTRY_FACTORIES_2"
+}

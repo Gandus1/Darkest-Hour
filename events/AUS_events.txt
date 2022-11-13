@@ -1,0 +1,269 @@
+﻿###########################
+# Darkest Hour Events : Austria
+###########################
+add_namespace = AUS
+add_namespace = AUS_Anschluss
+add_namespace = AUS_Politics
+###########################
+# End of Parliamentarian Democracy in Austria
+###########################
+news_event = {
+	id = AUS_Politics.1
+	title = AUS_Politics.1.t
+	desc = AUS_Politics.1.d
+	picture = GFX_news_AUS_Dollfuss_Miklas
+	fire_only_once = yes
+	major = yes
+	trigger = {
+		date > 1933.3.4
+		has_start_date < 1933.3.4
+	}
+	option = {
+		name = AUS_Politics.1.A
+		trigger = {
+			original_tag = AUS
+		}
+		add_stability = -0.05
+		set_politics = {
+			ruling_party = authoritarian
+			elections_allowed = no
+		}
+		set_popularities = {
+			fascist = 7
+			authoritarian = 45
+			democratic = 40
+			socialist = 7
+			communist = 1
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = "Sozialdemokratische Arbeiterpartei Österreichs"
+			name = "SDAPÖ"
+		}
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = AUS_REP
+			add_ideas = AUS_D_Wilhelm_Miklas
+			create_country_leader = {
+				name = "Karl Renner"
+				desc = ""
+				picture = GFX_P_D_Karl_Renner
+				ideology = social_democracy
+				traits = {
+					POSITION_Chancellor
+					SUBIDEOLOGY_Social_Democracy
+					L_Backroom_Backstabber
+				}
+			}
+		}
+	}
+	option = {
+		name = AUS_Politics.1.B
+		trigger = {
+			original_tag = GER
+		}
+		news_event = {
+			id = GER_AustrianPutsch.1
+			days = 4
+		}
+	}
+	option = {
+		name = AUS_Politics.1.C
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GER
+					original_tag = AUS
+				}
+			}
+		}
+	}
+}
+###########################
+# Establishment of the Fatherland Front
+###########################
+news_event = {
+	id = AUS_Politics.2
+	title = AUS_Politics.2.t
+	desc = AUS_Politics.2.d
+	picture = GFX_news_AUS_Fatherland_Front
+	fire_only_once = yes
+	trigger = {
+		original_tag = AUS
+		date > 1933.5.20
+		has_start_date < 1933.5.20
+	}
+	option = {
+		name = AUS_Politics.2.A
+		add_stability = 0.1
+		set_party_name = {
+			ideology = authoritarian
+			long_name = "Vaterländische Front"
+			name = "VF"
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = "Vaterländische Front"
+			name = "VF"
+		}
+		add_ideas = limited_civil_liberties
+		add_popularity = {
+			ideology = communist
+			popularity = -0.1
+		}
+		add_popularity = {
+			ideology = socialist
+			popularity = -0.1
+		}
+		news_event = { #19 June 1933
+			id = AUS_Politics.3
+			days = 30
+		}
+	}
+}
+#########################################################################
+# Banning the DNSAP
+#########################################################################
+country_event = {
+	id = AUS_Politics.3
+	title = AUS_Politics.3.t
+	desc = AUS_Politics.3.d
+	picture = GFX_report_AUS_VF
+	fire_only_once = yes
+	is_triggered_only = yes #19 June 1933
+	trigger = {
+		original_tag = AUS
+	}
+	# We need to silence these dissidents!
+	option = {
+		name = AUS_Politics.3.A
+		add_stability = 0.05
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.1
+		}
+		custom_effect_tooltip = AUS_Politics.3.A.tt
+		hidden_effect = {
+			GER = {
+				country_event = {
+					id = GER_AustrianPutsch.2
+					hours = 12
+				}
+			}
+		}
+	}
+}
+###########################
+# Civil War Spreads over Austria
+###########################
+news_event = {
+	id = AUS_Politics.4
+	title = AUS_Politics.4.t
+	desc = AUS_Politics.4.d
+	picture = GFX_news_AUS_Austrian_Civil_War
+	fire_only_once = yes
+	trigger = {
+		original_tag = AUS
+		date > 1934.2.12
+		has_start_date < 1934.2.12
+	}
+	option = {
+		name = AUS_Politics.4.A
+		trigger = {
+			original_tag = AUS
+		}
+		add_stability = -0.2
+	}
+	option = {
+		name = AUS_Politics.4.B
+		trigger = {
+			NOT = {
+				original_tag = AUS
+			}
+		}
+		add_stability = -0.2
+	}
+}
+#########################################################################
+# Federal Republic of Austria
+#########################################################################
+news_event = {
+	id = AUS_Politics.5
+	title = AUS_Politics.5.t
+	desc = AUS_Politics.5.d
+	picture = GFX_news_AUS_Fatherland_Front
+	immediate = {
+		set_country_flag = AUS_Federal_Republic_of_Austria
+	}
+	trigger = {
+		date > 1934.5.1
+		has_start_date < 1934.5.1
+		NOT = { has_country_flag = AUS_Federal_Republic_of_Austria }
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	option = {
+		name = AUS_Politics.5.A
+		trigger = {
+			original_tag = AUS
+		}
+		drop_cosmetic_tag = yes
+		set_politics = {
+			ruling_party = fascist
+		}
+		set_popularities = {
+			fascist = 100
+			authoritarian = 0
+			democratic = 0
+			socialist = 0
+			communist = 0
+		}
+		add_ideas = corporatism
+		add_ideas = legalistic_restrictions
+	}
+	option = {
+		name = AUS_Politics.5.B
+		trigger = {
+			NOT = {
+				original_tag = AUS
+			}
+		}
+	}
+}
+#########################################################################
+# Kurt Schuschnigg resigns, Seyss-Inquart named new chancellor
+#########################################################################
+news_event = {
+	id = AUS.1
+	title = AUS.1.t
+	desc = AUS.1.d
+	picture = GFX_news_AUS_Seyss_Inquart_Cabinet
+	fire_only_once = yes
+	trigger = {
+		tag = AUS
+		is_subject = no
+		date > 1938.3.10 #10 March 1938
+		has_start_date < 1938.3.10
+	}
+	immediate = {
+		hidden_effect = { set_country_flag = Austrian_Political_Crisis }
+	}
+	# Red White Red, until we're dead
+	option = {
+		name = AUS.1.A
+		add_stability = -0.10
+		set_politics = { ruling_party = fascist elections_allowed = no }
+		add_ideas = {
+			AUS_D_Edmund_GlaiseHorstenau
+			AUS_FM_Wilhelm_Wolff
+			AUS_MoS_Arthur_SeyssInquart
+			AUS_AM_Rudolf_Neumayr
+			AUS_HoI_Wilhelm_Wolff
+			AUS_CoStaff_Emil_Hickmann
+			AUS_CoArmy_Eugen_Beyer
+			AUS_CoNavy_Emil_Hickmann
+			AUS_CoAir_Alexander_Lohr
+		}
+	}
+}

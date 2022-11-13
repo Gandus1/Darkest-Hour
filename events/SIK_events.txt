@@ -1,0 +1,34 @@
+#########################################################################
+# Darkest Hour Events : Sinkiang
+#########################################################################
+add_namespace = SIK_Sino_Japanese_War_Chinese_Defeat
+######################################
+# Soviet Troops cross the Border!
+######################################
+country_event = {
+	id = SIK_Sino_Japanese_War_Chinese_Defeat.1
+	title = SIK_Sino_Japanese_War_Chinese_Defeat.1.t
+	desc = SIK_Sino_Japanese_War_Chinese_Defeat.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # All units, hold fire and stand down.
+		name = SIK_Sino_Japanese_War_Chinese_Defeat.1.A
+		SOV = {
+			country_event = { id = SOV_Sino_Japanese_War_Chinese_Defeat.2 days = 1 }
+		}
+	}
+	option = { # All units, open fire!
+		name = SIK_Sino_Japanese_War_Chinese_Defeat.1.B
+		annex_country = {
+			target = TNG
+			transfer_troops = yes
+		}
+		declare_war_on = {
+			target = SOV
+			type = annex_everything
+		}
+		SOV = {
+			country_event = { id = SOV_Sino_Japanese_War_Chinese_Defeat.3 days = 1 }
+		}
+	}
+}

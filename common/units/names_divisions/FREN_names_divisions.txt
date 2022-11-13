@@ -1,0 +1,874 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+### Generic French division and brigade names for French-speaking minors and releasable nations.  This includes African nations where French is the common language of buisness or government.
+
+FREN_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Division d'Infanterie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division d'Infanterie" }
+		2 = { "%de Division d'Infanterie" }
+		3 = { "%de Division d'Infanterie" }
+		4 = { "%de Division d'Infanterie" }
+		5 = { "%de Division d'Infanterie" }
+		6 = { "%de Division d'Infanterie" }
+		7 = { "%de Division d'Infanterie" }
+		8 = { "%de Division d'Infanterie" }
+		9 = { "%de Division d'Infanterie" }
+		10 = { "%de Division d'Infanterie" }
+		11 = { "%de Division d'Infanterie" }
+		12 = { "%de Division d'Infanterie" }
+		13 = { "%de Division d'Infanterie" }
+		14 = { "%de Division d'Infanterie" }
+		15 = { "%de Division d'Infanterie" }
+		16 = { "%de Division d'Infanterie" }
+		17 = { "%de Division d'Infanterie" }
+		18 = { "%de Division d'Infanterie" }
+		19 = { "%de Division d'Infanterie" }
+		20 = { "%de Division d'Infanterie" }
+	}
+}
+
+FREN_INF_02 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Brigade d'Infanterie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade d'Infanterie" }
+		2 = { "%de Brigade d'Infanterie" }
+		3 = { "%de Brigade d'Infanterie" }
+		4 = { "%de Brigade d'Infanterie" }
+		5 = { "%de Brigade d'Infanterie" }
+		6 = { "%de Brigade d'Infanterie" }
+		7 = { "%de Brigade d'Infanterie" }
+		8 = { "%de Brigade d'Infanterie" }
+		9 = { "%de Brigade d'Infanterie" }
+		10 = { "%de Brigade d'Infanterie" }
+		11 = { "%de Brigade d'Infanterie" }
+		12 = { "%de Brigade d'Infanterie" }
+		13 = { "%de Brigade d'Infanterie" }
+		14 = { "%de Brigade d'Infanterie" }
+		15 = { "%de Brigade d'Infanterie" }
+		16 = { "%de Brigade d'Infanterie" }
+		17 = { "%de Brigade d'Infanterie" }
+		18 = { "%de Brigade d'Infanterie" }
+		19 = { "%de Brigade d'Infanterie" }
+		20 = { "%de Brigade d'Infanterie" }
+	}
+}
+
+FREN_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_CAV_02 }
+
+	fallback_name = "%de Division de Cavalerie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division de Cavalerie" }
+		2 = { "%de Division de Cavalerie" }
+		3 = { "%de Division de Cavalerie" }
+		4 = { "%de Division de Cavalerie" }
+		5 = { "%de Division de Cavalerie" }
+		6 = { "%de Division de Cavalerie" }
+		7 = { "%de Division de Cavalerie" }
+		8 = { "%de Division de Cavalerie" }
+		9 = { "%de Division de Cavalerie" }
+		10 = { "%de Division de Cavalerie" }
+		11 = { "%de Division de Cavalerie" }
+		12 = { "%de Division de Cavalerie" }
+		13 = { "%de Division de Cavalerie" }
+		14 = { "%de Division de Cavalerie" }
+		15 = { "%de Division de Cavalerie" }
+		16 = { "%de Division de Cavalerie" }
+		17 = { "%de Division de Cavalerie" }
+		18 = { "%de Division de Cavalerie" }
+		19 = { "%de Division de Cavalerie" }
+		20 = { "%de Division de Cavalerie" }
+	}
+}
+
+FREN_CAV_02 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_CAV_01 }
+
+	fallback_name = "%de Brigade de Cavalerie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade de Cavalerie" }
+		2 = { "%de Brigade de Cavalerie" }
+		3 = { "%de Brigade de Cavalerie" }
+		4 = { "%de Brigade de Cavalerie" }
+		5 = { "%de Brigade de Cavalerie" }
+		6 = { "%de Brigade de Cavalerie" }
+		7 = { "%de Brigade de Cavalerie" }
+		8 = { "%de Brigade de Cavalerie" }
+		9 = { "%de Brigade de Cavalerie" }
+		10 = { "%de Brigade de Cavalerie" }
+		11 = { "%de Brigade de Cavalerie" }
+		12 = { "%de Brigade de Cavalerie" }
+		13 = { "%de Brigade de Cavalerie" }
+		14 = { "%de Brigade de Cavalerie" }
+		15 = { "%de Brigade de Cavalerie" }
+		16 = { "%de Brigade de Cavalerie" }
+		17 = { "%de Brigade de Cavalerie" }
+		18 = { "%de Brigade de Cavalerie" }
+		19 = { "%de Brigade de Cavalerie" }
+		20 = { "%de Brigade de Cavalerie" }
+	}
+}
+
+FREN_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Division d'Infanterie Motorisée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division d'Infanterie Motorisée" }
+		2 = { "%de Division d'Infanterie Motorisée" }
+		3 = { "%de Division d'Infanterie Motorisée" }
+		4 = { "%de Division d'Infanterie Motorisée" }
+		5 = { "%de Division d'Infanterie Motorisée" }
+		6 = { "%de Division d'Infanterie Motorisée" }
+		7 = { "%de Division d'Infanterie Motorisée" }
+		8 = { "%de Division d'Infanterie Motorisée" }
+		9 = { "%de Division d'Infanterie Motorisée" }
+		10 = { "%de Division d'Infanterie Motorisée" }
+		11 = { "%de Division d'Infanterie Motorisée" }
+		12 = { "%de Division d'Infanterie Motorisée" }
+		13 = { "%de Division d'Infanterie Motorisée" }
+		14 = { "%de Division d'Infanterie Motorisée" }
+		15 = { "%de Division d'Infanterie Motorisée" }
+		16 = { "%de Division d'Infanterie Motorisée" }
+		17 = { "%de Division d'Infanterie Motorisée" }
+		18 = { "%de Division d'Infanterie Motorisée" }
+		19 = { "%de Division d'Infanterie Motorisée" }
+		20 = { "%de Division d'Infanterie Motorisée" }
+	}
+}
+
+FREN_MOT_02 = 
+{
+	name = "Motorized Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Brigade d'Infanterie Motorisée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade d'Infanterie Motorisée" }
+		2 = { "%de Brigade d'Infanterie Motorisée" }
+		3 = { "%de Brigade d'Infanterie Motorisée" }
+		4 = { "%de Brigade d'Infanterie Motorisée" }
+		5 = { "%de Brigade d'Infanterie Motorisée" }
+		6 = { "%de Brigade d'Infanterie Motorisée" }
+		7 = { "%de Brigade d'Infanterie Motorisée" }
+		8 = { "%de Brigade d'Infanterie Motorisée" }
+		9 = { "%de Brigade d'Infanterie Motorisée" }
+		10 = { "%de Brigade d'Infanterie Motorisée" }
+		11 = { "%de Brigade d'Infanterie Motorisée" }
+		12 = { "%de Brigade d'Infanterie Motorisée" }
+		13 = { "%de Brigade d'Infanterie Motorisée" }
+		14 = { "%de Brigade d'Infanterie Motorisée" }
+		15 = { "%de Brigade d'Infanterie Motorisée" }
+		16 = { "%de Brigade d'Infanterie Motorisée" }
+		17 = { "%de Brigade d'Infanterie Motorisée" }
+		18 = { "%de Brigade d'Infanterie Motorisée" }
+		19 = { "%de Brigade d'Infanterie Motorisée" }
+		20 = { "%de Brigade d'Infanterie Motorisée" }
+	}
+}
+
+FREN_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Division d'Infanterie Mécanisée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division d'Infanterie Mécanisée" }
+		2 = { "%de Division d'Infanterie Mécanisée" }
+		3 = { "%de Division d'Infanterie Mécanisée" }
+		4 = { "%de Division d'Infanterie Mécanisée" }
+		5 = { "%de Division d'Infanterie Mécanisée" }
+		6 = { "%de Division d'Infanterie Mécanisée" }
+		7 = { "%de Division d'Infanterie Mécanisée" }
+		8 = { "%de Division d'Infanterie Mécanisée" }
+		9 = { "%de Division d'Infanterie Mécanisée" }
+		10 = { "%de Division d'Infanterie Mécanisée" }
+		11 = { "%de Division d'Infanterie Mécanisée" }
+		12 = { "%de Division d'Infanterie Mécanisée" }
+		13 = { "%de Division d'Infanterie Mécanisée" }
+		14 = { "%de Division d'Infanterie Mécanisée" }
+		15 = { "%de Division d'Infanterie Mécanisée" }
+		16 = { "%de Division d'Infanterie Mécanisée" }
+		17 = { "%de Division d'Infanterie Mécanisée" }
+		18 = { "%de Division d'Infanterie Mécanisée" }
+		19 = { "%de Division d'Infanterie Mécanisée" }
+		20 = { "%de Division d'Infanterie Mécanisée" }
+	}
+}
+
+FREN_MEC_02 = 
+{
+	name = "Mechanized Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Brigade d'Infanterie Mécanisée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade d'Infanterie Mécanisée" }
+		2 = { "%de Brigade d'Infanterie Mécanisée" }
+		3 = { "%de Brigade d'Infanterie Mécanisée" }
+		4 = { "%de Brigade d'Infanterie Mécanisée" }
+		5 = { "%de Brigade d'Infanterie Mécanisée" }
+		6 = { "%de Brigade d'Infanterie Mécanisée" }
+		7 = { "%de Brigade d'Infanterie Mécanisée" }
+		8 = { "%de Brigade d'Infanterie Mécanisée" }
+		9 = { "%de Brigade d'Infanterie Mécanisée" }
+		10 = { "%de Brigade d'Infanterie Mécanisée" }
+		11 = { "%de Brigade d'Infanterie Mécanisée" }
+		12 = { "%de Brigade d'Infanterie Mécanisée" }
+		13 = { "%de Brigade d'Infanterie Mécanisée" }
+		14 = { "%de Brigade d'Infanterie Mécanisée" }
+		15 = { "%de Brigade d'Infanterie Mécanisée" }
+		16 = { "%de Brigade d'Infanterie Mécanisée" }
+		17 = { "%de Brigade d'Infanterie Mécanisée" }
+		18 = { "%de Brigade d'Infanterie Mécanisée" }
+		19 = { "%de Brigade d'Infanterie Mécanisée" }
+		20 = { "%de Brigade d'Infanterie Mécanisée" }
+	}
+}
+
+FREN_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR RCG RWA SEN TOG }					# Includes names for Haiti and French-speaking releasable nations
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_ARM_02 }
+
+	fallback_name = "%de Division Cuirassée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division Cuirassée" }
+		2 = { "%de Division Cuirassée" }
+		3 = { "%de Division Cuirassée" }
+		4 = { "%de Division Cuirassée" }
+		5 = { "%de Division Cuirassée" }
+		6 = { "%de Division Cuirassée" }
+		7 = { "%de Division Cuirassée" }
+		8 = { "%de Division Cuirassée" }
+		9 = { "%de Division Cuirassée" }
+		10 = { "%de Division Cuirassée" }
+		11 = { "%de Division Cuirassée" }
+		12 = { "%de Division Cuirassée" }
+		13 = { "%de Division Cuirassée" }
+		14 = { "%de Division Cuirassée" }
+		15 = { "%de Division Cuirassée" }
+		16 = { "%de Division Cuirassée" }
+		17 = { "%de Division Cuirassée" }
+		18 = { "%de Division Cuirassée" }
+		19 = { "%de Division Cuirassée" }
+		20 = { "%de Division Cuirassée" }
+	}
+}
+
+FREN_ARM_02 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR RCG RWA SEN TOG }					# Includes names for Haiti and French-speaking releasable nations
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_ARM_01 }
+
+	fallback_name = "%de Brigade Cuirassée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade Cuirassée" }
+		2 = { "%de Brigade Cuirassée" }
+		3 = { "%de Brigade Cuirassée" }
+		4 = { "%de Brigade Cuirassée" }
+		5 = { "%de Brigade Cuirassée" }
+		6 = { "%de Brigade Cuirassée" }
+		7 = { "%de Brigade Cuirassée" }
+		8 = { "%de Brigade Cuirassée" }
+		9 = { "%de Brigade Cuirassée" }
+		10 = { "%de Brigade Cuirassée" }
+		11 = { "%de Brigade Cuirassée" }
+		12 = { "%de Brigade Cuirassée" }
+		13 = { "%de Brigade Cuirassée" }
+		14 = { "%de Brigade Cuirassée" }
+		15 = { "%de Brigade Cuirassée" }
+		16 = { "%de Brigade Cuirassée" }
+		17 = { "%de Brigade Cuirassée" }
+		18 = { "%de Brigade Cuirassée" }
+		19 = { "%de Brigade Cuirassée" }
+		20 = { "%de Brigade Cuirassée" }
+	}
+}
+
+FREN_ARM_03 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { QUE }					# Confirmed that this is the term used in Quebec for armored units.
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_ARM_02 }
+
+	fallback_name = "%de Division Blindée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division Blindée" }
+		2 = { "%de Division Blindée" }
+		3 = { "%de Division Blindée" }
+		4 = { "%de Division Blindée" }
+		5 = { "%de Division Blindée" }
+		6 = { "%de Division Blindée" }
+		7 = { "%de Division Blindée" }
+		8 = { "%de Division Blindée" }
+		9 = { "%de Division Blindée" }
+		10 = { "%de Division Blindée" }
+		11 = { "%de Division Blindée" }
+		12 = { "%de Division Blindée" }
+		13 = { "%de Division Blindée" }
+		14 = { "%de Division Blindée" }
+		15 = { "%de Division Blindée" }
+		16 = { "%de Division Blindée" }
+		17 = { "%de Division Blindée" }
+		18 = { "%de Division Blindée" }
+		19 = { "%de Division Blindée" }
+		20 = { "%de Division Blindée" }
+	}
+}
+
+FREN_ARM_04 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { QUE }					# Confirmed that this is the term used in Quebec for armored units.
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_ARM_01 }
+
+	fallback_name = "%de Brigade Blindée"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade Blindée" }
+		2 = { "%de Brigade Blindée" }
+		3 = { "%de Brigade Blindée" }
+		4 = { "%de Brigade Blindée" }
+		5 = { "%de Brigade Blindée" }
+		6 = { "%de Brigade Blindée" }
+		7 = { "%de Brigade Blindée" }
+		8 = { "%de Brigade Blindée" }
+		9 = { "%de Brigade Blindée" }
+		10 = { "%de Brigade Blindée" }
+		11 = { "%de Brigade Blindée" }
+		12 = { "%de Brigade Blindée" }
+		13 = { "%de Brigade Blindée" }
+		14 = { "%de Brigade Blindée" }
+		15 = { "%de Brigade Blindée" }
+		16 = { "%de Brigade Blindée" }
+		17 = { "%de Brigade Blindée" }
+		18 = { "%de Brigade Blindée" }
+		19 = { "%de Brigade Blindée" }
+		20 = { "%de Brigade Blindée" }
+	}
+}
+
+FREN_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Division de Parachutistes"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division de Parachutistes" }
+		2 = { "%de Division de Parachutistes" }
+		3 = { "%de Division de Parachutistes" }
+		4 = { "%de Division de Parachutistes" }
+		5 = { "%de Division de Parachutistes" }
+		6 = { "%de Division de Parachutistes" }
+		7 = { "%de Division de Parachutistes" }
+		8 = { "%de Division de Parachutistes" }
+		9 = { "%de Division de Parachutistes" }
+		10 = { "%de Division de Parachutistes" }
+		11 = { "%de Division de Parachutistes" }
+		12 = { "%de Division de Parachutistes" }
+		13 = { "%de Division de Parachutistes" }
+		14 = { "%de Division de Parachutistes" }
+		15 = { "%de Division de Parachutistes" }
+		16 = { "%de Division de Parachutistes" }
+		17 = { "%de Division de Parachutistes" }
+		18 = { "%de Division de Parachutistes" }
+		19 = { "%de Division de Parachutistes" }
+		20 = { "%de Division de Parachutistes" }
+	}
+}
+
+FREN_PAR_02 = 
+{
+	name = "Paratrooper Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 }
+
+	fallback_name = "%de Brigade de Parachutistes"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade de Parachutistes" }
+		2 = { "%de Brigade de Parachutistes" }
+		3 = { "%de Brigade de Parachutistes" }
+		4 = { "%de Brigade de Parachutistes" }
+		5 = { "%de Brigade de Parachutistes" }
+		6 = { "%de Brigade de Parachutistes" }
+		7 = { "%de Brigade de Parachutistes" }
+		8 = { "%de Brigade de Parachutistes" }
+		9 = { "%de Brigade de Parachutistes" }
+		10 = { "%de Brigade de Parachutistes" }
+		11 = { "%de Brigade de Parachutistes" }
+		12 = { "%de Brigade de Parachutistes" }
+		13 = { "%de Brigade de Parachutistes" }
+		14 = { "%de Brigade de Parachutistes" }
+		15 = { "%de Brigade de Parachutistes" }
+		16 = { "%de Brigade de Parachutistes" }
+		17 = { "%de Brigade de Parachutistes" }
+		18 = { "%de Brigade de Parachutistes" }
+		19 = { "%de Brigade de Parachutistes" }
+		20 = { "%de Brigade de Parachutistes" }
+	}
+}
+
+FREN_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_MAR_02 }
+
+	fallback_name = "%de Division d'Infanterie de Marine"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division d'Infanterie de Marine" }
+		2 = { "%de Division d'Infanterie de Marine" }
+		3 = { "%de Division d'Infanterie de Marine" }
+		4 = { "%de Division d'Infanterie de Marine" }
+		5 = { "%de Division d'Infanterie de Marine" }
+		6 = { "%de Division d'Infanterie de Marine" }
+		7 = { "%de Division d'Infanterie de Marine" }
+		8 = { "%de Division d'Infanterie de Marine" }
+		9 = { "%de Division d'Infanterie de Marine" }
+		10 = { "%de Division d'Infanterie de Marine" }
+		11 = { "%de Division d'Infanterie de Marine" }
+		12 = { "%de Division d'Infanterie de Marine" }
+		13 = { "%de Division d'Infanterie de Marine" }
+		14 = { "%de Division d'Infanterie de Marine" }
+		15 = { "%de Division d'Infanterie de Marine" }
+		16 = { "%de Division d'Infanterie de Marine" }
+		17 = { "%de Division d'Infanterie de Marine" }
+		18 = { "%de Division d'Infanterie de Marine" }
+		19 = { "%de Division d'Infanterie de Marine" }
+		20 = { "%de Division d'Infanterie de Marine" }
+	}
+}
+
+FREN_MAR_02 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_MAR_01 }
+
+	fallback_name = "%de Brigade d'Infanterie de Marine"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade d'Infanterie de Marine" }
+		2 = { "%de Brigade d'Infanterie de Marine" }
+		3 = { "%de Brigade d'Infanterie de Marine" }
+		4 = { "%de Brigade d'Infanterie de Marine" }
+		5 = { "%de Brigade d'Infanterie de Marine" }
+		6 = { "%de Brigade d'Infanterie de Marine" }
+		7 = { "%de Brigade d'Infanterie de Marine" }
+		8 = { "%de Brigade d'Infanterie de Marine" }
+		9 = { "%de Brigade d'Infanterie de Marine" }
+		10 = { "%de Brigade d'Infanterie de Marine" }
+		11 = { "%de Brigade d'Infanterie de Marine" }
+		12 = { "%de Brigade d'Infanterie de Marine" }
+		13 = { "%de Brigade d'Infanterie de Marine" }
+		14 = { "%de Brigade d'Infanterie de Marine" }
+		15 = { "%de Brigade d'Infanterie de Marine" }
+		16 = { "%de Brigade d'Infanterie de Marine" }
+		17 = { "%de Brigade d'Infanterie de Marine" }
+		18 = { "%de Brigade d'Infanterie de Marine" }
+		19 = { "%de Brigade d'Infanterie de Marine" }
+		20 = { "%de Brigade d'Infanterie de Marine" }
+	}
+}
+
+FREN_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Division d'Infanterie de Montagne"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division d'Infanterie de Montagne" }
+		2 = { "%de Division d'Infanterie de Montagne" }
+		3 = { "%de Division d'Infanterie de Montagne" }
+		4 = { "%de Division d'Infanterie de Montagne" }
+		5 = { "%de Division d'Infanterie de Montagne" }
+		6 = { "%de Division d'Infanterie de Montagne" }
+		7 = { "%de Division d'Infanterie de Montagne" }
+		8 = { "%de Division d'Infanterie de Montagne" }	
+		9 = { "%de Division d'Infanterie de Montagne" }
+		10 = { "%de Division d'Infanterie de Montagne" }
+		11 = { "%de Division d'Infanterie de Montagne" }
+		12 = { "%de Division d'Infanterie de Montagne" }
+		13 = { "%de Division d'Infanterie de Montagne" }
+		14 = { "%de Division d'Infanterie de Montagne" }
+		15 = { "%de Division d'Infanterie de Montagne" }
+		16 = { "%de Division d'Infanterie de Montagne" }
+		17 = { "%de Division d'Infanterie de Montagne" }
+		18 = { "%de Division d'Infanterie de Montagne" }	
+		19 = { "%de Division d'Infanterie de Montagne" }
+		20 = { "%de Division d'Infanterie de Montagne" }
+	}
+}
+
+FREN_MTN_02 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_PAR_02 }
+
+	fallback_name = "%de Brigade d'Infanterie de Montagne"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade d'Infanterie de Montagne" }
+		2 = { "%de Brigade d'Infanterie de Montagne" }
+		3 = { "%de Brigade d'Infanterie de Montagne" }
+		4 = { "%de Brigade d'Infanterie de Montagne" }
+		5 = { "%de Brigade d'Infanterie de Montagne" }
+		6 = { "%de Brigade d'Infanterie de Montagne" }
+		7 = { "%de Brigade d'Infanterie de Montagne" }
+		8 = { "%de Brigade d'Infanterie de Montagne" }	
+		9 = { "%de Brigade d'Infanterie de Montagne" }
+		10 = { "%de Brigade d'Infanterie de Montagne" }
+		11 = { "%de Brigade d'Infanterie de Montagne" }
+		12 = { "%de Brigade d'Infanterie de Montagne" }
+		13 = { "%de Brigade d'Infanterie de Montagne" }
+		14 = { "%de Brigade d'Infanterie de Montagne" }
+		15 = { "%de Brigade d'Infanterie de Montagne" }
+		16 = { "%de Brigade d'Infanterie de Montagne" }
+		17 = { "%de Brigade d'Infanterie de Montagne" }
+		18 = { "%de Brigade d'Infanterie de Montagne" }	
+		19 = { "%de Brigade d'Infanterie de Montagne" }
+		20 = { "%de Brigade d'Infanterie de Montagne" }
+	}
+}
+
+FREN_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_GAR_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Division de Forteresse"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Division de Forteresse" }
+		2 = { "%de Division de Forteresse" }
+		3 = { "%de Division de Forteresse" }
+		4 = { "%de Division de Forteresse" }
+		5 = { "%de Division de Forteresse" }
+		6 = { "%de Division de Forteresse" }
+		7 = { "%de Division de Forteresse" }
+		8 = { "%de Division de Forteresse" }
+		9 = { "%de Division de Forteresse" }
+		10 = { "%de Division de Forteresse" }
+		11 = { "%de Division de Forteresse" }
+		12 = { "%de Division de Forteresse" }
+		13 = { "%de Division de Forteresse" }
+		14 = { "%de Division de Forteresse" }
+		15 = { "%de Division de Forteresse" }
+		16 = { "%de Division de Forteresse" }
+		17 = { "%de Division de Forteresse" }
+		18 = { "%de Division de Forteresse" }
+		19 = { "%de Division de Forteresse" }
+		20 = { "%de Division de Forteresse" }
+	}
+}
+
+FREN_GAR_02 = 
+{
+	name = "Garrison Brigades"
+
+	for_countries = { AZW BEN BRD CAM CAR CAY CMR COG COM CSM DJI GAB GNA HAI IVO KAT LAO LUX MLI MRQ NGR QUE RCG RWA SEN SKS TOG VOL WLN }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FREN_INF_01 FREN_MOT_01 FREN_MEC_01 FREN_GAR_01 FREN_MTN_01 FREN_PAR_01 FREN_INF_02 FREN_MOT_02 FREN_MEC_02 FREN_MTN_02 FREN_PAR_02 }
+
+	fallback_name = "%de Brigade de Forteresse"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dre Brigade de Forteresse" }
+		2 = { "%de Brigade de Forteresse" }
+		3 = { "%de Brigade de Forteresse" }
+		4 = { "%de Brigade de Forteresse" }
+		5 = { "%de Brigade de Forteresse" }
+		6 = { "%de Brigade de Forteresse" }
+		7 = { "%de Brigade de Forteresse" }
+		8 = { "%de Brigade de Forteresse" }
+		9 = { "%de Brigade de Forteresse" }
+		10 = { "%de Brigade de Forteresse" }
+		11 = { "%de Brigade de Forteresse" }
+		12 = { "%de Brigade de Forteresse" }
+		13 = { "%de Brigade de Forteresse" }
+		14 = { "%de Brigade de Forteresse" }
+		15 = { "%de Brigade de Forteresse" }
+		16 = { "%de Brigade de Forteresse" }
+		17 = { "%de Brigade de Forteresse" }
+		18 = { "%de Brigade de Forteresse" }
+		19 = { "%de Brigade de Forteresse" }
+		20 = { "%de Brigade de Forteresse" }
+	}
+}

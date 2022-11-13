@@ -1,0 +1,6012 @@
+###########################
+# Darkest Hour Election Events : United States
+###########################
+add_namespace = USA_FDR_Assassination
+add_namespace = USA_Elections_1932
+add_namespace = USA_Elections_1936
+add_namespace = USA_Elections_1940
+add_namespace = USA_Elections_1944
+add_namespace = USA_FDR_New_Deal
+add_namespace = USA_FDR_1936
+add_namespace = USA_Packing_the_Courts
+add_namespace = USA_Packing_the_Courts_Aftermath
+add_namespace = USA_Politics
+add_namespace = USA
+add_namespace = USA_Army
+add_namespace = USA_Flavor
+add_namespace = USA_Fireside
+add_namespace = USA_Navy
+add_namespace = USA_Air_Force
+add_namespace = USA_1940_1944_Wilkie
+add_namespace = USA_1940_1944_FDR
+add_namespace = USA_1944_1948_FDR
+add_namespace = USA_Japanese_Leaders_Trial
+add_namespace = USA_Cash_and_Carry
+add_namespace = USA_Landon
+add_namespace = USA_Landon_1940_1944
+add_namespace = USA_Smoot_Hawley
+add_namespace = USA_Department_of_War
+add_namespace = USA_Left_War
+add_namespace = USA_Rally_Seattle
+add_namespace = USA_Taft_Addresses_Nation
+add_namespace = USA_Wilkie_Dead
+add_namespace = USA_McNary_Dead
+add_namespace = USA_Philippines
+add_namespace = USA_Status_New_Territories
+add_namespace = USA_Capitulate_Japan
+### Do Event Pics GFX_news_USA_Bank_Holiday
+#########################################################################
+#Landon
+#######################################################################
+country_event = {
+	#Teachers Unions
+	id = USA_Landon.1
+	title = USA_Landon.1.t
+	desc = USA_Landon.1.d
+	picture = GFX_report_USA_Teacher_Union_Protests
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.1.A
+		add_stability = -0.02
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { popularity_to_add = -0.02 }
+		add_popularity = {
+			ideology = socialist
+			popularity = 0.03
+		}
+		add_relative_popularity_to_parliament_party = yes
+		calculate_total_parliament_support = yes
+		update_parliament_piechart = yes
+		add_ideas = USA_teachers_union
+	}
+}
+country_event = {
+	#Tax Break Payoff
+	id = USA_Landon.2
+	title = USA_Landon.2.t
+	desc = USA_Landon.2.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.2.A
+		remove_ideas = USA_Large_Scale_Tax_Breaks
+		set_temp_variable = { unemployment_value = -0.03}
+		add_unemployment_effect = yes
+		add_stability = 0.03
+	}
+}
+country_event = {
+	#Rebalancing New Deal Budget
+	id = USA_Landon.3
+	title = USA_Landon.3.t
+	desc = USA_Landon.3.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.3.A
+		add_political_power = -100
+		add_stability = -0.03
+		swap_ideas = {
+			remove_idea = USA_fair_compromise
+			add_idea = USA_fair_compromise_1
+		}
+	}
+	option = {
+		name = USA_Landon.3.B
+		add_stability = -0.02
+		swap_ideas = {
+			remove_idea = USA_fair_compromise
+			add_idea = USA_fair_compromise_2
+		}
+	}
+}
+country_event = {
+	#Business Support Act
+	id = USA_Landon.4
+	title = USA_Landon.4.t
+	desc = USA_Landon.4.d
+	picture = GFX_report_USA_Landon_Business_Support_Act
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.4.A
+		add_political_power = 50
+		set_temp_variable = { money_to_gain = -200 }
+		add_money_with_tooltip_effect = yes
+		if = {
+			limit = {
+				has_idea = USA_Fair_Compromise_1
+			}
+			swap_ideas = {
+				remove_idea = USA_Fair_Compromise_1
+				add_idea = USA_Fair_Compromise_4
+			}
+		}
+		if = {
+			limit = {
+				has_idea = USA_Fair_Compromise_2
+			}
+			swap_ideas = {
+				remove_idea = USA_Fair_Compromise_2
+				add_idea = USA_Fair_Compromise_3
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = USA
+				NOT = {
+					has_state_flag = USA_LANDON_BUILT_HERE_1
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			set_state_flag = USA_LANDON_BUILT_HERE_1
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = USA
+				NOT = {
+					has_state_flag =USA_LANDON_BUILT_HERE_1
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			set_state_flag = USA_LANDON_BUILT_HERE_1
+		}
+	}
+}
+country_event = {
+	#Congress Debates New Tax Law
+	id = USA_Landon.5
+	title = USA_Landon.5.t
+	desc = USA_Landon.5.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.5.A
+		add_stability = 0.05
+		add_ideas = USA_New_Tax_Law_1
+	}
+	option = {
+		name = USA_Landon.5.B
+		add_stability = 0.1
+		add_ideas = USA_New_Tax_Law
+	}
+}
+country_event = {
+	#Landon Pushes for Fiscal Conservatism
+	id = USA_Landon.6
+	title = USA_Landon.6.t
+	desc = USA_Landon.6.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.6.A
+		add_stability = -0.02
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = 0.15 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = -0.1 }
+		change_party_support = yes
+	}
+}
+country_event = {
+	#Dire Straits of Civic Federation
+	id = USA_Landon.7
+	title = USA_Landon.7.t
+	desc = USA_Landon.7.d
+	picture = GFX_report_USA_Dire_Straights_Civic_Federation
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.7.A
+		set_temp_variable = { money_to_gain = -500 }
+		add_money_with_tooltip_effect = yes
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = 0.01 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = 0.01 }
+		change_party_support = yes
+		set_temp_variable = { unemployment_value = -0.05 }
+		add_unemployment_effect = yes
+		add_ideas = USA_National_Civic_Federation
+	}
+}
+country_event = {
+	#Congress Debates Child Labor
+	id = USA_Landon.8
+	title = USA_Landon.8.t
+	desc = USA_Landon.8.d
+	picture = GFX_report_USA_Debate_Child_Labor
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.8.A
+		add_popularity = {
+			ideology = socialist
+			popularity = 0.03
+		}
+		add_relative_popularity_to_parliament_party = yes
+		calculate_total_parliament_support = yes
+		update_parliament_piechart = yes
+		set_temp_variable = { unemployment_value = -0.035 }
+		add_unemployment_effect = yes
+		add_ideas = USA_Child_Labor_Practices
+	}
+}
+country_event = {
+	#Lane and Landon Meet
+	id = USA_Landon.9
+	title = USA_Landon.9.t
+	desc = USA_Landon.9.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.9.A
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = 0.1 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = -0.05 }
+		change_party_support = yes
+		add_political_power = 50
+	}
+}
+country_event = {
+	#Meeting with Garner and Rayburn
+	id = USA_Landon.10
+	title = USA_Landon.10.t
+	desc = USA_Landon.10.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon.10.A
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = -0.05 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = 0.1 }
+		change_party_support = yes
+		add_political_power = 50
+	}
+}
+#########################################################################
+#  Revisiting Smoot-Hawley
+#########################################################################
+country_event = {
+	#Revisiting Smoot-Hawley
+	id = USA_Smoot_Hawley.1
+	title = USA_Smoot_Hawley.1.t
+	desc = USA_Smoot_Hawley.1.d
+	picture = GFX_report_USA_Revisit_Smoot_Hawley
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.1.A
+		hidden_effect = {
+			country_event = {
+				id = USA_Smoot_Hawley.2
+				days = 1
+				random = 24
+			}
+		}
+	}
+}
+country_event = {
+	#Henry Ford Speaks out Against the Bill!
+	id = USA_Smoot_Hawley.2
+	title = USA_Smoot_Hawley.2.t
+	desc = USA_Smoot_Hawley.2.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.2.A
+		hidden_effect = {
+			country_event = {
+				id = USA_Smoot_Hawley.3
+				days = 1
+				random = 24
+			}
+		}
+	}
+}
+country_event = {
+	#House Liberals Oppose the Bill!
+	id = USA_Smoot_Hawley.3
+	title = USA_Smoot_Hawley.3.t
+	desc = USA_Smoot_Hawley.3.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.3.A
+		hidden_effect = {
+			country_event = {
+				id = USA_Smoot_Hawley.4
+				days = 1
+				random = 24
+			}
+		}
+	}
+}
+country_event = {
+	#The Bill Moves to the Senate
+	id = USA_Smoot_Hawley.4
+	title = USA_Smoot_Hawley.4.t
+	desc = USA_Smoot_Hawley.4.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.4.A
+		hidden_effect = {
+			country_event = {
+				id = USA_Smoot_Hawley.5
+				days = 1
+				random = 24
+			}
+		}
+	}
+}
+country_event = {
+	#The Bill has Passed!
+	id = USA_Smoot_Hawley.5
+	title = USA_Smoot_Hawley.5.t
+	desc = USA_Smoot_Hawley.5.d
+	picture = GFX_report_USA_Revisit_Smoot_Hawley
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.5.A
+		add_ideas = USA_Protectionist_Tariffs
+		hidden_effect = {
+			CAN = {
+				country_event = {
+					id = USA_Smoot_Hawley.6
+					days = 1
+					random = 24
+				}
+			}
+			ENG = {
+				country_event = {
+					id = USA_Smoot_Hawley.6
+					days = 1
+					random = 24
+				}
+			}
+			FRA = {
+				country_event = {
+					id = USA_Smoot_Hawley.6
+					days = 1
+					random = 24
+				}
+			}
+			AUS = {
+				country_event = {
+					id = USA_Smoot_Hawley.6
+					days = 1
+					random = 24
+				}
+			}
+		}
+	}
+}
+country_event = {
+	#The United States has Imposed Tariffs on Us!
+	id = USA_Smoot_Hawley.6
+	title = USA_Smoot_Hawley.6.t
+	desc = USA_Smoot_Hawley.6.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.6.A
+		add_political_power = -50
+		add_stability = -0.01
+		add_opinion_modifier = {
+			target = USA
+			modifier = USA_Trade_Imposed_Tariffs_Low
+		}
+	}
+	option = {
+		name = USA_Smoot_Hawley.6.B
+		add_political_power = 25
+		add_opinion_modifier = {
+			target = USA
+			modifier = USA_Trade_Imposed_Tariffs_High
+		}
+		USA = {
+			country_event = {
+				id = USA_Smoot_Hawley.7
+				days = 1
+				random = 24
+			}
+		}
+	}
+}
+country_event = {
+	#(Country Name) Retaliates!
+	id = USA_Smoot_Hawley.7
+	title = USA_Smoot_Hawley.7.t
+	desc = USA_Smoot_Hawley.7.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Smoot_Hawley.7.A
+		set_temp_variable = { unemployment_value = 0.01 }
+		add_unemployment_effect = yes
+		add_political_power = -25
+		add_stability = -0.01
+	}
+}
+#########################################################################
+#  Party in Miami
+#########################################################################
+country_event = {
+	id = USA_FDR_Assassination.1
+	title = USA_FDR_Assassination.1.t
+	desc = USA_FDR_Assassination.1.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		has_start_date < 1933.2.14
+		date > 1933.2.14
+	}
+	option = {
+		name = USA_FDR_Assassination.1.A
+		news_event = { id = USA_FDR_Assassination.2 } # Assassin Fires 5 Shots at Roosevelt
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = USA_FDR_Assassination.1.B
+		ai_chance = {
+			base = 0
+		}
+		set_country_flag = USA_FDR_Killed
+		custom_effect_tooltip = USA_FDR_Assassination.1.B_tooltip
+		news_event = { id = USA_FDR_Assassination.3 } # President-elect Roosevelt Assassinated
+	}
+}
+#########################################################################
+#  Assassin Fires 5 Shots at Roosevelt
+#########################################################################
+news_event = {
+	id = USA_FDR_Assassination.2
+	title = USA_FDR_Assassination.2.t
+	desc = USA_FDR_Assassination.2.d
+	picture = GFX_news_USA_Assassination_Attempt_FDR
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_Assassination.2.A
+		add_stability = -0.01
+		add_political_power = 10
+	}
+}
+#########################################################################
+#  President-elect Roosevelt Assassinated
+#########################################################################
+news_event = {
+	id = USA_FDR_Assassination.3
+	title = USA_FDR_Assassination.3.t
+	desc = USA_FDR_Assassination.3.d
+	picture = GFX_news_USA_Assassination_Attempt_FDR
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_Assassination.3.A
+		add_stability = -0.05
+		add_political_power = -75
+	}
+}
+#########################################################################
+#  Banks of Entire Nation Are Closed For Brief Holiday
+#########################################################################
+news_event = {
+	id = USA_FDR_New_Deal.1
+	title = USA_FDR_New_Deal.1.t
+	desc = USA_FDR_New_Deal.1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.1.A
+		add_stability = -0.01
+		add_political_power = -25
+	}
+}
+#########################################################################
+#  The Roosevelt Administration
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.2
+	title = USA_FDR_New_Deal.2.t
+	desc = USA_FDR_New_Deal.2.d
+	picture = GFX_news_USA_FDR_Cabinet
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.2.A
+		add_political_power = 150
+		add_ideas = USA_New_Deal_1
+	}
+}
+#########################################################################
+#  The Emergency Banking Act
+#########################################################################
+news_event = {
+	id = USA_FDR_New_Deal.3
+	title = USA_FDR_New_Deal.3.t
+	desc = USA_FDR_New_Deal.3.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.3.A
+		add_timed_idea = {
+			idea = USA_Shore_up_the_Banks
+			days = 50
+		}
+	}
+}
+#########################################################################
+#  The United States Abandons the Gold Standard
+#########################################################################
+news_event = {
+	id = USA_FDR_New_Deal.4
+	title = USA_FDR_New_Deal.4.t
+	desc = USA_FDR_New_Deal.4.d
+	picture = GFX_news_USA_FDR_Gold_Act
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = USA_FDR_New_Deal.4.A
+	}
+}
+#########################################################################
+#  Conservative Businessmen Outraged!
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.5
+	title = USA_FDR_New_Deal.5.t
+	desc = USA_FDR_New_Deal.5.d
+	picture = GFX_report_USA_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.5.A
+		add_political_power = -50
+		add_stability = -0.02
+		set_temp_variable = { unemployment_value = -0.01 }
+		add_unemployment_effect = yes
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = -0.05 }
+		change_party_support = yes
+	}
+}
+#########################################################################
+#  Puerto Rican Relief
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.6
+	title = USA_FDR_New_Deal.6.t
+	desc = USA_FDR_New_Deal.6.d
+	picture = GFX_report_USA_Puerto_Rico_Relief
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.6.A
+		686 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+}
+#########################################################################
+#  Veterans calmed by payments !
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.7
+	title = USA_FDR_New_Deal.7.t
+	desc = USA_FDR_New_Deal.7.d
+	picture = GFX_report_USA_Bonus_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.7.A
+		add_stability = 0.05
+	}
+}
+#########################################################################
+#  the Good Neighbor
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.8
+	title = USA_FDR_New_Deal.8.t
+	desc = USA_FDR_New_Deal.8.d
+	picture = GFX_report_USA_Capitol
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.8.A
+		add_opinion_modifier = {
+			target = USA
+			modifier = USA_the_good_neighbor
+		}
+	}
+}
+#########################################################################
+#  the Good Neighbor - The Montevideo Convention
+#########################################################################
+news_event = {
+	id = USA_FDR_New_Deal.9
+	title = USA_FDR_New_Deal.9.t
+	desc = USA_FDR_New_Deal.9.d
+	picture = GFX_news_USA_Montevideo_Convention
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.9.A
+	}
+}
+#########################################################################
+#  The good Neighbor Policy
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.10
+	title = USA_FDR_New_Deal.10.t
+	desc = USA_FDR_New_Deal.10.d
+	picture = GFX_report_USA_Capitol
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.10.A
+		unlock_decision_category_tooltip = USA_the_Good_Neighbour_Category
+		set_country_flag = USA_the_Good_Neighbour_Category_Unlock
+	}
+}
+#########################################################################
+#  We Have Abandoned the Gold Standard
+#########################################################################
+country_event = {
+	id = USA_FDR_New_Deal.11
+	title = USA_FDR_New_Deal.11.t
+	desc = USA_FDR_New_Deal.11.d
+	picture = GFX_report_USA_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_New_Deal.11.A
+		add_stability = -0.025
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+	}
+}
+#########################################################################
+# The Second Social Security Act
+#########################################################################
+news_event = {
+	id = USA_FDR_1936.1
+	title = USA_FDR_1936.1.t
+	desc = USA_FDR_1936.1.d
+	picture = GFX_news_FDR_Social_Security_Act
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_1936.1.A
+		add_stability = 0.10
+		set_temp_variable = { unemployment_value = -0.025 }
+		add_unemployment_effect = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = 0.05 }
+		change_party_support = yes
+	}
+}
+#########################################################################
+# Cash and Carry Provisions
+#########################################################################
+country_event = {
+	id = USA_FDR_1936.2
+	title = USA_FDR_1936.2.t
+	desc = USA_FDR_1936.2.d
+	picture = GFX_report_USA_Cash_and_Carry
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_1936.2.A
+		unlock_decision_category_tooltip = USA_Cash_and_Carry_Category
+		set_country_flag = USA_Cash_and_Carry
+	}
+}
+#########################################################################
+# New Labor Standards
+#########################################################################
+news_event = {
+	id = USA_FDR_1936.3
+	title = USA_FDR_1936.3.t
+	desc = USA_FDR_1936.3.d
+	picture = GFX_news_USA_New_Labor_Standards
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_1936.3.A
+		add_stability = 0.03
+		add_political_power = 50
+		set_temp_variable = { unemployment_value = -0.065 }
+		add_unemployment_effect = yes
+	}
+}
+#########################################################################
+# Outcome of Private Sector Loans
+#########################################################################
+country_event = {
+	id = USA_FDR_1936.4
+	title = USA_FDR_1936.4.t
+	desc = USA_FDR_1936.4.d
+	picture = GFX_report_USA_Capitol
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_1936.4.A
+		set_temp_variable = { unemployment_value = -0.02 }
+		add_unemployment_effect = yes
+	}
+}
+#########################################################################
+# The Return of Cash and Carry
+#########################################################################
+country_event = {
+	id = USA_FDR_1936.5
+	title = USA_FDR_1936.5.t
+	desc = USA_FDR_1936.5.d
+	picture = GFX_report_USA_Cash_and_Carry
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_1936.5.A
+		unlock_decision_category_tooltip = USA_Cash_and_Carry_Category
+		set_country_flag = USA_Cash_and_Carry
+	}
+}
+#########################################################################
+# The New Food Stamps
+#########################################################################
+news_event = {
+	id = USA_FDR_1936.6
+	title = USA_FDR_1936.6.t
+	desc = USA_FDR_1936.6.d
+	picture = GFX_news_USA_Food_Stamps
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_FDR_1936.6.A
+		set_temp_variable = { unemployment_value = -0.02 }
+		add_unemployment_effect = yes
+	}
+}
+#########################################################################
+# Cash and Carry Provisions Expire
+#########################################################################
+country_event = {
+	id = USA_FDR_1936.7
+	title = USA_FDR_1936.7.t
+	desc = USA_FDR_1936.7.d
+	picture = GFX_report_USA_Cash_and_Carry
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	trigger = {
+		has_country_flag = USA_Cash_and_Carry
+		date > 1939.5.1
+	}
+	option = {
+		name = USA_FDR_1936.7.A
+		clr_country_flag = USA_Cash_and_Carry
+	}
+}
+#########################################################################
+# Packing the Courts
+#########################################################################
+country_event = { # The Judicial Procedures Reform Bill
+	id = USA_Packing_the_Courts.1
+	title = USA_Packing_the_Courts.1.t
+	desc = USA_Packing_the_Courts.1.d
+	picture = GFX_report_USA_Surpeme_Court_Justices
+	fire_only_once = yes
+	trigger= {
+		original_tag = USA
+		focus_progress = {
+			focus = USA_Packing_the_Court
+			progress > 0.0
+		}
+		NOT = { has_completed_focus = USA_Packing_the_Court }
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts.2 days = 20 }
+		}
+	}
+	option = { # Let's Hope This Works
+		name = USA_Packing_the_Courts.1.A
+	}
+}
+country_event = { # The Public's Opinion Isn't Good
+	id = USA_Packing_the_Courts.2
+	title = USA_Packing_the_Courts.2.t
+	desc = USA_Packing_the_Courts.2.d
+	picture = GFX_report_USA_Public
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Packing_the_Courts.3 days = 20 }
+		}
+	}
+	option = { # The President Shall Bring His Argument Directly To the People
+		name = USA_Packing_the_Courts.2.A
+	}
+}
+news_event = { # Another Fireside Chat
+	id = USA_Packing_the_Courts.3
+	title = USA_Packing_the_Courts.3.t
+	desc = USA_Packing_the_Courts.3.d
+	picture = GFX_news_USA_FDR_Fireside_Chat_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = USA_Packing_the_Courts.4 days = 30 } # Public Opinion Remains Negative
+				}
+				50 = {
+					country_event = { id = USA_Packing_the_Courts.8 days = 30 } # The President Has Swayed the People!
+				}
+			}
+		}
+	}
+	option = { # Bruh
+		name = USA_Packing_the_Courts.3.A
+	}
+}
+country_event = { # Public Opinion Remains Negative
+	id = USA_Packing_the_Courts.4
+	title = USA_Packing_the_Courts.4.t
+	desc = USA_Packing_the_Courts.4.d
+	picture = GFX_report_USA_Public_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts.5 days = 30 } # Committee Chair Ashurst Is Holding Up the Bill!
+		}
+	}
+	option = { # An Unfortunate Outcome
+		name = USA_Packing_the_Courts.4.A
+	}
+}
+country_event = { # Committee Chair Ashurst Is Holding Up the Bill!
+	id = USA_Packing_the_Courts.5
+	title = USA_Packing_the_Courts.5.t
+	desc = USA_Packing_the_Courts.5.d
+	picture = GFX_report_USA_Ashurst
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = {
+					country_event = { id = USA_Packing_the_Courts.6 days = 15 } # Ashurst Cracks Under the Pressure!
+				}
+				40 = {
+					country_event = { id = USA_Packing_the_Courts.7 days = 15 } # Ashurst Remains Firm!
+				}
+			}
+		}
+	}
+	option = { # We Must Put Him Under Pressure
+		name = USA_Packing_the_Courts.5.A
+	}
+}
+country_event = { # Ashurst Cracks Under the Pressure!
+	id = USA_Packing_the_Courts.6
+	title = USA_Packing_the_Courts.6.t
+	desc = USA_Packing_the_Courts.6.d
+	picture = GFX_report_USA_Ashurst_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = {
+					country_event = { id = USA_Packing_the_Courts.10 days = 25 } # Senate Majority Leader Robinson Has Died!
+				}
+				40 = {
+					country_event = { id = USA_Packing_the_Courts.11 days = 25 } # Senate Majority Leader Robinson Has Suffered a Health Scare!
+				}
+			}
+		}
+	}
+	option = { # Great!
+		name = USA_Packing_the_Courts.6.A
+		set_country_flag = USA_Support_Court_Packing
+	}
+}
+country_event = { # Ashurst Remains Firm!
+	id = USA_Packing_the_Courts.7
+	title = USA_Packing_the_Courts.7.t
+	desc = USA_Packing_the_Courts.7.d
+	picture = GFX_report_USA_Ashurst_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = {
+					country_event = { id = USA_Packing_the_Courts.10 days = 25 } # Senate Majority Leader Robinson Has Died!
+				}
+				40 = {
+					country_event = { id = USA_Packing_the_Courts.11 days = 25 } # Senate Majority Leader Robinson Has Suffered a Health Scare!
+				}
+			}
+		}
+	}
+	option = { # Damn!
+		name = USA_Packing_the_Courts.7.A
+	}
+}
+country_event = { # The President Has Swayed the People!
+	id = USA_Packing_the_Courts.8
+	title = USA_Packing_the_Courts.8.t
+	desc = USA_Packing_the_Courts.8.d
+	picture = GFX_report_USA_Public_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = USA_Support_Court_Packing
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts.9 days = 30 }
+		}
+	}
+	option = { # Excellent!
+		name = USA_Packing_the_Courts.8.A
+	}
+}
+country_event = { # The Bill Is Moving Again!
+	id = USA_Packing_the_Courts.9
+	title = USA_Packing_the_Courts.9.t
+	desc = USA_Packing_the_Courts.9.d
+	picture = GFX_report_USA_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = {
+					country_event = { id = USA_Packing_the_Courts.10 days = 40 } # Senate Majority Leader Robinson Has Died!
+				}
+				40 = {
+					country_event = { id = USA_Packing_the_Courts.11 days = 40 } # Senate Majority Leader Robinson Has Suffered a Health Scare!
+				}
+			}
+		}
+	}
+	option = { # We Are Now One Step Closer!
+		name = USA_Packing_the_Courts.9.A
+	}
+}
+country_event = { # Senate Majority Leader Robinson Has Died!
+	id = USA_Packing_the_Courts.10
+	title = USA_Packing_the_Courts.10.t
+	desc = USA_Packing_the_Courts.10.d
+	picture = GFX_report_USA_Joe_T_Robinson
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Packing_the_Courts.13 days = 10 } # The Judicial Procedures Reform Bill Has Failed!
+		}
+		clr_country_flag = USA_Support_Court_Packing
+	}
+	option = { # One of Our Biggest Supporters Is Gone, He Shall Be Missed
+		name = USA_Packing_the_Courts.10.A
+	}
+}
+country_event = { # Senate Majority Leader Robinson Has Suffered a Health Scare!
+	id = USA_Packing_the_Courts.11
+	title = USA_Packing_the_Courts.11.t
+	desc = USA_Packing_the_Courts.11.d
+	picture = GFX_report_USA_Joe_T_Robinson
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Packing_the_Courts.12 days = 10 } # The Judicial Procedures Reform Bill Has Passed!
+			news_event = { id = USA_Packing_the_Courts.13 days = 10 } # The Judicial Procedures Reform Bill Has Failed!
+		}
+	}
+	option = { # Thank God!
+		name = USA_Packing_the_Courts.11.A
+	}
+}
+news_event = { # The Judicial Procedures Reform Bill Has Passed!
+	id = USA_Packing_the_Courts.12
+	title = USA_Packing_the_Courts.12.t
+	desc = USA_Packing_the_Courts.12.d
+	picture = GFX_news_USA_Capitol_Hill
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		has_country_flag = USA_Support_Court_Packing
+	}
+	immediate = {
+		clr_country_flag = USA_Support_Court_Packing
+		set_country_flag = USA_Court_Packing_Pass
+	}
+	option = { # Yeet
+		name = USA_Packing_the_Courts.12.A
+	}
+}
+news_event = { # The Judicial Procedures Reform Bill Has Failed!
+	id = USA_Packing_the_Courts.13
+	title = USA_Packing_the_Courts.13.t
+	desc = USA_Packing_the_Courts.13.d
+	picture = GFX_news_USA_Capitol_Hill
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_country_flag = USA_Support_Court_Packing }
+	}
+	immediate = {
+		set_country_flag = USA_Court_Packing_Failed
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts_Aftermath.1 days = 30 } # The Motives of the Vice President
+		}
+	}
+	option = { # Fuck
+		name = USA_Packing_the_Courts.13.A
+	}
+}
+#########################################################################
+# The Motives of the Vice President
+#########################################################################
+country_event = { # The Motives of the Vice President
+	id = USA_Packing_the_Courts_Aftermath.1
+	title = USA_Packing_the_Courts_Aftermath.1.t
+	desc = USA_Packing_the_Courts_Aftermath.1.d
+	picture = GFX_report_USA_Garner_and_Roosevelt
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Demand his resignation!
+		name = USA_Packing_the_Courts_Aftermath.1.A
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts_Aftermath.2 days = 7 }
+		}
+		set_temp_variable = { party_id = 6 } # Democrats
+		set_temp_variable = { support_to_add = -0.1 }
+		change_party_support = yes
+	}
+	option = { # He won't be on the 1940 ticket anyway...
+		name = USA_Packing_the_Courts_Aftermath.1.B
+		set_temp_variable = { party_id = 6 } # Democrats
+		set_temp_variable = { support_to_add = -0.05 }
+		change_party_support = yes
+	}
+}
+news_event = { # Vice President John Nance Garner Resigns!
+	id = USA_Packing_the_Courts_Aftermath.2
+	title = USA_Packing_the_Courts_Aftermath.2.t
+	desc = USA_Packing_the_Courts_Aftermath.2.d
+	picture = GFX_news_USA_Garner
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Good...
+		name = USA_Packing_the_Courts_Aftermath.2.A
+		deactivate_advisor = USA_John_Nance_Garner_HoG
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts_Aftermath.3 days = 10 }
+		}
+	}
+}
+country_event = { # Cactus Jack's Successor
+	id = USA_Packing_the_Courts_Aftermath.3
+	title = USA_Packing_the_Courts_Aftermath.3.t
+	desc = USA_Packing_the_Courts_Aftermath.3.d
+	picture = GFX_report_USA_Hull_and_Wallace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Cordell Hull
+		name = USA_Packing_the_Courts_Aftermath.3.A
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts_Aftermath.4 days = 15 }
+		}
+	}
+	option = { # Henry A. Wallace
+		name = USA_Packing_the_Courts_Aftermath.3.B
+		hidden_effect = {
+			country_event = { id = USA_Packing_the_Courts_Aftermath.5 days = 15 }
+		}
+	}
+}
+news_event = { # The Appointment of Cordell Hull
+	id = USA_Packing_the_Courts_Aftermath.4
+	title = USA_Packing_the_Courts_Aftermath.4.t
+	desc = USA_Packing_the_Courts_Aftermath.4.d
+	picture = GFX_news_USA_Roosevelt_and_Hull # photo of Cordell Hull
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Hello, Hull!
+		name = USA_Packing_the_Courts_Aftermath.4.A
+		activate_advisor = USA_Cordell_Hull_HoG
+		set_temp_variable = { party_id = 6 } # Democrats
+		set_temp_variable = { support_to_add = -0.15 }
+		change_party_support = yes
+		add_stability = -0.015
+		add_political_power = -100
+	}
+}
+news_event = { # The Appointment of Henry A. Wallace
+	id = USA_Packing_the_Courts_Aftermath.5
+	title = USA_Packing_the_Courts_Aftermath.5.t
+	desc = USA_Packing_the_Courts_Aftermath.5.d
+	picture = GFX_news_USA_Roosevelt_and_Wallace # photo of Wallace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Hello, Wallace!
+		name = USA_Packing_the_Courts_Aftermath.5.A
+		activate_advisor = USA_Henry_A_Wallace_HoG
+		set_temp_variable = { party_id = 6 } # Democrats
+		set_temp_variable = { support_to_add = -0.15 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 7 } # Progressive
+		set_temp_variable = { support_to_add = 0.3 }
+		change_party_support = yes
+		add_stability = -0.03
+		add_political_power = -100
+	}
+}
+#########################################################################
+# 1932 Term
+#########################################################################
+news_event = { # Roosevelt Inaugurated President
+	id = USA_Elections_1932.1
+	title = USA_Elections_1932.1.t
+	desc = USA_Elections_1932.1.d
+	picture = GFX_news_USA_Inauguration_FDR_1933
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_start_date < 1933.2.1
+		date > 1933.3.4
+	}
+	immediate = { # October 1, 1934
+		hidden_effect = {
+			country_event = { id = USA_Elections_1932.6 days = 303 } # Secretary of the Treasury William H. Woodin Has Resigned
+			country_event = { id = USA_Elections_1932.2 days = 576 } # The 1934 Midterm Election
+		}
+	}
+	option = {
+		name = USA_Elections_1932.1.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Franklin D. Roosevelt"
+			desc = USA_Franklin_Roosevelt_desc
+			picture = GFX_P_D_Franklin_Roosevelt_1933
+			ideology = social_liberalism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Liberalism }
+		}
+		remove_ideas = {
+			USA_Charles_Curtis_HoG
+			USA_Henry_L_Stimson_FM
+			USA_Ray_Lymon_Wilbur_MoS
+			USA_Ogden_L_Mills_AM
+			USA_William_Mitchell_M
+			USA_Arthur_Hyde_M
+		}
+		add_ideas = {
+			USA_John_Nance_Garner_HoG
+			USA_Cordell_Hull_FM
+			USA_William_H_Woodin_AM
+			USA_Harold_Ickes_MoS
+			USA_William_F_Friedman_HoI
+			USA_Homer_S_Cummings_M
+			USA_James_Farley_M
+		}
+		set_party_name = { 
+			ideology = democratic 
+			long_name = USA_democratic_party_DP_long 
+			name = USA_democratic_party_DP 
+		}
+		# calculate seats
+		initiate_parliament_party_relative_party_popularities = yes
+		set_temp_variable = { party_id = 4 }
+		set_temp_variable = { support_to_add = 0.15 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 }
+		set_temp_variable = { support_to_add = 0.55 }
+		change_party_support = yes
+		set_parliament_ruling_party = yes
+		set_temp_variable = { party_id = 8 }
+		set_temp_variable = { support_to_add = 0.15 }
+		change_party_support = yes
+		#set_parliament_parties_influence = yes
+		set_variable = { party_influence_4 = 0.3 }	# Republicans
+		set_variable = { party_influence_6 = 0.7 }	# Democrats
+		set_variable = { party_influence_8 = 0.00 }	# Socialists
+		calculate_total_parliament_support = yes
+		update_parliament_piechart = yes
+		activate_mission = USA_the_First_100_Days
+		set_country_flag = USA_100_Days_Mission
+		custom_effect_tooltip = USA_Elections_1932.1.A_tt
+	}
+}
+## 1934 Midterms
+country_event = { # The Wisconsin Progressive Party
+	id = USA_Elections_1932.2
+	title = USA_Elections_1932.2.t
+	desc = USA_Elections_1932.2.d
+	picture = GFX_report_USA_Wisconsin_Progressive_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_start_date < 1934.10.1
+	}
+	immediate = { # November 6, 1934
+		hidden_effect = {
+			random_list = {
+				60 = {
+					country_event = { id = USA_Elections_1932.3 days = 36 } # The 1934 Midterm Elections (Democrats Gain)
+				}
+				30 = {
+					country_event = { id = USA_Elections_1932.4 days = 36 } # The 1934 Midterm Elections (No Change)
+				}
+				10 = {
+					country_event = { id = USA_Elections_1932.5 days = 36 } # The 1934 Midterm Elections (Republicans Gain)
+				}
+			}
+		}
+	}
+	option = {
+		name = USA_Elections_1932.2.A
+		set_temp_variable = { party_id = 7 } # P/FL
+		add_party_to_parliament = yes
+		set_temp_variable = { party_id = 7 } # P/FL
+		set_temp_variable = { popularity_to_add = 0.03 }
+		set_temp_variable = { party_id = 7 } # P/FL
+		set_temp_variable = { support_to_add = 0.1 }
+		change_party_support = yes
+		add_relative_popularity_to_parliament_party = yes
+		calculate_total_parliament_support = yes
+		update_parliament_piechart = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { popularity_to_add = -0.03 }
+		add_relative_popularity_to_parliament_party = yes
+		calculate_total_parliament_support = yes
+		update_parliament_piechart = yes
+	}
+}
+country_event = { # The 1934 Midterm Elections (Democrats Gain)
+	id = USA_Elections_1932.3
+	title = USA_Elections_1932.3.t
+	desc = USA_Elections_1932.3.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = { # June 12, 1936 (Actually 584 but HOI4 doesn't have leap year)
+		hidden_effect = {
+			country_event = { id = USA_Elections_1936.1 days = 583 } # The 1936 Republican National Convention
+		}
+	}
+	option = {
+		name = USA_Elections_1932.3.A
+		set_temp_variable = { party_id = 6 } # Democrats
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+		set_parliament_parties_influence = yes
+	}
+}
+country_event = { # The 1934 Midterm Elections (No Change)
+	id = USA_Elections_1932.4
+	title = USA_Elections_1932.4.t
+	desc = USA_Elections_1932.4.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_start_date < 1934.11.6
+	}
+	immediate = { # June 12, 1936 (Actually 584 but HOI4 doesn't have leap year)
+		hidden_effect = {
+			country_event = { id = USA_Elections_1936.1 days = 583 } # The 1936 Republican National Convention
+		}
+	}
+	option = {
+		name = USA_Elections_1932.4.A
+		set_parliament_parties_influence = yes
+	}
+}
+country_event = { # The 1934 Midterm Elections (Republicans Gain)
+	id = USA_Elections_1932.5
+	title = USA_Elections_1932.5.t
+	desc = USA_Elections_1932.5.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_start_date < 1934.11.5
+		date > 1934.11.5
+	}
+	immediate = { # June 12, 1936 (Actually 584 but HOI4 doesn't have leap year)
+		hidden_effect = {
+			country_event = { id = USA_Elections_1936.1 days = 583 } # The 1936 Republican National Convention
+		}
+	}
+	option = {
+		name = USA_Elections_1932.5.A
+		set_temp_variable = { party_id = 4 } # Republicans
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+		set_parliament_parties_influence = yes
+	}
+}
+country_event = { # Secretary of the Treasury William H. Woodin Has Resigned
+	id = USA_Elections_1932.6
+	title = USA_Elections_1932.6.t
+	desc = USA_Elections_1932.6.d
+	picture = GFX_report_USA_Woodin
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Elections_1932.6.A
+		remove_ideas = USA_William_H_Woodin_AM
+		add_ideas = USA_Henry_Morgenthau_AM
+	}
+}
+#########################################################################
+# 1936 Term
+#########################################################################
+country_event = { # The 1936 Republican National Convention
+	id = USA_Elections_1936.1
+	title = USA_Elections_1936.1.t
+	desc = USA_Elections_1936.1.d
+	picture = GFX_report_USA_1936_RNC
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = { # The 1936 Democratic National Convention
+		hidden_effect = {
+			country_event = { id = USA_Elections_1936.2 days = 15 } # June 27, 1936
+		}
+	}
+	option = { # Experience Beats Everything.
+		ai_chance = {
+			factor = 100
+		}
+		name = USA_Elections_1936.1.A
+		custom_effect_tooltip = USA_Elections_1936.1.A_tooltip
+		set_country_flag = USA_RNC_1936_Hoover
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { popularity_to_add = -0.03 }
+		add_relative_popularity_to_parliament_party = yes
+	}
+	option = { # Alf Landon is our Best Shot.
+		ai_chance = {
+			factor = 0
+		}
+		name = USA_Elections_1936.1.B
+		custom_effect_tooltip = USA_Elections_1936.1.B_tooltip
+		set_country_flag = USA_RNC_1936_Landon
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+	}
+}
+country_event = { # The 1936 Democratic National Convention
+	id = USA_Elections_1936.2
+	title = USA_Elections_1936.2.t
+	desc = USA_Elections_1936.2.d
+	picture = GFX_report_USA_1936_DNC
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+	}
+	immediate = {
+		hidden_effect = { # November 3, 1936
+			country_event = { id = USA_Elections_1936.3 days = 129 } # Hoover
+			country_event = { id = USA_Elections_1936.4 days = 129 } # Landon
+		}
+	}
+	option = { # Four More Years!
+		name = USA_Elections_1936.2.A
+		custom_effect_tooltip = USA_Elections_1936.2.A_tooltip
+		set_country_flag = USA_DNC_1936_FDR
+	}
+}
+country_event = { # Election Night 1936 (RNC Nominates Hoover)
+	id = USA_Elections_1936.3
+	title = USA_Elections_1936.3.t
+	desc = USA_Elections_1936.3.d
+	picture = GFX_report_USA_Election_1936
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_country_flag = USA_RNC_1936_Hoover
+	}
+	immediate = { # January 20, 1937
+		hidden_effect = {
+			news_event = { id = USA_Elections_1936.5 days = 78 } # FDR's Second Inauguration
+		}
+	}
+	option = { # Hoover Never Stood a Chance...
+		name = USA_Elections_1936.3.A
+		clr_country_flag = USA_RNC_1936_Hoover
+	}
+}
+country_event = { # Election Night 1936 (RNC Nominates Hoover)
+	id = USA_Elections_1936.4
+	title = USA_Elections_1936.4.t
+	desc = USA_Elections_1936.4.d
+	picture = GFX_report_USA_Election_1936
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_country_flag = USA_RNC_1936_Landon
+	}
+	immediate = { # January 20, 1937
+		hidden_effect = {
+			news_event = { id = USA_Elections_1936.5 days = 78 } # FDR
+			news_event = { id = USA_Elections_1936.6 days = 78 } # Landon
+		}
+	}
+	option = { # Victory for the New Deal!
+		name = USA_Elections_1936.4.A
+		ai_chance = {
+			factor = 100
+		}
+		clr_country_flag = USA_RNC_1936_Landon
+	}
+	option = { # Landon has Prevailed!
+		name = USA_Elections_1936.4.B
+		ai_chance = {
+			factor = 0
+		}
+		clr_country_flag = USA_DNC_1936_FDR
+	}
+}
+news_event = { # FDR's Second Inauguration
+	id = USA_Elections_1936.5
+	title = USA_Elections_1936.5.t
+	desc = USA_Elections_1936.5.d
+	picture = GFX_news_USA_Roosevelt_Inauguration_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_country_flag = USA_DNC_1936_FDR
+	}
+	option = {
+		name = USA_Elections_1936.5.A
+		clr_country_flag = USA_DNC_1936_FDR
+		set_country_flag = USA_Roosevelt_1936
+		mark_focus_tree_layout_dirty = yes
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Franklin D. Roosevelt"
+				desc = USA_Franklin_Roosevelt_desc
+				picture = GFX_P_D_Franklin_Roosevelt
+				ideology = social_liberalism
+				traits = { POSITION_President SUBIDEOLOGY_Social_Liberalism }
+			}
+		}
+	}
+}
+news_event = { # Inauguration of Alf Landon
+	id = USA_Elections_1936.6
+	title = USA_Elections_1936.6.t
+	desc = USA_Elections_1936.6.d
+	picture = GFX_news_USA_Landon_Inauguration
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_country_flag = USA_RNC_1936_Landon
+	}
+	option = {
+		name = USA_Elections_1936.6.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Alf Landon"
+			desc = "Alf_Landon_desc"
+			picture = GFX_P_D_Alf_Landon
+			ideology = social_conservatism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Conservatism }
+		}
+		remove_ideas = {
+			USA_John_Nance_Garner_HoG
+			USA_Cordell_Hull_FM
+			USA_Henry_Morgenthau_AM
+			USA_Harold_Ickes_MoS
+			USA_William_F_Friedman_HoI
+			USA_Homer_S_Cummings_M
+			USA_James_Farley_M
+		}
+		add_ideas = {
+			USA_Frank_Knox_HoG
+			USA_Charles_McNary_FM
+			USA_Charles_G_Dawes_AM
+			USA_William_Borah_MoS
+			USA_Thomas_E_Dewey_M
+			USA_Wallace_H_White_Jr_M
+		}
+		mark_focus_tree_layout_dirty = yes
+		clr_country_flag = USA_RNC_1936_Landon
+		set_country_flag = USA_Landon_1936
+		set_party_name = { 
+			ideology = democratic 
+			long_name = USA_democratic_party_long 
+			name = USA_democratic_party 
+		}
+	}
+}
+## 1938 Progressive/Farmer-Labor Merger
+country_event = { # The Future of the Wisconsin Progressive Party
+	id = USA_Elections_1936.7
+	title = USA_Elections_1936.7.t
+	desc = USA_Elections_1936.7.d
+	picture = GFX_report_USA_Wisconsin_Progressive_Party
+	fire_only_once = yes
+	is_triggered_only = no
+	mean_time_to_happen = { days = 7 }
+	trigger = {
+		original_tag = USA
+		has_start_date < 1938.2.1
+		date > 1938.2.1
+	}
+	option = { # Expand the Party!
+		name = USA_Elections_1936.7.A
+		custom_effect_tooltip = USA_Elections_1936.7.A_tooltip
+		set_country_flag = USA_SocDem_Progressive
+		unlock_decision_tooltip = USA_Lobby_Progressive
+		hidden_effect = {
+			random_list = {
+				50 = {
+					# Nothing Happen
+				}
+				50 = {
+					country_event = { id = USA_Elections_1936.8 days = 7 } # Wisconsin Republicans and Democrats Unite!
+				}
+			}
+		}
+	}
+	option = { # Merge the Party!
+		name = USA_Elections_1936.7.B
+		custom_effect_tooltip = USA_Elections_1936.7.B_tooltip
+		set_country_flag = USA_SocDem_Progressive
+		unlock_decision_tooltip = USA_Lobby_Progressive
+		country_event = { id = USA_Elections_1936.9 days = 7 } # The Progressive/Farmer-Labor Merger
+	}
+}
+country_event = { # Wisconsin Republicans and Democrats Unite!
+	id = USA_Elections_1936.8
+	title = USA_Elections_1936.8.t
+	desc = USA_Elections_1936.8.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # This doesn't bode well for our Ballot Box...
+		name = USA_Elections_1936.8.A
+		set_temp_variable = { party_id = 7 } # Progressive
+		set_temp_variable = { popularity_to_add = -0.01 }
+		add_relative_popularity_to_parliament_party = yes
+	}
+}
+country_event = { # The Progressive/Farmer-Labor Merger
+	id = USA_Elections_1936.9
+	title = USA_Elections_1936.9.t
+	desc = USA_Elections_1936.9.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		has_start_date < 1938.2.1
+		date > 1938.2.1
+	}
+	option = { # Expand the Party!
+		name = USA_Elections_1936.9.A
+		custom_effect_tooltip = USA_Elections_1936.9.A_tooltip
+		set_country_flag = USA_SocDem_ProgressiveLabour
+		set_temp_variable = { party_id = 7 } # Progressive-Labor Party
+		set_temp_variable = { popularity_to_add = 0.16 }
+		add_relative_popularity_to_parliament_party = yes
+		update_parliament_piechart = yes
+	}
+	option = { # Merge the Party!
+		name = USA_Elections_1936.9.B
+		custom_effect_tooltip = USA_Elections_1936.9.B_tooltip
+		set_country_flag = USA_SocDem_BullMoose
+		set_temp_variable = { party_id = 7 } # Bull Moose Party
+		set_temp_variable = { popularity_to_add = 0.14 }
+		add_relative_popularity_to_parliament_party = yes
+		update_parliament_piechart = yes
+	}
+}
+## USA Election 1940 Historical
+country_event = { # United States presidential election, 1940 Republican Convention
+	id = USA_Elections_1940.1
+	title = USA_Elections_1940.1.t
+	desc = USA_Elections_1940.1.d
+	picture = GFX_report_USA_1940_RNC_Wilkie
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1940.5.16
+		NOT = {has_country_flag = USA_RNC_1936_Landon }
+	}
+	# The Dark Horse Wilkie is our choice!
+	option = {
+		name = USA_Elections_1940.1.A
+		set_temp_variable = { party_id = 4 } # Republican Party
+		set_temp_variable = { popularity_to_add = 0.06 }
+		add_relative_popularity_to_parliament_party = yes
+	}
+}
+country_event = { # United States presidential election, 1940 Democratic Convention
+	id = USA_Elections_1940.2
+	title = USA_Elections_1940.2.t
+	desc = USA_Elections_1940.2.d
+	picture = GFX_report_USA_1940_DNC_Roosevelt
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1940.7.17
+		NOT = {has_country_flag = USA_RNC_1936_Landon }
+	}
+	# FDR is Indispensable.
+	option = {
+		name = USA_Elections_1940.2.A
+	}
+}
+country_event = { # Election Night 1940
+	id = USA_Elections_1940.3
+	title = USA_Elections_1940.3.t
+	desc = USA_Elections_1940.3.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1940.11.4
+		NOT = {has_country_flag = USA_RNC_1936_Landon }
+	}
+	# Let's all drink to Wilkie!
+	option = {
+		name = USA_Elections_1940.3.A
+		ai_chance = {
+			factor = 0
+		}
+		set_country_flag = USA_Wilkie_Wins_1940_Election_T
+	}
+	# The Country still needs FDR!
+	option = {
+		name = USA_Elections_1940.3.B
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = USA_FDR_Wins_1940_Election_T
+	}
+}
+news_event = { # Inauguration of Wendell Wilkie
+	id = USA_Elections_1940.4
+	title = USA_Elections_1940.4.t
+	desc = USA_Elections_1940.4.d
+	picture = GFX_news_USA_Wilkie_Inauguration
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		has_country_flag = USA_Wilkie_Wins_1940_Election_T
+		date > 1941.1.19
+	}
+	option = {
+		name = USA_Elections_1940.4.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Wendell Wilkie"
+			desc = "Wendell_Wilkie_desc"
+			picture = GFX_P_D_Wendell_Wilkie
+			ideology = social_conservatism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Conservatism }
+		}
+		remove_ideas = USA_Charles_Curtis_HoG
+		add_ideas = USA_Charles_McNary_HoG
+		set_country_flag = USA_Wilkie_Wins_1940_Election
+		mark_focus_tree_layout_dirty = yes
+		set_party_name = { 
+			ideology = democratic 
+			long_name = USA_democratic_party_long 
+			name = USA_democratic_party
+		}
+	}
+}
+news_event = { # FDR's Third Inauguration
+	id = USA_Elections_1940.5
+	title = USA_Elections_1940.5.t
+	desc = USA_Elections_1940.5.d
+	picture = GFX_news_USA_FDR_Third_Inauguration
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		has_country_flag = USA_FDR_Wins_1940_Election_T
+		date > 1941.1.19
+	}
+	option = {
+		name = USA_Elections_1940.5.A
+		set_country_flag = USA_FDR_Wins_1940_Election
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+## USA Election 1940 Unhistorical
+country_event = { # Republican Convention
+	id = USA_Elections_1940.6
+	title = USA_Elections_1940.6.t
+	desc = USA_Elections_1940.6.d
+	picture = GFX_report_USA_1936_RNC
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1940.5.16
+		has_country_flag = USA_RNC_1936_Landon
+	}
+	# Landon will prevail again!
+	option = {
+		name = USA_Elections_1940.6.A
+	}
+}
+country_event = { # Democratic Convention
+	id = USA_Elections_1940.7
+	title = USA_Elections_1940.7.t
+	desc = USA_Elections_1940.7.d
+	picture = GFX_report_USA_1940_DNC_Garner
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1940.7.17
+		has_country_flag = USA_RNC_1936_Landon
+	}
+	# We'll need our Texan Superstar!
+	option = {
+		name = USA_Elections_1940.7.A
+		set_temp_variable = { party_id = 6 } ## Democrats
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+		update_parliament_piechart = yes
+	}
+}
+country_event = { # Election Night 1940
+	id = USA_Elections_1940.8
+	title = USA_Elections_1940.8.t
+	desc = USA_Elections_1940.8.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1940.11.4
+		has_country_flag = USA_RNC_1936_Landon
+	}
+	# Here's to Four More years of Compromise!
+	option = {
+		name = USA_Elections_1940.8.A
+		set_country_flag = USA_Landon_Wins_1940_Election_T
+	}
+	# You just can't beat Cactus Jack
+	option = {
+		name = USA_Elections_1940.8.B
+		set_country_flag = USA_John_Nance_Garner_Wins_1940_Election_T
+	}
+}
+news_event = { # Alf Landon's Second Inauguration
+	id = USA_Elections_1940.9
+	title = USA_Elections_1940.9.t
+	desc = USA_Elections_1940.9.d
+	picture = GFX_news_USA_Landon_Inauguration
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1941.1.19
+		has_country_flag = USA_Landon_Wins_1940_Election_T
+	}
+	option = {
+		name = USA_Elections_1940.9.A
+		set_country_flag = USA_Landon_Wins_1940_Election
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+news_event = { # Inauguration of John Nance Garner
+	id = USA_Elections_1940.10
+	title = USA_Elections_1940.10.t
+	desc = USA_Elections_1940.10.d
+	picture = GFX_news_USA_Garner_Inauguration
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1941.1.19
+		has_country_flag = USA_John_Nance_Garner_Wins_1940_Election_T
+	}
+	option = {
+		name = USA_Elections_1940.10.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "John Nance Garner"
+			desc = "John_Nance_Garner_desc"
+			picture = GFX_P_D_John_Nance_Garner
+			ideology = social_conservatism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Conservatism }
+		}
+		remove_ideas = USA_Frank_Knox_HoG
+		add_ideas = USA_Henry_Wallace_HoG
+		set_country_flag = USA_John_Nance_Garner_Wins_1940_Election
+		mark_focus_tree_layout_dirty = yes
+		set_party_name = { 
+			ideology = democratic 
+			long_name = USA_democratic_party_DP_long 
+			name = USA_democratic_party_DP 
+		}
+	}
+}
+country_event = { # The 1944 Republican National Convention
+	id = USA_Elections_1944.1
+	title = USA_Elections_1944.1.t
+	desc = USA_Elections_1944.1.d
+	picture = GFX_report_USA_1944_RNC_Dewey
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1944.6.23
+		has_country_flag = USA_FDR_Wins_1940_Election
+	}
+	option = {
+		name = USA_Elections_1944.1.A
+		set_temp_variable = { party_id = 4 } # Republican Party
+		set_temp_variable = { popularity_to_add = 0.09 }
+		add_relative_popularity_to_parliament_party = yes
+	}
+}
+country_event = { # The 1944 Democratic Convention
+	id = USA_Elections_1944.2
+	title = USA_Elections_1944.2.t
+	desc = USA_Elections_1944.2.d
+	picture = GFX_report_USA_1944_DNC_Roosevelt
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1944.7.20
+		has_country_flag = USA_FDR_Wins_1940_Election
+	}
+	option = {
+		name = USA_Elections_1944.2.A
+	}
+}
+country_event = { # Election Night 1944
+	id = USA_Elections_1944.3
+	title = USA_Elections_1944.3.t
+	desc = USA_Elections_1944.3.d
+	picture = GFX_report_USA_Election_1944
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1944.11.7
+		has_country_flag = USA_FDR_Wins_1940_Election
+	}
+	option = {
+		name = USA_Elections_1944.3.A
+		ai_chance = {
+			factor = 0
+		}
+		set_country_flag = USA_Tomas_E_Dewey_Wins_1944_Election
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = {
+		name = USA_Elections_1944.3.B
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = USA_FDR_Wins_1944_Election
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+news_event = { # Inauguration of Tomas E. Dewey
+	id = USA_Elections_1944.4
+	title = USA_Elections_1944.4.t
+	desc = USA_Elections_1944.4.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1945.1.20
+		has_country_flag = USA_Tomas_E_Dewey_Wins_1944_Election
+	}
+	option = {
+		name = USA_Elections_1944.4.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Thomas E. Dewey"
+			desc = "Thomas_E_Dewey_desc"
+			picture = GFX_P_D_Thomas_E_Dewey
+			ideology = social_conservatism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Conservatism }
+		}
+		add_ideas = USA_John_Bricker_HoG
+		mark_focus_tree_layout_dirty = yes
+		set_party_name = { 
+			ideology = democratic 
+			long_name = USA_democratic_party_long 
+			name = USA_democratic_party 
+		}
+	}
+}
+news_event = { # FDR's Fourth Inauguration
+	id = USA_Elections_1944.5
+	title = USA_Elections_1944.5.t
+	desc = USA_Elections_1944.5.d
+	picture = GFX_news_USA_Roosevelt_Fourth_Inauguration
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1945.1.20
+		has_country_flag = USA_FDR_Wins_1944_Election
+	}
+	option = {
+		name = USA_Elections_1944.5.A
+		set_country_flag = USA_FDR_Wins_1944_Election_focus
+		remove_ideas = USA_Charles_Curtis_HoG
+		add_ideas = USA_Harry_S_Truman_HoG
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+#########################################################################
+#  Fireside chat Events
+#########################################################################
+country_event = { # The Arsenal of Democracy
+	id = USA_Fireside.1
+	title = USA_Fireside.1.t
+	desc = USA_Fireside.1.d
+	picture = GFX_report_USA_FDR_Fireside_Chat
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Fireside.1.A
+		random_controlled_state = {
+			limit = {
+				is_core_of = USA
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction  = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_controlled_state = {
+			limit = {
+				is_core_of = USA
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction  = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+###############################################################
+# FDR Event 1940-1944
+###############################################################
+country_event = { # The Lend-Lease Act
+	id = USA_1940_1944_FDR.1
+	title = USA_1940_1944_FDR.1.t
+	desc = USA_1940_1944_FDR.1.d
+	picture = GFX_report_USA_Lend_Lease
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1940_1944_FDR.1.A
+		if = {
+			limit = {
+				has_country_flag = USA_Selected_Neutrality_Act_2
+			}
+			swap_ideas = {
+				remove_idea = USA_Neutrality_Act_2
+				add_idea = USA_Lend_Lease
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = USA_Selected_Neutrality_Act_3
+			}
+			swap_ideas = {
+				remove_idea = USA_Neutrality_Act_3
+				add_idea = USA_Lend_Lease_2
+			}
+		}
+	}
+}
+country_event = { # Series E War Bonds
+	id = USA_1940_1944_FDR.2
+	title = USA_1940_1944_FDR.2.t
+	desc = USA_1940_1944_FDR.2.d
+	picture = GFX_report_USA_Series_E_War_Bond
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1940_1944_FDR.2.A
+		add_ideas = USA_Series_E_Bonds
+		set_temp_variable = { inflation_to_gain = -0.05 }
+		add_inflation_with_tooltip_effect = yes
+	}
+}
+country_event = { # The Atlantic Charter
+	id = USA_1940_1944_FDR.3
+	title = USA_1940_1944_FDR.3.t
+	desc = USA_1940_1944_FDR.3.d
+	picture = GFX_report_USA_Atlantic_Charter
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1940_1944_FDR.3.A
+		add_political_power = 50
+		add_opinion_modifier = { target = ENG modifier = USA_The_Atlantic_Charter_opinion}
+	}
+}
+country_event = { # Internment Camps
+	id = USA_1940_1944_FDR.4
+	title = USA_1940_1944_FDR.4.t
+	desc = USA_1940_1944_FDR.4.d
+	picture = GFX_report_USA_Japanese_Internment_Camps
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1940_1944_FDR.4.A
+		add_ideas = USA_Internment_Camps
+	}
+}
+country_event = { # President Truman Announces the Truman Doctrine
+	id = USA_1944_1948_FDR.1
+	title = USA_1944_1948_FDR.1.t
+	desc = USA_1944_1948_FDR.1.d
+	picture = GFX_report_USA_Truman_Doctrine
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1944_1948_FDR.1.A
+		add_ideas = USA_The_Truman_Doctrine_Idea
+	}
+}
+country_event = { # The Employment Act
+	id = USA_1944_1948_FDR.2
+	title = USA_1944_1948_FDR.2.t
+	desc = USA_1944_1948_FDR.2.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1944_1948_FDR.2.A
+		set_temp_variable = { party_id = 6 } ## Democrats
+		set_temp_variable = { popularity_to_add = 0.03 }
+		add_relative_popularity_to_parliament_party = yes
+		update_parliament_piechart = yes
+	}
+}
+country_event = { # An End of An Era
+	id = USA_1944_1948_FDR.3
+	title = USA_1944_1948_FDR.3.t
+	desc = USA_1944_1948_FDR.3.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_1944_1948_FDR.3.A
+	}
+}
+country_event = { # The Crimes of Imperial Japan
+	id = USA_Japanese_Leaders_Trial.1
+	title = USA_Japanese_Leaders_Trial.1.t
+	desc = USA_Japanese_Leaders_Trial.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.1.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.3
+		}
+	}
+	option = {
+		name = USA_Japanese_Leaders_Trial.1.B
+		custom_effect_tooltip = USA_Skipped_Japan_Trials
+		add_stability = 0.05
+		JAP = {
+			add_stability = -0.05
+		}
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.01
+		}
+		country_event = {
+			id = USA_Japanese_Leaders_Trial.2
+		}
+	}
+}
+country_event = { # Former Japanese Leaders Shot!
+	id = USA_Japanese_Leaders_Trial.2
+	title = USA_Japanese_Leaders_Trial.2.t
+	desc = USA_Japanese_Leaders_Trial.2.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.2.A
+	}
+}
+country_event = { # The Trial of Kenji Doihara
+	id = USA_Japanese_Leaders_Trial.3
+	title = USA_Japanese_Leaders_Trial.3.t
+	desc = USA_Japanese_Leaders_Trial.3.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.3.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.4
+		}
+	}
+}
+country_event = { # The Trial of Koki Hirota
+	id = USA_Japanese_Leaders_Trial.4
+	title = USA_Japanese_Leaders_Trial.4.t
+	desc = USA_Japanese_Leaders_Trial.4.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.4.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.5
+		}
+	}
+}
+country_event = { # The Question of Unit 731
+	id = USA_Japanese_Leaders_Trial.5
+	title = USA_Japanese_Leaders_Trial.5.t
+	desc = USA_Japanese_Leaders_Trial.5.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.5.A
+		JAP = {
+			add_stability = 0.03
+		}
+		add_political_power = 50
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.6
+		}
+	}
+	option = {
+		name = USA_Japanese_Leaders_Trial.5.B
+		add_tech_bonus = {
+			bonus = 0.15
+			uses = 1
+		}
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.7
+		}
+	}
+}
+country_event = { # The Trial of Shiro Ishii
+	id = USA_Japanese_Leaders_Trial.6
+	title = USA_Japanese_Leaders_Trial.6.t
+	desc = USA_Japanese_Leaders_Trial.6.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.6.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.7
+		}
+	}
+}
+country_event = { # The Trial of Seishiro Itagaki
+	id = USA_Japanese_Leaders_Trial.7
+	title = USA_Japanese_Leaders_Trial.7.t
+	desc = USA_Japanese_Leaders_Trial.7.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.7.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.8
+		}
+	}
+}
+country_event = { # The Trial of Heitaro Kimura
+	id = USA_Japanese_Leaders_Trial.8
+	title = USA_Japanese_Leaders_Trial.8.t
+	desc = USA_Japanese_Leaders_Trial.8.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.8.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.9
+		}
+	}
+}
+country_event = { # The Imperial Princes
+	id = USA_Japanese_Leaders_Trial.9
+	title = USA_Japanese_Leaders_Trial.9.t
+	desc = USA_Japanese_Leaders_Trial.9.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.9.A
+		JAP = {
+			add_Stability = -0.05
+		}
+		add_war_support = 0.05
+		add_political_power = 100
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.10
+		}
+	}
+	option = {
+		name = USA_Japanese_Leaders_Trial.9.B
+		JAP = {
+			add_stability = 0.05
+		}
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.11
+		}
+	}
+}
+country_event = { # The Trial of the Princes
+	id = USA_Japanese_Leaders_Trial.10
+	title = USA_Japanese_Leaders_Trial.10.t
+	desc = USA_Japanese_Leaders_Trial.10.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.10.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.11
+		}
+	}
+}
+country_event = { # The Trial of Akira Muto
+	id = USA_Japanese_Leaders_Trial.11
+	title = USA_Japanese_Leaders_Trial.11.t
+	desc = USA_Japanese_Leaders_Trial.11.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.11.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.12
+		}
+	}
+}
+country_event = { # The Trial of Hideki Tojo
+	id = USA_Japanese_Leaders_Trial.12
+	title = USA_Japanese_Leaders_Trial.12.t
+	desc = USA_Japanese_Leaders_Trial.12.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.12.A
+		country_event = {
+			days = 7
+			id = USA_Japanese_Leaders_Trial.13
+		}
+	}
+}
+country_event = { # The Sentences Are Given
+	id = USA_Japanese_Leaders_Trial.13
+	title = USA_Japanese_Leaders_Trial.13.t
+	desc = USA_Japanese_Leaders_Trial.13.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.13.A
+		country_event = {
+			days = 60
+			id = USA_Japanese_Leaders_Trial.14
+		}
+	}
+}
+country_event = { # The End of The Tokyo Trials
+	id = USA_Japanese_Leaders_Trial.14
+	title = USA_Japanese_Leaders_Trial.14.t
+	desc = USA_Japanese_Leaders_Trial.14.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Japanese_Leaders_Trial.14.A
+	}
+}
+country_event = { # The USA Offers Fighters
+	id = USA_Cash_and_Carry.1
+	title = USA_Cash_and_Carry.1.t
+	desc = USA_Cash_and_Carry.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We'll take whatever we can get!
+	option = {
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 100
+				set_temp_variable = { amount_of_money_to_check = 200 }
+				has_specific_amount_of_money_with_inflation_included = yes
+			}
+		}
+		name = USA_Cash_and_Carry.1.A
+		set_temp_variable = { money_to_gain = -200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		USA = {
+			country_event = {
+				id = USA_Cash_and_Carry.3
+			}
+		}
+	}
+	#We will have to pass, sorry.
+	option = {
+		name = USA_Cash_and_Carry.1.B
+		USA = {
+			country_event = {
+				id = USA_Cash_and_Carry.2
+			}
+		}
+	}
+}
+country_event = { # Britain Declines
+	id = USA_Cash_and_Carry.2
+	title = USA_Cash_and_Carry.2.t
+	desc = USA_Cash_and_Carry.2.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Shame.
+	option = {
+		name = USA_Cash_and_Carry.2.A
+	}
+}
+country_event = { # Britain Accepts!
+	id = USA_Cash_and_Carry.3
+	title = USA_Cash_and_Carry.3.t
+	desc = USA_Cash_and_Carry.3.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Perfect!, we'll roll the planes over the Border
+	option = {
+		name = USA_Cash_and_Carry.3.A
+		set_temp_variable = { money_to_gain = 200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		ENG = {
+			add_equipment_to_stockpile = {
+				type = Fighter_equipment
+				amount = 50
+				producer = USA
+			}
+		}
+	}
+}
+country_event = { # The USA Offers Weapons
+	id = USA_Cash_and_Carry.4
+	title = USA_Cash_and_Carry.4.t
+	desc = USA_Cash_and_Carry.4.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We'll take whatever we can get!
+	option = {
+		name = USA_Cash_and_Carry.4.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 80
+				set_temp_variable = { amount_of_money_to_check = 120 }
+				has_specific_amount_of_money_with_inflation_included = yes
+			}
+		}
+		set_temp_variable = { money_to_gain = -120 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		USA = {
+			country_event = {
+				id = USA_Cash_and_Carry.6
+			}
+		}
+	}
+	#We will have to pass, sorry.
+	option = {
+		name = USA_Cash_and_Carry.4.B
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 20
+				set_temp_variable = { amount_of_money_to_check = 120 }
+				has_specific_amount_of_money_with_inflation_included = yes
+			}
+		}
+		USA = {
+			country_event = {
+				id = USA_Cash_and_Carry.5
+			}
+		}
+	}
+}
+country_event = { # X Declines
+	id = USA_Cash_and_Carry.5
+	title = USA_Cash_and_Carry.5.t
+	desc = USA_Cash_and_Carry.5.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Shame.
+	option = {
+		name = USA_Cash_and_Carry.5.A
+	}
+}
+country_event = { # X Accepts
+	id = USA_Cash_and_Carry.6
+	title = USA_Cash_and_Carry.6.t
+	desc = USA_Cash_and_Carry.6.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	#They need Guns, from America they will have Guns.
+	option = {
+		name = USA_Cash_and_Carry.6.A
+		set_temp_variable = { money_to_gain = 120 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		FROM = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2500
+				producer = USA
+			}
+			add_equipment_to_stockpile = {
+				type = Heavy_Weapons_equipment
+				amount = 250
+				producer = USA
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 250
+				producer = USA
+			}
+		}
+	}
+}
+#########################################################################
+#  Golden Gate Bridge opened for public use
+#########################################################################
+news_event = {
+	id = USA.1
+	title = USA.1.t
+	desc = USA.1.d
+	picture = GFX_news_USA_Golden_Gate_Bridge_Opening
+	fire_only_once = yes
+	trigger = {
+		date > 1937.5.26
+		has_start_date < 1937.5.26
+		original_tag = USA
+	}
+	option = {
+		name = USA.1.A
+	}
+}
+#########################################################################
+# Vinson-Trammel Act
+#########################################################################
+country_event = {
+	id = USA_Navy.1
+	title = USA_Navy.1.t
+	desc = USA_Navy.1.d
+	picture = x
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Navy.1.A
+		add_ideas = USA_Vinson_Trammel_Act
+	}
+}
+#########################################################################
+# Two Ocean Navy Act
+#########################################################################
+country_event = {
+	id = USA_Navy.2
+	title = USA_Navy.2.t
+	desc = USA_Navy.2.d
+	picture = x
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Navy.2.A
+		swap_ideas = {
+			remove_idea = USA_Vinson_Trammel_Act
+			add_idea = USA_Vinson_Trammel_Act_2
+		}
+	}
+}
+#########################################################################
+#  Panic on alien invasion?!
+#########################################################################
+news_event = {
+	id = USA.2
+	title = USA.2.t
+	desc = USA.2.d
+	picture = GFX_news_USA_War_of_the_Worlds
+	fire_only_once = yes
+	trigger = {
+		date > 1938.10.29
+		has_start_date < 1938.10.29
+		original_tag = USA
+	}
+	option = {
+		name = USA.2.A
+		add_stability = -0.02
+	}
+}
+#########################################################################
+#  Tornado outbreaks in South East
+#########################################################################
+news_event = {
+	id = USA.3
+	title = USA.3.t
+	desc = USA.3.d
+	picture = GFX_news_USA_Tornado_Outbreak
+	fire_only_once = yes
+	trigger = {
+		date > 1936.3.30
+		date < 1936.4.16
+		has_start_date < 1936.4.16
+		original_tag = USA
+	}
+	option = {
+		name = USA.3.D1
+		trigger = {
+			has_government = democratic
+		}
+	}
+	option = {
+		name = USA.3.D2
+		trigger = {
+			has_government = democratic
+		}
+	}
+	option = {
+		name = USA.3.D3
+		trigger = {
+			has_government = democratic
+			has_war = yes
+			AND = {
+				371 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				372 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				368 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				367 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = USA.3.D4
+		trigger = {
+			has_government = democratic
+			has_war = yes
+			OR = {
+				371 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				372 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				368 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				367 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = USA.3.f.1
+		trigger = {
+			has_government = fascist
+		}
+	}
+	option = {
+		name = USA.3.f.2
+		trigger = {
+			has_government = fascist
+		}
+	}
+	option = {
+		name = USA.3.f.3
+		trigger = {
+			has_government = fascist
+			has_war = yes
+			AND = {
+				371 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				372 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				368 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				367 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = USA.3.f.4
+		trigger = {
+			has_government = fascist
+			has_war = yes
+			OR = {
+				371 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				372 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				368 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				367 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_government = communist
+		}
+		name = USA.3.C.1
+	}
+	option = {
+		trigger = {
+			has_government = communist
+		}
+		name = USA.3.C.2
+	}
+	option = {
+		name = USA.3.C.3
+		trigger = {
+			has_government = communist
+			has_war = yes
+			AND = {
+				371 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				372 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				368 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+				367 = {
+					CONTROLLER = {
+						NOT = {
+							has_war_with = USA
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = USA.3.C.4
+		trigger = {
+			has_government = communist
+			has_war = yes
+			OR = {
+				371 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				372 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				368 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+				367 = {
+					CONTROLLER = {
+						has_war_with = USA
+					}
+				}
+			}
+		}
+	}
+}
+#########################################################################
+#  Memorial Day Massacre
+#########################################################################
+news_event = {
+	id = USA.4
+	title = USA.4.t
+	desc = USA.4.d
+	picture = GFX_news_USA_Memorial_Day_Massacre
+	fire_only_once = yes
+	trigger = {
+		date > 1937.5.30
+		has_start_date < 1937.5.30
+		original_tag = USA
+	}
+	option = {
+		# The people were exercising their rights, violence was not the answer!
+		name = USA.4.A
+		ai_chance = {
+			factor = 20
+			modifier = {
+				# Commie
+				factor = 100
+				has_government = communist
+			}
+		}
+		add_stability = -0.01
+		add_popularity = {
+			ideology = socialist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.01
+		}
+	}
+	option = {
+		# The police had justifiably suppressed the red riot.
+		name = USA.4.B
+		ai_chance = {
+			factor = 80
+			modifier = {
+				# Far right
+				factor = 100
+				OR = {
+					has_government = fascist
+					has_government = authoritarian
+				}
+			}
+		}
+		add_political_power = -50
+		add_stability = -0.02
+	}
+}
+#########################################################################
+#  Snow White and the Seven Dwarves Premieres
+#########################################################################
+news_event = {
+	id = USA.5
+	title = USA.5.t
+	desc = USA.5.d
+	picture = GFX_news_USA_Snow_White_Premier
+	fire_only_once = yes
+	trigger = {
+		date > 1937.12.21
+		has_start_date < 1937.12.21
+		original_tag = USA
+	}
+	option = {
+		# Heigh-ho, heigh-ho, it's off to work we go!
+		name = USA.5.A
+		add_stability = 0.02
+	}
+}
+#########################################################################
+#  Floods and Landslides in LA
+#########################################################################
+news_event = {
+	id = USA.6
+	title = USA.6.t
+	desc = USA.6.d
+	picture = GFX_news_USA_LA_Floods_1938
+	fire_only_once = yes
+	trigger = {
+		date > 1938.2.27
+		has_start_date < 1938.2.27
+		original_tag = USA
+	}
+	# Approve the proposal
+	option = {
+		name = USA.6.A
+		add_political_power = -25
+		set_temp_variable = { money_to_gain = -50 }
+		add_money_with_tooltip_effect = yes
+		add_tech_bonus = {
+			bonus = 0.1
+			uses = 1
+			category = engineers_tech
+		}
+		378 = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		ai_chance = {
+			factor = 60
+		}
+	}
+	# It would be too expensive
+	option = {
+		name = USA.6.B
+		#add_timed_idea = { idea = disaster_ignored days = 120 }
+		378 = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		ai_chance = {
+			factor = 40
+		}
+	}
+}
+#########################################################################
+#  Boulder Dam Begins Operation
+#########################################################################
+news_event = {
+	id = USA.7
+	title = USA.7.t
+	desc = USA.7.d
+	picture = GFX_news_USA_Boulder_Dam
+	fire_only_once = yes
+	trigger = {
+		date > 1936.4.1
+		has_start_date < 1936.4.1
+		original_tag = USA
+	}
+	option = {
+		# Impressive
+		name = USA.7.A
+		add_political_power = 50
+	}
+}
+#########################################################################
+#  Panic on the West Coast
+#########################################################################
+news_event = {
+	id = USA.8
+	title = USA.8.t
+	desc = USA.8.d
+	picture = GFX_news_USA_Panic_on_the_West_Coast
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		has_defensive_war_with = JAP
+	}
+	mean_time_to_happen = { days = 10 }
+	option = {
+		# For Freedom
+		name = USA.8.A
+		add_stability = -0.02
+		add_war_support = 0.05
+	}
+}
+#########################################################################
+#  National Labour Relations Act
+#########################################################################
+news_event = {
+	id = USA.9
+	title = USA.9.t
+	desc = USA.9.d
+	picture = GFX_news_USA_Boulder_Dam
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		# Impressive
+		name = USA.9.A
+		set_temp_variable = { unemployment_value = -0.01 }
+		add_unemployment_effect = yes
+	}
+}
+#########################################################################
+#  Amelia Eartharts wants to join the USAAC
+#########################################################################
+country_event = {
+	id = USA.10
+	title = USA.10.t
+	desc = USA.10.d
+	picture = GFX_report_event_usa_amelia_earhart_airplane
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		has_war = yes
+		NOT = {
+			has_global_flag = earhart_disappeared
+		}
+	}
+	mean_time_to_happen = { days = 30 }
+	option = {
+		# Let her join
+		name = USA.10.A
+		add_political_power = -10
+		add_ace = {
+			name = "Amelia"
+			surname = "Earhart"
+			callsign = "Revenant"
+			type = fighter_genius
+			is_female = yes
+		}
+		set_country_flag = amelia_active_ace
+	}
+	option = {
+		# Refuse
+		name = USA.10.B
+	}
+}
+#########################################################################
+#  Douglas MacArthur
+#########################################################################
+country_event = { # MacArthur moves to the Philippines
+	id = USA_Army.11
+	title = USA_Army.11.t
+	desc = USA_Army.11.d
+	picture = GFX_report_USA_John_Pershing
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		date > 1935.8.1
+		has_start_date < 1935.8.1
+		original_tag = USA
+		PHI = {
+			exists = yes
+		}
+		NOT = {
+			has_war_with = PHI
+		}
+	}
+	option = {
+		name = USA_Army.11.A
+		remove_ideas = USA_Douglas_MacArthur_CoArmy
+		add_ideas = USA_Malin_Craig_CoArmy
+		remove_unit_leader = 57
+		PHI = {
+			create_field_marshal = {
+				name = "Douglas MacArthur"
+				id = 57
+				GFX = GFX_M_Douglas_MacArthur
+				traits = {  offensive_doctrine brilliant_strategist career_officer media_personality politically_connected }
+				skill = 4
+				attack_skill = 4
+				defense_skill = 3
+				planning_skill = 4
+				logistics_skill = 2
+			}
+		}
+	}
+}
+country_event = { # MacArthur retires
+	id = USA_Army.12
+	title = USA_Army.12.t
+	desc = USA_Army.12.d
+	picture = GFX_report_USA_John_Pershing
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		date > 1937.12.31
+		has_start_date < 1937.12.31
+		original_tag = USA
+	}
+	option = {
+		name = USA_Army.12.A
+		PHI = {
+			remove_unit_leader = 57
+		}
+	}
+}
+country_event = { # MacArthur Is Back!
+	id = USA_Army.13
+	title = USA_Army.13.t
+	desc = USA_Army.13.d
+	picture = GFX_report_USA_John_Pershing
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = USA
+		any_country = {
+			is_major = yes
+			has_war_with = USA
+		}
+	}
+	option = {
+		name = USA_Army.13.A
+		USA = {
+			create_field_marshal = {
+				name = "Douglas MacArthur"
+				id = 57
+				GFX = GFX_M_Douglas_MacArthur
+				traits = {
+					offensive_doctrine
+					brilliant_strategist
+					career_officer
+					media_personality
+					politically_connected
+				}
+				skill = 4
+				attack_skill = 4
+				defense_skill = 3
+				planning_skill = 4
+				logistics_skill = 2
+			}
+		}
+	}
+}
+#########################################################################
+#  Selective Training Act
+#########################################################################
+country_event = {
+	id = USA_Army.1
+	title = USA_Army.1.t
+	desc = USA_Army.1.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = USA_Army.1.A
+		add_political_power = -150
+		add_ideas = one_year_service
+		set_temp_variable = { party_id = 1 }
+		set_temp_variable = { support_to_add = 0.05 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 2 }
+		set_temp_variable = { support_to_add = 0.05 }
+		change_party_support = yes
+	}
+}
+#########################################################################
+#  National Guard Called into Service !
+#########################################################################
+country_event = {
+	id = USA_Army.2
+	title = USA_Army.2.t
+	desc = USA_Army.2.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = USA_Army.2.A
+		load_oob = USA_NG_WW2
+	}
+}
+#########################################################################
+#  Louisiana Maneuvers
+#########################################################################
+country_event = {
+	id = USA_Army.3
+	title = USA_Army.3.t
+	desc = USA_Army.3.d
+	picture = GFX_report_USA_Louisiana_Maneuvers
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = USA_Army.3.A
+		army_experience = 20
+		add_tech_bonus = {
+			bonus = 0.4
+			uses = 2
+			category = land_doctrine
+		}
+	}
+}
+#########################################################################
+#  Eisenhower's Grand Battleplan
+#########################################################################
+country_event = {
+	id = USA_Army.4
+	title = USA_Army.4.t
+	desc = USA_Army.4.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = USA_Army.4.A
+		add_ideas = USA_Dwight_D_Eisenhower_CoArmy
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = cat_grand_battle_plan
+		}
+	}
+}
+#########################################################################
+#  Marshall's Overwhelming Firepower
+#########################################################################
+country_event = {
+	id = USA_Army.5
+	title = USA_Army.5.t
+	desc = USA_Army.5.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = USA_Army.5.A
+		add_ideas = USA_George_C_Marshall_CoArmy
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = cat_superior_firepower
+		}
+	}
+}
+#########################################################################
+#  Caution: Patton!
+#########################################################################
+country_event = {
+	id = USA_Army.6
+	title = USA_Army.6.t
+	desc = USA_Army.6.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = USA_Army.6.A
+		add_ideas = USA_George_S_Patton_CoArmy
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = cat_mobile_warfare
+		}
+	}
+}
+#########################################################################
+#  Armored Research Development Program
+#########################################################################
+country_event = {
+	id = USA_Army.7
+	title = USA_Army.7.t
+	desc = USA_Army.7.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	#Light Armor
+	option = {
+		name = USA_Army.7.A
+		set_country_flag = USA_Light_Armor_Development
+		country_event = USA_Army.8
+	}
+	#Medium Armor
+	option = {
+		name = USA_Army.7.B
+		set_country_flag = USA_Medium_Armor_Development
+		country_event = USA_Army.8
+	}
+	#Heavy Armor
+	option = {
+		name = USA_Army.7.C
+		set_country_flag = USA_Heavy_Armor_Development
+		country_event = USA_Army.8
+	}
+}
+#########################################################################
+#  Armored Research Development Program
+#########################################################################
+country_event = {
+	id = USA_Army.8
+	title = USA_Army.8.t
+	desc = USA_Army.8.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	#Work with UK
+	option = {
+		name = USA_Army.8.A
+		set_country_flag = USA_UK_Tank_Development
+		country_event = {
+			days = 100
+			id = USA_Army.9
+		}
+	}
+	#Work with France
+	option = {
+		name = USA_Army.8.B
+		set_country_flag = USA_France_Tank_Development
+		country_event = {
+			days = 100
+			id = USA_Army.9
+		}
+	}
+}
+#########################################################################
+#  Armored Research Development Program
+#########################################################################
+country_event = {
+	id = USA_Army.9
+	title = USA_Army.9.t
+	desc = USA_Army.9.d
+	picture = GFX_report_USA_FDR_Miami_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	#Work with UK
+	option = {
+		name = USA_Army.9.A
+		if = {
+			limit = {
+				has_country_flag = USA_Light_Armor_Development
+			}
+			add_tech_bonus = {
+				ahead_reduction  = 1
+				uses = 1
+				category = cat_light_armor
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Medium_Armor_Development
+			}
+			add_tech_bonus = {
+				ahead_reduction  = 1
+				uses = 1
+				category = cat_medium_armor
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Heavy_Armor_Development
+			}
+			add_tech_bonus = {
+				ahead_reduction  = 1
+				uses = 1
+				category = cat_heavy_armor
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Light_Armor_Development
+				has_country_flag = USA_France_Tank_Development
+			}
+			FRA = {
+				add_tech_bonus = {
+					ahead_reduction  = 1
+					uses = 1
+					category = cat_light_armor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Medium_Armor_Development
+				has_country_flag = USA_France_Tank_Development
+			}
+			FRA = {
+				add_tech_bonus = {
+					ahead_reduction  = 1
+					uses = 1
+					category = cat_medium_armor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Heavy_Armor_Development
+				has_country_flag = USA_France_Tank_Development
+			}
+			FRA = {
+				add_tech_bonus = {
+					ahead_reduction  = 1
+					uses = 1
+					category = cat_heavy_armor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Light_Armor_Development
+				has_country_flag = USA_UK_Tank_Development
+			}
+			ENG = {
+				add_tech_bonus = {
+					ahead_reduction  = 1
+					uses = 1
+					category = cat_light_armor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Medium_Armor_Development
+				has_country_flag = USA_UK_Tank_Development
+			}
+			ENG = {
+				add_tech_bonus = {
+					ahead_reduction  = 1
+					uses = 1
+					category = cat_medium_armor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = USA_Heavy_Armor_Development
+				has_country_flag = USA_UK_Tank_Development
+			}
+			ENG = {
+				add_tech_bonus = {
+					ahead_reduction  = 1
+					uses = 1
+					category = cat_heavy_armor
+				}
+			}
+		}
+	}
+}
+#########################################################################
+#  Pershing Offers his Services
+#########################################################################
+country_event = {
+	id = USA_Army.10
+	title = USA_Army.10.t
+	desc = USA_Army.10.d
+	picture = GFX_report_USA_John_Pershing
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		any_country = {
+			is_major = yes
+			has_war_with = USA
+		}
+	}
+	#It wouldn't be a war without Pershing!
+	option = {
+		name = USA_Army.10.A
+		add_field_marshal_role = {
+			character = USA_John_J_Pershing
+			skill = 5
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 7
+			logistics_skill = 4
+			traits = { old_guard expert_delegator inspirational_leader }
+		}
+	}
+	#Desperation shall not drive our decisions!
+	option = {
+		name = USA_Army.10.B
+	}
+}
+#########################################################################
+#  USA Flavor
+#########################################################################
+news_event = { # Fourth of July
+	id = USA_Flavor.0
+	title = USA_Flavor.0.t
+	desc = USA_Flavor.0.d
+	picture = GFX_news_USA_Fourth_of_July
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.0 days = 365 }
+		}
+	}
+	option = {
+		name = USA_Flavor.0.A
+		add_political_power = 10
+	}
+}
+news_event = { # The Death of Calvin Coolidge
+	id = USA_Flavor.1
+	title = USA_Flavor.1.t
+	desc = USA_Flavor.1.d
+	picture = GFX_news_USA_Death_of_Coolidge
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.2 } # January 5, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.1.A
+	}
+}
+news_event = { # The Construction of the Golden Gate Begins
+	id = USA_Flavor.2
+	title = USA_Flavor.2.t
+	desc = USA_Flavor.2.d
+	picture = GFX_news_USA_Golden_Gate_Bridge_Construction
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.3 days = 1 } # January 6, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.2.A
+	}
+}
+news_event = { # The Death of Malcolm Davis
+	id = USA_Flavor.3
+	title = USA_Flavor.3.t
+	desc = USA_Flavor.3.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.4 days = 97 } # April 13, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.3.A
+	}
+}
+news_event = { # Bonnie & Clyde Escape Arrest!
+	id = USA_Flavor.4
+	title = USA_Flavor.4.t
+	desc = USA_Flavor.4.d
+	picture = GFX_news_USA_Bonnie_and_Clyde
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.5 days = 54 } # June 6, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.4.A
+		add_stability = -0.005
+		add_political_power = -10
+	}
+}
+news_event = { # The First Concrete Has Been Poured For the Hoover Dam
+	id = USA_Flavor.5
+	title = USA_Flavor.5.t
+	desc = USA_Flavor.5.d
+	picture = GFX_news_USA_Boulder_Dam_Construction
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.6 days = 48 } # July 24, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.5.A
+		#add_political_power = 25
+	}
+}
+news_event = { # Bonnie & Clyde Escape Again!
+	id = USA_Flavor.6
+	title = USA_Flavor.6.t
+	desc = USA_Flavor.6.d
+	picture = GFX_news_USA_Bonnie_and_Clyde
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.7 days = 38 } # August 31, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.6.A
+		add_stability = -0.01
+		add_political_power = -25
+	}
+}
+news_event = { # Babe Ruth Announces His Retirement
+	id = USA_Flavor.7
+	title = USA_Flavor.7.t
+	desc = USA_Flavor.7.d
+	picture = GFX_news_USA_Babe_Ruth
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.8 days = 83 } # November 22, 1933
+		}
+	}
+	option = {
+		name = USA_Flavor.7.A
+	}
+}
+news_event = { # Bonnie & Clyde Escape Once More!
+	id = USA_Flavor.8
+	title = USA_Flavor.8.t
+	desc = USA_Flavor.8.d
+	picture = GFX_news_USA_Bonnie_and_Clyde
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.9 days = 55 } # January 16, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.8.A
+		add_stability = -0.015
+		add_political_power = -30
+	}
+}
+news_event = { # Texas Prison Escape!
+	id = USA_Flavor.9
+	title = USA_Flavor.9.t
+	desc = USA_Flavor.9.d
+	picture = GFX_news_USA_Texas_Prison
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.10 days = 38 } # Febuary 23, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.9.A
+		add_stability = -0.005
+	}
+}
+news_event = { # Huey Long Announces Share Our Wealth
+	id = USA_Flavor.10
+	title = USA_Flavor.10.t
+	desc = USA_Flavor.10.d
+	picture = GFX_news_USA_Huey_Long
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.11 days = 22 } # March 17, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.10.A
+	}
+}
+news_event = { # New York Taxicab Driver Strike
+	id = USA_Flavor.11
+	title = USA_Flavor.11.t
+	desc = USA_Flavor.11.d
+	picture = GFX_news_USA_NY_Taxicab_Driver_Strike
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.12 days = 26 } # April 12, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.11.A
+		#add_stability = -0.01
+	}
+}
+news_event = { # On Our Way
+	id = USA_Flavor.12
+	title = USA_Flavor.12.t
+	desc = USA_Flavor.12.d
+	picture = GFX_news_USA_FDR_Fireside_Chat_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.13 days = 41 } # May 23, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.12.A
+		add_political_power = 25
+	}
+}
+news_event = { # The End of Bonnie & Clyde
+	id = USA_Flavor.13
+	title = USA_Flavor.13.t
+	desc = USA_Flavor.13.d
+	picture = GFX_news_USA_Bonnie_and_Clyde_End
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.14 days = 91 } # August 22, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.13.A
+		add_stability = 0.025
+	}
+}
+news_event = { # Al Capone In Alcatraz
+	id = USA_Flavor.14
+	title = USA_Flavor.14.t
+	desc = USA_Flavor.14.d
+	picture = GFX_news_USA_Al_Capone
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.15 days = 10 } # September 1, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.14.A
+	}
+}
+news_event = { # Textile Workers Strike
+	id = USA_Flavor.15
+	title = USA_Flavor.15.t
+	desc = USA_Flavor.15.d
+	picture = GFX_news_USA_Textile_Workers_Strike
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.16 days = 80 } # November 20, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.15.A
+		#add_stability = -0.01
+	}
+}
+news_event = { # Smedley Butler's Testimony
+	id = USA_Flavor.16
+	title = USA_Flavor.16.t
+	desc = USA_Flavor.16.d
+	picture = GFX_news_USA_Smedley_Butlers_Testimony
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.17 days = 12 } # December 2, 1934
+		}
+	}
+	option = {
+		name = USA_Flavor.16.A
+		add_stability = -0.04
+		add_political_power = -50
+	}
+}
+news_event = { # The New-Look Central Park Zoo
+	id = USA_Flavor.17
+	title = USA_Flavor.17.t
+	desc = USA_Flavor.17.d
+	picture = GFX_news_USA_Central_Park_Zoo
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.18 days = 130 } # April 11, 1935
+		}
+	}
+	option = {
+		name = USA_Flavor.17.A
+	}
+}
+news_event = { # Tragedy In Rockville
+	id = USA_Flavor.18
+	title = USA_Flavor.18.t
+	desc = USA_Flavor.18.d
+	picture = GFX_news_USA_Tragedy_In_Rockville
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_list = { # September 10, 1935
+				70 = {
+					news_event = { id = USA_Flavor.19 days = 212 } # Assassination of Huey Long
+				}
+				30 = {
+					news_event = { id = USA_Flavor.20 days = 212 } # Huey Long Survives Assassination Attempt!
+				}
+			}
+		}
+	}
+	option = {
+		name = USA_Flavor.18.A
+		add_stability = -0.01
+	}
+}
+news_event = { # Assassination of Huey Long
+	id = USA_Flavor.19
+	title = USA_Flavor.19.t
+	desc = USA_Flavor.19.d
+	picture = GFX_news_USA_Huey_Long_Assassinated
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.21 days = 128 } # March 17, 1936
+		}
+	}
+	option = {
+		name = USA_Flavor.19.A
+		add_stability = -0.03
+	}
+}
+news_event = { # Huey Long Survives Assassination Attempt!
+	id = USA_Flavor.20
+	title = USA_Flavor.20.t
+	desc = USA_Flavor.20.d
+	picture = GFX_news_USA_Huey_Long_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.21 days = 128 } # March 17, 1936
+		}
+	}
+	option = {
+		name = USA_Flavor.20.A
+	}
+}
+news_event = { # The Pittsburgh Flood
+	id = USA_Flavor.21
+	title = USA_Flavor.21.t
+	desc = USA_Flavor.21.d
+	picture = GFX_news_USA_Pittsburgh_Flood
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.22 days = 2 } # March 19, 1936
+		}
+	}
+	option = {
+		name = USA_Flavor.21.A
+		add_stability = -0.01
+	}
+}
+news_event = { # German-American Bund Founded
+	id = USA_Flavor.22
+	title = USA_Flavor.22.t
+	desc = USA_Flavor.22.d
+	picture = GFX_news_USA_German_American_Bund
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.23 days = 15 } # April 3, 1936
+		}
+	}
+	option = {
+		name = USA_Flavor.22.A
+		add_political_power = -20
+		add_stability = -0.01
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.01
+		}
+	}
+}
+news_event = { # The Shortest Boxing Match In History
+	id = USA_Flavor.23
+	title = USA_Flavor.23.t
+	desc = USA_Flavor.23.d
+	picture = GFX_news_USA_Shortest_Boxing_Match_In_History
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.24 days = 34 } # May 7, 1936
+		}
+	}
+	option = {
+		name = USA_Flavor.23.A
+	}
+}
+news_event = { # A Soviet Flag Prank
+	id = USA_Flavor.24
+	title = USA_Flavor.24.t
+	desc = USA_Flavor.24.d
+	picture = GFX_news_USA_Supreme_Court
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.25 days = 147 } # October 1, 1936
+		}
+	}
+	option = {
+		name = USA_Flavor.24.A
+		add_stability = -0.005
+	}
+}
+news_event = { # Al Smith Breaks From the Democrats!
+	id = USA_Flavor.25
+	title = USA_Flavor.25.t
+	desc = USA_Flavor.25.d
+	picture = GFX_news_USA_Al_Smith
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.26 days = 128 } # Febuary 6, 1937
+		}
+	}
+	option = {
+		name = USA_Flavor.25.A
+		set_temp_variable = { party_id = 6 } ## Democrats
+		set_temp_variable = { support_to_add = -0.04 }
+		change_party_support = yes
+	}
+}
+news_event = { # Of Mice and Men Published
+	id = USA_Flavor.26
+	title = USA_Flavor.26.t
+	desc = USA_Flavor.26.d
+	picture = GFX_news_USA_Of_Mice_and_Men
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.27 days = 40 } # March 18, 1937
+		}
+	}
+	option = {
+		name = USA_Flavor.26.A
+	}
+}
+news_event = { # New London School Explosion
+	id = USA_Flavor.27
+	title = USA_Flavor.27.t
+	desc = USA_Flavor.27.d
+	picture = GFX_news_USA_New_London_School_Explosion
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.28 days = 11 } # March 29, 1937
+		}
+	}
+	option = {
+		name = USA_Flavor.27.A
+		#add_stability = -0.01
+	}
+}
+news_event = { # West Coast Hotel Co. v. Parrish
+	id = USA_Flavor.28
+	title = USA_Flavor.28.t
+	desc = USA_Flavor.28.d
+	picture = GFX_news_USA_West_Coast_Hotel_Co_v_Parrish
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			#news_event = { id = USA_Flavor.29 days = 59 } # May 27, 1937  DOESN'T EXIST
+		}
+	}
+	option = {
+		name = USA_Flavor.28.A
+		remove_ideas = USA_The_Lochner_Era
+	}
+}
+news_event = { # Spam Introduced
+	id = USA_Flavor.30
+	title = USA_Flavor.30.t
+	desc = USA_Flavor.30.d
+	picture = GFX_news_USA_Spam_Introduced
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.31 days = 19 } # July 24, 1937
+		}
+	}
+	option = {
+		name = USA_Flavor.30.A
+	}
+}
+news_event = { # Charges Against the Scottsboro Boys Dropped!
+	id = USA_Flavor.31
+	title = USA_Flavor.31.t
+	desc = USA_Flavor.31.d
+	picture = GFX_news_USA_Scottsboro_Boys
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.32 days = 268 } # April 18, 1938
+		}
+	}
+	option = {
+		name = USA_Flavor.31.A
+	}
+}
+news_event = { # Debut of Superman!
+	id = USA_Flavor.32
+	title = USA_Flavor.32.t
+	desc = USA_Flavor.32.d
+	picture = GFX_news_USA_Debut_of_Superman
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.33 days = 72 } # June 29, 1938
+		}
+	}
+	option = {
+		name = USA_Flavor.32.A
+	}
+}
+news_event = { # The Olympic National Park
+	id = USA_Flavor.33
+	title = USA_Flavor.33.t
+	desc = USA_Flavor.33.d
+	picture = GFX_news_USA_Olympic_National_Park
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.34 days = 4 } # July 3, 1938
+		}
+	}
+	option = {
+		name = USA_Flavor.33.A
+	}
+}
+news_event = { # 75th Anniversary of the Battle of Gettysburg
+	id = USA_Flavor.34
+	title = USA_Flavor.34.t
+	desc = USA_Flavor.34.d
+	picture = GFX_news_USA_75th_Anniversary_of_the_Battle_of_Gettysburg
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.35 days = 63 } # September 4, 1938
+		}
+	}
+	option = {
+		name = USA_Flavor.34.A
+	}
+}
+news_event = { # William Bullitt's Speech
+	id = USA_Flavor.35
+	title = USA_Flavor.35.t
+	desc = USA_Flavor.35.d
+	picture = GFX_news_USA_William_Bullitts_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.36 days = 17 } # September 21, 1938
+		}
+	}
+	option = {
+		name = USA_Flavor.35.A
+		add_stability = -0.01
+		add_war_support = 0.01
+	}
+}
+news_event = { # Hurricane in New England!
+	id = USA_Flavor.36
+	title = USA_Flavor.36.t
+	desc = USA_Flavor.36.d
+	picture = GFX_news_USA_Hurricane_in_New_England
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.37 days = 39 } # October 30, 1938
+		}
+	}
+	option = { # We Must Help the People!
+		name = USA_Flavor.36.A
+		add_stability = -0.01
+		add_political_power = -50
+	}
+	option = { #Let the State Governments Help Them
+		name = USA_Flavor.36.B
+		add_stability = -0.03
+		add_popularity = {
+			ideology = communist
+			popularity = 0.01
+		}
+	}
+}
+news_event = { # The War of the Worlds
+	id = USA_Flavor.37
+	title = USA_Flavor.37.t
+	desc = USA_Flavor.37.d
+	picture = GFX_news_USA_War_of_the_Worlds
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.38 days = 113 } # February 20, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.37.A
+		add_stability = -0.015
+	}
+}
+news_event = { # The Madison Square Garden Rally
+	id = USA_Flavor.38
+	title = USA_Flavor.38.t
+	desc = USA_Flavor.38.d
+	picture = GFX_news_USA_German_American_Bund_Rally
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.39 days = 69 } # April 30, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.38.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.01
+		}
+	}
+}
+news_event = { # New York World's Fair Opens
+	id = USA_Flavor.39
+	title = USA_Flavor.39.t
+	desc = USA_Flavor.39.d
+	picture = GFX_news_USA_New_York_Worlds_Fair
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.40 days = 1 } # May 1, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.39.A
+		add_political_power = 5
+	}
+}
+news_event = { # The Dark Knight Emerges
+	id = USA_Flavor.40
+	title = USA_Flavor.40.t
+	desc = USA_Flavor.40.d
+	picture = GFX_news_USA_Dark_Knight_Emerges
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.41 days = 1 } # May 2, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.40.A
+	}
+}
+news_event = { # Lou Gehrig Ends His Streak
+	id = USA_Flavor.41
+	title = USA_Flavor.41.t
+	desc = USA_Flavor.41.d
+	picture = GFX_news_USA_Lou_Gehrig
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.42 days = 33 } # June 4, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.41.A
+	}
+}
+news_event = { # The MS St. Louis Reaches Miami
+	id = USA_Flavor.42
+	title = USA_Flavor.42.t
+	desc = USA_Flavor.42.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.43 days = 118 } # September 30, 1939
+		}
+	}
+	option = { # It is Our Duty to Take These People In
+		name = USA_Flavor.42.A
+		add_stability = -0.005
+		add_manpower = 907
+	}
+	option = { # We will Happily Give These People New Homes in Europe
+		name = USA_Flavor.42.B
+		add_stability = 0.01
+	}
+}
+news_event = { # Waynesburg vs. Fordham
+	id = USA_Flavor.43
+	title = USA_Flavor.43.t
+	desc = USA_Flavor.43.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.44 days = 46 } # November 15, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.43.A
+	}
+}
+news_event = { # [From.GetLeader] Lays the Jefferson Memorial
+	id = USA_Flavor.44
+	title = USA_Flavor.44.t
+	desc = USA_Flavor.44.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.45 days = 30 } # December 15, 1939
+		}
+	}
+	option = {
+		name = USA_Flavor.44.A
+	}
+}
+news_event = { # Gone With the Wind
+	id = USA_Flavor.45
+	title = USA_Flavor.45.t
+	desc = USA_Flavor.45.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.46 days = 54 } # February 7, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.45.A
+	}
+}
+news_event = { # Release of Pinocchio
+	id = USA_Flavor.46
+	title = USA_Flavor.46.t
+	desc = USA_Flavor.46.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.47 days = 13 } # February 20, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.46.A
+	}
+}
+news_event = { # Puss Gets the Boot
+	id = USA_Flavor.47
+	title = USA_Flavor.47.t
+	desc = USA_Flavor.47.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.48 days = 62 } # April 23, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.47.A
+	}
+}
+news_event = { # Rhythm Night Club Fire
+	id = USA_Flavor.48
+	title = USA_Flavor.48.t
+	desc = USA_Flavor.48.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.49 days = 22 } # May 15, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.48.A
+		#add_stability = -0.005
+	}
+}
+news_event = { # McDonald's Opens in San Bernardino
+	id = USA_Flavor.49
+	title = USA_Flavor.49.t
+	desc = USA_Flavor.49.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.50 days = 3 } # May 18, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.49.A
+	}
+}
+news_event = { # El Centro Earthquake
+	id = USA_Flavor.50
+	title = USA_Flavor.50.t
+	desc = USA_Flavor.50.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.51 days = 29 } # June 16, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.50.A
+		add_stability = -0.01
+		add_political_power = -25
+	}
+}
+news_event = { # First Annual Sturgis Motorcycle Rally
+	id = USA_Flavor.51
+	title = USA_Flavor.51.t
+	desc = USA_Flavor.51.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.52 days = 148 } # November 11, 1940
+		}
+	}
+	option = {
+		name = USA_Flavor.51.A
+	}
+}
+news_event = { # Armistice Day Blizzard
+	id = USA_Flavor.52
+	title = USA_Flavor.52.t
+	desc = USA_Flavor.52.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.53 days = 85 } # February 4, 1941
+		}
+	}
+	option = {
+		name = USA_Flavor.52.A
+		#add_stability = -0.01
+	}
+}
+news_event = { # The United Service Organization
+	id = USA_Flavor.53
+	title = USA_Flavor.53.t
+	desc = USA_Flavor.53.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.54 days = 41 } # March 17, 1941
+		}
+	}
+	option = {
+		name = USA_Flavor.53.A
+	}
+}
+news_event = { # Opening of the National Gallery of Art
+	id = USA_Flavor.54
+	title = USA_Flavor.54.t
+	desc = USA_Flavor.54.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.55 days = 37 } # April 23, 1941
+		}
+	}
+	option = {
+		name = USA_Flavor.54.A
+	}
+}
+news_event = { # America First Rally in New York City
+	id = USA_Flavor.55
+	title = USA_Flavor.55.t
+	desc = USA_Flavor.55.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = USA_Flavor.56 days = 191 } # October 31, 1941
+		}
+	}
+	option = {
+		name = USA_Flavor.55.A
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.02
+		}
+	}
+}
+news_event = { # Work Ceases on Mount Rushmore
+	id = USA_Flavor.56
+	title = USA_Flavor.56.t
+	desc = USA_Flavor.56.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	#	immediate = {
+	#		hidden_effect = {
+	#			country_event = { id = USA_Flavor.XX days = XX } # MMMM DD, YYYY
+	#		}
+	#	}
+	option = {
+		name = USA_Flavor.56.A
+	}
+}
+# Amelia Earhart Trigger (HIDDEN)
+news_event = {
+	id = USA_Flavor.57
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		date > 1937.7.1
+		has_start_date < 1937.7.1
+		NOT = { has_global_flag = earhart_disappeared}
+		country_exists = USA
+		USA = { has_war = no }
+		NOT = { has_country_flag = amelia_active_ace }
+	}
+	immediate = {
+		random_list = {
+			50 = { ENG = { news_event = { id = USA_Flavor.58 } } }
+			50 = { ENG = { news_event = { id = USA_Flavor.59 } } }
+		}
+	}
+	option = {
+		name = USA_Flavor.57.A
+	}
+}
+# Amelia Earhart Disappears
+news_event = {
+	id = USA_Flavor.58
+	title = USA_Flavor.58.t
+	desc = USA_Flavor.58.d
+	picture = GFX_news_event_028
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = earhart_disappeared
+	}
+	option = {
+		name = USA_Flavor.58.A
+	}
+}
+# Amelia Earhart Completes World Flight
+news_event = {
+	id = USA_Flavor.59
+	title = USA_Flavor.59.t
+	desc = USA_Flavor.59.d
+	picture = GFX_news_event_028
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Flavor.59.A
+	}
+}
+#########################################################################
+# Bringing In The Old Leatherface
+#########################################################################
+country_event = {
+	id = USA_Air_Force.1
+	title = USA_Air_Force.1.t
+	desc = USA_Air_Force.1.d
+	picture = x
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Air_Force.1.A
+	}
+}
+#########################################################################
+# The Proper Composition Of the Airforce
+#########################################################################
+country_event = {
+	id = USA_Air_Force.2
+	title = USA_Air_Force.2.t
+	desc = USA_Air_Force.2.d
+	picture = x
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Air_Force.2.A
+	}
+}
+#########################################################################
+# The Bomber Mafia Succeeds
+#########################################################################
+country_event = {
+	id = USA_Air_Force.3
+	title = USA_Air_Force.3.t
+	desc = USA_Air_Force.3.d
+	picture = x
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Air_Force.3.A
+	}
+}
+#########################################################################
+# Hap Arnold's Compromise
+#########################################################################
+country_event = {
+	id = USA_Air_Force.4
+	title = USA_Air_Force.4.t
+	desc = USA_Air_Force.4.d
+	picture = x
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Air_Force.4.A
+	}
+}
+#########################################################################
+#  The Manhattan Project
+#########################################################################
+country_event = {
+	id = USA_Department_of_War.1
+	title = USA_Department_of_War.1.t
+	desc = USA_Department_of_War.1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Department_of_War.1.A
+		add_tech_bonus = {
+			bonus = 0.6
+			uses = 1
+			category = nuclear
+		}
+	}
+}
+#########################################################################
+#  The Joint Chiefs of Staff
+#########################################################################
+country_event = {
+	id = USA_Department_of_War.2
+	title = USA_Department_of_War.2.t
+	desc = USA_Department_of_War.2.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Department_of_War.2.A
+		add_ideas = USA_The_Joint_Chiefs_of_Staff
+	}
+}
+#########################################################################
+#  The Office of Strategic Services
+#########################################################################
+country_event = {
+	id = USA_Department_of_War.3
+	title = USA_Department_of_War.3.t
+	desc = USA_Department_of_War.3.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Department_of_War.3.A
+		unlock_decision_category_tooltip = USA_OSS_Category
+		set_country_flag = USA_OSS_Decisions
+	}
+}
+#########################################################################
+#  The National Security Act
+#########################################################################
+country_event = {
+	id = USA_Department_of_War.4
+	title = USA_Department_of_War.4.t
+	desc = USA_Department_of_War.4.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Department_of_War.4.A
+		remove_ideas = {
+			USA_The_Joint_Chiefs_of_Staff
+			USA_The_X_2_Branch_Idea
+		}
+		create_intelligence_agency = {
+			icon = GFX_intelligence_agency_logo_usa
+			name = "CIA"
+		}
+	}
+}
+#########################################################################
+#  The US Department of War
+#########################################################################
+country_event = {
+	id = USA_Department_of_War.5
+	title = USA_Department_of_War.5.t
+	desc = USA_Department_of_War.5.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Department_of_War.5.A
+		add_command_power = 15
+	}
+}
+#########################################################################
+#  Landon 2nd Term
+#########################################################################
+#Landon Returns to the Gold Standard
+country_event = {
+	id = USA_Landon_1940_1944.1
+	title = USA_Landon_1940_1944.1.t
+	desc = USA_Landon_1940_1944.1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.1.A
+		add_stability = 0.05
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = 0.03 }
+		change_party_support = yes
+	}
+}
+#Increasing the Minimum Wage
+country_event = {
+	id = USA_Landon_1940_1944.2
+	title = USA_Landon_1940_1944.2.t
+	desc = USA_Landon_1940_1944.2.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.2.A
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = -0.05 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = 0.05 }
+		change_party_support = yes
+		add_popularity = {
+			ideology = socialist
+			popularity = -0.05
+		}
+		#WIP
+	}
+}
+#Get Your Liberty Loans!
+country_event = {
+	id = USA_Landon_1940_1944.3
+	title = USA_Landon_1940_1944.3.t
+	desc = USA_Landon_1940_1944.3.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.3.A
+		add_ideas = Freedom_Bonds
+	}
+}
+#Reversal of Tax Policy
+country_event = {
+	id = USA_Landon_1940_1944.4
+	title = USA_Landon_1940_1944.4.t
+	desc = USA_Landon_1940_1944.4.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.4.A
+		add_ideas = Freedom_Bonds
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = -0.1 }
+		change_party_support = yes
+		if = {
+			limit = {
+				has_idea = taxation_level_1
+			}
+			swap_ideas = {
+				add_idea = taxation_level_2
+				remove_idea = taxation_level_1
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = taxation_level_2
+			}
+			swap_ideas = {
+				add_idea = taxation_level_3
+				remove_idea = taxation_level_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = taxation_level_3
+			}
+			swap_ideas = {
+				add_idea = taxation_level_4
+				remove_idea = taxation_level_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = taxation_level_4
+			}
+			swap_ideas = {
+				add_idea = taxation_level_5
+				remove_idea = taxation_level_4
+			}
+		}
+		add_stability = -0.03
+	}
+}
+#Landon Calls for Volounteers
+country_event = {
+	id = USA_Landon_1940_1944.5
+	title = USA_Landon_1940_1944.5.t
+	desc = USA_Landon_1940_1944.5.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.5.A
+		add_manpower = 75000
+		add_war_support = 0.05
+	}
+}
+#Jobs in the Factories
+country_event = {
+	id = USA_Landon_1940_1944.6
+	title = USA_Landon_1940_1944.6.t
+	desc = USA_Landon_1940_1944.6.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.6.A
+		#WIP
+	}
+}
+#The End of the Landon Era
+country_event = {
+	id = USA_Landon_1940_1944.7
+	title = USA_Landon_1940_1944.7.t
+	desc = USA_Landon_1940_1944.7.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Landon_1940_1944.7.A
+		add_political_power = 100
+		add_war_support = 0.05
+		add_stability = 0.05
+	}
+}
+
+#################################################
+# Wilkie 1940-1944
+################################################
+
+# The Preperation Measures Act
+country_event = {
+	id = USA_1940_1944_Wilkie.1
+	title = USA_1940_1944_Wilkie.1.t
+	desc = USA_1940_1944_Wilkie.1.D
+	picture = GFX_Generic_Elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.1.A
+		add_war_support = 0.05
+		add_ideas = USA_preliminary_war_preperations
+	}
+}
+
+# The Wartime Agriculture Bill
+country_event = {
+	id = USA_1940_1944_Wilkie.2
+	title = USA_1940_1944_Wilkie.2.t
+	desc = USA_1940_1944_Wilkie.2.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.2.a
+		add_war_support = 0.05
+		383 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		384 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		389 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		1627 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		390 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+# Wilkie Internment Camps
+country_event = {
+	id = USA_1940_1944_Wilkie.3
+	title = USA_1940_1944_Wilkie.3.t
+	desc = USA_1940_1944_Wilkie.3.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.3.A
+		add_ideas = USA_Internment_Camps
+	}
+}
+
+# The Capitol's Heart
+country_event = {
+	id = USA_1940_1944_Wilkie.4
+	title = USA_1940_1944_Wilkie.4.t
+	desc = USA_1940_1944_Wilkie.4.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.4.A
+		add_political_power = 75
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = 0.1 }
+		change_party_support = yes
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = 0.1 }
+		change_party_support = yes
+	}
+}
+
+# Total Mobilization Achieved
+country_event = {
+	id = USA_1940_1944_Wilkie.5
+	title = USA_1940_1944_Wilkie.5.t
+	desc = USA_1940_1944_Wilkie.5.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.5.A
+		add_ideas = tot_economic_mobilisation
+	}
+}
+
+# Sidelining Dewey
+country_event = {
+	id = USA_1940_1944_Wilkie.6
+	title = USA_1940_1944_Wilkie.6.t
+	desc = USA_1940_1944_Wilkie.6.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.6.A
+		add_political_power = 40
+		set_temp_variable = { party_id = 4 } #Republicans
+		set_temp_variable = { support_to_add = -0.15 }
+		change_party_support = yes
+	}
+}
+
+# An Anti-Union Bill
+country_event = {
+	id = USA_1940_1944_Wilkie.7
+	title = USA_1940_1944_Wilkie.7.t
+	desc = USA_1940_1944_Wilkie.7.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.7.A
+		add_political_power = -50
+		add_stability = -0.05
+		set_temp_variable = { party_id = 6 } #Democrats
+		set_temp_variable = { support_to_add = -0.05 }
+		change_party_support = yes
+	}
+}
+
+# Allied Research Initiative
+country_event = {
+	id = USA_1940_1944_Wilkie.8
+	title = USA_1940_1944_Wilkie.8.t
+	desc = USA_1940_1944_Wilkie.8.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.8.A
+		hidden_effect = {
+			country_event = {
+				id = USA_1940_1944_Wilkie.9
+				days = 150
+				random = 24
+			}
+		}
+	}
+	option = {
+		name = USA_1940_1944_Wilkie.8.B
+		hidden_effect = {
+			country_event = {
+				id = USA_1940_1944_Wilkie.10
+				days = 150
+				random = 24
+			}
+		}
+	}
+	option = {
+		name = USA_1940_1944_Wilkie.8.C
+		hidden_effect = {
+			country_event = {
+				id = USA_1940_1944_Wilkie.11
+				days = 150
+				random = 24
+			}
+		}
+	}
+}
+
+# A Shiny Pack of Wolves
+country_event = {
+	id = USA_1940_1944_Wilkie.9
+	title = USA_1940_1944_Wilkie.9.t
+	desc = USA_1940_1944_Wilkie.9.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.9.A
+		add_tech_bonus = {
+    		bonus = 1
+    		uses = 1
+   			category = ss_tech
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = USA
+			}
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+}
+
+# A Soldier's New Best Friend
+country_event = {
+	id = USA_1940_1944_Wilkie.10
+	title = USA_1940_1944_Wilkie.10.t
+	desc = USA_1940_1944_Wilkie.10.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.10.A
+		add_tech_bonus = {
+    		bonus = 1
+    		uses = 1
+   			category = infantry_tech
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = USA
+			}
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = infantry_tech
+			}
+		}
+	}
+}
+
+# The Edge In the Air
+country_event = {
+	id = USA_1940_1944_Wilkie.11
+	title = USA_1940_1944_Wilkie.11.t
+	desc = USA_1940_1944_Wilkie.11.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.11.A
+		add_tech_bonus = {
+    		bonus = 1
+    		uses = 1
+   			category = light_fighter
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = USA
+			}
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = light_fighter
+			}
+		}
+	}
+}
+
+# Another President, Another Direction
+country_event = {
+	id = USA_1940_1944_Wilkie.12
+	title = USA_1940_1944_Wilkie.12.t
+	desc = USA_1940_1944_Wilkie.12.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = USA_1940_1944_Wilkie.12.A
+		#WIP
+	}
+}
+
+# The United States Has Left the War!
+news_event = {
+	id = USA_Left_War.1
+	title = USA_Left_War.1.t
+	desc = USA_Left_War.1.d
+	picture = GFX_Generic_Elections
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = USA_Left_War.1.A
+	}
+}
+
+# Rally In Seattle
+news_event = {
+	id = USA_Rally_Seattle.1
+	title = USA_Rally_Seattle.1.t
+	desc = USA_Rally_Seattle.1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Rally_Seattle.1.A
+		add_stability = 0.05
+		add_political_power = 100
+	}
+}
+
+# President Taft Addresses the Nation!
+news_event = {
+	id = USA_Taft_Addresses_Nation.1
+	title = USA_Taft_Addresses_Nation.1.t
+	desc = USA_Taft_Addresses_Nation.1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Taft_Addresses_Nation.1.A
+		add_stability = 0.05
+		add_war_support = -0.1
+		add_political_power = 50
+	}
+}
+
+#President Wilkie Dead!
+news_event = {
+	id = USA_Wilkie_Dead.1
+	title = USA_Wilkie_Dead.1.t
+	desc = USA_Wilkie_Dead1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Wilkie_Dead.1.A
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Charles L. McNary"
+			desc = "Charles_McNary_desc"
+			picture = GFX_Charles_McNary
+			ideology = social_conservatism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Conservatism }
+		}
+	}
+}
+
+#President McNary Dead!
+news_event = {
+	id = USA_McNary_Dead.1
+	title = USA_McNary_Dead.1.t
+	desc = USA_McNary_Dead.1.d
+	picture = GFX_news_USA_Bank_Holiday
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_McNary_Dead.1.A
+		kill_country_leader = yes
+		
+	}
+}
+
+### US Philippine Situation
+country_event = {
+	id = USA_Philippines.0
+	title = USA_Philippines.0.t
+	desc = USA_Philippines.0.d
+	picture = GFX_
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		original_tag = PHI
+		date > 1933.7.15
+		has_start_date < 1933.7.15
+	}
+	option = {
+		name = USA_Philippines.0.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Frank Murphy"
+			desc = ""
+			picture = GFX_P_A_Frank_Murphy
+			expire = "1935.11.15"
+			ideology = social_conservatism
+			traits = { POSITION_Governor_General SUBIDEOLOGY_Social_Conservatism L_Stern_Imperialist }
+		}
+	}
+}
+
+# Manuel Quezon's Independence Mission
+country_event = {
+	id = USA_Philippines.1
+	title = USA_Philippines.1.t
+	desc = USA_Philippines.1.d
+	picture = GFX_
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		date > 1933.11.5
+		has_start_date < 1933.11.5
+	}
+	option = {
+		name = USA_Philippines.1.A
+		hidden_effect = {
+			country_event = { id = USA_Philippines.2 days = 138 }
+		}
+	}
+}
+
+# The Tydings-McDuffie Act
+country_event = {
+	id = USA_Philippines.2
+	title = USA_Philippines.2.t
+	desc = USA_Philippines.2.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # The Act Sails Through Congress!
+		name = USA_Philippines.2.A
+		add_political_power = 25
+		hidden_effect = {
+			set_country_flag = USA_Tydings_McDuffie_Passed
+			country_event = { id = USA_Philippines.3 days = 372 }
+		}
+	}
+	option = { # The Act Dies in Committee!
+		name = USA_Philippines.2.B
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = USA_Philippines.2.B.tt
+		add_political_power = -100
+		set_temp_variable = {
+			party_id = 4
+		}			#Republicans
+		set_temp_variable = {
+			support_to_add = -0.15
+		}
+		change_party_support = yes
+		set_temp_variable = {
+			party_id = 6
+		}			#Democrats
+		set_temp_variable = {
+			support_to_add = -0.15
+		}
+		change_party_support = yes
+		hidden_effect = {
+			set_country_flag = USA_Tydings_McDuffie_Failed
+			country_event = { id = USA_Philippines.7 days = 14 }
+		}
+	}
+}
+
+# Ratification of the Filipino Constitution
+country_event = {
+	id = USA_Philippines.3
+	title = USA_Philippines.3.t
+	desc = USA_Philippines.3.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.3.A
+		PHI = {
+			drop_cosmetic_tag = yes
+		}
+		set_autonomy = {
+			target = PHI
+			autonomy_state = AUTONOMY_Satellite
+			end_wars = no
+			end_civil_wars = no
+		}
+		hidden_effect = {
+			PHI = {
+				country_event = { id = USA_Philippines.4 days = 166 }
+			}
+		}
+	}
+}
+
+# 1935 Presidential Election
+country_event = {
+	id = USA_Philippines.4
+	title = USA_Philippines.4.t
+	desc = USA_Philippines.4.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.4.A
+		create_country_leader = {
+			name = "Manuel Luis Quezón"
+			desc = ""
+			picture = GFX_P_D_Manuel_Luis_Quezon
+			expire = "1944.8.1"
+			ideology = social_conservatism
+			traits = { POSITION_President SUBIDEOLOGY_Social_Conservatism L_Silent_Workhorse }
+		}
+		add_ideas = PHI_D_Sergio_Osmena
+	}
+}
+
+# Independence of the Philippines
+country_event = {
+	id = USA_Philippines.5
+	title = USA_Philippines.5.t
+	desc = USA_Philippines.5.d
+	picture = GFX_
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		NOT = {
+			has_war_with = PHI
+		}
+		has_subject = PHI
+		date > 1946.7.4
+		has_country_flag = USA_Tydings_McDuffie_Passed
+	}
+	option = {
+		name = USA_Philippines.5.A
+		end_puppet = PHI
+		remove_from_faction = PHI
+		PHI = {
+			set_cosmetic_tag = PHI_Independent
+		}
+		hidden_effect = {
+			news_event = { id = USA_Philippines.6 days = 1 }
+		}
+	}
+}
+
+# The Philippines Become Independent
+news_event = {
+	id = USA_Philippines.6
+	title = USA_Philippines.6.t
+	desc = USA_Philippines.6.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = USA_Philippines.6.A
+		
+	}
+}
+
+# Quezon's Mission Protests
+country_event = {
+	id = USA_Philippines.7
+	title = USA_Philippines.7.t
+	desc = USA_Philippines.7.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.7.A
+		add_stability = -0.05
+		hidden_effect = {
+			country_event = { id = USA_Philippines.8 days = 14 }
+		}
+	}
+}
+
+# Stirring in Manila
+country_event = {
+	id = USA_Philippines.8
+	title = USA_Philippines.8.t
+	desc = USA_Philippines.8.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.8.A
+		hidden_effect = {
+			country_event = { id = USA_Philippines.9 days = 14 }
+		}
+	}
+}
+
+# The Sakdalistas Denounce Us!
+country_event = {
+	id = USA_Philippines.9
+	title = USA_Philippines.9.t
+	desc = USA_Philippines.9.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.9.A
+		custom_effect_tooltip = USA_Philippines.9.A.tt
+		set_country_flag = USA_PHI_Trouble
+		unlock_decision_category_tooltip = USA_PHI_Situation_Category
+	}
+}
+
+# In the Port of Manila
+country_event = {
+	id = USA_Philippines.10
+	title = USA_Philippines.10.t
+	desc = USA_Philippines.10.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.10.A
+		
+	}
+}
+
+# The Philippine Islands Territory
+country_event = {
+	id = USA_Philippines.11
+	title = USA_Philippines.11.t
+	desc = USA_Philippines.11.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.11.A
+		annex_country = {
+			target = PHI
+		}
+		327 = {
+			set_compliance = 50
+		}
+		623 = {
+			set_compliance = 50
+		}
+		624 = {
+			set_compliance = 50
+		}
+		625 = {
+			set_compliance = 50
+		}
+		626 = {
+			set_compliance = 50
+		}
+		627 = {
+			set_compliance = 50
+		}
+		628 = {
+			set_compliance = 50
+		}
+		1453 = {
+			set_compliance = 50
+		}
+		1454 = {
+			set_compliance = 50
+		}
+		1455 = {
+			set_compliance = 50
+		}
+		1456 = {
+			set_compliance = 50
+		}
+		1457 = {
+			set_compliance = 50
+		}
+	}
+}
+
+# Action
+country_event = {
+	id = USA_Philippines.12
+	title = USA_Philippines.12.t
+	desc = USA_Philippines.12.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.12.A
+		hidden_effect = {
+			country_event = { id = USA_Philippines.13 days = 2 }
+		}
+	}
+}
+
+# The Sakdalista Proclamation
+country_event = {
+	id = USA_Philippines.13
+	title = USA_Philippines.13.t
+	desc = USA_Philippines.13.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.13.A
+		end_puppet = PHI
+		PHI = {
+			set_cosmetic_tag = PHI_Second_Republic
+			set_politics = {
+				ruling_party = socialist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.5
+			}
+			declare_war_on = {
+				target = USA
+				type = independence_wargoal
+			}
+		}
+		hidden_effect = {
+			news_event = { id = USA_Philippines.14 }
+		}
+	}
+}
+
+# The Second Philippine-American War
+news_event = {
+	id = USA_Philippines.14
+	title = USA_Philippines.14.t
+	desc = USA_Philippines.14.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = USA_Philippines.14.A
+		trigger = {
+			tag = USA
+		}
+	}
+	option = {
+		name = USA_Philippines.14.B
+		trigger = {
+			NOT = {
+				tag = USA
+			}
+		}
+	}
+}
+
+# Congress Demands an End to War
+country_event = {
+	id = USA_Philippines.15
+	title = USA_Philippines.15.t
+	desc = USA_Philippines.15.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.15.A
+		white_peace = PHI
+		add_war_support = -0.1
+		set_temp_variable = {
+			party_id = 4
+		}			#Republicans
+		set_temp_variable = {
+			support_to_add = -0.25
+		}
+		change_party_support = yes
+		set_temp_variable = {
+			party_id = 6
+		}			#Democrats
+		set_temp_variable = {
+			support_to_add = -0.25
+		}
+		change_party_support = yes
+	}
+}
+
+# Victorious Once More
+country_event = {
+	id = USA_Philippines.16
+	title = USA_Philippines.16.t
+	desc = USA_Philippines.16.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = USA_Philippines.16.A
+		white_peace = PHI
+		set_autonomy = {
+			target = PHI
+			autonomy_state = AUTONOMY_Integrated_Puppet
+			end_wars = no
+			end_civil_wars = no
+		}
+		PHI = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = PHI_USA_Military
+			create_country_leader = {
+				name = "Douglas MacArthur"
+				desc = ""
+				picture = GFX_M_Douglas_MacArthur
+				expire = "1964.1.1"
+				ideology = military_dictatorship
+				traits = {
+					POSITION_Military_Governor
+				}
+			}
+		}
+		hidden_effect = {
+			PHI = {
+				set_party_name= {
+					ideology = authoritarian
+					name = PHI_authoritarian_military_dictatorship_party
+					long_name = PHI_authoritarian_military_dictatorship_party_long
+				}
+				set_politics = {
+					ruling_party = authoritarian
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = authoritarian
+					popularity = 0.5
+				}
+				remove_ideas = PHI_D_Sergio_Osmena
+			}
+		}
+	}
+}
+
+# Our New Backyard
+country_event = {
+	id = USA_Status_New_Territories.1
+	title = USA_Status_New_Territories.1.t
+	desc = USA_Status_New_Territories.1.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # These Territories Will Be Forever American
+		name = USA_Status_New_Territories.1.A
+		308 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		311 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		689 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		690 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		691 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		692 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		693 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		929 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		930 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		931 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		933 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		934 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		935 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		937 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		1149 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		1151 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+		1550 = {
+			add_compliance = -10
+			add_claim_by = USA
+		}
+	}
+	option = { # An Independent West Indies is Ideal
+		name = USA_Status_New_Territories.1.B
+		release_autonomy = {
+			target = JAM
+			autonomy_state = AUTONOMY_Satellite
+			freedom_level = 0.5
+		}
+		JAM = {
+			set_cosmetic_tag = JAM_West_Indies
+		}
+		hidden_effect = {
+			JAM = {
+				transfer_state = 308
+				transfer_state = 311
+				transfer_state = 690
+				transfer_state = 691
+				transfer_state = 692
+				transfer_state = 693
+				transfer_state = 929
+				transfer_state = 930
+				transfer_state = 931
+				transfer_state = 933
+				transfer_state = 934
+				transfer_state = 935
+				transfer_state = 937
+				transfer_state = 1149
+				transfer_state = 1151
+				transfer_state = 1550
+			}
+			308 = {
+				add_core_of = JAM
+			}
+			311 = {
+				add_core_of = JAM
+			}
+			690 = {
+				add_core_of = JAM
+			}
+			691 = {
+				add_core_of = JAM
+			}
+			692 = {
+				add_core_of = JAM
+			}
+			693 = {
+				add_core_of = JAM
+			}
+			929 = {
+				add_core_of = JAM
+			}
+			930 = {
+				add_core_of = JAM
+			}
+			931 = {
+				add_core_of = JAM
+			}
+			933 = {
+				add_core_of = JAM
+			}
+			934 = {
+				add_core_of = JAM
+			}
+			935 = {
+				add_core_of = JAM
+			}
+			937 = {
+				add_core_of = JAM
+			}
+			1149 = {
+				add_core_of = JAM
+			}
+			1151 = {
+				add_core_of = JAM
+			}
+			1550 = {
+				add_core_of = JAM
+			}
+		}
+	}
+}
+
+### The Ultimate Weapon
+country_event = {
+	id = USA_Capitulate_Japan.1
+	title = USA_Capitulate_Japan.1.t
+	desc = USA_Capitulate_Japan.1.d
+	picture = GFX_
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		num_of_nukes > 1
+		526 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		645 = {
+			is_controlled_by_ROOT_or_ally =yes
+		}
+		has_war_with = JAP
+	}
+	option = { #
+		name = USA_Capitulate_Japan.1.A
+		launch_nuke = {
+			province = 1092
+			use_nuke = yes
+		}
+		JAP = {
+			country_event = { id = USA_Capitulate_Japan.2 }
+		}
+	}
+}
+
+### The Bombing of Hiroshima
+country_event = {
+	id = USA_Capitulate_Japan.2
+	title = USA_Capitulate_Japan.2.t
+	desc = USA_Capitulate_Japan.2.d
+	picture = GFX_report_JAP_Hiroshima_Bombed
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = USA_Capitulate_Japan.2.A
+		USA = {
+			country_event = { id = USA_Capitulate_Japan.3 days = 1 }
+		}
+	}
+	option = { #
+		name = USA_Capitulate_Japan.2.B
+		ai_chance = {
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Suzuki_Cabinet.2 days = 1 }
+		}
+	}
+}
+
+### Japan Refuses to Surrender
+country_event = {
+	id = USA_Capitulate_Japan.3
+	title = USA_Capitulate_Japan.3.t
+	desc = USA_Capitulate_Japan.3.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = USA_Capitulate_Japan.3.A
+		launch_nuke = {
+			province = 9950
+			use_nuke = yes
+		}
+		JAP = {
+			country_event = { id = USA_Capitulate_Japan.4 }
+		}
+	}
+}
+
+### The Bombing of Nagasaki
+country_event = {
+	id = USA_Capitulate_Japan.4
+	title = USA_Capitulate_Japan.4.t
+	desc = USA_Capitulate_Japan.4.d
+	picture = GFX_report_JAP_Nagasaki_Bombed
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = USA_Capitulate_Japan.4.A
+		ai_chance = {
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		USA = {
+			country_event = { id = USA_Capitulate_Japan.5 days = 1 }
+		}
+	}
+	option = { #
+		name = USA_Capitulate_Japan.4.B
+		hidden_effect = {
+			country_event = { id = JAP_Suzuki_Cabinet.2 days = 1 }
+		}
+	}
+}
+
+### Japan Still Refuses to Surrender
+country_event = {
+	id = USA_Capitulate_Japan.5
+	title = USA_Capitulate_Japan.5.t
+	desc = USA_Capitulate_Japan.5.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = USA_Capitulate_Japan.5.A
+		trigger = {
+			num_of_nukes > 0
+		}
+		launch_nuke = {
+			province = 1025
+			use_nuke = yes
+		}
+		JAP = {
+			country_event = { id = USA_Capitulate_Japan.6 }
+		}
+	}
+	option = { #
+		name = USA_Capitulate_Japan.5.B
+	}
+}
+
+### The Bombing of Kokura
+country_event = {
+	id = USA_Capitulate_Japan.6
+	title = USA_Capitulate_Japan.6.t
+	desc = USA_Capitulate_Japan.6.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = USA_Capitulate_Japan.6.A
+	}
+	option = { #
+		name = USA_Capitulate_Japan.6.B
+		hidden_effect = {
+			country_event = { id = JAP_Suzuki_Cabinet.2 days = 1 }
+		}
+	}
+}
+

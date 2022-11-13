@@ -1,0 +1,772 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+ROM_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_MOT_01 ROM_MEC_01 }
+
+	fallback_name = "Divizia %d Infanterie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Infanterie" }
+		2 = { "Divizia %d Infanterie" }
+		3 = { "Divizia %d Infanterie" }
+		4 = { "Divizia %d Infanterie" }
+		5 = { "Divizia %d Infanterie" }
+		6 = { "Divizia %d Infanterie" }
+		7 = { "Divizia %d Infanterie" }
+		8 = { "Divizia %d Infanterie" }
+		9 = { "Divizia %d Infanterie" }
+		10 = { "Divizia %d Infanterie" }
+		11 = { "Divizia %d Infanterie" }
+		12 = { "Divizia %d Infanterie" }
+		13 = { "Divizia %d Infanterie" }
+		14 = { "Divizia %d Infanterie" }
+		15 = { "Divizia %d Infanterie" }
+		16 = { "Divizia %d Infanterie" }
+		17 = { "Divizia %d Infanterie" }
+		18 = { "Divizia %d Infanterie" }
+		19 = { "Divizia %d Infanterie" }
+		20 = { "Divizia %d Infanterie" }
+		21 = { "Divizia %d Infanterie" }
+		22 = { "Divizia %d Infanterie" }
+		23 = { "Divizia %d Infanterie" }
+		24 = { "Divizia %d Infanterie" }
+		25 = { "Divizia %d Infanterie" }
+		26 = { "Divizia %d Infanterie" }
+		27 = { "Divizia %d Infanterie" }
+		28 = { "Divizia %d Infanterie" }
+		29 = { "Divizia %d Infanterie" }
+		30 = { "Divizia %d Infanterie" }
+		31 = { "Divizia %d Infanterie" }
+		32 = { "Divizia %d Infanterie" }
+		36 = { "Divizia %d Infanterie" }
+		37 = { "Divizia %d Infanterie" }
+		38 = { "Divizia %d Infanterie" }
+		39 = { "Divizia %d Infanterie" }
+		40 = { "Divizia %d Infanterie" }
+		41 = { "Divizia %d Infanterie" }
+		42 = { "Divizia %d Infanterie" }
+		43 = { "Divizia %d Infanterie" }
+		44 = { "Divizia %d Infanterie" }
+		45 = { "Divizia %d Infanterie" }
+		46 = { "Divizia %d Infanterie" }
+		47 = { "Divizia %d Infanterie" }
+		48 = { "Divizia %d Infanterie" }
+		49 = { "Divizia %d Infanterie" }
+		50 = { "Divizia %d Infanterie" }
+		51 = { "Divizia %d Infanterie" }
+	}
+}
+
+ROM_CAV_01 = 
+{
+	name = "Cavalry Divisions" # restructured into brigades in 1940 and then renamed back to division in 1942
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "motorized" "bicycle_battalion" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_CAVB_01 }
+
+	fallback_name = "Divizia %d Cavalerie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Cavalerie" }
+		2 = { "Divizia %d Cavalerie" }
+		3 = { "Divizia %d Cavalerie" }
+		4 = { "Divizia %d Cavalerie" }
+		5 = { "Divizia %d Cavalerie" }
+		6 = { "Divizia %d Cavalerie" }
+		7 = { "Divizia %d Cavalerie" }
+		8 = { "Divizia %d Cavalerie" }
+		9 = { "Divizia %d Cavalerie" }
+		10 = { "Divizia %d Cavalerie" }
+		11 = { "Divizia %d Cavalerie" }
+		12 = { "Divizia %d Cavalerie" }
+		13 = { "Divizia %d Cavalerie" }
+		14 = { "Divizia %d Cavalerie" }
+		15 = { "Divizia %d Cavalerie" }
+		16 = { "Divizia %d Cavalerie" }
+		17 = { "Divizia %d Cavalerie" }
+		18 = { "Divizia %d Cavalerie" }
+		19 = { "Divizia %d Cavalerie" }
+		20 = { "Divizia %d Cavalerie" }
+		21 = { "Divizia %d Cavalerie" }
+		22 = { "Divizia %d Cavalerie" }
+		23 = { "Divizia %d Cavalerie" }
+		24 = { "Divizia %d Cavalerie" }
+		25 = { "Divizia %d Cavalerie" }
+		26 = { "Divizia %d Cavalerie" }
+		27 = { "Divizia %d Cavalerie" }
+		28 = { "Divizia %d Cavalerie" }
+		29 = { "Divizia %d Cavalerie" }
+		30 = { "Divizia %d Cavalerie" }
+		31 = { "Divizia %d Cavalerie" }
+		32 = { "Divizia %d Cavalerie" }
+		33 = { "Divizia %d Cavalerie" }
+		34 = { "Divizia %d Cavalerie" }
+		35 = { "Divizia %d Cavalerie" }
+		36 = { "Divizia %d Cavalerie" }
+		37 = { "Divizia %d Cavalerie" }
+		38 = { "Divizia %d Cavalerie" }
+		39 = { "Divizia %d Cavalerie" }
+		40 = { "Divizia %d Cavalerie" }
+		41 = { "Divizia %d Cavalerie" }
+		42 = { "Divizia %d Cavalerie" }
+		43 = { "Divizia %d Cavalerie" }
+		44 = { "Divizia %d Cavalerie" }
+		45 = { "Divizia %d Cavalerie" }
+		46 = { "Divizia %d Cavalerie" }
+		47 = { "Divizia %d Cavalerie" }
+		48 = { "Divizia %d Cavalerie" }
+		49 = { "Divizia %d Cavalerie" }
+		50 = { "Divizia %d Cavalerie" }
+		51 = { "Divizia %d Cavalerie" }
+		52 = { "Divizia %d Cavalerie" }
+		53 = { "Divizia %d Cavalerie" }
+	}
+}
+ROM_CAVB_01 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "motorized" "bicycle_battalion" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_CAV_01 }
+
+	fallback_name = "Brigada %d Cavalerie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigada %d Cavalerie" }
+		2 = { "Brigada %d Cavalerie" }
+		3 = { "Brigada %d Cavalerie" }
+		4 = { "Brigada %d Cavalerie" }
+		5 = { "Brigada %d Cavalerie" }
+		6 = { "Brigada %d Cavalerie" }
+		7 = { "Brigada %d Cavalerie" }
+		8 = { "Brigada %d Cavalerie" }
+		9 = { "Brigada %d Cavalerie" }
+		10 = { "Brigada %d Cavalerie" }
+		11 = { "Brigada %d Cavalerie" }
+		12 = { "Brigada %d Cavalerie" }
+		13 = { "Brigada %d Cavalerie" }
+		14 = { "Brigada %d Cavalerie" }
+		15 = { "Brigada %d Cavalerie" }
+		16 = { "Brigada %d Cavalerie" }
+		17 = { "Brigada %d Cavalerie" }
+		18 = { "Brigada %d Cavalerie" }
+		19 = { "Brigada %d Cavalerie" }
+		20 = { "Brigada %d Cavalerie" }
+		21 = { "Brigada %d Cavalerie" }
+		22 = { "Brigada %d Cavalerie" }
+		23 = { "Brigada %d Cavalerie" }
+		24 = { "Brigada %d Cavalerie" }
+		25 = { "Brigada %d Cavalerie" }
+		26 = { "Brigada %d Cavalerie" }
+		27 = { "Brigada %d Cavalerie" }
+		28 = { "Brigada %d Cavalerie" }
+		29 = { "Brigada %d Cavalerie" }
+		30 = { "Brigada %d Cavalerie" }
+		31 = { "Brigada %d Cavalerie" }
+		32 = { "Brigada %d Cavalerie" }
+		33 = { "Brigada %d Cavalerie" }
+		34 = { "Brigada %d Cavalerie" }
+		35 = { "Brigada %d Cavalerie" }
+		36 = { "Brigada %d Cavalerie" }
+		37 = { "Brigada %d Cavalerie" }
+		38 = { "Brigada %d Cavalerie" }
+		39 = { "Brigada %d Cavalerie" }
+		40 = { "Brigada %d Cavalerie" }
+		41 = { "Brigada %d Cavalerie" }
+		42 = { "Brigada %d Cavalerie" }
+		43 = { "Brigada %d Cavalerie" }
+		44 = { "Brigada %d Cavalerie" }
+		45 = { "Brigada %d Cavalerie" }
+		46 = { "Brigada %d Cavalerie" }
+		47 = { "Brigada %d Cavalerie" }
+		48 = { "Brigada %d Cavalerie" }
+		49 = { "Brigada %d Cavalerie" }
+		50 = { "Brigada %d Cavalerie" }
+		51 = { "Brigada %d Cavalerie" }
+		52 = { "Brigada %d Cavalerie" }
+		53 = { "Brigada %d Cavalerie" }
+	}
+}
+
+ROM_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_INF_01 ROM_MEC_01 }
+
+	fallback_name = "Divizia %d Infanterie Motorizată"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Infanterie Motorizată" }
+		2 = { "Divizia %d Infanterie Motorizată" }
+		3 = { "Divizia %d Infanterie Motorizată" }
+		4 = { "Divizia %d Infanterie Motorizată" }
+		5 = { "Divizia %d Infanterie Motorizată" }
+		6 = { "Divizia %d Infanterie Motorizată" }
+		7 = { "Divizia %d Infanterie Motorizată" }
+		8 = { "Divizia %d Infanterie Motorizată" }
+		9 = { "Divizia %d Infanterie Motorizată" }
+		10 = { "Divizia %d Infanterie Motorizată" }
+		11 = { "Divizia %d Infanterie Motorizată" }
+		12 = { "Divizia %d Infanterie Motorizată" }
+		13 = { "Divizia %d Infanterie Motorizată" }
+		14 = { "Divizia %d Infanterie Motorizată" }
+		15 = { "Divizia %d Infanterie Motorizată" }
+		16 = { "Divizia %d Infanterie Motorizată" }
+		17 = { "Divizia %d Infanterie Motorizată" }
+		18 = { "Divizia %d Infanterie Motorizată" }
+		19 = { "Divizia %d Infanterie Motorizată" }
+		20 = { "Divizia %d Infanterie Motorizată" }
+		21 = { "Divizia %d Infanterie Motorizată" }
+		22 = { "Divizia %d Infanterie Motorizată" }
+		23 = { "Divizia %d Infanterie Motorizată" }
+		24 = { "Divizia %d Infanterie Motorizată" }
+		25 = { "Divizia %d Infanterie Motorizată" }
+		26 = { "Divizia %d Infanterie Motorizată" }
+		27 = { "Divizia %d Infanterie Motorizată" }
+		28 = { "Divizia %d Infanterie Motorizată" }
+		29 = { "Divizia %d Infanterie Motorizată" }
+		30 = { "Divizia %d Infanterie Motorizată" }
+		31 = { "Divizia %d Infanterie Motorizată" }
+		32 = { "Divizia %d Infanterie Motorizată" }
+		33 = { "Divizia %d Infanterie Motorizată" }
+
+	}
+}
+
+ROM_ARM_01 = 
+{
+	name = "Armoured Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ROM_INF_01 }
+
+	fallback_name = "Divizia %d Blindată"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Blindată „România Mare”" } #nickname added with the 1944 reorganization
+		2 = { "Divizia %d Blindată" }
+		3 = { "Divizia %d Blindată" }
+		4 = { "Divizia %d Blindată" }
+		5 = { "Divizia %d Blindată" }
+		6 = { "Divizia %d Blindată" }
+		7 = { "Divizia %d Blindată" }
+		8 = { "Divizia %d Blindată" }
+		9 = { "Divizia %d Blindată" }
+		10 = { "Divizia %d Blindată" }
+		11 = { "Divizia %d Blindată" }
+		12 = { "Divizia %d Blindată" }
+		13 = { "Divizia %d Blindată" }
+		14 = { "Divizia %d Blindată" }
+		15 = { "Divizia %d Blindată" }
+		16 = { "Divizia %d Blindată" }
+		17 = { "Divizia %d Blindată" }
+		18 = { "Divizia %d Blindată" }
+		19 = { "Divizia %d Blindată" }
+		20 = { "Divizia %d Blindată" }
+		21 = { "Divizia %d Blindată" }
+		22 = { "Divizia %d Blindată" }
+		23 = { "Divizia %d Blindată" }
+		24 = { "Divizia %d Blindată" }
+		25 = { "Divizia %d Blindată" }
+		26 = { "Divizia %d Blindată" }
+		27 = { "Divizia %d Blindată" }
+		28 = { "Divizia %d Blindată" }
+		29 = { "Divizia %d Blindată" }
+		30 = { "Divizia %d Blindată" }
+		31 = { "Divizia %d Blindată" }
+		32 = { "Divizia %d Blindată" }
+		33 = { "Divizia %d Blindată" }
+	}
+}
+
+ROM_MEC_01 = 
+{
+	name = "Mechanised Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_INF_01 ROM_MOT_01 }
+
+	fallback_name = "Divizia %d Mecanizată"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Mecanizată" }
+		2 = { "Divizia %d Mecanizată" }
+		3 = { "Divizia %d Mecanizată" }
+		4 = { "Divizia %d Mecanizată" }
+		5 = { "Divizia %d Mecanizată" }
+		6 = { "Divizia %d Mecanizată" }
+		7 = { "Divizia %d Mecanizată" }
+		8 = { "Divizia %d Mecanizată" }
+		9 = { "Divizia %d Mecanizată" }
+		10 = { "Divizia %d Mecanizată" }
+		11 = { "Divizia %d Mecanizată" }
+		12 = { "Divizia %d Mecanizată" }
+		13 = { "Divizia %d Mecanizată" }
+		14 = { "Divizia %d Mecanizată" }
+		15 = { "Divizia %d Mecanizată" }
+		16 = { "Divizia %d Mecanizată" }
+		17 = { "Divizia %d Mecanizată" }
+		18 = { "Divizia %d Mecanizată" }
+		19 = { "Divizia %d Mecanizată" }
+		20 = { "Divizia %d Mecanizată" }
+		21 = { "Divizia %d Mecanizată" }
+		22 = { "Divizia %d Mecanizată" }
+		23 = { "Divizia %d Mecanizată" }
+		24 = { "Divizia %d Mecanizată" }
+		25 = { "Divizia %d Mecanizată" }
+		26 = { "Divizia %d Mecanizată" }
+		27 = { "Divizia %d Mecanizată" }
+		28 = { "Divizia %d Mecanizată" }
+		29 = { "Divizia %d Mecanizată" }
+		30 = { "Divizia %d Mecanizată" }
+		31 = { "Divizia %d Mecanizată" }
+		32 = { "Divizia %d Mecanizată" }
+		33 = { "Divizia %d Mecanizată" }
+	}
+}
+
+ROM_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ROM_INF_01 }
+
+	fallback_name = "Divizia %d Pază"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		52 = { "Divizia 1 Fortificatii" } # correct spelling Fortificații
+		1 = { "Divizia %d Pază" }
+		2 = { "Divizia %d Pază" }
+		3 = { "Divizia %d Pază" }
+		54 = { "Divizia 2 Fortificatii" } # Fictional from here
+		4 = { "Divizia %d Pază" }
+		5 = { "Divizia %d Pază" }
+		6 = { "Divizia %d Pază" }
+		7 = { "Divizia %d Pază" }
+		8 = { "Divizia %d Pază" }
+		9 = { "Divizia %d Pază" }
+		10 = { "Divizia %d Pază" }
+		11 = { "Divizia %d Pază" }
+		12 = { "Divizia %d Pază" }
+		13 = { "Divizia %d Pază" }
+		14 = { "Divizia %d Pază" }
+		15 = { "Divizia %d Pază" }
+		16 = { "Divizia %d Pază" }
+		17 = { "Divizia %d Pază" }
+		18 = { "Divizia %d Pază" }
+		19 = { "Divizia %d Pază" }
+		20 = { "Divizia %d Pază" }
+		21 = { "Divizia %d Pază" }
+		22 = { "Divizia %d Pază" }
+		23 = { "Divizia %d Pază" }
+		24 = { "Divizia %d Pază" }
+		25 = { "Divizia %d Pază" }
+		26 = { "Divizia %d Pază" }
+		27 = { "Divizia %d Pază" }
+		28 = { "Divizia %d Pază" }
+		29 = { "Divizia %d Pază" }
+		30 = { "Divizia %d Pază" }
+		31 = { "Divizia %d Pază" }
+		32 = { "Divizia %d Pază" }
+		36 = { "Divizia %d Pază" }
+		37 = { "Divizia %d Pază" }
+		38 = { "Divizia %d Pază" }
+		39 = { "Divizia %d Pază" }
+		40 = { "Divizia %d Pază" }
+		41 = { "Divizia %d Pază" }
+		42 = { "Divizia %d Pază" }
+		43 = { "Divizia %d Pază" }
+		44 = { "Divizia %d Pază" }
+		45 = { "Divizia %d Pază" }
+		46 = { "Divizia %d Pază" }
+		47 = { "Divizia %d Pază" }
+		48 = { "Divizia %d Pază" }
+		49 = { "Divizia %d Pază" }
+		50 = { "Divizia %d Pază" }
+		51 = { "Divizia %d Pază" }
+	}
+}
+
+ROM_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ROM_GAR_01 }
+
+	fallback_name = "Divizia %d Infanterie Marină"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Infanterie Marină" }
+		2 = { "Divizia %d Infanterie Marină" }
+		3 = { "Divizia %d Infanterie Marină" }
+		4 = { "Divizia %d Infanterie Marină" }
+		5 = { "Divizia %d Infanterie Marină" }
+		6 = { "Divizia %d Infanterie Marină" }
+		7 = { "Divizia %d Infanterie Marină" }
+		8 = { "Divizia %d Infanterie Marină" }
+		9 = { "Divizia %d Infanterie Marină" }
+		10 = { "Divizia %d Infanterie Marină" }
+		11 = { "Divizia %d Infanterie Marină" }
+		12 = { "Divizia %d Infanterie Marină" }
+		13 = { "Divizia %d Infanterie Marină" }
+		14 = { "Divizia %d Infanterie Marină" }
+		15 = { "Divizia %d Infanterie Marină" }
+		16 = { "Divizia %d Infanterie Marină" }
+		17 = { "Divizia %d Infanterie Marină" }
+		18 = { "Divizia %d Infanterie Marină" }
+		19 = { "Divizia %d Infanterie Marină" }
+		20 = { "Divizia %d Infanterie Marină" }
+		21 = { "Divizia %d Infanterie Marină" }
+		22 = { "Divizia %d Infanterie Marină" }
+		23 = { "Divizia %d Infanterie Marină" }
+		24 = { "Divizia %d Infanterie Marină" }
+		25 = { "Divizia %d Infanterie Marină" }
+		26 = { "Divizia %d Infanterie Marină" }
+		27 = { "Divizia %d Infanterie Marină" }
+		28 = { "Divizia %d Infanterie Marină" }
+		29 = { "Divizia %d Infanterie Marină" }
+		30 = { "Divizia %d Infanterie Marină" }
+	}
+}
+
+ROM_MTN_01 = 
+{
+	name = "Mountain Divisions" # Reorganized into brigades in 1937 and just called mountain.  The brigades were simply renamed back to division in 1942
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_MTNB_01 }
+
+	fallback_name = "Divizia %d Vânători de Munte"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Vânători de Munte" }
+		2 = { "Divizia %d Vânători de Munte" }
+		3 = { "Divizia %d Vânători de Munte" }
+		4 = { "Divizia %d Vânători de Munte" }
+		5 = { "Divizia %d Vânători de Munte" }
+		6 = { "Divizia %d Vânători de Munte" }
+		7 = { "Divizia %d Vânători de Munte" }
+		8 = { "Divizia %d Vânători de Munte" }
+		9 = { "Divizia %d Vânători de Munte" }
+		10 = { "Divizia %d Vânători de Munte" }
+		11 = { "Divizia %d Vânători de Munte" }
+		12 = { "Divizia %d Vânători de Munte" }
+		13 = { "Divizia %d Vânători de Munte" }
+		14 = { "Divizia %d Vânători de Munte" }
+		15 = { "Divizia %d Vânători de Munte" }
+		16 = { "Divizia %d Vânători de Munte" }
+		17 = { "Divizia %d Vânători de Munte" }
+		18 = { "Divizia %d Vânători de Munte" }
+		19 = { "Divizia %d Vânători de Munte" }
+		20 = { "Divizia %d Vânători de Munte" }
+		21 = { "Divizia %d Vânători de Munte" }
+		22 = { "Divizia %d Vânători de Munte" }
+		23 = { "Divizia %d Vânători de Munte" }
+		24 = { "Divizia %d Vânători de Munte" }
+		25 = { "Divizia %d Vânători de Munte" }
+		26 = { "Divizia %d Vânători de Munte" }
+		27 = { "Divizia %d Vânători de Munte" }
+		28 = { "Divizia %d Vânători de Munte" }
+		29 = { "Divizia %d Vânători de Munte" }
+		30 = { "Divizia %d Vânători de Munte" }
+		31 = { "Divizia %d Vânători de Munte" }
+		32 = { "Divizia %d Vânători de Munte" }
+		33 = { "Divizia %d Vânători de Munte" }
+		34 = { "Divizia %d Vânători de Munte" }
+		35 = { "Divizia %d Vânători de Munte" }
+		36 = { "Divizia %d Vânători de Munte" }
+		37 = { "Divizia %d Vânători de Munte" }
+		38 = { "Divizia %d Vânători de Munte" }
+		39 = { "Divizia %d Vânători de Munte" }
+		40 = { "Divizia %d Vânători de Munte" }
+		41 = { "Divizia %d Vânători de Munte" }
+		42 = { "Divizia %d Vânători de Munte" }
+		43 = { "Divizia %d Vânători de Munte" }
+		44 = { "Divizia %d Vânători de Munte" }
+		45 = { "Divizia %d Vânători de Munte" }
+		46 = { "Divizia %d Vânători de Munte" }
+		47 = { "Divizia %d Vânători de Munte" }
+		48 = { "Divizia %d Vânători de Munte" }
+		49 = { "Divizia %d Vânători de Munte" }
+		50 = { "Divizia %d Vânători de Munte" }
+		51 = { "Divizia %d Vânători de Munte" }
+		52 = { "Divizia %d Vânători de Munte" }
+		53 = { "Divizia %d Vânători de Munte" }
+	}
+}
+ROM_MTNB_01 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ROM_MTN_01 }
+
+	fallback_name = "Brigada %d Vânători de Munte"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigada %d Vânători de Munte" }
+		2 = { "Brigada %d Vânători de Munte" }
+		3 = { "Brigada %d Vânători de Munte" }
+		4 = { "Brigada %d Vânători de Munte" } # added in 1939
+		5 = { "Brigada %d Vânători de Munte" } # Fictional from here
+		6 = { "Brigada %d Vânători de Munte" }
+		7 = { "Brigada %d Vânători de Munte" }
+		8 = { "Brigada %d Vânători de Munte" }
+		9 = { "Brigada %d Vânători de Munte" }
+		10 = { "Brigada %d Vânători de Munte" }
+		11 = { "Brigada %d Vânători de Munte" }
+		12 = { "Brigada %d Vânători de Munte" }
+		13 = { "Brigada %d Vânători de Munte" }
+		14 = { "Brigada %d Vânători de Munte" }
+		15 = { "Brigada %d Vânători de Munte" }
+		16 = { "Brigada %d Vânători de Munte" }
+		17 = { "Brigada %d Vânători de Munte" }
+		18 = { "Brigada %d Vânători de Munte" }
+		19 = { "Brigada %d Vânători de Munte" }
+		20 = { "Brigada %d Vânători de Munte" }
+		21 = { "Brigada %d Vânători de Munte" }
+		22 = { "Brigada %d Vânători de Munte" }
+		23 = { "Brigada %d Vânători de Munte" }
+		24 = { "Brigada %d Vânători de Munte" }
+		25 = { "Brigada %d Vânători de Munte" }
+		26 = { "Brigada %d Vânători de Munte" }
+		27 = { "Brigada %d Vânători de Munte" }
+		28 = { "Brigada %d Vânători de Munte" }
+		29 = { "Brigada %d Vânători de Munte" }
+		30 = { "Brigada %d Vânători de Munte" }
+		31 = { "Brigada %d Vânători de Munte" }
+		32 = { "Brigada %d Vânători de Munte" }
+		33 = { "Brigada %d Vânători de Munte" }
+		34 = { "Brigada %d Vânători de Munte" }
+		35 = { "Brigada %d Vânători de Munte" }
+		36 = { "Brigada %d Vânători de Munte" }
+		37 = { "Brigada %d Vânători de Munte" }
+		38 = { "Brigada %d Vânători de Munte" }
+		39 = { "Brigada %d Vânători de Munte" }
+		40 = { "Brigada %d Vânători de Munte" }
+		41 = { "Brigada %d Vânători de Munte" }
+		42 = { "Brigada %d Vânători de Munte" }
+		43 = { "Brigada %d Vânători de Munte" }
+		44 = { "Brigada %d Vânători de Munte" }
+		45 = { "Brigada %d Vânători de Munte" }
+		46 = { "Brigada %d Vânători de Munte" }
+		47 = { "Brigada %d Vânători de Munte" }
+		48 = { "Brigada %d Vânători de Munte" }
+		49 = { "Brigada %d Vânători de Munte" }
+		50 = { "Brigada %d Vânători de Munte" }
+		51 = { "Brigada %d Vânători de Munte" }
+		52 = { "Brigada %d Vânători de Munte" }
+		53 = { "Brigada %d Vânători de Munte" }
+	}
+}
+
+ROM_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+
+	fallback_name = "Divizia %d Paraşutişti"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Paraşutişti" }
+		2 = { "Divizia %d Paraşutişti" }
+		3 = { "Divizia %d Paraşutişti" }
+		4 = { "Divizia %d Paraşutişti" }
+		5 = { "Divizia %d Paraşutişti" }
+		6 = { "Divizia %d Paraşutişti" }
+		7 = { "Divizia %d Paraşutişti" }
+		8 = { "Divizia %d Paraşutişti" }
+		9 = { "Divizia %d Paraşutişti" }
+		10 = { "Divizia %d Paraşutişti" }
+		11 = { "Divizia %d Paraşutişti" }
+		12 = { "Divizia %d Paraşutişti" }
+		13 = { "Divizia %d Paraşutişti" }
+		14 = { "Divizia %d Paraşutişti" }
+		15 = { "Divizia %d Paraşutişti" }
+		16 = { "Divizia %d Paraşutişti" }
+		17 = { "Divizia %d Paraşutişti" }
+		18 = { "Divizia %d Paraşutişti" }
+		19 = { "Divizia %d Paraşutişti" }
+		20 = { "Divizia %d Paraşutişti" }
+		21 = { "Divizia %d Paraşutişti" }
+		22 = { "Divizia %d Paraşutişti" }
+		23 = { "Divizia %d Paraşutişti" }
+		24 = { "Divizia %d Paraşutişti" }
+		25 = { "Divizia %d Paraşutişti" }
+		26 = { "Divizia %d Paraşutişti" }
+		27 = { "Divizia %d Paraşutişti" }
+		28 = { "Divizia %d Paraşutişti" }
+		29 = { "Divizia %d Paraşutişti" }
+		30 = { "Divizia %d Paraşutişti" }
+	}
+}
+ROM_AAA_01 = 
+{
+	name = "Anti-Air Divisions"
+
+	for_countries = { ROM }
+
+	can_use = { always = yes } 
+
+	division_types = { "anti_air_battalion" "motorized_anti_air_battalion" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { ROM_INF_01 }
+
+	fallback_name = "Divizia %d Artilerie AA"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divizia %d Artilerie AA" }
+		2 = { "Divizia %d Artilerie AA" }
+		3 = { "Divizia %d Artilerie AA" }
+		4 = { "Divizia %d Artilerie AA" }
+		5 = { "Divizia %d Artilerie AA" }
+		6 = { "Divizia %d Artilerie AA" }
+		7 = { "Divizia %d Artilerie AA" }
+		8 = { "Divizia %d Artilerie AA" }
+		9 = { "Divizia %d Artilerie AA" }
+		10 = { "Divizia %d Artilerie AA" }
+	}
+}

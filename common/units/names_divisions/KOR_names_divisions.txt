@@ -1,0 +1,506 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+KOR_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_MOT_01 KOR_MEC_01 KOR_GAR_01 KOR_MIL_01 }
+
+	fallback_name = "%d Bobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Bobyeongsadan \"Jeonjin\"" }
+		2 = { "%d Bobyeongsadan \"Nodobudae\"" }
+		3 = { "%d Bobyeongsadan \"Baeggol\"" }
+		5 = { "%d Bobyeongsadan \"Yeolsoe\"" }
+		6 = { "%d Bobyeongsadan \"Cheongseong\"" }
+		7 = { "%d Bobyeongsadan \"Chilseong\"" }
+		9 = { "%d Bobyeongsadan \"Baegma\"" }
+		12 = { "%d Bobyeongsadan \"Euljibudae\"" }
+		15 = { "%d Bobyeongsadan \"Seungli\"" }
+		17 = { "%d Bobyeongsadan \"Beongae\"" }
+		21 = { "%d Bobyeongsadan \"Baegdusan\"" }
+		22 = { "%d Bobyeongsadan \"Yulgog\"" }
+		23 = { "%d Bobyeongsadan \"Cheolbyeog\"" }
+		25 = { "%d Bobyeongsadan \"Bilyong\"" }
+		27 = { "%d Bobyeongsadan \"Igija\"" }
+		28 = { "%d Bobyeongsadan \"Mujeogtaepung\"" }
+		29 = { "%d Bobyeongsadan \"Taegwon\"" }
+		31 = { "%d Bobyeongsadan \"Chungjangbudae\"" }
+		32 = { "%d Bobyeongsadan \"Baeglyongbudae\"" }
+		33 = { "%d Bobyeongsadan \"Beongae\"" }
+		35 = { "%d Bobyeongsadan \"Chung-Gyeong Budae\"" }
+		36 = { "%d Bobyeongsadan \"Baeghobudae\"" }
+		37 = { "%d Bobyeongsadan \"Chung-Yongbudae\"" }
+		39 = { "%d Bobyeongsadan \"Chungmubudae\"" }
+		50 = { "%d Bobyeongsadan \"Gangcheolbudae\"" }
+		51 = { "%d Bobyeongsadan \"Jeonseung\"" }
+		52 = { "%d Bobyeongsadan \"Hwasal\"" }
+		53 = { "%d Bobyeongsadan \"Chunglyeolbudae\"" }
+		55 = { "%d Bobyeongsadan \"Bonghwabudae\"" }
+		56 = { "%d Bobyeongsadan \"Bughansan\"" }
+		57 = { "%d Bobyeongsadan \"Yongma\"" }
+		60 = { "%d Bobyeongsadan \"Gwon-Yul\"" }
+		61 = { "%d Bobyeongsadan \"Sangseung\"" }
+		62 = { "%d Bobyeongsadan \"Chunglyong\"" }
+		65 = { "%d Bobyeongsadan \"Milmul\"" }
+		66 = { "%d Bobyeongsadan \"Hwaesbul\"" }
+		67 = { "%d Bobyeongsadan \"Yongjin\"" }
+		69 = { "%d Bobyeongsadan \"Taepung\"" }
+		70 = { "%d Bobyeongsadan \"Chunghyo\"" }
+		71 = { "%d Bobyeongsadan \"Seonseung\"" }
+		72 = { "%d Bobyeongsadan \"Ollimpig\"" }
+		73 = { "%d Bobyeongsadan \"Chung-Il\"" }
+		75 = { "%d Bobyeongsadan \"Cheolma\"" }
+		76 = { "%d Bobyeongsadan \"Jingyeog\"" }
+		4 = { "Sudobobyeongsadan \"Maengho\"" }
+		8 = { "%d Bobyeongsadan \"Ottugi\"" }
+		11 = { "%d Bobyeongsadan \"Hwalang\"" }
+		20 = { "%d Bobyeongsadan \"Gyeoljeon\"" }
+		26 = { "%d Bobyeongsadan \"Bulmuli\"" }
+		30 = { "%d Bobyeongsadan \"Pilseung\"" }
+		10 = { "%d Bobyeongsadan" }
+		13 = { "%d Bobyeongsadan" }
+		16 = { "%d Bobyeongsadan" }
+		18 = { "%d Bobyeongsadan" }
+		19 = { "%d Bobyeongsadan" }
+	}
+}
+
+KOR_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_INF_01 KOR_MEC_01 KOR_GAR_01 KOR_MIL_01 }
+
+	fallback_name = "%d Jeondongbobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		4 = { "Sudojeondongbobyeongsadan \"Maengho\"" }
+		8 = { "%d Jeondongbobyeongsadan \"Ottugi\"" }
+		11 = { "%d Jeondongbobyeongsadan \"Hwalang\"" }
+		20 = { "%d Jeondongbobyeongsadan \"Gyeoljeon\"" }
+		26 = { "%d Jeondongbobyeongsadan \"Bulmuli\"" }
+		30 = { "%d Jeondongbobyeongsadan \"Pilseung\"" }
+		1 = { "%d Jeondongbobyeongsadan \"Jeonjin\"" }
+		2 = { "%d Jeondongbobyeongsadan \"Nodobudae\"" }
+		3 = { "%d Jeondongbobyeongsadan \"Baeggol\"" }
+		5 = { "%d Jeondongbobyeongsadan \"Yeolsoe\"" }
+		6 = { "%d Jeondongbobyeongsadan \"Cheongseong\"" }
+		7 = { "%d Jeondongbobyeongsadan \"Chilseong\"" }
+		9 = { "%d Jeondongbobyeongsadan \"Baegma\"" }
+		12 = { "%d Jeondongbobyeongsadan \"Euljibudae\"" }
+		15 = { "%d Jeondongbobyeongsadan \"Seungli\"" }
+		17 = { "%d Jeondongbobyeongsadan \"Beongae\"" }
+		21 = { "%d Jeondongbobyeongsadan \"Baegdusan\"" }
+		22 = { "%d Jeondongbobyeongsadan \"Yulgog\"" }
+		23 = { "%d Jeondongbobyeongsadan \"Cheolbyeog\"" }
+		25 = { "%d Jeondongbobyeongsadan \"Bilyong\"" }
+		27 = { "%d Jeondongbobyeongsadan \"Igija\"" }
+		28 = { "%d Jeondongbobyeongsadan \"Mujeogtaepung\"" }
+		29 = { "%d Jeondongbobyeongsadan \"Taegwon\"" }
+		31 = { "%d Jeondongbobyeongsadan \"Chungjangbudae\"" }
+		32 = { "%d Jeondongbobyeongsadan \"Baeglyongbudae\"" }
+		33 = { "%d Jeondongbobyeongsadan \"Beongae\"" }
+		35 = { "%d Jeondongbobyeongsadan \"Chung-Gyeong Budae\"" }
+		36 = { "%d Jeondongbobyeongsadan \"Baeghobudae\"" }
+		37 = { "%d Jeondongbobyeongsadan \"Chung-Yongbudae\"" }
+		39 = { "%d Jeondongbobyeongsadan \"Chungmubudae\"" }
+		50 = { "%d Jeondongbobyeongsadan \"Gangcheolbudae\"" }
+		51 = { "%d Jeondongbobyeongsadan \"Jeonseung\"" }
+		52 = { "%d Jeondongbobyeongsadan \"Hwasal\"" }
+		53 = { "%d Jeondongbobyeongsadan \"Chunglyeolbudae\"" }
+		55 = { "%d Jeondongbobyeongsadan \"Bonghwabudae\"" }
+		56 = { "%d Jeondongbobyeongsadan \"Bughansan\"" }
+		57 = { "%d Jeondongbobyeongsadan \"Yongma\"" }
+		60 = { "%d Jeondongbobyeongsadan \"Gwon-Yul\"" }
+		61 = { "%d Jeondongbobyeongsadan \"Sangseung\"" }
+		62 = { "%d Jeondongbobyeongsadan \"Chunglyong\"" }
+		65 = { "%d Jeondongbobyeongsadan \"Milmul\"" }
+		66 = { "%d Jeondongbobyeongsadan \"Hwaesbul\"" }
+		67 = { "%d Jeondongbobyeongsadan \"Yongjin\"" }
+		69 = { "%d Jeondongbobyeongsadan \"Taepung\"" }
+		70 = { "%d Jeondongbobyeongsadan \"Chunghyo\"" }
+		71 = { "%d Jeondongbobyeongsadan \"Seonseung\"" }
+		72 = { "%d Jeondongbobyeongsadan \"Ollimpig\"" }
+		73 = { "%d Jeondongbobyeongsadan \"Chung-Il\"" }
+		75 = { "%d Jeondongbobyeongsadan \"Cheolma\"" }
+		76 = { "%d Jeondongbobyeongsadan \"Jingyeog\"" }
+		10 = { "%d Jeondongbobyeongsadan" }
+		13 = { "%d Jeondongbobyeongsadan" }
+		16 = { "%d Jeondongbobyeongsadan" }
+		18 = { "%d Jeondongbobyeongsadan" }
+		19 = { "%d Jeondongbobyeongsadan" }
+	}
+}
+
+KOR_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_INF_01 KOR_MOT_01 KOR_GAR_01 KOR_MIL_01 }
+
+	fallback_name = "%d Gigyehwabobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		4 = { "Sudogigyehwabobyeongsadan \"Maengho\"" }
+		8 = { "%d Gigyehwabobyeongsadan \"Ottugi\"" }
+		11 = { "%d Gigyehwabobyeongsadan \"Hwalang\"" }
+		20 = { "%d Gigyehwabobyeongsadan \"Gyeoljeon\"" }
+		26 = { "%d Gigyehwabobyeongsadan \"Bulmuli\"" }
+		30 = { "%d Gigyehwabobyeongsadan \"Pilseung\"" }
+		1 = { "%d Gigyehwabobyeongsadan \"Jeonjin\"" }
+		2 = { "%d Gigyehwabobyeongsadan \"Nodobudae\"" }
+		3 = { "%d Gigyehwabobyeongsadan \"Baeggol\"" }
+		5 = { "%d Gigyehwabobyeongsadan \"Yeolsoe\"" }
+		6 = { "%d Gigyehwabobyeongsadan \"Cheongseong\"" }
+		7 = { "%d Gigyehwabobyeongsadan \"Chilseong\"" }
+		9 = { "%d Gigyehwabobyeongsadan \"Baegma\"" }
+		12 = { "%d Gigyehwabobyeongsadan \"Euljibudae\"" }
+		15 = { "%d Gigyehwabobyeongsadan \"Seungli\"" }
+		17 = { "%d Gigyehwabobyeongsadan \"Beongae\"" }
+		21 = { "%d Gigyehwabobyeongsadan \"Baegdusan\"" }
+		22 = { "%d Gigyehwabobyeongsadan \"Yulgog\"" }
+		23 = { "%d Gigyehwabobyeongsadan \"Cheolbyeog\"" }
+		25 = { "%d Gigyehwabobyeongsadan \"Bilyong\"" }
+		27 = { "%d Gigyehwabobyeongsadan \"Igija\"" }
+		28 = { "%d Gigyehwabobyeongsadan \"Mujeogtaepung\"" }
+		29 = { "%d Gigyehwabobyeongsadan \"Taegwon\"" }
+		31 = { "%d Gigyehwabobyeongsadan \"Chungjangbudae\"" }
+		32 = { "%d Gigyehwabobyeongsadan \"Baeglyongbudae\"" }
+		33 = { "%d Gigyehwabobyeongsadan \"Beongae\"" }
+		35 = { "%d Gigyehwabobyeongsadan \"Chung-Gyeong Budae\"" }
+		36 = { "%d Gigyehwabobyeongsadan \"Baeghobudae\"" }
+		37 = { "%d Gigyehwabobyeongsadan \"Chung-Yongbudae\"" }
+		39 = { "%d Gigyehwabobyeongsadan \"Chungmubudae\"" }
+		50 = { "%d Gigyehwabobyeongsadan \"Gangcheolbudae\"" }
+		51 = { "%d Gigyehwabobyeongsadan \"Jeonseung\"" }
+		52 = { "%d Gigyehwabobyeongsadan \"Hwasal\"" }
+		53 = { "%d Gigyehwabobyeongsadan \"Chunglyeolbudae\"" }
+		55 = { "%d Gigyehwabobyeongsadan \"Bonghwabudae\"" }
+		56 = { "%d Gigyehwabobyeongsadan \"Bughansan\"" }
+		57 = { "%d Gigyehwabobyeongsadan \"Yongma\"" }
+		60 = { "%d Gigyehwabobyeongsadan \"Gwon-Yul\"" }
+		61 = { "%d Gigyehwabobyeongsadan \"Sangseung\"" }
+		62 = { "%d Gigyehwabobyeongsadan \"Chunglyong\"" }
+		65 = { "%d Gigyehwabobyeongsadan \"Milmul\"" }
+		66 = { "%d Gigyehwabobyeongsadan \"Hwaesbul\"" }
+		67 = { "%d Gigyehwabobyeongsadan \"Yongjin\"" }
+		69 = { "%d Gigyehwabobyeongsadan \"Taepung\"" }
+		70 = { "%d Gigyehwabobyeongsadan \"Chunghyo\"" }
+		71 = { "%d Gigyehwabobyeongsadan \"Seonseung\"" }
+		72 = { "%d Gigyehwabobyeongsadan \"Ollimpig\"" }
+		73 = { "%d Gigyehwabobyeongsadan \"Chung-Il\"" }
+		75 = { "%d Gigyehwabobyeongsadan \"Cheolma\"" }
+		76 = { "%d Gigyehwabobyeongsadan \"Jingyeog\"" }
+		10 = { "%d Gigyehwabobyeongsadan" }
+		13 = { "%d Gigyehwabobyeongsadan" }
+		16 = { "%d Gigyehwabobyeongsadan" }
+		18 = { "%d Gigyehwabobyeongsadan" }
+		19 = { "%d Gigyehwabobyeongsadan" }
+	}
+}
+
+KOR_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_INF_01 KOR_MOT_01 KOR_MEC_01 KOR_MIL_01 }
+
+	fallback_name = "%d Hyangtobobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		31 = { "%d Hyangtobobyeongsadan \"Chungjangbudae\"" }
+		32 = { "%d Hyangtobobyeongsadan \"Baeglyongbudae\"" }
+		33 = { "%d Hyangtobobyeongsadan \"Beongae\"" }
+		35 = { "%d Hyangtobobyeongsadan \"Chung-Gyeong Budae\"" }
+		36 = { "%d Hyangtobobyeongsadan \"Baeghobudae\"" }
+		37 = { "%d Hyangtobobyeongsadan \"Chung-Yongbudae\"" }
+		39 = { "%d Hyangtobobyeongsadan \"Chungmubudae\"" }
+		50 = { "%d Hyangtobobyeongsadan \"Gangcheolbudae\"" }
+		51 = { "%d Hyangtobobyeongsadan \"Jeonseung\"" }
+		52 = { "%d Hyangtobobyeongsadan \"Hwasal\"" }
+		53 = { "%d Hyangtobobyeongsadan \"Chunglyeolbudae\"" }
+		55 = { "%d Hyangtobobyeongsadan \"Bonghwabudae\"" }
+		56 = { "%d Hyangtobobyeongsadan \"Bughansan\"" }
+		57 = { "%d Hyangtobobyeongsadan \"Yongma\"" }
+	}
+}
+
+KOR_MIL_01 = 
+{
+	name = "Militia Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_INF_01 KOR_MOT_01 KOR_MEC_01 KOR_GAR_01 }
+
+	fallback_name = "%d Dong-Wonbobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		60 = { "%d Dong-Wonbobyeongsadan \"Gwon-Yul\"" }
+		61 = { "%d Dong-Wonbobyeongsadan \"Sangseung\"" }
+		62 = { "%d Dong-Wonbobyeongsadan \"Chunglyong\"" }
+		65 = { "%d Dong-Wonbobyeongsadan \"Milmul\"" }
+		66 = { "%d Dong-Wonbobyeongsadan \"Hwaesbul\"" }
+		67 = { "%d Dong-Wonbobyeongsadan \"Yongjin\"" }
+		69 = { "%d Dong-Wonbobyeongsadan \"Taepung\"" }
+		70 = { "%d Dong-Wonbobyeongsadan \"Chunghyo\"" }
+		71 = { "%d Dong-Wonbobyeongsadan \"Seonseung\"" }
+		72 = { "%d Dong-Wonbobyeongsadan \"Ollimpig\"" }
+		73 = { "%d Dong-Wonbobyeongsadan \"Chung-Il\"" }
+		75 = { "%d Dong-Wonbobyeongsadan \"Cheolma\"" }
+		76 = { "%d Dong-Wonbobyeongsadan \"Jingyeog\"" }
+	}
+}
+
+KOR_ARMB_01 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_CAVB_01 }
+
+	fallback_name = "%d Gigab-Yeodan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Gigab-Yeodan \"Jeongyeog\"" }
+		2 = { "%d Gigab-Yeodan \"Chungseong\"" }
+		3 = { "%d Gigab-Yeodan \"Beongae\"" }
+		5 = { "%d Gigab-Yeodan \"Cheolpung\"" }
+		20 = { "%d Gigab-Yeodan \"Dogsuli\"" }
+		102 = { "%d Gigab-Yeodan \"Ilchul\"" }
+		6 = { "%d Gigab-Yeodan" }
+		7 = { "%d Gigab-Yeodan" }
+		8 = { "%d Gigab-Yeodan" }
+		9 = { "%d Gigab-Yeodan" }
+		10 = { "%d Gigab-Yeodan" }
+		11 = { "%d Gigab-Yeodan" }
+		12 = { "%d Gigab-Yeodan" }
+		13 = { "%d Gigab-Yeodan" }
+		15 = { "%d Gigab-Yeodan" }
+		16 = { "%d Gigab-Yeodan" }
+		17 = { "%d Gigab-Yeodan" }
+		18 = { "%d Gigab-Yeodan" }
+		19 = { "%d Gigab-Yeodan" }
+	}
+}
+
+KOR_CAVB_01 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { KOR_ARMB_01 }
+
+	fallback_name = "%d Gibyeong-Yeodan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Gibyeong-Yeodan \"Jeongyeog\"" }
+		2 = { "%d Gibyeong-Yeodan \"Chungseong\"" }
+		3 = { "%d Gibyeong-Yeodan \"Beongae\"" }
+		5 = { "%d Gibyeong-Yeodan \"Cheolpung\"" }
+		20 = { "%d Gibyeong-Yeodan \"Dogsuli\"" }
+		102 = { "%d Gibyeong-Yeodan \"Ilchul\"" }
+		6 = { "%d Gibyeong-Yeodan" }
+		7 = { "%d Gibyeong-Yeodan" }
+		8 = { "%d Gibyeong-Yeodan" }
+		9 = { "%d Gibyeong-Yeodan" }
+		10 = { "%d Gibyeong-Yeodan" }
+		11 = { "%d Gibyeong-Yeodan" }
+		12 = { "%d Gibyeong-Yeodan" }
+		13 = { "%d Gibyeong-Yeodan" }
+		15 = { "%d Gibyeong-Yeodan" }
+		16 = { "%d Gibyeong-Yeodan" }
+		17 = { "%d Gibyeong-Yeodan" }
+		18 = { "%d Gibyeong-Yeodan" }
+		19 = { "%d Gibyeong-Yeodan" }
+	}
+}
+
+KOR_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { KOR_INF_01 }
+
+	fallback_name = "%d Haebyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Haebyeongsadan \"Haelyong\"" }
+		2 = { "%d Haebyeongsadan \"Cheonglyong\"" }
+		3 = { "%d Haebyeongsadan" }
+		5 = { "%d Haebyeongsadan" }
+		6 = { "%d Haebyeongsadan" }
+		7 = { "%d Haebyeongsadan" }
+		8 = { "%d Haebyeongsadan" }
+		9 = { "%d Haebyeongsadan" }
+		10 = { "%d Haebyeongsadan" }
+	}
+}
+
+KOR_MARB_01 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { KOR_INF_01 }
+
+	fallback_name = "%d Haebyeong-Yeodan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Haebyeong-Yeodan \"Seonbong\"" }
+		2 = { "%d Haebyeong-Yeodan \"Hwanglyong\"" }
+		3 = { "%d Haebyeong-Yeodan \"Kingkong\"" }
+		5 = { "%d Haebyeong-Yeodan \"Sangseung\"" }
+		6 = { "%d Haebyeong-Yeodan \"Heuglyong\"" }
+		7 = { "%d Haebyeong-Yeodan \"Mesdwaeji\"" }
+		8 = { "%d Haebyeong-Yeodan \"Baegho\"" }
+		9 = { "%d Haebyeong-Yeodan \"Baeglyong\"" }
+		10 = { "%d Haebyeong-Yeodan \"Gonglyong\"" } # Uses the nickname of the independent Yeonpyeong Corps to fill in a nickname for this skipped number.
+	}
+}
+
+KOR_PARB_01 = 
+{
+	name = "Paratrooper Brigades"
+
+	for_countries = { KOR PRK }
+
+	can_use = { NOT = { has_government = communist } }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { KOR_INF_01 }
+
+	fallback_name = "%d Gongsuteugjeon-Yeodan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Gongsuteugjeon-Yeodan \"Dogsuli\"" }
+		3 = { "%d Gongsuteugjeon-Yeodan \"Biho\"" }
+		7 = { "%d Gongsuteugjeon-Yeodan \"Cheonma\"" }
+		9 = { "%d Gongsuteugjeon-Yeodan \"Gwiseong\"" }
+		11 = { "%d Gongsuteugjeon-Yeodan \"Hwang-Geumbagjwi\"" }
+		13 = { "%d Gongsuteugjeon-Yeodan \"Heugpyo\"" }
+	}
+}

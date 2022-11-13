@@ -1,0 +1,921 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+SOV_MECC_01 = 
+{
+	name = "Mechanized Corps" # The first mechanized formations during the 30s
+
+	for_countries = { SOV }
+
+	can_use = { 
+		NOT = { has_completed_focus = SOV_Tukhachevskys_Reformists }
+		NOT = { has_completed_focus = SOV_Voroshilovs_Old_Guard }
+		NOT = { has_completed_focus = SOV_NKVD_Agency }
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" "light_armor" "medium_armor" "heavy_armor" "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_ARMC_01 SOV_MECC_02 SOV_ARMC_02 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "11-y Mekhanizirovannyy Korpus" }
+		2 = { "45-y Volynskiy ordena Lenina Krasnoznamonnyy Mekhanizirovannyy Korpus" }
+		3 = { "7-y Mekhanizirovannyy Korpus" }
+		4 = { "5-y Mekhanizirovannyy Korpus imeni K. B. Kalinovskogo" }
+		5 = { "4-y Smolenskiy Krasnoznamonnyy Mekhanizirovannyy Korpus imeni Germanskogo Proletariata" } #Fictional from here using division numbers from the most likely districts.
+		6 = { "27-y Omskiy Krasnoznamennyy Mekhanizirovannyy Korpus imeni Italyanskogo Proletariata" }
+		7 = { "32-y Saratovskiy Mekhanizirovannyy Korpus" }
+		8 = { "2-y Belorusskiy Krasnoznamennyy Mekhanizirovannyy Korpus imeni M. V. Frunze" }
+		9 = { "36-y Zabaykalskiy Mekhanizirovannyy Korpus" }
+		10 = { "8-y Minskiy Krasnoznamennyy Mekhanizirovannyy Korpus imeni F. E. Dzerzhinskogo" }
+		11 = { "34-y Sredne-Volzhskiy Mekhanizirovannyy Korpus" }
+		12 = { "57-y Uralskiy Mekhanizirovannyy Korpus" }
+		13 = { "37-y Mekhanizirovannyy Korpus" }
+		14 = { "43-y Mekhanizirovannyy Korpus" }
+	}
+}
+# These have the numbers set this way so that when they are eventually changed to Motorized Division or Tank Division they should get the lowest numbers available.
+SOV_ARMC_01 = 
+{
+	name = "Tank Corps" # 1938 name change caused when tank platoons were restructured
+
+	for_countries = { SOV }
+
+	can_use = { 
+		OR = {
+			has_completed_focus = SOV_Tukhachevskys_Reformists
+			has_completed_focus = SOV_Voroshilovs_Old_Guard
+		}	
+		NOT = { has_completed_focus = SOV_Tactical_Deep_Battle }
+		NOT = { has_completed_focus = SOV_Defense_in_Depth }
+		NOT = { has_completed_focus = SOV_NKVD_Agency }
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" "light_armor" "medium_armor" "heavy_armor" "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_01 SOV_MECC_02 SOV_ARMC_02 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "20-y Tankovyy Korpus" }
+		2 = { "25-y Volynskiy ordena Lenina Krasnoznamonnyy Tankovyy Korpus" }
+		3 = { "10-y Tankovyy Korpus" }
+		4 = { "15-y Tankovyy Korpus imeni K. B. Kalinovskogo" }
+		5 = { "30-y Smolenskiy Krasnoznamonnyy Tankovyy Korpus imeni Germanskogo Proletariata" } #Fictional from here using division numbers from the most likely districts. Followed the pattern of incrementing unit numbers by 5.
+		6 = { "35-y Omskiy Krasnoznamennyy Tankovyy Korpus imeni Italyanskogo Proletariata" }
+		7 = { "40-y Saratovskiy Tankovyy Korpus" }
+		8 = { "45-y Belorusskiy Krasnoznamennyy Tankovyy Korpus imeni M. V. Frunze" }
+		9 = { "50-y Zabaykalskiy Tankovyy Korpus" }
+		10 = { "55-y Minskiy Krasnoznamennyy Tankovyy Korpus imeni F. E. Dzerzhinskogo" }
+		11 = { "60-y Sredne-Volzhskiy Tankovyy Korpus" }
+		12 = { "65-y Uralskiy Tankovyy Korpus" }
+		13 = { "70-y Tankovyy Korpus" }
+		14 = { "75-y Tankovyy Korpus" }
+	}
+}
+SOV_MECC_02 = 
+{
+	name = "Mechanized Corps" # The first mechanized formations during the 30s
+
+	for_countries = { SOV }
+
+	can_use = { 
+		NOT = { has_completed_focus = SOV_Tukhachevskys_Reformists }
+		NOT = { has_completed_focus = SOV_Voroshilovs_Old_Guard }
+		has_completed_focus = SOV_NKVD_Agency
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" "light_armor" "medium_armor" "heavy_armor" "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_01 SOV_ARMC_01 SOV_ARMC_02 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "11-y Mekhanizirovannyy Korpus" }
+		2 = { "45-y Volynskiy ordena Lenina Krasnoznamonnyy Mekhanizirovannyy Korpus" }
+		3 = { "7-y Mekhanizirovannyy Korpus" }
+		4 = { "5-y Mekhanizirovannyy Korpus imeni K. B. Kalinovskogo" }
+		5 = { "4-y Smolenskiy Krasnoznamonnyy Mekhanizirovannyy Korpus imeni Germanskogo Proletariata" } #Fictional from here using division numbers from the most likely districts.
+		6 = { "27-y Omskiy Krasnoznamennyy Mekhanizirovannyy Korpus imeni Italyanskogo Proletariata" }
+		7 = { "32-y Saratovskiy Mekhanizirovannyy Korpus" }
+		8 = { "2-y Belorusskiy Krasnoznamennyy Mekhanizirovannyy Korpus imeni M. V. Frunze" }
+		9 = { "36-y Zabaykalskiy Mekhanizirovannyy Korpus" }
+		10 = { "8-y Minskiy Krasnoznamennyy Mekhanizirovannyy Korpus imeni F. E. Dzerzhinskogo" }
+		11 = { "34-y Sredne-Volzhskiy Mekhanizirovannyy Korpus" }
+		12 = { "57-y Uralskiy Mekhanizirovannyy Korpus" }
+		13 = { "37-y Mekhanizirovannyy Korpus" }
+		14 = { "43-y Mekhanizirovannyy Korpus" }
+		997 = { "Otdelnaya Motomekhanizirovannaya Diviziya Osobogo Naznacheniya imeni F. E. Dzerzhinskogo Voysk NKVD" }
+	}
+}
+# These have the numbers set this way so that when they are eventually changed to Motorized Division or Tank Division they should get the lowest numbers available.
+SOV_ARMC_02 = 
+{
+	name = "Tank Corps" # 1938 name change caused when tank platoons were restructured
+
+	for_countries = { SOV }
+
+	can_use = { 
+		OR = {
+			has_completed_focus = SOV_Tukhachevskys_Reformists
+			has_completed_focus = SOV_Voroshilovs_Old_Guard
+		}	
+		NOT = { has_completed_focus = SOV_Tactical_Deep_Battle }
+		NOT = { has_completed_focus = SOV_Defense_in_Depth }
+		has_completed_focus = SOV_NKVD_Agency
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" "light_armor" "medium_armor" "heavy_armor" "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_01 SOV_ARMC_01 SOV_MECC_02 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "20-y Tankovyy Korpus" }
+		2 = { "25-y Volynskiy ordena Lenina Krasnoznamonnyy Tankovyy Korpus" }
+		3 = { "10-y Tankovyy Korpus" }
+		4 = { "15-y Tankovyy Korpus imeni K. B. Kalinovskogo" }
+		5 = { "30-y Smolenskiy Krasnoznamonnyy Tankovyy Korpus imeni Germanskogo Proletariata" } #Fictional from here using division numbers from the most likely districts. Followed the pattern of incrementing unit numbers by 5.
+		6 = { "35-y Omskiy Krasnoznamennyy Tankovyy Korpus imeni Italyanskogo Proletariata" }
+		7 = { "40-y Saratovskiy Tankovyy Korpus" }
+		8 = { "45-y Belorusskiy Krasnoznamennyy Tankovyy Korpus imeni M. V. Frunze" }
+		9 = { "50-y Zabaykalskiy Tankovyy Korpus" }
+		10 = { "55-y Minskiy Krasnoznamennyy Tankovyy Korpus imeni F. E. Dzerzhinskogo" }
+		11 = { "60-y Sredne-Volzhskiy Tankovyy Korpus" }
+		12 = { "65-y Uralskiy Tankovyy Korpus" }
+		13 = { "70-y Tankovyy Korpus" }
+		14 = { "75-y Tankovyy Korpus" }
+		997 = { "Otdelnaya Motostrelkovaya Diviziya Osobogo Naznacheniya imeni F. E. Dzerzhinskogo Voysk NKVD" }
+	}
+}
+
+SOV_ARM_01 = 
+{
+	name = "Tank Divisions" # 1940 armored formations become divisional with tank divisions and motorized divisions making up corps.
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date < 1940.12.31
+		OR = {
+			has_completed_focus = SOV_Tactical_Deep_Battle
+			has_completed_focus = SOV_Defense_in_Depth
+		}	
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 }
+
+	fallback_name = "%d-ya Tankovaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Tankovaya Diviziya" }
+		2 = { "%d-ya Tankovaya Diviziya" }
+		3 = { "%d-ya Tankovaya Diviziya" }
+		4 = { "%d-ya Tankovaya Diviziya" }
+		5 = { "%d-ya Tankovaya Diviziya" }
+		6 = { "%d-ya Tankovaya Diviziya" }
+		7 = { "%d-ya Tankovaya Diviziya" }
+		8 = { "%d-ya Tankovaya Diviziya" }
+		9 = { "%d-ya Tankovaya Diviziya" }
+		10 = { "%d-ya Tankovaya Diviziya" }
+		11 = { "%d-ya Tankovaya Diviziya" }
+		12 = { "%d-ya Tankovaya Diviziya" }
+		13 = { "%d-ya Tankovaya Diviziya" }
+		14 = { "%d-ya Tankovaya Diviziya" }
+		15 = { "%d-ya Tankovaya Diviziya" }
+		16 = { "%d-ya Tankovaya Diviziya" }
+		17 = { "%d-ya Tankovaya Diviziya" }
+		18 = { "%d-ya Tankovaya Diviziya" }
+		19 = { "%d-ya Tankovaya Diviziya" }
+		20 = { "%d-ya Tankovaya Diviziya" }
+		21 = { "%d-ya Tankovaya Diviziya" }
+		22 = { "%d-ya Tankovaya Diviziya" }
+		23 = { "%d-ya Tankovaya Diviziya" }
+		24 = { "%d-ya Tankovaya Diviziya" }
+		25 = { "%d-ya Tankovaya Diviziya" }
+		26 = { "%d-ya Tankovaya Diviziya" }
+		27 = { "%d-ya Tankovaya Diviziya" }
+		28 = { "%d-ya Tankovaya Diviziya" }
+		29 = { "%d-ya Tankovaya Diviziya" }
+		30 = { "%d-ya Tankovaya Diviziya" }
+		31 = { "%d-ya Tankovaya Diviziya" }
+		32 = { "%d-ya Tankovaya Diviziya" }
+		33 = { "%d-ya Tankovaya Diviziya" }
+		34 = { "%d-ya Tankovaya Diviziya" }
+		35 = { "%d-ya Tankovaya Diviziya" }
+		36 = { "%d-ya Tankovaya Diviziya" }
+		37 = { "%d-ya Tankovaya Diviziya" }
+		38 = { "%d-ya Tankovaya Diviziya" }
+		39 = { "%d-ya Tankovaya Diviziya" }
+		40 = { "%d-ya Tankovaya Diviziya" }
+		41 = { "%d-ya Tankovaya Diviziya" }
+		42 = { "%d-ya Tankovaya Diviziya" }
+		43 = { "%d-ya Tankovaya Diviziya" }
+		44 = { "%d-ya Tankovaya Diviziya" }
+		45 = { "%d-ya Tankovaya Diviziya" }
+		46 = { "%d-ya Tankovaya Diviziya" }
+		47 = { "%d-ya Tankovaya Diviziya" }
+		48 = { "%d-ya Tankovaya Diviziya" }
+		49 = { "%d-ya Tankovaya Diviziya" }
+		50 = { "%d-ya Tankovaya Diviziya" }
+		51 = { "%d-ya Tankovaya Diviziya" }
+		52 = { "%d-ya Tankovaya Diviziya" }
+		53 = { "%d-ya Tankovaya Diviziya" }
+		54 = { "%d-ya Tankovaya Diviziya" }
+		55 = { "%d-ya Tankovaya Diviziya" }
+		56 = { "%d-ya Tankovaya Diviziya" }
+		57 = { "%d-ya Tankovaya Diviziya" }
+		58 = { "%d-ya Tankovaya Diviziya" }
+		59 = { "%d-ya Tankovaya Diviziya" }
+		60 = { "%d-ya Tankovaya Diviziya" }
+		61 = { "%d-ya Tankovaya Diviziya" }
+		101 = { "%d-ya Tankovaya Diviziya" }
+		102 = { "%d-ya Tankovaya Diviziya" }
+		104 = { "%d-ya Tankovaya Diviziya" }
+		105 = { "%d-ya Tankovaya Diviziya" }
+		107 = { "%d-ya Tankovaya Diviziya" }
+		108 = { "%d-ya Tankovaya Diviziya" }
+		109 = { "%d-ya Tankovaya Diviziya" }
+		110 = { "%d-ya Tankovaya Diviziya" }
+		111 = { "%d-ya Tankovaya Diviziya" }
+		112 = { "%d-ya Tankovaya Diviziya" }
+	}
+}
+SOV_ARM_41 = 
+{
+	name = "Tank Divisions" # 1941.6.22
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1940.12.31
+		has_start_date < 1941.12.31
+		OR = {
+			has_completed_focus = SOV_Tactical_Deep_Battle
+			has_completed_focus = SOV_Defense_in_Depth
+		}	
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 }
+
+	fallback_name = "%d-ya Tankovaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Tankovaya Krasnoznamonnaya Diviziya" }
+		2 = { "%d-ya Tankovaya Diviziya" }
+		3 = { "%d-ya Tankovaya Krasnoznamonnaya Diviziya" }
+		4 = { "%d-ya Tankovaya Diviziya" }
+		5 = { "%d-ya Tankovaya Diviziya" }
+		6 = { "%d-ya Tankovaya Diviziya" }
+		7 = { "%d-ya Tankovaya Diviziya" }
+		8 = { "%d-ya Tankovaya Diviziya" }
+		9 = { "%d-ya Tankovaya Diviziya" }
+		10 = { "%d-ya Tankovaya Diviziya" }
+		11 = { "%d-ya Tankovaya Diviziya" }
+		12 = { "%d-ya Tankovaya Diviziya" }
+		13 = { "%d-ya Tankovaya Diviziya" }
+		14 = { "%d-ya Tankovaya Diviziya" }
+		15 = { "%d-ya Tankovaya Diviziya" }
+		16 = { "%d-ya Tankovaya Diviziya" }
+		17 = { "%d-ya Tankovaya Diviziya" }
+		18 = { "%d-ya Tankovaya Diviziya" }
+		19 = { "%d-ya Tankovaya Diviziya" }
+		20 = { "%d-ya Tankovaya Diviziya" }
+		21 = { "%d-ya Tankovaya Diviziya" }
+		22 = { "%d-ya Tankovaya Diviziya" }
+		23 = { "%d-ya Tankovaya Diviziya" }
+		24 = { "%d-ya Tankovaya Diviziya" }
+		25 = { "%d-ya Tankovaya Diviziya" }
+		26 = { "%d-ya Tankovaya Diviziya" }
+		27 = { "%d-ya Tankovaya Diviziya" }
+		28 = { "%d-ya Tankovaya Diviziya" }
+		29 = { "%d-ya Tankovaya Diviziya" }
+		30 = { "%d-ya Tankovaya Diviziya" }
+		31 = { "%d-ya Tankovaya Diviziya" }
+		32 = { "%d-ya Tankovaya Diviziya" }
+		33 = { "%d-ya Tankovaya Diviziya" }
+		34 = { "%d-ya Tankovaya Diviziya" }
+		35 = { "%d-ya Tankovaya Diviziya" }
+		36 = { "%d-ya Tankovaya Diviziya" }
+		37 = { "%d-ya Tankovaya Diviziya" }
+		38 = { "%d-ya Tankovaya Diviziya" }
+		39 = { "%d-ya Tankovaya Diviziya" }
+		40 = { "%d-ya Tankovaya Diviziya" }
+		41 = { "%d-ya Tankovaya Diviziya" }
+		42 = { "%d-ya Tankovaya Diviziya" }
+		43 = { "%d-ya Tankovaya Diviziya" }
+		44 = { "%d-ya Tankovaya Diviziya" }
+		45 = { "%d-ya Tankovaya Diviziya" }
+		46 = { "%d-ya Tankovaya Diviziya" }
+		47 = { "%d-ya Tankovaya Diviziya" }
+		48 = { "%d-ya Tankovaya Diviziya" }
+		49 = { "%d-ya Tankovaya Diviziya" }
+		50 = { "%d-ya Tankovaya Diviziya" }
+		51 = { "%d-ya Tankovaya Diviziya" }
+		52 = { "%d-ya Tankovaya Diviziya" }
+		53 = { "%d-ya Tankovaya Diviziya" }
+		54 = { "%d-ya Tankovaya Diviziya" }
+		55 = { "%d-ya Tankovaya Diviziya" }
+		56 = { "%d-ya Tankovaya Diviziya" }
+		57 = { "%d-ya Tankovaya Diviziya" }
+		58 = { "%d-ya Tankovaya Diviziya" }
+		59 = { "%d-ya Tankovaya Diviziya" }
+		60 = { "%d-ya Tankovaya Diviziya" }
+		61 = { "%d-ya Tankovaya Diviziya" }
+		101 = { "%d-ya Tankovaya Diviziya" }
+		102 = { "%d-ya Tankovaya Diviziya" }
+		105 = { "%d-ya Tankovaya Diviziya" }
+		107 = { "%d-ya Tankovaya Diviziya" }
+		108 = { "%d-ya Tankovaya Diviziya" }
+		109 = { "%d-ya Tankovaya Diviziya" }
+		110 = { "%d-ya Tankovaya Diviziya" }
+		111 = { "%d-ya Tankovaya Diviziya" }
+		112 = { "%d-ya Tankovaya Diviziya" }
+	}
+}
+SOV_ARM_42 = 
+{
+	name = "Tank Divisions" # 1942.11.22
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1941.12.31
+		has_start_date < 1945.12.31
+		OR = {
+			has_completed_focus = SOV_Tactical_Deep_Battle
+			has_completed_focus = SOV_Defense_in_Depth
+		}	
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 }
+
+	fallback_name = "%d-ya Tankovaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		61 = { "%d-ya Tankovaya Diviziya" }
+		111 = { "%d-ya Tankovaya Diviziya" }
+	}
+}
+SOV_ARM_46 = 
+{
+	name = "Tank Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1945.12.31
+		OR = {
+			has_completed_focus = SOV_Tactical_Deep_Battle
+			has_completed_focus = SOV_Defense_in_Depth
+		}	
+	} 
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 }
+
+	fallback_name = "%d-ya Tankovaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		61 = { "%d-ya Tankovaya Krasnoznamonnaya Diviziya" }
+		111 = { "%d-ya Tankovaya Krasnoznamonnaya Diviziya" }
+	}
+}
+
+SOV_MECC_42 = 
+{
+	name = "Mechanized Corps" # The wartime mechanized formations
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date < 1942.12.31
+		has_tech = APC_1941
+		NOT = { has_tech = APC_1950 }
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_43 SOV_MECC_44 SOV_MECC_45 SOV_MECC_46 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Mekhanizirovannyy Korpus" }
+		2 = { "%d-y Mekhanizirovannyy Korpus" }
+		3 = { "%d-y Mekhanizirovannyy Korpus" }
+		4 = { "%d-y Mekhanizirovannyy Korpus" }
+		5 = { "%d-y Mekhanizirovannyy Korpus" }
+		6 = { "%d-y Mekhanizirovannyy Korpus" }
+		7 = { "%d-y Mekhanizirovannyy Korpus" }
+		8 = { "%d-y Mekhanizirovannyy Korpus" }
+		9 = { "%d-y Mekhanizirovannyy Korpus" }
+		10 = { "%d-y Mekhanizirovannyy Korpus" }
+	}
+}
+SOV_MECC_43 = 
+{
+	name = "Mechanized Corps" # 1943.7.26
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1942.12.31
+		has_start_date < 1943.12.31
+		has_tech = APC_1941
+		NOT = { has_tech = APC_1950 }
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_42 SOV_MECC_44 SOV_MECC_45 SOV_MECC_46 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Mekhanizirovannyy Korpus" }
+		2 = { "%d-y Mekhanizirovannyy Korpus" }
+		3 = { "%d-y Mekhanizirovannyy Korpus" }
+		4 = { "%d-y Mekhanizirovannyy Korpus" }
+		5 = { "%d-y Mekhanizirovannyy Korpus" }
+		6 = { "%d-y Mekhanizirovannyy Korpus" }
+		7 = { "%d-y Mekhanizirovannyy Korpus" }
+		8 = { "%d-y Mekhanizirovannyy Aleksandriyskiy Korpus" }
+		9 = { "%d-y Mekhanizirovannyy Korpus" }
+		10 = { "%d-y Mekhanizirovannyy Korpus" }
+	}
+}
+SOV_MECC_44 = 
+{
+	name = "Mechanized Corps" # 1944.6.20
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1943.12.31
+		has_start_date < 1944.12.31
+		has_tech = APC_1941
+		NOT = { has_tech = APC_1950 }
+	} 
+# After December 1943 unit names indicated how many times they had been decorated with the Red Banner.
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_42 SOV_MECC_43 SOV_MECC_45 SOV_MECC_46 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Mekhanizirovannyy Krasnogradskiy Korpus" }
+		2 = { "%d-y Mekhanizirovannyy Korpus" }
+		3 = { "%d-y Mekhanizirovannyy Korpus" }
+		4 = { "%d-y Mekhanizirovannyy Korpus" }
+		5 = { "%d-y Mekhanizirovannyy Dnestrovskiy Korpus" }
+		6 = { "%d-y Mekhanizirovannyy Korpus" }
+		7 = { "%d-y Mekhanizirovannyy Novoukrainskiy Krasnoznamennyy Korpus" }
+		8 = { "%d-y Mekhanizirovannyy Aleksandriyskiy Korpus" }
+		9 = { "%d-y Mekhanizirovannyy Kiyevsko-Zhitomirskiy Krasnoznamennyy Korpus" }
+		10 = { "%d-y Mekhanizirovannyy Korpus" }
+	}
+}
+SOV_MECC_45 = 
+{
+	name = "Mechanized Corps" # 1945.1.1
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1944.12.31
+		has_start_date < 1945.12.31
+		has_tech = APC_1941
+		NOT = { has_tech = APC_1950 }
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_42 SOV_MECC_43 SOV_MECC_44 SOV_MECC_46 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Mekhanizirovannyy Krasnogradskiy Korpus" }
+		2 = { "%d-y Mekhanizirovannyy Korpus" }
+		3 = { "%d-y Mekhanizirovannyy Korpus" }
+		4 = { "%d-y Mekhanizirovannyy Korpus" }
+		5 = { "%d-y Mekhanizirovannyy Korpus" }
+		6 = { "%d-y Mekhanizirovannyy Korpus" }
+		7 = { "%d-y Mekhanizirovannyy Novoukrainskiy Krasnoznamennyy ordena Suvorova Korpus" }
+		8 = { "%d-y Mekhanizirovannyy Aleksandriyskiy Korpus" }
+		9 = { "%d-y Mekhanizirovannyy Kiyevsko-Zhitomirskiy Krasnoznamennyy ordena Suvorova Korpus" }
+		10 = { "%d-y Mekhanizirovannyy Korpus" }
+	}
+}
+SOV_MECC_46 = 
+{
+	name = "Mechanized Corps" # The wartime mechanized formations
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1945.12.31
+		has_tech = APC_1941
+		NOT = { has_tech = APC_1950 }
+	} 
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_MECC_42 SOV_MECC_43 SOV_MECC_44 SOV_MECC_45 }
+
+	fallback_name = "%d-y Mekhanizirovannyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Mekhanizirovannyy Krasnogradskiy Korpus" }
+		2 = { "%d-y Mekhanizirovannyy Korpus" }
+		3 = { "%d-y Mekhanizirovannyy Korpus" }
+		4 = { "%d-y Mekhanizirovannyy Korpus" }
+		5 = { "%d-y Mekhanizirovannyy Korpus" }
+		6 = { "%d-y Mekhanizirovannyy Korpus" }
+		7 = { "%d-y Mekhanizirovannyy Novoukrainsko-Khinganskiy ordena Lenina Krasnoznamennyy ordena Suvorova Korpus" }
+		8 = { "%d-y Mekhanizirovannyy Aleksandriyskiy Krasnoznamennyy ordena Kutuzova Korpus" }
+		9 = { "%d-y Mekhanizirovannyy Kiyevsko-Zhitomirskiy Krasnoznamennyy ordenov Suvorova i Kutuzova Korpus" }
+		10 = { "%d-y Mekhanizirovannyy Krasnoznamennyy Korpus" }
+	}
+}
+
+SOV_ARMC_42 = 
+{
+	name = "Tank Corps" # Wartime tank formations
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date < 1942.12.31
+		OR = {
+			has_completed_focus = SOV_Deep_Battle_Plan
+			has_completed_focus = SOV_Human_Wave_Tactics
+		}	
+	} 
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_ARMC_43 SOV_ARMC_44 SOV_ARMC_45 SOV_ARMC_46 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Tankovyy Korpus" }
+		2 = { "%d-y Tankovyy Korpus" }
+		3 = { "%d-y Tankovyy Korpus" }
+		4 = { "%d-y Tankovyy Korpus" }
+		5 = { "%d-y Tankovyy Korpus" }
+		6 = { "%d-y Tankovyy Korpus" }
+		7 = { "%d-y Tankovyy Korpus" }
+		8 = { "%d-y Tankovyy Korpus" }
+		9 = { "%d-y Tankovyy Korpus" }
+		10 = { "%d-y Tankovyy Korpus" }
+		11 = { "%d-y Tankovyy Korpus" }
+		12 = { "%d-y Tankovyy Korpus" }
+		13 = { "%d-y Tankovyy Korpus" }
+		14 = { "%d-y Tankovyy Korpus" }
+		15 = { "%d-y Tankovyy Korpus" }
+		16 = { "%d-y Tankovyy Korpus" }
+		17 = { "%d-y Tankovyy Korpus" }
+		18 = { "%d-y Tankovyy Korpus" }
+		19 = { "%d-y Tankovyy Korpus" }
+		20 = { "%d-y Tankovyy Korpus" }
+		21 = { "%d-y Tankovyy Korpus" }
+		22 = { "%d-y Tankovyy Korpus" }
+		23 = { "%d-y Tankovyy Korpus" }
+		24 = { "%d-y Tankovyy Korpus" }
+		25 = { "%d-y Tankovyy Korpus" }
+		26 = { "%d-y Tankovyy Korpus" }
+		27 = { "%d-y Tankovyy Korpus" }
+		28 = { "%d-y Tankovyy Korpus" }
+		29 = { "%d-y Tankovyy Korpus" }
+		30 = { "%d-y Tankovyy Korpus" } # Initial name Osobyy Uralskiy Dobrovolcheskiy Tankovyy Korpus imeni I. V. Stalina
+		31 = { "%d-y Tankovyy Korpus" }
+	}
+}
+SOV_ARMC_43 = 
+{
+	name = "Tank Corps" # 1943.7.26
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1942.12.31
+		has_start_date < 1943.12.31
+		OR = {
+			has_completed_focus = SOV_Deep_Battle_Plan
+			has_completed_focus = SOV_Human_Wave_Tactics
+		}	
+	} 
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_ARMC_42 SOV_ARMC_44 SOV_ARMC_45 SOV_ARMC_46 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Tankovyy Korpus" }
+		2 = { "%d-y Tankovyy Korpus" }
+		3 = { "%d-y Tankovyy Korpus" }
+		4 = { "%d-y Tankovyy Korpus" }
+		5 = { "%d-y Tankovyy Korpus" }
+		6 = { "%d-y Tankovyy Korpus" }
+		7 = { "%d-y Tankovyy Korpus" }
+		8 = { "%d-y Tankovyy Korpus" }
+		9 = { "%d-y Tankovyy Korpus" }
+		10 = { "%d-y Tankovyy Korpus" }
+		11 = { "%d-y Tankovyy Korpus" }
+		12 = { "%d-y Tankovyy Korpus" }
+		13 = { "%d-y Tankovyy Korpus" }
+		14 = { "%d-y Tankovyy Korpus" }
+		15 = { "%d-y Tankovyy Korpus" }
+		16 = { "%d-y Tankovyy Korpus" }
+		17 = { "%d-y Tankovyy Korpus" }
+		18 = { "%d-y Tankovyy Korpus" }
+		19 = { "%d-y Tankovyy Korpus" }
+		20 = { "%d-y Tankovyy Korpus" }
+		21 = { "%d-y Tankovyy Korpus" }
+		22 = { "%d-y Tankovyy Korpus" }
+		23 = { "%d-y Tankovyy Korpus" }
+		24 = { "%d-y Tankovyy Korpus" }
+		25 = { "%d-y Tankovyy Korpus" }
+		26 = { "%d-y Tankovyy Korpus" }
+		27 = { "%d-y Tankovyy Korpus" }
+		28 = { "%d-y Tankovyy Korpus" }
+		29 = { "%d-y Tankovyy Korpus" }
+		30 = { "%d-y Uralskiy Dobrovolcheskiy Tankovyy Korpus" }
+		31 = { "%d-y Tankovyy Korpus" }
+	}
+}
+
+SOV_ARMC_44 = 
+{
+	name = "Tank Corps" # 1944.6.20
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1943.12.31
+		has_start_date < 1944.12.31
+	} 
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_ARMC_42 SOV_ARMC_43 SOV_ARMC_45 SOV_ARMC_46 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Tankovyy Krasnoznamonnyy Korpus" }
+		2 = { "%d-y Tankovyy Korpus" }
+		3 = { "%d-y Tankovyy Umanskiy ordena Suvorova Korpus" }
+		4 = { "%d-y Tankovyy Korpus" }
+		5 = { "%d-y Tankovyy Korpus" }
+		6 = { "%d-y Tankovyy Korpus" }
+		7 = { "%d-y Tankovyy Korpus" }
+		8 = { "%d-y Tankovyy Korpus" }
+		9 = { "%d-y Tankovyy Korpus" }
+		10 = { "%d-y Tankovyy Dneprovskiy Korpus" }
+		11 = { "%d-y Tankovyy Korpus" }
+		12 = { "%d-y Tankovyy Korpus" }
+		13 = { "%d-y Tankovyy Korpus" }
+		14 = { "%d-y Tankovyy Korpus" }
+		15 = { "%d-y Tankovyy Korpus" }
+		16 = { "%d-y Tankovyy Umanskiy ordena Suvorova Korpus" }
+		17 = { "%d-y Tankovyy Korpus" }
+		18 = { "%d-y Tankovyy Znamenskiy Krasnoznamonnyy Korpus" }
+		19 = { "%d-y Tankovyy Perekopskiy Krasnoznamonnyy Korpus" }
+		20 = { "%d-y Tankovyy Zvenigorodskiy Korpus" }
+		21 = { "%d-y Tankovyy Korpus" }
+		22 = { "%d-y Tankovyy Korpus" }
+		23 = { "%d-y Tankovyy Korpus" }
+		24 = { "%d-y Tankovyy Korpus" }
+		25 = { "%d-y Tankovyy Korpus" }
+		26 = { "%d-y Tankovyy Korpus" }
+		27 = { "%d-y Tankovyy Korpus" }
+		28 = { "%d-y Tankovyy Korpus" }
+		29 = { "%d-y Tankovyy Znamenskiy Krasnoznamonnyy ordena Suvorova Korpus" }
+		30 = { "%d-y Tankovyy Korpus" }
+		31 = { "%d-y Tankovyy Korpus" }
+	}
+}
+
+SOV_ARMC_45 = 
+{
+	name = "Tank Corps" # 1945.1.1
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1944.12.31
+		has_start_date < 1945.12.31
+	} 
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_ARMC_42 SOV_ARMC_43 SOV_ARMC_44 SOV_ARMC_46 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Tankovyy Krasnoznamonnyy Korpus" }
+		2 = { "%d-y Tankovyy Korpus" }
+		3 = { "%d-y Tankovyy Korpus" }
+		4 = { "%d-y Tankovyy Korpus" }
+		5 = { "%d-y Tankovyy Dvinskiy Korpus" }
+		6 = { "%d-y Tankovyy Korpus" }
+		7 = { "%d-y Tankovyy Korpus" }
+		8 = { "%d-y Tankovyy Korpus" }
+		9 = { "%d-y Tankovyy Bobruyskiy Krasnoznamonnyy Korpus" }
+		10 = { "%d-y Tankovyy Dneprovskiy Korpus" }
+		11 = { "%d-y Tankovyy Krasnoznamonnyy Korpus" }
+		12 = { "%d-y Tankovyy Korpus" }
+		13 = { "%d-y Tankovyy Korpus" }
+		14 = { "%d-y Tankovyy Korpus" }
+		15 = { "%d-y Tankovyy Korpus" }
+		16 = { "%d-y Tankovyy Korpus" }
+		17 = { "%d-y Tankovyy Korpus" }
+		18 = { "%d-y Tankovyy Znamenskiy Krasnoznamonnyy Korpus" }
+		19 = { "%d-y Tankovyy Perekopskiy Krasnoznamonnyy Korpus" }
+		20 = { "%d-y Tankovyy Zvenigorodskiy Korpus" }
+		21 = { "%d-y Tankovyy Korpus" }
+		22 = { "%d-y Tankovyy Korpus" }
+		23 = { "%d-y Tankovyy Krasnoznamonnyy Korpus" }
+		24 = { "%d-y Tankovyy Korpus" }
+		25 = { "%d-y Tankovyy Korpus" }
+		26 = { "%d-y Tankovyy Korpus" }
+		27 = { "%d-y Tankovyy Korpus" }
+		28 = { "%d-y Tankovyy Korpus" }
+		29 = { "%d-y Tankovyy Znamenskiy ordena Lenina Krasnoznamonnyy ordena Suvorova Korpus" }
+		30 = { "%d-y Tankovyy Korpus" }
+		31 = { "%d-y Tankovyy Vislenskiy Korpus" }
+	}
+}
+
+SOV_ARMC_46 = 
+{
+	name = "Tank Corps" # The wartime mechanized formations
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1945.12.31
+	} 
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_ARMC_42 SOV_ARMC_43 SOV_ARMC_44 SOV_ARMC_45 }
+
+	fallback_name = "%d-y Tankovyy Korpus"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-y Tankovyy Insterburgskiy Krasnoznamonnyy Korpus" }
+		2 = { "%d-y Tankovyy Korpus" }
+		3 = { "%d-y Tankovyy Korpus" }
+		4 = { "%d-y Tankovyy Korpus" }
+		5 = { "%d-y Tankovyy Dvinskiy Korpus" }
+		6 = { "%d-y Tankovyy Korpus" }
+		7 = { "%d-y Tankovyy Korpus" }
+		8 = { "%d-y Tankovyy Korpus" }
+		9 = { "%d-y Tankovyy Bobruysko-Berlinskiy Krasnoznamonnyy ordena Suvorova Korpus" }
+		10 = { "%d-y Tankovyy Dneprovskiy ordena Suvorova Korpus" }
+		11 = { "%d-y Tankovyy Radomsko-Berlinskiy Krasnoznamonnyy ordenov Suvorova i Kutuzova Korpus" }
+		12 = { "%d-y Tankovyy Korpus" }
+		13 = { "%d-y Tankovyy Korpus" }
+		14 = { "%d-y Tankovyy Korpus" }
+		15 = { "%d-y Tankovyy Korpus" }
+		16 = { "%d-y Tankovyy Korpus" }
+		17 = { "%d-y Tankovyy Korpus" }
+		18 = { "%d-y Tankovyy Znamensko-Budapeshtskiy Krasnoznamonnyy ordenov Suvorova i Kutuzova Korpus" }
+		19 = { "%d-y Tankovyy Perekopskiy Krasnoznamonnyy Korpus" }
+		20 = { "%d-y Tankovyy Zvenigorodskiy Korpus" }
+		21 = { "%d-y Tankovyy Korpus" }
+		22 = { "%d-y Tankovyy Korpus" }
+		23 = { "%d-y Tankovyy Budapeshtskiy Krasnoznamonnyy ordena Suvorova Korpus" }
+		24 = { "%d-y Tankovyy Korpus" }
+		25 = { "%d-y Tankovyy Korpus" }
+		26 = { "%d-y Tankovyy Korpus" }
+		27 = { "%d-y Tankovyy Korpus" }
+		28 = { "%d-y Tankovyy Korpus" }
+		29 = { "%d-y Tankovyy Znamenskiy ordena Lenina Krasnoznamonnyy ordena Suvorova Korpus" }
+		30 = { "%d-y Tankovyy Korpus" }
+		31 = { "%d-y Tankovyy Vislenskiy Krasnoznamonnyy ordenov Suvorova i Kutuzova Korpus" }
+	}
+}

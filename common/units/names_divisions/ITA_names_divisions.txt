@@ -1,0 +1,1712 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template 
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because 
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming 
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not 
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names.
+#           Numbers must start from 1 and up.
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip 
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in 
+#                                      the current game version.
+ITA_DMT_01 = { 
+	name = "Territorial Military Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_start_date < 1935.01.01 
+		NOT = { has_completed_focus = ITA_Gladius }
+		has_civil_war = no
+	} 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "Divisione Militare Territoriale (%dª)" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "Divisione Militare Territoriale di Torino (%dª)" }
+		2 = { "Divisione Militare Territoriale di Novara (%dª)" }
+		3 = { "Divisione Militare Territoriale di Alessandria (%dª)" }
+		4 = { "Divisione Militare Territoriale di Cuneo (%dª)" }
+		5 = { "Divisione Militare Territoriale di Imperia (%dª)" }
+		6 = { "Divisione Militare Territoriale di Milano (%dª)" }
+		7 = { "Divisione Militare Territoriale di Brescia (%dª)" }
+		8 = { "Divisione Militare Territoriale di Piacenza (%dª)" }
+		9 = { "Divisione Militare Territoriale di Verona (%dª)" }
+		10 = { "Divisione Militare Territoriale di Padova (%dª)" }
+		11 = { "Divisione Militare Territoriale di Bolzano (%dª)" }
+		12 = { "Divisione Militare Territoriale di Trieste (%dª)" }
+		13 = { "Divisione Militare Territoriale di Udine (%dª)" }
+		14 = { "Divisione Militare Territoriale di Gorizia (%dª)" }
+		15 = { "Divisione Militare Territoriale di Abbazia (%dª)" }
+		16 = { "Divisione Militare Territoriale di Bologna (%dª)" }
+		17 = { "Divisione Militare Territoriale di Ravenna (%dª)" }
+		18 = { "Divisione Militare Territoriale di Ancona (%dª)" }
+		19 = { "Divisione Militare Territoriale di Firenze (%dª)" }
+		20 = { "Divisione Militare Territoriale di Livorno (%dª)" }
+		21 = { "Divisione Militare Territoriale di Roma (%dª)" }
+		22 = { "Divisione Militare Territoriale di Genova (%dª)" }  # This one is fictional
+		23 = { "Divisione Militare Territoriale di Bari (%dª)" }
+		24 = { "Divisione Militare Territoriale di Chieti (%dª)" }
+		25 = { "Divisione Militare Territoriale di Napoli (%dª)" }
+		26 = { "Divisione Militare Territoriale dell'Assietta (%dª)" }
+		27 = { "Divisione Militare Territoriale di Catanzaro (%dª)" }
+		28 = { "Divisione Militare Territoriale di Palermo (%dª)" }
+		29 = { "Divisione Militare Territoriale di Messina (%dª)" }
+		30 = { "Divisione Militare Territoriale di Cagliari (%dª)" }
+		31 = { "Divisione Militare Territoriale di Perugia (%dª)" } # Fictional from here
+		32 = { "Divisione Militare Territoriale di Salerno (%dª)" }
+	} 
+} 
+
+ITA_INF_02 = { 
+	name = "Infantry Brigades" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_start_date < 1939.01.01 
+		NOT = { has_completed_focus = ITA_Divisione_Binaria }
+		has_civil_war = no
+	} 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%s Brigata di Fanteria" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%s Brigata di Fanteria" }
+		2 = { "%s Brigata di Fanteria" }
+		3 = { "%s Brigata di Fanteria" }
+		4 = { "%s Brigata di Fanteria" }
+		5 = { "%s Brigata di Fanteria" }
+		6 = { "%s Brigata di Fanteria" }
+		7 = { "%s Brigata di Fanteria" }
+		8 = { "%s Brigata di Fanteria" }
+		9 = { "%s Brigata di Fanteria" }
+		10 = { "%s Brigata di Fanteria" }
+		11 = { "%s Brigata di Fanteria" }
+		12 = { "%s Brigata di Fanteria" }
+		13 = { "%s Brigata di Fanteria" }
+		14 = { "%s Brigata di Fanteria" }
+		15 = { "%s Brigata di Fanteria" }
+		16 = { "%s Brigata di Fanteria" }
+		17 = { "%s Brigata di Fanteria" }
+		18 = { "%s Brigata di Fanteria" }
+		19 = { "%s Brigata di Fanteria" }
+		20 = { "%s Brigata di Fanteria" }
+		21 = { "%s Brigata di Fanteria" }
+		22 = { "%s Brigata di Fanteria" }
+		23 = { "%s Brigata di Fanteria" }
+		24 = { "%s Brigata di Fanteria" }
+		25 = { "%s Brigata di Fanteria" }
+		26 = { "%s Brigata di Fanteria" }
+		27 = { "%s Brigata di Fanteria" }
+		28 = { "%s Brigata di Fanteria" }
+		29 = { "%s Brigata di Fanteria" }
+		30 = { "%s Brigata di Fanteria" }
+		31 = { "%s Brigata di Fanteria" }
+		32 = { "%s Brigata di Fanteria" }
+	} 
+} 
+
+ITA_INF_01 = { 
+	name = "Infantry Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_civil_war = no
+		OR = {
+			AND = { 
+				has_start_date > 1934.12.31
+				has_start_date < 1939.01.01
+			}
+			AND = { 
+				has_completed_focus = ITA_Gladius
+				NOT = { has_completed_focus = ITA_Divisione_Binaria }
+			}
+		}
+	} 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Fanteria" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		23 = { "%dª Divisione Fanteria \"Murge\"" } 								# Created in '26 as 'Murge', renamed in '39 as 'Ferrara'
+		3 = { "%dª Divisione Fanteria da Montagna \"Monferrato\"" } 								# Created in '34 as 'Monferrato', renamed in '39 as 'Ravenna'
+		4 = { "%dª Divisione Fanteria da Montagna \"Monviso\"" } 								# Created in '34 as 'Monviso', renamed in '39 as 'Livorno'
+		5 = { "%dª Divisione Fanteria \"Cosseria\"" } 								# Created in '34
+		6 = { "%dª Divisione Fanteria \"Cuneo\"" } 								# Created in '34
+		7 = { "%dª Divisione Fanteria \"Leonessa\"" } 						# Created in '34 as 'Leonessa', renamed in '38 as 'Lupi di Toscana'
+		11 = { "%dª Divisione Fanteria da Montagna \"Brennero\"" } 							# Created in '34
+		12 = { "%dª Divisione Fanteria \"Timavo\"" } 								# Created in '34 as 'Timavo', renamed in '39 as 'Sassari'
+		13 = { "%dª Divisione Fanteria \"Montenero\"" } 									# Created in '34 as 'Montenero', renamed in '39 as 'Re'
+		14 = { "%dª Divisione Fanteria \"Isonzo\"" } 								# Created in '34
+		15 = { "%dª Divisione Fanteria \"Carnaro\"" } 								# Created in '34 as 'Carnaro', renamed in '39 as 'Bergamo'
+		16 = { "%dª Divisione Fanteria \"Fossalta\"" } 								# Created in '34 as 'Fossalta', renamed in '39 as 'Pistoia'
+		18 = { "%dª Divisione Fanteria \"Metauro\"" } 								# Created in '34 as 'Metauro', renamed in '39 as 'Messina'
+		19 = { "%dª Divisione Fanteria da Montagna \"Gavinana\"" } 								# Created in '34 as 'Gavinana', renamed in '39 as 'Venezia'
+		20 = { "%dª Divisione Fanteria \"Curtatone e Montanara\"" } 								# Created in '34 as 'Curtatone e Montanara', renamed in '39 as 'Friuli'
+		21 = { "%dª Divisione Fanteria \"Granatieri di Sardegna\"" } 				# Created in '34
+		24 = { "%dª Divisione Fanteria \"Gran Sasso\"" } 							# Created in '34 as 'Gran Sasso', renamed in '39 as 'Pinerolo'
+		28 = { "%dª Divisione Fanteria \"Vespri\"" } 								# Created in '34 as 'Vespri', renamed in '39 as 'Aosta'
+		29 = { "%dª Divisione Fanteria \"Peloritana\"" } 							# Created in '34 as 'Peloritana', renamed in '39 as 'Piemonte'
+		31 = { "%dª Divisione Fanteria \"Caprera\"" } 							# Created in '34 as 'Caprera', renamed in '39 as 'Calabria'
+		58 = { "%dª Divisione Fanteria \"Legnano\"" } 								# Created in '34
+		26 = { "%dª Divisione Fanteria da Montagna \"Assietta\"" } 							# Created in '35
+		30 = { "%dª Divisione Fanteria \"Sabauda\"" } 								# Created in '35
+		65 = { "%dª Divisione Fanteria \"Granatieri di Savoia\"" } 				# Created in '36
+		1 = { "%dª Divisione Fanteria da Montagna \"Superga\"" } 								# Created in '39
+		2 = { "%dª Divisione Fanteria da Montagna \"Sforzesca\"" } 							# Created in '39
+		22 = { "%dª Divisione Fanteria \"Cacciatori delle Alpi\"" } 				# Created in '39
+		32 = { "%dª Divisione Fanteria da Montagna \"Marche\"" } 								# Created in '39
+		33 = { "%dª Divisione Fanteria da Montagna \"Acqui\"" } 								# Created in '39
+		36 = { "%dª Divisione Fanteria da Montagna \"Forlì\"" } 								# Created in '39
+		37 = { "%dª Divisione Fanteria da Montagna \"Modena\"" } 								# Created in '39
+		38 = { "%dª Divisione Fanteria da Montagna \"Puglie\"" } 								# Created in '39
+		41 = { "%dª Divisione Fanteria \"Firenze\"" } 								# Created in '39
+		44 = { "%dª Divisione Fanteria \"Cremona\"" } 								# Created in '39
+		47 = { "%dª Divisione Fanteria \"Bari\"" } 								# Created in '39
+		48 = { "%dª Divisione Fanteria \"Taro\"" } 								# Created in '39
+		49 = { "%dª Divisione Fanteria \"Parma\"" } 								# Created in '39
+		50 = { "%dª Divisione Fanteria \"Regina\"" } 								# Created in '39
+		51 = { "%dª Divisione Fanteria \"Siena\"" } 								# Created in '39
+		53 = { "%dª Divisione Fanteria da Montagna \"Arezzo\"" } 								# Created in '39
+		54 = { "%dª Divisione Fanteria da Montagna \"Napoli\"" } 								# Created in '39
+		56 = { "%dª Divisione Fanteria \"Casale\"" } 								# Created in '39
+		57 = { "%dª Divisione Fanteria \"Lombardia\"" } 							# Created in '39
+		59 = { "%dª Divisione Fanteria \"Cagliari\"" } 							# Created in '39
+		40 = { "%dª Divisione Fanteria \"Cacciatori d'Africa\"" } 					# Created in '40
+		66 = { "%dª Divisione Fanteria \"Ravenna\"" }							# Fictional divisions start here (14 renamed between 1936 and 1939)
+		67 = { "%dª Divisione Fanteria \"Livorno\"" } 
+		68 = { "%dª Divisione Fanteria \"Lupi di Toscana\"" } 
+		69 = { "%dª Divisione Fanteria \"Sassari\"" } 
+		70 = { "%dª Divisione Fanteria \"Re\"" } 
+		71 = { "%dª Divisione Fanteria \"Bergamo\"" } 
+		72 = { "%dª Divisione Fanteria \"Pistoia\"" } 
+		73 = { "%dª Divisione Fanteria \"Messina\"" } 
+		74 = { "%dª Divisione Fanteria \"Venezia\"" } 
+		75 = { "%dª Divisione Fanteria \"Friuli\"" } 
+		76 = { "%dª Divisione Fanteria \"Pinerolo\"" } 
+		77 = { "%dª Divisione Fanteria \"Aosta\"" } 
+		78 = { "%dª Divisione Fanteria \"Piemonte\"" } 
+		79 = { "%dª Divisione Fanteria \"Calabria\"" } 
+		34 = { "%dª Divisione Fanteria" }										# Filler divisions (34, 35, 39, 42, 43, 45, 46) start here
+		35 = { "%dª Divisione Fanteria" } 
+		39 = { "%dª Divisione Fanteria" } 
+		42 = { "%dª Divisione Fanteria" } 
+		43 = { "%dª Divisione Fanteria" } 
+		45 = { "%dª Divisione Fanteria" } 
+		46 = { "%dª Divisione Fanteria" } 
+		81 = { "%dª Divisione Fanteria" } 									#More fictional divisions to get us to the motorized divisions
+		82 = { "%dª Divisione Fanteria" }
+		83 = { "%dª Divisione Fanteria" }
+		84 = { "%dª Divisione Fanteria" }
+		85 = { "%dª Divisione Fanteria" }
+		86 = { "%dª Divisione Fanteria" }
+		87 = { "%dª Divisione Fanteria" }
+		88 = { "%dª Divisione Fanteria" }
+		89 = { "%dª Divisione Fanteria" }
+		90 = { "%dª Divisione Fanteria" }
+		91 = { "%dª Divisione Fanteria" }
+		92 = { "%dª Divisione Fanteria" }
+		93 = { "%dª Divisione Fanteria" }
+		94 = { "%dª Divisione Fanteria" }
+		95 = { "%dª Divisione Fanteria" }
+		96 = { "%dª Divisione Fanteria" }
+		97 = { "%dª Divisione Fanteria" }
+		98 = { "%dª Divisione Fanteria" }
+		99 = { "%dª Divisione Fanteria" }
+		100 = { "%dª Divisione Fanteria" }
+		8 = { "%dª Divisione Fanteria \"Po\"" }								#added divisions from other types here
+		9 = { "%dª Divisione Fanteria \"Pasubio\"" }
+		10 = { "%dª Divisione Fanteria \"Piave\"" }
+		17 = { "%dª Divisione Fanteria \"Rubicone\"" }
+		25 = { "%dª Divisione Fanteria \"Volturno\"" }
+		27 = { "%dª Divisione Fanteria \"Sila\"" }
+		52 = { "%dª Divisione Fanteria \"Torino\"" }
+		55 = { "%dª Divisione Fanteria \"Savona\"" }
+		60 = { "%dª Divisione Fanteria \"Sabratha\"" }
+		61 = { "%dª Divisione Fanteria \"Sirte\"" }
+		62 = { "%dª Divisione Fanteria \"Marmarica\"" }
+		63 = { "%dª Divisione Fanteria \"Cirene\"" }
+		64 = { "%dª Divisione Fanteria \"Catanzaro\"" }
+		80 = { "%dª Divisione Fanteria \"La Spezia\"" }
+		101 = { "%dª Divisione Fanteria \"Trieste\"" } 							# Created in '39
+		102 = { "%dª Divisione Fanteria \"Trento\"" } 								# Created in '39
+		103 = { "%dª Divisione Fanteria \"Piacenza\"" } 							# Created in '42
+		104 = { "%dª Divisione Fanteria \"Mantova\"" } 							# Created in '42
+		105 = { "%dª Divisione Fanteria \"Rovigo\"" } 								# Created in '42
+		106 = { "%dª Divisione Fanteria \"Pavia\"" }							# Fictional divisions start here (3 renamed between 1936 and 1939)
+		107 = { "%dª Divisione Fanteria \"Bologna\"" } 
+		108 = { "%dª Divisione Fanteria \"Brescia\"" } 
+		109 = { "%dª Divisione Fanteria" } 										# Filler divisions (109 - 115) start here
+		110 = { "%dª Divisione Fanteria" } 
+		111 = { "%dª Divisione Fanteria" } 
+		112 = { "%dª Divisione Fanteria" } 
+		113 = { "%dª Divisione Fanteria" } 
+		114 = { "%dª Divisione Fanteria" } 
+		115 = { "%dª Divisione Fanteria" } 
+		116 = { "%dª Divisione Fanteria" }										# Filler divisions (116 - 130) start here
+		117 = { "%dª Divisione Fanteria" } 
+		118 = { "%dª Divisione Fanteria" } 
+		119 = { "%dª Divisione Fanteria" } 
+		120 = { "%dª Divisione Fanteria" } 
+		121 = { "%dª Divisione Fanteria" } 
+		122 = { "%dª Divisione Fanteria" } 
+		123 = { "%dª Divisione Fanteria" } 
+		124 = { "%dª Divisione Fanteria" } 
+		125 = { "%dª Divisione Fanteria" } 
+		126 = { "%dª Divisione Fanteria" } 
+		127 = { "%dª Divisione Fanteria" } 
+		128 = { "%dª Divisione Fanteria" } 
+		129 = { "%dª Divisione Fanteria" } 
+		130 = { "%dª Divisione Fanteria" } 
+		160 = { "%dª Divisione Fanteria" } 
+		161 = { "%dª Divisione Fanteria" } 
+		162 = { "%dª Divisione Fanteria" } 
+		163 = { "%dª Divisione Fanteria" } 
+		164 = { "%dª Divisione Fanteria" } 
+		165 = { "%dª Divisione Fanteria" } 
+		166 = { "%dª Divisione Fanteria" } 
+		167 = { "%dª Divisione Fanteria" } 
+		168 = { "%dª Divisione Fanteria" } 
+		169 = { "%dª Divisione Fanteria" } 
+		170 = { "%dª Divisione Fanteria" } 
+		171 = { "%dª Divisione Fanteria" } 
+		172 = { "%dª Divisione Fanteria" } 
+		173 = { "%dª Divisione Fanteria" } 
+		174 = { "%dª Divisione Fanteria" } 
+		175 = { "%dª Divisione Fanteria" } 
+		176 = { "%dª Divisione Fanteria" } 
+		177 = { "%dª Divisione Fanteria" } 
+		178 = { "%dª Divisione Fanteria" } 
+		179 = { "%dª Divisione Fanteria" } 
+		180 = { "%dª Divisione Fanteria" } 
+		239 = { "%dª Divisione Fanteria" }
+	} 
+} 
+
+ITA_INF_39 = { 
+	name = "Infantry Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_start_date > 1938.12.31
+		has_start_date < 1939.12.31
+		has_civil_war = no
+	} 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Fanteria" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		23 = { "%dª Divisione Fanteria da Montagna \"Ferrara\"" } 								# Created in '26 as 'Murge', renamed in '39 as 'Ferrara'
+		3 = { "%dª Divisione Fanteria da Montagna \"Ravenna\"" } 								# Created in '34 as 'Monferrato', renamed in '39 as 'Ravenna'
+		4 = { "%dª Divisione Fanteria da Montagna \"Livorno\"" } 								# Created in '34 as 'Monviso', renamed in '39 as 'Livorno'
+		5 = { "%dª Divisione Fanteria \"Cosseria\"" } 								# Created in '34
+		6 = { "%dª Divisione Fanteria \"Cuneo\"" } 								# Created in '34
+		7 = { "%dª Divisione Fanteria \"Lupi di Toscana\"" } 						# Created in '34 as 'Leonessa', renamed in '38 as 'Lupi di Toscana'
+		11 = { "%dª Divisione Fanteria da Montagna \"Brennero\"" } 							# Created in '34
+		12 = { "%dª Divisione Fanteria \"Sassari\"" } 								# Created in '34 as 'Timavo', renamed in '39 as 'Sassari'
+		13 = { "%dª Divisione Fanteria \"Re\"" } 									# Created in '34 as 'Montenero', renamed in '39 as 'Re'
+		14 = { "%dª Divisione Fanteria \"Isonzo\"" } 								# Created in '34
+		15 = { "%dª Divisione Fanteria \"Bergamo\"" } 								# Created in '34 as 'Carnaro', renamed in '39 as 'Bergamo'
+		16 = { "%dª Divisione Fanteria \"Pistoia\"" } 								# Created in '34 as 'Fossalta', renamed in '39 as 'Pistoia'
+		18 = { "%dª Divisione Fanteria \"Messina\"" } 								# Created in '34 as 'Metauro', renamed in '39 as 'Messina'
+		19 = { "%dª Divisione Fanteria da Montagna \"Venezia\"" } 								# Created in '34 as 'Gavinana', renamed in '39 as 'Venezia'
+		20 = { "%dª Divisione Fanteria \"Friuli\"" } 								# Created in '34 as 'Curtatone e Montanara', renamed in '39 as 'Friuli'
+		21 = { "%dª Divisione Fanteria \"Granatieri di Sardegna\"" } 				# Created in '34
+		24 = { "%dª Divisione Fanteria \"Pinerolo\"" } 							# Created in '34 as 'Gran Sasso', renamed in '39 as 'Pinerolo'
+		28 = { "%dª Divisione Fanteria \"Aosta\"" } 								# Created in '34 as 'Vespri', renamed in '39 as 'Aosta'
+		29 = { "%dª Divisione Fanteria \"Piemonte\"" } 							# Created in '34 as 'Peloritana', renamed in '39 as 'Piemonte'
+		31 = { "%dª Divisione Fanteria \"Caprera\"" } 							# Created in '34 as 'Caprera', renamed in '39 as 'Calabria'
+		58 = { "%dª Divisione Fanteria \"Legnano\"" } 								# Created in '34
+		26 = { "%dª Divisione Fanteria da Montagna \"Assietta\"" } 							# Created in '35
+		30 = { "%dª Divisione Fanteria \"Sabauda\"" } 								# Created in '35
+		65 = { "%dª Divisione Fanteria \"Granatieri di Savoia\"" } 				# Created in '36
+		1 = { "%dª Divisione Fanteria da Montagna \"Superga\"" } 								# Created in '39
+		2 = { "%dª Divisione Fanteria da Montagna \"Sforzesca\"" } 							# Created in '39
+		22 = { "%dª Divisione Fanteria \"Cacciatori delle Alpi\"" } 				# Created in '39
+		32 = { "%dª Divisione Fanteria da Montagna \"Marche\"" } 								# Created in '39
+		33 = { "%dª Divisione Fanteria da Montagna \"Acqui\"" } 								# Created in '39
+		36 = { "%dª Divisione Fanteria da Montagna \"Forlì\"" } 								# Created in '39
+		37 = { "%dª Divisione Fanteria da Montagna \"Modena\"" } 								# Created in '39
+		38 = { "%dª Divisione Fanteria da Montagna \"Puglie\"" } 								# Created in '39
+		41 = { "%dª Divisione Fanteria \"Firenze\"" } 								# Created in '39
+		44 = { "%dª Divisione Fanteria \"Cremona\"" } 								# Created in '39
+		47 = { "%dª Divisione Fanteria \"Bari\"" } 								# Created in '39
+		48 = { "%dª Divisione Fanteria \"Taro\"" } 								# Created in '39
+		49 = { "%dª Divisione Fanteria \"Parma\"" } 								# Created in '39
+		50 = { "%dª Divisione Fanteria \"Regina\"" } 								# Created in '39
+		51 = { "%dª Divisione Fanteria \"Siena\"" } 								# Created in '39
+		53 = { "%dª Divisione Fanteria da Montagna \"Arezzo\"" } 								# Created in '39
+		54 = { "%dª Divisione Fanteria da Montagna \"Napoli\"" } 								# Created in '39
+		56 = { "%dª Divisione Fanteria \"Casale\"" } 								# Created in '39
+		57 = { "%dª Divisione Fanteria \"Lombardia\"" } 							# Created in '39
+		59 = { "%dª Divisione Fanteria \"Cagliari\"" } 							# Created in '39
+		40 = { "%dª Divisione Fanteria \"Cacciatori d'Africa\"" } 					# Created in '40
+		66 = { "%dª Divisione Fanteria \"Monferrato\"" }							# Fictional divisions start here (14 renamed between 1936 and 1939)
+		67 = { "%dª Divisione Fanteria \"Monviso\"" } 
+		68 = { "%dª Divisione Fanteria \"Leonessa\"" } 
+		69 = { "%dª Divisione Fanteria \"Timavo\"" } 
+		70 = { "%dª Divisione Fanteria \"Montenero\"" } 
+		71 = { "%dª Divisione Fanteria \"Carnaro\"" } 
+		72 = { "%dª Divisione Fanteria \"Fossalta\"" } 
+		73 = { "%dª Divisione Fanteria \"Metauro\"" } 
+		74 = { "%dª Divisione Fanteria \"Gavinana\"" } 
+		75 = { "%dª Divisione Fanteria \"Curtatone e Montanara\"" } 
+		76 = { "%dª Divisione Fanteria \"Gran Sasso\"" } 
+		77 = { "%dª Divisione Fanteria \"Vespri\"" } 
+		78 = { "%dª Divisione Fanteria \"Peloritana\"" } 
+		79 = { "%dª Divisione Fanteria \"Calabria\"" } 
+		34 = { "%dª Divisione Fanteria" }										# Filler divisions (34, 35, 39, 42, 43, 45, 46) start here
+		35 = { "%dª Divisione Fanteria" } 
+		39 = { "%dª Divisione Fanteria" } 
+		42 = { "%dª Divisione Fanteria" } 
+		43 = { "%dª Divisione Fanteria" } 
+		45 = { "%dª Divisione Fanteria" } 
+		46 = { "%dª Divisione Fanteria" } 
+		81 = { "%dª Divisione Fanteria" } 									#More fictional divisions to get us to the motorized divisions
+		82 = { "%dª Divisione Fanteria" }
+		83 = { "%dª Divisione Fanteria" }
+		84 = { "%dª Divisione Fanteria" }
+		85 = { "%dª Divisione Fanteria" }
+		86 = { "%dª Divisione Fanteria" }
+		87 = { "%dª Divisione Fanteria" }
+		88 = { "%dª Divisione Fanteria" }
+		89 = { "%dª Divisione Fanteria" }
+		90 = { "%dª Divisione Fanteria" }
+		91 = { "%dª Divisione Fanteria" }
+		92 = { "%dª Divisione Fanteria" }
+		93 = { "%dª Divisione Fanteria" }
+		94 = { "%dª Divisione Fanteria" }
+		95 = { "%dª Divisione Fanteria" }
+		96 = { "%dª Divisione Fanteria" }
+		97 = { "%dª Divisione Fanteria" }
+		98 = { "%dª Divisione Fanteria" }
+		99 = { "%dª Divisione Fanteria" }
+		100 = { "%dª Divisione Fanteria" }
+		8 = { "%dª Divisione Fanteria \"Po\"" }								#added divisions from other types here
+		9 = { "%dª Divisione Fanteria \"Pasubio\"" }
+		10 = { "%dª Divisione Fanteria \"Piave\"" }
+		17 = { "%dª Divisione Fanteria \"Rubicone\"" }
+		25 = { "%dª Divisione Fanteria \"Volturno\"" }
+		27 = { "%dª Divisione Fanteria \"Sila\"" }
+		52 = { "%dª Divisione Fanteria \"Torino\"" }
+		55 = { "%dª Divisione Fanteria \"Savona\"" }
+		60 = { "%dª Divisione Fanteria \"Sabratha\"" }
+		61 = { "%dª Divisione Fanteria \"Sirte\"" }
+		62 = { "%dª Divisione Fanteria \"Marmarica\"" }
+		63 = { "%dª Divisione Fanteria \"Cirene\"" }
+		64 = { "%dª Divisione Fanteria \"Catanzaro\"" }
+		80 = { "%dª Divisione Fanteria \"La Spezia\"" }
+		101 = { "%dª Divisione Fanteria \"Trieste\"" }
+		102 = { "%dª Divisione Fanteria \"Trento\"" }
+		103 = { "%dª Divisione Fanteria \"Piacenza\"" }
+		104 = { "%dª Divisione Fanteria \"Mantova\"" }
+		105 = { "%dª Divisione Fanteria \"Rovigo\"" }
+		106 = { "%dª Divisione Fanteria \"Rubicone\"" }
+		107 = { "%dª Divisione Fanteria \"Volturno\"" } 
+		108 = { "%dª Divisione Fanteria \"Sila\"" } 
+		109 = { "%dª Divisione Fanteria" }
+		110 = { "%dª Divisione Fanteria" } 
+		111 = { "%dª Divisione Fanteria" } 
+		112 = { "%dª Divisione Fanteria" } 
+		113 = { "%dª Divisione Fanteria" } 
+		114 = { "%dª Divisione Fanteria" } 
+		115 = { "%dª Divisione Fanteria" } 
+		116 = { "%dª Divisione Fanteria" }										# Filler divisions (116 - 130) start here
+		117 = { "%dª Divisione Fanteria" } 
+		118 = { "%dª Divisione Fanteria" } 
+		119 = { "%dª Divisione Fanteria" } 
+		120 = { "%dª Divisione Fanteria" } 
+		121 = { "%dª Divisione Fanteria" } 
+		122 = { "%dª Divisione Fanteria" } 
+		123 = { "%dª Divisione Fanteria" } 
+		124 = { "%dª Divisione Fanteria" } 
+		125 = { "%dª Divisione Fanteria" } 
+		126 = { "%dª Divisione Fanteria" } 
+		127 = { "%dª Divisione Fanteria" } 
+		128 = { "%dª Divisione Fanteria" } 
+		129 = { "%dª Divisione Fanteria" } 
+		130 = { "%dª Divisione Fanteria" } 
+		160 = { "%dª Divisione Fanteria" } 
+		161 = { "%dª Divisione Fanteria" } 
+		162 = { "%dª Divisione Fanteria" } 
+		163 = { "%dª Divisione Fanteria" } 
+		164 = { "%dª Divisione Fanteria" } 
+		165 = { "%dª Divisione Fanteria" } 
+		166 = { "%dª Divisione Fanteria" } 
+		167 = { "%dª Divisione Fanteria" } 
+		168 = { "%dª Divisione Fanteria" } 
+		169 = { "%dª Divisione Fanteria" } 
+		170 = { "%dª Divisione Fanteria" } 
+		171 = { "%dª Divisione Fanteria" } 
+		172 = { "%dª Divisione Fanteria" } 
+		173 = { "%dª Divisione Fanteria" } 
+		174 = { "%dª Divisione Fanteria" } 
+		175 = { "%dª Divisione Fanteria" } 
+		176 = { "%dª Divisione Fanteria" } 
+		177 = { "%dª Divisione Fanteria" } 
+		178 = { "%dª Divisione Fanteria" } 
+		179 = { "%dª Divisione Fanteria" } 
+		180 = { "%dª Divisione Fanteria" } 
+		239 = { "%dª Divisione Fanteria" }
+	} 
+} 
+
+ITA_INF_40 = { 
+	name = "Infantry Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = {
+		OR = {
+			has_start_date > 1939.12.31
+			has_completed_focus = ITA_Divisione_Binaria
+		}	
+		has_civil_war = no
+	} 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Fanteria" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		23 = { "%dª Divisione Fanteria da Montagna \"Ferrara\"" } 								# Created in '26 as 'Murge', renamed in '39 as 'Ferrara'
+		3 = { "%dª Divisione Fanteria da Montagna \"Ravenna\"" } 								# Created in '34 as 'Monferrato', renamed in '39 as 'Ravenna'
+		4 = { "%dª Divisione Fanteria da Montagna \"Livorno\"" } 								# Created in '34 as 'Monviso', renamed in '39 as 'Livorno'
+		5 = { "%dª Divisione Fanteria \"Cosseria\"" } 								# Created in '34
+		6 = { "%dª Divisione Fanteria \"Cuneo\"" } 								# Created in '34
+		7 = { "%dª Divisione Fanteria \"Lupi di Toscana\"" } 						# Created in '34 as 'Leonessa', renamed in '38 as 'Lupi di Toscana'
+		11 = { "%dª Divisione Fanteria da Montagna \"Brennero\"" } 							# Created in '34
+		12 = { "%dª Divisione Fanteria \"Sassari\"" } 								# Created in '34 as 'Timavo', renamed in '39 as 'Sassari'
+		13 = { "%dª Divisione Fanteria \"Re\"" } 									# Created in '34 as 'Montenero', renamed in '39 as 'Re'
+		14 = { "%dª Divisione Fanteria \"Isonzo\"" } 								# Created in '34
+		15 = { "%dª Divisione Fanteria \"Bergamo\"" } 								# Created in '34 as 'Carnaro', renamed in '39 as 'Bergamo'
+		16 = { "%dª Divisione Fanteria \"Pistoia\"" } 								# Created in '34 as 'Fossalta', renamed in '39 as 'Pistoia'
+		18 = { "%dª Divisione Fanteria \"Messina\"" } 								# Created in '34 as 'Metauro', renamed in '39 as 'Messina'
+		19 = { "%dª Divisione Fanteria da Montagna \"Venezia\"" } 								# Created in '34 as 'Gavinana', renamed in '39 as 'Venezia'
+		20 = { "%dª Divisione Fanteria \"Friuli\"" } 								# Created in '34 as 'Curtatone e Montanara', renamed in '39 as 'Friuli'
+		21 = { "%dª Divisione Fanteria \"Granatieri di Sardegna\"" } 				# Created in '34
+		24 = { "%dª Divisione Fanteria \"Pinerolo\"" } 							# Created in '34 as 'Gran Sasso', renamed in '39 as 'Pinerolo'
+		28 = { "%dª Divisione Fanteria \"Aosta\"" } 								# Created in '34 as 'Vespri', renamed in '39 as 'Aosta'
+		29 = { "%dª Divisione Fanteria \"Piemonte\"" } 							# Created in '34 as 'Peloritana', renamed in '39 as 'Piemonte'
+		31 = { "%dª Divisione Fanteria \"Calabria\"" } 							# Created in '34 as 'Caprera', renamed in '39 as 'Calabria'
+		58 = { "%dª Divisione Fanteria \"Legnano\"" } 								# Created in '34
+		26 = { "%dª Divisione Fanteria da Montagna \"Assietta\"" } 							# Created in '35
+		30 = { "%dª Divisione Fanteria \"Sabauda\"" } 								# Created in '35
+		65 = { "%dª Divisione Fanteria \"Granatieri di Savoia\"" } 				# Created in '36
+		1 = { "%dª Divisione Fanteria da Montagna \"Superga\"" } 								# Created in '39
+		2 = { "%dª Divisione Fanteria da Montagna \"Sforzesca\"" } 							# Created in '39
+		22 = { "%dª Divisione Fanteria \"Cacciatori delle Alpi\"" } 				# Created in '39
+		32 = { "%dª Divisione Fanteria da Montagna \"Marche\"" } 								# Created in '39
+		33 = { "%dª Divisione Fanteria da Montagna \"Acqui\"" } 								# Created in '39
+		36 = { "%dª Divisione Fanteria da Montagna \"Forlì\"" } 								# Created in '39
+		37 = { "%dª Divisione Fanteria da Montagna \"Modena\"" } 								# Created in '39
+		38 = { "%dª Divisione Fanteria da Montagna \"Puglie\"" } 								# Created in '39
+		41 = { "%dª Divisione Fanteria \"Firenze\"" } 								# Created in '39
+		44 = { "%dª Divisione Fanteria \"Cremona\"" } 								# Created in '39
+		47 = { "%dª Divisione Fanteria \"Bari\"" } 								# Created in '39
+		48 = { "%dª Divisione Fanteria \"Taro\"" } 								# Created in '39
+		49 = { "%dª Divisione Fanteria \"Parma\"" } 								# Created in '39
+		50 = { "%dª Divisione Fanteria \"Regina\"" } 								# Created in '39
+		51 = { "%dª Divisione Fanteria \"Siena\"" } 								# Created in '39
+		53 = { "%dª Divisione Fanteria da Montagna \"Arezzo\"" } 								# Created in '39
+		54 = { "%dª Divisione Fanteria da Montagna \"Napoli\"" } 								# Created in '39
+		56 = { "%dª Divisione Fanteria \"Casale\"" } 								# Created in '39
+		57 = { "%dª Divisione Fanteria \"Lombardia\"" } 							# Created in '39
+		59 = { "%dª Divisione Fanteria \"Cagliari\"" } 							# Created in '39
+		40 = { "%dª Divisione Fanteria \"Cacciatori d'Africa\"" } 					# Created in '40
+		66 = { "%dª Divisione Fanteria \"Monferrato\"" }							# Fictional divisions start here (14 renamed between 1936 and 1939)
+		67 = { "%dª Divisione Fanteria \"Monviso\"" } 
+		68 = { "%dª Divisione Fanteria \"Leonessa\"" } 
+		69 = { "%dª Divisione Fanteria \"Timavo\"" } 
+		70 = { "%dª Divisione Fanteria \"Montenero\"" } 
+		71 = { "%dª Divisione Fanteria \"Carnaro\"" } 
+		72 = { "%dª Divisione Fanteria \"Fossalta\"" } 
+		73 = { "%dª Divisione Fanteria \"Metauro\"" } 
+		74 = { "%dª Divisione Fanteria \"Gavinana\"" } 
+		75 = { "%dª Divisione Fanteria \"Curtatone e Montanara\"" } 
+		76 = { "%dª Divisione Fanteria \"Gran Sasso\"" } 
+		77 = { "%dª Divisione Fanteria \"Vespri\"" } 
+		78 = { "%dª Divisione Fanteria \"Peloritana\"" } 
+		79 = { "%dª Divisione Fanteria \"Caprera\"" } 
+		34 = { "%dª Divisione Fanteria" }										# Filler divisions (34, 35, 39, 42, 43, 45, 46) start here
+		35 = { "%dª Divisione Fanteria" } 
+		39 = { "%dª Divisione Fanteria" } 
+		42 = { "%dª Divisione Fanteria" } 
+		43 = { "%dª Divisione Fanteria" } 
+		45 = { "%dª Divisione Fanteria" } 
+		46 = { "%dª Divisione Fanteria" } 
+		81 = { "%dª Divisione Fanteria" } 									#More fictional divisions to get us to the motorized divisions
+		82 = { "%dª Divisione Fanteria" }
+		83 = { "%dª Divisione Fanteria" }
+		84 = { "%dª Divisione Fanteria" }
+		85 = { "%dª Divisione Fanteria" }
+		86 = { "%dª Divisione Fanteria" }
+		87 = { "%dª Divisione Fanteria" }
+		88 = { "%dª Divisione Fanteria" }
+		89 = { "%dª Divisione Fanteria" }
+		90 = { "%dª Divisione Fanteria" }
+		91 = { "%dª Divisione Fanteria" }
+		92 = { "%dª Divisione Fanteria" }
+		93 = { "%dª Divisione Fanteria" }
+		94 = { "%dª Divisione Fanteria" }
+		95 = { "%dª Divisione Fanteria" }
+		96 = { "%dª Divisione Fanteria" }
+		97 = { "%dª Divisione Fanteria" }
+		98 = { "%dª Divisione Fanteria" }
+		99 = { "%dª Divisione Fanteria" }
+		100 = { "%dª Divisione Fanteria" }
+		8 = { "%dª Divisione Fanteria \"Po\"" }								#added divisions from other types here
+		9 = { "%dª Divisione Fanteria \"Pasubio\"" }
+		10 = { "%dª Divisione Fanteria \"Piave\"" }
+		17 = { "%dª Divisione Fanteria \"Rubicone\"" }
+		25 = { "%dª Divisione Fanteria \"Volturno\"" }
+		27 = { "%dª Divisione Fanteria \"Sila\"" }
+		52 = { "%dª Divisione Fanteria \"Torino\"" }
+		55 = { "%dª Divisione Fanteria \"Savona\"" }
+		60 = { "%dª Divisione Fanteria \"Sabratha\"" }
+		61 = { "%dª Divisione Fanteria \"Sirte\"" }
+		62 = { "%dª Divisione Fanteria \"Marmarica\"" }
+		63 = { "%dª Divisione Fanteria \"Cirene\"" }
+		64 = { "%dª Divisione Fanteria \"Catanzaro\"" }
+		80 = { "%dª Divisione Fanteria \"La Spezia\"" }
+		101 = { "%dª Divisione Fanteria \"Trieste\"" }
+		102 = { "%dª Divisione Fanteria \"Trento\"" }
+		103 = { "%dª Divisione Fanteria \"Piacenza\"" }
+		104 = { "%dª Divisione Fanteria \"Mantova\"" }
+		105 = { "%dª Divisione Fanteria \"Rovigo\"" }
+		106 = { "%dª Divisione Fanteria \"Rubicone\"" }
+		107 = { "%dª Divisione Fanteria \"Volturno\"" } 
+		108 = { "%dª Divisione Fanteria \"Sila\"" } 
+		109 = { "%dª Divisione Fanteria" }
+		110 = { "%dª Divisione Fanteria" } 
+		111 = { "%dª Divisione Fanteria" } 
+		112 = { "%dª Divisione Fanteria" } 
+		113 = { "%dª Divisione Fanteria" } 
+		114 = { "%dª Divisione Fanteria" } 
+		115 = { "%dª Divisione Fanteria" } 
+		116 = { "%dª Divisione Fanteria" }										# Filler divisions (116 - 130) start here
+		117 = { "%dª Divisione Fanteria" } 
+		118 = { "%dª Divisione Fanteria" } 
+		119 = { "%dª Divisione Fanteria" } 
+		120 = { "%dª Divisione Fanteria" } 
+		121 = { "%dª Divisione Fanteria" } 
+		122 = { "%dª Divisione Fanteria" } 
+		123 = { "%dª Divisione Fanteria" } 
+		124 = { "%dª Divisione Fanteria" } 
+		125 = { "%dª Divisione Fanteria" } 
+		126 = { "%dª Divisione Fanteria" } 
+		127 = { "%dª Divisione Fanteria" } 
+		128 = { "%dª Divisione Fanteria" } 
+		129 = { "%dª Divisione Fanteria" } 
+		130 = { "%dª Divisione Fanteria" } 
+		160 = { "%dª Divisione Fanteria" } 
+		161 = { "%dª Divisione Fanteria" } 
+		162 = { "%dª Divisione Fanteria" } 
+		163 = { "%dª Divisione Fanteria" } 
+		164 = { "%dª Divisione Fanteria" } 
+		165 = { "%dª Divisione Fanteria" } 
+		166 = { "%dª Divisione Fanteria" } 
+		167 = { "%dª Divisione Fanteria" } 
+		168 = { "%dª Divisione Fanteria" } 
+		169 = { "%dª Divisione Fanteria" } 
+		170 = { "%dª Divisione Fanteria" } 
+		171 = { "%dª Divisione Fanteria" } 
+		172 = { "%dª Divisione Fanteria" } 
+		173 = { "%dª Divisione Fanteria" } 
+		174 = { "%dª Divisione Fanteria" } 
+		175 = { "%dª Divisione Fanteria" } 
+		176 = { "%dª Divisione Fanteria" } 
+		177 = { "%dª Divisione Fanteria" } 
+		178 = { "%dª Divisione Fanteria" } 
+		179 = { "%dª Divisione Fanteria" } 
+		180 = { "%dª Divisione Fanteria" } 
+		239 = { "%dª Divisione Fanteria" }
+	} 
+} 
+
+ITA_CCNN_01 = { 
+	name = "MVSN Infantry Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = no
+		has_country_flag = ITA_MVSN_deployed
+
+	}
+
+	division_types = { "SS_infantry" "SS_cavalry" "SS_motorized" "SS_mechanized" "militia" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ITA_INF_02 } 
+
+	fallback_name = "%dª Divisione CC.NN." 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%dª Divisione CC.NN. \"23 Marzo\"" } 									# Created in '35
+		2 = { "%dª Divisione CC.NN. \"28 Ottobre\"" } 								# Created in '35
+		3 = { "%dª Divisione CC.NN. \"21 Aprile\"" } 									# Created in '35
+		4 = { "%dª Divisione CC.NN. \"3 Gennaio\"" } 									# Created in '35
+		5 = { "%dª Divisione CC.NN. \"1 Febbraio\"" } 								# Created in '35
+		6 = { "%dª Divisione CC.NN. \"Tevere\"" } 									# Created in '35
+		7 = { "%dª Divisione CC.NN. \"Cirene\"" } 									# Created in '36
+		8 = { "%dª Divisione CC.NN. \"Dio lo Vuole\"" }								# Fictional divisions start here (3 volunteers divisions in SCW, 3 battalions in Greece / Balkan, 1 planned CC.NN. armored division)
+		9 = { "%dª Divisione CC.NN. \"Fiamme Nere\"" } 
+		10 = { "%dª Divisione CC.NN. \"Penne Nere\"" } 
+		11 = { "%dª Divisione CC.NN. \"Galbiati\"" } 
+		12 = { "%dª Divisione CC.NN. \"Diamanti\"" } 
+		13 = { "%dª Divisione CC.NN. \"Biscaccianti\"" } 
+		14 = { "%dª Divisione CC.NN. \"M\"" } 
+	} 
+} 
+
+ITA_COL_01 = { 
+	name = "Colonial Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "garrison" "militia" "infantry" "light_infantry" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ITA_COL_01 } 
+
+	fallback_name = "%dª Divisione Coloniale" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		101 = { "%dª Divisione Coloniale Somala" } 								# Created in '36
+		102 = { "%dª Divisione Coloniale Somala" } 								# Created in '36
+		3 = { "%dª Divisione Coloniale" } 											# Created in '39
+		4 = { "%dª Divisione Coloniale" } 											# Created in '39
+		21 = { "%dª Divisione Coloniale" } 											# Created in '40
+		22 = { "%dª Divisione Coloniale" } 											# Created in '40
+		23 = { "%dª Divisione Coloniale" } 											# Created in '40
+		24 = { "%dª Divisione Coloniale" } 											# Created in '40
+		25 = { "%dª Divisione Coloniale" } 											# Created in '40
+		26 = { "%dª Divisione Coloniale" } 											# Created in '40
+		5 = { "%dª Divisione Coloniale" }											# Filler divisions (5 - 20, 27 - 30) start here
+		6 = { "%dª Divisione Coloniale" } 
+		7 = { "%dª Divisione Coloniale" } 
+		8 = { "%dª Divisione Coloniale" } 
+		9 = { "%dª Divisione Coloniale" } 
+		10 = { "%dª Divisione Coloniale" } 
+		11 = { "%dª Divisione Coloniale" } 
+		12 = { "%dª Divisione Coloniale" } 
+		13 = { "%dª Divisione Coloniale" } 
+		14 = { "%dª Divisione Coloniale" } 
+		15 = { "%dª Divisione Coloniale" } 
+		16 = { "%dª Divisione Coloniale" } 
+		17 = { "%dª Divisione Coloniale" } 
+		18 = { "%dª Divisione Coloniale" } 
+		19 = { "%dª Divisione Coloniale" } 
+		20 = { "%dª Divisione Coloniale" } 
+		27 = { "%dª Divisione Coloniale" } 
+		28 = { "%dª Divisione Coloniale" } 
+		29 = { "%dª Divisione Coloniale" } 
+		30 = { "%dª Divisione Coloniale" } 
+		1 = { "%dª Divisione Libica" } 									# The two divisions created by focus are here.
+		2 = { "%dª Divisione Libica" }
+	} 
+} 
+
+ITA_CAV_01 = { 
+	name = "Cavalry Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "cavalry" "armored_car_battalion" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ITA_CAV_02 } 
+
+	fallback_name = "%dª Divisione Celere" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%dª Divisione Celere \"Eugenio di Savoia\"" } 							# Created in '34
+		2 = { "%dª Divisione Celere \"Emanuele Filiberto Testa di Ferro\"" } 			# Created in '34
+		3 = { "%dª Divisione Celere \"Principe Amedeo Duca d'Aosta\"" } 				# Created in '34
+	} 
+} 
+
+ITA_CAV_02 = { 
+	name = "Cavalry Regiments" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "cavalry" "armored_car_battalion" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ITA_CAV_01 } 
+
+	fallback_name = "%d° Reggimento di Cavalleria" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%d° Reggimento \"Nizza Cavalleria\"" } 
+		2 = { "%d° Reggimento \"Piemonte Cavalleria\"" } 
+		3 = { "%d° Reggimento \"Savoia Cavalleria\"" } 
+		4 = { "%d° Reggimento \"Genova Cavalleria\"" } 
+		5 = { "%d° Reggimento \"Lancieri di Novara\"" } 
+		6 = { "%d° Reggimento \"Lancieri di Aosta\"" } 
+		8 = { "%d° Reggimento \"Lancieri di Montebello\"" } 
+		13 = { "%d° Reggimento \"Cavalleggeri di Monferrato\"" } 
+		15 = { "%d° Reggimento \"Cavalleggeri di Lodi\"" } 
+		19 = { "%d° Reggimento \"Cavalleggeri Guide\"" } 
+		7 = { "%d° Reggimento di Cavalleria" } 										# Filler divisions (7, 9 - 12, 14, 16- 18, 20) start here
+		9 = { "%d° Reggimento di Cavalleria" } 
+		10 = { "%d° Reggimento di Cavalleria" } 
+		11 = { "%d° Reggimento di Cavalleria" } 
+		12 = { "%d° Reggimento di Cavalleria" } 
+		14 = { "%d° Reggimento di Cavalleria" } 
+		16 = { "%d° Reggimento di Cavalleria" } 
+		17 = { "%d° Reggimento di Cavalleria" } 
+		18 = { "%d° Reggimento di Cavalleria" } 
+		20 = { "%d° Reggimento di Cavalleria" } 
+	} 
+} 
+
+ITA_MOT_01 = { 
+	name = "Motorized Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_start_date < 1939.01.01 
+		NOT = { has_completed_focus = ITA_Divisione_Binaria }
+		has_civil_war = no
+	} 
+
+	division_types = { "motorized" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Motorizzata" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		9 = { "%dª Divisione Fanteria Autotrasportabile \"Pasubio\"" } 						# Created in '34
+		10 = { "%dª Divisione Fanteria Autotrasportabile \"Piave\"" } 							# Created in '34
+		17 = { "%dª Divisione Fanteria Autotrasportabile \"Rubicone\"" } 							# Created in '34 as 'Rubicone', renamed in '39 as 'Pavia'
+		25 = { "%dª Divisione Fanteria Autotrasportabile \"Volturno\"" } 						# Created in '34 as 'Volturno', renamed in '39 as 'Bologna'
+		27 = { "%dª Divisione Fanteria Autotrasportabile \"Sila\"" } 						# Created in '35 as 'Sila', renamed in '39 as 'Brescia'
+		8 = { "%dª Divisione Motorizzata \"Po\"" } 									# Created in '36
+		60 = { "%dª Divisione Fanteria Autotrasportabile \"Sabratha\"" } 						# Created in '37
+		61 = { "%dª Divisione Fanteria Autotrasportabile \"Sirte\"" } 							# Created in '37
+		62 = { "%dª Divisione Fanteria Autotrasportabile \"Marmarica\"" } 						# Created in '37
+		63 = { "%dª Divisione Fanteria Autotrasportabile \"Cirene\"" } 						# Created in '37
+		55 = { "%dª Divisione Fanteria Autotrasportabile \"Savona\"" } 						# Created in '39
+		102 = { "%dª Divisione Motorizzata \"Trento\"" } 								# Created in '39
+		101 = { "%dª Divisione Motorizzata \"Trieste\"" } 							# Created in '39
+		52 = { "%dª Divisione Fanteria Autotrasportabile \"Torino\"" } 						# Created in '40
+		64 = { "%dª Divisione Fanteria Autotrasportabile \"Catanzaro\"" } 						# Created in '40
+		103 = { "%dª Divisione Fanteria Autotrasportabile \"Piacenza\"" } 							# Created in '42
+		104 = { "%dª Divisione Fanteria Autotrasportabile \"Mantova\"" } 							# Created in '42
+		105 = { "%dª Divisione Fanteria Autotrasportabile \"Rovigo\"" } 								# Created in '42
+		106 = { "%dª Divisione Motorizzata \"Pavia\"" }							# Fictional divisions start here (3 renamed between 1936 and 1939)
+		107 = { "%dª Divisione Motorizzata \"Bologna\"" } 
+		108 = { "%dª Divisione Motorizzata \"Brescia\"" } 
+		109 = { "%dª Divisione Motorizzata" } 										# Filler divisions (109 - 115) start here
+		110 = { "%dª Divisione Motorizzata" } 
+		111 = { "%dª Divisione Motorizzata" } 
+		112 = { "%dª Divisione Motorizzata" } 
+		113 = { "%dª Divisione Motorizzata" } 
+		114 = { "%dª Divisione Motorizzata" } 
+		115 = { "%dª Divisione Motorizzata" } 
+		23 = { "%dª Divisione Fanteria Autotrasportabile \"Murge\"" } 								# Created in '26 as 'Murge', renamed in '39 as 'Ferrara'
+		3 = { "%dª Divisione Fanteria Autotrasportabile \"Monferrato\"" } 								# Created in '34 as 'Monferrato', renamed in '39 as 'Ravenna'
+		4 = { "%dª Divisione Fanteria Autotrasportabile \"Monviso\"" } 								# Created in '34 as 'Monviso', renamed in '39 as 'Livorno'
+		5 = { "%dª Divisione Fanteria Autotrasportabile \"Cosseria\"" } 								# Created in '34
+		6 = { "%dª Divisione Fanteria Autotrasportabile \"Cuneo\"" } 								# Created in '34
+		7 = { "%dª Divisione Fanteria Autotrasportabile \"Leonessa\"" } 						# Created in '34 as 'Leonessa', renamed in '38 as 'Lupi di Toscana'
+		11 = { "%dª Divisione Fanteria Autotrasportabile \"Brennero\"" } 							# Created in '34
+		12 = { "%dª Divisione Fanteria Autotrasportabile \"Timavo\"" } 								# Created in '34 as 'Timavo', renamed in '39 as 'Sassari'
+		13 = { "%dª Divisione Fanteria Autotrasportabile \"Montenero\"" } 									# Created in '34 as 'Montenero', renamed in '39 as 'Re'
+		14 = { "%dª Divisione Fanteria Autotrasportabile \"Isonzo\"" } 								# Created in '34
+		15 = { "%dª Divisione Fanteria Autotrasportabile \"Carnaro\"" } 								# Created in '34 as 'Carnaro', renamed in '39 as 'Bergamo'
+		16 = { "%dª Divisione Fanteria Autotrasportabile \"Fossalta\"" } 								# Created in '34 as 'Fossalta', renamed in '39 as 'Pistoia'
+		18 = { "%dª Divisione Fanteria Autotrasportabile \"Metauro\"" } 								# Created in '34 as 'Metauro', renamed in '39 as 'Messina'
+		19 = { "%dª Divisione Fanteria Autotrasportabile \"Gavinana\"" } 								# Created in '34 as 'Gavinana', renamed in '39 as 'Venezia'
+		20 = { "%dª Divisione Fanteria Autotrasportabile \"Curtatone e Montanara\"" } 								# Created in '34 as 'Curtatone e Montanara', renamed in '39 as 'Friuli'
+		21 = { "%dª Divisione Fanteria Autotrasportabile \"Granatieri di Sardegna\"" } 				# Created in '34
+		24 = { "%dª Divisione Fanteria Autotrasportabile \"Gran Sasso\"" } 							# Created in '34 as 'Gran Sasso', renamed in '39 as 'Pinerolo'
+		28 = { "%dª Divisione Fanteria Autotrasportabile \"Vespri\"" } 								# Created in '34 as 'Vespri', renamed in '39 as 'Aosta'
+		29 = { "%dª Divisione Fanteria Autotrasportabile \"Peloritana\"" } 							# Created in '34 as 'Peloritana', renamed in '39 as 'Piemonte'
+		31 = { "%dª Divisione Fanteria Autotrasportabile \"Caprera\"" } 							# Created in '34 as 'Caprera', renamed in '39 as 'Calabria'
+		58 = { "%dª Divisione Fanteria Autotrasportabile \"Legnano\"" } 								# Created in '34
+		26 = { "%dª Divisione Fanteria Autotrasportabile \"Assietta\"" } 							# Created in '35
+		30 = { "%dª Divisione Fanteria Autotrasportabile \"Sabauda\"" } 								# Created in '35
+		65 = { "%dª Divisione Fanteria Autotrasportabile \"Granatieri di Savoia\"" } 				# Created in '36
+		1 = { "%dª Divisione Fanteria Autotrasportabile \"Superga\"" } 								# Created in '39
+		2 = { "%dª Divisione Fanteria Autotrasportabile \"Sforzesca\"" } 							# Created in '39
+		22 = { "%dª Divisione Fanteria Autotrasportabile \"Cacciatori delle Alpi\"" } 				# Created in '39
+		32 = { "%dª Divisione Fanteria Autotrasportabile \"Marche\"" } 								# Created in '39
+		33 = { "%dª Divisione Fanteria Autotrasportabile \"Acqui\"" } 								# Created in '39
+		36 = { "%dª Divisione Fanteria Autotrasportabile \"Forlì\"" } 								# Created in '39
+		37 = { "%dª Divisione Fanteria Autotrasportabile \"Modena\"" } 								# Created in '39
+		38 = { "%dª Divisione Fanteria Autotrasportabile \"Puglie\"" } 								# Created in '39
+		41 = { "%dª Divisione Fanteria Autotrasportabile \"Firenze\"" } 								# Created in '39
+		44 = { "%dª Divisione Fanteria Autotrasportabile \"Cremona\"" } 								# Created in '39
+		47 = { "%dª Divisione Fanteria Autotrasportabile \"Bari\"" } 								# Created in '39
+		48 = { "%dª Divisione Fanteria Autotrasportabile \"Taro\"" } 								# Created in '39
+		49 = { "%dª Divisione Fanteria Autotrasportabile \"Parma\"" } 								# Created in '39
+		50 = { "%dª Divisione Fanteria Autotrasportabile \"Regina\"" } 								# Created in '39
+		51 = { "%dª Divisione Fanteria Autotrasportabile \"Siena\"" } 								# Created in '39
+		53 = { "%dª Divisione Fanteria Autotrasportabile \"Arezzo\"" } 								# Created in '39
+		54 = { "%dª Divisione Fanteria Autotrasportabile \"Napoli\"" } 								# Created in '39
+		56 = { "%dª Divisione Fanteria Autotrasportabile \"Casale\"" } 								# Created in '39
+		57 = { "%dª Divisione Fanteria Autotrasportabile \"Lombardia\"" } 							# Created in '39
+		59 = { "%dª Divisione Fanteria Autotrasportabile \"Cagliari\"" } 							# Created in '39
+		40 = { "%dª Divisione Fanteria Autotrasportabile \"Cacciatori d'Africa\"" } 					# Created in '40
+		66 = { "%dª Divisione Fanteria Autotrasportabile \"Ravenna\"" }							# Fictional divisions start here (14 renamed between 1936 and 1939)
+		67 = { "%dª Divisione Fanteria Autotrasportabile \"Livorno\"" } 
+		68 = { "%dª Divisione Fanteria Autotrasportabile \"Lupi di Toscana\"" } 
+		69 = { "%dª Divisione Fanteria Autotrasportabile \"Sassari\"" } 
+		70 = { "%dª Divisione Fanteria Autotrasportabile \"Re\"" } 
+		71 = { "%dª Divisione Fanteria Autotrasportabile \"Bergamo\"" } 
+		72 = { "%dª Divisione Fanteria Autotrasportabile \"Pistoia\"" } 
+		73 = { "%dª Divisione Fanteria Autotrasportabile \"Messina\"" } 
+		74 = { "%dª Divisione Fanteria Autotrasportabile \"Venezia\"" } 
+		75 = { "%dª Divisione Fanteria Autotrasportabile \"Friuli\"" } 
+		76 = { "%dª Divisione Fanteria Autotrasportabile \"Pinerolo\"" } 
+		77 = { "%dª Divisione Fanteria Autotrasportabile \"Aosta\"" } 
+		78 = { "%dª Divisione Fanteria Autotrasportabile \"Piemonte\"" } 
+		79 = { "%dª Divisione Fanteria Autotrasportabile \"Calabria\"" } 
+		34 = { "%dª Divisione Fanteria Autotrasportabile" }										# Filler divisions (34, 35, 39, 42, 43, 45, 46) start here
+		35 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		39 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		42 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		43 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		45 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		46 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		81 = { "%dª Divisione Fanteria Autotrasportabile" } 									#More fictional divisions to get us to the motorized divisions
+		82 = { "%dª Divisione Fanteria Autotrasportabile" }
+		83 = { "%dª Divisione Fanteria Autotrasportabile" }
+		84 = { "%dª Divisione Fanteria Autotrasportabile" }
+		85 = { "%dª Divisione Fanteria Autotrasportabile" }
+		86 = { "%dª Divisione Fanteria Autotrasportabile" }
+		87 = { "%dª Divisione Fanteria Autotrasportabile" }
+		88 = { "%dª Divisione Fanteria Autotrasportabile" }
+		89 = { "%dª Divisione Fanteria Autotrasportabile" }
+		90 = { "%dª Divisione Fanteria Autotrasportabile" }
+		91 = { "%dª Divisione Fanteria Autotrasportabile" }
+		92 = { "%dª Divisione Fanteria Autotrasportabile" }
+		93 = { "%dª Divisione Fanteria Autotrasportabile" }
+		94 = { "%dª Divisione Fanteria Autotrasportabile" }
+		95 = { "%dª Divisione Fanteria Autotrasportabile" }
+		96 = { "%dª Divisione Fanteria Autotrasportabile" }
+		97 = { "%dª Divisione Fanteria Autotrasportabile" }
+		98 = { "%dª Divisione Fanteria Autotrasportabile" }
+		99 = { "%dª Divisione Fanteria Autotrasportabile" }
+		100 = { "%dª Divisione Motorizzata" }
+		80 = { "%dª Divisione Fanteria Autotrasportabile \"La Spezia\"" }								#added divisions from other types here
+		116 = { "%dª Divisione Motorizzata" }										# Filler divisions (116 - 130) start here
+		117 = { "%dª Divisione Motorizzata" } 
+		118 = { "%dª Divisione Motorizzata" } 
+		119 = { "%dª Divisione Motorizzata" } 
+		120 = { "%dª Divisione Motorizzata" } 
+		121 = { "%dª Divisione Motorizzata" } 
+		122 = { "%dª Divisione Motorizzata" } 
+		123 = { "%dª Divisione Motorizzata" } 
+		124 = { "%dª Divisione Motorizzata" } 
+		125 = { "%dª Divisione Motorizzata" } 
+		126 = { "%dª Divisione Motorizzata" } 
+		127 = { "%dª Divisione Motorizzata" } 
+		128 = { "%dª Divisione Motorizzata" } 
+		129 = { "%dª Divisione Motorizzata" } 
+		130 = { "%dª Divisione Motorizzata" } 
+		160 = { "%dª Divisione Motorizzata" } 
+		161 = { "%dª Divisione Motorizzata" } 
+		162 = { "%dª Divisione Motorizzata" } 
+		163 = { "%dª Divisione Motorizzata" } 
+		164 = { "%dª Divisione Motorizzata" } 
+		165 = { "%dª Divisione Motorizzata" } 
+		166 = { "%dª Divisione Motorizzata" } 
+		167 = { "%dª Divisione Motorizzata" } 
+		168 = { "%dª Divisione Motorizzata" } 
+		169 = { "%dª Divisione Motorizzata" } 
+		170 = { "%dª Divisione Motorizzata" } 
+		171 = { "%dª Divisione Motorizzata" } 
+		172 = { "%dª Divisione Motorizzata" } 
+		173 = { "%dª Divisione Motorizzata" } 
+		174 = { "%dª Divisione Motorizzata" } 
+		175 = { "%dª Divisione Motorizzata" } 
+		176 = { "%dª Divisione Motorizzata" } 
+		177 = { "%dª Divisione Motorizzata" } 
+		178 = { "%dª Divisione Motorizzata" } 
+		179 = { "%dª Divisione Motorizzata" } 
+		180 = { "%dª Divisione Motorizzata" } 
+		239 = { "%dª Divisione Motorizzata" }
+		} 
+} 
+
+ITA_MOT_39 = { 
+	name = "Motorized Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		OR = {
+			has_start_date > 1938.12.31
+			has_completed_focus = ITA_Divisione_Binaria
+		}	
+		has_civil_war = no
+	} 
+
+	division_types = { "motorized" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Motorizzata" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		9 = { "%dª Divisione Fanteria Autotrasportabile \"Pasubio\"" } 						# Created in '34
+		10 = { "%dª Divisione Fanteria Autotrasportabile \"Piave\"" } 							# Created in '34
+		17 = { "%dª Divisione Fanteria Autotrasportabile \"Pavia\"" } 							# Created in '34 as 'Rubicone', renamed in '39
+		25 = { "%dª Divisione Fanteria Autotrasportabile \"Bologna\"" } 						# Created in '34 as 'Volturno', renamed in '39
+		27 = { "%dª Divisione Fanteria Autotrasportabile \"Brescia\"" } 						# Created in '35 as 'Sila', renamed in '39
+		8 = { "%dª Divisione Motorizzata \"Po\"" } 									# Created in '36
+		60 = { "%dª Divisione Fanteria Autotrasportabile \"Sabratha\"" } 						# Created in '37
+		61 = { "%dª Divisione Fanteria Autotrasportabile \"Sirte\"" } 							# Created in '37
+		62 = { "%dª Divisione Fanteria Autotrasportabile \"Marmarica\"" } 						# Created in '37
+		63 = { "%dª Divisione Fanteria Autotrasportabile \"Cirene\"" } 						# Created in '37
+		55 = { "%dª Divisione Fanteria Autotrasportabile \"Savona\"" } 						# Created in '39
+		102 = { "%dª Divisione Motorizzata \"Trento\"" } 								# Created in '39
+		101 = { "%dª Divisione Motorizzata \"Trieste\"" } 							# Created in '39
+		52 = { "%dª Divisione Fanteria Autotrasportabile \"Torino\"" } 						# Created in '40
+		64 = { "%dª Divisione Fanteria Autotrasportabile \"Catanzaro\"" } 						# Created in '40
+		103 = { "%dª Divisione Fanteria Autotrasportabile \"Piacenza\"" } 							# Created in '42
+		104 = { "%dª Divisione Fanteria Autotrasportabile \"Mantova\"" } 							# Created in '42
+		105 = { "%dª Divisione Fanteria Autotrasportabile \"Rovigo\"" } 								# Created in '42
+		106 = { "%dª Divisione Motorizzata \"Rubicone\"" }							# Fictional divisions start here (3 renamed between 1936 and 1939)
+		107 = { "%dª Divisione Motorizzata \"Volturno\"" } 
+		108 = { "%dª Divisione Motorizzata \"Sila\"" } 
+		109 = { "%dª Divisione Motorizzata" } 										# Filler divisions (109 - 115) start here
+		110 = { "%dª Divisione Motorizzata" } 
+		111 = { "%dª Divisione Motorizzata" } 
+		112 = { "%dª Divisione Motorizzata" } 
+		113 = { "%dª Divisione Motorizzata" } 
+		114 = { "%dª Divisione Motorizzata" } 
+		115 = { "%dª Divisione Motorizzata" } 
+		23 = { "%dª Divisione Fanteria Autotrasportabile \"Ferrara\"" } 								# Created in '26 as 'Murge', renamed in '39 as 'Ferrara'
+		3 = { "%dª Divisione Fanteria Autotrasportabile \"Ravenna\"" } 								# Created in '34 as 'Monferrato', renamed in '39 as 'Ravenna'
+		4 = { "%dª Divisione Fanteria Autotrasportabile \"Livorno\"" } 								# Created in '34 as 'Monviso', renamed in '39 as 'Livorno'
+		5 = { "%dª Divisione Fanteria Autotrasportabile \"Cosseria\"" } 								# Created in '34
+		6 = { "%dª Divisione Fanteria Autotrasportabile \"Cuneo\"" } 								# Created in '34
+		7 = { "%dª Divisione Fanteria Autotrasportabile \"Lupi di Toscana\"" } 						# Created in '34 as 'Leonessa', renamed in '38 as 'Lupi di Toscana'
+		11 = { "%dª Divisione Fanteria Autotrasportabile \"Brennero\"" } 							# Created in '34
+		12 = { "%dª Divisione Fanteria Autotrasportabile \"Sassari\"" } 								# Created in '34 as 'Timavo', renamed in '39 as 'Sassari'
+		13 = { "%dª Divisione Fanteria Autotrasportabile \"Re\"" } 									# Created in '34 as 'Montenero', renamed in '39 as 'Re'
+		14 = { "%dª Divisione Fanteria Autotrasportabile \"Isonzo\"" } 								# Created in '34
+		15 = { "%dª Divisione Fanteria Autotrasportabile \"Bergamo\"" } 								# Created in '34 as 'Carnaro', renamed in '39 as 'Bergamo'
+		16 = { "%dª Divisione Fanteria Autotrasportabile \"Pistoia\"" } 								# Created in '34 as 'Fossalta', renamed in '39 as 'Pistoia'
+		18 = { "%dª Divisione Fanteria Autotrasportabile \"Messina\"" } 								# Created in '34 as 'Metauro', renamed in '39 as 'Messina'
+		19 = { "%dª Divisione Fanteria Autotrasportabile \"Venezia\"" } 								# Created in '34 as 'Gavinana', renamed in '39 as 'Venezia'
+		20 = { "%dª Divisione Fanteria Autotrasportabile \"Friuli\"" } 								# Created in '34 as 'Curtatone e Montanara', renamed in '39 as 'Friuli'
+		21 = { "%dª Divisione Fanteria Autotrasportabile \"Granatieri di Sardegna\"" } 				# Created in '34
+		24 = { "%dª Divisione Fanteria Autotrasportabile \"Pinerolo\"" } 							# Created in '34 as 'Gran Sasso', renamed in '39 as 'Pinerolo'
+		28 = { "%dª Divisione Fanteria Autotrasportabile \"Aosta\"" } 								# Created in '34 as 'Vespri', renamed in '39 as 'Aosta'
+		29 = { "%dª Divisione Fanteria Autotrasportabile \"Piemonte\"" } 							# Created in '34 as 'Peloritana', renamed in '39 as 'Piemonte'
+		31 = { "%dª Divisione Fanteria Autotrasportabile \"Caprera\"" } 							# Created in '34 as 'Caprera', renamed in '39 as 'Calabria'
+		58 = { "%dª Divisione Fanteria Autotrasportabile \"Legnano\"" } 								# Created in '34
+		26 = { "%dª Divisione Fanteria Autotrasportabile \"Assietta\"" } 							# Created in '35
+		30 = { "%dª Divisione Fanteria Autotrasportabile \"Sabauda\"" } 								# Created in '35
+		65 = { "%dª Divisione Fanteria Autotrasportabile \"Granatieri di Savoia\"" } 				# Created in '36
+		1 = { "%dª Divisione Fanteria Autotrasportabile \"Superga\"" } 								# Created in '39
+		2 = { "%dª Divisione Fanteria Autotrasportabile \"Sforzesca\"" } 							# Created in '39
+		22 = { "%dª Divisione Fanteria Autotrasportabile \"Cacciatori delle Alpi\"" } 				# Created in '39
+		32 = { "%dª Divisione Fanteria Autotrasportabile \"Marche\"" } 								# Created in '39
+		33 = { "%dª Divisione Fanteria Autotrasportabile \"Acqui\"" } 								# Created in '39
+		36 = { "%dª Divisione Fanteria Autotrasportabile \"Forlì\"" } 								# Created in '39
+		37 = { "%dª Divisione Fanteria Autotrasportabile \"Modena\"" } 								# Created in '39
+		38 = { "%dª Divisione Fanteria Autotrasportabile \"Puglie\"" } 								# Created in '39
+		41 = { "%dª Divisione Fanteria Autotrasportabile \"Firenze\"" } 								# Created in '39
+		44 = { "%dª Divisione Fanteria Autotrasportabile \"Cremona\"" } 								# Created in '39
+		47 = { "%dª Divisione Fanteria Autotrasportabile \"Bari\"" } 								# Created in '39
+		48 = { "%dª Divisione Fanteria Autotrasportabile \"Taro\"" } 								# Created in '39
+		49 = { "%dª Divisione Fanteria Autotrasportabile \"Parma\"" } 								# Created in '39
+		50 = { "%dª Divisione Fanteria Autotrasportabile \"Regina\"" } 								# Created in '39
+		51 = { "%dª Divisione Fanteria Autotrasportabile \"Siena\"" } 								# Created in '39
+		53 = { "%dª Divisione Fanteria Autotrasportabile \"Arezzo\"" } 								# Created in '39
+		54 = { "%dª Divisione Fanteria Autotrasportabile \"Napoli\"" } 								# Created in '39
+		56 = { "%dª Divisione Fanteria Autotrasportabile \"Casale\"" } 								# Created in '39
+		57 = { "%dª Divisione Fanteria Autotrasportabile \"Lombardia\"" } 							# Created in '39
+		59 = { "%dª Divisione Fanteria Autotrasportabile \"Cagliari\"" } 							# Created in '39
+		40 = { "%dª Divisione Fanteria Autotrasportabile \"Cacciatori d'Africa\"" } 					# Created in '40
+		66 = { "%dª Divisione Fanteria Autotrasportabile \"Monferrato\"" }							# Fictional divisions start here (14 renamed between 1936 and 1939)
+		67 = { "%dª Divisione Fanteria Autotrasportabile \"Monviso\"" } 
+		68 = { "%dª Divisione Fanteria Autotrasportabile \"Leonessa\"" } 
+		69 = { "%dª Divisione Fanteria Autotrasportabile \"Timavo\"" } 
+		70 = { "%dª Divisione Fanteria Autotrasportabile \"Montenero\"" } 
+		71 = { "%dª Divisione Fanteria Autotrasportabile \"Carnaro\"" } 
+		72 = { "%dª Divisione Fanteria Autotrasportabile \"Fossalta\"" } 
+		73 = { "%dª Divisione Fanteria Autotrasportabile \"Metauro\"" } 
+		74 = { "%dª Divisione Fanteria Autotrasportabile \"Gavinana\"" } 
+		75 = { "%dª Divisione Fanteria Autotrasportabile \"Curtatone e Montanara\"" } 
+		76 = { "%dª Divisione Fanteria Autotrasportabile \"Gran Sasso\"" } 
+		77 = { "%dª Divisione Fanteria Autotrasportabile \"Vespri\"" } 
+		78 = { "%dª Divisione Fanteria Autotrasportabile \"Peloritana\"" } 
+		79 = { "%dª Divisione Fanteria Autotrasportabile \"Calabria\"" } 
+		34 = { "%dª Divisione Fanteria Autotrasportabile" }										# Filler divisions (34, 35, 39, 42, 43, 45, 46) start here
+		35 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		39 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		42 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		43 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		45 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		46 = { "%dª Divisione Fanteria Autotrasportabile" } 
+		81 = { "%dª Divisione Fanteria Autotrasportabile" } 									#More fictional divisions to get us to the motorized divisions
+		82 = { "%dª Divisione Fanteria Autotrasportabile" }
+		83 = { "%dª Divisione Fanteria Autotrasportabile" }
+		84 = { "%dª Divisione Fanteria Autotrasportabile" }
+		85 = { "%dª Divisione Fanteria Autotrasportabile" }
+		86 = { "%dª Divisione Fanteria Autotrasportabile" }
+		87 = { "%dª Divisione Fanteria Autotrasportabile" }
+		88 = { "%dª Divisione Fanteria Autotrasportabile" }
+		89 = { "%dª Divisione Fanteria Autotrasportabile" }
+		90 = { "%dª Divisione Fanteria Autotrasportabile" }
+		91 = { "%dª Divisione Fanteria Autotrasportabile" }
+		92 = { "%dª Divisione Fanteria Autotrasportabile" }
+		93 = { "%dª Divisione Fanteria Autotrasportabile" }
+		94 = { "%dª Divisione Fanteria Autotrasportabile" }
+		95 = { "%dª Divisione Fanteria Autotrasportabile" }
+		96 = { "%dª Divisione Fanteria Autotrasportabile" }
+		97 = { "%dª Divisione Fanteria Autotrasportabile" }
+		98 = { "%dª Divisione Fanteria Autotrasportabile" }
+		99 = { "%dª Divisione Fanteria Autotrasportabile" }
+		100 = { "%dª Divisione Motorizzata" }
+		80 = { "%dª Divisione Fanteria Autotrasportabile \"La Spezia\"" }								#added divisions from other types here
+		116 = { "%dª Divisione Motorizzata" }										# Filler divisions (116 - 130) start here
+		117 = { "%dª Divisione Motorizzata" } 
+		118 = { "%dª Divisione Motorizzata" } 
+		119 = { "%dª Divisione Motorizzata" } 
+		120 = { "%dª Divisione Motorizzata" } 
+		121 = { "%dª Divisione Motorizzata" } 
+		122 = { "%dª Divisione Motorizzata" } 
+		123 = { "%dª Divisione Motorizzata" } 
+		124 = { "%dª Divisione Motorizzata" } 
+		125 = { "%dª Divisione Motorizzata" } 
+		126 = { "%dª Divisione Motorizzata" } 
+		127 = { "%dª Divisione Motorizzata" } 
+		128 = { "%dª Divisione Motorizzata" } 
+		129 = { "%dª Divisione Motorizzata" } 
+		130 = { "%dª Divisione Motorizzata" } 
+		160 = { "%dª Divisione Motorizzata" } 
+		161 = { "%dª Divisione Motorizzata" } 
+		162 = { "%dª Divisione Motorizzata" } 
+		163 = { "%dª Divisione Motorizzata" } 
+		164 = { "%dª Divisione Motorizzata" } 
+		165 = { "%dª Divisione Motorizzata" } 
+		166 = { "%dª Divisione Motorizzata" } 
+		167 = { "%dª Divisione Motorizzata" } 
+		168 = { "%dª Divisione Motorizzata" } 
+		169 = { "%dª Divisione Motorizzata" } 
+		170 = { "%dª Divisione Motorizzata" } 
+		171 = { "%dª Divisione Motorizzata" } 
+		172 = { "%dª Divisione Motorizzata" } 
+		173 = { "%dª Divisione Motorizzata" } 
+		174 = { "%dª Divisione Motorizzata" } 
+		175 = { "%dª Divisione Motorizzata" } 
+		176 = { "%dª Divisione Motorizzata" } 
+		177 = { "%dª Divisione Motorizzata" } 
+		178 = { "%dª Divisione Motorizzata" } 
+		179 = { "%dª Divisione Motorizzata" } 
+		180 = { "%dª Divisione Motorizzata" } 
+		239 = { "%dª Divisione Motorizzata" }
+		} 
+} 
+
+ITA_MEC_01 = { 
+	name = "Mechanized Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "mechanized" "heavy_mechanized" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Meccanizzata" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		116 = { "%dª Divisione Meccanizzata" }										# Filler divisions (116 - 130) start here
+		117 = { "%dª Divisione Meccanizzata" } 
+		118 = { "%dª Divisione Meccanizzata" } 
+		119 = { "%dª Divisione Meccanizzata" } 
+		120 = { "%dª Divisione Meccanizzata" } 
+		121 = { "%dª Divisione Meccanizzata" } 
+		122 = { "%dª Divisione Meccanizzata" } 
+		123 = { "%dª Divisione Meccanizzata" } 
+		124 = { "%dª Divisione Meccanizzata" } 
+		125 = { "%dª Divisione Meccanizzata" } 
+		126 = { "%dª Divisione Meccanizzata" } 
+		127 = { "%dª Divisione Meccanizzata" } 
+		128 = { "%dª Divisione Meccanizzata" } 
+		129 = { "%dª Divisione Meccanizzata" } 
+		130 = { "%dª Divisione Meccanizzata" } 
+		160 = { "%dª Divisione Meccanizzata" } 
+		161 = { "%dª Divisione Meccanizzata" } 
+		162 = { "%dª Divisione Meccanizzata" } 
+		163 = { "%dª Divisione Meccanizzata" } 
+		164 = { "%dª Divisione Meccanizzata" } 
+		165 = { "%dª Divisione Meccanizzata" } 
+		166 = { "%dª Divisione Meccanizzata" } 
+		167 = { "%dª Divisione Meccanizzata" } 
+		168 = { "%dª Divisione Meccanizzata" } 
+		169 = { "%dª Divisione Meccanizzata" } 
+		170 = { "%dª Divisione Meccanizzata" } 
+		171 = { "%dª Divisione Meccanizzata" } 
+		172 = { "%dª Divisione Meccanizzata" } 
+		173 = { "%dª Divisione Meccanizzata" } 
+		174 = { "%dª Divisione Meccanizzata" } 
+		175 = { "%dª Divisione Meccanizzata" } 
+		176 = { "%dª Divisione Meccanizzata" } 
+		177 = { "%dª Divisione Meccanizzata" } 
+		178 = { "%dª Divisione Meccanizzata" } 
+		179 = { "%dª Divisione Meccanizzata" } 
+		180 = { "%dª Divisione Meccanizzata" } 
+		23 = { "%dª Divisione Meccanizzata \"Ferrara\"" } 								# Created in '26 as 'Murge', renamed in '39 as 'Ferrara'
+		3 = { "%dª Divisione Meccanizzata \"Ravenna\"" } 								# Created in '34 as 'Monferrato', renamed in '39 as 'Ravenna'
+		4 = { "%dª Divisione Meccanizzata \"Livorno\"" } 								# Created in '34 as 'Monviso', renamed in '39 as 'Livorno'
+		5 = { "%dª Divisione Meccanizzata \"Cosseria\"" } 								# Created in '34
+		6 = { "%dª Divisione Meccanizzata \"Cuneo\"" } 								# Created in '34
+		7 = { "%dª Divisione Meccanizzata \"Lupi di Toscana\"" } 						# Created in '34 as 'Leonessa', renamed in '38 as 'Lupi di Toscana'
+		11 = { "%dª Divisione Meccanizzata \"Brennero\"" } 							# Created in '34
+		12 = { "%dª Divisione Meccanizzata \"Sassari\"" } 								# Created in '34 as 'Timavo', renamed in '39 as 'Sassari'
+		13 = { "%dª Divisione Meccanizzata \"Re\"" } 									# Created in '34 as 'Montenero', renamed in '39 as 'Re'
+		14 = { "%dª Divisione Meccanizzata \"Isonzo\"" } 								# Created in '34
+		15 = { "%dª Divisione Meccanizzata \"Bergamo\"" } 								# Created in '34 as 'Carnaro', renamed in '39 as 'Bergamo'
+		16 = { "%dª Divisione Meccanizzata \"Pistoia\"" } 								# Created in '34 as 'Fossalta', renamed in '39 as 'Pistoia'
+		18 = { "%dª Divisione Meccanizzata \"Messina\"" } 								# Created in '34 as 'Metauro', renamed in '39 as 'Messina'
+		19 = { "%dª Divisione Meccanizzata \"Venezia\"" } 								# Created in '34 as 'Gavinana', renamed in '39 as 'Venezia'
+		20 = { "%dª Divisione Meccanizzata \"Friuli\"" } 								# Created in '34 as 'Curtatone e Montanara', renamed in '39 as 'Friuli'
+		21 = { "%dª Divisione Meccanizzata \"Granatieri di Sardegna\"" } 				# Created in '34
+		24 = { "%dª Divisione Meccanizzata \"Pinerolo\"" } 							# Created in '34 as 'Gran Sasso', renamed in '39 as 'Pinerolo'
+		28 = { "%dª Divisione Meccanizzata \"Aosta\"" } 								# Created in '34 as 'Vespri', renamed in '39 as 'Aosta'
+		29 = { "%dª Divisione Meccanizzata \"Piemonte\"" } 							# Created in '34 as 'Peloritana', renamed in '39 as 'Piemonte'
+		31 = { "%dª Divisione Meccanizzata \"Calabria\"" } 							# Created in '34 as 'Caprera', renamed in '39 as 'Calabria'
+		58 = { "%dª Divisione Meccanizzata \"Legnano\"" } 								# Created in '34
+		26 = { "%dª Divisione Meccanizzata \"Assietta\"" } 							# Created in '35
+		30 = { "%dª Divisione Meccanizzata \"Sabauda\"" } 								# Created in '35
+		65 = { "%dª Divisione Meccanizzata \"Granatieri di Savoia\"" } 				# Created in '36
+		1 = { "%dª Divisione Meccanizzata \"Superga\"" } 								# Created in '39
+		2 = { "%dª Divisione Meccanizzata \"Sforzesca\"" } 							# Created in '39
+		22 = { "%dª Divisione Meccanizzata \"Cacciatori delle Alpi\"" } 				# Created in '39
+		32 = { "%dª Divisione Meccanizzata \"Marche\"" } 								# Created in '39
+		33 = { "%dª Divisione Meccanizzata \"Acqui\"" } 								# Created in '39
+		36 = { "%dª Divisione Meccanizzata \"Forlì\"" } 								# Created in '39
+		37 = { "%dª Divisione Meccanizzata \"Modena\"" } 								# Created in '39
+		38 = { "%dª Divisione Meccanizzata \"Puglie\"" } 								# Created in '39
+		41 = { "%dª Divisione Meccanizzata \"Firenze\"" } 								# Created in '39
+		44 = { "%dª Divisione Meccanizzata \"Cremona\"" } 								# Created in '39
+		47 = { "%dª Divisione Meccanizzata \"Bari\"" } 								# Created in '39
+		48 = { "%dª Divisione Meccanizzata \"Taro\"" } 								# Created in '39
+		49 = { "%dª Divisione Meccanizzata \"Parma\"" } 								# Created in '39
+		50 = { "%dª Divisione Meccanizzata \"Regina\"" } 								# Created in '39
+		51 = { "%dª Divisione Meccanizzata \"Siena\"" } 								# Created in '39
+		53 = { "%dª Divisione Meccanizzata \"Arezzo\"" } 								# Created in '39
+		54 = { "%dª Divisione Meccanizzata \"Napoli\"" } 								# Created in '39
+		56 = { "%dª Divisione Meccanizzata \"Casale\"" } 								# Created in '39
+		57 = { "%dª Divisione Meccanizzata \"Lombardia\"" } 							# Created in '39
+		59 = { "%dª Divisione Meccanizzata \"Cagliari\"" } 							# Created in '39
+		40 = { "%dª Divisione Meccanizzata \"Cacciatori d'Africa\"" } 					# Created in '40
+		66 = { "%dª Divisione Meccanizzata \"Monferrato\"" }							# Fictional divisions start here (14 renamed between 1936 and 1939)
+		67 = { "%dª Divisione Meccanizzata \"Monviso\"" } 
+		68 = { "%dª Divisione Meccanizzata \"Leonessa\"" } 
+		69 = { "%dª Divisione Meccanizzata \"Timavo\"" } 
+		70 = { "%dª Divisione Meccanizzata \"Montenero\"" } 
+		71 = { "%dª Divisione Meccanizzata \"Carnaro\"" } 
+		72 = { "%dª Divisione Meccanizzata \"Fossalta\"" } 
+		73 = { "%dª Divisione Meccanizzata \"Metauro\"" } 
+		74 = { "%dª Divisione Meccanizzata \"Gavinana\"" } 
+		75 = { "%dª Divisione Meccanizzata \"Curtatone e Montanara\"" } 
+		76 = { "%dª Divisione Meccanizzata \"Gran Sasso\"" } 
+		77 = { "%dª Divisione Meccanizzata \"Vespri\"" } 
+		78 = { "%dª Divisione Meccanizzata \"Peloritana\"" } 
+		79 = { "%dª Divisione Meccanizzata \"Caprera\"" } 
+		34 = { "%dª Divisione Meccanizzata" }										# Filler divisions (34, 35, 39, 42, 43, 45, 46) start here
+		35 = { "%dª Divisione Meccanizzata" } 
+		39 = { "%dª Divisione Meccanizzata" } 
+		42 = { "%dª Divisione Meccanizzata" } 
+		43 = { "%dª Divisione Meccanizzata" } 
+		45 = { "%dª Divisione Meccanizzata" } 
+		46 = { "%dª Divisione Meccanizzata" } 
+		81 = { "%dª Divisione Meccanizzata" } 									#More fictional divisions to get us to the motorized divisions
+		82 = { "%dª Divisione Meccanizzata" }
+		83 = { "%dª Divisione Meccanizzata" }
+		84 = { "%dª Divisione Meccanizzata" }
+		85 = { "%dª Divisione Meccanizzata" }
+		86 = { "%dª Divisione Meccanizzata" }
+		87 = { "%dª Divisione Meccanizzata" }
+		88 = { "%dª Divisione Meccanizzata" }
+		89 = { "%dª Divisione Meccanizzata" }
+		90 = { "%dª Divisione Meccanizzata" }
+		91 = { "%dª Divisione Meccanizzata" }
+		92 = { "%dª Divisione Meccanizzata" }
+		93 = { "%dª Divisione Meccanizzata" }
+		94 = { "%dª Divisione Meccanizzata" }
+		95 = { "%dª Divisione Meccanizzata" }
+		96 = { "%dª Divisione Meccanizzata" }
+		97 = { "%dª Divisione Meccanizzata" }
+		98 = { "%dª Divisione Meccanizzata" }
+		99 = { "%dª Divisione Meccanizzata" }
+		100 = { "%dª Divisione Meccanizzata" }
+		8 = { "%dª Divisione Meccanizzata \"Po\"" }								#added divisions from other types here
+		9 = { "%dª Divisione Meccanizzata \"Pasubio\"" }
+		10 = { "%dª Divisione Meccanizzata \"Piave\"" }
+		17 = { "%dª Divisione Meccanizzata \"Rubicone\"" }
+		25 = { "%dª Divisione Meccanizzata \"Volturno\"" }
+		27 = { "%dª Divisione Meccanizzata \"Sila\"" }
+		52 = { "%dª Divisione Meccanizzata \"Torino\"" }
+		55 = { "%dª Divisione Meccanizzata \"Savona\"" }
+		60 = { "%dª Divisione Meccanizzata \"Sabratha\"" }
+		61 = { "%dª Divisione Meccanizzata \"Sirte\"" }
+		62 = { "%dª Divisione Meccanizzata \"Marmarica\"" }
+		63 = { "%dª Divisione Meccanizzata \"Cirene\"" }
+		64 = { "%dª Divisione Meccanizzata \"Catanzaro\"" }
+		80 = { "%dª Divisione Meccanizzata \"La Spezia\"" }
+		239 = { "%dª Divisione Meccanizzata" }
+		} 
+} 
+
+ITA_ARM_01 = { 
+	name = "Armored Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_government = fascist
+		has_civil_war = no
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "SS_armor" "SS_heavy_armor" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Corazzata" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		132 = { "%dª Divisione Corazzata \"Ariete\"" } 				# Created in '39
+		131 = { "%dª Divisione Corazzata \"Centauro\"" } 			# Created in '39
+		133 = { "%dª Divisione Corazzata \"Littorio\"" } 			# Created in '39
+		134 = { "%dª Divisione Corazzata \"Freccia\"" } 			# Created in '42
+		135 = { "%dª Divisione Corazzata \"Ariete II\"" } 			# Created in '43
+		136 = { "1ª Divisione Corazzata CC.NN. \"M\"" } 			# This division was given the 136 number once it was turned into a regular armored division, this is unrelated to the failed attempt to create a 136th armored division in 1942
+		137 = { "%dª Divisione Corazzata \"Giovani Fascisti\"" }	# Fictional division, using the nickname planned for the first 136th armored.
+		138 = { "%dª Divisione Corazzata" } 						# Filler divisions (140 - 150) start here
+		139 = { "%dª Divisione Corazzata" } 
+		140 = { "%dª Divisione Corazzata" }
+		141 = { "%dª Divisione Corazzata" } 
+		142 = { "%dª Divisione Corazzata" } 
+		143 = { "%dª Divisione Corazzata" } 
+		144 = { "%dª Divisione Corazzata" } 
+		145 = { "%dª Divisione Corazzata" } 
+		146 = { "%dª Divisione Corazzata" } 
+		147 = { "%dª Divisione Corazzata" } 
+		148 = { "%dª Divisione Corazzata" } 
+		149 = { "%dª Divisione Corazzata" } 
+		150 = { "%dª Divisione Corazzata" } 
+	} 
+} 
+
+ITA_ARM_02 = { 
+	name = "Armored Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		NOT = {
+			has_government = fascist
+			}
+		has_civil_war = no
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "SS_armor" "SS_heavy_armor" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_PAR_01 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Corazzata" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		132 = { "%dª Divisione Corazzata \"Ariete\"" }
+		131 = { "%dª Divisione Corazzata \"Centauro\"" }
+		133 = { "%dª Divisione Corazzata \"Littorio\"" }
+		134 = { "%dª Divisione Corazzata \"Freccia\"" }
+		135 = { "%dª Divisione Corazzata \"Ariete II\"" }
+		136 = { "%dª Divisione Corazzata \"Centauro II\"" } 			# The name taken by the CCNN Armored division once they were purged of Blackshirts.
+		137 = { "%dª Divisione Corazzata \"Pozzuolo del Friuli\"" }		# Uses the nickname from a postwar armored division to remove the fascist title.  The other two postwar armored divisions used the Ariete and Centauro nicknames.
+		138 = { "%dª Divisione Corazzata" } 
+		139 = { "%dª Divisione Corazzata" } 
+		140 = { "%dª Divisione Corazzata" }
+		141 = { "%dª Divisione Corazzata" } 
+		142 = { "%dª Divisione Corazzata" } 
+		143 = { "%dª Divisione Corazzata" } 
+		144 = { "%dª Divisione Corazzata" } 
+		145 = { "%dª Divisione Corazzata" } 
+		146 = { "%dª Divisione Corazzata" } 
+		147 = { "%dª Divisione Corazzata" } 
+		148 = { "%dª Divisione Corazzata" } 
+		149 = { "%dª Divisione Corazzata" } 
+		150 = { "%dª Divisione Corazzata" } 
+	} 
+} 
+
+ITA_MAR_01 = { 
+	name = "Marine Regiments" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "marine" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ITA_MAR_01 } 
+
+	fallback_name = "%d° Reggimento da Sbarco" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%d° Reggimento da Sbarco \"San Marco\"" } 
+		2 = { "%d° Reggimento da Sbarco \"Carlotto\"" }  # These are modern units (post Cold War) part of the San Marco Brigade
+		3 = { "%d° Reggimento da Sbarco \"San Marco\"" } 
+		4 = { "%d° Reggimento Lagunari \"Serenissima\"" }	# Numbered in sequence but has no number, this is the only Army naval infantry unit, while the others are part of the Navy
+	} 
+} 
+
+ITA_MTN_01 = { 
+	name = "Mountain Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = {  
+		OR = {
+			has_start_date > 1935.12.31
+			has_completed_focus = ITA_Gladius
+		}
+		has_civil_war = no
+	} 
+
+	division_types = { "mountaineers" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_MTN_02 } 
+
+	fallback_name = "%dª Divisione Alpina" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%dª Divisione Alpina \"Taurinense\"" } 								# Created in '35
+		2 = { "%dª Divisione Alpina \"Tridentina\"" } 								# Created in '35
+		3 = { "%dª Divisione Alpina \"Julia\"" } 										# Created in '35
+		4 = { "%dª Divisione Alpina \"Cuneense\"" } 									# Created in '35
+		5 = { "%dª Divisione Alpina \"Pusteria\"" } 									# Created in '35
+		6 = { "%dª Divisione Alpina \"Alpi Graie\"" } 								# Created in '41
+		7 = { "%dª Divisione Alpina \"Orobica\"" }									# Fictional divisions start here (2 post WW2 divisions)
+		8 = { "%dª Divisione Alpina \"Cadore\"" } 
+	} 
+} 
+
+ITA_MTN_02 = { 
+	name = "Mountain Brigades" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { 
+		has_start_date < 1936.01.01 
+		NOT = { has_completed_focus = ITA_Gladius }
+		has_civil_war = no
+	} 
+
+	division_types = { "mountaineers" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_MTN_01 } 
+
+	fallback_name = "%dª Brigata Alpina" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		1 = { "%dª Brigata Alpina" }
+		2 = { "%dª Brigata Alpina" }
+		3 = { "%dª Brigata Alpina" }
+		4 = { "%dª Brigata Alpina" }
+		5 = { "%dª Brigata Alpina" }
+		6 = { "%dª Brigata Alpina" }
+		7 = { "%dª Brigata Alpina" }
+		8 = { "%dª Brigata Alpina" } 
+	} 
+} 
+
+ITA_PAR_01 = { 
+	name = "Paratrooper Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "paratrooper" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_GAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Paracadutisti" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		80 = { "%dª Divisione Aviotrasportabile \"La Spezia\"" } 						# Created in '41
+		185 = { "%dª Divisione Paracadutisti \"Folgore\"" } 							# Created in '42
+		184 = { "%dª Divisione Paracadutisti \"Nembo\"" } 							# Created in '42
+		183 = { "%dª Divisione Paracadutisti \"Ciclone\"" } 							# Created in '43
+		181 = { "%dª Divisione Paracadutisti" }										# Filler divisions start here
+		182 = { "%dª Divisione Paracadutisti" } 
+		186 = { "%dª Divisione Paracadutisti" } 
+		187 = { "%dª Divisione Paracadutisti" } 
+		188 = { "%dª Divisione Paracadutisti" } 
+		189 = { "%dª Divisione Paracadutisti" } 
+		190 = { "%dª Divisione Paracadutisti" } 
+		191 = { "%dª Divisione Paracadutisti" } 
+		192 = { "%dª Divisione Paracadutisti" } 
+		193 = { "%dª Divisione Paracadutisti" } 
+		194 = { "%dª Divisione Paracadutisti" } 
+		195 = { "%dª Divisione Paracadutisti" } 
+		196 = { "%dª Divisione Paracadutisti" } 
+		197 = { "%dª Divisione Paracadutisti" } 
+		198 = { "%dª Divisione Paracadutisti" } 
+		199 = { "%dª Divisione Paracadutisti" } 
+		200 = { "%dª Divisione Paracadutisti" } 
+	} 
+} 
+
+ITA_GAR_01 = { 
+	name = "Coastal Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "infantry" "garrison" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_02 } 
+
+	fallback_name = "%dª Divisione Costiera" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		201 = { "%dª Divisione Costiera" } 											# Created in '41
+		202 = { "%dª Divisione Costiera" } 											# Created in '41
+		204 = { "%dª Divisione Costiera" } 											# Created in '41
+		205 = { "%dª Divisione Costiera" } 											# Created in '41
+		206 = { "%dª Divisione Costiera" } 											# Created in '41
+		207 = { "%dª Divisione Costiera" } 											# Created in '41
+		208 = { "%dª Divisione Costiera" } 											# Created in '41
+		211 = { "%dª Divisione Costiera" } 											# Created in '41
+		212 = { "%dª Divisione Costiera" } 											# Created in '41
+		213 = { "%dª Divisione Costiera" } 											# Created in '41
+		214 = { "%dª Divisione Costiera" } 											# Created in '42
+		216 = { "%dª Divisione Costiera" } 											# Created in '42
+		220 = { "%dª Divisione Costiera" } 											# Created in '42
+		221 = { "%dª Divisione Costiera" } 											# Created in '42
+		222 = { "%dª Divisione Costiera" } 											# Created in '42
+		203 = { "%dª Divisione Costiera" } 											# Created in '43
+		209 = { "%dª Divisione Costiera" } 											# Created in '43
+		210 = { "%dª Divisione Costiera" } 											# Created in '43
+		215 = { "%dª Divisione Costiera" } 											# Created in '43
+		223 = { "%dª Divisione Costiera" } 											# Created in '43
+		224 = { "%dª Divisione Costiera" } 											# Created in '43
+		225 = { "%dª Divisione Costiera" } 											# Created in '43
+		226 = { "%dª Divisione Costiera" } 											# Created in '43
+		227 = { "%dª Divisione Costiera" } 											# Created in '43
+		228 = { "%dª Divisione Costiera" } 											# Created in '43
+		230 = { "%dª Divisione Costiera" } 											# Created in '43
+		231 = { "%dª Divisione Costiera" } 											# Created in '43
+		217 = { "%dª Divisione Costiera" } 											# Filler divisions (217 - 219, 229) start here
+		218 = { "%dª Divisione Costiera" } 
+		219 = { "%dª Divisione Costiera" } 
+		229 = { "%dª Divisione Costiera" }
+		232 = { "%dª Divisione Costiera" }
+		233 = { "%dª Divisione Costiera" }
+		234 = { "%dª Divisione Costiera" }
+		235 = { "%dª Divisione Costiera" }
+		236 = { "%dª Divisione Costiera" }
+		237 = { "%dª Divisione Costiera" }
+		238 = { "%dª Divisione Costiera" }
+		239 = { "%dª Divisione Costiera" }
+	} 
+} 
+
+ITA_GAR_02 = { 
+	name = "Occupation Infantry Divisions" 
+
+	for_countries = { ITA RSI } 
+
+	can_use = { has_civil_war = no } 
+
+	division_types = { "infantry" "garrison" } 
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 } 
+
+	fallback_name = "%dª Divisione Fanteria da Occupazione" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		151 = { "%dª Divisione Fanteria da Occupazione \"Perugia\"" } 							# Created in '41
+		153 = { "%dª Divisione Fanteria da Occupazione \"Macerata\"" } 							# Created in '41
+		154 = { "%dª Divisione Fanteria da Occupazione \"Murge\"" } 								# Created in '41
+		155 = { "%dª Divisione Fanteria da Occupazione \"Emilia\"" } 								# Created in '41
+		152 = { "%dª Divisione Fanteria da Occupazione \"Piceno\"" } 								# Created in '42
+		159 = { "%dª Divisione Fanteria da Occupazione \"Veneto\"" } 								# Created in '42
+		156 = { "%dª Divisione Fanteria da Occupazione \"Vicenza\"" } 							# Created in '42
+		157 = { "%dª Divisione Fanteria da Occupazione \"Novara\"" } 								# Created in '42
+		158 = { "%dª Divisione Fanteria da Occupazione \"Zara\"" } 								# Created in '42
+	} 
+} 
+
+ITA_CIV_01 = { 
+	name = "Combat Groups" 
+
+	for_countries = { ITA } 
+
+	can_use = { has_civil_war = yes } 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" "cavalry" "armored_car_battalion" "motorized" "mechanized" "heavy_mechanized" "light_armor" "medium_armor" "heavy_armor" "marine" "mountaineers" "paratrooper" } 
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 } 
+	
+	fallback_name = "Gruppo di Combattimento %s" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	
+	#Historically, the Co-belligerent Army formed combat groups which were between brigade and division strength.
+	#The units were named after the former unit of the bulk of the troops.  Fictional names have been added using other divisions which contributed to these units.
+	ordered = { 
+		58 = { "Gruppo di Combattimento \"Legnano\"" } 							# Initially formed as the Primo Raggruppamento Motorizzato then expanded to the "Utili" Division before being realigned into the combat groups with the Legano troops regaining their old name.  The "Utili" name doesn't appear in this name list because it is the name of the commander and therefore too situationally dependent.
+		184 = { "Gruppo di Combattimento \"Folgore\"" } 							# Initially formed as the "Nembo" Division before the change to combat groups.
+		44 = { "Gruppo di Combattimento \"Cremona\"" }
+		20 = { "Gruppo di Combattimento \"Friuli\"" }
+		104 = { "Gruppo di Combattimento \"Mantova\"" } 
+		152 = { "Gruppo di Combattimento \"Piceno\"" } 
+		1 = { "Gruppo di Combattimento \"Taurinense\"" } 								# These use the names of divisions which made up the historical combat groups but whose name wasn't used.
+		54 = { "Gruppo di Combattimento \"Napoli\"" }
+		155 = { "Gruppo di Combattimento \"Emilia\"" }
+	} 
+} 
+
+RSI_CIV_01 = { 
+	name = "RSI Divisions" 
+
+	for_countries = { RSI } 
+
+	can_use = { has_civil_war = yes } 
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" "cavalry" "armored_car_battalion" "motorized" "mechanized" "heavy_mechanized" "light_armor" "medium_armor" "heavy_armor" "marine" "mountaineers" "paratrooper" "SS_armor" "SS_heavy_armor" "SS_infantry" "SS_cavalry" "SS_motorized" "SS_mechanized" } 
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { ITA_DMT_01 ITA_INF_01 ITA_INF_02 ITA_INF_39 ITA_INF_40 ITA_MOT_01 ITA_MOT_39 ITA_MEC_01 ITA_ARM_01 ITA_ARM_02 ITA_PAR_01 ITA_GAR_01 } 
+	
+	fallback_name = "%dª Divisione" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	
+	#Historically, the Co-belligerent Army formed combat groups which were between brigade and division strength.
+	#The units were named after the former unit of the bulk of the troops.  Fictional names have been added using other divisions which contributed to these units.
+	ordered = { 
+		1 = { "%dª Divisione Bersaglieri \"Italia\"" }
+		2 = { "%dª Divisione Granatieri \"Littorio\"" }
+		3 = { "%dª Divisione Fanteria di Marina \"San Marco\"" }
+		4 = { "%dª Divisione Alpina \"Monterosa\"" }
+	} 
+} 

@@ -1,0 +1,2225 @@
+###########################
+# Darkest Hour  Events : Bulgaria
+###########################
+
+add_namespace = BUL_Politics
+add_namespace = BUL_Foreign
+add_namespace = BUL_Countercoup
+add_namespace = BUL_Tzar
+
+#########################################################################
+# Bulgaria wants to buy Light Tanks from Italy
+#########################################################################
+country_event = {
+	id = BUL_Politics.1
+	title = BUL_Politics.1.t
+	desc = BUL_Politics.1.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# Sure	
+	option = {
+		name = BUL_Politics.1.A
+		ai_chance = {
+			factor = 70
+		}
+		send_equipment = {
+			target = BUL
+			type = armor_equipment
+			amount = 50
+		}
+		add_timed_idea = { idea = BUL_Payment days = 180 }
+		BUL = {
+			country_event = BUL_Politics.2
+		}
+	}	
+	# No
+	option = { 
+		name = BUL_Politics.1.B
+		ai_chance = {
+			factor = 30
+		}	
+	}	
+}
+#########################################################################
+# Deal Concluded
+#########################################################################
+country_event = {
+	id = BUL_Politics.2
+	title = BUL_Politics.2.t
+	desc = BUL_Politics.2.d  
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	
+	option = { # cool
+		name = BUL_Politics.2.A
+		ai_chance = {
+			factor = 30
+		}
+		add_opinion_modifier = { target = FROM modifier = BUL_sold_planes}	
+	}	
+}
+
+#fighter competition - initial choice for Bulgaria
+country_event = {
+	id = BUL_Politics.3
+	title = DOD_hungary.150.t
+	desc = DOD_hungary.150.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# light fighter
+		name = DOD_hungary.150.A
+		trigger = {
+			OR = {
+				GER = {
+					is_available_fighter_BUL = yes
+				}
+				FRA = {
+					is_available_fighter_BUL = yes
+				}
+				ITA = {
+					is_available_fighter_BUL = yes
+				}
+				ENG = {
+					is_available_fighter_BUL = yes
+				}
+				CZE = {
+					is_available_fighter_BUL = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Fighter_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = Fighter_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = Fighter_1943
+				factor = 0
+			}
+		}
+		country_event = BUL_Politics.4
+		
+	}
+
+	option = {# heavy fighter
+		name = DOD_hungary.150.B
+		trigger = {
+			OR = {
+				GER = {
+					is_available_heavy_fighter_BUL = yes
+				}
+				FRA = {
+					is_available_heavy_fighter_BUL = yes
+				}
+				ITA = {
+					is_available_heavy_fighter_BUL = yes
+				}
+				ENG = {
+					is_available_heavy_fighter_BUL = yes
+				}
+				CZE = {
+					is_available_heavy_fighter_BUL = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Heavy_Fighter_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = Heavy_Fighter_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = Heavy_Fighter_1943
+				factor = 0
+			}
+		}
+		country_event = BUL_Politics.5
+	}
+}
+
+#Fighter competition - Bulgaria is looking for a light fighter
+country_event = {
+	id = BUL_Politics.4
+	title = DOD_hungary.151.t
+	desc = {
+		text = DOD_hungary.151.desc_light_fighter
+		trigger = {
+			NOT = { 
+				has_country_flag = GER_fighter_refused
+				has_country_flag = ENG_fighter_refused
+				has_country_flag = CZE_fighter_refused
+				has_country_flag = FRA_fighter_refused
+				has_country_flag = ITA_fighter_refused
+			} 
+		}
+	}
+	desc = {
+		text = DOD_hungary.151.desc_light_fighter_refused
+		trigger = {
+			OR = {
+		 		has_country_flag = GER_fighter_refused
+				has_country_flag = ENG_fighter_refused
+				has_country_flag = CZE_fighter_refused
+				has_country_flag = FRA_fighter_refused
+				has_country_flag = ITA_fighter_refused
+		 	}
+		}
+	}
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# Select German Plane
+		name = DOD_hungary.151.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Fighter_1936}
+					BUL = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					GER = { has_tech = Fighter_1940}
+					BUL = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					GER = { has_tech = Fighter_1943}
+					BUL = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_fighter_refused }
+		}
+		GER = { country_event = BUL_Politics.6 }	
+	}
+
+	option = {# select italian plane
+		name = DOD_hungary.151.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Fighter_1936}
+					BUL = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = Fighter_1940}
+					BUL = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = Fighter_1943}
+					BUL = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_fighter_refused }
+		}
+		ITA = { country_event = BUL_Politics.6 }	
+	}
+
+	option = {# select french plane
+		name = DOD_hungary.151.C
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Fighter_1936}
+					BUL = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = Fighter_1940}
+					BUL = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = Fighter_1943}
+					BUL = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_fighter_refused }
+			
+		}
+		FRA = { country_event = BUL_Politics.6 }	
+	}
+	option = {# select british plane
+		name = DOD_hungary.151.d
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Fighter_1936}
+					BUL = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = Fighter_1940}
+					BUL = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = Fighter_1943}
+					BUL = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_fighter_refused }
+		}
+		ENG = { country_event = BUL_Politics.6 }	
+	}
+	option = {# select czech plane
+		name = BUL_Politics.4.E
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = CZE
+				factor = 10
+			}
+			modifier = {
+				CZE = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				CZE = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				CZE = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				CZE = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					CZE = { has_tech = Fighter_1936}
+					BUL = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					CZE = { has_tech = Fighter_1940}
+					BUL = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					CZE = { has_tech = Fighter_1943}
+					BUL = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = CZE }
+			NOT = { has_country_flag = CZE_fighter_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_fighter_BUL = yes
+					}
+					FRA = {
+						is_available_fighter_BUL = yes
+					}
+					ITA = {
+						is_available_fighter_BUL = yes
+					}
+					ENG = {
+						is_available_fighter_BUL = yes
+					}
+				}
+			}
+		}
+		CZE = { country_event = BUL_Politics.6 }	
+	}
+	option = {# failsafe
+		name = DOD_hungary.151.f	
+		trigger = {
+			OR = {
+				has_country_flag = GER_fighter_refused
+				has_country_flag = ITA_fighter_refused
+				has_country_flag = ENG_fighter_refused
+				has_country_flag = FRA_fighter_refused
+				has_country_flag = CZE_fighter_refused
+			}
+		}
+		air_experience = 50
+	}
+
+}
+
+#Fighter competition - Bulgaria is looking for a heavy fighter
+country_event = {
+	id = BUL_Politics.5
+	title = DOD_hungary.152.t
+	desc = {
+		text = DOD_hungary.152.desc_heavy_fighter
+		trigger = {
+			NOT = { 
+				has_country_flag = GER_heavy_fighter_refused
+				has_country_flag = ENG_heavy_fighter_refused
+				has_country_flag = CZE_heavy_fighter_refused
+				has_country_flag = FRA_heavy_fighter_refused
+				has_country_flag = ITA_heavy_fighter_refused
+			} 
+		}
+	}
+	desc = {
+		text = DOD_hungary.152.desc_heavy_fighter_refused
+		trigger = {
+			OR = {
+		 		has_country_flag = GER_heavy_fighter_refused
+				has_country_flag = ENG_heavy_fighter_refused
+				has_country_flag = CZE_heavy_fighter_refused
+				has_country_flag = FRA_heavy_fighter_refused
+				has_country_flag = ITA_heavy_fighter_refused
+		 	}
+		}
+	}
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# Select German Plane
+		name = DOD_hungary.151.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Heavy_Fighter_1936}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					GER = { has_tech = Heavy_Fighter_1940}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					GER = { has_tech = Heavy_Fighter_1943}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_heavy_fighter_refused }
+		}
+		GER = { country_event = BUL_Politics.7 }	
+	}
+
+	option = {# select italian plane
+		name = DOD_hungary.151.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Heavy_Fighter_1936}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = Heavy_Fighter_1940}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = Heavy_Fighter_1943}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_heavy_fighter_refused }
+		}
+		ITA = { country_event = BUL_Politics.7 }	
+	}
+
+	option = {# select french plane
+		name = DOD_hungary.151.C
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Heavy_Fighter_1936}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = Heavy_Fighter_1940}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = Heavy_Fighter_1943}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_heavy_fighter_refused }
+			
+		}
+		FRA = { country_event = BUL_Politics.7 }	
+	}
+	option = {# select british plane
+		name = DOD_hungary.151.d
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Heavy_Fighter_1936}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = Heavy_Fighter_1940}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = Heavy_Fighter_1943}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_heavy_fighter_refused }
+		}
+		ENG = { country_event = BUL_Politics.7 }	
+	}
+	option = {# select Czech plane
+		name = BUL_Politics.5.E
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = CZE
+				factor = 10
+			}
+			modifier = {
+				CZE = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				CZE = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				CZE = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				CZE = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					CZE = { has_tech = Heavy_Fighter_1936}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					CZE = { has_tech = Heavy_Fighter_1940}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					CZE = { has_tech = Heavy_Fighter_1943}
+					BUL = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = CZE }
+			NOT = { has_country_flag = CZE_heavy_fighter_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_heavy_fighter_BUL = yes
+					}
+					FRA = {
+						is_available_heavy_fighter_BUL = yes
+					}
+					ITA = {
+						is_available_heavy_fighter_BUL = yes
+					}
+					ENG = {
+						is_available_heavy_fighter_BUL = yes
+					}
+				}
+			}
+		}
+		CZE = { country_event = BUL_Politics.7 }	
+	}
+	option = {# failsafe
+		name = DOD_hungary.151.f	
+		trigger = {
+			OR = {
+				has_country_flag = GER_heavy_fighter_refused
+				has_country_flag = ITA_heavy_fighter_refused
+				has_country_flag = ENG_heavy_fighter_refused
+				has_country_flag = FRA_heavy_fighter_refused
+				has_country_flag = CZE_heavy_fighter_refused
+			}
+		}
+		air_experience = 50
+	}
+
+}
+
+#fighter competition - light fighter competition winner gets a choice whether to permit license production
+country_event = {
+	id = BUL_Politics.6
+	title = DOD_hungary.153.t
+	desc = DOD_hungary.153.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# certainly
+		name = DOD_hungary.153.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		BUL = { country_event = BUL_Politics.8 }
+		air_experience = 20
+		if = {
+			limit = {
+				has_tech = Fighter_1936
+				NOT = { has_tech = Fighter_1940 }
+			}
+			create_production_license = {
+				target = BUL 
+				equipment = {
+					type = Fighter_equipment_1936
+					
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Fighter_1940
+				NOT = { has_tech = Fighter_1943 }
+			}
+			create_production_license = {
+				target = BUL 
+				equipment = {
+					type = Fighter_equipment_1940
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Fighter_1943
+			}
+			create_production_license = {
+				target = BUL 
+				equipment = {
+					type = Fighter_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+	}
+
+	option = {# no
+		name = DOD_hungary.153.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = BUL
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			BUL = { set_country_flag = GER_fighter_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			BUL = { set_country_flag = ITA_fighter_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			BUL = { set_country_flag = FRA_fighter_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			BUL = { set_country_flag = ENG_fighter_refused }
+		}
+		if = {
+			limit = { tag = CZE }
+			BUL = { set_country_flag = CZE_fighter_refused }
+		}
+		BUL = { country_event = BUL_Politics.4 }
+		reverse_add_opinion_modifier = { target = BUL modifier = refused_help }
+	}
+}
+
+#fighter competition - heavy fighter competition winner gets a choice whether to permit license production
+country_event = {
+	id = BUL_Politics.7
+	title = DOD_hungary.153.t
+	desc = DOD_hungary.154.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# certainly
+		name = DOD_hungary.153.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		BUL = { country_event = BUL_Politics.8 }
+		air_experience = 20
+		if = {
+			limit = {
+				has_tech = Heavy_Fighter_1936
+				NOT = { has_tech = Heavy_Fighter_1940 }
+			}
+			create_production_license = {
+				target = BUL 
+				equipment = {
+					type = Heavy_Fighter_equipment_1936
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Heavy_Fighter_1940
+				NOT = { has_tech = Heavy_Fighter_1943 }
+			}
+			create_production_license = {
+				target = BUL 
+				equipment = {
+					type = Heavy_Fighter_equipment_1940	
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Heavy_Fighter_1943
+			}
+			create_production_license = {
+				target = BUL 
+				equipment = {
+					type = Heavy_Fighter_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+		
+	}
+
+	option = {# no
+		name = DOD_hungary.153.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = BUL
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			BUL = { set_country_flag = GER_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			BUL = { set_country_flag = ITA_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			BUL = { set_country_flag = FRA_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			BUL = { set_country_flag = ENG_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = CZE }
+			BUL = { set_country_flag = CZE_heavy_fighter_refused }
+		}
+		BUL = { country_event = BUL_Politics.5 }
+		reverse_add_opinion_modifier = { target = BUL modifier = refused_help }
+	}
+}
+
+#fighter competition - license production approved
+country_event = {
+	id = BUL_Politics.8
+	title = DOD_hungary.155.t
+	desc = DOD_hungary.155.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# neat
+		name = DOD_hungary.155.A
+		
+	}
+}
+#The Planning Beggins
+country_event = {
+	id = BUL_Politics.9
+	title =  BUL_Politics.9.t
+	desc =  BUL_Politics.9.d
+	picture = GFX_report_event_fighters
+	trigger = {
+		date > 1933.10.31
+		has_start_date < 1933.10.31
+		original_tag = BUL
+	}
+	fire_only_once = yes
+	option = {# neat
+		name =  BUL_Politics.9.A
+		
+	}
+}
+#What about the Democrats
+country_event = {
+	id = BUL_Politics.10
+	title =  BUL_Politics.10.t
+	desc =  BUL_Politics.10.d
+	picture = GFX_report_event_fighters
+	trigger = {
+		date > 1933.11.30
+		has_start_date < 1933.11.30
+		original_tag = BUL
+	}
+	fire_only_once = yes
+	option = {# Invite Them
+		name =  BUL_Politics.10.A
+		set_country_flag = BUL_Democrat_Included_Coup
+	}
+	option = {# No, by god no
+		name =  BUL_Politics.10.B
+		
+	}
+}
+#What about the Fascists
+country_event = {
+	id = BUL_Politics.11
+	title =  BUL_Politics.11.t
+	desc =  BUL_Politics.11.d
+	picture = GFX_report_event_fighters
+	trigger = {
+		date > 1933.12.31
+		has_start_date < 1933.12.31
+		original_tag = BUL
+	}
+	fire_only_once = yes
+	option = {# Invite Them
+		name =  BUL_Politics.11.A
+		set_country_flag = BUL_Fascists_Included_Coup
+	}
+	option = {# No, by god no
+		name =  BUL_Politics.11.B
+		
+	}
+}
+#The Plan is done
+country_event = {
+	id = BUL_Politics.12
+	title =  BUL_Politics.12.t
+	desc =  BUL_Politics.12.d
+	picture = GFX_report_event_fighters
+	trigger = {
+		date > 1934.4.31
+		has_start_date < 1934.4.31
+		original_tag = BUL
+	}
+	fire_only_once = yes
+	option = {# neat
+		name =  BUL_Politics.12.A
+		
+	}
+}
+#May 19 Coup D'état
+country_event = {
+	id = BUL_Politics.13
+	title =  BUL_Politics.13.t
+	desc =  BUL_Politics.13.d
+	picture = GFX_report_event_fighters
+	trigger = {
+		date > 1934.5.1
+		has_start_date < 1934.5.1
+		original_tag = BUL
+	}
+	fire_only_once = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.13.A
+		ai_chance = {
+			factor = 0
+			modifier = {
+				factor = 100
+				is_historical_focus_on = no
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				days = 1 
+				id = BUL_Politics.14
+			}
+		}
+	}
+	option = {# Boris Remains Neutral
+		name =  BUL_Politics.13.B
+		ai_chance = {
+			factor = 100
+		}
+		hidden_effect = {
+			country_event = {
+				days = 1 
+				id = BUL_Politics.15
+			}
+		}		
+	}
+}
+#the Royal Family is Dead
+country_event = {
+	id = BUL_Politics.14
+	title =  BUL_Politics.14.t
+	desc =  BUL_Politics.14.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.14.A
+		set_country_flag = BUL_Zevno_Focus_Show
+		set_country_flag = BUL_Republic
+		mark_focus_tree_layout_dirty = yes
+		kill_country_leader = yes
+		custom_effect_tooltip = BUL_Zevno_Focus_Available
+		set_politics = {
+			ruling_party = authoritarian
+		}
+		hidden_effect = {
+			set_popularities = {
+				fascist = 0
+				authoritarian = 50
+				democratic = 35
+				socialist = 0
+				communist = 15
+			}
+		}
+		set_party_name = { 
+		    ideology = authoritarian 
+		    name = BUL_Party_Zveno 
+		    long_name = BUL_Party_Zveno
+		}
+		set_cosmetic_tag = BUL_Republic
+		create_country_leader = {
+			name = "Kimon Georgiev"
+			desc = "POLITICS_KIMON_GEORGIEV_DESC"
+			picture = "P_A_Kimon_Georgiev.tga"
+			expire = "1965.1.1"
+			ideology = authoritarian_democracy
+			traits = {
+				
+			}
+		}
+		
+		add_ideas = {
+			BUL_HoG_Damyan_Velchev
+			BUL_FM_Kimon_Georgiev
+			BUL_AM_Petar_Todorov
+			BUL_HoI_Petar_Midilev
+			BUL_MoS_Petar_Midilev
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoStaff_Hristo_Lukov
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}
+	}
+
+}
+#the Neutral_Tzar
+country_event = {
+	id = BUL_Politics.15
+	title =  BUL_Politics.15.t
+	desc =  BUL_Politics.15.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.15.A
+		add_stability = -0.15
+		set_country_flag = BUL_Zevno_Focus_Show
+		set_cosmetic_tag = BUL_Monarchy
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = BUL_Zevno_Focus_Available
+		set_party_name = { 
+		    ideology = authoritarian 
+		    name = BUL_Party_Zveno 
+		    long_name = BUL_Party_Zveno
+		}
+		add_ideas = {
+			BUL_HoG_Kimon_Georgiev	
+			BUL_FM_Kimon_Georgiev
+			BUL_AM_Petar_Todorov
+			BUL_HoI_Petar_Midilev
+			BUL_MoS_Petar_Midilev
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoStaff_Pencho_Zlatev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}
+	}
+
+}
+#National Assembly Dissolved
+country_event = {
+	id = BUL_Politics.16
+	title =  BUL_Politics.16.t
+	desc =  BUL_Politics.16.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.16.A
+		add_political_power = 25
+		add_stability = -0.02
+	}
+
+}
+#Parties and Unions Banned
+country_event = {
+	id = BUL_Politics.17
+	title =  BUL_Politics.17.t
+	desc =  BUL_Politics.17.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.17.A
+		add_political_power = 25
+		add_stability = -0.02
+		add_war_support = -0.02
+	}
+
+}
+#District Reorganization
+country_event = {
+	id = BUL_Politics.18
+	title =  BUL_Politics.18.t
+	desc =  BUL_Politics.18.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.18.A
+		add_political_power = 25
+		add_stability = -0.02
+	}
+
+}
+#District Reorganization
+country_event = {
+	id = BUL_Politics.19
+	title =  BUL_Politics.19.t
+	desc =  BUL_Politics.19.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Boris Fight the Coup
+		name =  BUL_Politics.19.A
+		add_political_power = -25
+		add_stability = 0.05
+		add_popularity = {
+		    ideology = authoritarian
+		    popularity = 0.02
+		}
+	}
+
+}
+#Directorate of Public Renewal
+country_event = {
+	id = BUL_Politics.20
+	title =  BUL_Politics.20.t
+	desc =  BUL_Politics.20.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# 
+		name =  BUL_Politics.20.A
+		add_political_power = -25
+		add_war_support = 0.05
+	}
+}
+#Directorate of Public Renewal
+country_event = {
+	id = BUL_Politics.21
+	title =  BUL_Politics.21.t
+	desc =  BUL_Politics.21.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# 
+		name =  BUL_Politics.21.A
+		add_political_power = -25
+		add_stability = 0.05
+	}
+}
+#Directorate of Public Renewal
+country_event = {
+	id = BUL_Politics.22
+	title =  BUL_Politics.22.t
+	desc =  BUL_Politics.22.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# 
+		name =  BUL_Politics.22.A
+		set_temp_variable = { money_to_gain = -100 }
+		add_money_with_tooltip_effect = yes	
+		48 = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 1
+			    instant_build = yes
+			}	
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+}
+
+#Directorate of Public Renewal
+country_event = {
+	id = BUL_Politics.23
+	title =  BUL_Politics.23.t
+	desc =  BUL_Politics.23.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Peaceful
+		name =  BUL_Politics.23.A
+		remove_ideas = BUL_IMRO_Terror
+		YUG = {
+			remove_opinion_modifier = {
+			    target = BUL
+			    modifier = BUL_IMRO_Terror
+			}
+		}
+		GRE = {
+			remove_opinion_modifier = {
+			    target = BUL
+			    modifier = BUL_IMRO_Terror
+			}
+		}
+		add_equipment_to_stockpile = {
+		    type = infantry_equipment
+		    amount = 1000
+		    producer = BUL
+		}
+	}
+	option = {# Violent
+		name =  BUL_Politics.23.B
+		remove_ideas = BUL_IMRO_Terror
+		YUG = {
+			remove_opinion_modifier = {
+			    target = BUL
+			    modifier = BUL_IMRO_Terror
+			}
+		}
+		GRE = {
+			remove_opinion_modifier = {
+			    target = BUL
+			    modifier = BUL_IMRO_Terror
+			}
+		}
+		set_country_flag = BUL_IMRO_Stopped
+	}
+}
+
+#########################################################################
+# Fascist Issue
+#########################################################################
+country_event = {
+	id = BUL_Politics.24
+	title =  BUL_Politics.24.t
+	desc =  BUL_Politics.24.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Take all
+		name =  BUL_Politics.24.A
+		add_popularity = {
+		    ideology = authoritarian
+		    popularity = 0.05
+		}
+		add_popularity = {
+		    ideology = fascist
+		    popularity = -0.05
+		}
+
+	}
+	option = {# Take some
+		name =  BUL_Politics.24.B
+		add_popularity = {
+		    ideology = authoritarian
+		    popularity = 0.025
+		}
+		add_popularity = {
+		    ideology = fascist
+		    popularity = -0.025
+		}
+	}
+	option = {#Purge them all 
+		name =  BUL_Politics.24.C
+		add_popularity = {
+		    ideology = authoritarian
+		    popularity = -0.05
+		}
+		add_popularity = {
+		    ideology = fascist
+		    popularity = 0.05
+		}
+		set_country_flag = BUL_Avoid_Fascist_Counter_Coup
+	}	
+}
+#########################################################################
+# Education Reform
+#########################################################################
+country_event = {
+	id = BUL_Politics.25
+	title =  BUL_Politics.25.t
+	desc =  BUL_Politics.25.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# 
+		name =  BUL_Politics.25.A
+		add_research_slot = 1
+		set_country_flag = research_spending_slider_decrease_blocked
+		add_ideas = research_spending_level_2
+	}
+}
+#########################################################################
+##Military Split
+#########################################################################
+country_event = {
+	id = BUL_Politics.26
+	title =  BUL_Politics.26.t
+	desc =  BUL_Politics.26.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# 
+		name =  BUL_Politics.26.A
+		#Decision not coded
+		#unlock_decision_tooltip = BUL_Consolidate_Military_Union
+		set_country_flag = BUL_Military_Consolidation_Unlock
+		country_event = {
+			id = BUL_Politics.27
+			days = 14
+		}
+	}
+}
+#########################################################################
+##Military Union Schism
+#######################################################################
+country_event = {
+	id = BUL_Politics.27
+	title =  BUL_Politics.27.t
+	desc =  BUL_Politics.27.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Succesful
+		name =  BUL_Politics.27.A
+		add_ideas = BUL_CoStaff_Damjan_Velchev_A
+		set_country_flag = BUL_MU_Wont_Coup
+	}
+	option = {# Unseccesful
+		name =  BUL_Politics.27.B
+	}
+}
+#########################################################################
+# Open Relations with the Soviet Union: 
+#########################################################################
+country_event = {
+	id = BUL_Foreign.1
+	title = BUL_Foreign.1.t
+	desc = BUL_Foreign.1.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.1.A
+		reverse_add_opinion_modifier = {
+			target = SOV
+			modifier = BUL_Diplomatic_Relations
+		}
+		add_opinion_modifier = {
+			target = SOV
+			modifier = BUL_Diplomatic_Relations
+		}
+	}	
+}
+#########################################################################
+# Balkan Pact Negotiations
+#########################################################################
+country_event = {
+	id = BUL_Foreign.2
+	title = BUL_Foreign.2.t
+	desc = BUL_Foreign.2.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# No
+	option = { 
+		name = BUL_Foreign.2.A
+		reverse_add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Diplomatic_Relations
+		}
+		add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Diplomatic_Relations
+		}
+		reverse_add_opinion_modifier = {
+			target = GRE
+			modifier = BUL_Diplomatic_Relations
+		}
+		add_opinion_modifier = {
+			target = GRE
+			modifier = BUL_Diplomatic_Relations
+		}
+		reverse_add_opinion_modifier = {
+			target = ROM
+			modifier = BUL_Diplomatic_Relations
+		}
+		add_opinion_modifier = {
+			target = ROM
+			modifier = BUL_Diplomatic_Relations
+		}
+		reverse_add_opinion_modifier = {
+			target = TUR
+			modifier = BUL_Diplomatic_Relations
+		}
+		add_opinion_modifier = {
+			target = TUR
+			modifier = BUL_Diplomatic_Relations
+		}
+	}	
+}
+#########################################################################
+# Open Relations with the Soviet Union: 
+#########################################################################
+country_event = {
+	id = BUL_Foreign.3
+	title = BUL_Foreign.3.t
+	desc = BUL_Foreign.3.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.3.A
+		reverse_add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Diplomatic_YUG
+		}
+		add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Diplomatic_YUG
+		}
+		reverse_add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Trade_YUG
+		}
+		add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Trade_YUG
+		}
+	}	
+}
+#########################################################################
+# Open Relations with the Soviet Union: 
+#########################################################################
+country_event = {
+	id = BUL_Foreign.4
+	title = BUL_Foreign.4.t
+	desc = BUL_Foreign.4.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.4.A
+		add_political_power = 15
+		reverse_add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Alexander_Visit
+		}
+		add_opinion_modifier = {
+			target = YUG
+			modifier = BUL_Alexander_Visit
+		}
+	}	
+}
+
+#########################################################################
+# Bulgaria Wnat to Joins Yugoslavia
+#########################################################################
+country_event = {
+	id = BUL_Foreign.5
+	title = BUL_Foreign.5.t
+	desc = BUL_Foreign.5.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# Accept
+	option = { 
+		name = BUL_Foreign.5.A
+		BUL = {
+			country_event = {
+				id = BUL_Foreign.7
+				days = 1
+			}
+		}
+	}	
+	# Refuse
+	option = { 
+		name = BUL_Foreign.5.B
+		BUL = {
+			country_event = {
+				id = BUL_Foreign.6
+				days = 1
+			}
+		}
+	}	
+}
+#########################################################################
+# YUG refuses ...
+#########################################################################
+country_event = {
+	id = BUL_Foreign.6
+	title = BUL_Foreign.6.t
+	desc = BUL_Foreign.6.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.6.A
+
+	}	
+
+}
+#########################################################################
+# YUG Agrees !
+#########################################################################
+country_event = {
+	id = BUL_Foreign.7
+	title = BUL_Foreign.7.t
+	desc = BUL_Foreign.7.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.7.A
+		custom_effect_tooltip = BUL_YUG_annexion
+		hidden_effect = {
+			YUG = {
+				country_event = {
+					months = 6
+					id = BUL_Foreign.8
+				}
+			}
+		}
+	}	
+
+}
+#########################################################################
+# The Annexation of Bulgaria
+#########################################################################
+country_event = {
+	id = BUL_Foreign.8
+	title = BUL_Foreign.8.t
+	desc = BUL_Foreign.8.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.8.A
+		annex_country = {
+		    target = BUL
+		    transfer_troops = yes
+		}
+		add_political_power = -50
+		add_timed_idea = {
+		    idea = BUL_Bulgarian_Integration
+		    days = 365
+		}
+		hidden_effect = {
+			country_event = {
+				days = 365
+				id = BUL_Foreign.9
+			}
+		}
+	}	
+
+}
+#########################################################################
+# The Annexation of Bulgaria
+#########################################################################
+country_event = {
+	id = BUL_Foreign.9
+	title = BUL_Foreign.9.t
+	desc = BUL_Foreign.9.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Foreign.9.A
+		every_state = {
+			limit = {
+				is_core_of = BUL
+			}
+			add_core_of = YUG
+		}
+	}	
+
+}
+#########################################################################
+# The Monarchists moves in
+#########################################################################
+country_event = {
+	id = BUL_Countercoup.1
+	title = BUL_Countercoup.1.t
+	desc = BUL_Countercoup.1.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Countercoup.1.A
+		country_event = {
+			days = 1
+			id = BUL_Countercoup.2
+		}
+	}	
+}
+#########################################################################
+# The Tzar’s Government
+#########################################################################
+country_event = {
+	id = BUL_Countercoup.2
+	title = BUL_Countercoup.2.t
+	desc = BUL_Countercoup.2.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Countercoup.2.A
+		add_stability = -0.2
+		add_political_power = -100
+		set_party_name = { 
+		    ideology = authoritarian 
+		    name = BUL_authoritarian_party 
+		    long_name = BUL_authoritarian_party_long
+		}
+		add_ideas = {
+			BUL_HoG_Pencho_Zlatev
+			BUL_FM_Konstantin_Batolov
+			BUL_AM_Yanaki_Mollov
+			BUL_HoI_Petar_Midilev
+			BUL_MoS_Luben_Dickov
+			BUL_CoStaff_Pencho_Zlatev
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}
+		clr_country_flag = BUL_Zevno_Focus_Show
+		set_country_flag = BUL_Tzar_Focus_Show
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = BUL_Tzar_Focus_Available
+
+	}	
+}
+#########################################################################
+# Fascist Counter-Coup
+#########################################################################
+country_event = {
+	id = BUL_Countercoup.3
+	title = BUL_Countercoup.3.t
+	desc = BUL_Countercoup.3.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Countercoup.3.A
+		country_event = {
+			days = 1
+			id = BUL_Countercoup.4
+		}
+	}	
+}
+#########################################################################
+# Fascist Counter-Coup
+#########################################################################
+country_event = {
+	id = BUL_Countercoup.4
+	title = BUL_Countercoup.4.t
+	desc = BUL_Countercoup.4.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Countercoup.4.A
+		add_stability = -0.25
+		add_political_power = -100
+		set_cosmetic_tag = BUL_Default
+		add_ideas = {
+			BUL_HoG_Lyuben_Kostov
+			BUL_FM_Aleksandur_Tsankov
+			BUL_AM_Bogdan_Filov
+			BUL_HoI_Kiril_Stanchev
+			BUL_MoS_Petur_Gabrovski
+			BUL_CoStaff_Hristo_Lukov
+			BUL_CoArmy_Trifon_Trifonov
+			BUL_CoNavy_Atanas_Shalapatov
+			BUL_CoAir_Chudomir_Toplodolski
+		}
+		clr_country_flag = BUL_Zevno_Focus_Show
+		set_country_flag = BUL_Fascist_Focus_Show
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = BUL_Fascist_Focus_Available
+	}	
+}
+#########################################################################
+# Fascist Counter-Coup
+#########################################################################
+country_event = {
+	id = BUL_Countercoup.5
+	title = BUL_Countercoup.5.t
+	desc = BUL_Countercoup.5.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Countercoup.5.A
+		country_event = {
+			days = 1
+			id = BUL_Countercoup.6
+		}
+	}	
+}
+#########################################################################
+# Fascist Counter-Coup
+#########################################################################
+country_event = {
+	id = BUL_Countercoup.6
+	title = BUL_Countercoup.6.t
+	desc = BUL_Countercoup.6.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Countercoup.6.A
+		add_stability = -0.1
+		add_political_power = -25
+		set_cosmetic_tag = BUL_Republic
+		create_country_leader = {
+			name = "Kimon Georgiev"
+			desc = "POLITICS_KIMON_GEORGIEV_DESC"
+			picture = "P_BUL_Vacant.tga"
+			expire = "1965.1.1"
+			ideology = military_dictatorship
+			traits = {
+				
+			}
+		}
+		add_ideas = {
+			BUL_HoG_Dobri_Bojilov
+			BUL_FM_Kimon_Georgiev
+			BUL_AM_Petar_Todorov
+			BUL_HoI_Petar_Midilev
+			BUL_MoS_Petar_Midilev
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoStaff_Hristo_Lukov
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}
+		mark_focus_tree_layout_dirty = yes
+
+	}	
+}
+
+#########################################################################
+# 2nd Transitional Government
+#########################################################################
+country_event = {
+	id = BUL_Tzar.1
+	title = BUL_Tzar.1.t
+	desc = BUL_Tzar.1.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	option = { 
+		name = BUL_Tzar.1.A
+		add_ideas = {
+			BUL_HoG_Andrey_Toshev
+			BUL_FM_Konstantin_Batolov
+			BUL_AM_Yanaki_Mollov
+			BUL_HoI_Petar_Midilev
+			BUL_MoS_Luben_Dickov
+			BUL_CoStaff_Stefan_Tsanev
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Boris III"
+				desc = ""
+				picture = "P_A_Boris_III.tga"
+				expire = "1965.1.1"
+				ideology = authoritarian_democracy
+				traits = { POSITION_Tsar SUBIDEOLOGY_Monarchism HoS_Autocratic_Charmer }
+			}
+		}
+	}	
+}
+#########################################################################
+# 3rd Transitional Government
+#########################################################################
+country_event = {
+	id = BUL_Tzar.2
+	title = BUL_Tzar.2.t
+	desc = BUL_Tzar.2.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.2.A
+		add_ideas = {
+			BUL_HoG_Georgi_Kyoseivanov
+			BUL_FM_Georgi_Kioseivanov
+			BUL_AM_Kiril_Gounev
+			BUL_HoI_Dimitar_Peshev
+			BUL_MoS_Georgi_Sapov
+			BUL_CoStaff_Hristo_Lukov
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}
+	}	
+}
+#########################################################################
+# Daiman Velchev’s Arrest
+#########################################################################
+country_event = {
+	id = BUL_Tzar.3
+	title = BUL_Tzar.3.t
+	desc = BUL_Tzar.3.d
+	picture = GFX_report_event_fighters
+	
+	fire_only_once = yes
+	trigger = {
+		date > 1935.10.1
+		has_start_date < 1935.10.1
+		original_tag = BUL
+		has_completed_focus = BUL_Back_in_Control
+	}
+	# 
+	option = { 
+		name = BUL_Tzar.3.A
+		set_country_flag = Damjan_Velchev_unavailable
+		remove_unit_leader = 69420
+	}	
+}
+#########################################################################
+# Liquidation of the Military Union
+#########################################################################
+country_event = {
+	id = BUL_Tzar.4
+	title = BUL_Tzar.4.t
+	desc = BUL_Tzar.4.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.4.A
+		add_political_power = 30
+		army_experience = 25
+	}	
+}
+#########################################################################
+# Elections for the National Assembly
+#########################################################################
+country_event = {
+	id = BUL_Tzar.5
+	title = BUL_Tzar.5.t
+	desc = BUL_Tzar.5.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.5.A
+		add_popularity = {
+		    ideology = democratic
+		    popularity = 0.1
+		}
+		add_stability = 0.02
+	}	
+}
+#########################################################################
+# Elections for the National Assembly
+#########################################################################
+country_event = {
+	id = BUL_Tzar.6
+	title = BUL_Tzar.6.t
+	desc = BUL_Tzar.6.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.6.A
+		set_country_flag = BUL_Sided_With_Axis
+	}
+	option = { 
+		name = BUL_Tzar.6.B
+		set_country_flag = BUL_Sided_With_Allies
+	}	
+}
+#########################################################################
+# The Second Kyoseivanov Government
+#########################################################################
+country_event = {
+	id = BUL_Tzar.7
+	title = BUL_Tzar.7.t
+	desc = BUL_Tzar.7.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.7.A
+		add_ideas = {
+			BUL_HoG_Georgi_Kyoseivanov
+			BUL_FM_Georgi_Kioseivanov
+			BUL_AM_Kiril_Gounev
+			BUL_HoI_Dimitar_Peshev
+			BUL_MoS_Angel_Karagyozov
+			BUL_CoStaff_Hristo_Lukov
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}		
+	}
+
+}
+#########################################################################
+# Municipal Elections
+#########################################################################
+country_event = {
+	id = BUL_Tzar.8
+	title = BUL_Tzar.8.t
+	desc = BUL_Tzar.8.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.8.A
+			
+	}
+
+}
+#########################################################################
+# Parlementiary Elections
+#########################################################################
+country_event = {
+	id = BUL_Tzar.9
+	title = BUL_Tzar.9.t
+	desc = BUL_Tzar.9.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.9.A
+			
+	}
+
+}
+#########################################################################
+# The Third Kyoseivanov Government
+#########################################################################
+country_event = {
+	id = BUL_Tzar.10
+	title = BUL_Tzar.10.t
+	desc = BUL_Tzar.10.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.10.A
+		add_ideas = {
+			BUL_HoG_Georgi_Kyoseivanov
+			BUL_FM_Georgi_Kioseivanov
+			BUL_AM_Dobri_Bojilov
+			BUL_HoI_Dimitar_Peshev
+			BUL_MoS_Georgi_Sapov
+			BUL_CoStaff_Hristo_Lukov
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev
+		}		
+	}
+
+}
+#########################################################################
+# Hristo Lukov’s Retirement
+#########################################################################
+country_event = {
+	id = BUL_Tzar.11
+	title = BUL_Tzar.11.t
+	desc = BUL_Tzar.11.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.11.A
+		add_ideas = {
+			BUL_CoStaff_Teodosi_Daskalov
+		}		
+	}
+
+}
+#########################################################################
+# 1939 Parliamentary Elections
+#########################################################################
+country_event = {
+	id = BUL_Tzar.12
+	title = BUL_Tzar.12.t
+	desc = BUL_Tzar.12.d
+	picture = GFX_report_event_fighters
+	
+	fire_only_once = yes
+	trigger = {
+		date > 1939.12.24
+		has_start_date < 1939.12.24
+		original_tag = BUL
+	}
+	option = { 
+		name = BUL_Tzar.12.A
+		set_country_flag = BUL_1939_Elections
+	}
+
+}
+#########################################################################
+# Bogdan Filov’s First Government
+#########################################################################
+country_event = {
+	id = BUL_Tzar.13
+	title = BUL_Tzar.13.t
+	desc = BUL_Tzar.13.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.13.A
+		add_ideas = {
+			BUL_HoG_Bogdan_Filov
+			BUL_FM_Ivan_Popov
+			BUL_AM_Dobri_Bojilov
+			BUL_HoI_Dimitar_Peshev
+			BUL_MoS_Georgi_Sapov
+			BUL_CoStaff_Teodosi_Daskalov
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev		
+		}		
+	}
+
+}
+#########################################################################
+# Bogdan Filov’s 2nd Government
+#########################################################################
+country_event = {
+	id = BUL_Tzar.14
+	title = BUL_Tzar.14.t
+	desc = BUL_Tzar.14.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.14.A
+		add_ideas = {
+			BUL_HoG_Bogdan_Filov
+			BUL_FM_Ivan_Popov
+			BUL_AM_Dobri_Bojilov
+			BUL_HoI_Dimitar_Peshev
+			BUL_MoS_Georgi_Sapov
+			BUL_CoStaff_Nikola_Mihov
+			BUL_CoArmy_Todor_Georgiev
+			BUL_CoNavy_Sava_Ivanov
+			BUL_CoAir_Vasil_Boydev		
+		}		
+	}
+
+}
+#########################################################################
+# Execution of Commies
+#########################################################################
+country_event = {
+	id = BUL_Tzar.15
+	title = BUL_Tzar.15.t
+	desc = BUL_Tzar.15.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	# 
+	option = { 
+		name = BUL_Tzar.15.A
+		add_stability = 0.02		
+	}
+
+}

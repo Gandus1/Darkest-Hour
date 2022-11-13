@@ -1,0 +1,289 @@
+﻿###########################
+# Darkest Hour Events : Germany RKs
+###########################
+add_namespace = GER_RK
+#########################################################################
+#  RK  Iceland
+#########################################################################
+country_event = {
+	id = GER_RK.6
+	title = GER_RK.6.t
+	desc = GER_RK.6.d
+	picture = GFX_report_event_001
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+		GER = { has_government = fascist }
+		ICE = { exists = no }
+		GER = {
+			has_full_control_of_state = 100
+			has_full_control_of_state = 942
+		}
+	}
+	# Establish RK Iceland
+	option = {
+		name = GER_RK.6.A
+		custom_effect_tooltip = lag_warning
+		ai_chance = {
+			factor = 100
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_dlc = "Death or Dishonor"
+				}
+				set_autonomy = {
+					target = ICE
+					autonomous_state = AUTONOMY_Reichskommissariat
+				}
+				else = {
+					puppet = ICE
+				}
+			}
+			ICE = {
+				add_popularity = { ideology = fascist popularity = 0.1 }
+				set_politics = { ruling_party = fascist elections_allowed = no }
+				set_cosmetic_tag = ICE_GER_RK
+				transfer_state = 100
+				transfer_state = 942
+			}
+		}
+		custom_effect_tooltip = germany_establish_rk_iceland
+	}
+	#Establish direct military occupation
+	option = {
+		name = GER_RK.6.B
+		ai_chance = {
+			factor = 0
+		}
+		custom_effect_tooltip = germany_rk_military_occupation
+	}
+}
+#########################################################################
+#  RK  Schweland
+#########################################################################
+country_event = {
+	id = GER_RK.7
+	title = GER_RK.7.t
+	desc = GER_RK.7.d
+	picture = GFX_report_event_001
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+		GER = { has_government = fascist }
+		SWE = { exists = no }
+		GER = {
+			has_full_control_of_state = 138
+			has_full_control_of_state = 139
+			has_full_control_of_state = 1103
+			has_full_control_of_state = 140
+			has_full_control_of_state = 1463
+			has_full_control_of_state = 124
+			has_full_control_of_state = 141
+			has_full_control_of_state = 1099
+			has_full_control_of_state = 1100
+			has_full_control_of_state = 38
+			has_full_control_of_state = 1101
+			has_full_control_of_state = 666
+			has_full_control_of_state = 1102
+		}
+	}
+	# Establish RK Schweland
+	option = {
+		name = GER_RK.7.A
+		custom_effect_tooltip = lag_warning
+		ai_chance = {
+			factor = 100
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_dlc = "Death or Dishonor"
+				}
+				set_autonomy = {
+					target = SWE
+					autonomous_state = AUTONOMY_Reichskommissariat
+				}
+				else = {
+					puppet = SWE
+				}
+			}
+			SWE = {
+				add_popularity = { ideology = fascist popularity = 0.1 }
+				set_politics = { ruling_party = fascist elections_allowed = no }
+				set_cosmetic_tag = SWE_GER_RK
+				transfer_state = 138
+				transfer_state = 139
+				transfer_state = 1103
+				transfer_state = 140
+				transfer_state = 1463
+				transfer_state = 124
+				transfer_state = 141
+				transfer_state = 1099
+				transfer_state = 1100
+				transfer_state = 38
+				transfer_state = 1101
+				transfer_state = 666
+				transfer_state = 1102
+			}
+		}
+		custom_effect_tooltip = germany_establish_rk_sweden
+	}
+	#Establish direct military occupation
+	option = {
+		name = GER_RK.7.B
+		ai_chance = {
+			factor = 0
+		}
+		custom_effect_tooltip = germany_rk_military_occupation
+	}
+}
+#########################################################################
+#  Generalgouvernement Polen - Add east states if owned
+#########################################################################
+country_event = {
+	id = GER_RK.11
+	title = GER_RK.11.t
+	desc = GER_RK.11.d
+	picture = GFX_report_event_001
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		tag = GER
+		country_exists = GGP
+		GGP = {
+			OR = {
+				NOT = { owns_state = 91 }
+				NOT = { owns_state = 1170 }
+				NOT = { owns_state = 89 }
+				NOT = { owns_state = 886 }
+			}
+		}
+		any_country = {
+			OR = {
+				tag = GER
+				is_subject_of = GER
+				is_in_faction_with = GER
+			}
+			has_full_control_of_state = 91
+		}
+		any_country = {
+			OR = {
+				tag = GER
+				is_subject_of = GER
+				is_in_faction_with = GER
+			}
+			has_full_control_of_state = 89
+		}
+		any_country = {
+			OR = {
+				tag = GER
+				is_subject_of = GER
+				is_in_faction_with = GER
+			}
+			has_full_control_of_state = 1170
+		}
+		any_country = {
+			OR = {
+				tag = GER
+				is_subject_of = GER
+				is_in_faction_with = GER
+			}
+			has_full_control_of_state = 886
+		}
+	}
+	#Expand Generalgouvernement Polen
+	option = {
+		ai_chance = { base = 100 }
+		hidden_effect = {
+			GGP = { transfer_state = 91 }
+			GGP = { transfer_state = 89 }
+			GGP = { transfer_state = 1170 }
+			GGP = { transfer_state = 886 }
+		}
+	}
+}
+#########################################################################
+#  SS-Burgundy if GER owns south states ask for them
+#########################################################################
+country_event = {
+	id = GER_RK.12
+	title = GER_RK.12.t
+	desc = GER_RK.12.d
+	picture = GFX_report_event_001
+	is_triggered_only = yes
+	option = {#Give them what you own
+		name = GER_RK.12.A
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+					}
+					owns_state = 20
+				}
+			}
+			SSB = {
+				transfer_state = 20
+			}
+			20 = {
+				add_core_of = SSB
+			}
+		}
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+					}
+					owns_state = 32
+				}
+			}
+			SSB = {
+				transfer_state = 32
+			}
+			32 = {
+				add_core_of = SSB
+			}
+		}
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+					}
+					owns_state = 21
+				}
+			}
+			SSB = {
+				transfer_state = 21
+			}
+			21 = {
+				add_core_of = SSB
+			}
+		}
+		if = {
+			limit = {
+				ITA = {
+					NOT = {
+						has_opinion_modifier = protest_action
+					}
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = protest_action
+				}
+			}
+		}
+	}
+	option = {#Don't give it to them
+		name = GER_RK.12.B
+		ai_chance = { base = 0 }
+	}
+}

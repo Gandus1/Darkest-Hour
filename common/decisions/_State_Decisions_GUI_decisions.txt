@@ -1,0 +1,80 @@
+State_decisions_GUI_category = {
+	change_capital_state_mission = {
+		icon = border_war
+		
+		days_mission_timeout = 30
+		is_good = yes
+
+		allowed = {
+			always = no
+		}
+		visible = {
+			has_variable = change_capital_state_mission_target
+		}
+		available = {
+			var:change_capital_state_mission_target = {
+				NOT = { is_controlled_by = ROOT }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = CHANGE_CAPITAL_STATE_MISSION_NO_EFFECT_TT
+			hidden_effect = {
+				remove_mission = change_capital_state_mission
+				activate_mission = change_capital_state_mission
+				remove_mission = change_capital_state_mission
+				clear_variable = change_capital_state_mission_target
+			}
+		}
+		timeout_effect = {
+			set_capital = {
+				state = var:change_capital_state_mission_target 
+				remember_old_capital = no
+			}
+			hidden_effect = {
+				remove_mission = change_capital_state_mission
+				activate_mission = change_capital_state_mission
+				remove_mission = change_capital_state_mission
+				clear_variable = change_capital_state_mission_target
+			}
+		}
+	}
+	
+	add_shared_building_slot_state_mission = {
+		icon = border_war
+		
+		days_mission_timeout = 50
+		is_good = yes
+
+		allowed = {
+			always = no
+		}
+		visible = {
+			has_variable = add_shared_building_slot_state_mission_target
+		}
+		available = {
+			var:add_shared_building_slot_state_mission_target = {
+				NOT = { is_controlled_by = ROOT }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ADD_SHARED_BUILDING_SLOT_STATE_MISSION_NO_EFFECT_TT
+			hidden_effect = {
+				remove_mission = add_shared_building_slot_state_mission
+				activate_mission = add_shared_building_slot_state_mission
+				remove_mission = add_shared_building_slot_state_mission
+				clear_variable = add_shared_building_slot_state_mission_target
+			}
+		}
+		timeout_effect = {
+			var:add_shared_building_slot_state_mission_target = {
+				add_extra_state_shared_building_slots = 1
+			}
+			hidden_effect = {
+				remove_mission = add_shared_building_slot_state_mission
+				activate_mission = add_shared_building_slot_state_mission
+				remove_mission = add_shared_building_slot_state_mission
+				clear_variable = add_shared_building_slot_state_mission_target
+			}
+		}
+	}
+}

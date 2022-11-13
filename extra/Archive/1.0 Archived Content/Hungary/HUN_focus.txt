@@ -1,0 +1,1843 @@
+focus_tree = {
+	id = HUN_Horthy
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HUN
+		}
+	}
+	default = no
+	focus = {
+		id = HUN_The_Regents_Rule
+		icon = GFX_HUN_The_Regents_Rule
+		cost = 70
+		x = 4
+		y = 0
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = HUN_Industrial_Revitalization
+		icon = GFX_goal_generic_construction
+		cost = 70
+		x = 13
+		y = 0
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_industrial_revitalization
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus = {
+		id = HUN_Secret_Rearmament
+		icon = GFX_focus_secret_rearmament
+		cost = 70
+		x = 24
+		y = 0
+		ai_will_do = {
+			factor = 80
+		}
+		completion_reward = {
+			add_ideas = HUN_secret_rearmament
+		}
+	}
+	focus = {
+		id = HUN_The_Third_Attempt
+		icon = GFX_HUN_The_Third_Attempt
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Regents_Rule
+		}
+		mutually_exclusive = {
+			focus = HUN_Consolidate_Gombos_Legacy
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HUN_GER_Not_Annexed_AUS_tt
+				GER = {
+					NOT = {
+						has_country_flag = AUS_annexed
+					}
+				}
+			}
+		}
+		x = 2
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = DH_Hungary.8
+			}
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = HUN_The_Missing_Throne
+		icon = GFX_HUN_The_Missing_Throne
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Third_Attempt
+		}
+		mutually_exclusive = {
+			focus = HUN_Irredentism_Is_The_Way
+		}
+		x = 1
+		y = 2
+		completion_reward = {
+			unlock_decision_tooltip = HUN_Support_Austrian_Autonomy
+			unlock_decision_tooltip = HUN_European_Solidarity
+		}
+	}
+	focus = {
+		id = HUN_The_Plebicite
+		icon = GFX_HUN_The_Plebiscite
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Missing_Throne
+		}
+		x = 1
+		y = 3
+		completion_reward = {
+			unlock_decision_tooltip = HUN_Ask_The_Austrian_People
+			unlock_decision_tooltip = HUN_Ask_Our_contenders
+		}
+	}
+	focus = {
+		id = HUN_One_and_Indivisble
+		icon = GFX_HUN_One_and_Indivisible
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Plebicite
+		}
+		x = 1
+		y = 4
+		completion_reward = {
+			add_state_core = 152
+			add_state_core = 4
+			add_state_core = 774
+			add_state_core = 153
+			unlock_decision_tooltip = HUN_Push_Down_The_Front
+		}
+	}
+	focus = {
+		id = HUN_An_Empire_Yet_Again
+		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
+		cost = 70
+		prerequisite = {
+			focus = HUN_One_and_Indivisble
+		}
+		x = 1
+		y = 5
+		completion_reward = {
+			# unlock_decision_tooltip = HUN_Autria_Hungary_Empire
+			unlock_decision_tooltip = HUN_Bohemian_Lordship
+			unlock_decision_tooltip = HUN_Protector_of_Yugoslavia
+		}
+	}
+	focus = {
+		id = HUN_Irredentism_Is_The_Way
+		icon = GFX_HUN_Irredentism_is_the_Way
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Third_Attempt
+		}
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = HUN_GER_Annexed_AUS_tt
+				GER = {
+					has_country_flag = AUS_annexed
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = HUN_The_Missing_Throne
+		}
+		x = 3
+		y = 2
+		completion_reward = {
+			add_state_claim = 772
+			add_state_claim = 45
+			add_state_claim = 109
+			add_state_claim = 103
+			add_state_claim = 163
+			add_state_claim = 102
+			add_state_claim = 770
+			add_state_claim = 815
+			add_state_claim = 664
+			add_state_claim = 73
+			add_state_claim = 71
+			add_state_claim = 70
+			unlock_decision_tooltip = HUN_Push_Out_Of_Triannon
+		}
+	}
+	focus = {
+		id = HUN_An_Army_with_a_King
+		icon = GFX_HUN_An_Army_with_a_King
+		cost = 70
+		prerequisite = {
+			focus = HUN_Irredentism_Is_The_Way
+		}
+		x = 3
+		y = 3
+		completion_reward = {
+			add_manpower = 250000
+			custom_effect_tooltip = HUN_An_Army_with_a_King_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						OR = {
+							is_neighbor_of = HUN
+							is_in_faction_with = ENG
+						}
+					}
+					reverse_add_opinion_modifier = {
+						target = PREV
+						modifier = small_decrease
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_The_Land_Beyond_The_Moutains
+		icon = GFX_goal_generic_major_war
+		cost = 70
+		prerequisite = {
+			focus = HUN_An_Army_with_a_King
+			focus = HUN_The_Plebicite
+		}
+		x = 3
+		y = 4
+		completion_reward = {
+			unlock_decision_tooltip = HUN_Claim_Transylvania
+		}
+	}
+	focus = {
+		id = HUN_Consolidate_Gombos_Legacy
+		icon = GFX_HUN_Consolidadte_Gombos_Legacy
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Regents_Rule
+		}
+		mutually_exclusive = {
+			focus = HUN_The_Third_Attempt
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = HUN_Consolidate_Gombos_Legacy_tt
+			}
+		}
+		x = 6
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = HUN_Purge_the_National_Will
+			unlock_decision_tooltip = HUN_Assure_Our_Keepers
+			add_opinion_modifier = {
+				target = GER
+				modifier = HUN_gombos_legacy
+			}
+			reverse_add_opinion_modifier = {
+				target = GER
+				modifier = HUN_gombos_legacy
+			}
+		}
+	}
+	focus = {
+		id = HUN_Renew_our_Capital
+		icon = GFX_GENERIC_Money
+		cost = 70
+		prerequisite = {
+			focus = HUN_Consolidate_Gombos_Legacy
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			GER = {
+				country_event = {
+					days = 1
+					id = DH_Hungary.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_Our_Rightful_Land
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		cost = 70
+		prerequisite = {
+			focus = HUN_Consolidate_Gombos_Legacy
+		}
+		x = 6
+		y = 3
+		completion_reward = {
+			unlock_decision_category_tooltip = HUN_Claim_Land
+		}
+	}
+	focus = {
+		id = HUN_Appeasing_Our_Superiors
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 70
+		prerequisite = {
+			focus = HUN_Consolidate_Gombos_Legacy
+		}
+		x = 7
+		y = 2
+		completion_reward = {
+			unlock_decision_category_tooltip = HUN_Appeasing_Our_Superiors
+		}
+	}
+	focus = {
+		id = HUN_Blood_for_our_Debts
+		icon = GFX_focus_chi_army_reform
+		cost = 70
+		prerequisite = {
+			focus = HUN_Renew_our_Capital
+		}
+		prerequisite = {
+			focus = HUN_Our_Rightful_Land
+		}
+		prerequisite = {
+			focus = HUN_Appeasing_Our_Superiors
+		}
+		mutually_exclusive = {
+			focus = HUN_A_Supportive_Alliance
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			add_manpower = 200000
+			add_ideas = HUN_idea_Blood_For_Our_Debts
+		}
+	}
+	focus = {
+		id = HUN_Greater_Hungary
+		icon = GFX_HUN_Greater_Hungary
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Land_Beyond_The_Moutains
+			focus = HUN_Blood_for_our_Debts
+		}
+		x = 4
+		y = 5
+		completion_reward = {
+			unlock_decision_tooltip = HUN_Fullfill_Greater_Hungary
+		}
+	}
+	focus = {
+		id = HUN_A_Supportive_Alliance
+		icon = GFX_goal_generic_military_deal
+		cost = 70
+		prerequisite = {
+			focus = HUN_Our_Rightful_Land
+		}
+		prerequisite = {
+			focus = HUN_Appeasing_Our_Superiors
+		}
+		prerequisite = {
+			focus = HUN_Renew_our_Capital
+		}
+		mutually_exclusive = {
+			focus = HUN_Blood_for_our_Debts
+		}
+		x = 7
+		y = 4
+		completion_reward = {
+			unlock_decision_tooltip = HUN_German_Support_Troops
+		}
+	}
+	focus = {
+		id = HUN_Old_Friends_Older_Enemies
+		icon = GFX_HUN_Old_Friends_Older_Enemies
+		cost = 70
+		prerequisite = {
+			focus = HUN_A_Supportive_Alliance
+		}
+		x = 7
+		y = 5
+		completion_reward = {
+			unlock_decision_tooltip = HUN_Reach_Out_To_Enemy
+			add_ideas = HUN_idea_Old_Freinds_Older_Enemies
+		}
+	}
+	focus = {
+		id = HUN_Reintegrate_the_Railroads
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 70
+		prerequisite = {
+			focus = HUN_Industrial_Revitalization
+		}
+		x = 13
+		y = 1
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = HUN_reintegrate_the_railroads_Inf
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					has_state_flag = HUN_reintegrate_the_railroads_Inf_2
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					has_state_flag = HUN_reintegrate_the_railroads_Inf_3
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					country_exists = AUS
+				}
+				reverse_add_opinion_modifier = {
+					target = AUS
+					modifier = HUN_reintegrate_the_railroads
+				}
+			}
+			if = {
+				limit = {
+					country_exists = CZE
+				}
+				reverse_add_opinion_modifier = {
+					target = CZE
+					modifier = HUN_reintegrate_the_railroads
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = {
+					155
+				}
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = HUN_reintegrate_the_railroads_Inf
+			}
+			random_owned_controlled_state = {
+				prioritize = {
+					43
+				}
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = HUN_reintegrate_the_railroads_Inf_2
+			}
+			random_owned_controlled_state = {
+				prioritize = {
+					664
+				}
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = HUN_reintegrate_the_railroads_Inf_3
+			}
+			if = {
+				limit = {
+					country_exists = AUS
+				}
+				reverse_add_opinion_modifier = {
+					target = AUS
+					modifier = HUN_reintegrate_the_railroads
+				}
+			}
+			if = {
+				limit = {
+					country_exists = CZE
+				}
+				reverse_add_opinion_modifier = {
+					target = CZE
+					modifier = HUN_reintegrate_the_railroads
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_Support_Domestic_Industry
+		icon = GFX_focus_generic_industry_3
+		cost = 70
+		prerequisite = {
+			focus = HUN_Reintegrate_the_Railroads
+		}
+		x = 12
+		y = 2
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = HUN_support_domestic_industry_IC
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HUN_support_domestic_industry_IC
+			}
+		}
+	}
+	focus = {
+		id = HUN_Support_Urbanization
+		icon = GFX_goal_continuous_non_factory_construct
+		cost = 70
+		prerequisite = {
+			focus = HUN_Reintegrate_the_Railroads
+		}
+		x = 14
+		y = 2
+		completion_reward = {
+			if = {
+				limit = {
+					43 = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+				43 = {
+					add_extra_state_shared_building_slots = 3
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_Institute_for_Industrial_Techniques
+		icon = GFX_focus_research
+		cost = 70
+		prerequisite = {
+			focus = HUN_Support_Domestic_Industry
+		}
+		prerequisite = {
+			focus = HUN_Support_Urbanization
+		}
+		x = 13
+		y = 3
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = HUN_The_Gyor_Program
+		icon = GFX_goal_generic_production
+		cost = 70
+		prerequisite = {
+			focus = HUN_Institute_for_Industrial_Techniques
+		}
+		x = 13
+		y = 4
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_The_Gyor_Program
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+		}
+	}
+	focus = {
+		id = HUN_Light_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Gyor_Program
+		}
+		mutually_exclusive = {
+			focus = HUN_Domestic_Arms_Industry
+		}
+		x = 12
+		y = 5
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = HUN_civilian_industry_IC
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HUN_civilian_industry_IC
+			}
+		}
+	}
+	focus = {
+		id = HUN_Invite_Foreign_Investors
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 70
+		prerequisite = {
+			focus = HUN_Light_Industry
+		}
+		x = 10
+		y = 6
+		completion_reward = {
+			add_ideas = HUN_invite_foreign_investors
+		}
+	}
+	focus = {
+		id = HUN_Expand_the_Manfred_Weiss_Steel_Works
+		icon = GFX_focus_generic_steel
+		cost = 70
+		prerequisite = {
+			focus = HUN_Invite_Foreign_Investors
+		}
+		x = 9
+		y = 7
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = HUN_expand_the_manfred_weiss_steel_works_IC
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = {
+					43
+				}
+				limit = {
+					ROOT = {
+						has_full_control_of_state = PREV
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HUN_expand_the_manfred_weiss_steel_works_IC
+				add_resource = {
+					type = steel
+					amount = 12
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_Expand_the_Aluminium_Industry
+		icon = GFX_focus_generic_aluminum
+		cost = 70
+		prerequisite = {
+			focus = HUN_Invite_Foreign_Investors
+		}
+		x = 11
+		y = 7
+		available = {
+			ROOT = {
+				has_full_control_of_state = 43
+			}
+		}
+		completion_reward = {
+			43 = {
+				add_resource = {
+					type = aluminium
+					amount = 16
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_Domestic_Arms_Industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Gyor_Program
+		}
+		mutually_exclusive = {
+			focus = HUN_Light_Industry
+		}
+		x = 14
+		y = 5
+		completion_reward = {
+			#Stuff
+		}
+	}
+	focus = {
+		id = HUN_Autarky
+		icon = GFX_goal_generic_construct_civilian
+		cost = 70
+		prerequisite = {
+			focus = HUN_Light_Industry
+			focus = HUN_Domestic_Arms_Industry
+		}
+		x = 13
+		y = 6
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_synthetic_industry
+				bonus = 0.75
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+	focus = {
+		id = HUN_Synthetic_Industry
+		icon = GFX_goal_generic_oil_refinery
+		cost = 70
+		prerequisite = {
+			focus = HUN_Autarky
+		}
+		x = 13
+		y = 7
+		available = {
+			# has_tech = synth_oil_experiments
+		}
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = HUN_synthetic_industry_AF1
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						# has_tech = synth_oil_experiments
+					}
+				}
+				custom_effect_tooltip = HUN_synthetic_oil_tt
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = synthetic_refinery
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = HUN_synthetic_industry_AF1
+			}
+		}
+	}
+	focus = {
+		id = HUN_Aeronautic_Technology_Institute
+		icon = GFX_focus_cze_military_aeronautical_institute
+		cost = 70
+		prerequisite = {
+			focus = HUN_Domestic_Arms_Industry
+		}
+		x = 15
+		y = 6
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = HUN_Boost_Hungarian_Aviation_Industry
+		icon = GFX_goal_generic_air_production
+		cost = 70
+		prerequisite = {
+			focus = HUN_Aeronautic_Technology_Institute
+		}
+		x = 15
+		y = 7
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = HUN_boost_hungarian_aviation_industry_AF1
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HUN_boost_hungarian_aviation_industry_AF1
+			}
+		}
+	}
+	focus = {
+		id = HUN_Wargames
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 70
+		prerequisite = {
+			focus = HUN_Secret_Rearmament
+		}
+		x = 23
+		y = 1
+		ai_will_do = {
+			factor = 70
+		}
+		completion_reward = {
+			army_experience = 25
+		}
+	}
+	focus = {
+		id = HUN_Theoretical_Air_Efforts
+		icon = GFX_goal_continuous_air_production
+		cost = 70
+		prerequisite = {
+			focus = HUN_Secret_Rearmament
+		}
+		x = 25
+		y = 1
+		ai_will_do = {
+			factor = 70
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_theoretical_air_efforts
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HUN_Bled_Agreement
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 70
+		prerequisite = {
+			focus = HUN_Theoretical_Air_Efforts
+			focus = HUN_Wargames
+		}
+		x = 24
+		y = 2
+		ai_will_do = {
+			factor = 60
+		}
+		bypass = {
+			OR = {
+				AND = {
+					NOT = {
+						has_idea = HUN_treaty_of_triannon
+					}
+					NOT = {
+						has_idea = HUN_treaty_of_triannon_2
+					}
+				}
+				has_idea = HUN_treaty_of_triannon_3
+				AND = {
+					ROM = {
+						OR = {
+							exists = no
+							is_puppet = yes
+						}
+					}
+					FRA = {
+						OR = {
+							exists = no
+							is_puppet = yes
+						}
+					}
+				}
+			}
+		}
+		completion_reward = {
+			ROM = {
+				country_event = DOD_hungary.140
+			}
+		}
+	}
+	focus = {
+		id = HUN_Royal_Hungarian_Army
+		icon = GFX_HUN_Hungarian_Army
+		cost = 70
+		prerequisite = {
+			focus = HUN_Bled_Agreement
+		}
+		x = 22
+		y = 3
+		ai_will_do = {
+			factor = 60
+		}
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = HUN_army_maneuvers
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HUN_Offensive_Focus
+		icon = GFX_focus_generic_air_defense
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Army
+		}
+		mutually_exclusive = {
+			focus = HUN_Home_Defense
+		}
+		x = 20
+		y = 4
+		ai_will_do = {
+			factor = 40
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_mobile_focus
+				bonus = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	focus = {
+		id = HUN_The_Botond
+		icon = GFX_goal_generic_army_motorized
+		cost = 70
+		prerequisite = {
+			focus = HUN_Offensive_Focus
+		}
+		x = 19
+		y = 5
+		ai_will_do = {
+			factor = 60
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_the_botond
+				bonus = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+	focus = {
+		id = HUN_Motorized_Logistics
+		icon = GFX_goal_generic_army_doctrines
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Botond
+		}
+		x = 17
+		y = 6
+		ai_will_do = {
+			factor = 30
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_motorized_logistics
+				bonus = 0.5
+				uses = 2
+				category = hospital_tech
+				category = logistics_tech
+			}
+		}
+	}
+	focus = {
+		id = HUN_Tank_Development
+		icon = GFX_goal_generic_army_tanks
+		cost = 70
+		prerequisite = {
+			focus = HUN_Offensive_Focus
+		}
+		mutually_exclusive = {
+			focus = HUN_Assault_Gun_Development
+		}
+		x = 21
+		y = 5
+		ai_will_do = {
+			factor = 40
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_develop_tanks
+				ahead_reduction = 1
+				uses = 1
+				category = armor
+			}
+		}
+	}
+	focus = {
+		id = HUN_Home_Defense
+		icon = GFX_goal_generic_fortify_city
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Army
+		}
+		mutually_exclusive = {
+			focus = HUN_Offensive_Focus
+		}
+		x = 24
+		y = 4
+		ai_will_do = {
+			factor = 80
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_home_defense
+				bonus = 0.5
+				uses = 1
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	focus = {
+		id = HUN_Assault_Gun_Development
+		icon = GFX_goal_generic_army_artillery2
+		cost = 70
+		prerequisite = {
+			focus = HUN_Offensive_Focus
+			focus = HUN_Home_Defense
+		}
+		mutually_exclusive = {
+			focus = HUN_Tank_Development
+		}
+		x = 23
+		y = 5
+		ai_will_do = {
+			factor = 60
+		}
+		completion_reward = {
+			add_ideas = HUN_assault_gun_focus
+		}
+	}
+	focus = {
+		id = HUN_Danuvia_Submachine_Guns
+		icon = GFX_goal_generic_small_arms
+		cost = 70
+		prerequisite = {
+			focus = HUN_Home_Defense
+		}
+		x = 25
+		y = 5
+		ai_will_do = {
+			factor = 60
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_danuvia_submachine_guns
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+	}
+	focus = {
+		id = HUN_Artillery_Effort
+		icon = GFX_goal_generic_army_artillery2
+		cost = 70
+		prerequisite = {
+			focus = HUN_Danuvia_Submachine_Guns
+		}
+		x = 25
+		y = 6
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_artillery_effort
+				bonus = 0.5
+				uses = 2
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		id = HUN_Light_Infantry_Doctrine
+		icon = GFX_goal_generic_special_forces
+		cost = 70
+		prerequisite = {
+			focus = HUN_Danuvia_Submachine_Guns
+		}
+		x = 27
+		y = 6
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			custom_effect_tooltip = HUN_light_infantry_divisions_doctrine_tech_tt
+			custom_effect_tooltip = HUN_light_infantry_divisions_doctrine_unit_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = tech_engineers
+					}
+					division_template = {
+						name = "Light Division"
+						division_names_group = HUN_INF_01
+						priority = 2
+						regiments = {
+							infantry = {
+								x = 0
+								y = 0
+							}
+							infantry = {
+								x = 0
+								y = 1
+							}
+							infantry = {
+								x = 0
+								y = 2
+							}
+							infantry = {
+								x = 1
+								y = 0
+							}
+							infantry = {
+								x = 1
+								y = 1
+							}
+							infantry = {
+								x = 1
+								y = 2
+							}
+						}
+						support = {
+							recon = {
+								x = 0
+								y = 0
+							}
+							artillery = {
+								x = 0
+								y = 1
+							}
+							engineer = {
+								x = 0
+								y = 1
+							}
+						}
+					}
+					else = {
+						division_template = {
+							name = "Light Division"
+							division_names_group = HUN_INF_01
+							priority = 2
+							regiments = {
+								infantry = {
+									x = 0
+									y = 0
+								}
+								infantry = {
+									x = 0
+									y = 1
+								}
+								infantry = {
+									x = 0
+									y = 2
+								}
+								infantry = {
+									x = 1
+									y = 0
+								}
+								infantry = {
+									x = 1
+									y = 1
+								}
+								infantry = {
+									x = 1
+									y = 2
+								}
+							}
+							support = {
+								recon = {
+									x = 0
+									y = 0
+								}
+								artillery = {
+									x = 0
+									y = 1
+								}
+								engineer = {
+									x = 0
+									y = 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = {
+						43
+					}
+					limit = {
+						ROOT = {
+							has_full_control_of_state = PREV
+						}
+					}
+					create_unit = {
+						division = "name = \"1. Light Division\" division_template = \"Light Division\" start_experience_factor = 1.0"
+						owner = HUN
+					}
+				}
+			}
+			hidden_effect = {
+				set_technology = {
+					HUN_light_infantry_tech = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = HUN_Royal_Hungarian_Air_Force
+		icon = GFX_HUN_Hungarian_Air_Force
+		cost = 70
+		prerequisite = {
+			focus = HUN_Bled_Agreement
+		}
+		x = 35
+		y = 3
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = HUN_establish_the_air_force
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HUN_Indigenous_Designs
+		icon = GFX_goal_generic_air_production
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Air_Force
+		}
+		mutually_exclusive = {
+			focus = HUN_License_Foreign_Designs
+		}
+		x = 32
+		y = 4
+		ai_will_do = {
+			factor = 30
+		}
+		available = {
+			has_completed_focus = HUN_Boost_Hungarian_Aviation_Industry
+		}
+		completion_reward = {
+			add_ideas = HUN_indigenous_designs
+		}
+	}
+	focus = {
+		id = HUN_Light_Fighter
+		icon = GFX_goal_generic_air_fighter
+		cost = 70
+		prerequisite = {
+			focus = HUN_Indigenous_Designs
+		}
+		mutually_exclusive = {
+			focus = HUN_Heavy_Fighter
+		}
+		x = 29
+		y = 5
+		ai_will_do = {
+			factor = 40
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_light_fighter_effort
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = Fighter_1933
+				technology = Fighter_1936
+				technology = Fighter_1940
+				technology = Fighter_1943
+			}
+		}
+	}
+	focus = {
+		id = HUN_Heavy_Fighter
+		icon = GFX_goal_generic_air_bomber
+		cost = 70
+		prerequisite = {
+			focus = HUN_Indigenous_Designs
+		}
+		mutually_exclusive = {
+			focus = HUN_Light_Fighter
+		}
+		x = 31
+		y = 5
+		ai_will_do = {
+			factor = 40
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_heavy_fighter_effort
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = Heavy_Fighter_1936
+				technology = Heavy_Fighter_1940
+				technology = Heavy_Fighter_1943
+			}
+		}
+	}
+	focus = {
+		id = HUN_CAS
+		icon = GFX_goal_generic_CAS
+		cost = 70
+		prerequisite = {
+			focus = HUN_Indigenous_Designs
+		}
+		mutually_exclusive = {
+			focus = HUN_Medium_Bombers
+		}
+		x = 33
+		y = 5
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_cas_focus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = CAS_1936
+				technology = CAS_1940
+				technology = CAS_1943
+			}
+		}
+	}
+	focus = {
+		id = HUN_Medium_Bombers
+		icon = GFX_goal_generic_air_bomber
+		cost = 70
+		prerequisite = {
+			focus = HUN_Indigenous_Designs
+		}
+		mutually_exclusive = {
+			focus = HUN_CAS
+		}
+		x = 35
+		y = 5
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_tac_focus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = tactical_bomber
+			}
+		}
+	}
+	focus = {
+		id = HUN_License_Foreign_Designs
+		icon = GFX_focus_generic_license_production
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Air_Force
+		}
+		mutually_exclusive = {
+			focus = HUN_Indigenous_Designs
+		}
+		x = 38
+		y = 4
+		ai_will_do = {
+			factor = 30
+		}
+		completion_reward = {
+			add_ideas = HUN_license_foreign
+		}
+	}
+	focus = {
+		id = HUN_Fighter_Competition
+		icon = GFX_goal_generic_air_fighter
+		cost = 70
+		prerequisite = {
+			focus = HUN_License_Foreign_Designs
+		}
+		x = 37
+		y = 5
+		available = {
+			NOT = {
+				has_tech = Fighter_1943
+				has_tech = Heavy_Fighter_1943
+			}
+			OR = {
+				GER = {
+					custom_trigger_tooltip = {
+						tooltip = fighter_tt
+						OR = {
+							is_available_fighter_HUN = yes
+							is_available_heavy_fighter_HUN = yes
+						}
+					}
+				}
+				FRA = {
+					custom_trigger_tooltip = {
+						tooltip = fighter_tt
+						OR = {
+							is_available_fighter_HUN = yes
+							is_available_heavy_fighter_HUN = yes
+						}
+					}
+				}
+				ITA = {
+					custom_trigger_tooltip = {
+						tooltip = fighter_tt
+						OR = {
+							is_available_fighter_HUN = yes
+							is_available_heavy_fighter_HUN = yes
+						}
+					}
+				}
+				ENG = {
+					custom_trigger_tooltip = {
+						tooltip = fighter_tt
+						OR = {
+							is_available_fighter_HUN = yes
+							is_available_heavy_fighter_HUN = yes
+						}
+					}
+				}
+				USA = {
+					custom_trigger_tooltip = {
+						tooltip = fighter_tt
+						OR = {
+							is_available_fighter_HUN = yes
+							is_available_heavy_fighter_HUN = yes
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			country_event = DOD_hungary.150
+		}
+	}
+	focus = {
+		id = HUN_Bomber_Competition
+		icon = GFX_goal_generic_air_bomber
+		cost = 70
+		prerequisite = {
+			focus = HUN_License_Foreign_Designs
+		}
+		x = 39
+		y = 5
+		ai_will_do = {
+			factor = 30
+		}
+		available = {
+			NOT = {
+				has_tech = CAS_1943
+				has_tech = Tactical_Bomber_1943
+			}
+			OR = {
+				GER = {
+					custom_trigger_tooltip = {
+						tooltip = bomber_tt
+						OR = {
+							is_available_cas_HUN = yes
+							is_available_tac_HUN = yes
+						}
+					}
+				}
+				FRA = {
+					custom_trigger_tooltip = {
+						tooltip = bomber_tt
+						OR = {
+							is_available_cas_HUN = yes
+							is_available_tac_HUN = yes
+						}
+					}
+				}
+				ITA = {
+					custom_trigger_tooltip = {
+						tooltip = bomber_tt
+						OR = {
+							is_available_cas_HUN = yes
+							is_available_tac_HUN = yes
+						}
+					}
+				}
+				ENG = {
+					custom_trigger_tooltip = {
+						tooltip = bomber_tt
+						OR = {
+							is_available_cas_HUN = yes
+							is_available_tac_HUN = yes
+						}
+					}
+				}
+				USA = {
+					custom_trigger_tooltip = {
+						tooltip = bomber_tt
+						OR = {
+							is_available_cas_HUN = yes
+							is_available_tac_HUN = yes
+						}
+					}
+				}
+			}
+		}
+		completion_reward = {
+			country_event = DOD_hungary.160
+		}
+	}
+	focus = {
+		id = HUN_Joint_Air_Development
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Air_Force
+		}
+		x = 40
+		y = 4
+		ai_will_do = {
+			factor = 30
+		}
+		completion_reward = {
+			add_to_tech_sharing_group = HUN_joint_air_development_group
+			every_other_country = {
+				limit = {
+					is_in_faction_with = HUN
+				}
+				add_to_tech_sharing_group = HUN_joint_air_development_group
+			}
+		}
+	}
+	focus = {
+		id = HUN_Royal_Hungarian_Navy
+		icon = GFX_HUN_Hungarian_Navy
+		cost = 70
+		prerequisite = {
+			focus = HUN_Bled_Agreement
+		}
+		x = 43
+		y = 3
+		ai_will_do = {
+			factor = 50
+		}
+		available = {
+			any_state = {
+				is_controlled_by = HUN
+				is_coastal = yes
+			}
+		}
+		completion_reward = {
+			add_ideas = HUN_naval_warfare
+		}
+	}
+	focus = {
+		id = HUN_Restoration
+		icon = GFX_GENERIC_Fleet_in_Being
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Navy
+		}
+		mutually_exclusive = {
+			focus = HUN_Reform
+		}
+		x = 42
+		y = 4
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_restauration
+				bonus = 0.75
+				uses = 1
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	focus = {
+		id = HUN_Capital_Ships
+		icon = GFX_GENERIC_Battleship
+		cost = 70
+		prerequisite = {
+			focus = HUN_Restoration
+		}
+		x = 41
+		y = 5
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_capital_ships
+				bonus = 0.5
+				uses = 2
+				category = bc_tech
+				category = bb_tech
+			}
+		}
+	}
+	focus = {
+		id = HUN_Reform
+		icon = GFX_GENERIC_Trade_Interdiction
+		cost = 70
+		prerequisite = {
+			focus = HUN_Royal_Hungarian_Navy
+		}
+		mutually_exclusive = {
+			focus = HUN_Restoration
+		}
+		x = 44
+		y = 4
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_reform
+				bonus = 0.5
+				uses = 2
+				category = cat_trade_interdiction
+				category = cat_base_strike
+			}
+		}
+	}
+	focus = {
+		id = HUN_Destroyers
+		icon = GFX_GENERIC_Destroyer
+		cost = 70
+		prerequisite = {
+			focus = HUN_Restoration
+			focus = HUN_Reform
+		}
+		x = 43
+		y = 5
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_destroyer
+				bonus = 0.75
+				uses = 1
+				category = dd_tech
+			}
+		}
+	}
+	focus = {
+		id = HUN_Cruisers
+		icon = GFX_GENERIC_Cruiser
+		cost = 70
+		prerequisite = {
+			focus = HUN_Destroyers
+		}
+		x = 43
+		y = 6
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_cruisers
+				bonus = 0.5
+				uses = 2
+				category = cl_tech
+				category = ca_tech
+			}
+		}
+	}
+	focus = {
+		id = HUN_Expand_the_Technical_University_of_Budapest
+		icon = GFX_focus_research2
+		cost = 70
+		prerequisite = {
+			focus = HUN_Expand_the_Aluminium_Industry
+		}
+		prerequisite = {
+			focus = HUN_Expand_the_Manfred_Weiss_Steel_Works
+		}
+		x = 10
+		y = 8
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = HUN_Joint_Tank_Procurement
+		icon = GFX_focus_generic_license_production
+		cost = 70
+		prerequisite = {
+			focus = HUN_Tank_Development
+			focus = HUN_Assault_Gun_Development
+		}
+		x = 22
+		y = 6
+		ai_will_do = {
+			factor = 70
+		}
+		completion_reward = {
+			add_to_tech_sharing_group = HUN_joint_tank_development_group
+			every_other_country = {
+				limit = {
+					is_in_faction_with = HUN
+				}
+				add_to_tech_sharing_group = HUN_joint_tank_development_group
+			}
+		}
+	}
+	focus = {
+		id = HUN_Mobile_Corps_Doctrine
+		icon = GFX_goal_generic_cavalry
+		cost = 70
+		prerequisite = {
+			focus = HUN_The_Botond
+		}
+		x = 19
+		y = 6
+		ai_will_do = {
+			factor = 60
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_mobile_corps_doctrine
+				bonus = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	focus = {
+		id = HUN_Submarines
+		icon = GFX_GENERIC_Submarine
+		cost = 70
+		prerequisite = {
+			focus = HUN_Reform
+		}
+		x = 45
+		y = 5
+		ai_will_do = {
+			factor = 50
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HUN_submarines
+				bonus = 0.75
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+}

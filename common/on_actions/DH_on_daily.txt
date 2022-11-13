@@ -1,0 +1,47 @@
+on_actions = {
+	on_daily = {
+		effect = {
+			# UNEMPLOYMENT IMPACT #
+			if = {
+				limit = {
+					NOT = { check_variable = { current_unemployment = 0 } }
+				}
+				update_unemployment_modifier = yes
+			}
+			# GOALS AND ACHIEVEMENTS #
+			#if = {
+			#	limit = {
+			#		is_ai = no
+			#		NOT = { has_country_flag = dh_goals_and_achievements_alert_popup_gui_disabled }
+			#		NOT = { check_variable = { show_dh_goals_and_achievements_gui > 0 } }
+			#		NOT = { has_variable = show_dh_goals_and_achievements_alert_popup_gui }
+			#		check_variable = { dh_goals_and_achievements_array^num > 0 }
+			#		any_of = {
+			#			array = dh_goals_and_achievements_array
+			#			value = v
+			#			set_temp_variable = { goal_or_achievement_id = v }
+			#			meta_trigger = {
+			#				text = {
+			#					NOT = { has_country_flag = received_popup_alert_for_goal_or_achievement_[ID] }
+			#				}
+			#				ID = "[?goal_or_achievement_id]"
+			#			}
+			#			can_complete_goal_or_achievement = yes
+			#		}
+			#	}
+			#	set_variable = { show_dh_goals_and_achievements_alert_popup_gui = 1 }
+			#}
+			if = {
+				limit = {
+					original_tag = FRA
+					has_completed_focus = FRA_Launch_the_Reform_of_the_State
+					NOT = {
+						has_completed_focus = FRA_The_Wise_of_Tournefeuille
+					}
+				}
+				set_temp_variable = { reform_progress_to_add = FRA_Reform_of_the_State_Daily_Change }
+				FRA_add_reform_of_the_state_progress = yes
+			}
+		}
+	}
+}

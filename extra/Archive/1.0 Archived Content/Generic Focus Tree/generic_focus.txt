@@ -1,0 +1,3834 @@
+#!gfx:interface\_Goals.gfx
+focus_tree = {
+	id = generic_focus
+	country = {
+		factor = 1
+	}
+	default = no
+	continuous_focus_position = {
+		x = 300
+		y = 1500
+	}
+	
+	focus = {
+		id = GEN_Victory_of_the_Proletariat
+		icon = GFX_GENERIC_Communist_Revolution
+		cost = 60
+		x = 14
+		y = 0
+		allow_branch = {
+			OR = {
+				has_government = communist
+				has_government = socialist
+			}
+		}
+	}
+	focus = {
+		id = GEN_Social_Democrat_Gov
+		icon = GFX_GENERIC_Ideology_Social_Democracy
+		cost = 60
+		x = 24
+		y = 0
+		allow_branch = {
+			has_government = democratic
+		}
+		offset = {
+			trigger = {
+				has_government = democratic
+			}
+			x = -20
+			y = 0
+		}
+	}
+	focus = {
+		id = GEN_Social_Liberalism_Gov
+		icon = GFX_GENERIC_Ideology_Liberalism
+		cost = 60
+		x = 10
+		y = 0
+		allow_branch = {
+			has_government = democratic
+		}
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Classical_Liberal_Gov
+		icon = GFX_GENERIC_Ideology_Liberalism
+		cost = 60
+		x = 16
+		y = 0
+		allow_branch = {
+			has_government = democratic
+		}
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Conservative_Gov
+		icon = GFX_GENERIC_Ideology_Conservatism
+		cost = 60
+		x = 25
+		y = 0
+		allow_branch = {
+			has_government = democratic
+		}
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Authoritarian_Dem
+		icon = GFX_GENERIC_Ideology_Authoritarian_Democracy
+		cost = 60
+		x = 58
+		y = 0
+		allow_branch = {
+			has_government = authoritarian
+		}
+		offset = {
+			trigger = {
+				has_government = authoritarian
+			}
+			x = -55
+			y = 0
+		}
+	}
+	focus = {
+		id = GEN_Military_Junta
+		icon = GFX_GENERIC_Ideology_Military_Dictatorship
+		cost = 60
+		x = 4
+		y = 0
+		allow_branch = {
+			has_government = authoritarian
+		}
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Secure_the_National_Rebirth
+		icon = GFX_GENERIC_Ideology_Fascism
+		cost = 60
+		x = 73
+		y = 0
+		allow_branch = {
+			has_government = fascist
+		}
+		offset = {
+			trigger = {
+				has_government = fascist
+			}
+			x = -70
+			y = 0
+		}
+	}
+	focus = {
+		id = GEN_Mass_Collectivisation
+		icon = GFX_GENERIC_Factory_Takeover
+		cost = 60
+		prerequisite = {
+			focus = GEN_Victory_of_the_Proletariat
+		}
+		mutually_exclusive = {
+			focus = GEN_Breaking_the_Chains
+		}
+		x = 2
+		y = 1
+	}
+	focus = {
+		id = GEN_Loosen_the_Collectivisation
+		icon = GFX_GER_Aristocratic_Land_Base
+		cost = 60
+		prerequisite = {
+			focus = GEN_Mass_Collectivisation
+		}
+		mutually_exclusive = {
+			focus = GEN_Continue_the_Collectivization_at_all_Costs
+		}
+		x = 1
+		y = 2
+	}
+	focus = {
+		id = GEN_Continue_the_Collectivization_at_all_Costs
+		icon = GFX_focus_prc_agrarian_socialism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Mass_Collectivisation
+		}
+		mutually_exclusive = {
+			focus = GEN_Loosen_the_Collectivisation
+		}
+		x = 3
+		y = 2
+	}
+	focus = {
+		id = GEN_Five_Years_Plan
+		icon = GFX_SOV_Five_Year_Plan
+		cost = 60
+		prerequisite = {
+			focus = GEN_Loosen_the_Collectivisation
+		}
+		prerequisite = {
+			focus = GEN_Continue_the_Collectivization_at_all_Costs
+		}
+		x = 2
+		y = 3
+	}
+	focus = {
+		id = GEN_Connect_the_Nation
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 60
+		prerequisite = {
+			focus = GEN_Five_Years_Plan
+		}
+		x = 1
+		y = 4
+	}
+	focus = {
+		id = GEN_Build_up_Civilian_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 60
+		prerequisite = {
+			focus = GEN_Five_Years_Plan
+		}
+		x = 3
+		y = 4
+	}
+	focus = {
+		id = GEN_Revolutionnary_Oil
+		icon = GFX_goal_generic_oil_refinery
+		cost = 60
+		prerequisite = {
+			focus = GEN_Connect_the_Nation
+		}
+		prerequisite = {
+			focus = GEN_Build_up_Civilian_Industry
+		}
+		mutually_exclusive = {
+			focus = GEN_Exploit_Natural_Riches
+		}
+		x = 2
+		y = 5
+	}
+	focus = {
+		id = GEN_Breaking_the_Chains
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60
+		prerequisite = {
+			focus = GEN_Victory_of_the_Proletariat
+		}
+		mutually_exclusive = {
+			focus = GEN_Mass_Collectivisation
+		}
+		x = 8
+		y = 1
+	}
+	focus = {
+		id = GEN_Electrification_of_the_Nation
+		icon = GFX_GENERIC_Electric_Grid
+		cost = 60
+		prerequisite = {
+			focus = GEN_Mass_Collectivisation
+			focus = GEN_Breaking_the_Chains
+		}
+		x = 5
+		y = 2
+	}
+	focus = {
+		id = GEN_Educate_Kids
+		icon = GFX_focus_generic_socialist_science
+		cost = 60
+		prerequisite = {
+			focus = GEN_Electrification_of_the_Nation
+		}
+		x = 4
+		y = 3
+	}
+	focus = {
+		id = GEN_Increase_Social_Welfare
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 60
+		prerequisite = {
+			focus = GEN_Electrification_of_the_Nation
+		}
+		prerequisite = {
+			focus = GEN_Electrification_of_the_Nation
+		}
+		x = 6
+		y = 3
+	}
+	focus = {
+		id = GEN_New_CN_Man
+		icon = GFX_SPR_La_Revolucion_del_34
+		cost = 60
+		prerequisite = {
+			focus = GEN_Educate_Kids
+		}
+		prerequisite = {
+			focus = GEN_Increase_Social_Welfare
+		}
+		x = 5
+		y = 4
+	}
+	focus = {
+		id = GEN_Exploit_Natural_Riches
+		icon = GFX_focus_generic_steel
+		cost = 60
+		prerequisite = {
+			focus = GEN_Build_up_Civilian_Industry
+		}
+		prerequisite = {
+			focus = GEN_New_CN_Man
+		}
+		mutually_exclusive = {
+			focus = GEN_Revolutionnary_Oil
+		}
+		x = 4
+		y = 5
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = GEN_Socialism_from_the_top_down
+		icon = GFX_GENERIC_Hierarchical_Economics
+		cost = 60
+		prerequisite = {
+			focus = GEN_Revolutionnary_Oil
+		}
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches
+		}
+		x = 3
+		y = 6
+	}
+	focus = {
+		id = GEN_Keep_Key_Industries
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 60
+		prerequisite = {
+			focus = GEN_Breaking_the_Chains
+		}
+		mutually_exclusive = {
+			focus = GEN_Full_Control_to_Soviets
+		}
+		x = 7
+		y = 2
+	}
+	focus = {
+		id = GEN_Full_Control_to_Soviets
+		icon = GFX_GENERIC_Ideology_Trotskyism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Breaking_the_Chains
+		}
+		mutually_exclusive = {
+			focus = GEN_Keep_Key_Industries
+		}
+		x = 9
+		y = 2
+	}
+	focus = {
+		id = GEN_Modernize_Strategic_Industries
+		icon = GFX_focus_generic_industry_3
+		cost = 60
+		prerequisite = {
+			focus = GEN_Keep_Key_Industries
+		}
+		prerequisite = {
+			focus = GEN_Full_Control_to_Soviets
+		}
+		x = 8
+		y = 3
+	}
+	focus = {
+		id = GEN_Expand_Arms_Production
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 60
+		prerequisite = {
+			focus = GEN_Modernize_Strategic_Industries
+		}
+		x = 7
+		y = 4
+	}
+	focus = {
+		id = GEN_Invest_Mining_Industry
+		icon = GFX_goal_generic_construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Modernize_Strategic_Industries
+		}
+		x = 9
+		y = 4
+	}
+	focus = {
+		id = GEN_Build_Railroads
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Arms_Production
+		}
+		prerequisite = {
+			focus = GEN_Invest_Mining_Industry
+		}
+		x = 8
+		y = 5
+	}
+	focus = {
+		id = GEN_Land_Reform
+		icon = GFX_GENERIC_Draw_Borders
+		cost = 60
+		prerequisite = {
+			focus = GEN_New_CN_Man
+		}
+		prerequisite = {
+			focus = GEN_Expand_Arms_Production
+		}
+		prerequisite = {
+			focus = GEN_Invest_Mining_Industry
+		}
+		x = 6
+		y = 5
+	}
+	focus = {
+		id = GEN_Organise_Labour_Camps
+		icon = GFX_SOV_Gulag
+		cost = 60
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches
+			focus = GEN_Land_Reform
+		}
+		x = 5
+		y = 6
+	}
+	focus = {
+		id = GEN_no_Cooperation_wit_Fascist
+		icon = GFX_GENERIC_Dissolve_Fascist_Organizations
+		cost = 60
+		prerequisite = {
+			focus = GEN_Victory_of_the_Proletariat
+		}
+		mutually_exclusive = {
+			focus = GEN_Cooperate_with_Bourgeois_Party
+		}
+		x = 11
+		y = 1
+	}
+	focus = {
+		id = GEN_Cooperate_with_Bourgeois_Party
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Victory_of_the_Proletariat
+		}
+		mutually_exclusive = {
+			focus = GEN_no_Cooperation_wit_Fascist
+		}
+		x = 13
+		y = 1
+	}
+	focus = {
+		id = GEN_Establish_Secret_Police
+		icon = GFX_SOV_Mass_Arrest_Political_Enemies
+		cost = 60
+		prerequisite = {
+			focus = GEN_Cooperate_with_Bourgeois_Party
+			focus = GEN_no_Cooperation_wit_Fascist
+		}
+		x = 11
+		y = 2
+	}
+	focus = {
+		id = GEN_Dealing_with_Reactionnaries
+		icon = GFX_GENERIC_Anti_Democracy
+		cost = 60
+		prerequisite = {
+			focus = GEN_no_Cooperation_wit_Fascist
+			focus = GEN_Cooperate_with_Bourgeois_Party
+		}
+		x = 13
+		y = 2
+	}
+	focus = {
+		id = GEN_Red_Terror
+		icon = GFX_SOV_Moscow_Trials
+		cost = 60
+		prerequisite = {
+			focus = GEN_Establish_Secret_Police
+		}
+		prerequisite = {
+			focus = GEN_Dealing_with_Reactionnaries
+		}
+		x = 12
+		y = 3
+	}
+	focus = {
+		id = GEN_Stae_Religion_Question
+		icon = GFX_GENERIC_Orthodox_Religious_School_Programs
+		cost = 60
+		prerequisite = {
+			focus = GEN_Red_Terror
+		}
+		x = 11
+		y = 4
+	}
+	focus = {
+		id = GEN_Kill_Landlords
+		icon = GFX_SOV_Great_Purge
+		cost = 60
+		prerequisite = {
+			focus = GEN_Red_Terror
+		}
+		x = 13
+		y = 4
+	}
+	focus = {
+		id = GEN_Abolish_Taxes
+		icon = GFX_GENERIC_Abolish_the_Agrarian_Decrees
+		cost = 60
+		prerequisite = {
+			focus = GEN_Stae_Religion_Question
+		}
+		prerequisite = {
+			focus = GEN_Kill_Landlords
+		}
+		x = 12
+		y = 5
+	}
+	focus = {
+		id = GEN_Follow_Lenin
+		icon = GFX_GENERIC_Ideology_Marxism_Leninism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Victory_of_the_Proletariat
+		}
+		mutually_exclusive = {
+			focus = GEN_Own_Way_Socialism
+		}
+		x = 15
+		y = 1
+	}
+	focus = {
+		id = GEN_Own_Way_Socialism
+		icon = GFX_GENERIC_Ideology_Anarcho_Communism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Victory_of_the_Proletariat
+		}
+		mutually_exclusive = {
+			focus = GEN_Follow_Lenin
+		}
+		x = 17
+		y = 1
+	}
+	focus = {
+		id = GEN_Cult_Personality
+		icon = GFX_SOV_Lenin_Cult
+		cost = 60
+		prerequisite = {
+			focus = GEN_Follow_Lenin
+			focus = GEN_Own_Way_Socialism
+		}
+		x = 16
+		y = 2
+	}
+	focus = {
+		id = GEN_Empower_Party_Apparatus
+		icon = GFX_GENERIC_Parliament
+		cost = 60
+		prerequisite = {
+			focus = GEN_Follow_Lenin
+		}
+		prerequisite = {
+			focus = GEN_Cult_Personality
+		}
+		mutually_exclusive = {
+			focus = GEN_Empower_Worker_Concil
+		}
+		x = 15
+		y = 3
+	}
+	focus = {
+		id = GEN_Empower_Worker_Concil
+		icon = GFX_GER_A_Workers_Struggle
+		cost = 60
+		prerequisite = {
+			focus = GEN_Own_Way_Socialism
+		}
+		prerequisite = {
+			focus = GEN_Cult_Personality
+		}
+		mutually_exclusive = {
+			focus = GEN_Empower_Party_Apparatus
+		}
+		x = 17
+		y = 3
+	}
+	focus = {
+		id = GEN_Institute_Universal_Suffrage
+		icon = GFX_GENERIC_Cabinet
+		cost = 60
+		prerequisite = {
+			focus = GEN_Empower_Party_Apparatus
+			focus = GEN_Empower_Worker_Concil
+		}
+		x = 16
+		y = 4
+	}
+	focus = {
+		id = GEN_Red_Dawn
+		icon = GFX_SOV_RCW_Red_Army
+		cost = 60
+		prerequisite = {
+			focus = GEN_Kill_Landlords
+		}
+		prerequisite = {
+			focus = GEN_Stae_Religion_Question
+		}
+		prerequisite = {
+			focus = GEN_Institute_Universal_Suffrage
+		}
+		x = 14
+		y = 5
+	}
+	focus = {
+		id = GEN_Grand_Social_Reforms
+		icon = GFX_FIN_Red_Agrarian_Coalition
+		cost = 60
+		prerequisite = {
+			focus = GEN_Red_Dawn
+		}
+		mutually_exclusive = {
+			focus = GEN_Proletarian_Cultural_Revolution
+		}
+		x = 13
+		y = 6
+	}
+	focus = {
+		id = GEN_Control_State
+		icon = GFX_GENERIC_Centralization
+		cost = 60
+		prerequisite = {
+			focus = GEN_Grand_Social_Reforms
+		}
+		x = 12
+		y = 7
+	}
+	focus = {
+		id = GEN_Promote_Anti_Capitalist_Unity
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		cost = 60
+		prerequisite = {
+			focus = GEN_Institute_Universal_Suffrage
+		}
+		x = 16
+		y = 5
+	}
+	focus = {
+		id = GEN_Proletarian_Cultural_Revolution
+		icon = GFX_GENERIC_Socialist_Culture
+		cost = 60
+		prerequisite = {
+			focus = GEN_Red_Dawn
+		}
+		mutually_exclusive = {
+			focus = GEN_Grand_Social_Reforms
+		}
+		x = 15
+		y = 6
+	}
+	focus = {
+		id = GEN_Control_People
+		icon = GFX_SOV_Total_Party_Censorship
+		cost = 60
+		prerequisite = {
+			focus = GEN_Proletarian_Cultural_Revolution
+		}
+		x = 16
+		y = 7
+	}
+	focus = {
+		id = GEN_Build_Social_Housing
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 60
+		prerequisite = {
+			focus = GEN_Social_Democrat_Gov
+		}
+		x = 0
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Expand_Worker_Rights
+		icon = GFX_GER_A_Workers_Struggle
+		cost = 60
+		prerequisite = {
+			focus = GEN_Build_Social_Housing
+		}
+		x = -2
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Crackdown_on_Bolshevik_Unios
+		icon = GFX_goal_anti_comintern_pact
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Worker_Rights
+		}
+		mutually_exclusive = {
+			focus = GEN_Tax_the_Rich
+		}
+		x = -3
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Tax_the_Rich
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Worker_Rights
+		}
+		mutually_exclusive = {
+			focus = GEN_Crackdown_on_Bolshevik_Unios
+		}
+		x = -1
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Administrative_Reforms
+		icon = GFX_GENERIC_Abolish_the_Agrarian_Decrees
+		cost = 60
+		prerequisite = {
+			focus = GEN_Build_Social_Housing
+		}
+		x = 2
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Increase_Social_Wellfare
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 60
+		prerequisite = {
+			focus = GEN_Administrative_Reforms
+		}
+		x = 1
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Negociate_with_Trade_Union
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 60
+		prerequisite = {
+			focus = GEN_Administrative_Reforms
+		}
+		x = 3
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Moderate_Socialism
+		icon = GFX_GENERIC_Ideology_Democratic_Socialism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Increase_Social_Wellfare
+		}
+		prerequisite = {
+			focus = GEN_Negociate_with_Trade_Union
+		}
+		prerequisite = {
+			focus = GEN_Tax_the_Rich
+		}
+		prerequisite = {
+			focus = GEN_Crackdown_on_Bolshevik_Unios
+		}
+		mutually_exclusive = {
+			focus = GEN_Revisionnist_Marxist
+		}
+		x = 1
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Revisionnist_Marxist
+		icon = GFX_GENERIC_Ideology_Luxemburgism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Tax_the_Rich
+		}
+		prerequisite = {
+			focus = GEN_Crackdown_on_Bolshevik_Unios
+		}
+		prerequisite = {
+			focus = GEN_Increase_Social_Wellfare
+		}
+		prerequisite = {
+			focus = GEN_Negociate_with_Trade_Union
+		}
+		mutually_exclusive = {
+			focus = GEN_Moderate_Socialism
+		}
+		x = -1
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Organize_Public_Works
+		icon = GFX_goal_generic_construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Revisionnist_Marxist
+			focus = GEN_Moderate_Socialism
+		}
+		x = 0
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Invest_State_Infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 60
+		prerequisite = {
+			focus = GEN_Organize_Public_Works
+		}
+		mutually_exclusive = {
+			focus = GEN_Nationalise_Strategic_Industries
+		}
+		x = 1
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Mixed_Economic_Plan
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 60
+		prerequisite = {
+			focus = GEN_Moderate_Socialism
+		}
+		x = 3
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Class_Cooperation
+		icon = GFX_goal_generic_political_pressure
+		cost = 60
+		prerequisite = {
+			focus = GEN_Mixed_Economic_Plan
+		}
+		x = 3
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Keynesian_Economics
+		icon = GFX_GENERIC_Austerity_Measures
+		cost = 60
+		prerequisite = {
+			focus = GEN_Class_Cooperation
+		}
+		x = 2
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Initiate_Progressive_Social_Reform
+		icon = GFX_GENERIC_Justice_System
+		cost = 60
+		prerequisite = {
+			focus = GEN_Social_Democrat_Gov
+			focus = GEN_Social_Liberalism_Gov
+		}
+		x = 5
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Reform_Education_System
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 60
+		prerequisite = {
+			focus = GEN_Initiate_Progressive_Social_Reform
+		}
+		x = 4
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Expand_Pension_System
+		icon = GFX_GENERIC_Money
+		cost = 60
+		prerequisite = {
+			focus = GEN_Initiate_Progressive_Social_Reform
+		}
+		x = 6
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Fund_Good_Public_Transportation
+		icon = GFX_GENERIC_Road_Construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Reform_Education_System
+		}
+		prerequisite = {
+			focus = GEN_Expand_Pension_System
+		}
+		x = 5
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Universal_Suffrage
+		icon = GFX_GENERIC_New_Constitution
+		cost = 60
+		prerequisite = {
+			focus = GEN_Fund_Good_Public_Transportation
+		}
+		x = 4
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Expand_Healthcare
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 60
+		prerequisite = {
+			focus = GEN_Fund_Good_Public_Transportation
+		}
+		x = 6
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Build_Democratic_Institutions
+		icon = GFX_goal_support_democracy
+		cost = 60
+		prerequisite = {
+			focus = GEN_Social_Liberalism_Gov
+		}
+		x = 10
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Negociate_with_Trade_Unions
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 60
+		prerequisite = {
+			focus = GEN_Build_Democratic_Institutions
+		}
+		x = 9
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Organise_Public_Works
+		icon = GFX_goal_generic_construct_civilian
+		cost = 60
+		prerequisite = {
+			focus = GEN_Negociate_with_Trade_Unions
+		}
+		x = 8
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Fair_Labor_Standards
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60
+		prerequisite = {
+			focus = GEN_Build_Democratic_Institutions
+		}
+		x = 11
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Equality_Before_Law
+		icon = GFX_GENERIC_Justice_System_Socialist
+		cost = 60
+		prerequisite = {
+			focus = GEN_Negociate_with_Trade_Unions
+		}
+		prerequisite = {
+			focus = GEN_Fair_Labor_Standards
+		}
+		x = 10
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Trust_Busting
+		icon = GFX_GENERIC_Restore_Confidence_in_the_Bank
+		cost = 60
+		prerequisite = {
+			focus = GEN_Social_Liberalism_Gov
+			focus = GEN_Classical_Liberal_Gov
+		}
+		x = 13
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Freedom_Press
+		icon = GFX_GENERIC_Cabinet
+		cost = 60
+		prerequisite = {
+			focus = GEN_Trust_Busting
+		}
+		x = 13
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Fight_Against_Poverty
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 60
+		prerequisite = {
+			focus = GEN_Freedom_Press
+		}
+		prerequisite = {
+			focus = GEN_Fair_Labor_Standards
+		}
+		x = 12
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Healthy_Dose_Capitalism
+		icon = GFX_GENERIC_Money
+		cost = 60
+		prerequisite = {
+			focus = GEN_Equality_Before_Law
+		}
+		prerequisite = {
+			focus = GEN_Fight_Against_Poverty
+		}
+		x = 10
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Support_Farmers
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 60
+		prerequisite = {
+			focus = GEN_Healthy_Dose_Capitalism
+		}
+		mutually_exclusive = {
+			focus = GEN_Promote_Urban_Dev
+		}
+		x = 9
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Promote_Urban_Dev
+		icon = GFX_goal_generic_construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Healthy_Dose_Capitalism
+		}
+		mutually_exclusive = {
+			focus = GEN_Support_Farmers
+		}
+		x = 11
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Instututionalize_Freedom
+		icon = GFX_goal_continuous_boost_freedom
+		cost = 60
+		prerequisite = {
+			focus = GEN_Classical_Liberal_Gov
+		}
+		x = 16
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Open_up_Free_Trade
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 60
+		prerequisite = {
+			focus = GEN_Instututionalize_Freedom
+		}
+		x = 15
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Fiscal_Reform
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 60
+		prerequisite = {
+			focus = GEN_Freedom_Press
+		}
+		prerequisite = {
+			focus = GEN_Open_up_Free_Trade
+		}
+		x = 14
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Suppose_Railroad_Sector
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 60
+		prerequisite = {
+			focus = GEN_Fight_Against_Poverty
+		}
+		prerequisite = {
+			focus = GEN_Fiscal_Reform
+		}
+		x = 13
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Seek_Foreign_Capital
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 60
+		prerequisite = {
+			focus = GEN_Instututionalize_Freedom
+		}
+		x = 17
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Equal_Opportunity
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 60
+		prerequisite = {
+			focus = GEN_Open_up_Free_Trade
+		}
+		prerequisite = {
+			focus = GEN_Seek_Foreign_Capital
+		}
+		x = 16
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Freer_Market_Freer_People
+		icon = GFX_focus_mex_privatisation
+		cost = 60
+		prerequisite = {
+			focus = GEN_Equal_Opportunity
+		}
+		prerequisite = {
+			focus = GEN_Fiscal_Reform
+		}
+		x = 16
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Tax_Cuts_Industrialist
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Freer_Market_Freer_People
+		}
+		mutually_exclusive = {
+			focus = GEN_Exploit_Natural_Ressources
+		}
+		x = 15
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Exploit_Natural_Ressources
+		icon = GFX_focus_generic_steel
+		cost = 60
+		prerequisite = {
+			focus = GEN_Freer_Market_Freer_People
+		}
+		mutually_exclusive = {
+			focus = GEN_Tax_Cuts_Industrialist
+		}
+		x = 17
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Encourage_Skilled_Migration
+		icon = GFX_GENERIC_Continue_the_School_Program
+		cost = 60
+		prerequisite = {
+			focus = GEN_Tax_Cuts_Industrialist
+			focus = GEN_Exploit_Natural_Ressources
+		}
+		x = 16
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Invest_Education_System
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 60
+		prerequisite = {
+			focus = GEN_Encourage_Skilled_Migration
+		}
+		x = 16
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Tax_Cuts_for_Civilian_Industry
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 60
+		prerequisite = {
+			focus = GEN_Seek_Foreign_Capital
+		}
+		x = 18
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Austerity_Measures
+		icon = GFX_GENERIC_Austerity_Measures
+		cost = 60
+		prerequisite = {
+			focus = GEN_Classical_Liberal_Gov
+			focus = GEN_Conservative_Gov
+		}
+		x = 20
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Limit_Gov_Spending
+		icon = GFX_FRA_Cut_The_Salaries_Of_Civil_Servants
+		cost = 60
+		prerequisite = {
+			focus = GEN_Austerity_Measures
+		}
+		x = 19
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Guarantee_Proprty_Rights
+		icon = GFX_goal_generic_small_arms
+		cost = 60
+		prerequisite = {
+			focus = GEN_Austerity_Measures
+		}
+		x = 21
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Downsize_Bureaucracy
+		icon = GFX_GENERIC_Restore_Confidence_in_the_Bank
+		cost = 60
+		prerequisite = {
+			focus = GEN_Limit_Gov_Spending
+		}
+		prerequisite = {
+			focus = GEN_Guarantee_Proprty_Rights
+		}
+		x = 20
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Deregulation
+		icon = GFX_GENERIC_Parliament
+		cost = 60
+		prerequisite = {
+			focus = GEN_Downsize_Bureaucracy
+		}
+		x = 19
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Abolish_Wealth_Taxation
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 60
+		prerequisite = {
+			focus = GEN_Downsize_Bureaucracy
+		}
+		x = 21
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Encourage_Exports
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 60
+		prerequisite = {
+			focus = GEN_Conservative_Gov
+		}
+		mutually_exclusive = {
+			focus = GEN_Protectionnist_Measures
+		}
+		x = 24
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Open_up_Foreign_Exports
+		icon = GFX_goal_generic_trade
+		cost = 60
+		prerequisite = {
+			focus = GEN_Encourage_Exports
+		}
+		x = 23
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Protectionnist_Measures
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 60
+		prerequisite = {
+			focus = GEN_Conservative_Gov
+		}
+		mutually_exclusive = {
+			focus = GEN_Encourage_Exports
+		}
+		x = 26
+		y = 1
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Promote_Traditionnal_Values
+		icon = GFX_GENERIC_An_Act_Of_Neutrality
+		cost = 60
+		prerequisite = {
+			focus = GEN_Encourage_Exports
+			focus = GEN_Protectionnist_Measures
+		}
+		x = 25
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_United_Way_of_Life
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 60
+		prerequisite = {
+			focus = GEN_Promote_Traditionnal_Values
+		}
+		mutually_exclusive = {
+			focus = GEN_Promote_Majority_Culture
+		}
+		x = 24
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Promote_Populist_Agenda
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60
+		prerequisite = {
+			focus = GEN_United_Way_of_Life
+		}
+		x = 23
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Promote_Majority_Culture
+		icon = GFX_GENERIC_Socialist_Culture
+		cost = 60
+		prerequisite = {
+			focus = GEN_Promote_Traditionnal_Values
+		}
+		mutually_exclusive = {
+			focus = GEN_United_Way_of_Life
+		}
+		x = 26
+		y = 3
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Promote_Our_Military
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 60
+		prerequisite = {
+			focus = GEN_United_Way_of_Life
+			focus = GEN_Promote_Majority_Culture
+		}
+		x = 25
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Patriotic_Rhetoric
+		icon = GFX_goal_generic_propaganda
+		cost = 60
+		prerequisite = {
+			focus = GEN_Promote_Our_Military
+		}
+		x = 24
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Invest_in_Defence_Industry
+		icon = GFX_goal_generic_fortify_city
+		cost = 60
+		prerequisite = {
+			focus = GEN_Promote_Our_Military
+		}
+		prerequisite = {
+			focus = GEN_Promote_Our_Military
+		}
+		x = 26
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Support_Religious_Trade_Union
+		icon = GFX_GER_Encourage_Christian_Trade_Unions
+		cost = 60
+		prerequisite = {
+			focus = GEN_Patriotic_Rhetoric
+		}
+		prerequisite = {
+			focus = GEN_Invest_in_Defence_Industry
+		}
+		x = 25
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Crackdown_on_Socialist
+		icon = GFX_goal_anti_comintern_pact
+		cost = 60
+		prerequisite = {
+			focus = GEN_Invest_in_Defence_Industry
+		}
+		x = 27
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Combact_Fascist_Influence
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		cost = 60
+		prerequisite = {
+			focus = GEN_Support_Religious_Trade_Union
+		}
+		prerequisite = {
+			focus = GEN_Crackdown_on_Socialist
+		}
+		x = 26
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Promote_Domestic_Production
+		icon = GFX_GENERIC_Public_Works
+		cost = 60
+		prerequisite = {
+			focus = GEN_Protectionnist_Measures
+		}
+		x = 27
+		y = 2
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Attract_Upper_Class_Support
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Promote_Majority_Culture
+		}
+		x = 27
+		y = 4
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Control_Democratic_Institution
+		icon = GFX_focus_generic_strike_at_democracy2
+		cost = 60
+		prerequisite = {
+			focus = GEN_Authoritarian_Dem
+		}
+		x = -2
+		y = 1
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Staunch_Anti_Communism
+		icon = GFX_goal_anti_comintern_pact
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_Democratic_Institution
+		}
+		x = -3
+		y = 2
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_a_Democracy_in_Name_Only
+		icon = GFX_focus_usa_voter_registration_act
+		cost = 60
+		prerequisite = {
+			focus = GEN_Authoritarian_Dem
+		}
+		x = 0
+		y = 1
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Purge_Civil_Servant
+		icon = GFX_GENERIC_Purge_the_Old_Guard
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_Democratic_Institution
+		}
+		prerequisite = {
+			focus = GEN_a_Democracy_in_Name_Only
+		}
+		x = -1
+		y = 2
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Keep_Opposition_Under_Control
+		icon = GFX_GENERIC_Anti_Democracy
+		cost = 60
+		prerequisite = {
+			focus = GEN_Staunch_Anti_Communism
+		}
+		prerequisite = {
+			focus = GEN_Purge_Civil_Servant
+		}
+		x = -2
+		y = 3
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	
+	focus = {
+		id = GEN_Better_the_Curriculum
+		icon = GFX_GENERIC_Continue_the_School_Program
+		cost = 60
+		prerequisite = {
+			focus = GEN_Keep_Opposition_Under_Control
+		}
+		x = -4
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Expand_Secret_Police
+		icon = GFX_GENERIC_Army
+		cost = 60
+		prerequisite = {
+			focus = GEN_Keep_Opposition_Under_Control
+		}
+		x = -2
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Censor_the_Press
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 60
+		prerequisite = {
+			focus = GEN_Keep_Opposition_Under_Control
+		}
+		x = 0
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_One_Party_State
+		icon = GFX_GER_Outlaw_Parties
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Secret_Police
+		}
+		prerequisite = {
+			focus = GEN_Censor_the_Press
+		}
+		mutually_exclusive = {
+			focus = GEN_Free_Democratic_Elections
+		}
+		x = -1
+		y = 5
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Free_Democratic_Elections
+		icon = GFX_GENERIC_Parliament
+		cost = 60
+		prerequisite = {
+			focus = GEN_Better_the_Curriculum
+		}
+		prerequisite = {
+			focus = GEN_Expand_Secret_Police
+		}
+		mutually_exclusive = {
+			focus = GEN_One_Party_State
+		}
+		x = -3
+		y = 5
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Increase_Taxation
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 60
+		prerequisite = {
+			focus = GEN_One_Party_State
+			focus = GEN_Free_Democratic_Elections
+		}
+		x = -1
+		y = 6
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Enrich_Political_Elite
+		icon = GFX_GENERIC_Banker_Coup
+		cost = 60
+		prerequisite = {
+			focus = GEN_Increase_Taxation
+		}
+		mutually_exclusive = {
+			focus = GEN_Welfare_for_the_People
+		}
+		x = 0
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Centralize_Power
+		icon = GFX_GENERIC_Centralization
+		cost = 60
+		prerequisite = {
+			focus = GEN_Authoritarian_Dem
+			focus = GEN_Military_Junta
+		}
+		x = 2
+		y = 1
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Protect_our_Economy
+		icon = GFX_GENERIC_Money
+		cost = 60
+		prerequisite = {
+			focus = GEN_Centralize_Power
+		}
+		mutually_exclusive = {
+			focus = GEN_Open_Up_Foreign_Investment
+		}
+		x = 1
+		y = 2
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Fight_Foreign_Influence
+		icon = GFX_GENERIC_Burn_the_Parliament
+		cost = 60
+		prerequisite = {
+			focus = GEN_Protect_our_Economy
+		}
+		x = 1
+		y = 3
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Open_Up_Foreign_Investment
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 60
+		prerequisite = {
+			focus = GEN_Centralize_Power
+		}
+		mutually_exclusive = {
+			focus = GEN_Protect_our_Economy
+		}
+		x = 3
+		y = 2
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Prop_up_Trade
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 60
+		prerequisite = {
+			focus = GEN_Open_Up_Foreign_Investment
+		}
+		x = 3
+		y = 3
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Modernize_Infrastructure
+		icon = GFX_GENERIC_Road_Construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Fight_Foreign_Influence
+			focus = GEN_Prop_up_Trade
+		}
+		x = 2
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Fund_Parmailitaries
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60
+		prerequisite = {
+			focus = GEN_Modernize_Infrastructure
+		}
+		x = 1
+		y = 5
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Invest_in_Military_Production
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 60
+		prerequisite = {
+			focus = GEN_Modernize_Infrastructure
+		}
+		x = 3
+		y = 5
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Gather_Military_Support
+		icon = GFX_focus_generic_military_mission
+		cost = 60
+		prerequisite = {
+			focus = GEN_Invest_in_Military_Production
+		}
+		x = 3
+		y = 6
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Militarize_Bureaucracy
+		icon = GFX_GENERIC_Cabinet
+		cost = 60
+		prerequisite = {
+			focus = GEN_Military_Junta
+		}
+		x = 4
+		y = 1
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Troops_on_the_Streets
+		icon = GFX_focus_generic_little_entente
+		cost = 60
+		prerequisite = {
+			focus = GEN_Military_Junta
+		}
+		x = 6
+		y = 1
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Empower_Military_Tribunal
+		icon = GFX_GENERIC_Justice_System
+		cost = 60
+		prerequisite = {
+			focus = GEN_Militarize_Bureaucracy
+		}
+		prerequisite = {
+			focus = GEN_Troops_on_the_Streets
+		}
+		x = 5
+		y = 2
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Eradicate_Leftists_Influence
+		icon = GFX_GENERIC_Anti_Communism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Troops_on_the_Streets
+		}
+		prerequisite = {
+			focus = GEN_Militarize_Bureaucracy
+		}
+		x = 7
+		y = 2
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Supression_of_the_Opposition
+		icon = GFX_GENERIC_Mass_Arrest_Political_Enemies
+		cost = 60
+		prerequisite = {
+			focus = GEN_Empower_Military_Tribunal
+		}
+		prerequisite = {
+			focus = GEN_Eradicate_Leftists_Influence
+		}
+		x = 6
+		y = 3
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Control_Sources_Information
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 60
+		prerequisite = {
+			focus = GEN_Supression_of_the_Opposition
+		}
+		x = 4
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Expand_Role_Military_Police
+		icon = GFX_focus_generic_little_entente
+		cost = 60
+		prerequisite = {
+			focus = GEN_Supression_of_the_Opposition
+		}
+		x = 6
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Military_Ed_fo_the_Youth
+		icon = GFX_focus_generic_military_academy
+		cost = 60
+		prerequisite = {
+			focus = GEN_Supression_of_the_Opposition
+		}
+		x = 8
+		y = 4
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Institutionalise_Military_Presence_in_Politics
+		icon = GFX_GENERIC_New_Constitution
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_Sources_Information
+		}
+		prerequisite = {
+			focus = GEN_Expand_Role_Military_Police
+		}
+		prerequisite = {
+			focus = GEN_Military_Ed_fo_the_Youth
+		}
+		mutually_exclusive = {
+			focus = GEN_Abolish_Parlement
+		}
+		x = 7
+		y = 5
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Abolish_Parlement
+		icon = GFX_GENERIC_Dissolve_the_Parliament
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_Sources_Information
+		}
+		prerequisite = {
+			focus = GEN_Expand_Role_Military_Police
+		}
+		prerequisite = {
+			focus = GEN_Military_Ed_fo_the_Youth
+		}
+		mutually_exclusive = {
+			focus = GEN_Institutionalise_Military_Presence_in_Politics
+		}
+		x = 5
+		y = 5
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Military_Domination_of_Politics
+		icon = GFX_GENERIC_Political_Army
+		cost = 60
+		prerequisite = {
+			focus = GEN_Institutionalise_Military_Presence_in_Politics
+			focus = GEN_Abolish_Parlement
+		}
+		x = 7
+		y = 6
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Expand_Arms_Industry
+		icon = GFX_GENERIC_Military_Production
+		cost = 60
+		prerequisite = {
+			focus = GEN_Abolish_Parlement
+			focus = GEN_Institutionalise_Military_Presence_in_Politics
+		}
+		x = 5
+		y = 6
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	
+	focus = {
+		id = GEN_Abolish_Trade_Union
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 60
+		prerequisite = {
+			focus = GEN_Military_Domination_of_Politics
+		}
+		prerequisite = {
+			focus = GEN_Expand_Arms_Industry
+		}
+		x = 8
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Expand_Army_Recruitement
+		icon = GFX_GENERIC_Professional_Army
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Military_Domination_of_Politics
+		}
+		mutually_exclusive = {
+			focus = GEN_Militarise_Police
+		}
+		x = 6
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Begin_Purge_of_Civil_Servant
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 60
+		prerequisite = {
+			focus = GEN_Secure_the_National_Rebirth
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = GEN_Infiltrate_Bureaucracy
+		icon = GFX_GENERIC_New_Constitution
+		cost = 60
+		prerequisite = {
+			focus = GEN_Begin_Purge_of_Civil_Servant
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = -2
+		y = 2
+	}
+	focus = {
+		id = GEN_Round_up_Dissident
+		icon = GFX_GENERIC_Mass_Arrest_Political_Enemies
+		cost = 60
+		prerequisite = {
+			focus = GEN_Secure_the_National_Rebirth
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = GEN_Reform_the_Government_System
+		icon = GFX_GENERIC_Centralization
+		cost = 60
+		prerequisite = {
+			focus = GEN_Begin_Purge_of_Civil_Servant
+		}
+		prerequisite = {
+			focus = GEN_Round_up_Dissident
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 0
+		y = 2
+	}
+	focus = {
+		id = GEN_an_All_Embracing_State
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60
+		prerequisite = {
+			focus = GEN_Reform_the_Government_System
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 0
+		y = 3
+	}
+	focus = {
+		id = GEN_Ensure_Loyalty_of_the_Masses
+		icon = GFX_goal_generic_propaganda
+		cost = 60
+		prerequisite = {
+			focus = GEN_an_All_Embracing_State
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = -3
+		y = 4
+	}
+	focus = {
+		id = GEN_Control_Academia
+		icon = GFX_GENERIC_Continue_the_School_Program
+		cost = 60
+		prerequisite = {
+			focus = GEN_an_All_Embracing_State
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = -1
+		y = 4
+	}
+	focus = {
+		id = GEN_Embrace_Church
+		icon = GFX_GENERIC_Protestant_Religious_School_Programs
+		cost = 60
+		prerequisite = {
+			focus = GEN_Ensure_Loyalty_of_the_Masses
+		}
+		prerequisite = {
+			focus = GEN_Control_Academia
+		}
+		mutually_exclusive = {
+			focus = GEN_Anti_Clerical_Law
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = -2
+		y = 5
+	}
+	focus = {
+		id = GEN_Form_Secret_Police
+		icon = GFX_GER_SS_Political_Officers
+		cost = 60
+		prerequisite = {
+			focus = GEN_an_All_Embracing_State
+		}
+		mutually_exclusive = {
+			focus = GEN_Use_Out_Brown_Shirts
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 1
+		y = 4
+	}
+	focus = {
+		id = GEN_Anti_Clerical_Law
+		icon = GFX_GENERIC_Separate_Church_from_State
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_Academia
+		}
+		prerequisite = {
+			focus = GEN_Form_Secret_Police
+		}
+		mutually_exclusive = {
+			focus = GEN_Embrace_Church
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 0
+		y = 5
+	}
+	focus = {
+		id = GEN_National_Youth_Organisation_fascist
+		icon = GFX_focus_generic_manpower
+		cost = 60
+		prerequisite = {
+			focus = GEN_Form_Secret_Police
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 2
+		y = 5
+	}
+	focus = {
+		id = GEN_The_New_CN_Man
+		icon = GFX_VIC_Travail
+		cost = 60
+		prerequisite = {
+			focus = GEN_Embrace_Church
+			focus = GEN_Anti_Clerical_Law
+		}
+		prerequisite = {
+			focus = GEN_National_Youth_Organisation_fascist
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 0
+		y = 6
+	}
+	focus = {
+		id = GEN_Promote_Militarism
+		icon = GFX_focus_generic_military_mission
+		cost = 60
+		prerequisite = {
+			focus = GEN_The_New_CN_Man
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 0
+		y = 7
+	}
+	focus = {
+		id = GEN_Abolish_Unionism
+		icon = GFX_GENERIC_Forced_Labour
+		cost = 60
+		prerequisite = {
+			focus = GEN_Round_up_Dissident
+		}
+		mutually_exclusive = {
+			focus = GEN_Merge_Union_into_National_Union
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 2
+		y = 2
+	}
+	focus = {
+		id = GEN_Promote_National_Heroes
+		icon = GFX_GER_Renounce_the_Disarmament_Clauses
+		cost = 60
+		prerequisite = {
+			focus = GEN_The_New_CN_Man
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 2
+		y = 7
+	}
+	focus = {
+		id = GEN_Use_Out_Brown_Shirts
+		icon = GFX_GER_The_Brown_Revolution
+		cost = 60
+		prerequisite = {
+			focus = GEN_an_All_Embracing_State
+		}
+		mutually_exclusive = {
+			focus = GEN_Form_Secret_Police
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 3
+		y = 4
+	}
+	focus = {
+		id = GEN_Corporatism
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Secure_the_National_Rebirth
+		}
+		mutually_exclusive = {
+			focus = GEN_Nationalization_Policy
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 5
+		y = 1
+	}
+	focus = {
+		id = GEN_Merge_Union_into_National_Union
+		icon = GFX_GENERIC_Banker_Coup
+		cost = 60
+		prerequisite = {
+			focus = GEN_Corporatism
+		}
+		mutually_exclusive = {
+			focus = GEN_Abolish_Unionism
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 4
+		y = 2
+	}
+	focus = {
+		id = GEN_Manage_Labour_Disputes
+		icon = GFX_GENERIC_Justice_System
+		cost = 60
+		prerequisite = {
+			focus = GEN_Corporatism
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 6
+		y = 2
+	}
+	focus = {
+		id = GEN_Invest_in_Defence_Industry_fascist
+		icon = GFX_goal_generic_defence
+		cost = 60
+		prerequisite = {
+			focus = GEN_Merge_Union_into_National_Union
+		}
+		prerequisite = {
+			focus = GEN_Manage_Labour_Disputes
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 5
+		y = 3
+	}
+	focus = {
+		id = GEN_Train_Run_on_Time
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 60
+		prerequisite = {
+			focus = GEN_Invest_in_Defence_Industry_fascist
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 5
+		y = 4
+	}
+	focus = {
+		id = GEN_Nationalization_Policy
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 60
+		prerequisite = {
+			focus = GEN_Secure_the_National_Rebirth
+		}
+		mutually_exclusive = {
+			focus = GEN_Corporatism
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 11
+		y = 1
+	}
+	focus = {
+		id = GEN_Increase_Social_Welfare_Fascism
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 60
+		prerequisite = {
+			focus = GEN_Corporatism
+			focus = GEN_Nationalization_Policy
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 8
+		y = 2
+	}
+	focus = {
+		id = GEN_Post_Work_Leisure_Program
+		icon = GFX_goal_generic_national_unity
+		cost = 60
+		prerequisite = {
+			focus = GEN_Increase_Social_Welfare_Fascism
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 7
+		y = 3
+	}
+	focus = {
+		id = GEN_Public_Works_fascist
+		icon = GFX_goal_generic_construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Increase_Social_Welfare_Fascism
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 9
+		y = 3
+	}
+	focus = {
+		id = GEN_Focus_on_Total_Autarky
+		icon = GFX_GENERIC_Autarky
+		cost = 60
+		prerequisite = {
+			focus = GEN_Post_Work_Leisure_Program
+		}
+		prerequisite = {
+			focus = GEN_Public_Works_fascist
+		}
+		mutually_exclusive = {
+			focus = GEN_Limit_Trade
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 9
+		y = 4
+	}
+	focus = {
+		id = GEN_Overtake_Arms_Industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 60
+		prerequisite = {
+			focus = GEN_Nationalization_Policy
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 10
+		y = 2
+	}
+	focus = {
+		id = GEN_Limit_Trade
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 60
+		prerequisite = {
+			focus = GEN_Post_Work_Leisure_Program
+		}
+		prerequisite = {
+			focus = GEN_Public_Works_fascist
+		}
+		mutually_exclusive = {
+			focus = GEN_Focus_on_Total_Autarky
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 7
+		y = 4
+	}
+	focus = {
+		id = GEN_Control_the_Corporations
+		icon = GFX_GENERIC_Dissolve_Small_Corporations
+		cost = 60
+		prerequisite = {
+			focus = GEN_Limit_Trade
+			focus = GEN_Focus_on_Total_Autarky
+		}
+		prerequisite = {
+			focus = GEN_Train_Run_on_Time
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 6
+		y = 5
+	}
+	focus = {
+		id = GEN_Build_Up_Railways
+		icon = GFX_GENERIC_Road_Construction
+		cost = 60
+		prerequisite = {
+			focus = GEN_Nationalization_Policy
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 12
+		y = 2
+	}
+	focus = {
+		id = GEN_Reorganisation_Industry
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 60
+		prerequisite = {
+			focus = GEN_Overtake_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Build_Up_Railways
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 11
+		y = 3
+	}
+	focus = {
+		id = GEN_Invest_in_Military_Research
+		icon = GFX_focus_research
+		cost = 60
+		prerequisite = {
+			focus = GEN_Reorganisation_Industry
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 11
+		y = 4
+	}
+	focus = {
+		id = GEN_Expand_Mining_of_Ressources
+		icon = GFX_focus_generic_steel
+		cost = 60
+		prerequisite = {
+			focus = GEN_Limit_Trade
+			focus = GEN_Focus_on_Total_Autarky
+		}
+		prerequisite = {
+			focus = GEN_Invest_in_Military_Research
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 10
+		y = 5
+	}
+	focus = {
+		id = GEN_National_Youth_Organisation_fascism
+		icon = GFX_GENERIC_Military_State
+		cost = 60
+		prerequisite = {
+			focus = GEN_Fund_Parmailitaries
+		}
+		x = 1
+		y = 6
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Socialism_Bottom_Up
+		icon = GFX_goal_support_communism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Land_Reform
+		}
+		prerequisite = {
+			focus = GEN_Build_Railroads
+		}
+		x = 7
+		y = 6
+	}
+	focus = {
+		id = GEN_Revolutionnary_Thinking
+		icon = GFX_SOV_Socialist_Science
+		cost = 60
+		prerequisite = {
+			focus = GEN_Socialism_from_the_top_down
+		}
+		prerequisite = {
+			focus = GEN_Socialism_Bottom_Up
+		}
+		x = 5
+		y = 7
+	}
+	focus = {
+		id = GEN_Socialist_Nationalis
+		icon = GFX_GENERIC_Ideology_National_Communism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Grand_Social_Reforms
+			focus = GEN_Proletarian_Cultural_Revolution
+		}
+		x = 14
+		y = 7
+	}
+	focus = {
+		id = GEN_Socialist_State
+		icon = GFX_GENERIC_Ideology_Socialism
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_State
+			focus = GEN_Control_People
+		}
+		prerequisite = {
+			focus = GEN_Socialist_Nationalis
+		}
+		x = 14
+		y = 8
+	}
+	focus = {
+		id = GEN_Planned_Economy
+		icon = GFX_SOV_Five_Year_Plan
+		cost = 60
+		prerequisite = {
+			focus = GEN_Revisionnist_Marxist
+		}
+		x = -3
+		y = 5
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Equality_Prosperity_for_All
+		icon = GFX_FIN_Red_Agrarian_Coalition
+		cost = 60
+		prerequisite = {
+			focus = GEN_Planned_Economy
+		}
+		x = -3
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Technocratic_Planning_Boards
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 60
+		prerequisite = {
+			focus = GEN_Equality_Prosperity_for_All
+		}
+		x = -4
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Mass_Nationalisation
+		icon = GFX_GENERIC_Nationalize_Banks
+		cost = 60
+		prerequisite = {
+			focus = GEN_Equality_Prosperity_for_All
+		}
+		x = -2
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Social_State
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 60
+		prerequisite = {
+			focus = GEN_Technocratic_Planning_Boards
+		}
+		prerequisite = {
+			focus = GEN_Mass_Nationalisation
+		}
+		x = -3
+		y = 8
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Nationalise_Strategic_Industries
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 60
+		prerequisite = {
+			focus = GEN_Organize_Public_Works
+		}
+		mutually_exclusive = {
+			focus = GEN_Invest_State_Infrastructure
+		}
+		x = -1
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Invest_Civilian
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 60
+		prerequisite = {
+			focus = GEN_Nationalise_Strategic_Industries
+			focus = GEN_Invest_State_Infrastructure
+		}
+		x = 0
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_State_Interventionism
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 60
+		prerequisite = {
+			focus = GEN_Class_Cooperation
+		}
+		x = 4
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Invest_Strategic_Industries
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 60
+		prerequisite = {
+			focus = GEN_Support_Farmers
+			focus = GEN_Promote_Urban_Dev
+		}
+		x = 10
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Buy_New_Industry_Machinery
+		icon = GFX_focus_generic_industry_2
+		cost = 60
+		prerequisite = {
+			focus = GEN_Invest_Strategic_Industries
+		}
+		x = 10
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Business_Friendly_Laws
+		icon = GFX_GENERIC_Banker_Coup
+		cost = 60
+		prerequisite = {
+			focus = GEN_Invest_Strategic_Industries
+			focus = GEN_Encourage_Skilled_Migration
+		}
+		x = 13
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Democratic_State
+		icon = GFX_GENERIC_Westernization
+		cost = 60
+		prerequisite = {
+			focus = GEN_State_Interventionism
+			focus = GEN_Keynesian_Economics
+			focus = GEN_Buy_New_Industry_Machinery
+			focus = GEN_Business_Friendly_Laws
+			focus = GEN_Invest_Education_System
+			focus = GEN_Uphold_Trad_Molarity
+			focus = GEN_Combact_Fascist_Influence
+		}
+		x = 13
+		y = 8
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Rework_Educational_Program
+		icon = GFX_GENERIC_Catholic_Religious_School_Programs
+		cost = 60
+		prerequisite = {
+			focus = GEN_Patriotic_Rhetoric
+		}
+		x = 23
+		y = 6
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Uphold_Trad_Molarity
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 60
+		prerequisite = {
+			focus = GEN_Rework_Educational_Program
+		}
+		prerequisite = {
+			focus = GEN_Support_Religious_Trade_Union
+		}
+		x = 24
+		y = 7
+		relative_position_id = GEN_Social_Democrat_Gov
+	}
+	focus = {
+		id = GEN_Reform_the_Bureaucracy
+		icon = GFX_GENERIC_Justice_System
+		cost = 60
+		prerequisite = {
+			focus = GEN_Free_Democratic_Elections
+			focus = GEN_One_Party_State
+		}
+		x = -3
+		y = 6
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Religious_Values
+		icon = GFX_GENERIC_Catholic_Religious_School_Programs
+		cost = 60
+		prerequisite = {
+			focus = GEN_Reform_the_Bureaucracy
+		}
+		x = -4
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Welfare_for_the_People
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 60
+		prerequisite = {
+			focus = GEN_Reform_the_Bureaucracy
+		}
+		prerequisite = {
+			focus = GEN_Increase_Taxation
+		}
+		mutually_exclusive = {
+			focus = GEN_Enrich_Political_Elite
+		}
+		x = -2
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_A_Controlled_Dem
+		icon = GFX_GER_A_Guided_Puppet
+		cost = 60
+		prerequisite = {
+			focus = GEN_Welfare_for_the_People
+			focus = GEN_Enrich_Political_Elite
+		}
+		prerequisite = {
+			focus = GEN_Increase_Army_Spending
+		}
+		prerequisite = {
+			focus = GEN_Religious_Values
+		}
+		x = -2
+		y = 8
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Increase_Army_Spending
+		icon = GFX_GENERIC_Military_Academy
+		cost = 60
+		prerequisite = {
+			focus = GEN_Gather_Military_Support
+		}
+		prerequisite = {
+			focus = GEN_National_Youth_Organisation_fascism
+		}
+		x = 2
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Militarise_Police
+		icon = GFX_goal_generic_small_arms
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Military_Domination_of_Politics
+		}
+		mutually_exclusive = {
+			focus = GEN_Expand_Army_Recruitement
+		}
+		x = 4
+		y = 7
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Military_State
+		icon = GFX_GENERIC_Military_State
+		cost = 60
+		prerequisite = {
+			focus = GEN_Militarise_Police
+			focus = GEN_Expand_Army_Recruitement
+		}
+		prerequisite = {
+			focus = GEN_Abolish_Trade_Union
+		}
+		prerequisite = {
+			focus = GEN_Increase_Army_Spending
+		}
+		x = 6
+		y = 8
+		relative_position_id = GEN_Authoritarian_Dem
+	}
+	focus = {
+		id = GEN_Ideological_Education
+		icon = GFX_GENERIC_Military_State
+		cost = 60
+		prerequisite = {
+			focus = GEN_The_New_CN_Man
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = -2
+		y = 7
+	}
+	focus = {
+		id = GEN_Fascist_State
+		icon = GFX_RSI_National_Republican_Army
+		cost = 60
+		prerequisite = {
+			focus = GEN_Ideological_Education
+		}
+		prerequisite = {
+			focus = GEN_Promote_Militarism
+		}
+		prerequisite = {
+			focus = GEN_Promote_National_Heroes
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 0
+		y = 8
+	}
+	focus = {
+		id = GEN_Technocratic_Management
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 60
+		prerequisite = {
+			focus = GEN_Control_the_Corporations
+		}
+		mutually_exclusive = {
+			focus = GEN_Economy_Dev_Plan
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 6
+		y = 6
+	}
+	focus = {
+		id = GEN_Economy_Dev_Plan
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 60
+		prerequisite = {
+			focus = GEN_Expand_Mining_of_Ressources
+		}
+		mutually_exclusive = {
+			focus = GEN_Technocratic_Management
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 10
+		y = 6
+	}
+	focus = {
+		id = GEN_Cheap_Consumers_Goods
+		icon = GFX_goal_generic_consumer_goods
+		cost = 60
+		prerequisite = {
+			focus = GEN_Technocratic_Management
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 6
+		y = 7
+	}
+	focus = {
+		id = GEN_Employement_in_Construction
+		icon = GFX_goal_generic_construction2
+		cost = 60
+		prerequisite = {
+			focus = GEN_Technocratic_Management
+		}
+		prerequisite = {
+			focus = GEN_Economy_Dev_Plan
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 8
+		y = 7
+	}
+	focus = {
+		id = GEN_Focus_in_Military_Sector
+		icon = GFX_goal_generic_construct_military
+		cost = 60
+		prerequisite = {
+			focus = GEN_Economy_Dev_Plan
+		}
+		relative_position_id = GEN_Secure_the_National_Rebirth
+		x = 10
+		y = 7
+	}
+#########################################################################
+# Generic Economic Branch
+#########################################################################
+	focus = {
+		id = GEN_Improving_the_Rural_Industry
+		icon = GFX_goal_generic_construction2
+		cost = 35
+		x = 90
+		y = 0
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		offset = {
+			trigger = {
+				OR = {
+					has_government = communist
+					has_government = socialist
+				}
+			}
+			x = -66
+			y = 0
+		}
+		offset = {
+			trigger = {
+				has_government = democratic
+			}
+			x = -53
+			y = 0
+		}
+		offset = {
+			trigger = {
+				has_government = authoritarian
+			}
+			x = -73
+			y = 0
+		}
+		offset = {
+			trigger = {
+				has_government = fascist
+			}
+			x = -70
+			y = 0
+		}
+	}
+	focus = {
+		id = GEN_Improve_Agricutlural_Methods
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 45
+		prerequisite = {
+			focus = GEN_Improving_the_Rural_Industry
+		}
+		mutually_exclusive = {
+			focus = GEN_Land_Reform_economic
+		}
+		relative_position_id = GEN_Improving_the_Rural_Industry
+		x = -3
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 50 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -50 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+    		}
+		}
+	}
+	focus = {
+		id = GEN_Land_Reform_economic
+		icon = GFX_GENERIC_Agrarian_Reform
+		cost = 70
+		prerequisite = {
+			focus = GEN_Improving_the_Rural_Industry
+		}
+		mutually_exclusive = {
+			focus = GEN_Improve_Agricutlural_Methods
+		}
+		relative_position_id = GEN_Improving_the_Rural_Industry
+		x = -1
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 30 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -30 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_stability = -0.1
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+    		}
+		}
+	}
+	focus = {
+		id = GEN_Improve_Provincial_Infrastructure
+		icon = GFX_GENERIC_Road_Construction
+		cost = 35
+		prerequisite = {
+			focus = GEN_Improve_Agricutlural_Methods
+			focus = GEN_Land_Reform_economic
+		}
+		relative_position_id = GEN_Improve_Agricutlural_Methods
+		x = 1
+		y = 1
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Build_up_the_Capital_City
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 70
+		prerequisite = {
+			focus = GEN_Improve_Provincial_Infrastructure
+		}
+		relative_position_id = GEN_Improve_Provincial_Infrastructure
+		x = 0
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 70 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -70 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_capital = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+    		}
+		}
+	}
+	focus = {
+		id = GEN_Start_Building_a_New_Railway
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 70
+		prerequisite = {
+			focus = GEN_Improving_the_Rural_Industry
+		}
+		relative_position_id = GEN_Improving_the_Rural_Industry
+		x = 1
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 25 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -25 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_timed_idea = {
+				idea = generic_idea_new_railways
+				days = 365
+			}
+			set_temp_variable = { unemployment_value = -0.03 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_State_Controlled_Monopoly
+		icon = GFX_GENERIC_Centralization
+		cost = 21
+		prerequisite = {
+			focus = GEN_Start_Building_a_New_Railway
+		}
+		mutually_exclusive = {
+			focus = GEN_Allow_Private_Railways
+		}
+		relative_position_id = GEN_Start_Building_a_New_Railway
+		x = -1
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = generic_idea_new_railways
+				add_idea = generic_idea_new_railways_state
+			}
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Allow_Private_Railways
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 56
+		prerequisite = {
+			focus = GEN_Start_Building_a_New_Railway
+		}
+		mutually_exclusive = {
+			focus = GEN_State_Controlled_Monopoly
+		}
+		relative_position_id = GEN_Start_Building_a_New_Railway
+		x = 1
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = generic_idea_new_railways
+				add_idea = generic_idea_new_railways_private
+			}
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Start_Rural_Electrification
+		icon = GFX_GENERIC_Electric_Grid
+		cost = 84
+		prerequisite = {
+			focus = GEN_State_Controlled_Monopoly
+			focus = GEN_Allow_Private_Railways
+		}
+		relative_position_id = GEN_State_Controlled_Monopoly
+		x = 1
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 30 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -30 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+    		}
+    		random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+    		}
+		}
+	}
+	focus = {
+		id = GEN_Promote_Urbanization
+		icon = GFX_goal_generic_consumer_goods
+		cost = 56
+		prerequisite = {
+			focus = GEN_Improving_the_Rural_Industry
+		}
+		relative_position_id = GEN_Improving_the_Rural_Industry
+		x = 3
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+    			idea = generic_idea_promote_urbanization
+    			days = 200
+			}
+			set_temp_variable = { unemployment_value = -0.04 }
+			add_unemployment_effect = yes
+			
+		}
+	}
+	focus = {
+		id = GEN_Open_University_in_the_Capital
+		icon = GFX_focus_research
+		cost = 70
+		prerequisite = {
+			focus = GEN_Promote_Urbanization
+		}
+		relative_position_id = GEN_Promote_Urbanization
+		x = 0
+		y = 2
+		completion_reward = {
+			add_research_slot = 1
+            if = {
+                limit = {
+                    has_idea = research_spending_level_1
+                }
+                swap_ideas = {
+                    remove_idea = research_spending_level_1
+                    add_idea = research_spending_level_2
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = research_spending_level_2
+                }
+                swap_ideas = {
+                    remove_idea = research_spending_level_2
+                    add_idea = research_spending_level_3
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = research_spending_level_3
+                }
+                swap_ideas = {
+                    remove_idea = research_spending_level_3
+                    add_idea = research_spending_level_4
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = research_spending_level_4
+                }
+                swap_ideas = {
+                    remove_idea = research_spending_level_4
+                    add_idea = research_spending_level_5
+                }
+            }
+		}
+	}
+	focus = {
+		id = GEN_Invest_in_Airports
+		icon = GFX_GENERIC_International_Airport
+		cost = 35
+		prerequisite = {
+			focus = GEN_Build_up_the_Capital_City
+		}
+		prerequisite = {
+			focus = GEN_Start_Rural_Electrification
+		}
+		prerequisite = {
+			focus = GEN_Open_University_in_the_Capital
+		}
+		relative_position_id = GEN_Build_up_the_Capital_City
+		x = -1
+		y = 1
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_building_construction = {
+					type = air_base 
+					level = 2
+					instant_build = yes
+				}
+    		}
+		}
+	}
+	focus = {
+		id = GEN_Import_Industrial_Machinery
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 56
+		prerequisite = {
+			focus = GEN_Build_up_the_Capital_City
+		}
+		prerequisite = {
+			focus = GEN_Start_Rural_Electrification
+		}
+		prerequisite = {
+			focus = GEN_Open_University_in_the_Capital
+		}
+		relative_position_id = GEN_Start_Rural_Electrification
+		x = -1
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 50 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -50 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_tech_bonus = {
+    			bonus = 0.5
+   			 	uses = 2
+    			category = construction_tech
+			}
+		}
+	}
+	focus = {
+		id = GEN_Expand_Local_Armory
+		icon = GFX_GENERIC_Military_Production
+		cost = 35
+		prerequisite = {
+			focus = GEN_Build_up_the_Capital_City
+		}
+		prerequisite = {
+			focus = GEN_Start_Rural_Electrification
+		}
+		prerequisite = {
+			focus = GEN_Open_University_in_the_Capital
+		}
+		relative_position_id = GEN_Open_University_in_the_Capital
+		x = -1
+		y = 1
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory 
+					level = 1
+					instant_build = yes
+				}
+    		}
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Begin_the_Industrialization_Process
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 100
+		prerequisite = {
+			focus = GEN_Invest_in_Airports
+		}
+		prerequisite = {
+			focus = GEN_Import_Industrial_Machinery
+		}
+		prerequisite = {
+			focus = GEN_Expand_Local_Armory
+		}
+		relative_position_id = GEN_Import_Industrial_Machinery
+		x = 0
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 150 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -150 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            remove_ideas = generic_idea_new_railways
+            add_ideas = industrializing_economy
+			add_political_power = -100
+			set_temp_variable = { unemployment_value = -0.05 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Contract_Skilled_Workers
+		icon = GFX_focus_generic_self_management
+		cost = 21
+		prerequisite = {
+			focus = GEN_Begin_the_Industrialization_Process
+		}
+		relative_position_id = GEN_Begin_the_Industrialization_Process
+		x = 0
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 30 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -30 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Exploit_Natural_Riches_Economic
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 100
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = -4
+		y = 2
+		completion_reward = {
+            add_ideas = generic_idea_exploit_natrual_riches
+			set_temp_variable = { unemployment_value = -0.02 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Promote_Trade
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 35
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		mutually_exclusive = {
+			focus = GEN_Development_on_our_own
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = -3
+		y = 1
+		completion_reward = {
+            if = {
+                limit = {
+                    has_idea = closed_economy
+                }
+                swap_ideas = {
+                    remove_idea = closed_economy
+                    add_idea = limited_exports
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = limited_exports
+                }
+                swap_ideas = {
+                    remove_idea = limited_exports
+                    add_idea = export_focus
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = export_focus
+                }
+                swap_ideas = {
+                    remove_idea = export_focus
+                    add_idea = free_trade
+                }
+            }
+
+		}
+	}
+	focus = {
+		id = GEN_Development_on_our_own
+		icon = GFX_goal_generic_construct_military
+		cost = 56
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		mutually_exclusive = {
+			focus = GEN_Promote_Trade
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = -1
+		y = 1
+		completion_reward = {
+           if = {
+                limit = {
+                    has_idea = free_trade
+                }
+                swap_ideas = {
+                    remove_idea = free_trade
+                    add_idea = export_focus
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = export_focus
+                }
+                swap_ideas = {
+                    remove_idea = export_focus
+                    add_idea = limited_exports
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = limited_exports
+                }
+                swap_ideas = {
+                    remove_idea = limited_exports
+                    add_idea = closed_economy
+                }
+            }
+        }
+	}
+	focus = {
+		id = GEN_Build_Roads_to_Increase_Commerce
+		icon = GFX_GENERIC_Silk_Industry
+		cost = 56
+		prerequisite = {
+			focus = GEN_Promote_Trade
+		}
+		prerequisite = {
+			focus = GEN_Development_on_our_own
+		}
+		relative_position_id = GEN_Promote_Trade
+		x = 1
+		y = 1
+		completion_reward = {
+            capital_scope = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+            }
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Upgrade_Industrial_Machines
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 56
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = 0
+		y = 2
+		completion_reward = {
+            add_tech_bonus = {
+    			bonus = 0.5
+   			 	uses = 1
+    			category = excavation_tech
+			}
+            add_tech_bonus = {
+    			bonus = 0.5
+   			 	uses = 1
+    			category = industry
+			}
+        }
+	}
+	focus = {
+		id = GEN_Reactive_Old_Armories
+		icon = GFX_BUL_Remilitarization_of_Bulgaria
+		cost = 21
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = 1
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 15 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -15 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            add_political_power = -50
+            add_equipment_to_stockpile = { 
+                type = infantry_equipment 
+                amount = 2500 
+                #producer = ROOT
+            }
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+            }
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Expand_the_Domestic_Arms_Industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 70
+		prerequisite = {
+			focus = GEN_Reactive_Old_Armories
+		}
+		relative_position_id = GEN_Reactive_Old_Armories
+		x = 1
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 120 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -120 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GEN_Increase_Fuel_Reserves
+		icon = GFX_goal_generic_oil_refinery
+		cost = 35
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = 3
+		y = 1
+		completion_reward = {
+            random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+        }
+	}
+	focus = {
+		id = GEN_Increase_the_Wealth_of_the_People
+		icon = GFX_GENERIC_Gold
+		cost = 14
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = 4
+		y = 2
+		completion_reward = {
+            if = {
+                limit = {
+                    has_idea = social_spending_level_1
+                }
+                swap_ideas = {
+                    remove_idea = social_spending_level_1
+                    add_idea = social_spending_level_2
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = social_spending_level_2
+                }
+                swap_ideas = {
+                    remove_idea = social_spending_level_2
+                    add_idea = social_spending_level_3
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = social_spending_level_3
+                }
+                swap_ideas = {
+                    remove_idea = social_spending_level_3
+                    add_idea = social_spending_level_4
+                }
+            }
+            else_if = {
+                limit = {
+                    has_idea = social_spending_level_4
+                }
+                swap_ideas = {
+                    remove_idea = social_spending_level_4
+                    add_idea = social_spending_level_5
+                }
+            }
+        }
+	}
+	focus = {
+		id = GEN_Improve_the_Shipping_Industry
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 56
+		prerequisite = {
+			focus = GEN_Contract_Skilled_Workers
+		}
+		relative_position_id = GEN_Contract_Skilled_Workers
+		x = 5
+		y = 1
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 50 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -50 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            random_owned_controlled_state = {
+                limit = {
+                    is_coastal = yes
+                }
+                add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+            }
+			set_temp_variable = { unemployment_value = -0.01 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Clear_the_Slums
+		icon = GFX_GENERIC_Youth_Employment
+		cost = 70
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches_Economic
+		}
+		prerequisite = {
+			focus = GEN_Build_Roads_to_Increase_Commerce
+		}
+		prerequisite = {
+			focus = GEN_Upgrade_Industrial_Machines
+		}
+		prerequisite = {
+			focus = GEN_Expand_the_Domestic_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Wealth_of_the_People
+		}
+		relative_position_id = GEN_Exploit_Natural_Riches_Economic
+		x = 1
+		y = 1
+        available = {
+			set_temp_variable = { amount_of_money_to_check = 50 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -50 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            every_owned_state = {
+                add_extra_state_shared_building_slots = 1
+            }
+		}
+	}
+	focus = {
+		id = GEN_Increase_the_Iron_Production
+		icon = GFX_focus_generic_steel
+		cost = 35
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches_Economic
+		}
+		prerequisite = {
+			focus = GEN_Build_Roads_to_Increase_Commerce
+		}
+		prerequisite = {
+			focus = GEN_Upgrade_Industrial_Machines
+		}
+		prerequisite = {
+			focus = GEN_Expand_the_Domestic_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Wealth_of_the_People
+		}
+		relative_position_id = GEN_Build_Roads_to_Increase_Commerce
+		x = 1
+		y = 1
+		completion_reward = {
+            random_owned_controlled_state = {
+                add_resource = {
+                    type = steel
+                    amount = 6
+                }
+            }
+			set_temp_variable = { unemployment_value = -0.03 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Organize_Public_works_Economic
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 70
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches_Economic
+		}
+		prerequisite = {
+			focus = GEN_Build_Roads_to_Increase_Commerce
+		}
+		prerequisite = {
+			focus = GEN_Upgrade_Industrial_Machines
+		}
+		prerequisite = {
+			focus = GEN_Expand_the_Domestic_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Wealth_of_the_People
+		}
+		relative_position_id = GEN_Upgrade_Industrial_Machines
+		x = 1
+		y = 1
+        available = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+            country_event = GENERIC_Focus_Tree.13
+			set_temp_variable = { unemployment_value = -0.07 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Capital_Renovation_Plan
+		icon = GFX_GENERIC_Public_Works
+		cost = 56
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches_Economic
+		}
+		prerequisite = {
+			focus = GEN_Build_Roads_to_Increase_Commerce
+		}
+		prerequisite = {
+			focus = GEN_Upgrade_Industrial_Machines
+		}
+		prerequisite = {
+			focus = GEN_Expand_the_Domestic_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Wealth_of_the_People
+		}
+		relative_position_id = GEN_Expand_the_Domestic_Arms_Industry
+		x = 1
+		y = 1
+		completion_reward = {
+            capital_scope = {
+                add_extra_state_shared_building_slots = 1
+            }
+			set_temp_variable = { unemployment_value = -0.03 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Invest_in_Synthetic_Industry
+		icon = GFX_GENERIC_Autarky
+		cost = 42
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches_Economic
+		}
+		prerequisite = {
+			focus = GEN_Build_Roads_to_Increase_Commerce
+		}
+		prerequisite = {
+			focus = GEN_Upgrade_Industrial_Machines
+		}
+		prerequisite = {
+			focus = GEN_Expand_the_Domestic_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Wealth_of_the_People
+		}
+		mutually_exclusive = {
+			focus = GEN_Invest_in_Consumer_Industry
+		}
+		relative_position_id = GEN_Build_Roads_to_Increase_Commerce
+		x = 0
+		y = 2
+        available = {
+			set_temp_variable = { amount_of_money_to_check = 70 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -70 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = synthetic_refinery
+                    level = 1
+                    instant_build = yes
+                }
+            }
+			set_temp_variable = { unemployment_value = -0.04 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Invest_in_Consumer_Industry
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 42
+		prerequisite = {
+			focus = GEN_Exploit_Natural_Riches_Economic
+		}
+		prerequisite = {
+			focus = GEN_Build_Roads_to_Increase_Commerce
+		}
+		prerequisite = {
+			focus = GEN_Upgrade_Industrial_Machines
+		}
+		prerequisite = {
+			focus = GEN_Expand_the_Domestic_Arms_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Wealth_of_the_People
+		}
+		prerequisite = {
+			focus = GEN_Organize_Public_works_Economic
+		}
+		mutually_exclusive = {
+			focus = GEN_Invest_in_Synthetic_Industry
+		}
+		relative_position_id = GEN_Upgrade_Industrial_Machines
+		x = 0
+		y = 2
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		completion_reward = {
+			set_temp_variable = { money_to_gain = -100 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+			set_temp_variable = { unemployment_value = -0.04 }
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = GEN_Into_the_Modern_Age
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 140
+		prerequisite = {
+			focus = GEN_Invest_in_Synthetic_Industry
+			focus = GEN_Invest_in_Consumer_Industry
+		}
+		prerequisite = {
+			focus = GEN_Increase_the_Iron_Production
+		}
+		relative_position_id = GEN_Increase_the_Iron_Production
+		x = 0
+		y = 2
+		completion_reward = {
+            remove_ideas = generic_idea_exploit_natrual_riches
+            add_ideas = mixed_economy
+        }
+	}
+}

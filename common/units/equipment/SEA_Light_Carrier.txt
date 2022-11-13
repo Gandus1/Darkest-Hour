@@ -1,0 +1,293 @@
+equipments = {
+######################################################################
+###################### Light Carriers  (CVL) ##################################
+######################################################################
+	CVL_equipment = {
+		is_archetype = yes
+		is_buildable = no
+		type = carrier
+		sprite = carrier
+		group_by = archetype
+		interface_category = interface_category_capital_ships
+		# upgrades = {
+		# 	ship_deckspace_upgrade
+		# 	carrier_armor_upgrade
+		# 	ship_engine_upgrade
+		# 	ship_reliability_upgrade			
+		# }
+		naval_range = 3000
+
+		# (Describes combat behaviour - hidden stat)
+		offensive_weapons = no
+
+		build_cost_ic = 2700
+		resources = {
+			steel = 3
+			chromium = 1
+		}
+
+		manpower = 1100
+
+		module_slots = {
+			fixed_ship_deck_slot_1 = {
+				required = yes
+				allowed_module_categories = { ship_deck_space }
+				gfx = ship_deck_space_slot
+			}
+			fixed_ship_deck_slot_2 = {
+				required = no
+				allowed_module_categories = { ship_deck_space ship_carrier_armor }
+				gfx = ship_deck_space_slot
+			}
+			fixed_ship_anti_air_slot = {
+				required = no
+				allowed_module_categories = { ship_anti_air }
+			}
+			fixed_ship_radar_slot = {
+				required = no
+				allowed_module_categories = { ship_radar }
+			}
+			fixed_ship_engine_slot = {
+				required = yes
+				allowed_module_categories = { carrier_ship_engine }
+			}
+			fixed_ship_secondaries_slot = {
+				required = no
+				allowed_module_categories = { ship_secondaries }
+			}
+			
+			front_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_deck_space
+					ship_carrier_armor
+					ship_secondaries
+					ship_anti_air
+				}
+			}
+		}
+		default_modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = ship_anti_air_1
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		
+		torpedo_attack = 0
+		carrier_size = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 1
+		
+		surface_detection = 10
+		sub_detection = 0.5
+		surface_visibility = 30
+		naval_speed = 24
+		reliability = 0.70
+		
+		max_strength = 50	
+
+		fuel_consumption = 57
+	}
+################################
+# 1930 CVL
+################################
+	CVL_equipment_1930 = {
+		archetype = CVL_equipment
+		priority = 1100
+		build_cost_ic = 4200
+		manpower = 1000
+		naval_range = 10000
+
+		#Resources
+		resources = { steel = 2  }
+
+		module_slots = {
+			fixed_ship_deck_slot_1 = {
+				required = yes
+				allowed_module_categories = { ship_deck_space }
+				gfx = ship_deck_space_slot
+			}
+			fixed_ship_deck_slot_2 = {
+				required = no
+				allowed_module_categories = { ship_deck_space ship_carrier_armor }
+				gfx = ship_deck_space_slot
+			}
+			fixed_ship_anti_air_slot = {
+				required = no
+				allowed_module_categories = { ship_anti_air }
+			}
+			fixed_ship_radar_slot = {
+				required = no
+				allowed_module_categories = { ship_radar }
+			}
+			fixed_ship_engine_slot = {
+				required = yes
+				allowed_module_categories = { carrier_ship_engine }
+			}
+			fixed_ship_secondaries_slot = {
+				required = no
+				allowed_module_categories = { ship_secondaries }
+			}
+			
+			front_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_deck_space
+					ship_carrier_armor
+					ship_secondaries
+					ship_anti_air
+				}
+			}
+		}
+		default_modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = ship_anti_air_2
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 0
+		carrier_size = 5
+		
+		anti_air_attack = 12
+		
+		armor_value = 2
+	
+		surface_detection = 20
+		sub_detection = 5
+		surface_visibility = 15
+		naval_speed = 24
+		reliability = 0.50
+
+		max_strength = 80
+	}
+################################
+# 1940 CVL
+################################
+	CVL_equipment_1940 = {
+		archetype = CVL_equipment
+		parent = CVL_equipment_1930
+		priority = 1100
+
+		naval_range = 12000
+		build_cost_ic = 6400
+
+		manpower = 1400
+
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_3
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = empty
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 0
+		carrier_size = 5
+		
+		anti_air_attack = 15
+		
+		armor_value = 6
+
+		surface_detection = 22
+		sub_detection = 5
+		sub_attack = 4
+		surface_visibility = 15
+		naval_speed = 27
+		reliability = 0.75
+
+		max_strength = 120
+		
+		resources = {
+			steel = 3
+		}
+	}
+################################
+# 1943 CVL
+################################
+	CVL_equipment_1945 = {
+		archetype = CVL_equipment
+		parent = CVL_equipment_1940
+		priority = 1100
+		build_cost_ic = 8100
+		manpower = 1400
+		naval_range = 14000
+
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_4
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = empty
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 0
+		carrier_size = 10
+		
+		anti_air_attack = 20
+		
+		armor_value = 13
+
+		surface_detection = 35
+		sub_detection = 10
+		surface_visibility = 16
+		naval_speed = 30
+		reliability = 0.80
+
+		naval_range = 6000
+		
+		max_strength = 150
+		
+		resources = {
+			steel = 3
+		}
+	}
+################################
+# 1948 CVL	
+################################
+	CVL_equipment_1950 = {
+		archetype = CVL_equipment
+		parent = CVL_equipment_1945
+		priority = 1100
+		build_cost_ic = 12000
+		manpower = 1800
+		# port_capacity_usage = 1
+		naval_range = 16000
+		naval_speed = 32
+		surface_detection = 45
+		sub_detection = 15
+		surface_visibility = 18
+		max_strength = 210
+		# evasion = 80
+		reliability = 0.90
+		# fire_range = 17
+		# attack = 18
+		anti_air_attack = 54
+		sub_attack = 16
+		# shore_bombardment = 4.2
+		armor_value = 9
+		ap_attack = 2.5
+		carrier_size = 42
+		resources = { steel = 4 }
+	}	
+################################
+}

@@ -1,0 +1,1909 @@
+######################################################
+# Darkest Hour Events : Sino-Japanese Conflict
+######################################################
+add_namespace = JAP_CHI_Anti_Japanese_Army
+add_namespace = JAP_CHI_Mongolian_Confederation
+add_namespace = JAP_CHI_Mongol_Skirmish
+add_namespace = JAP_CHI_Sino_Japanese_War
+add_namespace = JAP_Sino_Japanese_War_Chinese_Defeat
+###########################
+# Formation of the Anti-Japanese Army
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.1
+	title = JAP_CHI_Anti_Japanese_Army.1.t
+	desc = JAP_CHI_Anti_Japanese_Army.1.d
+	picture = GFX_report_CHI_Feng_Yuxiang
+	fire_only_once = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.1.A
+		AJC = {
+			transfer_state = 612
+			transfer_state = 611
+			transfer_state = 826
+			612 = {
+				add_core_of = AJC
+			}
+			611 = {
+				add_core_of = AJC
+			}
+			826 = {
+				add_core_of = AJC
+			}
+			hidden_effect = {
+				load_oob = AJC_1936
+			}
+			add_opinion_modifier = {
+				target = JAP
+				modifier = hostile_status
+			}
+			add_opinion_modifier = {
+				target = MAN
+				modifier = hostile_status
+			}
+		}
+		MAN = {
+			add_opinion_modifier = {
+				target = AJC
+				modifier = hostile_status
+			}
+		}
+		JAP = {
+			add_opinion_modifier = {
+				target = AJC
+				modifier = hostile_status
+			}
+		}
+		hidden_effect = {
+			country_event = { id = JAP_CHI_Anti_Japanese_Army.2 days = 7 }
+		}
+	}
+}
+###########################
+# Chahar Army Attacks Japan
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.2
+	title = JAP_CHI_Anti_Japanese_Army.2.t
+	desc = JAP_CHI_Anti_Japanese_Army.2.d
+	picture = GFX_report_CHI_Anti_Japanese_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.2.A
+		611 = {
+			set_border_war = yes
+		}
+		610 = {
+			set_border_war = yes
+		}
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 611
+				num_provinces = 2
+				on_win = JAP_CHI_Anti_Japanese_Army.4
+				on_lose = JAP_CHI_Anti_Japanese_Army.4
+				on_cancel = JAP_CHI_Anti_Japanese_Army.4
+			}
+			defender = {
+				state = 610
+				num_provinces = 3
+				on_win = JAP_CHI_Anti_Japanese_Army.4
+				on_lose = JAP_CHI_Anti_Japanese_Army.4
+				on_cancel = JAP_CHI_Anti_Japanese_Army.4
+			}
+		}
+		hidden_effect = {
+			set_border_war_data = {
+				attacker = 611
+				defender = 610
+				attacker_modifier = -8.0 #Anti Japanese Army
+				defender_modifier = 8.0 #Manchukuo
+				combat_width = 100
+			}
+		}
+	}
+}
+###########################
+# Chahar Army Wins the Skirmish
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.3
+	title = JAP_CHI_Anti_Japanese_Army.3.t
+	desc = JAP_CHI_Anti_Japanese_Army.3.d
+	picture = GFX_report_CHI_Chahar_Operation
+	fire_only_once = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.3.A
+		army_experience = 20
+		# ALTERNATE HISTORY
+		611 = { set_border_war = no }
+		610 = { set_border_war = no }
+	}
+}
+###########################
+# Chahar Army Loses the Skirmish
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.4
+	title = JAP_CHI_Anti_Japanese_Army.4.t
+	desc = JAP_CHI_Anti_Japanese_Army.4.d
+	picture = GFX_report_JAP_Battle_of_Rehe
+	fire_only_once = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.4.A
+		hidden_effect = {
+			news_event = { id = JAP_CHI_Anti_Japanese_Army.5 days = 1 }
+		}
+		611 = { set_border_war = no }
+		610 = { set_border_war = no }
+	}
+}
+###########################
+# Anti-Japanese Army Announced to be Disbanded
+###########################
+news_event = {
+	id = JAP_CHI_Anti_Japanese_Army.5
+	title = JAP_CHI_Anti_Japanese_Army.5.t
+	desc = JAP_CHI_Anti_Japanese_Army.5.d
+	picture = GFX_news_CHI_Anti_Japanese_Army
+	major = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.5.A
+		trigger = {
+			NOT = { original_tag = AJC }
+		}
+		hidden_effect = {
+			news_event = { id = JAP_CHI_Anti_Japanese_Army.6 days = 7 }
+		}
+	}
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.5.B
+		trigger = {
+			original_tag = AJC
+		}
+		hidden_effect = {
+			add_ideas = AJC_Official_Disbandment
+			hidden_effect = {
+				news_event = { id = JAP_CHI_Anti_Japanese_Army.6 days = 7 }
+			}
+		}
+	}
+}
+###########################
+# The Anti-Japanese Bandit-Punishing Army
+###########################
+news_event = {
+	id = JAP_CHI_Anti_Japanese_Army.6
+	title = JAP_CHI_Anti_Japanese_Army.6.t
+	desc = JAP_CHI_Anti_Japanese_Army.6.d
+	picture = GFX_news_CHI_Anti_Japanese_Bandit_Punishing_Army
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.6.A
+		trigger = {
+			NOT = { original_tag = AJC }
+		}
+	}
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.6.B
+		trigger = {
+			original_tag = AJC
+		}
+		hidden_effect = {
+			swap_ideas = {
+				add_idea = AJC_A_New_Army
+				remove_idea = AJC_Official_Disbandment
+			}
+			set_cosmetic_tag = AJC_BPA
+			news_event = { id = JAP_CHI_Anti_Japanese_Army.7 days = 15 }
+		}
+	}
+}
+###########################
+# Fang Zhenwu Occupies Gaoliying
+###########################
+news_event = {
+	id = JAP_CHI_Anti_Japanese_Army.7
+	title = JAP_CHI_Anti_Japanese_Army.7.t
+	desc = JAP_CHI_Anti_Japanese_Army.7.d
+	picture = GFX_news_CHI_Anti_Japanese_Army_2
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.7.A
+		trigger = {
+			NOT = { original_tag = AJC }
+		}
+	}
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.7.B
+		trigger = {
+			original_tag = AJC
+		}
+		JAP = {
+			hidden_effect = {
+				country_event = { id = JAP_CHI_Anti_Japanese_Army.8 days = 2 }
+			}
+		}
+	}
+}
+###########################
+# Issue a Warning to Fang Zhenwu
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.8
+	title = JAP_CHI_Anti_Japanese_Army.8.t
+	desc = JAP_CHI_Anti_Japanese_Army.8.d
+	picture = GFX_report_CHI_Feng_Zhenwu
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.8.A
+		AJC = {
+			country_event = { id = JAP_CHI_Anti_Japanese_Army.9 days = 1 }
+		}
+	}
+}
+###########################
+# Japan Issues us a Warning
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.9
+	title = JAP_CHI_Anti_Japanese_Army.9.t
+	desc = JAP_CHI_Anti_Japanese_Army.9.d
+	picture = GFX_report_JAP_Japanese_Mechanized_Infantry
+	is_triggered_only = yes
+	# Never!
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.9.A
+		ai_chance = {
+			base = 100
+		}
+		JAP = {
+			country_event = { id = JAP_CHI_Anti_Japanese_Army.10 days = 1 }
+		}
+	}
+	# We shall back down
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.9.B
+		ai_chance = {
+			base = 0
+		}
+		# ALTERNATE HISTORY
+	}
+}
+###########################
+# Fang Does not Back Down
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.10
+	title = JAP_CHI_Anti_Japanese_Army.10.t
+	desc = JAP_CHI_Anti_Japanese_Army.10.d
+	picture = GFX_report_CHI_Feng_Zhenwu
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.10.A
+		611 = { set_border_war = yes }
+		610 = { set_border_war = yes }
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 611
+				num_provinces = 2
+				on_win = JAP_CHI_Anti_Japanese_Army.11
+				on_lose = JAP_CHI_Anti_Japanese_Army.11
+				on_cancel = JAP_CHI_Anti_Japanese_Army.11
+			}
+			defender = {
+				state = 610
+				num_provinces = 3
+				on_win = JAP_CHI_Anti_Japanese_Army.11
+				on_lose = JAP_CHI_Anti_Japanese_Army.11
+				on_cancel = JAP_CHI_Anti_Japanese_Army.11
+			}
+		}
+		hidden_effect = {
+			set_border_war_data = {
+				attacker = 611
+				defender = 610
+				attacker_modifier = -8.0
+				defender_modifier = 8.0
+			}
+		}
+	}
+}
+###########################
+# Defeat of the Anti-Japanese Bandit-Punishing Army
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.11
+	title = JAP_CHI_Anti_Japanese_Army.11.t
+	desc = JAP_CHI_Anti_Japanese_Army.11.d
+	picture = GFX_report_JAP_Japanese_Mechanized_Infantry
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.11.A
+		SHX = {
+			transfer_state = 612
+		}
+		CHI = {
+			transfer_state = 826
+			transfer_state = 611
+			hidden_effect = {
+				country_event = { id = JAP_CHI_Mongolian_Confederation.1 days = 42 }
+			}
+		}
+		611 = { set_border_war = no }
+		610 = { set_border_war = no }
+	}
+}
+###########################
+# We have been Defeated (Japanese)
+###########################
+country_event = {
+	id = JAP_CHI_Anti_Japanese_Army.12
+	title = JAP_CHI_Anti_Japanese_Army.12.t
+	desc = JAP_CHI_Anti_Japanese_Army.12.d
+	picture = GFX_report_JAP_Soldiers_in_Manchuria
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Anti_Japanese_Army.12.A
+		611 = { set_border_war = no }
+		610 = { set_border_war = no }
+		# ALTERNATE HISTORY
+	}
+}
+###########################
+# The Confederation of Inner Mongolian States demand Autonomy (ROC)
+###########################
+country_event = {
+	id = JAP_CHI_Mongolian_Confederation.1
+	title = JAP_CHI_Mongolian_Confederation.1.t
+	desc = JAP_CHI_Mongolian_Confederation.1.d
+	picture = GFX_report_MEN_Yondonwangchug
+	is_triggered_only = yes
+	# We cannot risk war with Japan
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.1.A
+		ai_chance = {
+			base = 100
+		}
+		NEA = {
+			transfer_state = 611
+		}
+		MEN = {
+			transfer_state = 612
+			transfer_state = 826
+			612 = {
+				add_core_of = MEN
+			}
+			826 = {
+				add_core_of = MEN
+			}
+			hidden_effect = {
+				load_oob = MEN_1936
+			}
+			CHI = {
+				set_autonomy = {
+					target = MEN
+					autonomy_state = AUTONOMY_Province
+				}
+			}
+		}
+		hidden_effect = {
+			JAP = {
+				country_event = { id = JAP_CHI_Mongolian_Confederation.2 days = 515 }
+			}
+		}
+	}
+	# Inner-Mongolia belongs to China
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.1.B
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+###########################
+# Jiro Minami Announces his Support for Demchungdongrub (Japan and Inner Mongol State)
+###########################
+country_event = {
+	id = JAP_CHI_Mongolian_Confederation.2
+	title = JAP_CHI_Mongolian_Confederation.2.t
+	desc = JAP_CHI_Mongolian_Confederation.2.d
+	picture = GFX_report_JAP_Jiro_Minami
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.2.A
+		hidden_effect = {
+			609 = {
+				CONTROLLER = {
+					if = {
+						limit = {
+							NOT = { original_tag = JAP }
+							NOT = { is_puppet_of = JAP }
+						}
+						country_event = { id = JAP_CHI_Mongolian_Confederation.3 days = 205 }
+					}
+				}
+			}
+			JAP = {
+					country_event = { id = JAP_CHI_Mongol_Skirmish.1 days = 145 }
+			}
+			MEN = {
+				country_event = { id = JAP_CHI_Mongol_Skirmish.1 days = 145 }
+			}
+		}
+	}
+}
+###########################
+# He-Umezu Agreement (Controller of East Hebei State)
+###########################
+country_event = {
+	id = JAP_CHI_Mongolian_Confederation.3
+	title = JAP_CHI_Mongolian_Confederation.3.t
+	desc = JAP_CHI_Mongolian_Confederation.3.d
+	picture = GFX_report_JAP_Yoshijiro_Umezu
+	is_triggered_only = yes
+	# Better under China than the Kwantung army
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.3.A
+		ai_chance = {
+			base = 0
+		}
+		609 = {
+			CONTROLLER = {
+				if = {
+					limit = {
+						NOT = { original_tag = JAP }
+						NOT = { is_puppet_of = JAP }
+					}
+					JAP = {
+						create_wargoal = {
+							type = puppet_wargoal_focus
+							target = ROOT
+						}
+					}
+				}
+			}
+		}
+	}
+	# The Kuomintang shall no longer rule us
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.3.B
+		ai_chance = {
+			base = 100
+		}	
+		hidden_effect = {
+			JAP = {
+				country_event = { id = JAP_CHI_Mongolian_Confederation.4 days = 7 }
+				EHB = {
+					transfer_state = 609
+					609 = {
+						add_core_of = MEN
+						set_demilitarized_zone = no
+					}
+				}
+				set_autonomy = {
+					target = EHB
+					autonomy_state = AUTONOMY_Imperial_Protectorate
+				}
+			}
+			CHI = {
+				country_event = { id = JAP_CHI_Mongolian_Confederation.4 days = 7 }
+				news_event = { id = JAP_CHI_Mongolian_Confederation.5 days = 8 }
+			}
+		}
+	}
+}
+###########################
+# The North Chahar Incident (China and Japan)
+###########################
+country_event = {
+	id = JAP_CHI_Mongolian_Confederation.4
+	title = JAP_CHI_Mongolian_Confederation.4.t
+	desc = JAP_CHI_Mongolian_Confederation.4.d
+	picture = GFX_report_CHI_Chahar_Operation
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.4.A
+		trigger = {
+			original_tag = JAP
+		}
+		JAP = {
+		 	transfer_state = 609
+		}
+	}
+	#
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.4.B
+		trigger = {
+			original_tag = CHI
+		}
+		HCP = {
+			transfer_state = 611
+			transfer_state = 608
+			transfer_state = 614
+		}
+		611 = {
+			set_demilitarized_zone = yes
+		}
+		614 = {
+			set_demilitarized_zone = yes
+		}
+		608 = {
+			set_demilitarized_zone = yes
+		}
+		CHI = {
+			set_autonomy = {
+				target = HCP
+				autonomy_state = AUTONOMY_Satellite
+			}
+		}
+	}
+}
+###########################
+# Chin-Doihara Agreement (World)
+###########################
+news_event = {
+	id = JAP_CHI_Mongolian_Confederation.5
+	title = JAP_CHI_Mongolian_Confederation.5.t
+	desc = JAP_CHI_Mongolian_Confederation.5.d
+	picture = GFX_news_JAP_Chin_Doihara_Agreement
+	major = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongolian_Confederation.5.A
+	}
+}
+###########################
+# Meeting Between Minami and Demchungdongrub (Japan and Inner Mongol State)
+###########################
+country_event = {
+	id = JAP_CHI_Mongol_Skirmish.1
+	title = JAP_CHI_Mongol_Skirmish.1.t
+	desc = JAP_CHI_Mongol_Skirmish.1.d
+	picture = GFX_report_MEN_Demchungdongrub
+	is_triggered_only = yes
+	# Aid the Inner Mongol State
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.1.A
+		trigger = {
+			original_tag = JAP
+		}
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 5000
+			target = MEN
+		}
+		
+	}
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.1.B
+		trigger = {
+			original_tag = MEN
+		}
+		country_event = { id = JAP_CHI_Mongol_Skirmish.2 days = 2 }
+	}
+}
+###########################
+# Minami Sends Men to Demchungdongrub (Inner Mongol State)
+###########################
+country_event = {
+	id = JAP_CHI_Mongol_Skirmish.2
+	title = JAP_CHI_Mongol_Skirmish.2.t
+	desc = JAP_CHI_Mongol_Skirmish.2.d
+	picture = GFX_report_JAP_Jiro_Minami
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.2.A
+		JAP = {
+			set_autonomy = {
+				target = MEN
+				autonomy_state = AUTONOMY_Satellite
+			}
+		}
+		MEN = {
+			set_cosmetic_tag = MEN_MILITARY
+		}
+		MEN = {
+			transfer_state = 826
+		}		
+		hidden_effect = {
+			news_event = { id = JAP_CHI_Mongol_Skirmish.3 days = 1 }
+		}
+	}
+}
+###########################
+# Foundation of the Mongol Military Government (Every Country)
+###########################
+news_event = {
+	id = JAP_CHI_Mongol_Skirmish.3
+	title = JAP_CHI_Mongol_Skirmish.3.t
+	desc = JAP_CHI_Mongol_Skirmish.3.d
+	picture = GFX_news_MEN_Mongol_Military_Government
+	major = yes
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.3.A
+		trigger = {
+			NOT = { tag = JAP }
+		}
+	}
+	# Send equipment to Mongol Military Government
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.3.B
+		trigger = {
+			tag = JAP
+		}
+		hidden_effect = {
+			country_event = { id = JAP_CHI_Mongol_Skirmish.4 days = 1 }
+		}
+	}
+}
+###########################
+# China Responds (Japan)
+###########################
+country_event = {
+	id = JAP_CHI_Mongol_Skirmish.4
+	title = JAP_CHI_Mongol_Skirmish.4.t
+	desc = JAP_CHI_Mongol_Skirmish.4.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.4.A
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 5000
+			target = SHX
+		}
+		hidden_effect = {
+			country_event = { id = JAP_CHI_Mongol_Skirmish.5 days = 30 }
+		}
+	}
+}
+###########################
+# The Suiyuan Campaign (Japan)
+###########################
+country_event = {
+	id = JAP_CHI_Mongol_Skirmish.5
+	title = JAP_CHI_Mongol_Skirmish.5.t
+	desc = JAP_CHI_Mongol_Skirmish.5.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.5.A
+		hidden_effect = {
+			load_oob = SHX_1936
+		}
+		612 = {
+			set_border_war = yes
+		}
+		827 = {
+			set_border_war = yes
+		}
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 612
+				num_provinces = 3
+				on_win = JAP_CHI_Mongol_Skirmish.6
+				on_lose = JAP_CHI_Mongol_Skirmish.7
+			}
+			defender = {
+				state = 827
+				num_provinces = 4
+				on_win = JAP_CHI_Mongol_Skirmish.7
+				on_lose = JAP_CHI_Mongol_Skirmish.6
+			}
+		}
+		hidden_effect = {
+			set_border_war_data = {
+				attacker = 612
+				defender = 827
+				attacker_modifier = -0.5
+				defender_modifier = 0.5
+			}
+		}
+	}
+}
+###########################
+# Mongol Military State wins the Skirmish
+###########################
+country_event = {
+	id = JAP_CHI_Mongol_Skirmish.6
+	title = JAP_CHI_Mongol_Skirmish.6.t
+	desc = JAP_CHI_Mongol_Skirmish.6.d
+	picture = GFX_report_MEN_Inner_Mongolian_Army
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.6.A
+		612 = { set_border_war = no }
+		827 = { set_border_war = no }
+		MEN = {
+			transfer_state = 827
+		}
+	}
+}
+###########################
+# Shanxi Clique wins the Skirmish
+###########################
+country_event = {
+	id = JAP_CHI_Mongol_Skirmish.7
+	title = JAP_CHI_Mongol_Skirmish.7.t
+	desc = JAP_CHI_Mongol_Skirmish.7.d
+	picture = GFX_report_CHI_Suiyuan_Campaign
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Mongol_Skirmish.7.A
+		612 = { set_border_war = no }
+		827 = { set_border_war = no }
+		MEN = {
+			add_war_support = -0.1
+		}
+		SHX = {
+			add_war_support = 0.05
+			add_political_power = 25
+		}
+	}
+}
+###########################
+# Non-Aggression Pact with the Soviets
+###########################
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.1
+	title = JAP_CHI_Sino_Japanese_War.1.t
+	desc = JAP_CHI_Sino_Japanese_War.1.d
+	picture = GFX_report_JAP_Soviet_Japanese_Neutrality_Pact
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.1.A
+	}
+}
+###########################
+# Non-Aggression Pact with China
+###########################
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.2
+	title = JAP_CHI_Sino_Japanese_War.2.t
+	desc = JAP_CHI_Sino_Japanese_War.2.d
+	picture = GFX_report_CHI_Lushan_Declaration
+	is_triggered_only = yes
+	#
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.2.A
+		CHI = {
+			set_country_flag = CHI_NAP_with_Soviets
+		}
+	}
+}
+###########################
+# The Republic of China asks for Money
+###########################
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.3
+	title = JAP_CHI_Sino_Japanese_War.3.t
+	desc = JAP_CHI_Sino_Japanese_War.3.d
+	picture = GFX_report_CHI_Lushan_Declaration
+	is_triggered_only = yes
+	# 500
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.3.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 60
+				set_temp_variable = { amount_of_money_to_check = 500 }
+				has_specific_amount_of_money_with_inflation_included = yes
+			}
+		}
+		set_temp_variable = { money_to_gain = -500 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		CHI = {
+			set_temp_variable = { money_to_gain = 500 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	# 600
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.3.B
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 20
+				set_temp_variable = { amount_of_money_to_check = 600 }
+				has_specific_amount_of_money_with_inflation_included = yes
+			}
+		}
+		set_temp_variable = { money_to_gain = -600 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		CHI = {
+			set_temp_variable = { money_to_gain = 600 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	# 700
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.3.C
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 10
+				set_temp_variable = { amount_of_money_to_check = 700 }
+				has_specific_amount_of_money_with_inflation_included = yes
+			}
+		}
+		set_temp_variable = { money_to_gain = -700 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		CHI = {
+			set_temp_variable = { money_to_gain = 700 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	# Nothing
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.3.D
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+###########################
+# The Marco-Polo Bridge Incident
+###########################
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.6
+	title = JAP_CHI_Sino_Japanese_War.6.t
+	desc = JAP_CHI_Sino_Japanese_War.6.d
+	picture = GFX_report_CHI_Marco_Polo_Incident
+	is_triggered_only = yes
+	# China must pay for this!
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.6.A
+		trigger = {
+			original_tag = JAP
+		}
+		CHI = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.7 days = 1 }
+		}
+	}
+	#
+	option = {
+		trigger = {
+			original_tag = CHI
+		}
+		name = JAP_CHI_Sino_Japanese_War.6.B
+		add_war_support = 0.1
+	}
+}
+###########################
+# An Ultimatum
+###########################
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.7
+	title = JAP_CHI_Sino_Japanese_War.7.t
+	desc = JAP_CHI_Sino_Japanese_War.7.d
+	picture = GFX_report_JAP_Japanese_Korea
+	is_triggered_only = yes
+	# We have reached the breaking point, never!
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.7.A
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+			JAP = {
+				declare_war_on = {
+					target = CHI
+					type = puppet_wargoal_focus
+				}
+			}
+			614 = {
+				set_demilitarized_zone = no
+			}
+			608 = {
+				set_demilitarized_zone = no
+			}
+			CHI = {
+				country_event = {
+					id = JAP_CHI_Sino_Japanese_War.8
+					days = 1
+				}
+			}
+			news_event = { id = JAP_CHI_Sino_Japanese_War.88 hours = 6 }
+		}
+	}
+	# We cannot afford war with Japan yet
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.7.B
+		ai_chance = {
+			base = 0
+		}
+		JAP = {
+			transfer_state = 608
+		}
+	}
+}
+# China Comes Under Further Attack
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.8
+	title = JAP_CHI_Sino_Japanese_War.8.t
+	desc = JAP_CHI_Sino_Japanese_War.8.d
+	picture = GFX_report_JAP_Marco_Polo_Incident
+	is_triggered_only = yes
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.8.A
+		create_faction = FACTION_Second_United_Front
+		add_ideas = CHI_Chinese_United_Front
+		set_global_flag = CHI_Sino_Japanese_War
+		SHX = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		XSM = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		NEA = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		GND = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		GXC = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		YUN = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		SIK = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		PRC = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		LXI = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+		LWH = {
+			country_event = { id = JAP_CHI_Sino_Japanese_War.9 days = 1 random_days = 7 }
+		}
+	}
+}
+# Japanese Win Marco Polo Bridge - Chinese Routed
+news_event = {
+	id = JAP_CHI_Sino_Japanese_War.88 # who is the tard that didn't make a global event for sino-japanese war
+	title = JAP_CHI_Sino_Japanese_War.88.t
+	desc = JAP_CHI_Sino_Japanese_War.88.d
+	picture = GFX_news_JAP_Animated_Sino_Japanese_War
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.88.A
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.88.B
+		trigger = {
+			OR = {
+				original_tag = CHI
+				original_tag = PRC
+				original_tag = SHX
+				original_tag = XSM
+				original_tag = NEA
+				original_tag = GXC
+				original_tag = YUN
+				original_tag = SIK
+				original_tag = LXI
+				original_tag = LWH
+			}
+		}
+	}
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.88.C
+		trigger = {
+			NOT = {
+				original_tag = JAP
+				original_tag = CHI
+				original_tag = PRC
+				original_tag = SHX
+				original_tag = XSM
+				original_tag = NEA
+				original_tag = GXC
+				original_tag = YUN
+				original_tag = SIK
+				original_tag = LXI
+				original_tag = LWH
+			}
+		}
+	}
+}
+# China Is Under Attack
+country_event = {
+	id = JAP_CHI_Sino_Japanese_War.9
+	title = JAP_CHI_Sino_Japanese_War.9.t
+	desc = JAP_CHI_Sino_Japanese_War.9.d
+	picture = GFX_report_CHI_100_Regiments_Offensive
+	is_triggered_only = yes
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.9.A
+		CHI = {
+			add_to_faction = ROOT
+		}
+		add_ideas = CHI_Chinese_United_Front
+		add_ai_strategy = {
+			type = alliance
+			id = "CHI"
+			value = 500
+		}
+		set_country_flag = CHI_Joined_Faction
+	}
+}
+# Fall of Nanjing
+news_event = {
+	id = JAP_CHI_Sino_Japanese_War.10
+	title = JAP_CHI_Sino_Japanese_War.10.t
+	desc = JAP_CHI_Sino_Japanese_War.10.d
+	picture = GFX_news_JAP_Operation_Nekka
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.10.A
+		trigger = {
+			tag = CHI
+		}
+		set_capital = {
+			state = 620 
+			remember_old_capital = yes
+		}
+		annex_country = {
+			target = HNN
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = LXI
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = GUZ
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = LWH
+			transfer_troops = yes
+		}
+	}
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.10.B
+		trigger = {
+			tag = JAP
+		}
+		add_war_support = 0.05
+	}
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.10.C
+		trigger = {
+			NOT = {
+				OR = {
+					tag = CHI
+					tag = JAP
+				}
+			}
+		}
+	}
+}
+# Fall of Wuhan
+news_event = {
+	id = JAP_CHI_Sino_Japanese_War.11
+	title = JAP_CHI_Sino_Japanese_War.11.t
+	desc = JAP_CHI_Sino_Japanese_War.11.d
+	picture = GFX_report_CHI_100_Regiments_Offensive
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.11.A
+		trigger = {
+			tag = CHI
+		}
+		set_capital = {
+			state = 605 
+			remember_old_capital = yes
+		}
+		annex_country = {
+			target = LWH
+			transfer_troops = yes
+		}
+	}
+	option = {
+		name = JAP_CHI_Sino_Japanese_War.11.B
+		trigger = {
+			tag = JAP
+		}
+		add_war_support = 0.05
+	}
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					tag = CHI
+					tag = JAP
+				}
+			}
+		}
+		name = JAP_CHI_Sino_Japanese_War.11.C
+	}
+}
+###########################
+# Victory in the Second Sino-Japanese War
+###########################
+### Sunrise in Chongqing - Still at war with Western Allies
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.1
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.1.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.1.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Don't worry China, you're safe now.
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.1.A
+		hidden_effect = {
+ 			JAP = {
+ 				transfer_state = 868
+ 				transfer_state = 1472
+ 				transfer_state = 1482
+ 				transfer_state = 743
+ 				transfer_state = 1036
+ 				transfer_state = 591
+ 				transfer_state = 592
+ 				transfer_state = 832
+ 			}
+ 			MEN = {
+ 				transfer_state = 746
+ 				746 = { add_core_of = MEN }
+ 				transfer_state = 825
+ 				825 = { add_core_of = MEN }
+ 				transfer_state = 827
+ 				827 = { add_core_of = MEN }
+ 				transfer_state = 621
+ 				621 = { add_core_of = MEN }
+ 			}
+ 			RNG = {
+ 				transfer_state = 593
+ 				593 = { add_core_of = RNG }
+ 				transfer_state = 595
+ 				595 = { add_core_of = RNG }
+ 				transfer_state = 902
+ 				902 = { add_core_of = RNG }
+ 				transfer_state = 862
+ 				862 = { add_core_of = RNG }
+ 				transfer_state = 600
+ 				600 = { add_core_of = RNG }
+ 				transfer_state = 909
+ 				909 = { add_core_of = RNG }
+ 				transfer_state = 602
+ 				602 = { add_core_of = RNG }
+ 				transfer_state = 750
+ 				750 = { add_core_of = RNG }
+ 				transfer_state = 861
+ 				861 = { add_core_of = RNG }
+ 				transfer_state = 620
+ 				620 = { add_core_of = RNG }
+ 				transfer_state = 1525
+ 				1525 = { add_core_of = RNG }
+ 				transfer_state = 596
+ 				596 = { add_core_of = RNG }
+ 				transfer_state = 749
+ 				749 = { add_core_of = RNG }
+ 				transfer_state = 606
+ 				606 = { add_core_of = RNG }
+ 				transfer_state = 613
+ 				613 = { add_core_of = RNG }
+ 				transfer_state = 598
+ 				598 = { add_core_of = RNG }
+ 				transfer_state = 607
+ 				607 = { add_core_of = RNG }
+ 				transfer_state = 744
+ 				744 = { add_core_of = RNG }
+ 				transfer_state = 597
+ 				597 = { add_core_of = RNG }
+ 				transfer_state = 1034
+ 				1034 = { add_core_of = RNG }
+ 				transfer_state = 608
+ 				608 = { add_core_of = RNG }
+ 				transfer_state = 609
+ 				609 = { add_core_of = RNG }
+ 				transfer_state = 614
+ 				614 = { add_core_of = RNG }
+ 				transfer_state = 603
+ 				603 = { add_core_of = RNG }
+ 				transfer_state = 748
+ 				748 = { add_core_of = RNG }
+ 				set_cosmetic_tag = RNG_JAP
+				annex_country = {
+					target = SHX
+					transfer_troops = no
+				}
+				annex_country = {
+					target = GXC
+					transfer_troops = no
+				}
+ 			}
+ 			if = {
+ 				limit = {
+ 					RNG = { NOT = { is_puppet_of = JAP } }
+ 				}
+ 				puppet = RNG
+ 				JAP = {
+ 					set_autonomy = {
+ 						target = RNG
+ 						autonomy_state = AUTONOMY_Imperial_Associate
+ 					}
+ 				}
+ 			}
+ 			LXI = {
+ 				transfer_state = 605
+ 				transfer_state = 901
+ 				transfer_state = 912
+ 				transfer_state = 874
+ 				transfer_state = 1640
+ 				transfer_state = 1641
+ 				transfer_state = 863
+ 				transfer_state = 751
+ 				transfer_state = 753
+ 				transfer_state = 1035
+ 			}
+ 			if = {
+ 				limit = {
+ 					LXI = { NOT = { is_puppet_of = JAP } }
+ 				}
+ 				puppet = LXI
+ 				JAP = {
+ 					set_autonomy = {
+ 						target = LXI
+ 						autonomy_state = AUTONOMY_Imperial_Protectorate
+ 					}
+ 				}
+ 			}
+ 			if = {
+ 				limit = {
+ 					JAP = { has_government = fascist }
+ 				}
+ 				LXI = {
+ 					hidden_effect = {
+ 						set_politics = {
+ 							ruling_party = fascist
+ 						}
+ 						retire_country_leader = yes
+ 						create_country_leader = {
+ 							name = "Seishiro Itagaki"
+ 							desc = "Seishiro_Itagaki_desc"
+ 							picture = GFX_M_Seishiro_Itagaki
+ 							ideology = ultranationalism
+ 							traits = {
+ 								POSITION_Military_Governor
+ 								SUBIDEOLOGY_Fascism
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
+ 			else_if = {
+ 				limit = {
+ 					JAP = { has_government = authoritarian }
+ 				}
+ 				LXI = {
+ 					hidden_effect = {
+ 						set_politics = {
+ 							ruling_party = authoritarian
+ 						}
+ 						retire_country_leader = yes
+ 						create_country_leader = {
+ 							name = "Seishiro Itagaki"
+ 							desc = "Seishiro_Itagaki_desc"
+ 							picture = GFX_M_Seishiro_Itagaki
+ 							ideology = military_dictatorship
+ 							traits = {
+ 								POSITION_Military_Governor
+ 								SUBIDEOLOGY_Military_Dictatorship
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
+ 			LXI = { set_cosmetic_tag = LXI_SPMA }
+ 			set_country_flag = JAP_victory_in_china
+ 			news_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.12 days = 1 }
+ 			if = {
+ 				limit = {
+ 					AND = {
+ 						YUN = { NOT = { is_subject = yes } }
+ 						YUN = { has_war_with = JAP }
+ 					}
+ 				}
+ 				white_peace = {
+ 					tag = YUN
+ 				}
+ 			}
+ 			if = {
+ 				limit = {
+ 					AND = {
+ 						SIK = { NOT = { is_subject = yes } }
+ 						SIK = { has_war_with = JAP }
+ 					}
+ 				}
+ 				white_peace = {
+ 					tag = SIK
+ 				}
+ 			}
+		}
+		custom_effect_tooltip = JAP_Sino_Japanese_War_China_Defeat.tt
+		white_peace = {
+ 			tag = CHI
+ 			#message = KUOMINTANG_COLLAPSE
+ 		}
+	}
+}
+### Sunrise in Chongqing - No war with Western Allies
+ country_event = {
+ 	id = JAP_Sino_Japanese_War_Chinese_Defeat.2
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.2.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.2.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+ 	option = { #Don't worry China, you're safe now.
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.1.A
+		hidden_effect = {
+ 			JAP = {
+ 				transfer_state = 868
+ 				transfer_state = 1472
+ 				transfer_state = 1482
+ 				transfer_state = 743
+ 				transfer_state = 1036
+ 				transfer_state = 591
+ 				transfer_state = 592
+ 				transfer_state = 832
+ 			}
+ 			MEN = {
+ 				transfer_state = 746
+ 				746 = { add_core_of = MEN }
+ 				transfer_state = 825
+ 				825 = { add_core_of = MEN }
+ 				transfer_state = 827
+ 				827 = { add_core_of = MEN }
+ 				transfer_state = 621
+ 				621 = { add_core_of = MEN }
+ 			}
+ 			RNG = {
+				create_country_leader = {
+					name = "Wang Jingwei"
+					desc = ""
+					picture = GFX_P_A_Wang_Jingwei
+					expire = "1944.10.10"
+					ideology = despotism
+					traits = { POSITION_President SUBIDEOLOGY_Despotism }
+				}
+ 				transfer_state = 593
+ 				593 = { add_core_of = RNG }
+ 				transfer_state = 595
+ 				595 = { add_core_of = RNG }
+ 				transfer_state = 902
+ 				902 = { add_core_of = RNG }
+ 				transfer_state = 862
+ 				862 = { add_core_of = RNG }
+ 				transfer_state = 600
+ 				600 = { add_core_of = RNG }
+ 				transfer_state = 909
+ 				909 = { add_core_of = RNG }
+ 				transfer_state = 602
+ 				602 = { add_core_of = RNG }
+ 				transfer_state = 750
+ 				750 = { add_core_of = RNG }
+ 				transfer_state = 861
+ 				861 = { add_core_of = RNG }
+ 				transfer_state = 620
+ 				620 = { add_core_of = RNG }
+ 				transfer_state = 1525
+ 				1525 = { add_core_of = RNG }
+ 				transfer_state = 596
+ 				596 = { add_core_of = RNG }
+ 				transfer_state = 749
+ 				749 = { add_core_of = RNG }
+ 				transfer_state = 606
+ 				606 = { add_core_of = RNG }
+ 				transfer_state = 613
+ 				613 = { add_core_of = RNG }
+ 				transfer_state = 598
+ 				598 = { add_core_of = RNG }
+ 				transfer_state = 607
+ 				607 = { add_core_of = RNG }
+ 				transfer_state = 744
+ 				744 = { add_core_of = RNG }
+ 				transfer_state = 597
+ 				597 = { add_core_of = RNG }
+ 				transfer_state = 1034
+ 				1034 = { add_core_of = RNG }
+ 				transfer_state = 608
+ 				608 = { add_core_of = RNG }
+ 				transfer_state = 609
+ 				609 = { add_core_of = RNG }
+ 				transfer_state = 614
+ 				614 = { add_core_of = RNG }
+ 				transfer_state = 603
+ 				603 = { add_core_of = RNG }
+ 				transfer_state = 748
+ 				748 = { add_core_of = RNG }
+ 				set_cosmetic_tag = RNG_JAP
+				set_capital = { 
+					state = 613
+				}
+ 			}
+ 			if = {
+ 				limit = {
+ 					RNG = { NOT = { is_puppet_of = JAP } }
+ 				}
+ 				puppet = RNG
+ 				JAP = {
+ 					set_autonomy = {
+ 						target = RNG
+ 						autonomy_state = AUTONOMY_Imperial_Associate
+ 					}
+ 				}
+ 			}
+ 			LXI = {
+ 				transfer_state = 605
+ 				transfer_state = 901
+ 				transfer_state = 912
+ 				transfer_state = 874
+ 				transfer_state = 1640
+ 				transfer_state = 1641
+ 				transfer_state = 863
+ 				transfer_state = 751
+ 				transfer_state = 753
+ 				transfer_state = 1035
+ 			}
+ 			if = {
+ 				limit = {
+ 					LXI = { NOT = { is_puppet_of = JAP } }
+ 				}
+ 				puppet = LXI
+ 				JAP = {
+ 					set_autonomy = {
+ 						target = LXI
+ 						autonomy_state = AUTONOMY_Imperial_Protectorate
+ 					}
+ 				}
+ 			}
+ 			if = {
+ 				limit = {
+ 					JAP = { has_government = fascist }
+ 				}
+ 				LXI = {
+ 					hidden_effect = {
+ 						set_politics = {
+ 							ruling_party = fascist
+ 						}
+ 						retire_country_leader = yes
+ 						create_country_leader = {
+ 							name = "Seishiro Itagaki"
+ 							desc = "Seishiro_Itagaki_desc"
+ 							picture = GFX_M_Seishiro_Itagaki
+ 							ideology = ultranationalism
+ 							traits = {
+ 								POSITION_Military_Governor
+ 								SUBIDEOLOGY_Fascism
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
+ 			else_if = {
+ 				limit = {
+ 					JAP = { has_government = authoritarian }
+ 				}
+ 				LXI = {
+ 					hidden_effect = {
+ 						set_politics = {
+ 							ruling_party = authoritarian
+ 						}
+ 						retire_country_leader = yes
+ 						create_country_leader = {
+ 							name = "Seishiro Itagaki"
+ 							desc = "Seishiro_Itagaki_desc"
+ 							picture = GFX_M_Seishiro_Itagaki
+ 							ideology = military_dictatorship
+ 							traits = {
+ 								POSITION_Military_Governor
+ 								SUBIDEOLOGY_Military_Dictatorship
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
+ 			LXI = { set_cosmetic_tag = LXI_SPMA }
+ 			SHX = {
+ 				transfer_state = 756
+ 				756 = { add_core_of = SHX }
+ 				transfer_state = 622
+ 				622 = { add_core_of = SHX }
+ 				transfer_state = 904
+ 				904 = { add_core_of = SHX }
+ 				transfer_state = 833
+ 				833 = { add_core_of = SHX }
+ 			}
+ 			if = {
+ 				limit = {
+ 					SHX = {
+ 						has_capitulated = yes
+ 					}
+ 				}
+ 				puppet = SHX
+ 				JAP = {
+ 					set_autonomy = {
+ 						target = SHX
+ 						autonomy_state = AUTONOMY_Imperial_Protectorate
+ 					}
+ 				}
+ 				SHX = { set_cosmetic_tag = SHX_JAP1 }
+ 			}
+ 			else = {
+ 				white_peace = SHX
+ 				SHX = {
+ 					country_event = { id = SHX_Sino_Japanese_War_Chinese_Defeat.1 days = 10 }
+ 				}
+ 			}
+ 			puppet = GXC
+ 			GXC = { set_cosmetic_tag = GXC_JAP1 }
+ 			JAP = {
+ 				set_autonomy = {
+ 					target = GXC
+ 					autonomy_state = AUTONOMY_Imperial_Protectorate
+ 				}
+ 			}
+ 			set_country_flag = JAP_victory_in_china
+ 			news_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.12 days = 1 }
+ 			if = {
+ 				limit = {
+ 					AND = {
+ 						YUN = { NOT = { is_subject = yes } }
+ 						YUN = { has_war_with = JAP }
+ 					}
+ 				}
+ 				white_peace = {
+ 					tag = YUN
+ 				}
+ 			}
+ 			if = {
+ 				limit = {
+ 					AND = {
+ 						SIK = { NOT = { is_subject = yes } }
+ 						SIK = { has_war_with = JAP }
+ 					}
+ 				}
+ 				white_peace = {
+ 					tag = SIK
+ 				}
+ 			}
+		}
+		custom_effect_tooltip = JAP_Sino_Japanese_War_China_Defeat.tt
+		white_peace = {
+ 			tag = CHI
+ 			#message = KUOMINTANG_COLLAPSE
+ 		}
+	}
+}
+### A Yunnanese Lapdog
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.3
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.3.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.3.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #As Expected
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.3.A
+		add_political_power = 100
+		YUN = {
+			transfer_state = 603
+			603 = { add_core_of = YUN }
+			transfer_state = 748
+			748 = { add_core_of = YUN }
+			set_cosmetic_tag = YUN_JAP1
+			remove_ideas = YUN_The_Last_Bastion_1_idea
+			remove_ideas = YUN_The_Last_Bastion_2_idea
+		}
+		set_country_flag = JAP_victory_in_yunnan
+	}
+}
+### Long Yun Defiant!
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.4
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.4.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.4.d
+	picture = GFX_news_CHI_Suiyuan_Campaign
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #The madman is no match for the Kwantung!
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.4.A
+		declare_war_on = {
+			target = YUN
+			type = annex_everything
+		}
+	}
+}
+### Victory in Yunnan
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.5
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.5.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.5.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			original_tag = JAP
+		}
+		YUN = {
+			has_country_flag = YUN_long_yun_defiant
+			has_war_with = JAP
+			surrender_progress > 0.75
+		}
+	}
+	option = { #Moving on.
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.5.A
+		YUN = {
+			transfer_state = 747
+			747 = { add_core_of = YUN }
+			transfer_state = 325
+			325 = { add_core_of = YUN }
+			transfer_state = 1653
+			1653 = { add_core_of = YUN }
+			remove_ideas = YUN_The_Last_Bastion_2_idea
+			set_cosmetic_tag = YUN_JAP1
+		}
+		JAP = {
+			puppet = YUN
+			set_autonomy = {
+				target = YUN
+				autonomy_state = AUTONOMY_Imperial_Protectorate
+			}
+		}
+		set_country_flag = JAP_victory_in_yunnan
+	}
+}
+### A French Yunnan
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.6
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.6.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.6.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Not as expected...
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.6.A
+		add_political_power = -100
+		set_country_flag = JAP_victory_in_yunnan
+	}
+}
+### Tibet Accepts!
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.7
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.7.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.7.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Perfect!
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.7.A
+		TIB = {
+			transfer_state = 604
+			604 = { add_core_of = TIB }
+			transfer_state = 1035
+			1035 = { add_core_of = TIB }
+		}
+		add_to_faction = TIB
+	}
+}
+### Tibet Declines
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.8
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.8.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.8.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Unfortunate
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.8.A
+	}
+}
+### End of Mao
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.9
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.9.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.9.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			original_tag = JAP
+		}
+		PRC = {
+			has_country_flag = PRC_red_army_confronts_victorious_japan
+			has_war_with = JAP
+			surrender_progress > 0.75
+		}
+	}
+	option = { #Good riddance.
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.9.A
+		SHX = {
+			annex_country = {
+				target = PRC
+			}
+			set_cosmetic_tag = SHX_JAP1
+		}
+		JAP = {
+			set_autonomy = {
+				target = SHX
+				autonomy_state = AUTONOMY_Imperial_Subject
+			}
+		}
+	}
+}
+### Telegram from Moscow
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.10
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.10.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.10.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #You bastards!
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.10.A
+		
+	}
+}
+### Death of the Republic
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.11
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.11.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.11.d
+	picture = GFX_report_JAP_Provisional_Government_of_China
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			original_tag = JAP
+		}
+		JAP = {
+			has_country_flag = JAP_tackle_the_remnants
+		}
+		OR = {
+			CHI = {
+				has_war_with = JAP
+				surrender_progress > 0.75
+			}
+			AND = {
+				JAP = {
+					has_war_with = SOV
+				}
+				CHI = {
+					has_capitulated = yes
+				}
+			}
+		}
+	}
+	option = { #Turn him over to the "Legitimate" Government.
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.11.A
+		XSM = {
+			annex_country = {
+				target = CHI
+			}
+		}
+		JAP = {
+			set_autonomy = {
+				target = XSM
+				autonomy_state = AUTONOMY_Imperial_Associate
+			}
+		}
+		XSM = { set_cosmetic_tag = XSM_HUI }
+		JAP = { set_country_flag = JAP_death_of_the_roc }
+	}
+}
+###########################
+# Japanese Enter Chongqing, Kuomintang Collapse!
+###########################
+news_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.12
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.12.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.12.d
+	picture = GFX_report_JAP_Expansion_Decision
+	major = yes
+	is_triggered_only = yes
+	option = { #There goes the neighborhood...
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.12.A
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+		hidden_effect = {
+			JAP = {
+				country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.13 days = 30 }
+			}
+		}
+	}
+	option = { #The unification of Asia has only just begun!
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.12.B
+		trigger = {
+			original_tag = JAP
+		}
+		hidden_effect = {
+			JAP = {
+				country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.13 days = 30 }
+			}
+		}
+	}
+}
+### The Late Riser
+country_event = {
+	id = JAP_Sino_Japanese_War_Chinese_Defeat.13
+	title = JAP_Sino_Japanese_War_Chinese_Defeat.13.t
+	desc = JAP_Sino_Japanese_War_Chinese_Defeat.13.d
+	picture = GFX_report_JAP_Manchukuo_Pacification
+	is_triggered_only = yes
+	option = { #No rest for the wicked.
+		name = JAP_Sino_Japanese_War_Chinese_Defeat.13.A
+		add_manpower = -13
+		add_war_support = -0.025
+		hidden_effect = {
+			RNG = {
+				add_ideas = JAP_CHINA_Communist_Guerrillas
+			}
+			LXI = {
+				add_ideas = JAP_CHINA_Communist_Guerrillas
+			}
+			GXC = {
+				add_ideas = JAP_CHINA_Communist_Guerrillas
+			}
+			MEN = {
+				add_ideas = JAP_CHINA_Communist_Guerrillas
+			}
+			MAN = {
+				add_ideas = JAP_CHINA_Communist_Guerrillas
+			}
+			if = {
+				limit = {
+					SHX = { is_puppet_of = JAP }
+				}
+				SHX = {
+					add_ideas = JAP_CHINA_Communist_Guerrillas
+				}
+			}
+		}
+	}
+}

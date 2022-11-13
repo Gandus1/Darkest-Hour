@@ -1,0 +1,2827 @@
+focus_tree = {
+	id = GER_KR
+	country = {
+		factor = 0
+		modifier = {
+			add = 0
+			tag = GER
+		}
+	}
+	default = no
+	focus = {
+		id = GER_Establish_Provisional_Government
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 7
+		x = 12
+		y = 0
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = {
+				GER_HoG_Carl_Friedrich_Goerdeler
+				# GER_FM_Ulrich_von_Hassell
+				GER_AM_Paul_LejeuneJung
+				GER_HoI_Wilhelm_Canaris
+				GER_MoS_Henning_von_Tresckow
+				GER_CoStaff_Erwin_von_Witzleben
+				GER_CoArmy_Werner_von_Fritsch
+				GER_CoNavy_Erich_Raeder
+				# GER_CoAir_Ernst_Udet
+			}
+		}
+	}
+	focus = {
+		id = GER_Reorganize_the_Heer
+		icon = GFX_GER_Gott_Mit_Uns
+		cost = 60.00
+		x = 20
+		y = 0
+		completion_reward = {
+			army_experience = 10
+		}
+	}
+	focus = {
+		id = GER_Rebuilding_the_Kaiserliche_Marine
+		icon = GFX_GER_Kaiserliche_Marine
+		cost = 60.00
+		x = 36
+		y = 0
+		completion_reward = {
+			navy_experience = 20
+		}
+	}
+	focus = {
+		id = GER_The_Second_Tirpitz_Plan
+		icon = GFX_GENERIC_Navy
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Rebuilding_the_Kaiserliche_Marine
+		}
+		x = 0
+		y = 1
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			navy_experience = 20
+			add_ideas = GER_Kaiserreich_The_Second_Tirpitz_Plan
+		}
+	}
+	focus = {
+		id = GER_Reacquire_Weltkrieg_Era_Vessels
+		icon = GFX_GENERIC_Battleship
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Tirpitz_Plan
+		}
+		x = 0
+		y = 2
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+	}
+	focus = {
+		id = GER_Return_to_Prussian_Roots
+		icon = GFX_goal_generic_cavalry
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Reorganize_the_Heer
+		}
+		mutually_exclusive = {
+			focus = GER_Lessons_of_the_Weltkrieg
+		}
+		x = 3
+		y = 1
+		relative_position_id = GER_Reorganize_the_Heer
+		available = {
+			has_country_flag = GER_Mobile_Warfare
+		}
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_mobile_warfare
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 1
+				technology = Medium_Tank_1939
+			}
+		}
+	}
+	focus = {
+		id = GER_Motorization_of_the_Heer
+		icon = GFX_goal_generic_army_motorized
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		x = 1
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				technology = APC_1941
+				technology = APC_1943
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	focus = {
+		id = GER_Panzer_Dragoner
+		icon = GFX_GER_Mechanized_Infantry
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Motorization_of_the_Heer
+		}
+		x = 1
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+	}
+	focus = {
+		id = GER_Rekindle_Imperial_Naval_Tradition
+		icon = GFX_GENERIC_Naval_School
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Tirpitz_Plan
+		}
+		x = 2
+		y = 2
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			navy_experience = 30
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.4
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	focus = {
+		id = GER_Expand_the_Dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Tirpitz_Plan
+		}
+		x = -2
+		y = 2
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			59 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			5 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			61 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			62 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			63 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			58 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			56 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Schlachtflotte
+		icon = GFX_GENERIC_Large_Navy
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Expand_the_Dockyards
+		}
+		prerequisite = {
+			focus = GER_Rekindle_Imperial_Naval_Tradition
+		}
+		mutually_exclusive = {
+			focus = GER_Aufkalrungsflotte
+		}
+		x = 2
+		y = 3
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 1
+				category = bb_tech
+			}
+		}
+	}
+	focus = {
+		id = GER_Flugzeugtrager_Entwicklung
+		icon = GFX_GENERIC_Carrier
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Schlachtflotte
+		}
+		x = 1
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = cv_tech
+			}
+		}
+	}
+	focus = {
+		id = GER_Schnell_Kavallerie
+		icon = GFX_goal_generic_army_tanks
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		x = 3
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = Light_Tank_1939
+				technology = Medium_Tank_1941
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	focus = {
+		id = GER_Schwere_Kavallerie
+		icon = GFX_GER_Schwerer_Panzer
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Schnell_Kavallerie
+		}
+		mutually_exclusive = {
+			focus = GER_Mobile_Artillerie
+		}
+		x = 3
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.4
+				technology = Heavy_Tank_1941
+				technology = Medium_Tank_1943
+				technology = Heavy_Tank_1943
+				technology = Medium_Tank_1945
+			}
+		}
+	}
+	focus = {
+		id = GER_Deutsche_Luftstreitkrafte
+		icon = GFX_GER_Deutsche_Luftstreitkrafte
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Reorganize_the_Heer
+		}
+		x = 8
+		y = 1
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			air_experience = 20
+		}
+	}
+	focus = {
+		id = GER_Kommunikation_und_Koordination
+		icon = GFX_GER_Frontline_Flight
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		mutually_exclusive = {
+			focus = GER_Bomber_Development
+		}
+		x = 5
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = paratroopers
+				technology = paratroopers2
+				technology = paratroopers3
+			}
+		}
+	}
+	focus = {
+		id = GER_Mobile_Artillerie
+		icon = GFX_GER_Mobile_Artillery
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Kommunikation_und_Koordination
+		}
+		prerequisite = {
+			focus = GER_Schnell_Kavallerie
+		}
+		mutually_exclusive = {
+			focus = GER_Schwere_Kavallerie
+		}
+		x = 5
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.4
+				category = mobile_artillery
+			}
+		}
+	}
+	focus = {
+		id = GER_Gott_Mit_Uns
+		icon = GFX_GER_Gott_Mit_Uns
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Panzer_Dragoner
+		}
+		prerequisite = {
+			focus = GER_Schwere_Kavallerie
+		}
+		prerequisite = {
+			focus = GER_Mobile_Artillerie
+		}
+		x = 3
+		y = 4
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cat_mobile_warfare
+			}
+			add_ideas = GER_Kaiserreich_Gott_Mit_Uns
+		}
+	}
+	focus = {
+		id = GER_Bomber_Development
+		icon = GFX_GER_Strategic_Flight
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		mutually_exclusive = {
+			focus = GER_Kommunikation_und_Koordination
+		}
+		x = 7
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				technology = Strategic_Bomber_1936
+				technology = Tactical_Bomber_1940
+				technology = Strategic_Bomber_1940
+			}
+		}
+	}
+	focus = {
+		id = GER_Jager_Programm
+		icon = GFX_GER_BF109
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		x = 9
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				technology = Heavy_Fighter_1936
+				technology = Fighter_1936
+				technology = Fighter_1940
+			}
+		}
+	}
+	focus = {
+		id = GER_Dusenflugzeuge
+		icon = GFX_GER_Dusenprojekt
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Bomber_Development
+			focus = GER_Kommunikation_und_Koordination
+		}
+		prerequisite = {
+			focus = GER_Jager_Programm
+		}
+		x = 8
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = jet_technology
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = GER_Call_Back_Exiled_Scientists
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		x = 11
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		available = {
+			has_war = no
+		}
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Call_Back_Exiled_Scientists_Returned
+			add_ideas = GER_Kaiserreich_Call_Back_Exiled_Scientists_Apologetic
+		}
+	}
+	focus = {
+		id = GER_Raketen_Entwicklung
+		icon = GFX_GER_Vergeltungswaffen
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Call_Back_Exiled_Scientists
+		}
+		x = 10
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = rocketry
+			}
+		}
+	}
+	focus = {
+		id = GER_Revive_the_Uranprojekt
+		icon = GFX_GENERIC_ABomb
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Call_Back_Exiled_Scientists
+		}
+		x = 12
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = nuclear_7
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = nuclear_8
+			}
+		}
+	}
+	focus = {
+		id = GER_Superwaffen_des_Kaiserreich
+		icon = GFX_GER_Wunderwaffe
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Revive_the_Uranprojekt
+		}
+		prerequisite = {
+			focus = GER_Raketen_Entwicklung
+		}
+		prerequisite = {
+			focus = GER_Dusenflugzeuge
+		}
+		x = 10
+		y = 4
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Superwaffen_Des_Kasierreich
+		}
+	}
+	focus = {
+		id = GER_Denazification
+		icon = GFX_GER_Denazification
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Establish_Provisional_Government
+		}
+		x = 12
+		y = 1
+		available = {
+			has_war = no
+		}
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = {
+				GER_Denazification
+			}
+		}
+	}
+	focus = {
+		id = GER_Purge_the_Army
+		icon = GFX_focus_CZE_german_puppet
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Denazification
+		}
+		mutually_exclusive = {
+			focus = GER_Reeducation_Program
+		}
+		x = 13
+		y = 2
+		completion_reward = {
+			remove_ideas = GER_Denazification
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+	}
+	focus = {
+		id = GER_Reeducation_Program
+		icon = GFX_focus_generic_military_academy
+		cost = 14
+		prerequisite = {
+			focus = GER_Denazification
+		}
+		mutually_exclusive = {
+			focus = GER_Purge_the_Army
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			remove_ideas = GER_Denazification
+		}
+	}
+	focus = {
+		id = GER_Lift_Martial_Law
+		icon = GFX_goal_generic_small_arms
+		cost = 2
+		prerequisite = {
+			focus = GER_Reeducation_Program
+			focus = GER_Purge_the_Army
+		}
+		x = 12
+		y = 3
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = GER_Consolidate_the_Junta
+		icon = GFX_GENERIC_Military_State
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Lift_Martial_Law
+		}
+		mutually_exclusive = {
+			focus = GER_Restore_the_Kaiserreich
+		}
+		x = 11
+		y = 4
+	}
+	focus = {
+		id = GER_Restore_the_Kaiserreich
+		icon = GFX_GER_Reestablish_the_Kaiserreich
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Lift_Martial_Law
+		}
+		mutually_exclusive = {
+			focus = GER_Consolidate_the_Junta
+		}
+		x = 13
+		y = 4
+		completion_reward = {
+			country_event = {
+				id = GER_OKH.1
+				hours = 6
+			}
+		}
+	}
+	focus = {
+		id = GER_Auf_zum_Marsch
+		icon = GFX_GER_Auf_zum_Marsch
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Restore_the_Kaiserreich
+		}
+		mutually_exclusive = {
+			focus = GER_Rebuild_the_Kaiserreich
+		}
+		x = 8
+		y = 5
+		available = {
+			has_country_leader = {
+				name = "Wilhelm III"
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = GER_Kaiserreich_Auf_zum_Marsch
+		}
+	}
+	focus = {
+		id = GER_Synchretic_Economics
+		icon = GFX_GER_Synchretic_Economics
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Auf_zum_Marsch
+		}
+		x = 4
+		y = 6
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GER_Hierarchical_Economics
+		icon = GFX_GENERIC_Hierarchical_Economics
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Synchretic_Economics
+		}
+		mutually_exclusive = {
+			focus = GER_Technocratic_Principles
+		}
+		x = 5
+		y = 7
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_Modern_Elitism
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Hierarchical_Economics
+		}
+		x = 6
+		y = 8
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Modern_Elitism
+		}
+	}
+	focus = {
+		id = GER_The_Popular_Monarch
+		icon = GFX_GER_Return_of_the_Kaiser_Wilhelm_III
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Auf_zum_Marsch
+		}
+		x = 12
+		y = 6
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GER_Kaisertreue_Regierung
+		icon = GFX_focus_generic_home_defense
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Popular_Monarch
+		}
+		mutually_exclusive = {
+			focus = GER_The_Second_Bismarck
+		}
+		x = 14
+		y = 7
+		completion_reward = {
+			add_popularity = {
+				ideology = authoritarian
+				popularity = 0.1
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GER_Rebuild_the_Kaiserreich
+		icon = GFX_focus_ger_revive_kaiserreich
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Restore_the_Kaiserreich
+		}
+		mutually_exclusive = {
+			focus = GER_Auf_zum_Marsch
+		}
+		x = 31
+		y = 5
+		available = {
+			has_country_leader = {
+				name = "Wilhelm II"
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			set_variable = {
+				var = kaiser_senility
+				value = 0
+			}
+			add_political_power = 50
+			add_ideas = GER_Kaiserreich_Rebuild_the_Kaiserreich
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = GER_The_Second_Ludendorff
+		icon = GFX_focus_ger_oppose_hitler
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Rebuild_the_Kaiserreich
+		}
+		x = 26
+		y = 6
+		completion_reward = {
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_Army_with_a_State
+		icon = GFX_GENERIC_Military_State
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Ludendorff
+		}
+		mutually_exclusive = {
+			focus = GER_Curtail_the_Wehrmacht
+		}
+		x = 24
+		y = 7
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Wehrmacht_Leadership
+		}
+	}
+	focus = {
+		id = GER_Curtail_the_Wehrmacht
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Ludendorff
+		}
+		mutually_exclusive = {
+			focus = GER_Army_with_a_State
+		}
+		x = 28
+		y = 7
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GER_Restore_the_Integrity_of_the_Reichstag
+		icon = GFX_GER_The_Reichstag
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Enforce_Decentralization
+		}
+		x = 27
+		y = 9
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Restore_the_Reichstag
+		}
+	}
+	focus = {
+		id = GER_Enforce_Decentralization
+		icon = GFX_GENERIC_Draw_Borders
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Curtail_the_Wehrmacht
+		}
+		x = 29
+		y = 8
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Rely_on_Decentralization
+		}
+	}
+	focus = {
+		id = GER_Prussian_Constitutionalism
+		icon = GFX_GER_Prussian_Constitutionalism
+		cost = 60.00
+		prerequisite = {
+			focus = GER_A_State_within_a_State
+		}
+		prerequisite = {
+			focus = GER_Question_of_the_Bundesrat
+		}
+		x = 29
+		y = 11
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Prussian_Constitutionalism
+			custom_effect_tooltip = democratic_ministers_allowed_tt
+			hidden_effect = {
+				set_country_flag = Allows_Democratic_Ministers
+			}
+		}
+	}
+	focus = {
+		id = GER_Traditional_Economics
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Rebuild_the_Kaiserreich
+		}
+		x = 36
+		y = 6
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = GER_Empower_the_Junkers
+		icon = GFX_GER_Empower_the_Junkers
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Traditional_Economics
+		}
+		x = 33
+		y = 7
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Empower_the_Junkers
+		}
+	}
+	focus = {
+		id = GER_Halt_Agrarian_Reform
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Empower_the_Junkers
+		}
+		x = 33
+		y = 8
+		completion_reward = {
+			add_political_power = -100
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Empower_the_Junkers
+				add_idea = GER_Kaiserreich_Halt_Agrarian_Reform
+			}
+		}
+	}
+	focus = {
+		id = GER_Aristocratic_Land_Base
+		icon = GFX_GER_Aristocratic_Land_Base
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Halt_Agrarian_Reform
+		}
+		x = 33
+		y = 9
+		completion_reward = {
+			62 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			68 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			61 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			60 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Smash_Radical_Syndicates
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Traditional_Economics
+		}
+		mutually_exclusive = {
+			focus = GER_Privatize_Industrial_Sectors
+		}
+		x = 35
+		y = 7
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_Privatize_Industrial_Sectors
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Traditional_Economics
+		}
+		mutually_exclusive = {
+			focus = GER_Smash_Radical_Syndicates
+		}
+		x = 37
+		y = 7
+		completion_reward = {
+			64 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			59 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Encourage_Christian_Trade_Unions
+		icon = GFX_GER_Encourage_Christian_Trade_Unions
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Smash_Radical_Syndicates
+			focus = GER_Privatize_Industrial_Sectors
+		}
+		x = 36
+		y = 8
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = GER_Kasierreich_Encourage_Christian_Trade_Unions
+		}
+	}
+	focus = {
+		id = GER_Restart_the_Steel_Cartels
+		icon = GFX_focus_generic_steel
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Encourage_Christian_Trade_Unions
+		}
+		prerequisite = {
+			focus = GER_Smash_Radical_Syndicates
+		}
+		x = 35
+		y = 9
+		completion_reward = {
+			809 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = steel
+					amount = 20
+				}
+			}
+			51 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = steel
+					amount = 20
+				}
+			}
+			42 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = steel
+					amount = 20
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Privatize_the_Deutsches_Reichbahn
+		icon = GFX_GER_Deutsches_Reichbahn
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Encourage_Christian_Trade_Unions
+		}
+		prerequisite = {
+			focus = GER_Privatize_Industrial_Sectors
+		}
+		x = 37
+		y = 9
+		bypass = {
+			NOT = {
+				AND = {
+					64 = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					60 = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					54 = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					52 = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					53 = {
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+				}
+			}
+		}
+		completion_reward = {
+			64 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+			60 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+			54 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+			52 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+			53 = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Open_the_Economy
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Traditional_Economics
+		}
+		x = 39
+		y = 7
+		completion_reward = {
+			add_ideas = free_trade
+		}
+	}
+	focus = {
+		id = GER_Solidify_Stable_Investments
+		icon = GFX_GENERIC_Money
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Open_the_Economy
+		}
+		x = 38
+		y = 8
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Kaiserreich_Solidify_Stable_Investments
+				days = 720
+			}
+		}
+	}
+	focus = {
+		id = GER_Reinstate_the_Gold_Standard
+		icon = GFX_GENERIC_Gold
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Open_the_Economy
+		}
+		x = 40
+		y = 8
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = GER_Kaiserreich_Reinstate_the_Gold_Standard
+		}
+	}
+	focus = {
+		id = GER_Hire_Leading_Economists
+		icon = GFX_GER_Hire_Leading_Economists
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Solidify_Stable_Investments
+		}
+		prerequisite = {
+			focus = GER_Reinstate_the_Gold_Standard
+		}
+		x = 39
+		y = 9
+		completion_reward = {
+			add_political_power = 100
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = GER_AM_Hjalmar_Schacht
+		}
+	}
+	focus = {
+		id = GER_Technocratic_Principles
+		icon = GFX_GENERIC_Technocratic_Principles
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Synchretic_Economics
+		}
+		mutually_exclusive = {
+			focus = GER_Hierarchical_Economics
+		}
+		x = 3
+		y = 7
+		completion_reward = {
+			# add_ideas = GER_Kaiserreich_Tehcnocratic_Principles
+		}
+	}
+	focus = {
+		id = GER_Subsidize_Innovative_Buisnesses
+		icon = GFX_focus_generic_industry_3
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Technocratic_Principles
+		}
+		x = 2
+		y = 8
+		completion_reward = {
+			64 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			52 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			52 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Create_a_Technocratic_Leadership
+		icon = GFX_goal_generic_production2
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Subsidize_Innovative_Buisnesses
+		}
+		x = 1
+		y = 9
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = GER_Kaiserreich_Create_a_Technocratic_Leadership
+			custom_effect_tooltip = democratic_ministers_allowed_tt
+			hidden_effect = {
+				set_country_flag = Allows_Democratic_Ministers
+			}
+		}
+	}
+	focus = {
+		id = GER_Expand_the_Kiel_Kanal
+		icon = GFX_GENERIC_Expand_the_Canal
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Synchretic_Economics
+		}
+		x = 4
+		y = 8
+		completion_reward = {
+			58 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Economic_Cooperation_with_Our_Neighbors
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Expand_the_Kiel_Kanal
+		}
+		mutually_exclusive = {
+			focus = GER_Expand_the_Radio_Industry
+		}
+		x = 5
+		y = 9
+		completion_reward = {
+			country_event = {
+				id = GER_KR_EconomicCoop.1
+			}
+			ITA = {
+				country_event = {
+					id = GER_KR_EconomicCoop.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Reform_the_Volksgemeinschaft
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Modern_Elitism
+		}
+		x = 7
+		y = 9
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Reform_the_Volskgemeinschaft
+		}
+	}
+	focus = {
+		id = GER_Populist_Politics
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Retire_the_Old_Guard
+		}
+		x = 9
+		y = 9
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = GER_Kaiserreich_Populist_Politics
+		}
+	}
+	focus = {
+		id = GER_The_Second_Bismarck
+		icon = GFX_GER_The_Second_Bismarck
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Popular_Monarch
+		}
+		mutually_exclusive = {
+			focus = GER_Kaisertreue_Regierung
+		}
+		x = 10
+		y = 7
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_Pan_German_Aspirations
+		icon = GFX_GER_Radical_Pan_Germanism
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Reinstate_Old_Guard_Officers
+		}
+		x = 15
+		y = 9
+		completion_reward = {
+			69 = {
+				add_claim_by = GER
+			}
+			74 = {
+				add_claim_by = GER
+			}
+			85 = {
+				add_claim_by = GER
+			}
+			86 = {
+				add_claim_by = GER
+			}
+			798 = {
+				add_claim_by = GER
+			}
+			add_opinion_modifier = {
+				target = AUS
+				modifier = GER_KR_Pan_German_Positive
+			}
+			add_opinion_modifier = {
+				target = CZE
+				modifier = GER_KR_Pan_German_Negative
+			}
+			add_opinion_modifier = {
+				target = POL
+				modifier = GER_KR_Pan_German_Negative
+			}
+		}
+	}
+	focus = {
+		id = GER_Loyalty_to_the_Kaiser_and_the_Fatherland
+		icon = GFX_focus_ger_return_of_the_kaiser
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Crackdown_on_Foreign_Influence
+		}
+		x = 13
+		y = 9
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = GER_Bring_Back_the_Old_Guard
+		icon = GFX_focus_generic_military_mission
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Carte_Blanche_to_the_Army
+			focus = GER_Keep_High_Military_Spending
+		}
+		prerequisite = {
+			focus = GER_German_Discipline
+		}
+		x = 22
+		y = 10
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Wehrmacht_Leadership
+				add_idea = GER_Kaiserreich_Bring_back_popular_Figureheads
+			}
+		}
+	}
+	focus = {
+		id = GER_A_Guided_Puppet
+		icon = GFX_GER_A_Guided_Puppet
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Bring_Back_the_Old_Guard
+		}
+		prerequisite = {
+			focus = GER_Doctrine_of_the_Kaisers_Army
+		}
+		x = 23
+		y = 11
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Bring_back_popular_Figureheads
+				add_idea = GER_Kaiserreich_A_Guided_Puppet
+			}
+		}
+	}
+	focus = {
+		id = GER_Government_Profits
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Restart_the_Steel_Cartels
+			focus = GER_Privatize_the_Deutsches_Reichbahn
+		}
+		prerequisite = {
+			focus = GER_Aristocratic_Land_Base
+		}
+		prerequisite = {
+			focus = GER_Hire_Leading_Economists
+		}
+		x = 36
+		y = 10
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = GER_Expand_the_Radio_Industry
+		icon = GFX_goal_generic_radar
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Expand_the_Kiel_Kanal
+		}
+		mutually_exclusive = {
+			focus = GER_Economic_Cooperation_with_Our_Neighbors
+		}
+		x = 3
+		y = 9
+		completion_reward = {
+			add_political_power = 100
+			59 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_A_Popular_Welfare
+		icon = GFX_goal_generic_consumer_goods
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Economic_Cooperation_with_Our_Neighbors
+		}
+		prerequisite = {
+			focus = GER_Reform_the_Volksgemeinschaft
+		}
+		x = 6
+		y = 10
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = GER_Kaiserreich_A_Popular_Welfare
+		}
+	}
+	focus = {
+		id = GER_Ramp_up_the_War_Production
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Expand_the_Radio_Industry
+		}
+		prerequisite = {
+			focus = GER_Create_a_Technocratic_Leadership
+		}
+		x = 2
+		y = 10
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Military_Industrial_Complex
+			64 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			54 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Aufkalrungsflotte
+		icon = GFX_GENERIC_Small_Navy
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Expand_the_Dockyards
+		}
+		prerequisite = {
+			focus = GER_Rekindle_Imperial_Naval_Tradition
+		}
+		mutually_exclusive = {
+			focus = GER_Schlachtflotte
+		}
+		x = -2
+		y = 3
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = cl_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 1
+				category = cl_tech
+			}
+		}
+	}
+	focus = {
+		id = GER_Uboot_Programm
+		icon = GFX_GENERIC_Submarine
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Aufkalrungsflotte
+		}
+		x = -1
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.4
+				category = ss_tech
+			}
+		}
+	}
+	focus = {
+		id = GER_Complete_the_Plan
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Uboot_Programm
+			focus = GER_Flugzeugtrager_Entwicklung
+			focus = GER_Kaiser_Schlachtschiff_H
+			focus = GER_Kustenfliegergruppe
+		}
+		x = 0
+		y = 5
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			navy_experience = 100
+			remove_ideas = GER_Kaiserreich_The_Second_Tirpitz_Plan
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	focus = {
+		id = GER_Lessons_of_the_Weltkrieg
+		icon = GFX_GENERIC_Lessons_from_the_War_German
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Reorganize_the_Heer
+		}
+		mutually_exclusive = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		x = -3
+		y = 1
+		relative_position_id = GER_Reorganize_the_Heer
+		available = {
+			has_country_flag = GER_Grand_Battleplan
+		}
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				ahead_reduction = 1
+				technology = Small_Arms_1939
+			}
+		}
+	}
+	focus = {
+		id = GER_Infantry_Attacks
+		icon = GFX_goal_generic_small_arms
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Lessons_of_the_Weltkrieg
+		}
+		x = -2
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.45
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	focus = {
+		id = GER_Artillery_Modernization
+		icon = GFX_goal_generic_army_artillery2
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Lessons_of_the_Weltkrieg
+		}
+		x = -4
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = artillery
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.45
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	focus = {
+		id = GER_Panzerabwehr
+		icon = GFX_GER_Panzerjager
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Infantry_Attacks
+			focus = GER_Artillery_Modernization
+		}
+		x = -3
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = cat_anti_tank
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = tank_destroyers
+			}
+		}
+	}
+	focus = {
+		id = GER_Flugabwehr
+		icon = GFX_GER_Flakabwehr
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Artillery_Modernization
+			focus = GER_Infantry_Attacks
+		}
+		x = -5
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = anti_air
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = tank_anti_air
+			}
+		}
+	}
+	focus = {
+		id = GER_Raketenartillerie
+		icon = GFX_GER_Rocket_Artillery
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Infantry_Attacks
+			focus = GER_Artillery_Modernization
+		}
+		x = -1
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = rocketry
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = mot_rockets
+			}
+		}
+	}
+	focus = {
+		id = GER_Blut_und_Eisen
+		icon = GFX_focus_generic_strike_at_democracy1
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Flugabwehr
+		}
+		prerequisite = {
+			focus = GER_Panzerabwehr
+		}
+		prerequisite = {
+			focus = GER_Raketenartillerie
+		}
+		x = -3
+		y = 4
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cat_grand_battle_plan
+			}
+			add_ideas = GER_Kaiserreich_Blut_und_Eisen
+		}
+	}
+	focus = {
+		id = GER_Kustenfliegergruppe
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Aufkalrungsflotte
+		}
+		x = -3
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.35
+				technology = Torpedo_bomber_1936
+				technology = Torpedo_bomber_1940
+				technology = Torpedo_bomber_1943
+			}
+		}
+	}
+	focus = {
+		id = GER_Kaiser_Schlachtschiff_H
+		icon = GFX_GENERIC_Battleship
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Schlachtflotte
+		}
+		x = 3
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = shbb_tech
+			}
+		}
+	}
+	focus = {
+		id = GER_Crackdown_on_Foreign_Influence
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Bismarck
+			focus = GER_Kaisertreue_Regierung
+		}
+		x = 12
+		y = 8
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = 0.05
+			add_opinion_modifier = {
+				target = FRA
+				modifier = GER_KR_Crackdown_on_Foreign_Influence
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = GER_KR_Crackdown_on_Foreign_Influence
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = GER_KR_Crackdown_on_Foreign_Influence
+			}
+		}
+	}
+	focus = {
+		id = GER_Retire_the_Old_Guard
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 60.00
+		prerequisite = {
+			focus = GER_The_Second_Bismarck
+		}
+		x = 10
+		y = 8
+		completion_reward = {
+			every_unit_leader = {
+				limit = {
+					has_trait = GER_KR_suspicious_general
+				}
+				retire = yes
+			}
+		}
+	}
+	focus = {
+		id = GER_Reinstate_Old_Guard_Officers
+		icon = GFX_GER_Reform_the_Oberkommando
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Kaisertreue_Regierung
+		}
+		x = 14
+		y = 8
+		completion_reward = {
+			create_field_marshal = {
+				name = "Rüdiger von der Goltz"
+				picture = ""
+				traits = {
+				}
+				skill = 3
+				attack_skill = 5
+				defense_skill = 3
+				planning_skill = 2
+				logistics_skill = 3
+			}
+			create_field_marshal = {
+				name = "Alfred Fletcher"
+				picture = ""
+				traits = {
+				}
+				skill = 3
+				attack_skill = 3
+				defense_skill = 5
+				planning_skill = 4
+				logistics_skill = 2
+			}
+			create_field_marshal = {
+				name = "Walther von Lüttwitz"
+				picture = ""
+				traits = {
+				}
+				skill = 2
+				attack_skill = 2
+				defense_skill = 3
+				planning_skill = 3
+				logistics_skill = 2
+			}
+			create_field_marshal = {
+				name = "August von Mackensen"
+				picture = ""
+				traits = {
+				}
+				skill = 4
+				attack_skill = 5
+				defense_skill = 5
+				planning_skill = 4
+				logistics_skill = 3
+			}
+		}
+	}
+	focus = {
+		id = GER_Invest_in_Military_Industries
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Pan_German_Aspirations
+		}
+		x = 15
+		y = 10
+		completion_reward = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	focus = {
+		id = GER_Restore_Prussian_Militarism
+		icon = GFX_focus_ger_revive_kaiserreich
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Loyalty_to_the_Kaiser_and_the_Fatherland
+		}
+		x = 13
+		y = 10
+		completion_reward = {
+			add_ideas = GER_Prussian_Militarism
+			if = {
+				limit = {
+					has_idea = all_adults_serve
+				}
+				swap_ideas = {
+					remove_idea = all_adults_serve
+					add_idea = scraping_the_barrel
+				}
+			}
+			if = {
+				limit = {
+					has_idea = service_by_requirement
+				}
+				swap_ideas = {
+					remove_idea = service_by_requirement
+					add_idea = all_adults_serve
+				}
+			}
+			if = {
+				limit = {
+					has_idea = three_year_service
+				}
+				swap_ideas = {
+					remove_idea = three_year_service
+					add_idea = service_by_requirement
+				}
+			}
+			if = {
+				limit = {
+					has_idea = two_year_service
+				}
+				swap_ideas = {
+					remove_idea = two_year_service
+					add_idea = three_year_service
+				}
+			}
+			if = {
+				limit = {
+					has_idea = one_year_service
+				}
+				swap_ideas = {
+					remove_idea = one_year_service
+					add_idea = two_year_service
+				}
+			}
+			if = {
+				limit = {
+					has_idea = volunteer_only
+				}
+				swap_ideas = {
+					remove_idea = volunteer_only
+					add_idea = one_year_service
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Investment_in_Rural_Areas
+		icon = GFX_GER_Aristocratic_Land_Base
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Crackdown_on_Foreign_Influence
+		}
+		x = 11
+		y = 9
+		completion_reward = {
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_tooltip_effect = yes
+			5 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			62 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			63 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			64 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			68 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			768 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1120 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Stand_Against_France
+		icon = GFX_focus_attack_france
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Investment_in_Rural_Areas
+		}
+		x = 11
+		y = 10
+		available = {
+			42 = {
+				is_owned_by = GER
+			}
+			807 = {
+				is_owned_by = GER
+			}
+		}
+		completion_reward = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_tooltip_effect = yes
+			add_state_claim = 28
+			add_state_claim = 1169
+			add_opinion_modifier = {
+				target = FRA
+				modifier = GER_KR_Stand_Against_France
+			}
+			807 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 6712
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11640
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 6542
+				}
+			}
+			42 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 3558
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 563
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 9575
+				}
+			}
+			if = {
+				limit = {
+					806 = {
+						is_owned_by = GER
+					}
+				}
+				806 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						instant_build = yes
+						province = 11531
+					}
+				}
+				else = {
+					add_state_claim = 806
+					42 = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							instant_build = yes
+							province = 11547
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Sideline_Democratic_Process
+		icon = GFX_focus_generic_strike_at_democracy2
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Populist_Politics
+		}
+		x = 9
+		y = 10
+		completion_reward = {
+			country_event = {
+				id = GER_KR_Bundesrat.2
+			}
+		}
+	}
+	focus = {
+		id = GER_A_Nationalist_Monarchy
+		icon = GFX_GER_Nationalist_Movement
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Sideline_Democratic_Process
+		}
+		prerequisite = {
+			focus = GER_Stand_Against_France
+		}
+		prerequisite = {
+			focus = GER_Restore_Prussian_Militarism
+		}
+		x = 10
+		y = 11
+	}
+	focus = {
+		id = GER_A_Militant_Monarchy
+		icon = GFX_GER_Monarchist_Movement
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Restore_Prussian_Militarism
+		}
+		prerequisite = {
+			focus = GER_Invest_in_Military_Industries
+		}
+		x = 14
+		y = 11
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Prussian_Militarism
+				add_idea = GER_Prussian_Militarism_2
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GER_Weltpolitik
+		icon = GFX_GER_Weltpolitik
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Auf_zum_Marsch
+			focus = GER_Rebuild_the_Kaiserreich
+		}
+		mutually_exclusive = {
+			focus = GER_Realpolitik
+		}
+		x = 17
+		y = 6
+	}
+	focus = {
+		id = GER_Realpolitik
+		icon = GFX_GER_Realpolitik
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Rebuild_the_Kaiserreich
+			focus = GER_Auf_zum_Marsch
+		}
+		mutually_exclusive = {
+			focus = GER_Weltpolitik
+		}
+		x = 19
+		y = 6
+	}
+	focus = {
+		id = GER_Influence_in_the_Balkan
+		icon = GFX_goal_generic_propaganda
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Weltpolitik
+		}
+		x = 16
+		y = 7
+	}
+	focus = {
+		id = GER_Agitate_in_Austria
+		icon = GFX_HUN_The_Missing_Throne
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Weltpolitik
+			focus = GER_Realpolitik
+		}
+		x = 18
+		y = 7
+	}
+	focus = {
+		id = GER_Help_the_Baltendeutsche
+		icon = GFX_GER_Radical_Pan_Germanism
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Realpolitik
+		}
+		x = 20
+		y = 7
+	}
+	focus = {
+		id = GER_Pressure_Bohemia
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Influence_in_the_Balkan
+		}
+		prerequisite = {
+			focus = GER_Agitate_in_Austria
+		}
+		x = 17
+		y = 8
+	}
+	focus = {
+		id = GER_Relations_in_the_Far_East
+		icon = GFX_focus_chi_proclaim_rival_government
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Agitate_in_Austria
+		}
+		prerequisite = {
+			focus = GER_Help_the_Baltendeutsche
+		}
+		x = 19
+		y = 8
+	}
+	focus = {
+		id = GER_End_the_1918_Disgrace
+		icon = GFX_GER_Renounce_the_Disarmament_Clauses
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Pressure_Bohemia
+			focus = GER_Relations_in_the_Far_East
+		}
+		x = 18
+		y = 9
+	}
+	focus = {
+		id = GER_Autonomy_of_the_OKH
+		icon = GFX_GER_Reform_the_Oberkommando
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Army_with_a_State
+		}
+		completion_reward = {
+			set_temp_variable = {
+				faction_id = 18
+			}
+			set_temp_variable = {
+				influence_to_add = 10
+			}
+			change_faction_influence = yes
+			add_ideas = GER_Untamed_Army
+			add_to_variable = {
+				var = kaiser_senility
+				value = 10
+			}
+		}
+		x = 23
+		y = 8
+	}
+	focus = {
+		id = GER_German_Discipline
+		icon = GFX_GER_Renounce_the_Disarmament_Clauses
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Autonomy_of_the_OKH
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Wehrmacht_Leadership
+				add_idea = GER_Kaiserreich_Wehrmacht_Leadership_2
+			}
+		}
+		x = 21
+		y = 9
+	}
+	focus = {
+		id = GER_Carte_Blanche_to_the_Army
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Autonomy_of_the_OKH
+		}
+		mutually_exclusive = {
+			focus = GER_Keep_High_Military_Spending
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Untamed_Army
+				add_idea = GER_Untamed_Army_2
+			}
+			add_to_variable = {
+				var = kaiser_senility
+				value = 10
+			}
+		}
+		x = 23
+		y = 9
+	}
+	focus = {
+		id = GER_Keep_High_Military_Spending
+		icon = GFX_GER_Give_into_Hitlers_Demands
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Autonomy_of_the_OKH
+		}
+		mutually_exclusive = {
+			focus = GER_Carte_Blanche_to_the_Army
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Untamed_Army
+				add_idea = GER_Untamed_Army_3
+			}
+			add_to_variable = {
+				var = kaiser_senility
+				value = -5
+			}
+			set_temp_variable = {
+				faction_id = 18
+			}
+			set_temp_variable = {
+				influence_to_add = -5
+			}
+			change_faction_influence = yes
+		}
+		x = 25
+		y = 9
+	}
+	focus = {
+		id = GER_Doctrine_of_the_Kaisers_Army
+		icon = GFX_goal_unknown
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Keep_High_Military_Spending
+			focus = GER_Carte_Blanche_to_the_Army
+		}
+		prerequisite = {
+			focus = GER_German_Discipline
+		}
+		completion_reward = {
+			country_event = {
+				id = GER_KR_OKH.1
+			}
+		}
+		x = 24
+		y = 10
+	}
+	focus = {
+		id = GER_Imperial_Bureaucracy
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Enforce_Decentralization
+		}
+		mutually_exclusive = {
+			focus = GER_State_level_Bureaucracy
+		}
+		x = 31
+		y = 9
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Rely_on_Decentralization
+				add_idea = GER_Kaiserreich_Limited_State_Power
+			}
+		}
+	}
+	focus = {
+		id = GER_State_level_Bureaucracy
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Enforce_Decentralization
+		}
+		mutually_exclusive = {
+			focus = GER_Imperial_Bureaucracy
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Kaiserreich_Rely_on_Decentralization
+				add_idea = GER_Kaiserreich_Rely_on_Decentralization_2
+			}
+		}
+		x = 29
+		y = 9
+	}
+	focus = {
+		id = GER_A_State_within_a_State
+		icon = GFX_GER_Heer
+		cost = 60.00
+		prerequisite = {
+			focus = GER_State_level_Bureaucracy
+			focus = GER_Imperial_Bureaucracy
+		}
+		prerequisite = {
+			focus = GER_Restore_the_Integrity_of_the_Reichstag
+		}
+		x = 28
+		y = 10
+		completion_reward = {
+			country_event = {
+				id = GER_KR_OKH.2
+			}
+		}
+	}
+	focus = {
+		id = GER_Question_of_the_Bundesrat
+		icon = GFX_focus_generic_self_management
+		cost = 60.00
+		prerequisite = {
+			focus = GER_Imperial_Bureaucracy
+			focus = GER_State_level_Bureaucracy
+		}
+		prerequisite = {
+			focus = GER_Restore_the_Integrity_of_the_Reichstag
+		}
+		x = 30
+		y = 10
+		completion_reward = {
+			country_event = {
+				id = GER_KR_Bundesrat.1
+			}
+		}
+	}
+	focus = {
+		id = GER_The_Kaiserreich_Consolidated
+		icon = GFX_GER_German_Empire
+		cost = 60.00
+		prerequisite = {
+			focus = GER_A_Militant_Monarchy
+			focus = GER_A_Guided_Puppet
+			focus = GER_Prussian_Constitutionalism
+			focus = GER_A_Nationalist_Monarchy
+		}
+		x = 18
+		y = 12
+	}
+}

@@ -1,0 +1,932 @@
+#######################################################################
+#L'Afrique
+#######################################################################
+FRA_LAfrique_category = {
+	FRA_Create_New_Arable_Land_decision = {
+		icon = putIcon
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_Develop_the_Agriculture
+			set_temp_variable = {
+				amount_of_money_to_check = 70
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			any_owned_state = {
+				is_on_continent = africa
+				not = {
+					has_state_flag = FRA_slots_land
+				}
+			}
+		}
+		cost = 5
+		days_remove = 80
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -70
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						state = 1139
+						state = 462
+						state = 1141
+						state = 1206
+						state = 1214
+						state = 514
+						state = 513
+						state = 1142
+						state = 1140
+						state = 1207
+						state = 1209
+						state = 1208
+						state = 665
+						state = 458
+						state = 1047
+						state = 460
+						state = 1212
+						state = 1210
+						state = 459
+						state = 1211
+						state = 842
+						state = 1213
+						state = 1062
+						state = 708
+						state = 1058
+						state = 706
+						state = 713
+						state = 268
+					}
+					not = {
+						is_core_of = FRA
+					}
+					is_on_continent = africa
+				}
+				random_list = {
+					50 = {
+						add_extra_state_shared_building_slots = 1
+					}
+					40 = {
+						add_extra_state_shared_building_slots = 2
+					}
+					10 = {
+						add_extra_state_shared_building_slots = 3
+					}
+				}
+				set_state_flag = FRA_slots_land
+			}
+		}
+	}
+	FRA_Expand_the_peanut_plantations_decision = {
+		icon = putIcon
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			not = {
+				check_variable = {
+					var = peanut
+					value = 5
+					compare = equals
+				}
+			}
+		}
+		available = {
+			has_completed_focus = FRA_Develop_the_Agriculture
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		days_remove = 50
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						state = 1139
+						state = 462
+						state = 1141
+						state = 1206
+						state = 1214
+						state = 514
+						state = 513
+						state = 1142
+						state = 1140
+						state = 1207
+						state = 1209
+						state = 1208
+						state = 665
+						state = 458
+						state = 1047
+						state = 460
+						state = 1212
+						state = 1210
+						state = 459
+						state = 1211
+						state = 842
+						state = 1213
+						state = 1062
+						state = 708
+						state = 1058
+						state = 706
+						state = 713
+						state = 268
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					not = {
+						is_core_of = FRA
+					}
+					is_on_continent = africa
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+				var = peanut
+				value = 1
+			}
+		}
+	}
+	FRA_Prospect_for_Ressources = {
+		icon = putIcon
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			not = {
+				check_variable = {
+					var = FRA_resource
+					value = 5
+					compare = equals
+				}
+			}
+		}
+		available = {
+			has_completed_focus = FRA_Attract_Mining_Investors
+		}
+		days_remove = 1
+		cost = 90
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						state = 1139
+						state = 462
+						state = 1141
+						state = 1206
+						state = 1214
+						state = 514
+						state = 513
+						state = 1142
+						state = 1140
+						state = 1207
+						state = 1209
+						state = 1208
+						state = 665
+						state = 458
+						state = 1047
+						state = 460
+						state = 1212
+						state = 1210
+						state = 459
+						state = 1211
+						state = 842
+						state = 1213
+						state = 1062
+						state = 708
+						state = 1058
+						state = 706
+						state = 713
+						state = 268
+					}
+					not = {
+						is_core_of = FRA
+					}
+					is_on_continent = africa
+				}
+				random_list = {
+					25 = {
+						add_resource = {
+							type = steel
+							amount = 10
+						}
+					}
+					25 = {
+						add_resource = {
+							type = aluminium
+							amount = 10
+						}
+					}
+					45 = {
+					}
+					5 = {
+						FRA = {
+							country_event = {
+								id = FRA_Colonies.1
+							}
+						}
+						set_state_flag = FRA_gold_mine
+					}
+				}
+			}
+			add_to_variable = {
+				var = FRA_resource
+				value = 1
+			}
+		}
+	}
+	FRA_Build_New_Roads_decision = {
+		icon = putIcon
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_Modernize_Roads_and_Ports
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		days_remove = 70
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						state = 1139
+						state = 462
+						state = 1141
+						state = 1206
+						state = 1214
+						state = 514
+						state = 513
+						state = 1142
+						state = 1140
+						state = 1207
+						state = 1209
+						state = 1208
+						state = 665
+						state = 458
+						state = 1047
+						state = 460
+						state = 1212
+						state = 1210
+						state = 459
+						state = 1211
+						state = 842
+						state = 1213
+						state = 1062
+						state = 708
+						state = 1058
+						state = 706
+						state = 713
+						state = 268
+					}
+					not = {
+						has_state_flag = FRA_new_roads
+					}
+					not = {
+						is_core_of = FRA
+					}
+					is_on_continent = africa
+				}
+				set_state_flag = FRA_new_roads
+				random_list = {
+					50 = {
+						add_building_construction = {
+							type = infrastructure
+							level = 2
+							instant_build = yes
+						}
+					}
+					25 = {
+						add_building_construction = {
+							type = infrastructure
+							level = 3
+							instant_build = yes
+						}
+					}
+					25 = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Expand_the_local_Port_decision = {
+		icon = putIcon
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			not = {
+				check_variable = {
+					var = FRA_ports
+					value = 5
+					compare = equals
+				}
+			}
+		}
+		available = {
+			has_completed_focus = FRA_Modernize_Roads_and_Ports
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		days_remove = 150
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = FRA_ports
+						value = 0
+						compare = equals
+					}
+				}
+				272 = {
+					add_building_construction = {
+						type = naval_base
+						level = 1
+						province = 4948
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = FRA_ports
+						value = 1
+						compare = equals
+					}
+				}
+				556 = {
+					add_building_construction = {
+						type = naval_base
+						level = 1
+						province = 10803
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = FRA_ports
+						value = 2
+						compare = equals
+					}
+				}
+				786 = {
+					add_building_construction = {
+						type = naval_base
+						level = 1
+						province = 1951
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = FRA_ports
+						value = 3
+						compare = equals
+					}
+				}
+				1187 = {
+					add_building_construction = {
+						type = naval_base
+						level = 1
+						province = 6039
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = FRA_ports
+						value = 4
+						compare = equals
+					}
+				}
+				1196 = {
+					add_building_construction = {
+						type = naval_base
+						level = 1
+						province = 12975
+						instant_build = yes
+					}
+				}
+			}
+			add_to_variable = {
+				FRA_ports = 1
+			}
+		}
+	}
+}
+
+#######################################################################
+#Le Magreb
+#######################################################################
+
+	FRA_Start_prospecting_for_Oil = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_Create_the_Bureau
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			ROOT = {
+				controls_state = 514
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			country_event = {
+				id = FRA_Colonies.2
+			}
+		}
+	}
+	FRA_Land_Reforms = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_End_The_Tunisian_Crisis
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 40
+		remove_effect = {
+			custom_effect_tooltip = FRA_tunisia_reduced
+			hidden_effect = {
+				set_country_flag = FRA_flag_land_reform
+				665 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis
+					}
+				}
+				665 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				1047 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis
+					}
+				}
+				1047 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				1048 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis
+					}
+				}
+				1048 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				458 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis
+					}
+				}
+				458 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+			}
+		}
+	}
+	FRA_Debt_Reforms = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_End_The_Tunisian_Crisis
+			has_country_flag = FRA_flag_land_reform
+		}
+		cost = 40
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 30
+		remove_effect = {
+			custom_effect_tooltip = FRA_tunisia_reduced
+			hidden_effect = {
+				665 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				665 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_3
+					}
+				}
+				1047 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				1047 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_3
+					}
+				}
+				1048 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				1048 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_3
+					}
+				}
+				458 = {
+					remove_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_2
+					}
+				}
+				458 = {
+					add_dynamic_modifier = {
+						modifier = FRA_Economique_Crisis_3
+					}
+				}
+			}
+		}
+	}
+}
+
+#######################################################################
+#Le Levant
+#######################################################################
+FRA_Le_Levant_category = {
+	FRA_release_Syria = {
+		allowed = {
+			always = no
+		}
+		icon = ger_mefo_bills
+		available = {
+		}
+		days_mission_timeout = 1825
+		is_good = yes
+		fire_only_once = yes
+		cancel_trigger = {
+			OR = {
+				has_war_with = GER
+				has_war_with = ITA
+			}
+		}
+		days_remove = GER_extend_mefo_bills_days?0
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			release = SYR
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	FRA_Modernize_the_Ports_Levant = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			has_completed_focus = FRA_Finish_modernizing_Syria
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 40
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			if = {
+				limit = {
+					FRA = {
+						owns_state = 803
+					}
+				}
+				803 = {
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						province = 12029
+						instant_build = yes
+					}
+				}
+			}
+			553 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 792
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 1108
+					instant_build = yes
+				}
+			}
+			943 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 1088
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Modernize_the_Railways_Levant = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 350
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			has_completed_focus = FRA_Finish_modernizing_Syria
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 30
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -350
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			940 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			946 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			945 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1008 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			554 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			943 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			944 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1419 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1420 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			680 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1418 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			848 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			947 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1421 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			677 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			803 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1423 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			1422 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Modernize_the_Economy_Levant = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			has_completed_focus = FRA_Finish_modernizing_Syria
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 50
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			677 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			943 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+}

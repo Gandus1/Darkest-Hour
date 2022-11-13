@@ -1,0 +1,144 @@
+#########################################################################
+# Darkest Hour Events : Manchuria
+#########################################################################
+### Puyi Events
+add_namespace = MAN_The_Imperial_Assent
+### Military Events
+add_namespace = MAN_Nekka_Incident
+
+##############################
+##### Puyi Events
+##############################
+### The Imperial Assent
+country_event = { #The Great Qing Emperor // January, 25th 1933 // Event explaining the complicated Imperial situation in Manchuria
+	id = MAN_The_Imperial_Assent.1
+	title = MAN_The_Imperial_Assent.1.t
+	desc = MAN_The_Imperial_Assent.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		original_tag = MAN
+		date > 1933.1.25
+		has_start_date < 1933.1.25
+	}
+	option = {
+		name = MAN_The_Imperial_Assent.1.A
+		country_event = { id = MAN_The_Imperial_Assent.2 days = 60 }
+	}
+}
+
+country_event = { #The Gangs of Manchuria // March, 26th 1933 // Event showing the massive criminal enterprise coming to life in Manchuria, narrative event of Puyi reading the local paper
+	id = MAN_The_Imperial_Assent.2
+	title = MAN_The_Imperial_Assent.2.t
+	desc = MAN_The_Imperial_Assent.2.d
+	is_triggered_only = yes
+	option = {
+		name = MAN_The_Imperial_Assent.2.A
+		country_event = { id = MAN_The_Imperial_Assent.3 days = 120 }
+	}
+}
+
+country_event = { #The Manchurian Experiment // July 24th, 1933 // Event showing the massive boiling pot of ideas, assupmtions and ideologies all coming into Manchuria to find their versions of Utopia, with Puyi included it in somehow.
+	id = MAN_The_Imperial_Assent.3
+	title = MAN_The_Imperial_Assent.3.t
+	desc = MAN_The_Imperial_Assent.3.d
+	is_triggered_only = yes
+	option = {
+		name = MAN_The_Imperial_Assent.3.A
+		country_event = { id = MAN_The_Imperial_Assent.4 days = 70 }
+	}
+}
+
+country_event = { #An Imperial Response // October 2nd, 1933 // Puyi recieves letter from Hirohito informing him of his ascention to the Chinese Throne, and his "wild with joy" reaction.
+	id = MAN_The_Imperial_Assent.4
+	title = MAN_The_Imperial_Assent.4.t
+	desc = MAN_The_Imperial_Assent.4.d
+	is_triggered_only = yes
+	option = {
+		name = MAN_The_Imperial_Assent.4.A
+		country_event = { id = MAN_The_Imperial_Assent.5 days = 10 }
+		JAP = {
+			country_event = { id = JAP_The_Imperial_Assent.1 }
+		}
+	}
+}
+
+country_event = { #The General's Demands // October 12th, 1933 // General Doihara dampens Puyi's expectations of ruling Manchuria.
+	id = MAN_The_Imperial_Assent.5
+	title = MAN_The_Imperial_Assent.5.t
+	desc = MAN_The_Imperial_Assent.5.d
+	is_triggered_only = yes
+	option = {
+		name = MAN_The_Imperial_Assent.5.A
+		country_event = { id = MAN_The_Imperial_Assent.6 days = 110 }
+	}
+}
+
+country_event = { #Planning an Event // January 30th, 1934 // The planning of the Emperor's Coronation on March 1st. 
+	id = MAN_The_Imperial_Assent.6
+	title = MAN_The_Imperial_Assent.6.t
+	desc = MAN_The_Imperial_Assent.6.d
+	is_triggered_only = yes
+	option = { #200 Money, invested into the ceremony
+		name = MAN_The_Imperial_Assent.6.A
+		set_temp_variable = { money_to_gain = -200 }
+		add_money_with_tooltip_effect = yes
+		country_event = { id = MAN_The_Imperial_Assent.7 days = 30 }
+    }
+	option = { #201 Money, invested into the ceremony, for an extra medal.
+		name = MAN_The_Imperial_Assent.6.A
+		set_temp_variable = { money_to_gain = -201 }
+		add_money_with_tooltip_effect = yes
+		country_event = { id = MAN_The_Imperial_Assent.7 days = 30 }
+	}
+}
+
+country_event = { #The Coronation // March 1st, 1934
+	id = MAN_The_Imperial_Assent.7
+	title = MAN_The_Imperial_Assent.7.t
+	desc = MAN_The_Imperial_Assent.7.d
+	is_triggered_only = yes
+	option = {
+		name = MAN_The_Imperial_Assent.7.A
+		JAP = {
+			country_event = { id = JAP_The_Imperial_Assent.2 }
+		}
+		drop_cosmetic_tag = yes
+	}
+}
+
+##############################
+##### Military Events
+##############################
+### Nekka Incident
+country_event = { #Hidden event for trigger JAP_Nekka_Incident.5
+	id = MAN_Nekka_Incident.1
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+	option = {
+		hidden_effect = {
+			JAP = {
+				country_event = { 
+					id = JAP_Nekka_Incident.5
+				}
+			} 
+		}
+	}
+}
+
+country_event = { #Hidden event for trigger JAP_Nekka_Incident.9
+	id = MAN_Nekka_Incident.2
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+	option = {
+		hidden_effect = {
+			JAP = {
+				country_event = { 
+					id = JAP_Nekka_Incident.9
+				}
+			} 
+		}
+	}
+}

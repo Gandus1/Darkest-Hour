@@ -1,0 +1,79 @@
+﻿###########################
+# Darkest Hour Events : Germany RKs
+###########################
+add_namespace = GER_Deutschesschlag
+add_namespace = GER_Deutschesschlag_DNVP
+add_namespace = GER_Deutschesschlag_SPD
+#########################################################################
+#  Schleicher Declares a State of Emergency!
+#########################################################################
+news_event = {
+	id = GER_Deutschesschlag.1
+	title = GER_Deutschesschlag.1.t
+	desc = GER_Deutschesschlag.1.d
+	picture = GFX_news_GER_von_Schleicher_Dismissed
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Ok
+	option = {
+		name = GER_Deutschesschlag.1.A
+	}
+}
+#########################################################################
+#  Hugenberg wants more ministerial positions
+#########################################################################
+country_event = {
+	id = GER_Deutschesschlag_DNVP.1
+	title = GER_Deutschesschlag_DNVP.1.t
+	desc = GER_Deutschesschlag_DNVP.1.d
+	picture = GFX_report_GER_von_Schleicher_Dismissed
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Ok
+	option = {
+		name = GER_Deutschesschlag_DNVP.1.A
+		add_political_power = -50
+		add_ideas = GER_Alfred_Hugenberg_AM
+	}
+}
+#########################################################################
+#  Hugenberg wants the vice-chancellorship
+#########################################################################
+country_event = {
+	id = GER_Deutschesschlag_DNVP.2
+	title = GER_Deutschesschlag_DNVP.2.t
+	desc = GER_Deutschesschlag_DNVP.2.d
+	picture = GFX_report_GER_von_Schleicher_Dismissed
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We have no choice but to accept
+	option = {
+		name = GER_Deutschesschlag_DNVP.2.A
+		add_political_power = -75
+		add_ideas = GER_Alfred_Hugenberg_HoG
+	}
+	# We will not get bullied by that buffoon
+	option = {
+		name = GER_Deutschesschlag_DNVP.2.B
+		country_event = {
+			id = GER_Deutschesschlag_DNVP.3
+			hours = 6
+		}
+	}
+}
+#########################################################################
+#  DNVP and Stahlhelm defect to the Nazis
+#########################################################################
+country_event = {
+	id = GER_Deutschesschlag_DNVP.3
+	title = GER_Deutschesschlag_DNVP.3.t
+	desc = GER_Deutschesschlag_DNVP.3.d
+	picture = GFX_report_GER_von_Schleicher_Dismissed
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We have no choice but to accept
+	option = {
+		name = GER_Deutschesschlag_DNVP.3.A
+		add_political_power = -100
+	}
+}

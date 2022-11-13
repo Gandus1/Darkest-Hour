@@ -1,0 +1,295 @@
+ENG_anglo_iraqi_treaty_category = {
+
+	###########################
+	# Renegotiate Anglo-Iraqi Treaty
+	###########################	
+	ENG_Renegociation_of_Anglo_Iraqi_Treaty = {
+		icon = placeholder
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			set_temp_variable = { eng_power_in_iraq_to_check = 50 } 
+			has_specific_amount_of_eng_influence = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = ENG_Anglo_Iraqi_Treaty.1
+		}
+	}
+	###########################
+	# Renegotiate Anglo-Iraqi Treaty
+	###########################	
+	ENG_Punish_Treaty_Breakers = {
+		icon = placeholder
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			#IRQ has broken the treaty
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 10
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = IRQ
+				type = puppet_wargoal_focus
+			}
+		}
+	}
+	###########################
+	# Puppet Iraq
+	###########################	
+	ENG_Puppet_Iraq = {
+		icon = placeholder
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			IRQ = {
+				has_idea = IRQ_Anglo_Iraqi_Treaty_High
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 70
+		cost = 10
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			puppet = IRQ
+			hidden_effect = {
+				country_event = {
+					id = ENG_Anglo_Iraqi_Treaty.10
+					months = 24
+				}
+			}
+		}
+	}
+	###########################
+	# New colony in the middle East
+	###########################	
+	ENG_New_Colony_Middle_East = {
+		icon = placeholder
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+				is_puppet_of = ENG
+			}
+			has_country_flag = IRQ_New_Colony_Decision_Unlock
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 70
+		cost = 0
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			annex_country = {
+				target = IRQ
+				transfer_troops = no
+			}
+		}
+	}
+	###########################
+	# Increase Iraqi Oil Autonomy
+	###########################	
+	ENG_Increase_Iraqi_Oil_Autonomy = {
+		icon = placeholder
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			any_state = {
+				is_controlled_by = IRQ
+				has_resources_amount = {
+					resource = oil
+					amount > 0				
+				}
+				NOT = { has_state_flag = Oil_Field_Controlled_by_Eng }
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 1
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 200 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		complete_effect = {
+			add_political_power = -50
+			set_temp_variable = { money_to_gain = -200 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = { eng_power_in_iraq_to_gain = 3 } 
+			add_eng_influence_with_tooltip_effect = yes
+			random_state = {
+				limit = {
+					has_resources_amount = {
+						resource = oil
+						amount > 0				
+					}			
+					is_controlled_by = IRQ	
+				}
+				IRQ = {
+					give_resource_rights = { receiver = ENG state = PREV }
+				}
+				set_state_flag = Oil_Field_Controlled_by_Eng
+			}
+		}
+	}
+	###########################
+	# Decrease Iraqi Oil Autonomy
+	###########################	
+	ENG_Decrease_Iraqi_Oil_Autonomy = {
+		icon = placeholder
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			any_state = {
+				is_controlled_by = IRQ
+				has_resources_amount = {
+					resource = oil
+					amount > 0				
+				}
+				has_state_flag = Oil_Field_Controlled_by_Eng 
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 50
+		complete_effect = {
+
+		}
+		remove_effect = {
+			add_political_power = 50
+			set_temp_variable = { eng_power_in_iraq_to_gain = -3 } 
+			add_eng_influence_with_tooltip_effect = yes
+			random_state = {
+				limit = {
+					has_resources_amount = {
+						resource = oil
+						amount > 0				
+					}			
+					is_controlled_by = IRQ	
+					has_state_flag = Oil_Field_Controlled_by_Eng 
+				}
+				clr_state_flag = Oil_Field_Controlled_by_Eng
+				ENG = {
+					remove_resource_rights = PREV
+				}
+			}
+		}
+	}
+	###########################
+	# Puppet Iraq
+	###########################	
+	ENG_Crackdown_on_Iraqi_Hardliners = {
+		icon = placeholder
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			IRQ = {
+				has_government = democratic
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 50
+		cost = 75
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+		}
+	}
+	ENG_Secure_Iraqi_Independence = {
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			IRQ = {
+				exists = yes
+			}
+		}
+		available = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		on_map_mode = map_only
+		target_trigger = {
+		    FROM = {
+		    	is_controlled_by = IRQ
+		    }
+		}
+		state_target = yes
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+		    FROM = {
+		    	set_state_flag = ENG_Secure_Iraqi_Independence_flag
+		    }
+		}
+	}
+}

@@ -1,0 +1,300 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+### Generic Indonesian division and brigade names for Indonesian-speaking minors (or colonies) and releasable nations 
+
+INDO_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "garrison" } #Only regular infantry has the chance to be called a full division.
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { INDO_INF_01 }
+
+	fallback_name = "Divisi Infanteri %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Divisi Infanteri %d" }
+		2 = { "Divisi Infanteri %d" }
+		3 = { "Divisi Infanteri %d" }
+		4 = { "Divisi Infanteri %d" }
+		5 = { "Divisi Infanteri %d" }
+		6 = { "Divisi Infanteri %d" }
+		7 = { "Divisi Infanteri %d" }
+		8 = { "Divisi Infanteri %d" }
+		9 = { "Divisi Infanteri %d" }
+		10 = { "Divisi Infanteri %d" }
+	}
+}
+
+INDO_INFB_01 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "bicycle_battalion" "light_infantry" "garrison" "militia" "mountaineers" } # Specialist infantry units will always appear here, regular infantry can appear here.
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { INDO_MECB_01 INDO_HVYB_01 INDO_PARB_01 }
+
+	fallback_name = "Brigade Infanteri %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigade Infanteri %d" }
+		2 = { "Brigade Infanteri %d" }
+		3 = { "Brigade Infanteri %d" }
+		4 = { "Brigade Infanteri %d" }
+		5 = { "Brigade Infanteri %d" }
+		6 = { "Brigade Infanteri %d" }
+		7 = { "Brigade Infanteri %d" }
+		8 = { "Brigade Infanteri %d" }
+		9 = { "Brigade Infanteri %d" }
+		10 = { "Brigade Infanteri %d" }
+		11 = { "Brigade Infanteri %d" }
+		12 = { "Brigade Infanteri %d" }
+		13 = { "Brigade Infanteri %d" }
+		14 = { "Brigade Infanteri %d" }
+		15 = { "Brigade Infanteri %d" }
+		16 = { "Brigade Infanteri %d" }
+		17 = { "Brigade Infanteri %d" }
+		18 = { "Brigade Infanteri %d" }
+		19 = { "Brigade Infanteri %d" }
+		20 = { "Brigade Infanteri %d" }
+	}
+}
+
+INDO_MECB_01 = 
+{
+	name = "Mechanized Brigades"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { INDO_INFB_01 INDO_HVYB_01 INDO_PARB_01 }
+
+	fallback_name = "Brigade Infanteri Mekanis %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigade Infanteri Mekanis %d" }
+		2 = { "Brigade Infanteri Mekanis %d" }
+		3 = { "Brigade Infanteri Mekanis %d" }
+		4 = { "Brigade Infanteri Mekanis %d" }
+		5 = { "Brigade Infanteri Mekanis %d" }
+		6 = { "Brigade Infanteri Mekanis %d" }
+		7 = { "Brigade Infanteri Mekanis %d" }
+		8 = { "Brigade Infanteri Mekanis %d" }
+		9 = { "Brigade Infanteri Mekanis %d" }
+		10 = { "Brigade Infanteri Mekanis %d" }
+		11 = { "Brigade Infanteri Mekanis %d" }
+		12 = { "Brigade Infanteri Mekanis %d" }
+		13 = { "Brigade Infanteri Mekanis %d" }
+		14 = { "Brigade Infanteri Mekanis %d" }
+		15 = { "Brigade Infanteri Mekanis %d" }
+		16 = { "Brigade Infanteri Mekanis %d" }
+		17 = { "Brigade Infanteri Mekanis %d" }
+		18 = { "Brigade Infanteri Mekanis %d" }
+		19 = { "Brigade Infanteri Mekanis %d" }
+		20 = { "Brigade Infanteri Mekanis %d" }
+	}
+}
+
+INDO_HVYB_01 = 
+{
+	name = "Heavy Infantry Brigades"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "shock_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { INDO_INFB_01 INDO_MECB_01 INDO_PARB_01 }
+
+	fallback_name = "Brigade Infanteri Raider %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigade Infanteri Raider %d" }
+		2 = { "Brigade Infanteri Raider %d" }
+		3 = { "Brigade Infanteri Raider %d" }
+		4 = { "Brigade Infanteri Raider %d" }
+		5 = { "Brigade Infanteri Raider %d" }
+		6 = { "Brigade Infanteri Raider %d" }
+		7 = { "Brigade Infanteri Raider %d" }
+		8 = { "Brigade Infanteri Raider %d" }
+		9 = { "Brigade Infanteri Raider %d" }
+		10 = { "Brigade Infanteri Raider %d" }
+		11 = { "Brigade Infanteri Raider %d" }
+		12 = { "Brigade Infanteri Raider %d" }
+		13 = { "Brigade Infanteri Raider %d" }
+		14 = { "Brigade Infanteri Raider %d" }
+		15 = { "Brigade Infanteri Raider %d" }
+		16 = { "Brigade Infanteri Raider %d" }
+		17 = { "Brigade Infanteri Raider %d" }
+		18 = { "Brigade Infanteri Raider %d" }
+		19 = { "Brigade Infanteri Raider %d" }
+		20 = { "Brigade Infanteri Raider %d" }
+	}
+}
+
+INDO_PARB_01 = 
+{
+	name = "Paratrooper Brigades"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { INDO_INFB_01 INDO_MECB_01 INDO_HVYB_01 }
+
+	fallback_name = "Brigade Infanteri Para Raider %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigade Infanteri Para Raider %d" }
+		2 = { "Brigade Infanteri Para Raider %d" }
+		3 = { "Brigade Infanteri Para Raider %d" }
+		4 = { "Brigade Infanteri Para Raider %d" }
+		5 = { "Brigade Infanteri Para Raider %d" }
+		6 = { "Brigade Infanteri Para Raider %d" }
+		7 = { "Brigade Infanteri Para Raider %d" }
+		8 = { "Brigade Infanteri Para Raider %d" }
+		9 = { "Brigade Infanteri Para Raider %d" }
+		10 = { "Brigade Infanteri Para Raider %d" }
+		11 = { "Brigade Infanteri Para Raider %d" }
+		12 = { "Brigade Infanteri Para Raider %d" }
+		13 = { "Brigade Infanteri Para Raider %d" }
+		14 = { "Brigade Infanteri Para Raider %d" }
+		15 = { "Brigade Infanteri Para Raider %d" }
+		16 = { "Brigade Infanteri Para Raider %d" }
+		17 = { "Brigade Infanteri Para Raider %d" }
+		18 = { "Brigade Infanteri Para Raider %d" }
+		19 = { "Brigade Infanteri Para Raider %d" }
+		20 = { "Brigade Infanteri Para Raider %d" }
+	}
+}
+
+INDO_CAVB_01 = 
+{
+	name = "Cavalry and Armored Brigades"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" "light_armor" "medium_armor" "heavy_armor" } #Indonesian Army considers both horses and tanks to be Cavalry.
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "Brigade Kavaleri %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigade Kavaleri %d" }
+		2 = { "Brigade Kavaleri %d" }
+		3 = { "Brigade Kavaleri %d" }
+		4 = { "Brigade Kavaleri %d" }
+		5 = { "Brigade Kavaleri %d" }
+		6 = { "Brigade Kavaleri %d" }
+		7 = { "Brigade Kavaleri %d" }
+		8 = { "Brigade Kavaleri %d" }
+		9 = { "Brigade Kavaleri %d" }
+		10 = { "Brigade Kavaleri %d" }
+		11 = { "Brigade Kavaleri %d" }
+		12 = { "Brigade Kavaleri %d" }
+		13 = { "Brigade Kavaleri %d" }
+	}
+}
+
+INDO_MARB_01 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { SMK WPA }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { INDO_INF_01 } #These units have their own numbering system despite having very similar names to regular infantry.
+
+	fallback_name = "Brigade Infanteri %d/Marinir" 
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Brigade Infanteri %d/Marinir" }
+		2 = { "Brigade Infanteri %d/Marinir" }
+		3 = { "Brigade Infanteri %d/Marinir" }
+		4 = { "Brigade Infanteri %d/Marinir" }
+		5 = { "Brigade Infanteri %d/Marinir" }
+		6 = { "Brigade Infanteri %d/Marinir" }
+		7 = { "Brigade Infanteri %d/Marinir" }
+		8 = { "Brigade Infanteri %d/Marinir" }
+		9 = { "Brigade Infanteri %d/Marinir" }
+		10 = { "Brigade Infanteri %d/Marinir" }
+	}
+}

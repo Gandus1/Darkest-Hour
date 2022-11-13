@@ -1,0 +1,401 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+ARBC_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_MOT_01 ARBC_MEC_01 ARBC_GAR_01 ARBC_MAR_01 ARBC_MTN_01 ARBC_PAR_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat" }
+		2 = { "%d. Firqat Al-Mushat" }
+		3 = { "%d. Firqat Al-Mushat" }
+		4 = { "%d. Firqat Al-Mushat" }
+		5 = { "%d. Firqat Al-Mushat" }
+		6 = { "%d. Firqat Al-Mushat" }
+		7 = { "%d. Firqat Al-Mushat" }
+		8 = { "%d. Firqat Al-Mushat" }
+		9 = { "%d. Firqat Al-Mushat" }
+		10 = { "%d. Firqat Al-Mushat" }
+		12 = { "%d. Firqat Al-Mushat" }
+		13 = { "%d. Firqat Al-Mushat" }
+		14 = { "%d. Firqat Al-Mushat" }
+		15 = { "%d. Firqat Al-Mushat" }
+		16 = { "%d. Firqat Al-Mushat" }
+		17 = { "%d. Firqat Al-Mushat" }
+		18 = { "%d. Firqat Al-Mushat" }
+		19 = { "%d. Firqat Al-Mushat" }
+		20 = { "%d. Firqat Al-Mushat" }
+
+	}
+}
+
+ARBC_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_ARM_01 }
+
+	fallback_name = "%d. Firqat Al-Fursan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Fursan" }
+		2 = { "%d. Firqat Al-Fursan" }
+		3 = { "%d. Firqat Al-Fursan" }
+		4 = { "%d. Firqat Al-Fursan" }
+		5 = { "%d. Firqat Al-Fursan" }
+		6 = { "%d. Firqat Al-Fursan" }
+		7 = { "%d. Firqat Al-Fursan" }
+		8 = { "%d. Firqat Al-Fursan" }
+		9 = { "%d. Firqat Al-Fursan" }
+		10 = { "%d. Firqat Al-Fursan" }
+		11 = { "%d. Firqat Al-Fursan" }
+		12 = { "%d. Firqat Al-Fursan" }
+		13 = { "%d. Firqat Al-Fursan" }
+		14 = { "%d. Firqat Al-Fursan" }
+		15 = { "%d. Firqat Al-Fursan" }
+
+	}
+}
+
+ARBC_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_INF_01 ARBC_MEC_01 ARBC_GAR_01 ARBC_MAR_01 ARBC_MTN_01 ARBC_PAR_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat Al-Alia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat Al-Alia" }
+		2 = { "%d. Firqat Al-Mushat Al-Alia" }
+		3 = { "%d. Firqat Al-Mushat Al-Alia" }
+		4 = { "%d. Firqat Al-Mushat Al-Alia" }
+		5 = { "%d. Firqat Al-Mushat Al-Alia" }
+		6 = { "%d. Firqat Al-Mushat Al-Alia" }
+		7 = { "%d. Firqat Al-Mushat Al-Alia" }
+		8 = { "%d. Firqat Al-Mushat Al-Alia" }
+		9 = { "%d. Firqat Al-Mushat Al-Alia" }
+		10 = { "%d. Firqat Al-Mushat Al-Alia" }
+		12 = { "%d. Firqat Al-Mushat Al-Alia" }
+		13 = { "%d. Firqat Al-Mushat Al-Alia" }
+		14 = { "%d. Firqat Al-Mushat Al-Alia" }
+		15 = { "%d. Firqat Al-Mushat Al-Alia" }
+		16 = { "%d. Firqat Al-Mushat Al-Alia" }
+		17 = { "%d. Firqat Al-Mushat Al-Alia" }
+		18 = { "%d. Firqat Al-Mushat Al-Alia" }
+		19 = { "%d. Firqat Al-Mushat Al-Alia" }
+		20 = { "%d. Firqat Al-Mushat Al-Alia" }
+
+	}
+}
+
+ARBC_ARM_01 = 
+{
+	name = "Armoured Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_CAV_01 }
+
+	fallback_name = "%d. Firqat Al-Mudaraea"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mudaraea" }
+		2 = { "%d. Firqat Al-Mudaraea" }
+		3 = { "%d. Firqat Al-Mudaraea" }
+		4 = { "%d. Firqat Al-Mudaraea" }
+		5 = { "%d. Firqat Al-Mudaraea" }
+		6 = { "%d. Firqat Al-Mudaraea" }
+		7 = { "%d. Firqat Al-Mudaraea" }
+		8 = { "%d. Firqat Al-Mudaraea" }
+		9 = { "%d. Firqat Al-Mudaraea" }
+		10 = { "%d. Firqat Al-Mudaraea" }
+		11 = { "%d. Firqat Al-Mudaraea" }
+		12 = { "%d. Firqat Al-Mudaraea" }
+		13 = { "%d. Firqat Al-Mudaraea" }
+		14 = { "%d. Firqat Al-Mudaraea" }
+		15 = { "%d. Firqat Al-Mudaraea" }
+
+	}
+}
+
+ARBC_MEC_01 = 
+{
+	name = "Mechanised Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_INF_01 ARBC_MOT_01 ARBC_GAR_01 ARBC_MAR_01 ARBC_MTN_01 ARBC_PAR_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat Al-Mekanikia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		2 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		3 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		4 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		5 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		6 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		7 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		8 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		9 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		10 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		12 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		13 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		14 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		15 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		16 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		17 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		18 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		19 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+		20 = { "%d. Firqat Al-Mushat Al-Mekanikia" }
+
+	}
+}
+
+ARBC_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_INF_01 ARBC_MOT_01 ARBC_MEC_01 ARBC_MAR_01 ARBC_MTN_01 ARBC_PAR_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat Al-Hamia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		2 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		3 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		4 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		5 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		6 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		7 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		8 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		9 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		10 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		12 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		13 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		14 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		15 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		16 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		17 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		18 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		19 = { "%d. Firqat Al-Mushat Al-Hamia" }
+		20 = { "%d. Firqat Al-Mushat Al-Hamia" }
+
+	}
+}
+
+ARBC_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_INF_01 ARBC_MOT_01 ARBC_MEC_01 ARBC_GAR_01 ARBC_MTN_01 ARBC_PAR_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat Al-Bahria"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		2 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		3 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		4 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		5 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		6 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		7 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		8 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		9 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		10 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		12 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		13 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		14 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		15 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		16 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		17 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		18 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		19 = { "%d. Firqat Al-Mushat Al-Bahria" }
+		20 = { "%d. Firqat Al-Mushat Al-Bahria" }
+	}
+}
+
+ARBC_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_INF_01 ARBC_MOT_01 ARBC_MEC_01 ARBC_GAR_01 ARBC_MAR_01 ARBC_PAR_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat Al-Jabalia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		2 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		3 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		4 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		5 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		6 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		7 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		8 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		9 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		10 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		12 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		13 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		14 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		15 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		16 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		17 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		18 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		19 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+		20 = { "%d. Firqat Al-Mushat Al-Jabalia" }
+
+	}
+}
+
+ARBC_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { ALG BHR CHA EGY IRQ JOR KUW LBA LEB MOR MRT OMA PAL QAT RIF SAH SAU SYR SUD TIZ TUN UAE YEM ZNB }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ARBC_INF_01 ARBC_MOT_01 ARBC_MEC_01 ARBC_GAR_01 ARBC_MAR_01 ARBC_MTN_01 }
+
+	fallback_name = "%d. Firqat Al-Mushat Al-Mazalia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		2 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		3 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		4 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		5 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		6 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		7 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		8 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		9 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		10 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		12 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		13 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		14 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		15 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		16 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		17 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		18 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		19 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+		20 = { "%d. Firqat Al-Mushat Al-Mazalia" }
+
+	}
+}

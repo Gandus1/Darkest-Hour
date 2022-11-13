@@ -1,0 +1,493 @@
+﻿###########################
+# Darkest Hour Events : Cosmetics
+###########################
+### Occupation
+add_namespace = Occupation_CZE
+### German Occupation
+add_namespace = Occupation_GER_CZE
+add_namespace = Occupation_GER_SLO
+add_namespace = Occupation_GER_DEN
+add_namespace = Occupation_GER_NOR
+add_namespace = Occupation_GER_HOL
+add_namespace = Occupation_GER_BEL
+#########################################################################
+#  GER Occupation of CZE
+#########################################################################
+country_event = {
+	id = Occupation_GER_CZE.1
+	title = Occupation_GER_CZE.1.t
+	desc = Occupation_GER_CZE.1.d
+	is_triggered_only = yes
+	### Czechia into a Protektorat Böhmen und Mähren
+	option = {
+		name = Occupation_GER_CZE.1.A
+		ai_chance = {
+			factor = 100
+		}
+		set_autonomy = {
+			target = CZE
+			autonomy_state = AUTONOMY_Reichskommissariat
+		}
+		every_state = {
+			limit = {
+				is_core_of = CZE
+				is_core_or_claim_of_ROOT = no
+			}
+			CZE = {
+				transfer_state = PREV
+				set_politics = {
+					ruling_party = fascist
+					last_election = "1935.5.19"
+					election_frequency = 60
+					elections_allowed = no
+				}
+				set_popularities = {
+					fascist = 90
+					authoritarian = 10
+					democratic = 0
+					socialist = 0
+					communist = 0
+				}
+				create_country_leader = {
+					name = "Konstantin von Neurath"
+					desc = ""
+					picture = GFX_P_GER_Konstantin_von_Neurath
+					ideology = national_socialism
+					traits = {
+						POSITION_GER_Reichsprotektor
+						SUBIDEOLOGY_National_Socialism
+						L_Autocratic_Charmer
+					}
+				}
+			}
+		}
+	}
+	### Full Occupation
+	option = {
+		name = Occupation_Full
+		ai_chance = {
+			factor = 0
+		}
+		Occupation_Medium = yes
+		set_country_flag = Occupation_GER_CZE
+	}
+}
+#########################################################################
+#  GER Occupation of DEN
+#########################################################################
+country_event = {
+	id = Occupation_GER_DEN.1
+	title = Occupation_GER_DEN.1.t
+	desc = Occupation_GER_DEN.1.d
+	is_triggered_only = yes
+	### Protektorat Dänemark
+	option = {
+		name = Occupation_GER_DEN.1.A
+		ai_chance = {
+			factor = 100
+		}
+		DEN = {
+			set_politics = {
+				ruling_party = democratic
+				last_election = "1935.10.22"
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			set_popularities = {
+				fascist = 0
+				authoritarian = 1
+				democratic = 94
+				socialist = 3
+				communist = 2
+			}
+			create_country_leader = {
+				name = "Thorvald Stauning"
+				desc = ""
+				picture = GFX_P_D_Thorvald_Stauning
+				ideology = social_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Democracy
+					L_Ambitious_Union_Boss
+				}
+			}
+		}
+		804 = {
+			set_state_controller_to = GER
+			add_compliance = 75
+		}
+		99 = {
+			set_state_controller_to = GER
+			add_compliance = 75
+		}
+		1082 = {
+			set_state_controller_to = GER
+			add_compliance = 75
+		}
+		37 = {
+			set_state_controller_to = GER
+			add_compliance = 75
+		}
+		1083 = {
+			set_state_controller_to = GER
+			add_compliance = 75
+		}
+	}
+}
+#########################################################################
+#  GER Occupation of HOL
+#########################################################################
+country_event = {
+	id = Occupation_GER_HOL.1
+	title = Occupation_GER_HOL.1.t
+	desc = Occupation_GER_HOL.1.d
+	is_triggered_only = yes
+	### Reichskommissariat Niederlande
+	option = {
+		name = Occupation_GER_HOL.1.A
+		ai_chance = {
+			factor = 100
+		}
+		RND = {
+			transfer_state = 7
+			transfer_state = 35
+			transfer_state = 36
+			transfer_state = 960
+			transfer_state = 1128
+			create_country_leader = {
+				name = "Arthur Seyss-Inquart"
+				desc = ""
+				picture = GFX_P_GER_F_Arthur_Seyss_Inquart
+				ideology = national_socialism
+				traits = {
+					POSITION_GER_Reichskommissar
+					SUBIDEOLOGY_National_Socialism
+					L_Autocratic_Charmer
+				}
+			}
+			add_manpower = 10000
+		}
+		puppet = RND
+		set_autonomy = {
+			target = RND
+			autonomy_state = AUTONOMY_Reichskommissariat
+		}
+		every_state = {
+			limit = {
+				is_core_of = HOL
+			}
+			add_compliance = 20
+		}
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 2500
+			target = RND
+		}
+		add_manpower = -10000
+	}
+	### Full Occupation
+	option = {
+		name = Occupation_GER_HOL.1.B
+		ai_chance = {
+			factor = 0
+		}
+		Occupation_Medium = yes
+		set_country_flag = Occupation_GER_HOL
+	}
+}
+#########################################################################
+#  GER Occupation of HOL (Control only)
+#########################################################################
+country_event = {
+	id = Occupation_GER_HOL.2
+	title = Occupation_GER_HOL.2.t
+	desc = Occupation_GER_HOL.2.d
+	is_triggered_only = yes
+	### Reichskommissariat Niederlande
+	option = {
+		name = Occupation_GER_HOL.2.A
+		ai_chance = {
+			factor = 100
+		}
+		RND = {
+			transfer_state = 7
+			transfer_state = 35
+			transfer_state = 36
+			transfer_state = 960
+			transfer_state = 1128
+			create_country_leader = {
+				name = "Arthur Seyss-Inquart"
+				desc = ""
+				picture = GFX_P_GER_F_Arthur_Seyss_Inquart
+				ideology = national_socialism
+				traits = {
+					POSITION_GER_Reichskommissar
+					SUBIDEOLOGY_National_Socialism
+					L_Autocratic_Charmer
+				}
+			}
+			add_manpower = 10000
+		}
+		puppet = RND
+		set_autonomy = {
+			target = RND
+			autonomy_state = AUTONOMY_Reichskommissariat
+		}
+		add_manpower = -10000
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 2500
+			target = RND
+		}
+		every_state = {
+			limit = {
+				is_core_of = HOL
+			}
+			add_compliance = 20
+		}
+	}
+	### Full Occupation
+	option = {
+		name = Occupation_Full
+		ai_chance = {
+			factor = 0
+		}
+		Occupation_Light = yes
+		set_country_flag = Occupation_GER_HOL
+	}
+}
+#########################################################################
+#  GER Occupation of BEL
+#########################################################################
+country_event = {
+	id = Occupation_GER_BEL.1
+	title = Occupation_GER_BEL.1.t
+	desc = Occupation_GER_BEL.1.d
+	is_triggered_only = yes
+	### Militärverwaltung in Belgien und Nordfrankreich
+	option = {
+		name = Occupation_GER_BEL.1.A
+		ai_chance = {
+			factor = 100
+		}
+		RBF = {
+			transfer_state = 6
+			transfer_state = 964
+			transfer_state = 34
+			transfer_state = 1505
+			transfer_state = 762
+			transfer_state = 1204
+			transfer_state = 1553
+			add_manpower = 10000
+		}
+		puppet = RBF
+		RBF = {
+			set_politics = {
+				ruling_party = authoritarian
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Alexander von Falkenhausen"
+				desc = ""
+				picture = GFX_P_GER_F_Alexander_von_Falkenhausen
+				ideology = military_dictatorship
+				traits = {
+					POSITION_GER_Militarbefehlshaber
+					SUBIDEOLOGY_Military_Dictatorship
+					L_Resigned_Generalissimo
+				}
+			}
+		}
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 2500
+			target = RBF
+		}
+		set_autonomy = {
+			target = RBF
+			autonomy_state = AUTONOMY_Reichskommissariat
+		}
+		GER = {
+			transfer_state = 802
+			add_manpower = -10000
+		}
+	}
+	### Full Occupation
+	option = {
+		name = Occupation_GER_BEL.1.B
+		ai_chance = {
+			factor = 0
+		}
+		Occupation_Medium = yes
+		set_country_flag = Occupation_GER_BEL
+	}
+}
+#########################################################################
+#  GER Occupation of NOR
+#########################################################################
+country_event = {
+	id = Occupation_GER_NOR.1
+	title = Occupation_GER_NOR.1.t
+	desc = Occupation_GER_NOR.1.d
+	is_triggered_only = yes
+	### Reichskommissariat Norwegen
+	option = {
+		name = Occupation_GER_NOR.1.A
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		RNR = {
+			transfer_state = 110
+			transfer_state = 142
+			transfer_state = 143
+			transfer_state = 1615
+			transfer_state = 1125
+			transfer_state = 1613
+			transfer_state = 1618
+			transfer_state = 1127
+			transfer_state = 1126
+			transfer_state = 1614
+			transfer_state = 1617
+			transfer_state = 1616
+			transfer_state = 144
+			transfer_state = 1124
+			transfer_state = 1561
+			add_manpower = 10000
+			create_country_leader = {
+				name = "Josef Terboven"
+				picture = GFX_P_GER_F_Josef_Terboven
+				ideology = national_socialism
+				traits = {
+					POSITION_GER_Reichskommissar
+					SUBIDEOLOGY_National_Socialism
+					L_PowerHungry_Demagogue
+				}
+			}
+		}
+		add_manpower = -10000
+		send_equipment = {
+			equipment = infantry_equipment
+			amount = 2500
+			target = RNR
+		}
+		every_state = {
+			limit = {
+				is_core_of = NOR
+			}
+			add_compliance = 20
+		}
+		puppet = RNR
+		set_autonomy = {
+			target = RNR
+			autonomy_state = AUTONOMY_Reichskommissariat
+		}
+	}
+	### Full Occupation
+	option = {
+		name = Occupation_GER_NOR.1.B
+		ai_chance = {
+			factor = 0
+		}
+		Occupation_Medium = yes
+		set_country_flag = Occupation_GER_NOR
+	}
+}
+#########################################################################
+#  GER Occupation of SLO
+#########################################################################
+country_event = {
+	id = Occupation_GER_SLO.1
+	title = Occupation_GER_SLO.1.t
+	desc = Occupation_GER_SLO.1.d
+	is_triggered_only = yes
+	### Slovak Republic
+	option = {
+		name = Occupation_GER_SLO.1.A
+		ai_chance = {
+			factor = 95
+		}
+		set_autonomy = {
+			target = SLO
+			autonomy_state = AUTONOMY_Satellite
+		}
+		every_state = {
+			limit = {
+				is_core_of = SLO
+				is_core_or_claim_of_ROOT = no
+			}
+			SLO = {
+				transfer_state = PREV
+				set_politics = {
+					ruling_party = fascist
+					last_election = "1933.1.1"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities = {
+					fascist = 60
+					authoritarian = 0
+					democratic = 28
+					socialist = 12
+					communist = 0
+				}
+			}
+		}
+	}
+	### Protektorat Slowakei
+	option = {
+		name = Occupation_GER_SLO.1.B
+		ai_chance = {
+			factor = 5
+		}
+		set_autonomy = {
+			target = SLO
+			autonomy_state = AUTONOMY_Reichsprotectorate
+		}
+		every_state = {
+			limit = {
+				is_core_of = SLO
+				is_core_or_claim_of_ROOT = no
+			}
+			SLO = {
+				transfer_state = PREV
+				set_politics = {
+					ruling_party = fascist
+					last_election = "1933.1.1"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities = {
+					fascist = 90
+					authoritarian = 10
+					democratic = 0
+					socialist = 0
+					communist = 0
+				}
+				create_country_leader = {
+					name = "Günther Pancke"
+					desc = ""
+					picture = GFX_P_GER_F_Gunther_Pancke
+					ideology = national_socialism
+					traits = {
+						POSITION_GER_Reichskommissar
+						SUBIDEOLOGY_National_Socialism
+						L_Local_Tyrant
+					}
+				}
+			}
+		}
+	}
+	###
+	option = {
+		name = Occupation_Full
+		ai_chance = {
+			factor = 0
+		}
+		Occupation_Light = yes
+		set_country_flag = Occupation_GER_SLO
+	}
+}

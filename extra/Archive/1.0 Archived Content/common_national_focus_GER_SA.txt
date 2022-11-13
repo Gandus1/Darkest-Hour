@@ -1,0 +1,58 @@
+focus_tree = {
+	id = GER_SA
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GER
+			always = no
+		}
+	}
+	default = no
+	focus = {
+		id = GER_The_Rohm_Putsch
+		icon = GFX_GENERIC_Military_State
+		cost = 10.00
+		x = 3
+		y = 0
+
+	}
+	focus = {
+		id = GER_Propagate_A_New_Identity
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 10.00
+		prerequisite = {
+			focus = GER_The_Rohm_Putsch
+		}
+		x = 2
+		y = 1
+
+	}
+	focus = {
+		id = GER_Formalize_Martial_Law
+		icon = GFX_GENERIC_New_Constitution
+		cost = 10.00
+		prerequisite = {
+			focus = GER_The_Rohm_Putsch
+		}
+		x = 4
+		y = 1
+
+	}
+	focus = {
+		id = GER_Purge_Hitlerism
+		icon = GFX_GER_Denazification
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Propagate_A_New_Identity
+		}
+		prerequisite = {
+			focus = GER_Formalize_Martial_Law
+		}
+		x = 3
+		y = 2
+		completion_reward = {
+			load_focus_tree = GER_Strasserist
+		}
+	}
+}

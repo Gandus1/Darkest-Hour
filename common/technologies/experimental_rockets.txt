@@ -1,0 +1,729 @@
+#!gfx:interface\_Technologies_Misc.gfx
+technologies = {
+	@1928 = 0
+	@1930 = 2
+	@1936 = 4
+	@1939 = 6
+	@1941 = 8
+	@1942 = 10
+	@1943 = 12
+	@1944 = 14
+	@1945 = 16
+	@1956 = 18
+	#######################################
+	#									  #
+	# ROCKETRY				 			  #
+	#									  #
+	#######################################
+	rocketry_1 = {
+		# Experimental Rocket Engine
+		on_research_complete = {
+			add_tech_bonus = {
+				bonus = 0.05
+				uses = 1
+				category = rocketry
+			}
+		}
+		path = {
+			leads_to_tech = rocketry_2
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 1928
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 1
+				y = @1928
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 20
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+		}
+	}
+	rocketry_2 = {
+		on_research_complete = {
+			add_tech_bonus = {
+				bonus = 0.05
+				uses = 1
+				category = rocketry
+			}
+		}
+		path = {
+			leads_to_tech = rocketry_3
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1930
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 1
+				y = @1930
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 20
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+		}
+	}
+	rocketry_3 = {
+		# Rocket Engine
+		enable_building = {
+			building = rocket_site
+			level = 1
+		}
+		on_research_complete = {
+			add_tech_bonus = {
+				bonus = 0.05
+				uses = 1
+				category = rocketry
+			}
+		}
+		path = {
+			leads_to_tech = rocketry_jet_1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = rocketry_4
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1939
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 1
+				y = @1939
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 20
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+		}
+	}
+	rocketry_jet_1 = {
+		# Turbo Jet Engine
+		research_speed_factor = 0.02
+		on_research_complete = {
+			add_tech_bonus = {
+				bonus = 0.05
+				uses = 1
+				category = jet_technology
+			}
+		}
+		path = {
+			leads_to_tech = rocketry_jet_2
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = -2
+				y = @1939
+			}
+		}
+		categories = {
+			jet_technology
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 20
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+		}
+	}
+	rocketry_jet_2 = {
+		# Practical Tubo Jet Engine
+		desc = "JET_ENGINES_SPECIAL"
+		on_research_complete = {
+			custom_effect_tooltip = JET_ENGINES_RESEARCHED
+		}
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = -2
+				y = @1943
+			}
+		}
+		categories = {
+			jet_technology
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 20
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	rocketry_4 = {
+		enable_building = {
+			building = rocket_site
+			level = 2
+		}
+		# Flying Bomb
+		enable_equipments = {
+			guided_missile_equipment_1
+		}
+		rocket_artillery_battery = {
+			soft_attack = 0.05
+		}
+		rocket_artillery_battalion = {
+			soft_attack = 0.05
+		}
+		path = {
+			leads_to_tech = rocketry_interceptor_1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = rocketry_5
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1942
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 1
+				y = @1942
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 5
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+		}
+	}
+	rocketry_interceptor_1 = {
+		# Basic Rocket Interceptor
+		enable_equipments = {
+			rocket_Fighter_Bomber_equipment_1936
+		}
+		path = {
+			leads_to_tech = rocketry_interceptor_2
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1942
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 5
+				y = @1942
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 5
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+		}
+	}
+	rocketry_interceptor_2 = {
+		# Improved Rocket Interceptor
+		enable_equipments = {
+			rocket_Fighter_Bomber_equipment_1940
+		}
+		research_cost = 1.25
+		start_year = 1944
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 5
+				y = @1944
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 5
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+		}
+	}
+	rocketry_5 = {
+		# Strategic Rocket
+		enable_equipments = {
+			guided_missile_equipment_2
+		}
+		rocket_artillery_battery = {
+			soft_attack = 0.05
+		}
+		rocket_artillery_battalion = {
+			soft_attack = 0.05
+		}
+		path = {
+			leads_to_tech = rocketry_6
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1944
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 1
+				y = @1944
+			}
+		}
+		categories = {
+			rocketry
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 5
+				is_major = yes
+			}
+			modifier = {
+				factor = 20
+				tag = GER
+			}
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+		}
+	}
+	rocketry_6 = {
+		# Ballistic Missle
+		enable_equipments = {
+			guided_missile_equipment_3
+		}
+		rocket_artillery_battery = {
+			soft_attack = 0.05
+		}
+		rocket_artillery_battalion = {
+			soft_attack = 0.05
+		}
+		#path = {
+		#	leads_to_tech = rocketry_7
+		#	research_cost_coeff = 1
+		#}
+		research_cost = 1.25
+		start_year = 1956
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 1
+				y = @1956
+			}
+		}
+		categories = {
+			rocketry
+		}
+	}
+	#######################################
+	#									  #
+	# NUCLEAR				 			  #
+	#									  #
+	#######################################
+	nuclear_1 = {
+		# Van De Graff Generator
+		research_speed_factor = 0.01
+		path = {
+			leads_to_tech = nuclear_2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nuclear_3
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 1930
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 7
+				y = @1930
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+		}
+	}
+	nuclear_2 = {
+		# Atomic Research
+		research_speed_factor = 0.01
+		path = {
+			leads_to_tech = nuclear_4
+			research_cost_coeff = 1
+		}
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 6
+				y = @1936
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	nuclear_3 = {
+		# Research Laboratories
+		research_speed_factor = 0.01
+		on_research_complete = {
+			add_tech_bonus = {
+				bonus = 0.05
+				uses = 1
+				category = nuclear
+			}
+		}
+		path = {
+			leads_to_tech = nuclear_4
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1936
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 8
+				y = @1936
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	nuclear_4 = {
+		# Nuclear Research
+		research_speed_factor = 0.02
+		path = {
+			leads_to_tech = nuclear_5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nuclear_6
+			research_cost_coeff = 1
+		}
+		research_cost = 1.75
+		start_year = 1939
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 7
+				y = @1939
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+		}
+	}
+	nuclear_5 = {
+		# Isotope Separation
+		research_speed_factor = 0.03
+		path = {
+			leads_to_tech = nuclear_7
+			research_cost_coeff = 1
+		}
+		research_cost = 1.25
+		start_year = 1941
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 6
+				y = @1941
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+		}
+	}
+	nuclear_6 = {
+		# Controlled Nuclear Chain Reaction
+		research_speed_factor = 0.01
+		path = {
+			leads_to_tech = nuclear_7
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 8
+				y = @1941
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+		}
+	}
+	nuclear_7 = {
+		# Experimental Reactor
+		research_speed_factor = 0.02
+		path = {
+			leads_to_tech = nuclear_8
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 1942
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 7
+				y = @1942
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0.03
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+		}
+	}
+	nuclear_8 = {
+		# Nuclear Reactor
+		enable_building = {
+			building = nuclear_reactor
+			level = 1
+		}
+		path = {
+			leads_to_tech = nukes
+			research_cost_coeff = 1
+		}
+		research_cost = 4
+		start_year = 1943
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 7
+				y = @1943
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0.02
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	nukes = {
+		# Nuclear Bomb
+		nuclear_production = 1
+		path = {
+			leads_to_tech = nuclear_10
+			research_cost_coeff = 1
+		}
+		research_cost = 4
+		start_year = 1945
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 7
+				y = @1945
+			}
+		}
+		categories = {
+			nuclear
+		}
+		ai_will_do = {
+			factor = 500
+			modifier = {
+				factor = 0.02
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1944.2.1"
+			}
+		}
+	}
+	nuclear_10 = {
+		# Nuclear Propulsion
+		desc = "NUCLEAR_PROPULSION"
+		on_research_complete = {
+			custom_effect_tooltip = NUCLEAR_PROPULSION_RESEARCHED
+		}
+		#path = {
+		#	leads_to_tech = nuclear_11
+		#	research_cost_coeff = 1
+		#}
+		research_cost = 5
+		start_year = 1956
+		folder = {
+			name = rocketry_folder
+			position = {
+				x = 7
+				y = @1956
+			}
+		}
+		categories = {
+			nuclear
+		}
+	}
+}

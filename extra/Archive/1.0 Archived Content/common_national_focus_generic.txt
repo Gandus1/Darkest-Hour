@@ -1,0 +1,1273 @@
+focus_tree = {
+	id = generic_focus
+	
+	country = {
+		factor = 1
+	}
+	
+	default = yes
+	reset_on_civilwar = no
+
+	focus = {
+		id = generic_focus_industry
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 3
+		y = 0
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_rnd_investment
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_industry
+		}
+		relative_position_id = generic_focus_industry
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = generic_idea_rnd_investment
+		}
+	}
+
+	focus = {
+		id = generic_focus_investment_in_infrastructure
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_rnd_investment
+		}
+		relative_position_id = generic_focus_rnd_investment
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_owned_and_controlled_by = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_coal_liquification
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_investment_in_infrastructure
+		}
+		mutually_exclusive = {
+			focus = generic_focus_prospect_for_resources
+		}
+		relative_position_id = generic_focus_investment_in_infrastructure
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			# add_tech_bonus = {
+			# 	bonus = 0.5
+			# 	uses = 1
+				# technology = synth_oil_experiments
+			# }
+		}
+	}
+
+	focus = {
+		id = generic_focus_synthetic_experimentation
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_coal_liquification
+		}
+		relative_position_id = generic_focus_coal_liquification
+		available = {
+			# has_tech = synth_oil_experiments
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = generic_focus_synthetic_experimentation_tt
+			hidden_effect = {
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = synthetic_refinery
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = synthetic_refinery
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = synthetic_refinery
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = synthetic_refinery
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_prospect_for_resources
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_investment_in_infrastructure
+		}
+		mutually_exclusive = {
+			focus = generic_focus_coal_liquification
+		}
+		relative_position_id = generic_focus_investment_in_infrastructure
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = excavation_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_expansion_of_mining_facilities
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_prospect_for_resources
+		}
+		relative_position_id = generic_focus_prospect_for_resources
+		available = {
+			has_tech = excavation4
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 5
+				}	
+				add_resource = {
+					type = aluminium
+					amount = 5
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_light_industry_invesments
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_investment_in_infrastructure
+		}
+		mutually_exclusive = {
+			focus = generic_focus_heavy_industry_invesments
+		}
+		relative_position_id = generic_focus_investment_in_infrastructure
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_heavy_industry_invesments
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_investment_in_infrastructure
+		}
+		mutually_exclusive = {
+			focus = generic_focus_light_industry_invesments
+		}
+		relative_position_id = generic_focus_investment_in_infrastructure
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_consumer_oriented_industry
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_light_industry_invesments
+		}
+		relative_position_id = generic_focus_light_industry_invesments
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = generic_idea_consumer_oriented_industry
+		}
+	}
+
+	focus = {
+		id = generic_focus_military_industrial_complex
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_heavy_industry_invesments
+		}
+		relative_position_id = generic_focus_heavy_industry_invesments
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = generic_idea_military_industrial_complex
+		}
+	}
+
+	focus = {
+		id = generic_focus_modernize_the_production_lines
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_heavy_industry_invesments
+			focus = generic_focus_light_industry_invesments
+		}
+		relative_position_id = generic_focus_heavy_industry_invesments
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = generic_idea_modernize_the_production_lines
+		}
+	}
+
+	focus = {
+		id = generic_focus_expand_the_capital_university
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_modernize_the_production_lines
+			focus = generic_focus_military_industrial_complex
+			focus = generic_focus_consumer_oriented_industry
+		}
+		relative_position_id = generic_focus_modernize_the_production_lines
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 2
+		}
+	}
+
+	focus = {
+		id = generic_focus_nations_army
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 11
+		y = 0
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 10
+		}
+	}
+
+	focus = {
+		id = generic_focus_professional_army
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_army
+		}
+		mutually_exclusive = {
+			focus = generic_focus_drafted_army
+		}
+		relative_position_id = generic_focus_nations_army
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = generic_idea_professional_army
+		}
+	}
+
+	focus = {
+		id = generic_focus_drafted_army
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_army
+		}
+		mutually_exclusive = {
+			focus = generic_focus_professional_army
+		}
+		relative_position_id = generic_focus_nations_army
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = generic_idea_drafted_army
+		}
+	}
+
+	focus = {
+		id = generic_focus_modern_infantry_kits
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_professional_army
+			focus = generic_focus_drafted_army
+		}
+		relative_position_id = generic_focus_professional_army
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = infantry_weapons
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_mass_motorization
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_modern_infantry_kits
+		}
+		relative_position_id = generic_focus_modern_infantry_kits
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_aquire_foreign_tanks
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_mass_motorization
+		}
+		mutually_exclusive = {
+			focus = generic_focus_study_foreign_designs
+		}
+		relative_position_id = generic_focus_mass_motorization
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			country_event = DH_Generic_Focus_Tree.1
+		}
+	}
+
+	focus = {
+		id = generic_focus_study_foreign_designs
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_mass_motorization
+		}
+		mutually_exclusive = {
+			focus = generic_focus_aquire_foreign_tanks
+		}
+		relative_position_id = generic_focus_mass_motorization
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_indigenous_tank
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_study_foreign_designs
+			focus = generic_focus_aquire_foreign_tanks
+		}
+		relative_position_id = generic_focus_study_foreign_designs
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_personnel_carriers
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_indigenous_tank
+		}
+		relative_position_id = generic_focus_indigenous_tank
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_mechanized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_medium_armor
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_indigenous_tank
+		}
+		relative_position_id = generic_focus_indigenous_tank
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_medium_armor
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_filed_artillery
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_modern_infantry_kits
+		}
+		relative_position_id = generic_focus_modern_infantry_kits
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_self_propelled_artillery
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_filed_artillery
+		}
+		prerequisite = {
+			focus = generic_focus_study_foreign_designs
+		}
+		mutually_exclusive = {
+			focus = generic_focus_new_howitzers
+		}
+		relative_position_id = generic_focus_filed_artillery
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				technology = Light_SPG_1939
+				technology = Light_SPG_1942
+				technology = Light_SPG_1944
+				technology = Light_SPG_1946
+				technology = Medium_SPG_1939
+				technology = Medium_SPG_1941
+				technology = Medium_SPG_1943
+				technology = Medium_SPG_1945
+				technology = Heavy_SPG_1941
+				technology = Heavy_SPG_1943
+				technology = Heavy_SPG_1944
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_new_howitzers
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_filed_artillery
+		}
+		mutually_exclusive = {
+			focus = generic_focus_self_propelled_artillery
+		}
+		relative_position_id = generic_focus_filed_artillery
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_rocket_barrage
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_new_howitzers
+			focus = generic_focus_self_propelled_artillery
+		}
+		relative_position_id = generic_focus_new_howitzers
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				technology = Rocket_Artillery_1940
+				technology = Rocket_Artillery_1942
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_nations_navy
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 18
+		y = 0
+		cost = 10
+		available = {
+			any_owned_state = { 
+				is_coastal = yes
+			}
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 10
+		}
+	}
+
+	focus = {
+		id = generic_focus_naval_infantry_deployment
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -5
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_navy
+		}
+		relative_position_id = generic_focus_nations_navy
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = marine_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_mechanized_marines
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_naval_infantry_deployment
+		}
+		relative_position_id = generic_focus_naval_infantry_deployment
+		available = {
+			has_tech = Medium_Tank_1939
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = marine_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_fleet_in_being
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -3
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_navy
+		}
+		mutually_exclusive = {
+			focus = generic_focus_convoy_raiding
+			focus = generic_focus_base_strike
+		}
+		relative_position_id = generic_focus_nations_navy
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = fleet_in_being_tree
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_purchase_a_new_flagship
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_fleet_in_being
+		}
+		relative_position_id = generic_focus_fleet_in_being
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			country_event = DH_Generic_Focus_Tree.7
+		}
+	}
+
+	focus = {
+		id = generic_focus_convoy_raiding
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_navy
+		}
+		mutually_exclusive = {
+			focus = generic_focus_fleet_in_being
+			focus = generic_focus_base_strike
+		}
+		relative_position_id = generic_focus_nations_navy
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = trade_interdiction_tree
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_cruiser_program
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_fleet_in_being
+			focus = generic_focus_convoy_raiding
+		}
+		relative_position_id = generic_focus_fleet_in_being
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cl_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_indigenous_submarines
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_convoy_raiding
+		}
+		relative_position_id = generic_focus_convoy_raiding
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_base_strike
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_navy
+		}
+		mutually_exclusive = {
+			focus = generic_focus_fleet_in_being
+			focus = generic_focus_convoy_raiding
+		}
+		relative_position_id = generic_focus_nations_navy
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = cat_base_strike
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_escort_development
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_convoy_raiding
+			focus = generic_focus_base_strike
+		}
+		relative_position_id = generic_focus_convoy_raiding
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cl_tech
+				category = dd_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_light_carrier_experiments
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_base_strike
+		}
+		relative_position_id = generic_focus_base_strike
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cv_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_flattops
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_light_carrier_experiments
+		}
+		relative_position_id = generic_focus_light_carrier_experiments
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cv_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_naval_bombers
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 4
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_navy
+		}
+		prerequisite = {
+			focus = generic_focus_nations_air
+		}
+		relative_position_id = generic_focus_nations_navy
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = naval_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_carrier_aircraft
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_naval_bombers
+		}
+		prerequisite = {
+			focus = generic_focus_base_strike
+		}
+		relative_position_id = generic_focus_naval_bombers
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = naval_air
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_nations_air
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 26
+		y = 0
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 10
+		}
+	}
+
+	focus = {
+		id = generic_focus_frontline_support
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_air
+		}
+		mutually_exclusive = {
+			focus = generic_focus_strategic_destruction
+		}
+		relative_position_id = generic_focus_nations_air
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = battlefield_support_tree
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = tactical_bomber
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_strategic_destruction
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_air
+		}
+		mutually_exclusive = {
+			focus = generic_focus_frontline_support
+		}
+		relative_position_id = generic_focus_nations_air
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = strategic_destruction_tree
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = tactical_bomber
+				category = cat_strategic_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_tank_busters
+		icon = GFX_goal_generic_allies_build_infantry
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_frontline_support
+		}
+		relative_position_id = generic_focus_frontline_support
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_defend_the_skies
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_frontline_support
+			focus = generic_focus_strategic_destruction
+		}
+		relative_position_id = generic_focus_frontline_support
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = light_fighter
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_long_range_bombers
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_strategic_destruction
+		}
+		relative_position_id = generic_focus_strategic_destruction
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_strategic_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_jet_experiments
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_defend_the_skies
+			focus = generic_focus_long_range_bombers
+			focus = generic_focus_tank_busters
+		}
+		relative_position_id = generic_focus_defend_the_skies
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = jet_technology
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_paratroppers
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_nations_air
+		}
+		relative_position_id = generic_focus_nations_air
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = para_tech
+			}
+		}
+	}
+
+	focus = {
+		id = generic_focus_airborne_tanks
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = generic_focus_paratroppers
+		}
+		relative_position_id = generic_focus_paratroppers
+		available = {
+			has_tech = Light_Tank_1936
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = para_tech
+			}
+		}
+	}
+}

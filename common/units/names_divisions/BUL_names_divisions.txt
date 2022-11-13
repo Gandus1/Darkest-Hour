@@ -1,0 +1,1090 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+BUL_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		NOT = { has_government = communist }
+		has_war = yes # Temporary placeholder
+		#has_completed_focus = BUL_Bulgarian_Land_Forces
+	}
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_02 BUL_INF_03 BUL_MOT_01 BUL_MEC_01 BUL_MOT_02 BUL_MEC_02 }
+
+	fallback_name = "%d-ta Pekhotna Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Pekhotna Sofiĭska Diviziya" }
+		2 = { "%d-ra Pekhotna Trakiĭska Diviziya" }
+		3 = { "%d-ta Pekhotna Balkanska Diviziya" }
+		4 = { "%d-ta Pekhotna Preslavska Diviziya" }
+		5 = { "%d-ta Pekhotna Dunavska Diviziya" }
+		6 = { "%d-ta Pekhotna Bdinska Diviziya" }
+		7 = { "%d-ma Pekhotna Rilska Diviziya" }
+		8 = { "%d-a Pekhotna Tundzhanska Diviziya" }
+		9 = { "%d-a Pekhotna Plevenska Diviziya" } 			#1939
+		10 = { "%d-a Pekhotna Rodopska Diviziya" } 			#1939
+		11 = { "%d-ta Pekhotna Diviziya" } 					#1939
+		12 = { "%d-ta Pekhotna Diviziya" } 					#1941
+		14 = { "%d-ta Pekhotna Vardarska Diviziya" } 		#1941
+		15 = { "%d-ta Pekhotna Okhridska Diviziya" } 		#1941
+		16 = { "%d-ta Pekhotna Diviziya" } 					#1941
+		17 = { "%d-ta Pekhotna Shtipska Diviziya" } 		#1941
+		21 = { "%d-va Pekhotna Diviziya" } 					#1941
+		24 = { "%d-ta Pekhotna Diviziya" } 					#1941
+		25 = { "%d-ta Pekhotna Diviziya" } 					#1942
+		22 = { "%d-ra Pekhotna Diviziya" }				 	#1943
+		27 = { "%d-ma Pekhotna Diviziya" }				 	#1943
+		28 = { "%d-ta Pekhotna Diviziya" }					#1943
+		29 = { "%d-ta Pekhotna Diviziya" } 					#1944
+		13 = { "%d-ta Pekhotna Diviziya" } 					# Pre-WWI
+		18 = { "%d-ta Pekhotna Belomorska Diviziya" } 		# Fictional
+		19 = { "%d-ta Pekhotna Makedonska Diviziya" }
+		20 = { "%d-ta Pekhotna Diviziya" }
+		23 = { "%d-ta Pekhotna Diviziya" }
+		26 = { "%d-ta Pekhotna Diviziya" }
+		30 = { "%d-ta Pekhotna Diviziya" }
+		31 = { "%d-va Pekhotna Diviziya" }
+		32 = { "%d-ra Pekhotna Diviziya" }
+		33 = { "%d-ta Pekhotna Diviziya" }
+		34 = { "%d-ta Pekhotna Diviziya" }
+		35 = { "%d-ta Pekhotna Diviziya" }
+		36 = { "%d-ta Pekhotna Diviziya" }
+		37 = { "%d-ma Pekhotna Diviziya" }
+		38 = { "%d-a Pekhotna Diviziya" }
+		39 = { "%d-ta Pekhotna Diviziya" }
+		40 = { "%d-ta Pekhotna Diviziya" }
+		41 = { "%d-va Pekhotna Diviziya" }
+		42 = { "%d-ta Pekhotna Diviziya" }
+		43 = { "%d-ta Pekhotna Diviziya" }
+		44 = { "%d-ta Pekhotna Diviziya" }
+		45 = { "%d-ta Pekhotna Diviziya" }
+		46 = { "%d-ma Pekhotna Diviziya" }
+		47 = { "%d-a Pekhotna Diviziya" }
+		48 = { "%d-ta Pekhotna Diviziya" }
+		49 = { "%d-ta Pekhotna Diviziya" }
+		50 = { "%d-ta Pekhotna Diviziya" }
+		51 = { "%d-va Pekhotna Diviziya" }
+		52 = { "%d-ra Pekhotna Diviziya" }
+	}
+}
+
+BUL_INF_02 = 
+{
+	name = "Infantry Regiments"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		NOT = { has_government = communist }
+		has_war = no # Temporary placeholder
+		#NOT = { has_completed_focus = BUL_Bulgarian_Land_Forces }
+	}
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_01 BUL_INF_03 BUL_MOT_01 BUL_MEC_01 BUL_MOT_02 BUL_MEC_02 }
+
+	fallback_name = "%d-ti Pekhoten Polk"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-vi Pekhoten Sofiĭski Polk" }
+		2 = { "%d-ri Pekhoten Trakiĭski Polk" }
+		3 = { "%d-ti Pekhoten Balkanski Polk" }
+		4 = { "%d-ti Pekhoten Preslavski Polk" }
+		5 = { "%d-ti Pekhoten Dunavski Polk" }
+		6 = { "%d-ti Pekhoten Bdinski Polk" }
+		7 = { "%d-mi Pekhoten Rilski Polk" }
+		8 = { "%d-i Pekhoten Tundzhanski Polk" }
+		9 = { "%d-i Pekhoten Plevenski Polk" }
+		10 = { "%d-i Pekhoten Rodopski Polk" }
+		11 = { "%d-ti Pekhoten Polk" }
+		12 = { "%d-ti Pekhoten Polk" }
+		14 = { "%d-ti Pekhoten Vardarski Polk" }
+		15 = { "%d-ti Pekhoten Okhridski Polk" }
+		16 = { "%d-ti Pekhoten Polk" }
+		17 = { "%d-ti Pekhoten Shtipski Polk" }
+		21 = { "%d-vi Pekhoten Polk" }
+		24 = { "%d-ti Pekhoten Polk" }
+		25 = { "%d-ti Pekhoten Polk" }
+		22 = { "%d-ri Pekhoten Polk" }
+		27 = { "%d-mi Pekhoten Polk" }
+		28 = { "%d-ti Pekhoten Polk" }
+		29 = { "%d-ti Pekhoten Polk" }
+		13 = { "%d-ti Pekhoten Polk" }
+		18 = { "%d-ti Pekhoten Belomorski Polk" }
+		19 = { "%d-ti Pekhoten Makedonski Polk" }
+		20 = { "%d-ti Pekhoten Polk" }
+		23 = { "%d-ti Pekhoten Polk" }
+		26 = { "%d-ti Pekhoten Polk" }
+		30 = { "%d-ti Pekhoten Polk" }
+		31 = { "%d-vi Pekhoten Polk" }
+		32 = { "%d-ri Pekhoten Polk" }
+		33 = { "%d-ti Pekhoten Polk" }
+		34 = { "%d-ti Pekhoten Polk" }
+		35 = { "%d-ti Pekhoten Polk" }
+		36 = { "%d-ti Pekhoten Polk" }
+		37 = { "%d-mi Pekhoten Polk" }
+		38 = { "%d-i Pekhoten Polk" }
+		39 = { "%d-ti Pekhoten Polk" }
+		40 = { "%d-ti Pekhoten Polk" }
+		41 = { "%d-vi Pekhoten Polk" }
+		42 = { "%d-ti Pekhoten Polk" }
+		43 = { "%d-ti Pekhoten Polk" }
+		44 = { "%d-ti Pekhoten Polk" }
+		45 = { "%d-ti Pekhoten Polk" }
+		46 = { "%d-mi Pekhoten Polk" }
+		47 = { "%d-i Pekhoten Polk" }
+		48 = { "%d-ti Pekhoten Polk" }
+		49 = { "%d-ti Pekhoten Polk" }
+		50 = { "%d-ti Pekhoten Polk" }
+		51 = { "%d-vi Pekhoten Polk" }
+		52 = { "%d-ri Pekhoten Polk" }
+		
+	}
+}
+
+BUL_INF_03 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		has_government = communist
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_01 BUL_INF_02 BUL_MOT_01 BUL_MEC_01 BUL_MOT_02 BUL_MEC_02 }
+
+	fallback_name = "%d-ta Strelkova Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Oktomvriĭska Revolyutsionna Strelkova Diviziya" }
+		2 = { "%d-ra Parizhka Komuna Strelkova Diviziya" }
+		3 = { "%d-ta Sŭvetska Bŭlgariya Strelkova Diviziya" }
+		4 = { "%d-ta Khristo Botev Strelkova Diviziya" }
+		5 = { "%d-ta Geòrgi Dimitròv Strelkova Diviziya" }
+		6 = { "%d-ta Vŭlko Chervenkov Strelkova Diviziya" }
+		7 = { "%d-ma Todor Angelov Strelkova Diviziya" }
+		8 = { "%d-a Khristiyan Rakovski Strelkova Diviziya" }
+		9 = { "%d-ta Nikola Vaptsarov Strelkova Diviziya" }
+		10 = { "%d-ta Liliya Karastoyanova Strelkova Diviziya" }
+		11 = { "%d-va Asen Draganov Strelkova Diviziya" }
+		12 = { "%d-ra Vera Pavlova Strelkova Diviziya" }
+		14 = { "%d-ta Ivan Kozarev Strelkova Diviziya" }
+		15 = { "%d-ta Nikola Parapunov Strelkova Diviziya" }
+		16 = { "%d-ta Todor Zhivkov Strelkova Diviziya" }
+		17 = { "%d-ma Strelkova Diviziya" }
+		21 = { "%d-va Strelkova Diviziya" }
+		24 = { "%d-ta Strelkova Diviziya" }
+		25 = { "%d-ta Strelkova Diviziya" }
+		22 = { "%d-ra Strelkova Diviziya" }
+		27 = { "%d-ma Strelkova Diviziya" }
+		28 = { "%d-a Strelkova Diviziya" }
+		29 = { "%d-ta Strelkova Diviziya" }
+		13 = { "%d-ta Strelkova Diviziya" }
+		18 = { "%d-a Strelkova Diviziya" }
+		19 = { "%d-ta Strelkova Diviziya" }
+		20 = { "%d-ta Strelkova Diviziya" }
+		23 = { "%d-ta Strelkova Diviziya" }
+		26 = { "%d-ta Strelkova Diviziya" }
+		30 = { "%d-va Strelkova Diviziya" }
+		31 = { "%d-ra Strelkova Diviziya" }
+		32 = { "%d-ta Strelkova Diviziya" }
+		33 = { "%d-ta Strelkova Diviziya" }
+		34 = { "%d-ta Strelkova Diviziya" }
+		35 = { "%d-ta Strelkova Diviziya" }
+		36 = { "%d-ma Strelkova Diviziya" }
+		37 = { "%d-a Strelkova Diviziya" }
+		38 = { "%d-ta Strelkova Diviziya" }
+		39 = { "%d-ta Strelkova Diviziya" }
+		40 = { "%d-va Strelkova Diviziya" }
+		41 = { "%d-ra Strelkova Diviziya" }
+		42 = { "%d-ta Strelkova Diviziya" }
+		43 = { "%d-ta Strelkova Diviziya" }
+		44 = { "%d-ta Strelkova Diviziya" }
+		45 = { "%d-ta Strelkova Diviziya" }
+		46 = { "%d-ma Strelkova Diviziya" }
+		47 = { "%d-a Strelkova Diviziya" }
+		48 = { "%d-ta Strelkova Diviziya" }
+		49 = { "%d-ta Strelkova Diviziya" }
+		50 = { "%d-ta Strelkova Diviziya" }
+		51 = { "%d-va Strelkova Diviziya" }
+		52 = { "%d-ra Strelkova Diviziya" }
+	}
+}
+
+BUL_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { BUL_CAV_01 }
+
+	fallback_name = "%d-ta Konna Bŭrza Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Konna Bŭrza Diviziya" } #1936
+		2 = { "%d-ra Konna Bŭrza Diviziya" } #1936
+		3 = { "%d-ta Konna Bŭrza Diviziya" } #Fictional
+		4 = { "%d-ta Konna Bŭrza Diviziya" }
+		5 = { "%d-ta Konna Bŭrza Diviziya" }
+		6 = { "%d-ta Konna Bŭrza Diviziya" }
+		7 = { "%d-ma Konna Bŭrza Diviziya" }
+		8 = { "%d-a Konna Bŭrza Diviziya" }
+		9 = { "%d-ta Konna Bŭrza Diviziya" }
+		10 = { "%d-ta Konna Bŭrza Diviziya" }
+		11 = { "%d-va Konna Bŭrza Diviziya" }
+		12 = { "%d-ra Konna Bŭrza Diviziya" }
+		13 = { "%d-ta Konna Bŭrza Diviziya" }
+		14 = { "%d-ta Konna Bŭrza Diviziya" }
+		15 = { "%d-ta Konna Bŭrza Diviziya" }
+		16 = { "%d-ta Konna Bŭrza Diviziya" }
+		17 = { "%d-ma Konna Bŭrza Diviziya" }
+		18 = { "%d-a Konna Bŭrza Diviziya" }
+		19 = { "%d-ta Konna Bŭrza Diviziya" }
+		20 = { "%d-ta Konna Bŭrza Diviziya" }
+		21 = { "%d-va Konna Bŭrza Diviziya" }
+		22 = { "%d-ra Konna Bŭrza Diviziya" }
+		23 = { "%d-ta Konna Bŭrza Diviziya" }
+		24 = { "%d-ta Konna Bŭrza Diviziya" }
+		25 = { "%d-ta Konna Bŭrza Diviziya" }
+		26 = { "%d-ta Konna Bŭrza Diviziya" }
+		27 = { "%d-ma Konna Bŭrza Diviziya" }
+		28 = { "%d-a Konna Bŭrza Diviziya" }
+		29 = { "%d-ta Konna Bŭrza Diviziya" }
+		30 = { "%d-va Konna Bŭrza Diviziya" }
+		31 = { "%d-ra Konna Bŭrza Diviziya" }
+		32 = { "%d-ta Konna Bŭrza Diviziya" }
+		33 = { "%d-ta Konna Bŭrza Diviziya" }
+		34 = { "%d-ta Konna Bŭrza Diviziya" }
+		35 = { "%d-ta Konna Bŭrza Diviziya" }
+		36 = { "%d-ma Konna Bŭrza Diviziya" }
+		37 = { "%d-a Konna Bŭrza Diviziya" }
+		38 = { "%d-ta Konna Bŭrza Diviziya" }
+		39 = { "%d-ta Konna Bŭrza Diviziya" }
+		40 = { "%d-va Konna Bŭrza Diviziya" }
+		41 = { "%d-ra Konna Bŭrza Diviziya" }
+		42 = { "%d-ta Konna Bŭrza Diviziya" }
+		43 = { "%d-ta Konna Bŭrza Diviziya" }
+		44 = { "%d-ta Konna Bŭrza Diviziya" }
+		45 = { "%d-ta Konna Bŭrza Diviziya" }
+		46 = { "%d-ma Konna Bŭrza Diviziya" }
+		47 = { "%d-a Konna Bŭrza Diviziya" }
+		48 = { "%d-ta Konna Bŭrza Diviziya" }
+		49 = { "%d-ta Konna Bŭrza Diviziya" }
+		50 = { "%d-ta Konna Bŭrza Diviziya" }
+		51 = { "%d-va Konna Bŭrza Diviziya" }
+		52 = { "%d-ra Konna Bŭrza Diviziya" }
+	}
+}
+
+BUL_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		NOT = { has_government = communist }
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_01 BUL_INF_02 BUL_INF_03 BUL_MEC_01 BUL_MOT_02 BUL_MEC_02 }
+
+	fallback_name = "%d-ta Motorizirana Bŭrza Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Motorizirana Bŭrza Sofiĭska Diviziya" }
+		2 = { "%d-ra Motorizirana Bŭrza Trakiĭska Diviziya" }
+		3 = { "%d-ta Motorizirana Bŭrza Balkanska Diviziya" }
+		4 = { "%d-ta Motorizirana Bŭrza Preslavska Diviziya" }
+		5 = { "%d-ta Motorizirana Bŭrza Dunavska Diviziya" }
+		6 = { "%d-ta Motorizirana Bŭrza Bdinska Diviziya" }
+		7 = { "%d-ma Motorizirana Bŭrza Rilska Diviziya" }
+		8 = { "%d-a Motorizirana Bŭrza Tundzhanska Diviziya" }
+		9 = { "%d-a Motorizirana Bŭrza Plevenska Diviziya" }
+		10 = { "%d-a Motorizirana Bŭrza Rodopska Diviziya" }
+		11 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		12 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		14 = { "%d-ta Motorizirana Bŭrza Vardarska Diviziya" }
+		15 = { "%d-ta Motorizirana Bŭrza Okhridska Diviziya" }
+		16 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		17 = { "%d-ta Motorizirana Bŭrza Shtipska Diviziya" }
+		21 = { "%d-va Motorizirana Bŭrza Diviziya" }
+		24 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		25 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		22 = { "%d-ra Motorizirana Bŭrza Diviziya" }
+		27 = { "%d-ma Motorizirana Bŭrza Diviziya" }
+		28 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		29 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		13 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		18 = { "%d-ta Motorizirana Bŭrza Belomorska Diviziya" }
+		19 = { "%d-ta Motorizirana Bŭrza Makedonska Diviziya" }
+		20 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		23 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		26 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		30 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		31 = { "%d-va Motorizirana Bŭrza Diviziya" }
+		32 = { "%d-ra Motorizirana Bŭrza Diviziya" }
+		33 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		34 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		35 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		36 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		37 = { "%d-ma Motorizirana Bŭrza Diviziya" }
+		38 = { "%d-a Motorizirana Bŭrza Diviziya" }
+		39 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		40 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		41 = { "%d-va Motorizirana Bŭrza Diviziya" }
+		42 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		43 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		44 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		45 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		46 = { "%d-ma Motorizirana Bŭrza Diviziya" }
+		47 = { "%d-a Motorizirana Bŭrza Diviziya" }
+		48 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		49 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		50 = { "%d-ta Motorizirana Bŭrza Diviziya" }
+		51 = { "%d-va Motorizirana Bŭrza Diviziya" }
+		52 = { "%d-ra Motorizirana Bŭrza Diviziya" }
+	}
+}
+
+BUL_MOT_02 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		has_government = communist
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_01 BUL_INF_02 BUL_INF_03 BUL_MOT_01 BUL_MEC_01 BUL_MEC_02 }
+
+	fallback_name = "%d-ta Motostrelkova Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Oktomvriĭska Revolyutsionna Motostrelkova Diviziya" }
+		2 = { "%d-ra Parizhka Komuna Motostrelkova Diviziya" }
+		3 = { "%d-ta Sŭvetska Bŭlgariya Motostrelkova Diviziya" }
+		4 = { "%d-ta Khristo Botev Motostrelkova Diviziya" }
+		5 = { "%d-ta Geòrgi Dimitròv Motostrelkova Diviziya" }
+		6 = { "%d-ta Vŭlko Chervenkov Motostrelkova Diviziya" }
+		7 = { "%d-ma Todor Angelov Motostrelkova Diviziya" }
+		8 = { "%d-a Khristiyan Rakovski Motostrelkova Diviziya" }
+		9 = { "%d-ta Nikola Vaptsarov Motostrelkova Diviziya" }
+		10 = { "%d-ta Liliya Karastoyanova Motostrelkova Diviziya" }
+		11 = { "%d-va Asen Draganov Motostrelkova Diviziya" }
+		12 = { "%d-ra Vera Pavlova Motostrelkova Diviziya" }
+		14 = { "%d-ta Ivan Kozarev Motostrelkova Diviziya" }
+		15 = { "%d-ta Nikola Parapunov Motostrelkova Diviziya" }
+		16 = { "%d-ta Todor Zhivkov Motostrelkova Diviziya" }
+		17 = { "%d-ma Motostrelkova Diviziya" }
+		21 = { "%d-va Motostrelkova Diviziya" }
+		24 = { "%d-ta Motostrelkova Diviziya" }
+		25 = { "%d-ta Motostrelkova Diviziya" }
+		22 = { "%d-ra Motostrelkova Diviziya" }
+		27 = { "%d-ma Motostrelkova Diviziya" }
+		28 = { "%d-a Motostrelkova Diviziya" }
+		29 = { "%d-ta Motostrelkova Diviziya" }
+		13 = { "%d-ta Motostrelkova Diviziya" }
+		18 = { "%d-a Motostrelkova Diviziya" }
+		19 = { "%d-ta Motostrelkova Diviziya" }
+		20 = { "%d-ta Motostrelkova Diviziya" }
+		23 = { "%d-ta Motostrelkova Diviziya" }
+		26 = { "%d-ta Motostrelkova Diviziya" }
+		30 = { "%d-va Motostrelkova Diviziya" }
+		31 = { "%d-ra Motostrelkova Diviziya" }
+		32 = { "%d-ta Motostrelkova Diviziya" }
+		33 = { "%d-ta Motostrelkova Diviziya" }
+		34 = { "%d-ta Motostrelkova Diviziya" }
+		35 = { "%d-ta Motostrelkova Diviziya" }
+		36 = { "%d-ma Motostrelkova Diviziya" }
+		37 = { "%d-a Motostrelkova Diviziya" }
+		38 = { "%d-ta Motostrelkova Diviziya" }
+		39 = { "%d-ta Motostrelkova Diviziya" }
+		40 = { "%d-va Motostrelkova Diviziya" }
+		41 = { "%d-ra Motostrelkova Diviziya" }
+		42 = { "%d-ta Motostrelkova Diviziya" }
+		43 = { "%d-ta Motostrelkova Diviziya" }
+		44 = { "%d-ta Motostrelkova Diviziya" }
+		45 = { "%d-ta Motostrelkova Diviziya" }
+		46 = { "%d-ma Motostrelkova Diviziya" }
+		47 = { "%d-a Motostrelkova Diviziya" }
+		48 = { "%d-ta Motostrelkova Diviziya" }
+		49 = { "%d-ta Motostrelkova Diviziya" }
+		50 = { "%d-ta Motostrelkova Diviziya" }
+		51 = { "%d-va Motostrelkova Diviziya" }
+		52 = { "%d-ra Motostrelkova Diviziya" }
+	}
+}
+
+BUL_ARM_01 = 
+{
+	name = "Tank Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { BUL_ARM_01 }
+
+	fallback_name = "%d-ta Tankova Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Tankova Diviziya" }
+		2 = { "%d-ra Tankova Diviziya" }
+		3 = { "%d-ta Tankova Diviziya" }
+		4 = { "%d-ta Tankova Diviziya" }
+		5 = { "%d-ta Tankova Diviziya" }
+		6 = { "%d-ta Tankova Diviziya" }
+		7 = { "%d-ma Tankova Diviziya" }
+		8 = { "%d-a Tankova Diviziya" }
+		9 = { "%d-ta Tankova Diviziya" }
+		10 = { "%d-ta Tankova Diviziya" }
+		11 = { "%d-va Tankova Diviziya" }
+		12 = { "%d-ra Tankova Diviziya" }
+		13 = { "%d-ta Tankova Diviziya" }
+		14 = { "%d-ta Tankova Diviziya" }
+		15 = { "%d-ta Tankova Diviziya" }
+		16 = { "%d-ta Tankova Diviziya" }
+		17 = { "%d-ma Tankova Diviziya" }
+		18 = { "%d-a Tankova Diviziya" }
+		19 = { "%d-ta Tankova Diviziya" }
+		20 = { "%d-ta Tankova Diviziya" }
+		21 = { "%d-va Tankova Diviziya" }
+		22 = { "%d-ra Tankova Diviziya" }
+		23 = { "%d-ta Tankova Diviziya" }
+		24 = { "%d-ta Tankova Diviziya" }
+		25 = { "%d-ta Tankova Diviziya" }
+		26 = { "%d-ta Tankova Diviziya" }
+		27 = { "%d-ma Tankova Diviziya" }
+		28 = { "%d-a Tankova Diviziya" }
+		29 = { "%d-ta Tankova Diviziya" }
+		30 = { "%d-va Tankova Diviziya" }
+		31 = { "%d-ra Tankova Diviziya" }
+		32 = { "%d-ta Tankova Diviziya" }
+		33 = { "%d-ta Tankova Diviziya" }
+		34 = { "%d-ta Tankova Diviziya" }
+		35 = { "%d-ta Tankova Diviziya" }
+		36 = { "%d-ma Tankova Diviziya" }
+		37 = { "%d-a Tankova Diviziya" }
+		38 = { "%d-ta Tankova Diviziya" }
+		39 = { "%d-ta Tankova Diviziya" }
+		40 = { "%d-va Tankova Diviziya" }
+		41 = { "%d-ra Tankova Diviziya" }
+		42 = { "%d-ta Tankova Diviziya" }
+		43 = { "%d-ta Tankova Diviziya" }
+		44 = { "%d-ta Tankova Diviziya" }
+		45 = { "%d-ta Tankova Diviziya" }
+		46 = { "%d-ma Tankova Diviziya" }
+		47 = { "%d-a Tankova Diviziya" }
+		48 = { "%d-ta Tankova Diviziya" }
+		49 = { "%d-ta Tankova Diviziya" }
+		50 = { "%d-ta Tankova Diviziya" }
+		51 = { "%d-va Tankova Diviziya" }
+		52 = { "%d-ra Tankova Diviziya" }
+	}
+}
+
+BUL_MEC_01 = 
+{
+	name = "Mechanised Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		NOT = { has_government = communist }
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_01 BUL_INF_02 BUL_INF_03 BUL_MOT_01 BUL_MOT_02 BUL_MEC_02 }
+
+	fallback_name = "%d-ta Mekhanizirana Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Mekhanizirana Sofiĭska Diviziya" }
+		2 = { "%d-ra Mekhanizirana Trakiĭska Diviziya" }
+		3 = { "%d-ta Mekhanizirana Balkanska Diviziya" }
+		4 = { "%d-ta Mekhanizirana Preslavska Diviziya" }
+		5 = { "%d-ta Mekhanizirana Dunavska Diviziya" }
+		6 = { "%d-ta Mekhanizirana Bdinska Diviziya" }
+		7 = { "%d-ma Mekhanizirana Rilska Diviziya" }
+		8 = { "%d-a Mekhanizirana Tundzhanska Diviziya" }
+		9 = { "%d-a Mekhanizirana Plevenska Diviziya" }
+		10 = { "%d-a Mekhanizirana Rodopska Diviziya" }
+		11 = { "%d-ta Mekhanizirana Diviziya" }
+		12 = { "%d-ta Mekhanizirana Diviziya" }
+		14 = { "%d-ta Mekhanizirana Vardarska Diviziya" }
+		15 = { "%d-ta Mekhanizirana Okhridska Diviziya" }
+		16 = { "%d-ta Mekhanizirana Diviziya" }
+		17 = { "%d-ta Mekhanizirana Shtipska Diviziya" }
+		21 = { "%d-va Mekhanizirana Diviziya" }
+		24 = { "%d-ta Mekhanizirana Diviziya" }
+		25 = { "%d-ta Mekhanizirana Diviziya" }
+		22 = { "%d-ra Mekhanizirana Diviziya" }
+		27 = { "%d-ma Mekhanizirana Diviziya" }
+		28 = { "%d-ta Mekhanizirana Diviziya" }
+		29 = { "%d-ta Mekhanizirana Diviziya" }
+		13 = { "%d-ta Mekhanizirana Diviziya" }
+		18 = { "%d-ta Mekhanizirana Belomorska Diviziya" }
+		19 = { "%d-ta Mekhanizirana Makedonska Diviziya" }
+		20 = { "%d-ta Mekhanizirana Diviziya" }
+		23 = { "%d-ta Mekhanizirana Diviziya" }
+		26 = { "%d-ta Mekhanizirana Diviziya" }
+		30 = { "%d-ta Mekhanizirana Diviziya" }
+		31 = { "%d-va Mekhanizirana Diviziya" }
+		32 = { "%d-ra Mekhanizirana Diviziya" }
+		33 = { "%d-ta Mekhanizirana Diviziya" }
+		34 = { "%d-ta Mekhanizirana Diviziya" }
+		35 = { "%d-ta Mekhanizirana Diviziya" }
+		36 = { "%d-ta Mekhanizirana Diviziya" }
+		37 = { "%d-ma Mekhanizirana Diviziya" }
+		38 = { "%d-a Mekhanizirana Diviziya" }
+		39 = { "%d-ta Mekhanizirana Diviziya" }
+		40 = { "%d-ta Mekhanizirana Diviziya" }
+		41 = { "%d-va Mekhanizirana Diviziya" }
+		42 = { "%d-ta Mekhanizirana Diviziya" }
+		43 = { "%d-ta Mekhanizirana Diviziya" }
+		44 = { "%d-ta Mekhanizirana Diviziya" }
+		45 = { "%d-ta Mekhanizirana Diviziya" }
+		46 = { "%d-ma Mekhanizirana Diviziya" }
+		47 = { "%d-a Mekhanizirana Diviziya" }
+		48 = { "%d-ta Mekhanizirana Diviziya" }
+		49 = { "%d-ta Mekhanizirana Diviziya" }
+		50 = { "%d-ta Mekhanizirana Diviziya" }
+		51 = { "%d-va Mekhanizirana Diviziya" }
+		52 = { "%d-ra Mekhanizirana Diviziya" }
+	}
+}
+
+BUL_MEC_02 = 
+{
+	name = "Mechanised Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		has_government = communist
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_INF_01 BUL_INF_02 BUL_INF_03 BUL_MOT_01 BUL_MEC_01 BUL_MOT_02 }
+
+	fallback_name = "%d-ta Mekhanizirana Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Oktomvriĭska Revolyutsionna Mekhanizirana Diviziya" }
+		2 = { "%d-ra Parizhka Komuna Mekhanizirana Diviziya" }
+		3 = { "%d-ta Sŭvetska Bŭlgariya Mekhanizirana Diviziya" }
+		4 = { "%d-ta Khristo Botev Mekhanizirana Diviziya" }
+		5 = { "%d-ta Geòrgi Dimitròv Mekhanizirana Diviziya" }
+		6 = { "%d-ta Vŭlko Chervenkov Mekhanizirana Diviziya" }
+		7 = { "%d-ma Todor Angelov Mekhanizirana Diviziya" }
+		8 = { "%d-a Khristiyan Rakovski Mekhanizirana Diviziya" }
+		9 = { "%d-ta Nikola Vaptsarov Mekhanizirana Diviziya" }
+		10 = { "%d-ta Liliya Karastoyanova Mekhanizirana Diviziya" }
+		11 = { "%d-va Asen Draganov Mekhanizirana Diviziya" }
+		12 = { "%d-ra Vera Pavlova Mekhanizirana Diviziya" }
+		14 = { "%d-ta Ivan Kozarev Mekhanizirana Diviziya" }
+		15 = { "%d-ta Nikola Parapunov Mekhanizirana Diviziya" }
+		16 = { "%d-ta Todor Zhivkov Mekhanizirana Diviziya" }
+		17 = { "%d-ma Mekhanizirana Diviziya" }
+		21 = { "%d-va Mekhanizirana Diviziya" }
+		24 = { "%d-ta Mekhanizirana Diviziya" }
+		25 = { "%d-ta Mekhanizirana Diviziya" }
+		22 = { "%d-ra Mekhanizirana Diviziya" }
+		27 = { "%d-ma Mekhanizirana Diviziya" }
+		28 = { "%d-a Mekhanizirana Diviziya" }
+		29 = { "%d-ta Mekhanizirana Diviziya" }
+		13 = { "%d-ta Mekhanizirana Diviziya" }
+		18 = { "%d-a Mekhanizirana Diviziya" }
+		19 = { "%d-ta Mekhanizirana Diviziya" }
+		20 = { "%d-ta Mekhanizirana Diviziya" }
+		23 = { "%d-ta Mekhanizirana Diviziya" }
+		26 = { "%d-ta Mekhanizirana Diviziya" }
+		30 = { "%d-va Mekhanizirana Diviziya" }
+		31 = { "%d-ra Mekhanizirana Diviziya" }
+		32 = { "%d-ta Mekhanizirana Diviziya" }
+		33 = { "%d-ta Mekhanizirana Diviziya" }
+		34 = { "%d-ta Mekhanizirana Diviziya" }
+		35 = { "%d-ta Mekhanizirana Diviziya" }
+		36 = { "%d-ma Mekhanizirana Diviziya" }
+		37 = { "%d-a Mekhanizirana Diviziya" }
+		38 = { "%d-ta Mekhanizirana Diviziya" }
+		39 = { "%d-ta Mekhanizirana Diviziya" }
+		40 = { "%d-va Mekhanizirana Diviziya" }
+		41 = { "%d-ra Mekhanizirana Diviziya" }
+		42 = { "%d-ta Mekhanizirana Diviziya" }
+		43 = { "%d-ta Mekhanizirana Diviziya" }
+		44 = { "%d-ta Mekhanizirana Diviziya" }
+		45 = { "%d-ta Mekhanizirana Diviziya" }
+		46 = { "%d-ma Mekhanizirana Diviziya" }
+		47 = { "%d-a Mekhanizirana Diviziya" }
+		48 = { "%d-ta Mekhanizirana Diviziya" }
+		49 = { "%d-ta Mekhanizirana Diviziya" }
+		50 = { "%d-ta Mekhanizirana Diviziya" }
+		51 = { "%d-va Mekhanizirana Diviziya" }
+		52 = { "%d-ra Mekhanizirana Diviziya" }
+	}
+}
+
+BUL_GAR_01 = 
+{
+	name = "Reserve Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { BUL_GAR_01 }
+
+	fallback_name = "%d-ta Zapasna Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Zapasna Diviziya" }
+		2 = { "%d-ra Zapasna Diviziya" }
+		3 = { "%d-ta Zapasna Diviziya" }
+		4 = { "%d-ta Zapasna Diviziya" }
+		5 = { "%d-ta Zapasna Diviziya" }
+		6 = { "%d-ta Zapasna Diviziya" }
+		7 = { "%d-ma Zapasna Diviziya" }
+		8 = { "%d-a Zapasna Diviziya" }
+		9 = { "%d-ta Zapasna Diviziya" }
+		10 = { "%d-ta Zapasna Diviziya" }
+		11 = { "%d-va Zapasna Diviziya" }
+		12 = { "%d-ra Zapasna Diviziya" }
+		13 = { "%d-ta Zapasna Diviziya" }
+		14 = { "%d-ta Zapasna Diviziya" }
+		15 = { "%d-ta Zapasna Diviziya" }
+		16 = { "%d-ta Zapasna Diviziya" }
+		17 = { "%d-ma Zapasna Diviziya" }
+		18 = { "%d-a Zapasna Diviziya" }
+		19 = { "%d-ta Zapasna Diviziya" }
+		20 = { "%d-ta Zapasna Diviziya" }
+		21 = { "%d-va Zapasna Diviziya" }
+		22 = { "%d-ra Zapasna Diviziya" }
+		23 = { "%d-ta Zapasna Diviziya" }
+		24 = { "%d-ta Zapasna Diviziya" }
+		25 = { "%d-ta Zapasna Diviziya" }
+		26 = { "%d-ta Zapasna Diviziya" }
+		27 = { "%d-ma Zapasna Diviziya" }
+		28 = { "%d-a Zapasna Diviziya" }
+		29 = { "%d-ta Zapasna Diviziya" }
+		30 = { "%d-va Zapasna Diviziya" }
+		31 = { "%d-ra Zapasna Diviziya" }
+		32 = { "%d-ta Zapasna Diviziya" }
+		33 = { "%d-ta Zapasna Diviziya" }
+		34 = { "%d-ta Zapasna Diviziya" }
+		35 = { "%d-ta Zapasna Diviziya" }
+		36 = { "%d-ma Zapasna Diviziya" }
+		37 = { "%d-a Zapasna Diviziya" }
+		38 = { "%d-ta Zapasna Diviziya" }
+		39 = { "%d-ta Zapasna Diviziya" }
+		40 = { "%d-va Zapasna Diviziya" }
+		41 = { "%d-ra Zapasna Diviziya" }
+		42 = { "%d-ta Zapasna Diviziya" }
+		43 = { "%d-ta Zapasna Diviziya" }
+		44 = { "%d-ta Zapasna Diviziya" }
+		45 = { "%d-ta Zapasna Diviziya" }
+		46 = { "%d-ma Zapasna Diviziya" }
+		47 = { "%d-a Zapasna Diviziya" }
+		48 = { "%d-ta Zapasna Diviziya" }
+		49 = { "%d-ta Zapasna Diviziya" }
+		50 = { "%d-ta Zapasna Diviziya" }
+		51 = { "%d-va Zapasna Diviziya" }
+		52 = { "%d-ra Zapasna Diviziya" }
+	}
+}
+
+BUL_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		has_government = authoritarian
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_MAR_02 }
+
+	fallback_name = "%d-ta Morska Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Morskata na Negovo Velichestvo Diviziya" }
+		2 = { "%d-ra Morska Diviziya" }
+		3 = { "%d-ta Morska Diviziya" }
+		4 = { "%d-ta Morska Diviziya" }
+		5 = { "%d-ta Morska Diviziya" }
+		6 = { "%d-ta Morska Diviziya" }
+		7 = { "%d-ma Morska Diviziya" }
+		8 = { "%d-a Morska Diviziya" }
+		9 = { "%d-ta Morska Diviziya" }
+		10 = { "%d-ta Morska Diviziya" }
+		11 = { "%d-va Morska Diviziya" }
+		12 = { "%d-ra Morska Diviziya" }
+		13 = { "%d-ta Morska Diviziya" }
+		14 = { "%d-ta Morska Diviziya" }
+		15 = { "%d-ta Morska Diviziya" }
+		16 = { "%d-ta Morska Diviziya" }
+		17 = { "%d-ma Morska Diviziya" }
+		18 = { "%d-a Morska Diviziya" }
+		19 = { "%d-ta Morska Diviziya" }
+		20 = { "%d-ta Morska Diviziya" }
+		21 = { "%d-va Morska Diviziya" }
+		22 = { "%d-ra Morska Diviziya" }
+		23 = { "%d-ta Morska Diviziya" }
+		24 = { "%d-ta Morska Diviziya" }
+		25 = { "%d-ta Morska Diviziya" }
+		26 = { "%d-ta Morska Diviziya" }
+		27 = { "%d-ma Morska Diviziya" }
+		28 = { "%d-a Morska Diviziya" }
+		29 = { "%d-ta Morska Diviziya" }
+		30 = { "%d-va Morska Diviziya" }
+		31 = { "%d-ra Morska Diviziya" }
+		32 = { "%d-ta Morska Diviziya" }
+		33 = { "%d-ta Morska Diviziya" }
+		34 = { "%d-ta Morska Diviziya" }
+		35 = { "%d-ta Morska Diviziya" }
+		36 = { "%d-ma Morska Diviziya" }
+		37 = { "%d-a Morska Diviziya" }
+		38 = { "%d-ta Morska Diviziya" }
+		39 = { "%d-ta Morska Diviziya" }
+		40 = { "%d-va Morska Diviziya" }
+		41 = { "%d-ra Morska Diviziya" }
+		42 = { "%d-ta Morska Diviziya" }
+		43 = { "%d-ta Morska Diviziya" }
+		44 = { "%d-ta Morska Diviziya" }
+		45 = { "%d-ta Morska Diviziya" }
+		46 = { "%d-ma Morska Diviziya" }
+		47 = { "%d-a Morska Diviziya" }
+		48 = { "%d-ta Morska Diviziya" }
+		49 = { "%d-ta Morska Diviziya" }
+		50 = { "%d-ta Morska Diviziya" }
+		51 = { "%d-va Morska Diviziya" }
+		52 = { "%d-ra Morska Diviziya" }
+	}
+}
+
+BUL_MAR_02 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { 
+		NOT = {
+			has_government = authoritarian
+		}
+	}
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BUL_MAR_01 }
+
+	fallback_name = "%d-ta Morska Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Morska Diviziya" }
+		2 = { "%d-ra Morska Diviziya" }
+		3 = { "%d-ta Morska Diviziya" }
+		4 = { "%d-ta Morska Diviziya" }
+		5 = { "%d-ta Morska Diviziya" }
+		6 = { "%d-ta Morska Diviziya" }
+		7 = { "%d-ma Morska Diviziya" }
+		8 = { "%d-a Morska Diviziya" }
+		9 = { "%d-ta Morska Diviziya" }
+		10 = { "%d-ta Morska Diviziya" }
+		11 = { "%d-va Morska Diviziya" }
+		12 = { "%d-ra Morska Diviziya" }
+		13 = { "%d-ta Morska Diviziya" }
+		14 = { "%d-ta Morska Diviziya" }
+		15 = { "%d-ta Morska Diviziya" }
+		16 = { "%d-ta Morska Diviziya" }
+		17 = { "%d-ma Morska Diviziya" }
+		18 = { "%d-a Morska Diviziya" }
+		19 = { "%d-ta Morska Diviziya" }
+		20 = { "%d-ta Morska Diviziya" }
+		21 = { "%d-va Morska Diviziya" }
+		22 = { "%d-ra Morska Diviziya" }
+		23 = { "%d-ta Morska Diviziya" }
+		24 = { "%d-ta Morska Diviziya" }
+		25 = { "%d-ta Morska Diviziya" }
+		26 = { "%d-ta Morska Diviziya" }
+		27 = { "%d-ma Morska Diviziya" }
+		28 = { "%d-a Morska Diviziya" }
+		29 = { "%d-ta Morska Diviziya" }
+		30 = { "%d-va Morska Diviziya" }
+		31 = { "%d-ra Morska Diviziya" }
+		32 = { "%d-ta Morska Diviziya" }
+		33 = { "%d-ta Morska Diviziya" }
+		34 = { "%d-ta Morska Diviziya" }
+		35 = { "%d-ta Morska Diviziya" }
+		36 = { "%d-ma Morska Diviziya" }
+		37 = { "%d-a Morska Diviziya" }
+		38 = { "%d-ta Morska Diviziya" }
+		39 = { "%d-ta Morska Diviziya" }
+		40 = { "%d-va Morska Diviziya" }
+		41 = { "%d-ra Morska Diviziya" }
+		42 = { "%d-ta Morska Diviziya" }
+		43 = { "%d-ta Morska Diviziya" }
+		44 = { "%d-ta Morska Diviziya" }
+		45 = { "%d-ta Morska Diviziya" }
+		46 = { "%d-ma Morska Diviziya" }
+		47 = { "%d-a Morska Diviziya" }
+		48 = { "%d-ta Morska Diviziya" }
+		49 = { "%d-ta Morska Diviziya" }
+		50 = { "%d-ta Morska Diviziya" }
+		51 = { "%d-va Morska Diviziya" }
+		52 = { "%d-ra Morska Diviziya" }
+	}
+}
+
+BUL_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { BUL_MTN_01 } #Confirmed Independent Numbering
+
+	fallback_name = "%d-ta Planinska Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Planinska Diviziya" }
+		2 = { "%d-ra Planinska Diviziya" }
+		3 = { "%d-ta Planinska Diviziya" }
+		4 = { "%d-ta Planinska Diviziya" }
+		5 = { "%d-ta Planinska Diviziya" }
+		6 = { "%d-ta Planinska Diviziya" }
+		7 = { "%d-ma Planinska Diviziya" }
+		8 = { "%d-a Planinska Diviziya" }
+		9 = { "%d-ta Planinska Diviziya" }
+		10 = { "%d-ta Planinska Diviziya" }
+		11 = { "%d-va Planinska Diviziya" }
+		12 = { "%d-ra Planinska Diviziya" }
+		13 = { "%d-ta Planinska Diviziya" }
+		14 = { "%d-ta Planinska Diviziya" }
+		15 = { "%d-ta Planinska Diviziya" }
+		16 = { "%d-ta Planinska Diviziya" }
+		17 = { "%d-ma Planinska Diviziya" }
+		18 = { "%d-a Planinska Diviziya" }
+		19 = { "%d-ta Planinska Diviziya" }
+		20 = { "%d-ta Planinska Diviziya" }
+		21 = { "%d-va Planinska Diviziya" }
+		22 = { "%d-ra Planinska Diviziya" }
+		23 = { "%d-ta Planinska Diviziya" }
+		24 = { "%d-ta Planinska Diviziya" }
+		25 = { "%d-ta Planinska Diviziya" }
+		26 = { "%d-ta Planinska Diviziya" }
+		27 = { "%d-ma Planinska Diviziya" }
+		28 = { "%d-a Planinska Diviziya" }
+		29 = { "%d-ta Planinska Diviziya" }
+		30 = { "%d-va Planinska Diviziya" }
+		31 = { "%d-ra Planinska Diviziya" }
+		32 = { "%d-ta Planinska Diviziya" }
+		33 = { "%d-ta Planinska Diviziya" }
+		34 = { "%d-ta Planinska Diviziya" }
+		35 = { "%d-ta Planinska Diviziya" }
+		36 = { "%d-ma Planinska Diviziya" }
+		37 = { "%d-a Planinska Diviziya" }
+		38 = { "%d-ta Planinska Diviziya" }
+		39 = { "%d-ta Planinska Diviziya" }
+		40 = { "%d-va Planinska Diviziya" }
+		41 = { "%d-ra Planinska Diviziya" }
+		42 = { "%d-ta Planinska Diviziya" }
+		43 = { "%d-ta Planinska Diviziya" }
+		44 = { "%d-ta Planinska Diviziya" }
+		45 = { "%d-ta Planinska Diviziya" }
+		46 = { "%d-ma Planinska Diviziya" }
+		47 = { "%d-a Planinska Diviziya" }
+		48 = { "%d-ta Planinska Diviziya" }
+		49 = { "%d-ta Planinska Diviziya" }
+		50 = { "%d-ta Planinska Diviziya" }
+		51 = { "%d-va Planinska Diviziya" }
+		52 = { "%d-ra Planinska Diviziya" }
+	}
+}
+
+BUL_PAR_01 = 
+{
+	name = "Parachute Divisions"
+
+	for_countries = { BUL }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { BUL_PAR_01 }
+
+	fallback_name = "%d-ta Parashutna Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-va Parashutna Diviziya" }
+		2 = { "%d-ra Parashutna Diviziya" }
+		3 = { "%d-ta Parashutna Diviziya" }
+		4 = { "%d-ta Parashutna Diviziya" }
+		5 = { "%d-ta Parashutna Diviziya" }
+		6 = { "%d-ta Parashutna Diviziya" }
+		7 = { "%d-ma Parashutna Diviziya" }
+		8 = { "%d-a Parashutna Diviziya" }
+		9 = { "%d-ta Parashutna Diviziya" }
+		10 = { "%d-ta Parashutna Diviziya" }
+		11 = { "%d-va Parashutna Diviziya" }
+		12 = { "%d-ra Parashutna Diviziya" }
+		14 = { "%d-ta Parashutna Diviziya" }
+		15 = { "%d-ta Parashutna Diviziya" }
+		16 = { "%d-ta Parashutna Diviziya" }
+		17 = { "%d-ma Parashutna Diviziya" }
+		18 = { "%d-a Parashutna Diviziya" }
+		19 = { "%d-ta Parashutna Diviziya" }
+		20 = { "%d-ta Parashutna Diviziya" }
+		21 = { "%d-va Parashutna Diviziya" }
+		22 = { "%d-ra Parashutna Diviziya" }
+		23 = { "%d-ta Parashutna Diviziya" }
+		24 = { "%d-ta Parashutna Diviziya" }
+		25 = { "%d-ta Parashutna Diviziya" }
+		26 = { "%d-ta Parashutna Diviziya" }
+		27 = { "%d-ma Parashutna Diviziya" }
+		28 = { "%d-a Parashutna Diviziya" }
+		29 = { "%d-ta Parashutna Diviziya" }
+		30 = { "%d-va Parashutna Diviziya" }
+		31 = { "%d-ra Parashutna Diviziya" }
+		32 = { "%d-ta Parashutna Diviziya" }
+		33 = { "%d-ta Parashutna Diviziya" }
+		34 = { "%d-ta Parashutna Diviziya" }
+		35 = { "%d-ta Parashutna Diviziya" }
+		36 = { "%d-ma Parashutna Diviziya" }
+		37 = { "%d-a Parashutna Diviziya" }
+		38 = { "%d-ta Parashutna Diviziya" }
+		39 = { "%d-ta Parashutna Diviziya" }
+		40 = { "%d-va Parashutna Diviziya" }
+		41 = { "%d-ra Parashutna Diviziya" }
+		42 = { "%d-ta Parashutna Diviziya" }
+		43 = { "%d-ta Parashutna Diviziya" }
+		44 = { "%d-ta Parashutna Diviziya" }
+		45 = { "%d-ta Parashutna Diviziya" }
+		46 = { "%d-ma Parashutna Diviziya" }
+		47 = { "%d-a Parashutna Diviziya" }
+		48 = { "%d-ta Parashutna Diviziya" }
+		49 = { "%d-ta Parashutna Diviziya" }
+		50 = { "%d-ta Parashutna Diviziya" }
+		51 = { "%d-va Parashutna Diviziya" }
+		52 = { "%d-ra Parashutna Diviziya" }
+		13 = { "%d-ta Parashutna Diviziya" }
+	}
+}

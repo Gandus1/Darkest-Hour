@@ -1,0 +1,64 @@
+add_namespace = SPA_Post_War
+
+#########################################
+# End of SCW - Move Capital to Madrid
+#########################################
+country_event = {
+	id = SPA_Post_War.1
+	title = SPA_Post_War.1.t
+	desc = SPA_Post_War.1.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = SPA
+		NOT = {
+			has_war_with = SPR
+		}
+		owns_state = 41
+	}
+	
+	option = {
+		name = SPA_Post_War.1.a
+		
+		set_capital = {
+			state = 41
+			remember_old_capital = no
+		}
+	}
+}
+################################################################
+# End of SCW - Occupation of the Tangiers International Zone
+################################################################
+country_event = {
+	id = SPA_Post_War.2
+	title = SPA_Post_War.2.t
+	desc = SPA_Post_War.2.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = SPA
+		has_start_date < 1940.1.1
+		date > 1940.1.1
+		has_global_flag = fall_of_france
+		NOT = {
+			has_war = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	option = {
+		name = SPA_Post_War.2.a
+		
+		annex_country = {
+			target = TIZ
+			transfer_troops = no
+		}
+		1221 = {
+			set_demilitarized_zone = no
+		}
+	}
+}

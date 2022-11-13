@@ -1,0 +1,105 @@
+﻿###########################
+# Darkest Hour Election Events
+###########################
+add_namespace = DH_Election
+#########################################################################
+#  Generic Elections
+#########################################################################
+country_event = { 
+	id = DH_Election.1
+	title = DH_Election.1.t
+	desc = DH_Election.1.d
+	picture = GFX_Generic_Elections
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			NOT = { tag = SAF }
+			date > 1944.1.1
+		}
+		OR = {
+			NOT = { tag = AST }
+			date > 1947.1.1
+		}
+		OR = {
+			NOT = { tag = NZL }
+			date > 1944.1.1
+		}
+		OR = {
+			NOT = { tag = BEL }
+			date > 1947.1.1
+		}
+		OR = {
+			NOT = { tag = LUX }
+			date > 1938.1.1
+		}
+		OR = {
+			NOT = { tag = HOL }
+			date > 1938.1.1
+		}
+		OR = {
+			NOT = { tag = CAN }
+			date > 1946.1.1
+		}
+		OR = {
+			NOT = { original_tag = GER }
+			date > 1945.1.1
+		}
+		OR = {
+			NOT = { tag = SWI }
+			NOT = { has_government = democratic }
+		}
+		OR = {
+			NOT = { tag = RHD }
+			NOT = { democratic_largest_ideology = yes }
+			date > 1933.12.31
+		}
+	}
+	# Fascist
+	option = {
+		name = DH_Election.1.fascist
+		trigger = { 			
+			fascist_largest_ideology = yes
+		}
+		if = {
+			limit = {
+				original_tag = DNZ
+				NOT = { has_government = fascist }
+			}
+			news_event = DNZ_Politics.2
+			add_ideas = legalistic_restrictions
+		}
+		set_politics = { ruling_party = fascist elections_allowed = yes }
+	}	
+	# Authoritarian
+	option = {
+		name = DH_Election.1.authoritarian
+		trigger = { 			
+			authoritarian_largest_ideology = yes
+		}
+		set_politics = { ruling_party = authoritarian elections_allowed = yes }
+	}
+	# Democratic
+	option = {
+		name = DH_Election.1.democratic
+		trigger = { 			
+			democratic_largest_ideology = yes
+		}
+		set_politics = { ruling_party = democratic elections_allowed = yes }
+	}	
+	# Socialist
+	option = {
+		name = DH_Election.1.socialist
+		trigger = { 			
+			socialist_largest_ideology = yes
+		}
+		set_politics = { ruling_party = socialist elections_allowed = yes }
+	}
+	# Communist
+	option = {
+		name = DH_Election.1.communist
+		trigger = { 			
+			communist_largest_ideology = yes
+		}
+		set_politics = { ruling_party = communist elections_allowed = yes }
+	}
+}

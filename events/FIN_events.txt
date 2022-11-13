@@ -1,0 +1,373 @@
+﻿###########################
+# Darkest Hour Events : Finland
+###########################
+add_namespace = FIN_Politics
+add_namespace = FIN_Winter_War
+#########################################################################
+# 1933 Parliamentary Elections
+#########################################################################
+news_event = {
+	id = FIN_Politics.2
+	title = FIN_Politics.2.t
+	desc = FIN_Politics.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	trigger = {
+		original_tag = FIN
+		date > 1933.7.1
+		has_start_date < 1936.01.01
+	}
+	# The Opposition Unites In A Coalition!
+	option = {
+		name = FIN_Politics.2.A
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = FIN_1933_election_reds
+		news_event = {
+			id = FIN_Politics.3
+			days = 2
+		}
+		mark_focus_tree_layout_dirty = yes
+	}
+	# The Kivimäki Government Carries On
+	option = {
+		name = FIN_Politics.2.B
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = FIN_1933_election_kivimaki
+		news_event = {
+			id = FIN_Politics.4
+			days = 2
+		}
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+#########################################################################
+# The First Rest-Agrarian Coalition
+#########################################################################
+news_event = {
+	id = FIN_Politics.3
+	title = FIN_Politics.3.t
+	desc = FIN_Politics.3.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Politics.3.A
+		swap_ideas = {
+			add_idea = FIN_lingering_depression_2
+			remove_idea = FIN_lingering_depression_1
+		}
+	}
+}
+#########################################################################
+# The Kivimäki Government Carries On
+#########################################################################
+news_event = {
+	id = FIN_Politics.4
+	title = FIN_Politics.4.t
+	desc = FIN_Politics.4.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We need to finish the job we started
+	option = {
+		name = FIN_Politics.4.A
+	}
+}
+###########################
+# Winter War
+###########################
+#Soviet Demands Arrive!
+country_event = {
+	id = FIN_Winter_War.1
+	title = FIN_Winter_War.1.t
+	desc = FIN_Winter_War.1.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We Accept
+	option = {
+		name = FIN_Winter_War.1.A
+		ai_chance = { factor = 0 }
+		SOV = { country_event = { id = FIN_Winter_War.2 days = 2 }}
+		country_event = {
+			id = FIN_Winter_War.2
+			days = 2
+		}
+	}
+	#We Will not Surrender!
+	option = {
+		name = FIN_Winter_War.1.B
+		ai_chance = { factor = 100 }
+		set_country_flag = FIN_Soviet_Keraila_Demands
+		SOV = { country_event = { id = FIN_Winter_War.4 days = 2 }}
+	}
+}
+#Treaty of Leningrad
+country_event = {
+	id = FIN_Winter_War.2
+	title = FIN_Winter_War.2.t
+	desc = FIN_Winter_War.2.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.2.A
+		SOV = {
+			transfer_state = 1130
+			transfer_state = 1132
+			transfer_state = 1129
+			transfer_state = 1138
+		}
+		FIN = {
+			transfer_state = 1231
+		}
+		set_global_flag = FIN_Leningrad_Treaty
+	}
+}
+#Treaty of Leningrad Signed
+news_event = {
+	id = FIN_Winter_War.3
+	title = FIN_Winter_War.3.t
+	desc = FIN_Winter_War.3.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	trigger = {
+		has_global_flag = FIN_Leningrad_Treaty
+	}
+	option = {
+		name = FIN_Winter_War.3.A
+	}
+}
+#Finnish Delegation Arrives
+country_event = {
+	id = FIN_Winter_War.4
+	title = FIN_Winter_War.4.t
+	desc = FIN_Winter_War.4.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.4.A
+		hidden_effect = {
+			country_event = {
+				id = FIN_Winter_War.5
+				days = 2
+			}
+		}
+	}
+}
+#Negotiations Break Down
+country_event = {
+	id = FIN_Winter_War.5
+	title = FIN_Winter_War.5.t
+	desc = FIN_Winter_War.5.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.5.A
+		add_political_power = -50
+		hidden_effect = {
+			country_event = {
+				id = FIN_Winter_War.6
+				days = 2
+			}
+			FIN = { country_event = { id = FIN_Winter_War.66 days = 2 }}
+		}
+	}
+}
+#Shelling of Mainila SOV
+country_event = {
+	id = FIN_Winter_War.6
+	desc = FIN_Winter_War.6.d
+	title = FIN_Winter_War.6.t
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.6.A
+	}
+}
+#Shelling of Mainila FIN
+country_event = {
+	id = FIN_Winter_War.66
+	desc = FIN_Winter_War.66.d
+	title = FIN_Winter_War.66.t
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.66.A
+		country_event = { id = FIN_Winter_War.7 days = 1 }
+	}
+}
+#Soviets Withdraw from Non-Aggression Pact
+country_event = {
+	id = FIN_Winter_War.7
+	title = FIN_Winter_War.7.t
+	desc = FIN_Winter_War.7.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.7.A
+		add_war_support = 0.15
+		hidden_effect = {
+			country_event = {
+				id = FIN_Winter_War.8
+				hours = 6
+			}
+		}
+		SOV = {
+			set_country_flag = SOV_Winter_War
+			declare_war_on = {
+				target = FIN
+				type = take_claimed_state
+			}
+		}
+	}
+}
+#Bombers over Helsinki!
+country_event = {
+	id = FIN_Winter_War.8
+	title = FIN_Winter_War.8.t
+	desc = FIN_Winter_War.8.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.8.A
+		111 = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+		}
+		swap_ideas = {
+			add_idea = FIN_sisu_2
+			remove_idea = FIN_sisu_1
+		}
+		set_global_flag = FIN_USSR_Expelled_From_League
+		hidden_effect = {
+			news_event = { id = FIN_Winter_War.10 hours = 6 }
+		}
+	}
+}
+#Finland at War!
+country_event = {
+	id = FIN_Winter_War.9
+	title = FIN_Winter_War.9.t
+	desc = FIN_Winter_War.9.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Ryti’s war government will lead us to victory!
+	option = {
+		name = FIN_Winter_War.9.A
+	}
+}
+#The League of Nations Expels USSR
+news_event = {
+	id = FIN_Winter_War.10
+	title = FIN_Winter_War.10.t
+	desc = FIN_Winter_War.10.d
+	picture = GFX_news_SOV_League_of_Nations
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.10.A
+	}
+}
+#Finnish Democratic Republic
+country_event = {
+	id = FIN_Winter_War.11
+	title = FIN_Winter_War.11.t
+	desc = FIN_Winter_War.11.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = FIN_Winter_War.11.A
+		white_peace = FIN
+		set_autonomy = {
+			target = FIN
+			autonomy_state = AUTONOMY_SSR
+		}
+		transfer_state = 1130
+		transfer_state = 1132
+		transfer_state = 1129
+		transfer_state = 1138
+		hidden_effect = {
+			FIN = {
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Otto Wille Kuusinen"
+					desc = "Otto_Wille_Kuusinen_desc"
+					picture = GFX_P_C_Otto_Wille_Kuusinen
+					ideology = stalinism
+					traits = { POSITION_Chairman SUBIDEOLOGY_Stalinism }
+				}
+				add_ideas = {
+					FIN_Mauritz_Rosenberg_HoG
+					FIN_Mauritz_Rosenberg_AM
+					FIN_Otto_Wille_Kuusinen_FM
+					FIN_Tuure_Lehen_MoS
+					FIN_Paavo_Prokkonen_M
+					FIN_Armas_Aikia_M
+				}
+				#load_focus_tree = generic_focus
+				drop_cosmetic_tag = yes
+				set_cosmetic_tag = FIN_SOVREP
+				transfer_state = 1474
+				transfer_state = 1231
+				clr_country_flag = FIN_Soviet_Keraila_Demands
+			}
+		}
+	}
+}
+# End of War
+country_event = {
+	id = FIN_Winter_War.12
+	title = FIN_Winter_War.12.t
+	desc = FIN_Winter_War.12.d
+	picture = GFX_report_event_soviet_tanks_snow
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Bitter Peace
+	option = {
+		name = FIN_Winter_War.12.A
+		trigger = {
+			controls_state = 146
+			controls_state = 1130
+		}
+		white_peace = FIN
+		transfer_state = 146
+		transfer_state = 147
+		transfer_state = 1129
+		transfer_state = 1132
+		transfer_state = 1130
+		transfer_state = 1138
+		FIN = {
+			set_country_flag = FIN_Lost_Winter_War
+			clr_country_flag = FIN_Soviet_Keraila_Demands
+		}
+	}
+	# A Humiliating Loss
+	option = {
+		name = FIN_Winter_War.12.B
+		trigger = {
+			NOT = {
+				controls_state = 146
+				controls_state = 1130
+			}
+		}
+		white_peace = FIN
+		FIN = {
+			clr_country_flag = FIN_Soviet_Keraila_Demands
+		}
+	}
+}

@@ -1,0 +1,996 @@
+﻿#########################################
+# Darkest Hour Events : Spain Civil War
+#########################################
+add_namespace = SPA_Politics
+add_namespace = SPR_Politics
+add_namespace = Spain_CW
+#########################################################################
+#  Helena dió luz a una Hermosa Hija, AKA all Hell breaks loose
+#########################################################################
+country_event = {
+	id = Spain_CW.1
+	title = Spain_CW.1.t
+	desc = Spain_CW.1.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			SPR = {
+				delete_unit_template_and_units = {
+					division_template = "División de Infantería"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Brigada de Infantería"
+				}
+				delete_unit_template_and_units = {
+					division_template = "División de Caballería"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Brigada Montaña"
+				}
+				add_ideas = {
+					SPR_Armed_Masses_1
+					SPR_Popular_Front
+				}
+				remove_ideas = {
+					SPR_collapsing_society
+					SPR_economic_compromise
+					SPR_may_1st_demonstrations
+					SPR_revolutionary_strikes
+				}
+				# load_oob = "SPR_Civil_War"
+				# load_focus_tree = SPR_CW
+				set_global_flag = SCW_started
+				set_country_flag = Francisco_Franco_Bahamonde_unavailable
+				set_country_flag = Tomas_Garciano_Goni_unavailable
+				set_country_flag = Jose_Maria_Quinones_de_Leon_unavailable
+				set_country_flag = Jose_Martinez_de_Velasco_unavailable
+				set_country_flag = Manuel_Jimenez_Fernandez_unavailable
+				set_country_flag = Emilio_de_Palacios_y_Fau_unavailable
+				set_country_flag = Luis_Lucia_Lucia_unavailable
+				set_country_flag = Jose_CalvoSotelo_unavailable
+				set_country_flag = Jose_Maria_GilRobles_Quinones_unavailable
+				set_country_flag = Juan_March_Ordinas_unavailable
+				set_country_flag = Luis_Orgaz_Yoldi_unavailable
+				set_country_flag = Joaquin_Fanjul_Goni_unavailable
+				set_country_flag = Antonio_Aranda_Mata_unavailable
+				set_country_flag = Francisco_Nunez_de_Olaneta_unavailable
+				set_country_flag = Emilio_Herrera_unavailable
+				set_country_flag = Diego_Hidalgo_Duran_unavailable
+			}
+			news_event = { id = Spain_CW.0 days = 1 }
+		}
+		hidden_effect = {
+			#WHY DID ALGERIAN MAKE SO MANY DIFFERENT SHIP VARIANTS
+			SPR = {
+				# And then Man the Guns broke the Navy. Beautiful
+				destroy_ships = {
+					type = DD_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = CL_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = CA_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = BC_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = BB_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = CVE_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = CVL_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = CV_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = SS_equipment
+					count = all
+				}
+				destroy_ships = {
+					type = SSN_equipment
+					count = all
+				}
+			}
+		}
+		hidden_effect = {
+			SPA = {
+				set_political_party = {
+					ideology = fascist
+					popularity = 17
+				}
+				set_political_party = {
+					ideology = authoritarian
+					popularity = 63
+				}
+				set_political_party = {
+					ideology = democratic
+					popularity = 20
+				}
+				set_political_party = {
+					ideology = socialist
+					popularity = 0
+				}
+				set_political_party = {
+					ideology = communist
+					popularity = 0
+				}
+				set_politics = {
+					ruling_party = authoritarian
+					elections_allowed = no
+				}
+				every_state = {
+					limit = {
+						is_core_of = SPR
+					}
+					add_core_of = SPA
+				}
+				add_ideas = {
+					SPA_civilwar_army_1
+					SPA_civilwar_church
+					SPA_military_power_struggles_1
+					taxation_level_3
+					social_spending_level_3
+					research_spending_level_3
+					army_spending_level_5
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment_1
+					amount = 30
+					producer = SPA
+				}
+				add_equipment_to_stockpile = {
+					type = Motorized_equipment_1916
+					amount = 500
+					producer = SPA
+				}
+				inherit_technology = SPR
+				give_guarantee = AND
+				transfer_state = 171				#Galicia
+				transfer_state = 174				#Leon
+				transfer_state = 176				#Castille
+				transfer_state = 178				#Canary Islands
+				transfer_state = 950				#Ifni
+				transfer_state = 951				#Tarfaya
+				transfer_state = 699				#Saguia el-Hamra
+				transfer_state = 952				#Tifariti
+				transfer_state = 953				#Guerguerat
+				transfer_state = 954				#Dakhla
+				transfer_state = 166				#Aragon
+				transfer_state = 290				#Rif
+				transfer_state = 949				#Ceuta
+				transfer_state = 948				#Melilla
+				transfer_state = 1180				#Rio Muni
+				transfer_state = 297				#Fernando Po
+				transfer_state = 177				#Balearic Islands
+				transfer_state = 172				#Navarra
+				set_province_controller = 4195
+				set_province_controller = 7183
+				set_province_controller = 875
+				set_province_controller = 11756
+				set_province_controller = 9839
+				set_province_controller = 9877
+				set_province_controller = 9939
+				set_province_controller = 3735
+				set_province_controller = 14875
+				set_province_controller = 13979
+				country_event = { id = SPA_Civil_War.1 days = 30 }
+			}
+			SPR = {
+				set_province_controller = 9845
+				set_province_controller = 939
+				set_province_controller = 3845
+				set_province_controller = 871
+				set_province_controller = 798
+				set_province_controller = 3909
+				set_province_controller = 3954
+				set_province_controller = 790
+				set_province_controller = 11793
+				set_province_controller = 11819
+				set_province_controller = 899
+				set_province_controller = 915
+			}
+			if = {
+				limit = {
+					GER = {
+						is_ai = yes
+					}
+				}
+				GER = {
+					add_ideas = interventionism
+				}
+			}
+			if = {
+				limit = {
+					ITA = {
+						is_ai = yes
+					}
+				}
+				ITA = {
+					add_ideas = interventionism
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						is_ai = yes
+					}
+				}
+				SOV = {
+					add_ideas = interventionism
+				}
+			}
+		}
+	}
+	# Support Nationalists
+	option = {
+		name = Spain_CW.1.A
+		trigger = {
+			is_ai = no
+		}
+		hidden_effect = {
+			SPR = {
+				set_country_flag = become_nationalists
+			}
+			SPR = {
+				country_event = {
+					id = Spain_CW.3
+					days = 1
+				}
+			}
+			SPA = {
+				change_tag_from = SPR
+			}
+		}
+		custom_effect_tooltip = nationalists_chosen
+		SPA = {
+			country_event = {
+				id = Spain_CW.2
+				days = 1
+			}
+		}
+	}
+	# Support Republicans
+	option = {
+		name = Spain_CW.1.B
+		hidden_effect = {
+			SPR = {
+				set_country_flag = become_republican
+			}
+			SPA = {
+				country_event = {
+					id = Spain_CW.2
+					days = 1
+				}
+			}
+		}
+		custom_effect_tooltip = republicans_chosen
+		SPR = {
+			country_event = {
+				id = Spain_CW.3
+				days = 1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Spanish Military Revolts - Spain Plunged into Civil War
+#########################################################################
+news_event = {
+	id = Spain_CW.0
+	title = Spain_CW.0.t
+	desc = Spain_CW.0.d
+	picture = GFX_news_SPR_Animated_Spanish_Civil_War
+	is_triggered_only = yes
+	major = yes
+	#
+	option = {
+		name = Spain_CW.0.A
+		
+	}
+}
+
+#########################################################################
+#  The Pawns Start Moving (Nat.)
+#########################################################################
+country_event = {
+	id = Spain_CW.2
+	title = Spain_CW.2.t
+	desc = Spain_CW.2.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			SPA = {
+				load_oob = SPA_Civil_War
+			}
+			declare_war_on = {
+				target = SPR
+				type = annex_everything
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 50
+			}
+		}
+	}
+	# Something about destroying the corrupt government or something
+	option = {
+		name = Spain_CW.2.A
+		hidden_effect = {
+			country_event = {
+				id = Spain_CW.4
+				days = 1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  The Pawns Start Moving (Rep.)
+#########################################################################
+country_event = {
+	id = Spain_CW.3
+	title = Spain_CW.3.t
+	desc = Spain_CW.3.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			SPR = {
+				load_oob = SPR_Civil_War
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 100
+			}
+		}
+	}
+	# Something about destroying the right-wing traitors or something
+	option = {
+		name = Spain_CW.3.A
+		hidden_effect = {
+			country_event = {
+				id = Spain_CW.5
+				days = 1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  The Coup Fails
+#########################################################################
+country_event = {
+	id = Spain_CW.4
+	title = Spain_CW.4.t
+	desc = Spain_CW.4.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Bueno, ahora a la guerra
+	option = {
+		name = Spain_CW.4.A
+		add_war_support = 0.05
+		add_ideas = SPA_la_guerra_civil
+		hidden_effect = {
+			country_event = {
+				id = SPA_Politics.1
+				days = 1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  The Republic Survives
+#########################################################################
+country_event = {
+	id = Spain_CW.5
+	title = Spain_CW.5.t
+	desc = Spain_CW.5.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Ahora a defender a Madrid!
+	option = {
+		name = Spain_CW.5.A
+		add_war_support = 0.05
+		add_ideas = SPA_la_guerra_civil
+		hidden_effect = {
+			country_event = {
+				id = SPR_Politics.1
+				days = 1
+			}
+		}
+	}
+}
+
+########################################################################
+# Stop trying to break the game (one side puppets the other)
+########################################################################
+country_event = {
+	id = Spain_CW.6
+	title = Spain_CW.6.t
+	desc = Spain_CW.6.d
+	picture = GFX_1936_Elections
+	is_triggered_only = yes
+	trigger = {
+		AND = {
+			OR = {
+				SPA = {
+					is_puppet_of = SPR
+				}
+				SPR = {
+					is_puppet_of = SPA
+				}
+			}
+			OR = {
+				NOT = {
+					SPA = {
+						has_war_with = SPR
+					}
+				}
+				NOT = {
+					SPR = {
+						has_war_with = SPA
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				SPA = {
+					is_puppet_of = SPR
+				}
+			}
+			SPR = {
+				annex_country = {
+					target = SPA
+				}
+			}
+		}
+		if = {
+			limit = {
+				SPR = {
+					is_puppet_of = SPA
+				}
+			}
+			SPA = {
+				annex_country = {
+					target = SPR
+				}
+			}
+		}
+	}
+	option = {
+		name = Spain_CW.6.A
+	}
+}
+
+########################################################################
+# End of the Civil War (Nat.)
+########################################################################
+country_event = {
+	id = Spain_CW.7
+	title = Spain_CW.7.t
+	desc = Spain_CW.7.d
+	picture = GFX_1936_Elections
+	fire_only_once = yes
+	trigger = {
+		tag = SPA
+		SPR = {
+			exists = no
+		}
+		has_government = authoritarian
+		NOT = {
+			SPA = {
+				has_war_with = SPR
+			}
+		}
+	}
+	option = {
+		name = Spain_CW.7.A
+		hidden_effect = {
+			#remove_ideas = SPR_civil_war
+			remove_ideas = SPA_la_guerra_civil
+			remove_ideas = SPA_civilwar_army_1
+			remove_ideas = SPA_civilwar_church
+			remove_ideas = SPA_military_power_struggles_1
+			remove_ideas = SPA_civilwar_army_2
+			remove_ideas = SPA_civilwar_army_3
+			remove_ideas = SPA_african_army_1
+			remove_ideas = SPA_african_army_2
+			remove_ideas = SPA_african_army_3
+			remove_ideas = SPA_african_army_4
+			#remove_ideas = SPA_political_militas_1
+			#remove_ideas = SPA_political_militas_2
+			remove_ideas = SPA_military_power_struggles_1
+			remove_ideas = SPA_military_power_struggles_2
+			# load_focus_tree = SPA_postwar
+			add_ideas = {
+				SPA_civil_war_scars_1
+				SPA_disorganized_army_1
+			}
+		}
+	}
+}
+
+########################################################################
+# End of the Civil War (Rep.)
+########################################################################
+country_event = {
+	id = Spain_CW.8
+	title = Spain_CW.8.t
+	desc = Spain_CW.8.d
+	picture = GFX_1936_Elections
+	fire_only_once = yes
+	trigger = {
+		SPA = {
+			exists = no
+		}
+		tag = SPR
+		has_government = authoritarian
+		NOT = {
+			SPA = {
+				has_war_with = SPR
+			}
+		}
+	}
+	option = {
+		name = Spain_CW.8.A
+		hidden_effect = {
+			#remove_ideas = SPR_civil_war
+			remove_ideas = SPR_Armed_Masses_1
+			remove_ideas = SPR_Armed_Masses_2
+			remove_ideas = SPR_Armed_Masses_3
+			remove_ideas = SPR_Armed_Masses_4
+			remove_ideas = SPR_Armed_Masses_5
+			remove_ideas = SPR_Popular_Front
+			#remove_ideas = SPR_No_parasan
+			remove_ideas = SPR_Empowered_Union_1
+			remove_ideas = SPR_Empowered_Union_2
+			remove_ideas = SPR_CNT_FAI
+			remove_ideas = SPR_Mobilized_Unions
+			# load_focus_tree = SPR_postwar
+			add_ideas = {
+				SPA_civil_war_scars_1
+				SPR_peoples_militia_1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Pamplona is Secured
+#########################################################################
+country_event = {
+	id = SPA_Politics.1
+	title = SPA_Politics.1.t
+	desc = SPA_Politics.1.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Our New Headquarters!
+	option = {
+		name = SPA_Politics.1.A
+		add_war_support = 0.05
+		hidden_effect = {
+			country_event = {
+				id = SPA_Politics.2
+				days = 3
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Right Wing Militias
+#########################################################################
+country_event = {
+	id = SPA_Politics.2
+	title = SPA_Politics.2.t
+	desc = SPA_Politics.2.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The traditionalists arm themselves!
+	option = {
+		name = SPA_Politics.2.A
+		add_war_support = 0.05
+		hidden_effect = {
+			country_event = {
+				id = SPA_Politics.3
+				days = 10
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Quiepo de Llano's Radio
+#########################################################################
+country_event = {
+	id = SPA_Politics.3
+	title = SPA_Politics.3.t
+	desc = SPA_Politics.3.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#¡La inspiración anti-republicana!
+	option = {
+		name = SPA_Politics.3.A
+		add_war_support = 0.05
+		add_political_power = 50
+		hidden_effect = {
+			country_event = {
+				id = SPA_Politics.4
+				days = 16
+			}
+		}
+	}
+}
+
+#########################################################################
+#  The Death of Federico the Artist
+#########################################################################
+country_event = {
+	id = SPA_Politics.4
+	title = SPA_Politics.4.t
+	desc = SPA_Politics.4.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The Right has been set loose, like a rabid dog
+	option = {
+		name = SPA_Politics.4.A
+		add_stability = -0.05
+	}
+}
+
+#########################################################################
+#  The Slaughter of Badajoz
+#########################################################################
+country_event = {
+	id = SPA_Politics.5
+	title = SPA_Politics.5.t
+	desc = SPA_Politics.5.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SPA
+		controls_state = 170
+		has_war_with = SPR
+	}
+	#War Comes with Atrocities
+	option = {
+		name = SPA_Politics.5.A
+		add_war_support = -0.05
+	}
+}
+
+#########################################################################
+#  The Bombing of Guernica
+#########################################################################
+country_event = {
+	id = SPA_Politics.6
+	title = SPA_Politics.6.t
+	desc = SPA_Politics.6.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SPA
+		controls_state = 776
+		has_war_with = SPR
+		SPA = {
+			has_opinion_modifier = SPA_condor
+		}
+	}
+	#The Basques revolted, they deserve nothing less
+	option = {
+		name = SPA_Politics.6.A
+		add_stability = -0.05
+	}
+}
+
+#########################################################################
+#  Mola Final Flight
+#########################################################################
+country_event = {
+	id = SPA_Politics.7
+	title = SPA_Politics.7.t
+	desc = SPA_Politics.7.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SPA
+		date > 1937.6.3
+		has_war_with = SPR
+		has_country_leader = {
+			ruling_only = yes
+			name = "Emilio Mola y Vidal"
+		}
+	}
+	#May he rest in peace
+	option = {
+		name = SPA_Politics.7.A
+		trigger = {
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Emilio Mola y Vidal"
+				}
+			}
+		}
+		add_political_power = -10
+	}
+	#Franco will take over
+	option = {
+		name = SPA_Politics.7.B
+		trigger = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Emilio Mola y Vidal"
+			}
+		}
+		create_country_leader = {
+			name = "Francisco Franco Bahamonde"
+			desc = ""
+			picture = GFX_P_A_Francesco_Franco
+			ideology = authoritarian_democracy
+			traits = {
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Franco and his Legion Arrive
+#########################################################################
+country_event = {
+	id = SPA_Politics.8
+	title = SPA_Politics.8.t
+	desc = SPA_Politics.8.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SPA
+		divisions_in_state = {
+			size > 7
+			type = infantry
+			state = 169
+		}
+	}
+	#The man himself has come
+	option = {
+		name = SPA_Politics.8.A
+		add_war_support = 0.05
+	}
+}
+
+#########################################################################
+#  Franco Saves Toledo
+#########################################################################
+country_event = {
+	id = SPA_Politics.9
+	title = SPA_Politics.9.t
+	desc = SPA_Politics.9.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	fire_only_once = yes
+	trigger = {
+		tag = SPA
+		NOT = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Francisco Franco Bahamonde"
+			}
+		}
+		divisions_in_state = {
+			size > 4
+			type = infantry
+			state = 41
+		}
+	}
+	#The man himself has come
+	option = {
+		name = SPA_Politics.9.A
+		create_country_leader = {
+			name = "Francisco Franco Bahamonde"
+			desc = ""
+			picture = GFX_P_A_Francesco_Franco
+			ideology = authoritarian_democracy
+			traits = {
+			}
+		}
+		add_ideas = SPA_Francisco_Franco_Bahamonde_HoG
+	}
+}
+
+#########################################################################
+#  José Giral becomes the new Prime Minister
+#########################################################################
+country_event = {
+	id = SPR_Politics.1
+	title = SPR_Politics.1.t
+	desc = SPR_Politics.1.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#A new leadership for the war
+	option = {
+		name = SPR_Politics.1.A
+		add_ideas = SPR_D_Jose_Giral_Pereira
+		hidden_effect = {
+			country_event = {
+				id = SPR_Politics.2
+				days = 1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Trade Unions Militarize
+#########################################################################
+country_event = {
+	id = SPR_Politics.2
+	title = SPR_Politics.2.t
+	desc = SPR_Politics.2.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The workers join the fight
+	option = {
+		name = SPR_Politics.2.A
+		add_ideas = SPR_Mobilized_Unions
+		hidden_effect = {
+			country_event = {
+				id = SPR_Politics.3
+				days = 2
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Local Socialist Committees
+#########################################################################
+country_event = {
+	id = SPR_Politics.3
+	title = SPR_Politics.3.t
+	desc = SPR_Politics.3.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#From a coup to a revolution
+	option = {
+		name = SPR_Politics.3.A
+		add_political_power = 100
+		add_stability = -0.05
+		hidden_effect = {
+			country_event = {
+				id = SPR_Politics.4
+				days = 1
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Catalonia Erupts Once Again
+#########################################################################
+country_event = {
+	id = SPR_Politics.4
+	title = SPR_Politics.4.t
+	desc = SPR_Politics.4.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The city is in chaos
+	option = {
+		name = SPR_Politics.4.A
+		swap_ideas = {
+			remove_idea = SPR_catalonia_turmoil_1
+			add_idea = SPR_catalonia_turmoil_2
+		}
+		hidden_effect = {
+			country_event = {
+				id = SPR_Politics.5
+				days = 7
+			}
+		}
+	}
+}
+
+#########################################################################
+#  The CNT-FAI Dominates Catalonia
+#########################################################################
+country_event = {
+	id = SPR_Politics.5
+	title = SPR_Politics.5.t
+	desc = SPR_Politics.5.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The revolution has unleashed too many radicals
+	option = {
+		name = SPR_Politics.5.A
+		swap_ideas = {
+			remove_idea = SPR_catalonia_turmoil_2
+			add_idea = SPR_catalonia_turmoil_3
+		}
+		hidden_effect = {
+			country_event = {
+				id = SPR_Politics.6
+				days = 4
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Collectivization of Catalonia
+#########################################################################
+country_event = {
+	id = SPR_Politics.6
+	title = SPR_Politics.6.t
+	desc = SPR_Politics.6.d
+	picture = GFX_Spanish_Civil_War_Metropolitan
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Mass collectivization...
+	option = {
+		name = SPR_Politics.6.A
+		swap_ideas = {
+			remove_idea = SPR_catalonia_turmoil_3
+			add_idea = SPR_catalonia_turmoil_4
+		}
+		hidden_effect = {
+			news_event = {
+				id = SPR_Politics.7
+				days = 30
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Francisco Caballero assumes Power
+#########################################################################
+# country_event = {
+# id = SPR_Politics.7
+# title = SPR_Politics.7.t
+# desc = SPR_Politics.7.d
+# picture = GFX_Spanish_Civil_War_Metropolitan
+# is_triggered_only = yes
+# fire_only_once = yes
+#We needed a more radical leader
+# option  = {
+# name = SPR_Politics.7.A
+# Okay someone needs to sort out whether it's Jose Giral, Francisco Caballero as a social conservative, or socialist
+# But lol let's be real here, with all these debuffs, Republican Spain is probably dead
+# }
+# }

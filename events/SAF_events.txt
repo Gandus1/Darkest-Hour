@@ -1,0 +1,329 @@
+﻿###########################
+# Darkest Hour Events : South Africa
+###########################
+add_namespace = SAF_Politics
+add_namespace = SAF_Election_1933
+add_namespace = SAF_Election_1938
+add_namespace = SAF_Election_1943
+#########################################################################
+# South African General Election, 1933
+#########################################################################
+country_event = {
+	id = SAF_Election_1933.1
+	title = SAF_Election_1933.1.t
+	desc = SAF_Election_1933.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = SAF
+		date > 1933.1.1
+		date < 1934.1.1
+	}
+	immediate = {
+		hidden_effect = {
+			complete_national_focus = SAF_1933_General_Elections
+		}
+	}
+	# J. B. M. Hertzog - National Party (Conservative)
+	option = {
+		name = SAF_Election_1933.1.A
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = SAF_National_Party_Victory
+		set_party_name = { ideology = democratic long_name = "National Party" name = "NP" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "J. B. M. Hertzog"
+				desc = "JBM_Hertzog_desc"
+				picture = GFX_P_D_JBM_Hertzog
+				ideology = social_conservatism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Conservatism
+					L_Old_General
+				}
+			}
+			set_politics = { ruling_party = democratic elections_allowed = yes election_frequency = 60 }
+		}
+	}
+	# Jan Smuts - South African Party (Liberal conservatism)
+	option = {
+		name = SAF_Election_1933.1.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = SAF_South_African_Party_Victory
+		set_party_name = { ideology = democratic long_name = "South African Party" name = "SAP" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Jan Smuts"
+				desc = "Jan_Smuts_desc"
+				picture = GFX_P_D_Jan_Smuts
+				ideology = social_conservatism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Conservatism
+					L_Backroom_Backstabber
+				}
+			}
+			set_politics = { ruling_party = democratic elections_allowed = yes election_frequency = 60 }
+		}
+	}
+}
+#########################################################################
+# South African General Election, 1938
+#########################################################################
+country_event = {
+	id = SAF_Election_1938.1
+	title = SAF_Election_1938.1.t
+	desc = SAF_Election_1938.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = SAF
+		date > 1938.1.1
+		date < 1939.1.1
+	}
+	# J. B. M. Hertzog - National Party (Conservative)
+	option = {
+		name = SAF_Election_1938.1.A
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = democratic long_name = "National Party" name = "NP" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "J. B. M. Hertzog"
+				desc = "JBM_Hertzog_desc"
+				picture = GFX_P_D_JBM_Hertzog
+				ideology = social_conservatism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Conservatism
+					L_Old_General
+				}
+			}
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+		}
+	}
+	# D.F. Malan - Purified National Party (Authoritarian Democracy)
+	option = {
+		name = SAF_Election_1938.1.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = authoritarian long_name = "Purified National Party" name = "PNP" }
+		set_politics = { ruling_party = authoritarian elections_allowed = yes }
+		hidden_effect = {
+			create_country_leader = {
+				name = "D.F. Malan"
+				desc = "DF_Malan_desc"
+				picture = GFX_P_A_DF_Malan
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Backroom_Backstabber
+				}
+			}
+			set_popularities = {
+				democratic = 37
+				authoritarian = 53
+				fascist = 3
+				socialist = 5
+				communist = 2
+			}
+		}
+	}
+}
+#########################################################################
+# South African General Election, 1943
+#########################################################################
+country_event = {
+	id = SAF_Election_1943.1
+	title = SAF_Election_1943.1.t
+	desc = SAF_Election_1943.1.d
+	picture = GFX_Generic_Elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = SAF
+		date > 1943.1.1
+		date < 1944.1.1
+	}
+	# Jan Smuts - United Party (Conservative)
+	option = {
+		name = SAF_Election_1943.1.A
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = SAF_United_Party_Victory
+		set_party_name = { ideology = democratic long_name = "United Party" name = "UP" }
+		hidden_effect = {
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Jan Smuts"
+				desc = "Jan_Smuts_desc"
+				picture = GFX_P_D_Jan_Smuts
+				ideology = social_conservatism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Social_Conservatism
+					L_Old_General
+				}
+			}
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+		}
+	}
+	# D.F. Malan - Reunited National Party (Authoritarian Democracy)
+	option = {
+		name = SAF_Election_1943.1.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		set_party_name = { ideology = authoritarian long_name = "Reunited National Party" name = "RNP" }
+		set_politics = { ruling_party = authoritarian elections_allowed = yes }
+		hidden_effect = {
+			create_country_leader = {
+				name = "D.F. Malan"
+				desc = "DF_Malan_desc"
+				picture = GFX_P_A_DF_Malan
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Backroom_Backstabber
+				}
+			}
+			set_popularities = {
+				democratic = 37
+				authoritarian = 53
+				fascist = 3
+				socialist = 5
+				communist = 2
+			}
+		}
+	}
+}
+#########################################################################
+# Replacing Dutch with Afrikaans
+#########################################################################
+country_event = {
+	id = SAF_Politics.2
+	title = SAF_Politics.2.t
+	desc = SAF_Politics.2.d
+	picture = GFX_report_SAF_Smuts_and_Hertzog
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = SAF_Politics.2.A
+	}
+}
+#########################################################################
+# South African Airways
+#########################################################################
+news_event = {
+	id = SAF_Politics.3
+	title = SAF_Politics.3.t
+	desc = SAF_Politics.3.d
+	picture = GFX_news_SAF_South_Africa_Airways
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = SAF
+	}
+	option = {
+		name = SAF_Politics.3.A
+		add_equipment_to_stockpile = {
+			type = transport_plane_equipment
+			amount = 1
+			producer = GER
+		}
+	}
+}
+#########################################################################
+# Leadership of the United Party
+#########################################################################
+country_event = {
+	id = SAF_Politics.4
+	title = SAF_Politics.4.t
+	desc = SAF_Politics.4.d
+	picture = GFX_report_SAF_Smuts_and_Hertzog
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = SAF_Politics.4.A
+	}
+}
+#########################################################################
+# South Africa Protests Rule
+#########################################################################
+country_event = {
+	id = SAF_Politics.5
+	title = SAF_Politics.5.t
+	desc = SAF_Politics.5.d
+	picture = GFX_report_SAF_Smuts_and_Hertzog
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = SAF_Politics.5.A
+	}
+}
+#########################################################################
+# South Africa Demands Colonies
+#########################################################################
+country_event = {
+	id = SAF_Politics.6
+	title = SAF_Politics.6.t
+	desc = SAF_Politics.6.d
+	picture = GFX_report_SAF_Smuts_and_Hertzog
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = SAF_Politics.6.A
+	}
+}
+#########################################################################
+# South Africa Asks for Assistance
+#########################################################################
+country_event = {
+	id = SAF_Politics.7
+	title = SAF_Politics.7.t
+	desc = SAF_Politics.7.d
+	picture = GFX_report_SAF_Smuts_and_Hertzog
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = SAF_Politics.7.A
+	}
+}

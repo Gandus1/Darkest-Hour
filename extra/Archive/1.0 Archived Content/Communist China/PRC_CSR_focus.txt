@@ -1,0 +1,649 @@
+focus_tree = {
+	id = PRC_CSR
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = PRC
+		}
+	}
+	continuous_focus_position = {
+		x = 100
+		y = 600
+	}
+	default = no
+	focus = {
+		id = PRC_The_Old_Way
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 50
+		x = 12
+		y = 0
+		mutually_exclusive = { focus = PRC_A_New_Strategy }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+     			remove_idea = PRC_Conflicted_Military_1
+     			add_idea = PRC_Conflicted_Military_2
+			}
+			add_tech_bonus = {
+    			bonus = 1.5
+    			uses = 1
+    			technology = Manpower_Focus
+    			technology = Peoples_Army
+    			technology = Peoples_War
+			}			
+		}
+	}
+	focus = {
+		id = PRC_A_New_Strategy
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 50
+		relative_position_id = PRC_The_Old_Way
+		x = 2
+		y = 0
+		mutually_exclusive = { focus = PRC_The_Old_Way }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_tech_bonus = {
+    			bonus = 1.5
+    			uses = 1
+    			technology = Manpower_Focus
+    			technology = Peoples_Army
+    			technology = Large_Front
+			}	
+		}
+	}
+	focus = {
+		id = PRC_28_Bolsheviks
+		icon = GFX_SOV_Portray_A_Global_Soviet_Image
+		cost = 40
+		x = 1
+		y = 1
+		relative_position_id = PRC_The_Old_Way
+		prerequisite =  { 
+			focus = PRC_The_Old_Way 
+			focus = PRC_A_New_Strategy
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = {id = PRC_CSR_Strengthen_28_Bolsheviks.1}
+		}
+	}
+	focus = {
+		id = PRC_Fortify_the_Bases
+		icon = GFX_PRC_Fortify_Jiangxi_Soviet
+		cost = 30
+		relative_position_id = PRC_28_Bolsheviks
+		x = -1
+		y = 1
+		prerequisite =  
+				{ focus = PRC_28_Bolsheviks}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = {id = PRC_CSR_Fortify_the_Bases.1}
+		}
+	}
+	focus = {
+		id = PRC_Self_Sufficiency
+		icon = GFX_GENERIC_Scars_of_the_Civil_War
+		cost = 30
+		relative_position_id = PRC_28_Bolsheviks
+		x = -3
+		y = 1
+		prerequisite =  
+				{ focus = PRC_28_Bolsheviks}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+     			remove_idea = PRC_The_Quarantined_State
+     			add_idea = PRC_The_Quarantined_State_1
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_Secure_Appropriate_Arms
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 30
+		relative_position_id = PRC_Self_Sufficiency
+		x = 1
+		y = 1
+		prerequisite =  { focus = PRC_Self_Sufficiency }
+		prerequisite = { focus = PRC_Fortify_the_Bases }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			902 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			862 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_Call_Upon_the_People
+		icon = GFX_focus_YUG_pan_slavic_congress
+		cost = 30
+		relative_position_id = PRC_Secure_Appropriate_Arms
+		x = 0
+		y = 1
+		prerequisite =  { focus = PRC_Secure_Appropriate_Arms }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+     			remove_idea = PRC_Revolution_Of_The_People
+     			add_idea = PRC_Revolution_Of_The_People_1
+			}
+			swap_ideas = {
+     			remove_idea = one_year_service
+     			add_idea = three_year_service
+			}
+		}
+	}
+	focus = {
+		id = PRC_Familiar_with_Histories
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 20
+		relative_position_id = PRC_28_Bolsheviks
+		x = 2
+		y = 1
+		prerequisite =  
+				{ focus = PRC_28_Bolsheviks}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = { 
+			remove_country_leader_trait = HoS_Inexperienced_Revolutionary
+		}
+	}
+	focus = {
+		id = PRC_Braun_in_Command
+		icon = GFX_SOV_Direct_Rule_from_Moscow
+		cost = 30
+		relative_position_id = PRC_Familiar_with_Histories
+		x = -1
+		y = 1
+		prerequisite =  
+				{ focus = PRC_Familiar_with_Histories}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#add Otto Braun as Military High Command
+		}
+	}
+	focus = {
+		id = PRC_Frunze_Military_Thinking
+		icon = GFX_PRC_Chinese_Red_Army
+		cost = 30
+		relative_position_id = PRC_Familiar_with_Histories
+		x = 1
+		y = 1
+		prerequisite =  
+				{ focus = PRC_Familiar_with_Histories}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 20
+		}
+	}
+	focus = {
+		id = PRC_Mitigate_Mobile_Warfare
+		icon = GFX_focus_prc_infiltration
+		cost = 40
+		relative_position_id = PRC_Braun_in_Command
+		x = 1
+		y = 1
+		prerequisite =  
+				{ focus = PRC_Braun_in_Command}
+		prerequisite =  
+				{ focus = PRC_Frunze_Military_Thinking}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = PRC_Conflicted_Military_2 
+				}
+				swap_ideas = {
+     				remove_idea = PRC_Conflicted_Military_2
+     				add_idea = PRC_Conflicted_Military_1
+				}
+			}
+			else = {
+				remove_ideas = PRC_Conflicted_Military_1
+			}
+			
+		}
+	}
+	focus = {
+		id = PRC_Strategic_Offence_Tactical_Defence
+		icon = PRC_Strategic_Offence_Tactical_Defence
+		cost = 50
+		relative_position_id = PRC_Mitigate_Mobile_Warfare
+		x = -1
+		y = 1
+		mutually_exclusive = { focus = PRC_Tactical_Defence_Strategic_Offence }
+		prerequisite =  
+				{ focus = PRC_Mitigate_Mobile_Warfare }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			every_army_leader = {
+            add_defense = 1
+        	}
+		}
+	}
+	focus = {
+		id = PRC_Tactical_Defence_Strategic_Offence
+		icon = PRC_Tactical_Defence_Strategic_Offence
+		cost = 50
+		relative_position_id = PRC_Call_Upon_the_People
+		x = 1
+		y = 1
+		mutually_exclusive = { focus = PRC_Strategic_Offence_Tactical_Defence }
+		prerequisite =  
+				{ focus = PRC_Call_Upon_the_People }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			every_army_leader = {
+            add_attack = 1
+        	}
+		}
+	}
+	focus = {
+		id = PRC_The_Left_Cannot_Be_Wrong
+		icon = GFX_PRC_War_of_National_Liberation
+		cost = 70
+		relative_position_id = PRC_Tactical_Defence_Strategic_Offence
+		x = 1
+		y = 1
+		
+		prerequisite =  { 
+			focus = PRC_Tactical_Defence_Strategic_Offence 
+			focus = PRC_Strategic_Offence_Tactical_Defence
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = {id = PRC_CSR_The_Left_Cannot_Be_Wrong.1 }
+		}
+	}
+	focus = {
+		id = PRC_The_Long_March
+		icon = GFX_PRC_The_Long_March
+		cost = 50
+		relative_position_id = PRC_The_Left_Cannot_Be_Wrong
+		x = 0
+		y = 1
+		
+		prerequisite = { focus = PRC_The_Left_Cannot_Be_Wrong }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = {id = PRC_CSR_The_Long_March.1}
+		}
+	}
+	focus = {
+		id = PRC_Call_The_Generals
+		icon = GFX_focus_generic_military_mission
+		cost = 20
+		relative_position_id = PRC_The_Long_March
+		x = -1
+		y = 1
+		
+		prerequisite = { focus = PRC_The_Long_March}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = {id = PRC_CSR_Call_the_Generals.1 }
+		}
+	}
+	focus = {
+		id = PRC_Call_The_Cadres
+		icon = GFX_PRC_Zunyi_Conference
+		cost = 40
+		relative_position_id = PRC_The_Long_March
+		x = 1
+		y = 1
+		
+		prerequisite = { focus = PRC_The_Long_March}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = { id = PRC_CSR_Call_the_Cadres.1 }
+		}
+	}
+	focus = {
+		id = PRC_Revive_Mobile_Warfare
+		icon = GFX_focus_prc_infiltration
+		cost = 35
+		relative_position_id = PRC_The_Left_Cannot_Be_Wrong
+		x = 2
+		y = 1
+		
+		prerequisite = { focus = PRC_The_Left_Cannot_Be_Wrong}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { 
+					has_idea = PRC_Conflicted_Military_1 
+				}
+				swap_ideas = {
+     				remove_idea = PRC_Conflicted_Military_1
+     				add_idea = PRC_Conflicted_Military_3
+				}
+			}
+			else = {
+				add_ideas = PRC_Conflicted_Military_3
+			}
+		}
+	}
+	focus = {
+		id = PRC_Send_Forward_Parties
+		icon = PRC_Send_Forward_Parties
+		cost = 30
+		relative_position_id = PRC_The_Left_Cannot_Be_Wrong
+		x = -3
+		y = 1
+		
+		prerequisite = { focus = PRC_The_Left_Cannot_Be_Wrong}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Increase March speed
+		}
+	}
+	focus = {
+		id = PRC_Through_Deeds_not_Words
+		icon = PRC_Through_Deeds_not_Words
+		cost = 40
+		relative_position_id = PRC_Send_Forward_Parties
+		x = 0
+		y = 1
+		
+		prerequisite =  { focus = PRC_Send_Forward_Parties }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Reduce cost of influence decisions
+		}
+	}
+
+	focus = {
+		id = PRC_Probe_for_Greed
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 35
+		relative_position_id = PRC_The_Left_Cannot_Be_Wrong
+		x = 4
+		y = 1
+		
+		prerequisite = { focus = PRC_The_Left_Cannot_Be_Wrong}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#country_event = {id = PRC_CSR_Probe_for_Greed.1}
+			#country_event = {id = PRC_CSR_Probe_for_Greed.2}
+		}
+	}
+	focus = {
+		id = PRC_Keep_Calm_Carry_On
+		icon = PRC_Keep_Calm_Carry_On
+		cost = 35
+		relative_position_id = PRC_Probe_for_Greed
+		x = 0
+		y = 1
+		
+		prerequisite =  { focus = PRC_Probe_for_Greed }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#remove_country_leader_trait = HoS_Demoralised
+			#remove demoralised otto braun, add moralised otto braun (Trait doesn't exist)
+		}
+	}
+	focus = {
+		id = PRC_Passage_for_Peace
+		icon = GFX_GENERIC_Peaceful
+		cost = 50
+		relative_position_id = PRC_Call_The_Generals
+		x = 1
+		y = 1
+		mutually_exclusive = { focus = PRC_Revolution_Doesnt_Ask_Permission }
+		mutually_exclusive = { focus = PRC_Deal_with_the_Cliques }
+		prerequisite = { focus = PRC_Call_The_Generals }
+		prerequisite = { focus = PRC_Call_The_Cadres }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#passage for peace
+		}
+	}
+	focus = {
+		id = PRC_Revolution_Doesnt_Ask_Permission
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 50
+		relative_position_id = PRC_Call_The_Generals
+		x = -3
+		y = 1
+		mutually_exclusive = { focus = PRC_Passage_for_Peace}
+		mutually_exclusive = { focus = PRC_Deal_with_the_Cliques}
+		prerequisite =  
+				{ focus = PRC_Call_The_Generals}
+		prerequisite =  
+				{ focus = PRC_Call_The_Cadres}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#RDAP
+		}
+	}
+	focus = {
+		id = PRC_Deal_with_the_Cliques
+		icon = GFX_focus_chi_proclaim_rival_government
+		cost = 50
+		relative_position_id = PRC_Probe_for_Greed
+		x = 0
+		y = 2
+		mutually_exclusive = { focus = PRC_Passage_for_Peace}
+		mutually_exclusive = { focus = PRC_Revolution_Doesnt_Ask_Permission}
+		prerequisite =  
+				{ focus = PRC_Probe_for_Greed}
+		prerequisite =  
+				{ focus = PRC_Call_The_Cadres}
+		prerequisite =  
+				{ focus = PRC_Call_The_Generals}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Deal with Cliques
+		}
+	}
+	focus = {
+		id = PRC_8_Points_of_Attention
+		icon = GFX_GENERIC_New_Constitution
+		cost = 30
+		relative_position_id = PRC_Passage_for_Peace
+		x = 0
+		y = 1
+		prerequisite =  
+				{ focus = PRC_Passage_for_Peace}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Approach_the_Yi
+		icon = PRC_Approach_the_Yi
+		cost = 50
+		relative_position_id = PRC_Passage_for_Peace
+		x = 2
+		y = 1
+		prerequisite =  { 
+			focus = PRC_Passage_for_Peace 
+			focus = PRC_Deal_with_the_Cliques
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Redistribution_on_the_Move
+		icon = GFX_SOV_Sovkhoz_Farms
+		cost = 50
+		relative_position_id = PRC_Passage_for_Peace
+		x = -2
+		y = 1
+		prerequisite =  { 
+			focus = PRC_Passage_for_Peace 
+			focus = PRC_Revolution_Doesnt_Ask_Permission
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Like_Wind
+		icon = PRC_Like_Wind
+		cost = 40
+		relative_position_id = PRC_Revolution_Doesnt_Ask_Permission
+		x = 0
+		y = 2
+		mutually_exclusive = { focus = PRC_Like_Water}
+		mutually_exclusive = { focus = PRC_Like_Fire}
+		mutually_exclusive = { focus = PRC_Like_Stone}
+		prerequisite =  
+				{ focus = PRC_Revolution_Doesnt_Ask_Permission}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Like_Water
+		icon = PRC_Like_Water
+		cost = 40
+		relative_position_id = PRC_8_Points_of_Attention
+		x = -1
+		y = 1
+		mutually_exclusive = { focus = PRC_Like_Wind}
+		mutually_exclusive = { focus = PRC_Like_Fire}
+		mutually_exclusive = { focus = PRC_Like_Stone}
+		prerequisite =  
+				{ focus = PRC_8_Points_of_Attention}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Like_Fire
+		icon = PRC_Like_Fire
+		cost = 40
+		relative_position_id = PRC_8_Points_of_Attention
+		x = 1
+		y = 1
+		mutually_exclusive = { focus = PRC_Like_Wind}
+		mutually_exclusive = { focus = PRC_Like_Water}
+		mutually_exclusive = { focus = PRC_Like_Stone}
+		prerequisite =  
+				{ focus = PRC_8_Points_of_Attention}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Like_Stone
+		icon = PRC_Like_Stone
+		cost = 40
+		relative_position_id = PRC_Deal_with_the_Cliques
+		x = 0
+		y = 2
+		mutually_exclusive = { focus = PRC_Like_Wind }
+		mutually_exclusive = { focus = PRC_Like_Water }
+		mutually_exclusive = { focus = PRC_Like_Fire }
+		prerequisite = { focus = PRC_Deal_with_the_Cliques }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+	focus = {
+		id = PRC_Recover_from_the_Long_March
+		icon = GFX_GENERIC_Ideology_Maoism
+		cost = 50
+		relative_position_id = PRC_Like_Water
+		x = 1
+		y = 1
+		prerequisite =  { 
+			focus = PRC_Like_Water 
+			focus = PRC_Like_Wind
+			focus = PRC_Like_Fire
+			focus = PRC_Like_Stone
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			#Unlocks Decisions?
+		}
+	}
+}

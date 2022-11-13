@@ -1,0 +1,412 @@
+﻿###########################
+# Darkest Hour Surrender Events : The Bitter Peace
+###########################
+add_namespace = Surrender_SOV
+add_namespace = Surrender_GER
+#########################################################################
+# Stalin suffers a stroke
+#########################################################################
+country_event = {
+	id = Surrender_SOV.1
+	title = Surrender_SOV.1.t
+	desc = Surrender_SOV.1.d
+	picture = GFX_report_SOV_Stalin_and_Voroshilov
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = SOV
+		has_war_with = GER
+		OR = {
+			NOT = { 
+				controls_state = 195
+				controls_state = 219
+				controls_state = 217
+				controls_state = 229
+			}
+			surrender_progress > 0.7
+		}
+	}
+
+	option = { # 
+		name = Surrender_SOV.1.A
+		add_ideas = SOV_Command_Structure_Paralyzed
+		hidden_effect = {
+			news_event = { id = Surrender_SOV.2 }
+			news_event = { id = Surrender_SOV.3 days = 10 }
+		}
+	}
+}
+#########################################################################
+# Stalin suffers a stroke
+#########################################################################
+news_event = {
+	id = Surrender_SOV.2
+	title = Surrender_SOV.2.t
+	desc = Surrender_SOV.2.d
+	picture = GFX_news_SOV_Death_of_Stalin_Stroke
+	
+	is_triggered_only = yes
+	major = yes
+	fire_for_sender = no
+
+	option = { #
+		trigger = {
+			OR = {
+				original_tag = GER
+				has_war_with = SOV
+				has_government = fascist
+			}
+		}
+		name = Surrender_SOV.2.A
+	}
+	option = { #
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GER
+					has_war_with = SOV
+					has_government = fascist
+				}
+			}
+		}
+		name = Surrender_SOV.2.B
+	}
+}
+#########################################################################
+# Death of Stalin
+#########################################################################
+news_event = {
+	id = Surrender_SOV.3
+	title = Surrender_SOV.3.t
+	desc = Surrender_SOV.3.d
+	picture = GFX_news_SOV_Death_of_Stalin_Stroke
+	
+	is_triggered_only = yes
+	major = yes
+	fire_for_sender = yes
+
+	option = { #
+		trigger = {
+			OR = {
+				original_tag = GER
+				has_war_with = SOV
+				has_government = fascist
+			}
+		}
+		name = Surrender_SOV.3.A
+	}
+	option = { #
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GER
+					has_war_with = SOV
+					has_government = fascist
+					original_tag = SOV
+				}
+			}
+		}
+		name = Surrender_SOV.3.B
+	}
+	option = { #
+		trigger = {
+			original_tag = SOV
+		}
+		name = Surrender_SOV.3.C
+		create_country_leader = {
+			name = "Vyacheslav Molotov"
+			desc = ""
+			picture = GFX_P_C_Vyacheslav_Molotov
+			ideology = marxism_leninism
+			traits = {
+				POSITION_General_Secretary
+				SUBIDEOLOGY_Marxism_Leninism
+				L_Autocratic_Charmer		
+			}
+		}
+		add_ideas = SOV_Andrei_Zhdanov_HoG
+		swap_ideas = {
+			add_idea = SOV_Command_Structure_Paralyzed_2
+			remove_idea = SOV_Command_Structure_Paralyzed
+		}
+		unlock_decision_tooltip = SOV_Negotiate_with_the_Germans
+		set_country_flag = SOV_Unlock_Surrender_Decision
+	}
+}
+#########################################################################
+# Germans ask for unconditional withdrawal past the A-A Line
+#########################################################################
+country_event = {
+	id = Surrender_SOV.4
+	title = Surrender_SOV.4.t
+	desc = Surrender_SOV.4.d
+	picture = GFX_news_event_002
+	
+	is_triggered_only = yes
+
+	option = { # Accept
+		name = Surrender_SOV.4.A
+		ai_chance = {
+			factor = 100
+		}
+		GER = { country_event = { id = Surrender_GER.2 } }
+	}
+	option = { # Refuse
+		name = Surrender_SOV.4.B
+		ai_chance = {
+			factor = 0
+		}
+		set_global_flag = SOV_Continue_war_with_Germany
+	}
+}
+
+#########################################################################
+# Germany refuses any negotiations!
+#########################################################################
+country_event = {
+	id = Surrender_SOV.5
+	title = Surrender_SOV.5.t
+	desc = Surrender_SOV.5.d
+	picture = GFX_news_event_002
+	
+	is_triggered_only = yes
+
+	option = { # Then we'll continue fighting
+		name = Surrender_SOV.5.A
+		
+	}
+}
+
+#########################################################################
+# We can't fight anymore
+#########################################################################
+country_event = {
+	id = Surrender_SOV.6
+	title = Surrender_SOV.6.t
+	desc = Surrender_SOV.6.d
+	picture = GFX_news_event_002
+	
+	fire_only_once = yes
+	trigger = {
+		original_tag = SOV
+		has_war_with = GER
+		has_global_flag = SOV_Continue_war_with_Germany
+		OR = {
+			NOT = { 
+				controls_state = 1285
+				controls_state = 651
+				controls_state = 398
+				controls_state = 407
+				controls_state = 1490
+			}
+			surrender_progress > 0.85
+		}
+	}
+
+	option = { # This is the end of the war
+		name = Surrender_SOV.6.A
+		GER = {
+			country_event = { id = Surrender_GER.2 }
+		}
+	}
+}
+
+#########################################################################
+# The Flight from the North
+#########################################################################
+country_event = {
+	id = Surrender_GER.1
+	title = Surrender_GER.1.t
+	desc = Surrender_GER.1.d
+	picture = GFX_report_GER_Flight_from_the_North
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # To the Urals
+		name = Surrender_GER.1.A
+		ai_chance = {
+			factor = 0
+		}
+		custom_effect_tooltip = GER_Continue_to_Urals
+		set_global_flag = SOV_Continue_war_with_Germany
+		SOV = { country_event = { id = Surrender_SOV.5 hours = 6 } }
+	}
+
+	option = { # Unconditional Withdrawal Past the A-A Line
+		name = Surrender_GER.1.B
+		ai_chance = {
+			factor = 100
+		}
+		custom_effect_tooltip = GET_Accept_A_A_Proposal
+		SOV = { country_event = { id = Surrender_SOV.4 days = 1 } }
+	}
+}
+
+#########################################################################
+# Victory in the East / Operation Barbarossa is Successful
+#########################################################################
+country_event = {
+	id = Surrender_GER.2
+	title = {
+		text = Surrender_GER.2.t.A
+		trigger = {
+			has_country_flag = GER_Operation_Barbarossa_is_Successful
+		}
+	}
+	title = {
+		text = Surrender_GER.2.t.B
+		trigger = {
+			NOT = { has_country_flag = GER_Operation_Barbarossa_is_Successful }
+		}
+	}
+	
+	desc = Surrender_GER.2.d
+	picture = GFX_report_GER_Luftwaffe_Parade
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # A Victory for the entire German people!
+		name = Surrender_GER.2.A
+		GER = { white_peace = SOV }
+		set_country_flag = germany_bitter_peace_military_occupation
+		custom_effect_tooltip = lag_warning
+		hidden_effect = {
+			if = {
+				limit = {
+					is_in_faction_with = FIN
+				}
+				every_state = {
+					limit = {	
+						is_owned_by = SOV
+						OR = {	
+							is_core_of = FIN
+							is_claimed_by = FIN
+							state = 1473
+							state = 216
+							state = 215
+							state = 1474
+							state = 1231
+							state = 213
+						}
+					}
+					FIN = { transfer_state = PREV }
+				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = ROM
+				}
+				every_state = {
+					limit = {	
+						is_owned_by = SOV
+						OR = {	
+							is_core_of = ROM
+							is_claimed_by = ROM
+							state = 192
+							state = 1144
+						}
+					}
+					ROM = { transfer_state = PREV }
+				}
+			}
+			if = {
+				limit = {
+					FIN = {
+						OR = {
+							is_in_faction_with = SOV
+							is_puppet_of = SOV
+						}
+					}
+				}
+				FIN = {
+					drop_cosmetic_tag = yes
+				}
+				GER = {
+					puppet = FIN
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_Continue_war_with_Germany
+				}
+				every_state = {
+					limit = {	
+						is_owned_by = SOV
+						OR = {	
+							is_on_continent = europe
+							region = 134
+							state = 1490
+							state = 262
+							state = 397
+							state = 400
+							state = 398
+							state = 580
+							state = 651
+							state = 251
+							state = 652
+							state = 401
+							state = 1462
+							state = 1406
+							state = 407
+							state = 1284
+							state = 399
+							state = 1497
+						}
+					}
+					GER = { transfer_state = PREV }
+				}
+			}
+			else = {
+				every_state = {
+					limit = {	
+						is_owned_by = SOV
+						OR = {	
+							is_on_continent = europe
+							region = 134
+						}
+					}
+					GER = { transfer_state = PREV }
+				}
+			}
+			news_event = { id = Surrender_GER.3 hours = 12 }
+		}
+	}
+}
+#########################################################################
+# The End of the War in the East!
+#########################################################################
+news_event = {
+	id = Surrender_GER.3
+	title = Surrender_GER.3.t
+	desc = Surrender_GER.3.d
+	picture = GFX_news_event_002
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { # 
+		name = Surrender_GER.3.A
+		trigger = {
+			OR = {
+				original_tag = GER
+				is_puppet_of = GER
+				is_in_faction_with = GER
+			}
+		}
+	}
+	option = { # 
+		name = Surrender_GER.3.B
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GER
+					is_puppet_of = GER
+					is_in_faction_with = GER
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,790 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+### Generic Portugese division and brigade names for Portugese-speaking minors (or colonies) and releasable nations 
+
+PORT_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Divisão de Infanteria"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Infanteria" }
+		2 = { "%dª Divisão de Infanteria" }
+		3 = { "%dª Divisão de Infanteria" }
+		4 = { "%dª Divisão de Infanteria" }
+		5 = { "%dª Divisão de Infanteria" }
+		6 = { "%dª Divisão de Infanteria" }
+		7 = { "%dª Divisão de Infanteria" }
+		8 = { "%dª Divisão de Infanteria" }
+		9 = { "%dª Divisão de Infanteria" }
+		10 = { "%dª Divisão de Infanteria" }
+		11 = { "%dª Divisão de Infanteria" }
+		12 = { "%dª Divisão de Infanteria" }
+		13 = { "%dª Divisão de Infanteria" }
+		14 = { "%dª Divisão de Infanteria" }
+		15 = { "%dª Divisão de Infanteria" }
+		16 = { "%dª Divisão de Infanteria" }
+		17 = { "%dª Divisão de Infanteria" }
+		18 = { "%dª Divisão de Infanteria" }
+		19 = { "%dª Divisão de Infanteria" }
+		20 = { "%dª Divisão de Infanteria" }		
+	}
+}
+
+PORT_INF_02 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Brigada de Infanteria"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Infanteria" }
+		2 = { "%dª Brigada de Infanteria" }
+		3 = { "%dª Brigada de Infanteria" }
+		4 = { "%dª Brigada de Infanteria" }
+		5 = { "%dª Brigada de Infanteria" }
+		6 = { "%dª Brigada de Infanteria" }
+		7 = { "%dª Brigada de Infanteria" }
+		8 = { "%dª Brigada de Infanteria" }
+		9 = { "%dª Brigada de Infanteria" }
+		10 = { "%dª Brigada de Infanteria" }
+		11 = { "%dª Brigada de Infanteria" }
+		12 = { "%dª Brigada de Infanteria" }
+		13 = { "%dª Brigada de Infanteria" }
+		14 = { "%dª Brigada de Infanteria" }
+		15 = { "%dª Brigada de Infanteria" }
+		16 = { "%dª Brigada de Infanteria" }
+		17 = { "%dª Brigada de Infanteria" }
+		18 = { "%dª Brigada de Infanteria" }
+		19 = { "%dª Brigada de Infanteria" }
+		20 = { "%dª Brigada de Infanteria" }		
+	}
+}
+
+PORT_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_CAV_02 }
+
+	fallback_name = "%dª Divisão de Cavalaria"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Cavalaria" }
+		2 = { "%dª Divisão de Cavalaria" }
+		3 = { "%dª Divisão de Cavalaria" }
+		4 = { "%dª Divisão de Cavalaria" }
+		5 = { "%dª Divisão de Cavalaria" }
+		6 = { "%dª Divisão de Cavalaria" }
+		7 = { "%dª Divisão de Cavalaria" }
+		8 = { "%dª Divisão de Cavalaria" }
+		9 = { "%dª Divisão de Cavalaria" }
+		10 = { "%dª Divisão de Cavalaria" }
+		11 = { "%dª Divisão de Cavalaria" }
+		12 = { "%dª Divisão de Cavalaria" }
+		13 = { "%dª Divisão de Cavalaria" }
+		14 = { "%dª Divisão de Cavalaria" }
+		15 = { "%dª Divisão de Cavalaria" }
+		16 = { "%dª Divisão de Cavalaria" }
+		17 = { "%dª Divisão de Cavalaria" }
+		18 = { "%dª Divisão de Cavalaria" }
+		19 = { "%dª Divisão de Cavalaria" }
+		20 = { "%dª Divisão de Cavalaria" }		
+	}
+}
+
+PORT_CAV_02 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_CAV_01 }
+
+	fallback_name = "%dª Brigada de Cavalaria"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Cavalaria" }
+		2 = { "%dª Brigada de Cavalaria" }
+		3 = { "%dª Brigada de Cavalaria" }
+		4 = { "%dª Brigada de Cavalaria" }
+		5 = { "%dª Brigada de Cavalaria" }
+		6 = { "%dª Brigada de Cavalaria" }
+		7 = { "%dª Brigada de Cavalaria" }
+		8 = { "%dª Brigada de Cavalaria" }
+		9 = { "%dª Brigada de Cavalaria" }
+		10 = { "%dª Brigada de Cavalaria" }
+		11 = { "%dª Brigada de Cavalaria" }
+		12 = { "%dª Brigada de Cavalaria" }
+		13 = { "%dª Brigada de Cavalaria" }
+		14 = { "%dª Brigada de Cavalaria" }
+		15 = { "%dª Brigada de Cavalaria" }
+		16 = { "%dª Brigada de Cavalaria" }
+		17 = { "%dª Brigada de Cavalaria" }
+		18 = { "%dª Brigada de Cavalaria" }
+		19 = { "%dª Brigada de Cavalaria" }
+		20 = { "%dª Brigada de Cavalaria" }		
+	}
+}
+
+PORT_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Divisão de Infantaria Motorizada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Infantaria Motorizada" }
+		2 = { "%dª Divisão de Infantaria Motorizada" }
+		3 = { "%dª Divisão de Infantaria Motorizada" }
+		4 = { "%dª Divisão de Infantaria Motorizada" }
+		5 = { "%dª Divisão de Infantaria Motorizada" }
+		6 = { "%dª Divisão de Infantaria Motorizada" }
+		7 = { "%dª Divisão de Infantaria Motorizada" }
+		8 = { "%dª Divisão de Infantaria Motorizada" }
+		9 = { "%dª Divisão de Infantaria Motorizada" }
+		10 = { "%dª Divisão de Infantaria Motorizada" }
+		11 = { "%dª Divisão de Infantaria Motorizada" }
+		12 = { "%dª Divisão de Infantaria Motorizada" }
+		13 = { "%dª Divisão de Infantaria Motorizada" }
+		14 = { "%dª Divisão de Infantaria Motorizada" }
+		15 = { "%dª Divisão de Infantaria Motorizada" }
+		16 = { "%dª Divisão de Infantaria Motorizada" }
+		17 = { "%dª Divisão de Infantaria Motorizada" }
+		18 = { "%dª Divisão de Infantaria Motorizada" }
+		19 = { "%dª Divisão de Infantaria Motorizada" }
+		20 = { "%dª Divisão de Infantaria Motorizada" }		
+	}
+}
+
+PORT_MOT_02 = 
+{
+	name = "Motorized Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Brigada de Infantaria Motorizada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Infantaria Motorizada" }
+		2 = { "%dª Brigada de Infantaria Motorizada" }
+		3 = { "%dª Brigada de Infantaria Motorizada" }
+		4 = { "%dª Brigada de Infantaria Motorizada" }
+		5 = { "%dª Brigada de Infantaria Motorizada" }
+		6 = { "%dª Brigada de Infantaria Motorizada" }
+		7 = { "%dª Brigada de Infantaria Motorizada" }
+		8 = { "%dª Brigada de Infantaria Motorizada" }
+		9 = { "%dª Brigada de Infantaria Motorizada" }
+		10 = { "%dª Brigada de Infantaria Motorizada" }
+		11 = { "%dª Brigada de Infantaria Motorizada" }
+		12 = { "%dª Brigada de Infantaria Motorizada" }
+		13 = { "%dª Brigada de Infantaria Motorizada" }
+		14 = { "%dª Brigada de Infantaria Motorizada" }
+		15 = { "%dª Brigada de Infantaria Motorizada" }
+		16 = { "%dª Brigada de Infantaria Motorizada" }
+		17 = { "%dª Brigada de Infantaria Motorizada" }
+		18 = { "%dª Brigada de Infantaria Motorizada" }
+		19 = { "%dª Brigada de Infantaria Motorizada" }
+		20 = { "%dª Brigada de Infantaria Motorizada" }		
+	}
+}
+
+PORT_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Divisão de Infantaria Mecanizada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Infantaria Mecanizada" }
+		2 = { "%dª Divisão de Infantaria Mecanizada" }
+		3 = { "%dª Divisão de Infantaria Mecanizada" }
+		4 = { "%dª Divisão de Infantaria Mecanizada" }
+		5 = { "%dª Divisão de Infantaria Mecanizada" }
+		6 = { "%dª Divisão de Infantaria Mecanizada" }
+		7 = { "%dª Divisão de Infantaria Mecanizada" }
+		8 = { "%dª Divisão de Infantaria Mecanizada" }
+		9 = { "%dª Divisão de Infantaria Mecanizada" }
+		10 = { "%dª Divisão de Infantaria Mecanizada" }
+		11 = { "%dª Divisão de Infantaria Mecanizada" }
+		12 = { "%dª Divisão de Infantaria Mecanizada" }
+		13 = { "%dª Divisão de Infantaria Mecanizada" }
+		14 = { "%dª Divisão de Infantaria Mecanizada" }
+		15 = { "%dª Divisão de Infantaria Mecanizada" }
+		16 = { "%dª Divisão de Infantaria Mecanizada" }
+		17 = { "%dª Divisão de Infantaria Mecanizada" }
+		18 = { "%dª Divisão de Infantaria Mecanizada" }
+		19 = { "%dª Divisão de Infantaria Mecanizada" }
+		20 = { "%dª Divisão de Infantaria Mecanizada" }		
+	}
+}
+
+PORT_MEC_02 = 
+{
+	name = "Mechanized Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Brigada de Infantaria Mecanizada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Infantaria Mecanizada" }
+		2 = { "%dª Brigada de Infantaria Mecanizada" }
+		3 = { "%dª Brigada de Infantaria Mecanizada" }
+		4 = { "%dª Brigada de Infantaria Mecanizada" }
+		5 = { "%dª Brigada de Infantaria Mecanizada" }
+		6 = { "%dª Brigada de Infantaria Mecanizada" }
+		7 = { "%dª Brigada de Infantaria Mecanizada" }
+		8 = { "%dª Brigada de Infantaria Mecanizada" }
+		9 = { "%dª Brigada de Infantaria Mecanizada" }
+		10 = { "%dª Brigada de Infantaria Mecanizada" }
+		11 = { "%dª Brigada de Infantaria Mecanizada" }
+		12 = { "%dª Brigada de Infantaria Mecanizada" }
+		13 = { "%dª Brigada de Infantaria Mecanizada" }
+		14 = { "%dª Brigada de Infantaria Mecanizada" }
+		15 = { "%dª Brigada de Infantaria Mecanizada" }
+		16 = { "%dª Brigada de Infantaria Mecanizada" }
+		17 = { "%dª Brigada de Infantaria Mecanizada" }
+		18 = { "%dª Brigada de Infantaria Mecanizada" }
+		19 = { "%dª Brigada de Infantaria Mecanizada" }
+		20 = { "%dª Brigada de Infantaria Mecanizada" }		
+	}
+}
+
+PORT_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_ARM_02 }
+
+	fallback_name = "%dª Divisão de Blindada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Blindada" }
+		2 = { "%dª Divisão de Blindada" }
+		3 = { "%dª Divisão de Blindada" }
+		4 = { "%dª Divisão de Blindada" }
+		5 = { "%dª Divisão de Blindada" }
+		6 = { "%dª Divisão de Blindada" }
+		7 = { "%dª Divisão de Blindada" }
+		8 = { "%dª Divisão de Blindada" }
+		9 = { "%dª Divisão de Blindada" }
+		10 = { "%dª Divisão de Blindada" }
+		11 = { "%dª Divisão de Blindada" }
+		12 = { "%dª Divisão de Blindada" }
+		13 = { "%dª Divisão de Blindada" }
+		14 = { "%dª Divisão de Blindada" }
+		15 = { "%dª Divisão de Blindada" }
+		16 = { "%dª Divisão de Blindada" }
+		17 = { "%dª Divisão de Blindada" }
+		18 = { "%dª Divisão de Blindada" }
+		19 = { "%dª Divisão de Blindada" }
+		20 = { "%dª Divisão de Blindada" }		
+	}
+}
+
+PORT_ARM_02 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_ARM_01 }
+
+	fallback_name = "%dª Brigada de Blindada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Blindada" }
+		2 = { "%dª Brigada de Blindada" }
+		3 = { "%dª Brigada de Blindada" }
+		4 = { "%dª Brigada de Blindada" }
+		5 = { "%dª Brigada de Blindada" }
+		6 = { "%dª Brigada de Blindada" }
+		7 = { "%dª Brigada de Blindada" }
+		8 = { "%dª Brigada de Blindada" }
+		9 = { "%dª Brigada de Blindada" }
+		10 = { "%dª Brigada de Blindada" }
+		11 = { "%dª Brigada de Blindada" }
+		12 = { "%dª Brigada de Blindada" }
+		13 = { "%dª Brigada de Blindada" }
+		14 = { "%dª Brigada de Blindada" }
+		15 = { "%dª Brigada de Blindada" }
+		16 = { "%dª Brigada de Blindada" }
+		17 = { "%dª Brigada de Blindada" }
+		18 = { "%dª Brigada de Blindada" }
+		19 = { "%dª Brigada de Blindada" }
+		20 = { "%dª Brigada de Blindada" }		
+	}
+}
+
+PORT_PAR_01 = 
+{
+	name = "Parachute Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Divisão Paraquedista"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão Paraquedista" }
+		2 = { "%dª Divisão Paraquedista" }
+		3 = { "%dª Divisão Paraquedista" }
+		4 = { "%dª Divisão Paraquedista" }
+		5 = { "%dª Divisão Paraquedista" }
+		6 = { "%dª Divisão Paraquedista" }
+		7 = { "%dª Divisão Paraquedista" }
+		8 = { "%dª Divisão Paraquedista" }
+		9 = { "%dª Divisão Paraquedista" }
+		10 = { "%dª Divisão Paraquedista" }
+		11 = { "%dª Divisão Paraquedista" }
+		12 = { "%dª Divisão Paraquedista" }
+		13 = { "%dª Divisão Paraquedista" }
+		14 = { "%dª Divisão Paraquedista" }
+		15 = { "%dª Divisão Paraquedista" }
+		16 = { "%dª Divisão Paraquedista" }
+		17 = { "%dª Divisão Paraquedista" }
+		18 = { "%dª Divisão Paraquedista" }
+		19 = { "%dª Divisão Paraquedista" }
+		20 = { "%dª Divisão Paraquedista" }		
+	}
+}
+
+PORT_PAR_02 = 
+{
+	name = "Parachute Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 }
+
+	fallback_name = "%dª Brigada Paraquedista"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada Paraquedista" }
+		2 = { "%dª Brigada Paraquedista" }
+		3 = { "%dª Brigada Paraquedista" }
+		4 = { "%dª Brigada Paraquedista" }
+		5 = { "%dª Brigada Paraquedista" }
+		6 = { "%dª Brigada Paraquedista" }
+		7 = { "%dª Brigada Paraquedista" }
+		8 = { "%dª Brigada Paraquedista" }
+		9 = { "%dª Brigada Paraquedista" }
+		10 = { "%dª Brigada Paraquedista" }
+		11 = { "%dª Brigada Paraquedista" }
+		12 = { "%dª Brigada Paraquedista" }
+		13 = { "%dª Brigada Paraquedista" }
+		14 = { "%dª Brigada Paraquedista" }
+		15 = { "%dª Brigada Paraquedista" }
+		16 = { "%dª Brigada Paraquedista" }
+		17 = { "%dª Brigada Paraquedista" }
+		18 = { "%dª Brigada Paraquedista" }
+		19 = { "%dª Brigada Paraquedista" }
+		20 = { "%dª Brigada Paraquedista" }		
+	}
+}
+
+PORT_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_MAR_02 }
+
+	fallback_name = "%dª Divisão de Fuzileiros Navais"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Fuzileiros Navais" }
+		2 = { "%dª Divisão de Fuzileiros Navais" }
+		3 = { "%dª Divisão de Fuzileiros Navais" }
+		4 = { "%dª Divisão de Fuzileiros Navais" }
+		5 = { "%dª Divisão de Fuzileiros Navais" }
+		6 = { "%dª Divisão de Fuzileiros Navais" }
+		7 = { "%dª Divisão de Fuzileiros Navais" }
+		8 = { "%dª Divisão de Fuzileiros Navais" }
+		9 = { "%dª Divisão de Fuzileiros Navais" }
+		10 = { "%dª Divisão de Fuzileiros Navais" }
+		11 = { "%dª Divisão de Fuzileiros Navais" }
+		12 = { "%dª Divisão de Fuzileiros Navais" }
+		13 = { "%dª Divisão de Fuzileiros Navais" }
+		14 = { "%dª Divisão de Fuzileiros Navais" }
+		15 = { "%dª Divisão de Fuzileiros Navais" }
+		16 = { "%dª Divisão de Fuzileiros Navais" }
+		17 = { "%dª Divisão de Fuzileiros Navais" }
+		18 = { "%dª Divisão de Fuzileiros Navais" }
+		19 = { "%dª Divisão de Fuzileiros Navais" }
+		20 = { "%dª Divisão de Fuzileiros Navais" }		
+	}
+}
+
+PORT_MAR_02 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_MAR_01 }
+
+	fallback_name = "%dª Brigada de Fuzileiros Navais"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Fuzileiros Navais" }
+		2 = { "%dª Brigada de Fuzileiros Navais" }
+		3 = { "%dª Brigada de Fuzileiros Navais" }
+		4 = { "%dª Brigada de Fuzileiros Navais" }
+		5 = { "%dª Brigada de Fuzileiros Navais" }
+		6 = { "%dª Brigada de Fuzileiros Navais" }
+		7 = { "%dª Brigada de Fuzileiros Navais" }
+		8 = { "%dª Brigada de Fuzileiros Navais" }
+		9 = { "%dª Brigada de Fuzileiros Navais" }
+		10 = { "%dª Brigada de Fuzileiros Navais" }
+		11 = { "%dª Brigada de Fuzileiros Navais" }
+		12 = { "%dª Brigada de Fuzileiros Navais" }
+		13 = { "%dª Brigada de Fuzileiros Navais" }
+		14 = { "%dª Brigada de Fuzileiros Navais" }
+		15 = { "%dª Brigada de Fuzileiros Navais" }
+		16 = { "%dª Brigada de Fuzileiros Navais" }
+		17 = { "%dª Brigada de Fuzileiros Navais" }
+		18 = { "%dª Brigada de Fuzileiros Navais" }
+		19 = { "%dª Brigada de Fuzileiros Navais" }
+		20 = { "%dª Brigada de Fuzileiros Navais" }		
+	}
+}
+
+PORT_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Divisão de Montanha"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão de Montanha" }
+		2 = { "%dª Divisão de Montanha" }
+		3 = { "%dª Divisão de Montanha" }
+		4 = { "%dª Divisão de Montanha" }
+		5 = { "%dª Divisão de Montanha" }
+		6 = { "%dª Divisão de Montanha" }
+		7 = { "%dª Divisão de Montanha" }
+		8 = { "%dª Divisão de Montanha" }
+		9 = { "%dª Divisão de Montanha" }
+		10 = { "%dª Divisão de Montanha" }
+		11 = { "%dª Divisão de Montanha" }
+		12 = { "%dª Divisão de Montanha" }
+		13 = { "%dª Divisão de Montanha" }
+		14 = { "%dª Divisão de Montanha" }
+		15 = { "%dª Divisão de Montanha" }
+		16 = { "%dª Divisão de Montanha" }
+		17 = { "%dª Divisão de Montanha" }
+		18 = { "%dª Divisão de Montanha" }
+		19 = { "%dª Divisão de Montanha" }
+		20 = { "%dª Divisão de Montanha" }		
+	}
+}
+
+PORT_MTN_02 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Brigada de Montanha"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada de Montanha" }
+		2 = { "%dª Brigada de Montanha" }
+		3 = { "%dª Brigada de Montanha" }
+		4 = { "%dª Brigada de Montanha" }
+		5 = { "%dª Brigada de Montanha" }
+		6 = { "%dª Brigada de Montanha" }
+		7 = { "%dª Brigada de Montanha" }
+		8 = { "%dª Brigada de Montanha" }
+		9 = { "%dª Brigada de Montanha" }
+		10 = { "%dª Brigada de Montanha" }
+		11 = { "%dª Brigada de Montanha" }
+		12 = { "%dª Brigada de Montanha" }
+		13 = { "%dª Brigada de Montanha" }
+		14 = { "%dª Brigada de Montanha" }
+		15 = { "%dª Brigada de Montanha" }
+		16 = { "%dª Brigada de Montanha" }
+		17 = { "%dª Brigada de Montanha" }
+		18 = { "%dª Brigada de Montanha" }
+		19 = { "%dª Brigada de Montanha" }
+		20 = { "%dª Brigada de Montanha" }		
+	}
+}
+
+PORT_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_GAR_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Divisão Guarnição"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Divisão Guarnição" }
+		2 = { "%dª Divisão Guarnição" }
+		3 = { "%dª Divisão Guarnição" }
+		4 = { "%dª Divisão Guarnição" }
+		5 = { "%dª Divisão Guarnição" }
+		6 = { "%dª Divisão Guarnição" }
+		7 = { "%dª Divisão Guarnição" }
+		8 = { "%dª Divisão Guarnição" }
+		9 = { "%dª Divisão Guarnição" }
+		10 = { "%dª Divisão Guarnição" }
+		11 = { "%dª Divisão Guarnição" }
+		12 = { "%dª Divisão Guarnição" }
+		13 = { "%dª Divisão Guarnição" }
+		14 = { "%dª Divisão Guarnição" }
+		15 = { "%dª Divisão Guarnição" }
+		16 = { "%dª Divisão Guarnição" }
+		17 = { "%dª Divisão Guarnição" }
+		18 = { "%dª Divisão Guarnição" }
+		19 = { "%dª Divisão Guarnição" }
+		20 = { "%dª Divisão Guarnição" }		
+	}
+}
+
+PORT_GAR_02 = 
+{
+	name = "Garrison Brigades"
+
+	for_countries = { ACR ANG CVE MZB STP TLE }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PORT_INF_01 PORT_MOT_01 PORT_MEC_01 PORT_GAR_01 PORT_MTN_01 PORT_PAR_01 PORT_INF_02 PORT_MOT_02 PORT_MEC_02 PORT_MTN_02 PORT_PAR_02 }
+
+	fallback_name = "%dª Brigada Guarnição"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dª Brigada Guarnição" }
+		2 = { "%dª Brigada Guarnição" }
+		3 = { "%dª Brigada Guarnição" }
+		4 = { "%dª Brigada Guarnição" }
+		5 = { "%dª Brigada Guarnição" }
+		6 = { "%dª Brigada Guarnição" }
+		7 = { "%dª Brigada Guarnição" }
+		8 = { "%dª Brigada Guarnição" }
+		9 = { "%dª Brigada Guarnição" }
+		10 = { "%dª Brigada Guarnição" }
+		11 = { "%dª Brigada Guarnição" }
+		12 = { "%dª Brigada Guarnição" }
+		13 = { "%dª Brigada Guarnição" }
+		14 = { "%dª Brigada Guarnição" }
+		15 = { "%dª Brigada Guarnição" }
+		16 = { "%dª Brigada Guarnição" }
+		17 = { "%dª Brigada Guarnição" }
+		18 = { "%dª Brigada Guarnição" }
+		19 = { "%dª Brigada Guarnição" }
+		20 = { "%dª Brigada Guarnição" }		
+	}
+}

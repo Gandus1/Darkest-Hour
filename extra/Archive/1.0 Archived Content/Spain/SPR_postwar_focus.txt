@@ -1,0 +1,649 @@
+focus_tree = {
+	id = SPR_postwar
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SPR
+		}
+	}
+	default = no
+	focus = {
+		id = SPR_No_Parason
+		icon = GFX_SPR_No_Pasaran
+		cost = 10.00
+		x = 7
+		y = 0
+			completion_reward = {
+					add_popularity = {
+							ideology = democratic
+							popularity = 0.05
+						}
+					add_political_power = 100
+					add_stability = 0.05
+					add_ideas = SPR_a_new_spain
+				}
+
+	}
+	focus = {
+		id = SPR_El_Ejercito_Republicano
+		icon = GFX_SPR_Spanish_Republican_Army
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_No_Parason
+		}
+		x = 2
+		y = 1
+			completion_reward = {
+					add_war_support = 0.05
+					army_experience = -100
+				}
+
+	}
+	focus = {
+		id = SPR_Consolidate_the_Militias
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_El_Ejercito_Republicano
+		}
+		x = 2
+		y = 2
+			completion_reward = {
+					army_experience = -100
+					swap_ideas = {
+							remove_idea = SPR_peoples_militia_1
+							add_idea = SPR_peoples_militia_2
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Reshape_Recruitment
+		icon = GFX_focus_secret_rearmament
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Consolidate_the_Militias
+		}
+		x = 2
+		y = 3
+			completion_reward = {
+					army_experience = -100
+					swap_ideas = {
+							remove_idea = SPR_peoples_militia_2
+							add_idea = SPR_peoples_militia_3
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Embrace_Pacifism
+		icon = GFX_goal_anschluss
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Reshape_Recruitment
+		}
+		mutually_exclusive = {
+			focus = SPR_The_Defense_North_and_West
+		}
+		x = 1
+		y = 4
+			completion_reward = {
+					add_political_power = 100
+					swap_ideas = {
+							remove_idea = SPR_peoples_militia_3
+							add_idea = SPR_peoples_militia_4
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_The_Defense_North_and_West
+		icon = GFX_SPR_Defend_Spain
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Reshape_Recruitment
+		}
+		mutually_exclusive = {
+			focus = SPR_Embrace_Pacifism
+		}
+		x = 3
+		y = 4
+			completion_reward = {
+					add_political_power = -50
+					swap_ideas = {
+							remove_idea = SPR_peoples_militia_3
+							add_idea = SPR_peoples_militia_5
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Disarm_Syndicates
+		icon = GFX_goal_generic_major_war
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Embrace_Pacifism
+			focus = SPR_The_Defense_North_and_West
+		}
+		x = 2
+		y = 5
+			completion_reward = {
+					army_experience = -100
+					if = {
+							limit = {
+									has_idea = SPR_peoples_militia_4
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_4
+									add_idea = SPR_peoples_militia_6
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_peoples_militia_5
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_5
+									add_idea = SPR_peoples_militia_7
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_The_Provinces_Command
+		icon = GFX_SPR_Provinces_Command
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Disarm_Syndicates
+		}
+		mutually_exclusive = {
+			focus = SPR_Madrid_Commands
+		}
+		x = 3
+		y = 6
+			completion_reward = {
+					add_political_power = 50
+					if = {
+							limit = {
+									has_idea = SPR_peoples_militia_6
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_6
+									add_idea = SPR_peoples_militia_10
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_peoples_militia_7
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_7
+									add_idea = SPR_peoples_militia_11
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Reconciliation
+		icon = GFX_goal_generic_military_deal
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_No_Parason
+		}
+		x = 7
+		y = 1
+			completion_reward = {
+					add_popularity = {
+							ideology = democratic
+							popularity = 0.05
+						}
+					add_ideas = SPR_reconciliation_1
+				}
+
+	}
+	focus = {
+		id = SPR_Draw_Closer_to_Conservatives
+		icon = GFX_SPR_Unite_the_Conservatives
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Reconciliation
+		}
+		x = 7
+		y = 2
+			completion_reward = {
+					add_political_power = 100
+					swap_ideas = {
+							remove_idea = SPR_reconciliation_1
+							add_idea = SPR_reconciliation_2
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Amend_Relations_with_the_Church
+		icon = GFX_GENERIC_Separate_Church_from_State
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Draw_Closer_to_Conservatives
+		}
+		x = 5
+		y = 3
+			completion_reward = {
+					add_popularity = {
+							ideology = democratic
+							popularity = 0.05
+						}
+					add_stability = 0.05
+					add_war_support = 0.05
+				}
+
+	}
+	focus = {
+		id = SPR_Popular_Distrust_Against_Radicals
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Draw_Closer_to_Conservatives
+		}
+		x = 7
+		y = 3
+			completion_reward = {
+					add_political_power = 100
+					if = {
+							limit = {
+									has_idea = SPR_reconciliation_2
+								}
+							swap_ideas = {
+									remove_idea = SPR_reconciliation_2
+									add_idea = SPR_reconciliation_3
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_reconciliation_4
+								}
+							swap_ideas = {
+									remove_idea = SPR_reconciliation_4
+									add_idea = SPR_reconciliation_5
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_A_United_Workforce
+		icon = GFX_focus_yug_pan_slavic_congress
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Draw_Closer_to_Conservatives
+		}
+		x = 9
+		y = 3
+			completion_reward = {
+					add_political_power = 100
+					if = {
+							limit = {
+									has_idea = SPR_reconciliation_2
+								}
+							swap_ideas = {
+									remove_idea = SPR_reconciliation_2
+									add_idea = SPR_reconciliation_4
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_reconciliation_3
+								}
+							swap_ideas = {
+									remove_idea = SPR_reconciliation_3
+									add_idea = SPR_reconciliation_5
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_A_Stronger_Republic
+		icon = GFX_SPR_Liberal_Republic
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Amend_Relations_with_the_Church
+		}
+		prerequisite = {
+			focus = SPR_Popular_Distrust_Against_Radicals
+		}
+		prerequisite = {
+			focus = SPR_A_United_Workforce
+		}
+		x = 7
+		y = 4
+			completion_reward = {
+					remove_ideas = SPR_civil_war_scars
+				}
+
+	}
+	focus = {
+		id = SPR_The_New_Economy
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_No_Parason
+		}
+		x = 12
+		y = 1
+			completion_reward = {
+					add_political_power = 100
+				}
+
+	}
+	focus = {
+		id = SPR_Ties_to_Foreign_Investors
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_The_New_Economy
+		}
+		mutually_exclusive = {
+			focus = SPR_Rational_Land_Reform
+		}
+		x = 11
+		y = 2
+			completion_reward = {
+					add_ideas = free_trade
+					41 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = industrial_complex
+									level = 1
+									instant_build = yes
+								}
+						}
+					unlock_decision_category_tooltip = SPR_attracting_investors_decisions_category
+				}
+
+	}
+	focus = {
+		id = SPR_Consolidate_Civilian_Investors
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Ties_to_Foreign_Investors
+		}
+		x = 11
+		y = 3
+			completion_reward = {
+					173 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = industrial_complex
+									level = 1
+									instant_build = yes
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Rational_Land_Reform
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_The_New_Economy
+		}
+		mutually_exclusive = {
+			focus = SPR_Ties_to_Foreign_Investors
+		}
+		x = 13
+		y = 2
+			completion_reward = {
+					add_ideas = SPR_land_reform
+				}
+
+	}
+	focus = {
+		id = SPR_Procure_Industrialization
+		icon = GFX_focus_generic_industry_2
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Rational_Land_Reform
+		}
+		x = 13
+		y = 3
+			completion_reward = {
+					165 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = industrial_complex
+									level = 1
+									instant_build = yes
+								}
+						}
+					166 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = industrial_complex
+									level = 1
+									instant_build = yes
+								}
+						}
+					173 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = industrial_complex
+									level = 1
+									instant_build = yes
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_First_Welfare_Act
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Consolidate_Civilian_Investors
+			focus = SPR_Procure_Industrialization
+		}
+		x = 12
+		y = 4
+			completion_reward = {
+					add_ideas = SPR_liberal_welfare
+					unlock_decision_category_tooltip = SPR_liberal_welfare_decisions_category
+				}
+
+	}
+	focus = {
+		id = SPR_Gaining_Leading_Economists
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_First_Welfare_Act
+		}
+		prerequisite = {
+			focus = SPR_Consolidate_Civilian_Investors
+		}
+		x = 10
+		y = 5
+			completion_reward = {
+					add_ideas = SPR_leading_economists
+				}
+
+	}
+	focus = {
+		id = SPR_Madrid_Commands
+		icon = GFX_SPR_Madrid_Controls
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Disarm_Syndicates
+		}
+		mutually_exclusive = {
+			focus = SPR_The_Provinces_Command
+		}
+		x = 1
+		y = 6
+			completion_reward = {
+					add_political_power = -50
+					if = {
+							limit = {
+									has_idea = SPR_peoples_militia_6
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_6
+									add_idea = SPR_peoples_militia_8
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_peoples_militia_7
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_7
+									add_idea = SPR_peoples_militia_9
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_A_New_Professional_Army
+		icon = GFX_GENERIC_Professional_Army
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Madrid_Commands
+			focus = SPR_The_Provinces_Command
+		}
+		x = 2
+		y = 7
+			completion_reward = {
+					if = {
+							limit = {
+									has_idea = SPR_peoples_militia_10
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_10
+									add_idea = SPR_peoples_militia_14
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_peoples_militia_11
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_11
+									add_idea = SPR_peoples_militia_15
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_peoples_militia_8
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_8
+									add_idea = SPR_peoples_militia_12
+								}
+						}
+					else_if = {
+							limit = {
+									has_idea = SPR_peoples_militia_9
+								}
+							swap_ideas = {
+									remove_idea = SPR_peoples_militia_9
+									add_idea = SPR_peoples_militia_13
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Obtain_Private_Infrastructure
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_First_Welfare_Act
+		}
+		prerequisite = {
+			focus = SPR_Consolidate_Civilian_Investors
+			focus = SPR_Procure_Industrialization
+		}
+		x = 12
+		y = 5
+			completion_reward = {
+					add_political_power = -50
+					41 = {
+							add_building_construction = {
+									type = infrastructure
+									level = 1
+									instant_build = yes
+								}
+						}
+					167 = {
+							add_building_construction = {
+									type = infrastructure
+									level = 1
+									instant_build = yes
+								}
+						}
+					170 = {
+							add_building_construction = {
+									type = infrastructure
+									level = 1
+									instant_build = yes
+								}
+						}
+					176 = {
+							add_building_construction = {
+									type = infrastructure
+									level = 1
+									instant_build = yes
+								}
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Support_Urbanization
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_First_Welfare_Act
+		}
+		prerequisite = {
+			focus = SPR_Procure_Industrialization
+		}
+		x = 14
+		y = 5
+			completion_reward = {
+					add_political_power = -50
+					775 = {
+							add_extra_state_shared_building_slots = 2
+						}
+					776 = {
+							add_extra_state_shared_building_slots = 2
+						}
+					171 = {
+							add_extra_state_shared_building_slots = 2
+						}
+				}
+
+	}
+	focus = {
+		id = SPR_Regional_Autonomies
+		icon = GFX_GER_Chancellor_Hitler
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Gaining_Leading_Economists
+			focus = SPR_Obtain_Private_Infrastructure
+			focus = SPR_Support_Urbanization
+		}
+		x = 12
+		y = 6
+			completion_reward = {
+					add_ideas = SPR_regional_autonomy
+				}
+
+	}
+}

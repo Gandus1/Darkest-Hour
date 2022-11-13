@@ -1,0 +1,180 @@
+scripted_gui = {
+	open_parliament_political_tab_window = {
+		context_type = player_context
+
+		window_name = "open_parliament_political_tab_window"
+		parent_window_token = politics_tab
+
+		visible = {
+			is_ai = no
+			country_has_parliament = yes
+		}
+
+		effects = {
+			open_button_click = {
+				if = {
+					limit = {
+						has_variable = show_parliament_political_tab_window
+					}
+					clear_variable = show_parliament_political_tab_window
+				}
+				else = {
+					clear_variable = show_economy_window
+					set_variable = { show_parliament_political_tab_window = 1 }
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = first_opened_parliament_political_tab_window }
+					}
+					set_country_flag = first_opened_parliament_political_tab_window
+				}
+			}
+		}
+	}
+
+	open_parliament_diplomacy_tab_window = {
+		context_type = selected_country_context
+
+		window_name = "open_parliament_diplomacy_tab_window"
+		parent_window_token = selected_country_view_diplomacy
+
+		visible = {
+			ROOT = {
+				is_ai = no
+			}
+			country_has_parliament = yes
+		}
+
+		effects = {
+			open_button_click = {
+				ROOT = {
+					set_variable = { show_parliament_diplomacy_tab_window = 1 }
+					if = {
+						limit = {
+							NOT = { has_country_flag = first_opened_parliament_diplomacy_tab_window }
+						}
+						set_country_flag = first_opened_parliament_diplomacy_tab_window
+					}
+				}
+			}
+			close_button_click = {
+				ROOT = {
+					clear_variable = show_parliament_diplomacy_tab_window
+				}
+			}
+		}
+
+		triggers = {
+			open_button_visible = {
+				ROOT = {
+					NOT = { has_variable = show_parliament_diplomacy_tab_window }
+				}
+			}
+			close_button_visible = {
+				ROOT = {
+					has_variable = show_parliament_diplomacy_tab_window
+				}
+			}
+		}
+	}
+
+	parliament_political_tab_panel_window = {
+		context_type = player_context
+
+		window_name = "parliament_political_tab_panel_window"
+		parent_window_token = politics_tab
+
+		visible = {
+			is_ai = no
+			has_country_flag = first_opened_parliament_political_tab_window
+		}
+	}
+
+	parliament_political_tab_window = {
+		context_type = player_context
+
+		window_name = "parliament_political_tab_window"
+		parent_window_name = "parliament_political_tab_panel_window_instance"
+
+		visible = {
+			is_ai = no
+			country_has_parliament = yes
+			check_variable = { show_parliament_political_tab_window > 0 }
+		}
+
+		effects = {
+			close_button_click = {
+				clear_variable = show_parliament_political_tab_window
+			}
+		}
+
+		properties = {
+			parliament_support_bar_green = {
+				x = parliament_support_bar_x_position
+			}
+			piechart_item = {
+				frame = v
+			}
+			party_color_icon = {
+				frame = v
+			}
+		}
+
+		dynamic_lists = {
+			parliament_piechart_gridbox = {
+				array = parliament_piechart_array
+				entry_container = "parliament_piechart_entry_[?i]"
+			}
+			parliament_party_gridbox = {
+				array = parliament_array
+				entry_container = parliament_political_tab_parliament_party_entry
+			}
+		}
+	}
+
+	parliament_diplomacy_tab_window = {
+		context_type = selected_country_context
+
+		window_name = "parliament_diplomacy_tab_window"
+		parent_window_token = selected_country_view
+
+		visible = {
+			country_has_parliament = yes
+			ROOT = {
+				is_ai = no
+				check_variable = { show_parliament_diplomacy_tab_window > 0 }
+			}
+		}
+
+		effects = {
+			close_button_click = {
+				ROOT = {
+					clear_variable = show_parliament_diplomacy_tab_window
+				}
+			}
+		}
+
+		properties = {
+			parliament_support_bar_green = {
+				x = parliament_support_bar_x_position
+			}
+			piechart_item = {
+				frame = v
+			}
+			party_color_icon = {
+				frame = v
+			}
+		}
+
+		dynamic_lists = {
+			parliament_piechart_gridbox = {
+				array = parliament_piechart_array
+				entry_container = "parliament_piechart_entry_[?i]"
+			}
+			parliament_party_gridbox = {
+				array = parliament_array
+				entry_container = parliament_political_tab_parliament_party_entry
+			}
+		}
+	}
+}

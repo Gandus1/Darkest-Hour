@@ -1,0 +1,171 @@
+state_decision_enact_effect = {
+	if = {
+		limit = {
+			check_variable = { v = 1 }
+		}
+		ROOT = {
+			add_political_power = -100
+			set_temp_variable = { change_capital_state_mission_target = PREV.id }
+			activate_mission = change_capital_state_mission
+			set_variable = { change_capital_state_mission_target = PREV.id }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 2 }
+		}
+		if = {
+			limit = {
+				calculate_state_decision_add_claim_cost = yes
+			}
+			multiply_temp_variable = { state_decision_add_claim_cost = -1 }
+			ROOT = {
+				add_political_power = state_decision_add_claim_cost
+			}
+		}
+		add_claim_by = ROOT
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 3 }
+		}
+		if = {
+			limit = {
+				NOT = { is_owned_by = ROOT }
+			}
+			custom_effect_tooltip = STATE_DECISION_CANNOT_TRANSFER_CORE_STATE_NOT_OWNED_TT
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					NOT = { tag = ROOT }
+					has_war = no
+					PREV = { is_core_of = PREV }
+				}
+			}
+			custom_effect_tooltip = STATE_DECISION_TRANSFER_CORE_STATE_CHOOSE_NEW_OWNER_TT
+			hidden_effect = {
+				set_variable = { show_state_decision_cede_state_list_window = 1 }
+				clear_array = new_possible_owners_array
+				clear_variable = selected_new_owner
+				every_country = {
+					limit = {
+						NOT = { tag = ROOT }
+						has_war = no
+						PREV = { is_core_of = PREV }
+					}
+					PREV = {
+						add_to_array = { new_possible_owners_array = PREV.id }
+					}
+				}
+			}
+		}
+		else = {
+			custom_effect_tooltip = STATE_DECISION_CANNOT_TRANSFER_CORE_STATE_NO_CORE_COUNTRY_TT
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 4 }
+		}
+		if = {
+			limit = {
+				NOT = { is_owned_by = ROOT }
+			}
+			custom_effect_tooltip = STATE_DECISION_CANNOT_TRANSFER_CORE_STATE_NOT_OWNED_TT
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					NOT = { tag = ROOT }
+					has_war = no
+					PREV = { is_claimed_by = PREV }
+				}
+			}
+			custom_effect_tooltip = STATE_DECISION_TRANSFER_CORE_STATE_CHOOSE_NEW_OWNER_TT
+			hidden_effect = {
+				set_variable = { show_state_decision_cede_state_list_window = 2 }
+				clear_array = new_possible_owners_array
+				clear_variable = selected_new_owner
+				every_country = {
+					limit = {
+						NOT = { tag = ROOT }
+						has_war = no
+						PREV = { is_claimed_by = PREV }
+					}
+					PREV = {
+						add_to_array = { new_possible_owners_array = PREV.id }
+					}
+				}
+			}
+		}
+		else = {
+			custom_effect_tooltip = STATE_DECISION_CANNOT_TRANSFER_CORE_STATE_NO_CLAIM_COUNTRY_TT
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 5 }
+		}
+		ROOT = {
+			add_political_power = -50
+			set_temp_variable = { add_shared_building_slot_state_mission_target = PREV.id }
+			activate_mission = add_shared_building_slot_state_mission
+			set_variable = { add_shared_building_slot_state_mission_target = PREV.id }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 6 }
+		}
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						NOT = { has_state_flag = state_decision_resource_rights_cooldown }
+						check_variable = { resource_rights_receiver = ROOT.id }
+						owner = {
+							PREV = {
+								check_variable = { resource_rights_give = PREV.id }
+							}
+						}
+					}
+					AND = {
+						has_state_flag = state_decision_resource_rights_cooldown
+						OR = {
+							NOT = { check_variable = { resource_rights_receiver = ROOT.id } }
+							owner = {
+								PREV = {
+									NOT = { check_variable = { resource_rights_give = PREV.id } }
+								}
+							}
+						}
+					}
+				}
+			}
+			clear_variable = resource_rights_receiver
+			clear_variable = resource_rights_give
+			ROOT = {
+				remove_resource_rights = PREV
+			}
+			clr_state_flag = state_decision_resource_rights_cooldown
+			set_state_flag = { flag = state_decision_resource_rights_cooldown days = 30 value = 1 }
+		}
+		else = {
+			ROOT = {
+				add_political_power = -200
+			}
+			set_variable = { resource_rights_receiver = ROOT.id }
+			owner = {
+				give_resource_rights = { receiver = ROOT state = PREV }
+				hidden_effect = {
+					PREV = {
+						set_variable = { resource_rights_give = PREV.id }
+					}
+				}
+			}
+			clr_state_flag = state_decision_resource_rights_cooldown
+			set_state_flag = { flag = state_decision_resource_rights_cooldown days = 30 value = 1 }
+		}
+	}
+}

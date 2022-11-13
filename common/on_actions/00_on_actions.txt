@@ -1,0 +1,1082 @@
+on_actions = {
+	on_new_term_election = {
+		effect = {
+		# PARLIAMENT #
+			country_event = { id = Parliament_Events.1 }
+		}
+		# ELECTIONS #
+		random_events = { # Generic
+			100 = DH_Election.1
+		}
+		random_events = { # Germany
+			100 = GER_Machtergreifung.1
+		}
+		random_events = { # South Africa
+			100 = SAF_Election_1933.1
+			100 = SAF_Election_1938.1
+			100 = SAF_Election_1943.1
+		}
+		random_events = { # Canada
+			100 = CAN_Election_1935.1
+			100 = CAN_Election_1940.1
+			100 = CAN_Election_1945.1
+		}
+		random_events = { # Australia
+			100 = AST_Election_1934.1
+			100 = AST_Election_1937.1
+			100 = AST_Election_1940.1
+			100 = AST_Election_1943.1
+			100 = AST_Election_1946.1
+		}
+		random_events = { # New Zealand
+			100 = NZL_Election_1935.1
+			100 = NZL_Election_1938.1
+			100 = NZL_Election_1943.1
+		}
+		random_events = { # Belgium
+			100 = BEL_Election_1936.1
+			100 = BEL_Election_1939.1
+		}
+		random_events = { #Luxembourg
+			100 = LUX_Election_1934.1
+			100 = LUX_Election_1937.1
+		}
+		random_events = { #Netherlands
+			100 = HOL_Election_1933.1
+			100 = HOL_Election_1937.1
+		}
+		random_events = { # Yugoslavia
+			100 = YUG_Election_1935.1
+			100 = YUG_Election_1938.1
+		}
+		random_events = { # Switzerland
+			100 = SWI_Election.1
+		}
+	}
+	on_ace_promoted = {
+		random_events = {
+			100 = ace_promoted.1
+			5 = ace_promoted.2
+		}
+	}
+	# country, FROM = ace, PREV = enemy ace
+	# This event fires twice, once for each ace.
+	on_aces_killed_each_other = {
+		random_events = {
+			100 = aces_killed_each_other.1
+		}
+	}
+	# country, FROM = our ace,
+	# PREV = enemy ace, has killed FROM
+	on_ace_killed_by_ace = {
+		random_events = {
+			100 = ace_killed_by_ace.1
+		}
+	}
+	# country, FROM = our ace,
+	# PREV = enemy ace, killed by FROM
+	on_ace_killed_other_ace = {
+		random_events = {
+			100 = ace_killed_other_ace.1
+		}
+	}
+	# country, FROM = ace
+	on_ace_killed = {
+		random_events = {
+			100 = ace_died.1
+		}
+	}
+	# During justifying wargoals
+	# triggered daily, so make sure there is a sink somewhere not firing events
+	# country, FROM = target nation
+	on_justifying_wargoal_pulse = {
+		random_events = {
+			100 = war_justification.1
+			100 = war_justification.2
+			100 = war_justification.3
+			100 = war_justification.4
+			100 = war_justification.5
+			100 = war_justification.6
+			100 = war_justification.7
+			100 = war_justification.8
+			100 = war_justification.9
+			100 = war_justification.10
+			100 = war_justification.11
+			100 = war_justification.12
+			100 = war_justification.13
+			100 = war_justification.14
+			100 = war_justification.15
+			100 = war_justification.16
+			100 = war_justification.17
+			100 = war_justification.18
+			100 = war_justification.19
+			17000 = 0
+		}
+	}
+	on_wargoal_expire = {
+		random_events = {
+			100 = war_justification.301
+		}
+	}
+	on_nuke_drop = {
+		effect = {
+			news_event = { id = Nuke_Other.0 days = 1 }
+			news_event = { id = Nuke_JAP.1 days = 1 } #Hiroshima
+			news_event = { id = Nuke_JAP.2 days = 1 } #Nagasaki
+			news_event = { id = Nuke_JAP.3 days = 1 } #Tokyo
+			news_event = { id = Nuke_SOV.1 days = 1 } #Moscow
+			news_event = { id = Nuke_SOV.2 days = 1 } #Leningrad
+			news_event = { id = Nuke_GER.1 days = 1 } #Berlin
+			news_event = { id = Nuke_GER.2 days = 1 } #Essen
+			news_event = { id = Nuke_ITA.1 days = 1 } #Rome
+			news_event = { id = Nuke_ITA.2 days = 1 } #Venice
+			news_event = { id = Nuke_FRA.1 days = 1 } #Paris
+			news_event = { id = Nuke_ENG.1 days = 1 } #London
+			news_event = { id = Nuke_TUR.1 days = 1 } #Istanbul
+			news_event = { id = Nuke_GRE.1 days = 1 } #Athens
+			news_event = { id = Nuke_CHI.1 days = 1 } #Beijing
+			news_event = { id = Nuke_USA.1 days = 1 } #Washington D.C.
+			news_event = { id = Nuke_USA.2 days = 1 } #New York City
+			news_event = { id = Nuke_USA.3 days = 1 } #San Francisco
+			news_event = { id = Nuke_AST.1 days = 1 } #Sydney
+			news_event = { id = Nuke_AUS.1 days = 1 } #Vienna
+			news_event = { id = Nuke_HOL.1 days = 1 } #Amsterdam
+		}
+	}
+	# country random events
+	#on_bi_yearly_pulse = {
+	#
+	#}
+	#on_five_year_pulse = {
+	#
+	#}
+	on_border_war_lost = {
+		effect = {
+		}
+	}
+	on_leave_faction = {
+		effect = {
+			FROM = {
+				add_opinion_modifier = {
+					modifier = faction_traitor
+					target = ROOT
+					days = 365
+				}
+				add_opinion_modifier = {
+					modifier = faction_traitor_trade
+					target = ROOT
+					days = 365
+				}
+			}
+		}
+	}
+	#FROM is the one that joins the faction
+	on_create_faction = {
+		effect = {
+		}
+	}
+	#FROM is country getting invited.
+	on_offer_join_faction = {
+		effect = {
+		}
+	}
+	#FROM is faction leader on join faction requests.
+	on_join_faction = {
+		effect = {
+		}
+	}
+	#FROM is war target
+	on_declare_war = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						has_government = democratic
+					}
+				}
+				hidden_effect = {
+					FROM = {
+						set_rule = {
+							can_join_factions = yes
+						}
+					}
+				}
+			}
+			# SECOND RUSSIAN CIVIL WAR
+			if = {
+				limit = {
+					original_tag = SOV
+					has_civil_war = yes
+				}
+				random_country = {
+					limit = {
+						original_tag = SOV
+						has_government = communist
+					}
+					country_event = { id = Cosmetics.1 }
+				}
+			}
+			# SECOND ITALO-ETHIOPIAN WAR
+			if = {
+				limit = {
+					FROM = { tag = ETH }
+					tag = ITA
+				}
+				FROM = { complete_national_focus = ETH_The_Second_Italo_Ethiopian_War }
+			}
+			# Treaty of Versailles
+			if = {
+				limit = {
+					tag = GER
+					NOT = { has_completed_focus = GER_Reichswehr }
+				}
+				country_lock_all_division_template = no
+			}
+			# Fall Otto
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = AUS }
+				}
+				activate_decision = GER_Fall_Otto
+			}
+			# Fall Grun
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = CZE }
+				}
+				activate_decision = GER_Fall_Grun
+			}
+			# Fall Weiss
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = POL }
+					has_start_date < 1940.5.10
+				}
+				activate_decision = GER_Fall_Weiss
+			}
+			# Unternehmen Weserubung Nord
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = NOR }
+					has_start_date < 1941.6.22
+				}
+				activate_decision = GER_Unternehmen_Weserubung_Nord
+			}
+			# Fall Gelb
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					OR = {
+						FROM = { tag = BEL }
+						FROM = { tag = HOL }
+						FROM = { tag = LUX }
+					}
+					has_start_date < 1940.5.10
+				}
+				activate_decision = GER_Fall_Gelb
+			}
+			# Unternehmen Isabella
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					OR = {
+						FROM = { tag = SPR }
+						FROM = { tag = SPA }
+						FROM = { tag = POR }
+					}
+				}
+				activate_decision = GER_Unternehmen_Isabella
+			}
+			# Unternehmen Tannenbaum
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = SWI }
+				}
+				activate_decision = GER_Unternehmen_Tannenbaum
+			}
+			# Fall Achse
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = ITA }
+				}
+				activate_decision = GER_Fall_Achse
+			}
+			# Unternehmen Gertrude
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = TUR }
+				}
+				activate_decision = GER_Unternehmen_Gertrude
+			}
+			# Unternehmen Herkules and Felix
+			if = {
+				limit = {
+					tag = GER
+					has_government = fascist
+					FROM = { tag = ENG }
+				}
+				hidden_effect = {
+					activate_decision = GER_Unternehmen_Herkules
+					activate_decision = GER_Unternehmen_Felix
+				}
+			}
+			# OPERATION BARBAROSSA
+			if = {
+				limit = {
+					tag = GER
+					FROM = { tag = SOV }
+				}
+				clr_country_flag = GER_Preparation_for_Barbarossa
+				GER_give_barbarossa_invasion_spirit = yes
+				add_political_power = 200
+				hidden_effect = {
+					SOV = {
+						country_event = { id = GER_SOV_War.1 }
+						if = {
+							limit = {
+								has_country_leader = {
+									character = SOV_Joseph_Stalin
+									ruling_only = yes
+								}
+							}
+							set_portraits = {
+								character = SOV_Joseph_Stalin
+								civilian = { large ="GFX_P_C_Joseph_Stalin_GKO" }
+							} 
+						}
+					}
+					country_event = { id = GER_SOV_War.2 }
+					news_event = { id = GER_SOV_War.3 hours = 12 }
+				}
+			}
+			# Change US Spirit to Remove Unemployment Growth
+			if = {
+				limit = {
+					tag = USA
+					FROM = { 
+						OR = {
+							tag = GER
+							tag = JAP
+							tag = FRA
+							tag = ENG
+							tag = SOV
+							tag = ITA
+						}
+					}
+				}
+				hidden_effect = {
+					swap_ideas = {
+						add_idea = USA_The_Great_Depression_2
+						remove_idea = USA_The_Great_Depression
+					}
+				}
+			}
+			# Change US Spirit to Remove Unemployment Growth
+			if = {
+				limit = {
+					OR = {
+						tag = GER
+						tag = JAP
+						tag = FRA
+						tag = ENG
+						tag = SOV
+						tag = ITA
+					}
+					FROM = { tag = USA }
+				}
+				USA = {
+					hidden_effect = {
+						swap_ideas = {
+							add_idea = USA_The_Great_Depression_2
+							remove_idea = USA_The_Great_Depression
+						}
+					}
+				}
+			}
+			# Soviet Stalin Portrait Change
+			if = {
+				limit = {
+					tag = SOV
+					FROM = { tag = GER }
+					has_country_leader = {
+						character = SOV_Joseph_Stalin
+						ruling_only = yes
+					}
+				}
+				set_portraits = {
+					character = SOV_Joseph_Stalin
+					civilian = { large ="GFX_P_C_Joseph_Stalin_GKO" }
+				}
+			}
+			if = {
+				limit = {
+					tag = GER
+					FROM = { tag = SOV }
+					has_country_flag = GER_Shattered_Soviet_Airforce
+				}
+				SOV = {
+					add_timed_idea = {
+						idea = GER_Soviet_Shattered_Airfroce
+						days = 365
+					}
+				}
+				clr_country_flag = GER_Shattered_Soviet_Airforce
+			}
+			if = {
+				limit = {
+					tag = JAP
+					FROM = { tag = SOV }
+					has_country_flag = JAP_Prepared_for_Railway_Sabotage
+				}
+				hidden_effect = {
+					country_event = { id = JAP_Northern_Expansion.8 hours = 6 }
+				}
+			}
+		}
+	}
+	on_peaceconference_ended = {
+		effect = {
+			# ARAB REVOLT #
+			if = {
+				limit = {
+					ROOT = { tag = PAL }
+					FROM = { tag = ISR }
+					has_global_flag = PAL_ISR_Civil_War
+				}
+				ENG = {
+					country_event = {
+						days = 10
+						id = ENG_Arab_Revolt.24
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { tag = ISR }
+					FROM = { tag = PAL }
+					has_global_flag = PAL_ISR_Civil_War
+				}
+				ENG = {
+					country_event = {
+						days = 10
+						id = ENG_Arab_Revolt.25
+					}
+				}
+			}
+			# SOUTH TYROL #
+			if = {
+				limit = {
+					ITA = { has_country_flag = ITA_German_promises }
+				}
+				ITA = {
+					country_event = {
+					id = GER_Sudtirol_Claim.2
+						days = 2
+					}
+				}
+			}
+			# TWO-LIU WAR #
+			if = {
+				limit = {
+					FROM = { tag = LWH }
+					ROOT = { tag = LXI }
+				}
+				LWH = { 
+					set_cosmetic_tag = XIKANG
+					add_state_core = 601
+					set_capital = {
+						state = 1035
+						remember_old_capital = no
+					}
+				}
+				LXI = { set_cosmetic_tag = SICHUAN }
+				every_state = {
+					limit = {
+						region = 144
+					}
+					remove_core_of = LWH
+				}
+			}
+			if = {
+				limit = {
+					FROM = { tag = LXI }
+					ROOT = { tag = LWH }
+				}
+				LWH = { set_cosmetic_tag = SICHUAN }
+				every_state = {
+					limit = {
+						is_core_of = LXI
+					}
+					remove_core_of = LXI
+				}
+			}
+		}
+	}
+	# When a new faction is formed
+	on_faction_formed = {
+		effect = {
+			news_event = { id = news.159 }
+		}
+	}
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation = {
+		effect = {
+			news_event = { id = country_capitulated.0 days = 0 }
+			# Fall Otto
+			if = {
+				limit = {
+					original_tag = AUS
+					FROM = { tag = GER }
+					GER = {
+						has_government = fascist
+					}
+				}
+				GER = {
+					country_event = {
+						id = GER_Unternehmen_Success.7
+					}
+				}
+			}
+			# Fall Grun
+			if = {
+				limit = {
+					original_tag = CZE
+					FROM = { tag = GER }
+					GER = {
+						has_government = fascist
+					}
+				}
+				GER = {
+					country_event = {
+						id = GER_Unternehmen_Success.16
+					}
+				}
+			}
+			# Fall Weiss
+			if = {
+				limit = {
+					original_tag = POL
+					FROM = { tag = GER }
+					GER = {
+						has_government = fascist
+					}
+				}
+				GER = {
+					country_event = {
+						id = GER_Unternehmen_Success.3
+					}
+				}
+			}
+			# Unternehmen Weserubung Nord
+			if = {
+				limit = {
+					original_tag = NOR
+					FROM = { tag = GER }
+					GER = {
+						has_government = fascist
+					}
+				}
+				GER = {
+					country_event = {
+						id = GER_Unternehmen_Success.8
+					}
+				}
+			}
+			# Fall Gelb has a trigger condition since 3 countries have to capitulate for it to fire
+			# Fall Rot has a trigger condition since it can either capitulate or surrender
+			# Fall Grun (Ireland)
+			if = {
+				limit = {
+					original_tag = IRE
+					FROM = { tag = GER }
+					GER = {
+						has_government = fascist
+					}
+				}
+				GER = {
+					country_event = {
+						id = GER_Unternehmen_Success.20
+					}
+				}
+			}
+			# Unternehmen Seelowe has a trigger condition since has custom capitulation
+			# Unternehmen Felix has a trigger condition because it's a state
+			# Unternehmen Tannenbaum
+			if = {
+				limit = {
+					original_tag = SWI
+					FROM = { tag = GER }
+					GER = {
+						has_government = fascist
+					}
+				}
+				GER = {
+					country_event = {
+						id = GER_Unternehmen_Success.2
+					}
+				}
+			}
+			if = {
+				limit = {
+					original_tag = POL
+					has_government = authoritarian
+				}
+				retire_country_leader = yes
+			}
+			if = {
+				limit = {
+					original_tag = YUG
+				}
+				remove_ideas = YUG_idea_economic_aid
+			}
+			if = {
+				limit = {
+					original_tag = ETH
+					FROM = { tag = ITA }
+				}
+				ITA = {
+					set_country_flag = ITA_Ethiopia_Capitulation
+					annex_country = {
+						target = ETH
+						transfer_troops = yes
+					}
+					country_event = { id = ITA_Ethiopian_War.40 days = 1 }
+				}
+			}
+#			if = {
+#				limit = {
+#					original_tag = CHI
+#					FROM = { tag = JAP }
+#				}
+#				RNG = {
+#					annex_country = {
+#						target = CHI
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = GND
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = GXC
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = YUN
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = PRC
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = XSM
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = SHD
+#						transfer_troops = no
+#					}
+#					annex_country = {
+#						target = SHX
+#						transfer_troops = no
+#					}
+#					set_cosmetic_tag = RNG_JAP
+#					set_capital = {
+#						state = 613 
+#						remember_old_capital = no
+#					}
+#					transfer_state = 614
+#					transfer_state = 608
+#					transfer_state = 609
+#				}
+#				MEN = {
+#					827 = { add_core_of = MEN }
+#					transfer_state = 827
+#					825 = { add_core_of = MEN }
+#					transfer_state = 825
+#					621 = { add_core_of = MEN }
+#					transfer_state = 621
+#					746 = { add_core_of = MEN }
+#					transfer_state = 746
+#					set_capital = {
+#						state = 611 
+#						remember_old_capital = no
+#					}
+#				}
+#				JAP = {
+#					country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.1 days = 0 }
+#					transfer_state = 868
+#					transfer_state = 1472
+#					transfer_state = 1482
+#					transfer_state = 743
+#					transfer_state = 1036
+#					transfer_state = 591
+#				}
+#				if = {
+#					limit = {
+#						RNG = { NOT = { is_puppet_of = JAP } }
+#					}
+#					puppet = RNG
+#					JAP = {
+#						set_autonomy = {
+#							target = RNG
+#							autonomy_state = AUTONOMY_Imperial_Associate
+#						}
+#					}
+#				}
+#				white_peace = {
+#					tag = CHI
+#					message = KUOMINTANG_COLLAPSE
+#				}
+#			}
+			if = {
+				limit = {
+					OR = {
+						has_idea = JAP_Yen_Bloc_0
+						has_idea = JAP_Yen_Bloc_1
+						has_idea = JAP_Yen_Bloc_2
+					}
+				}
+				JAP = {
+					subtract_from_variable = {
+						var = JAP_Yen_Bloc_Members
+						value = 1
+					}
+				}
+				if = {
+					limit = {
+						has_idea = JAP_Yen_Bloc_0
+					}
+					JAP = {
+						subtract_from_variable = {
+							var = JAP_Yen_Bloc_Money_Gained
+							value = 3
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = JAP_Yen_Bloc_1
+					}
+					JAP = {
+						subtract_from_variable = {
+							var = JAP_Yen_Bloc_Money_Gained
+							value = 5
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = JAP_Yen_Bloc_2
+					}
+					JAP = {
+						subtract_from_variable = {
+							var = JAP_Yen_Bloc_Money_Gained
+							value = 3
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { tag = INS }
+					335 = {
+						OR = {
+							is_controlled_by = JAP
+							CONTROLLER = {
+								OR = {
+									is_subject_of = JAP
+									is_in_faction_with = JAP
+								}
+							}
+						}
+					}
+				}
+				add_resource = {
+					type = oil
+					amount = -8
+					state = 672
+				}
+				add_resource = {
+					type = oil
+					amount = -8
+					state = 335
+				}
+				add_resource = {
+					type = oil
+					amount = -3
+					state = 334
+				}
+				if = {
+					limit = {
+						USA = {
+							NOT = { has_war_with = JAP }
+						}
+					}
+					USA = {
+						country_event = { id = JAP_Oil_Embargo.1 days = 1 }
+					}
+				}
+			}
+		}
+	}
+	# ROOT is previously capitualted country
+	on_uncapitulation = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = FRA
+					has_government = democratic
+					is_puppet = no
+				}
+				drop_cosmetic_tag = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						has_idea = JAP_Yen_Bloc_0
+						has_idea = JAP_Yen_Bloc_1
+						has_idea = JAP_Yen_Bloc_2
+					}
+				}
+				JAP = {
+					add_to_variable = {
+						var = JAP_Yen_Bloc_Members
+						value = 1
+					}
+				}
+				if = {
+					limit = {
+						has_idea = JAP_Yen_Bloc_0
+					}
+					JAP = {
+						add_to_variable = {
+							var = JAP_Yen_Bloc_Money_Gained
+							value = 3
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = JAP_Yen_Bloc_1
+					}
+					JAP = {
+						add_to_variable = {
+							var = JAP_Yen_Bloc_Money_Gained
+							value = 5
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = JAP_Yen_Bloc_2
+					}
+					JAP = {
+						add_to_variable = {
+							var = JAP_Yen_Bloc_Money_Gained
+							value = 3
+						}
+					}
+				}
+			}
+		}
+	}
+	on_government_change = {
+		effect = {
+			#Make sure Soviet can always create factions
+			if = {
+				limit = {
+					original_tag = SOV
+					is_communist = no
+				}
+				set_rule = { can_create_factions = yes }
+			}
+			if = {
+				limit = { has_government = democratic }
+				if = {
+					limit = { has_idea = democratic_opposition_voicing_protests }
+					remove_ideas = democratic_opposition_voicing_protests
+				}
+				if = {
+					limit = { has_idea = democratic_revolutionaries }
+					remove_ideas = democratic_revolutionaries
+				}
+				if = {
+					limit = { has_idea = reign_of_terror }
+					remove_ideas = reign_of_terror
+				}
+			}
+			if = {
+				limit = { has_government = communist }
+				if = {
+					limit = { TAG = SAF }
+					set_cosmetic_tag = SAF_COM
+				}
+				if = {
+					limit = { has_idea = communist_partisans_recruiting }
+					remove_ideas = communist_partisans_recruiting
+				}
+				if = {
+					limit = { has_idea = communist_revolutionaries }
+					remove_ideas = communist_revolutionaries
+				}
+				if = {
+					limit = { has_idea = communism_defeated }
+					remove_ideas = communism_defeated
+				}
+				#Remove anti_soviet_pact
+				if = {
+					limit = { has_idea = anti_soviet_pact }
+					remove_ideas = anti_soviet_pact
+				}
+			}
+			if = {
+				limit = { has_government = fascist }
+				if = {
+					limit = { has_idea = fascist_assault_divisions }
+					remove_ideas = fascist_assault_divisions
+				}
+				if = {
+					limit = { has_idea = fascist_revolutionaries }
+					remove_ideas = fascist_revolutionaries
+				}
+				if = {
+					limit = { has_idea = fascism_defeated }
+					remove_ideas = fascism_defeated
+				}
+				if = {
+					limit = { has_idea = anti_nazi_coup }
+					remove_ideas = anti_nazi_coup
+				}
+			}
+		}
+	}
+	on_coup_succeeded = {
+		effect = {
+			random_other_country = {
+				limit = {
+					has_government = democratic
+					original_tag = ROOT
+				}
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+			}
+		}
+	}
+	on_civil_war_end = {
+		effect = {
+		}
+	}
+	on_annex = {
+		effect = {
+		}
+	}	
+	on_unit_leader_created = {
+		effect = {
+			# GAME RULES #
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = rule_max_amount_of_divisions_per_general
+						option = plus_8
+					}
+					NOT = { has_trait = rule_max_amount_of_divisions_per_general_plus_8_trait }
+				}
+				add_unit_leader_trait = rule_max_amount_of_divisions_per_general_plus_8_trait
+			}
+		}
+	}
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = {
+		effect = {
+			# STATE RENAMING #
+			if = {
+				limit = { 
+					has_game_rule = { rule = geographical_naming_convention option = endonym } 
+				}
+				State_Renaming_Base = yes
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = CHI
+					}
+					ROOT = {
+						OR = {
+							is_in_faction_with = JAP
+							tag = JAP
+						}
+					}
+					NOT = { has_global_flag = Fall_of_Nanjing }
+					FROM.FROM = {
+						is_core_of = CHI 
+						state = 613
+					}
+				}
+				CHI = {
+					news_event = {
+						id = JAP_CHI_Sino_Japanese_War.10
+					}
+					set_global_flag = Fall_of_Nanjing
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = CHI
+					}
+					ROOT = {
+						OR = {
+							is_in_faction_with = JAP
+							tag = JAP
+						}
+					}
+					has_global_flag = Fall_of_Nanjing
+					FROM.FROM = {
+						is_core_of = CHI 
+						state = 620
+					}
+				}
+				CHI = {
+					news_event = {
+						id = JAP_CHI_Sino_Japanese_War.11
+					}
+					set_global_flag = Fall_of_Wuhan
+				}
+			}
+		}
+	}
+	on_subject_free = {
+		effect = {
+			# COLONIAL COSMETIC TAGS #
+			if = {
+				limit = {
+					OR = {
+						has_cosmetic_tag = RAJ_COSMETIC
+						has_cosmetic_tag = RHD_ENG
+					}
+				}
+				drop_cosmetic_tag = yes
+			}
+		}
+	}
+}

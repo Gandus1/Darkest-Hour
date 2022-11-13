@@ -1,0 +1,318 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+PRK_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "infantry" "shock_infantry" "bicycle_battalion" "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_LGH_01 PRK_MOT_01 PRK_MEC_01 PRK_GAR_01 }
+
+	fallback_name = "je%dbobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dbobyeongsadan" }
+		2 = { "je%dbobyeongsadan" }
+		3 = { "je%dbobyeongsadan" }
+		4 = { "je%dbobyeongsadan" }
+		5 = { "je%dbobyeongsadan" }
+		6 = { "je%dbobyeongsadan" }
+		7 = { "je%dbobyeongsadan" }
+		8 = { "je%dbobyeongsadan" }
+		9 = { "je%dbobyeongsadan" }
+		10 = { "je%dbobyeongsadan" }
+	}
+}
+
+PRK_LGH_01 = 
+{
+	name = "Light Infantry Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "light_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_INF_01 PRK_MOT_01 PRK_MEC_01 PRK_GAR_01 }
+
+	fallback_name = "je%dgyeongbobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dgyeongbobyeongsadan" }
+		2 = { "je%dgyeongbobyeongsadan" }
+		3 = { "je%dgyeongbobyeongsadan" }
+		4 = { "je%dgyeongbobyeongsadan" }
+		5 = { "je%dgyeongbobyeongsadan" }
+		6 = { "je%dgyeongbobyeongsadan" }
+		7 = { "je%dgyeongbobyeongsadan" }
+		8 = { "je%dgyeongbobyeongsadan" }
+		9 = { "je%dgyeongbobyeongsadan" }
+		10 = { "je%dgyeongbobyeongsadan" }
+	}
+}
+
+PRK_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_INF_01 PRK_LGH_01 PRK_MEC_01 PRK_GAR_01 }
+
+	fallback_name = "je%djeondongbobyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%djeondongbobyeongsadan" }
+		2 = { "je%djeondongbobyeongsadan" }
+		3 = { "je%djeondongbobyeongsadan" }
+		4 = { "je%djeondongbobyeongsadan" }
+		5 = { "je%djeondongbobyeongsadan" }
+		6 = { "je%djeondongbobyeongsadan" }
+		7 = { "je%djeondongbobyeongsadan" }
+		8 = { "je%djeondongbobyeongsadan" }
+		9 = { "je%djeondongbobyeongsadan" }
+		10 = { "je%djeondongbobyeongsadan" }
+	}
+}
+
+PRK_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_INF_01 PRK_LGH_01 PRK_MOT_01 PRK_GAR_01 }
+
+	fallback_name = "je%dgigyehwasadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dgigyehwasadan" }
+		2 = { "je%dgigyehwasadan" }
+		3 = { "je%dgigyehwasadan" }
+		4 = { "je%dgigyehwasadan" }
+		5 = { "je%dgigyehwasadan" }
+		6 = { "je%dgigyehwasadan" }
+		7 = { "je%dgigyehwasadan" }
+		8 = { "je%dgigyehwasadan" }
+		9 = { "je%dgigyehwasadan" }
+		10 = { "je%dgigyehwasadan" }
+	}
+}
+
+PRK_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_INF_01 PRK_LGH_01 PRK_MOT_01 PRK_MEC_01 }
+
+	fallback_name = "je%dsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dsadan" }
+		2 = { "je%dsadan" }
+		3 = { "je%dsadan" }
+		4 = { "je%dsadan" }
+		5 = { "je%dsadan" }
+		6 = { "je%dsadan" }
+		7 = { "je%dsadan" }
+		8 = { "je%dsadan" }
+		9 = { "je%dsadan" }
+		10 = { "je%dsadan" }
+	}
+}
+
+PRK_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_CAV_01 }
+
+	fallback_name = "je%dttangkeusadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dttangkeusadan" }
+		2 = { "je%dttangkeusadan" }
+		3 = { "je%dttangkeusadan" }
+		4 = { "je%dttangkeusadan" }
+		5 = { "je%dttangkeusadan" }
+		6 = { "je%dttangkeusadan" }
+		7 = { "je%dttangkeusadan" }
+		8 = { "je%dttangkeusadan" }
+		9 = { "je%dttangkeusadan" }
+		10 = { "je%dttangkeusadan" }
+	}
+}
+
+PRK_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PRK_ARM_01 }
+
+	fallback_name = "%d Gibyeong-Yeodan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dgibyeongsadan" }
+		2 = { "je%dgibyeongsadan" }
+		3 = { "je%dgibyeongsadan" }
+		4 = { "je%dgibyeongsadan" }
+		5 = { "je%dgibyeongsadan" }
+		6 = { "je%dgibyeongsadan" }
+		7 = { "je%dgibyeongsadan" }
+		8 = { "je%dgibyeongsadan" }
+		9 = { "je%dgibyeongsadan" }
+		10 = { "je%dgibyeongsadan" }
+	}
+}
+
+PRK_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PRK_INF_01 }
+
+	fallback_name = "je%dhaebyeongsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dhaebyeongsadan" }
+		2 = { "je%dhaebyeongsadan" }
+		3 = { "je%dhaebyeongsadan" }
+		5 = { "je%dhaebyeongsadan" }
+		6 = { "je%dhaebyeongsadan" }
+		7 = { "je%dhaebyeongsadan" }
+		8 = { "je%dhaebyeongsadan" }
+		9 = { "je%dhaebyeongsadan" }
+		10 = { "je%dhaebyeongsadan" }
+	}
+}
+
+PRK_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { KOR PRK }
+
+	can_use = { has_government = communist }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PRK_INF_01 }
+
+	fallback_name = "je%dgongsuteugjeonsadan"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "je%dgongsuteugjeonsadan" }
+		2 = { "je%dgongsuteugjeonsadan" }
+		3 = { "je%dgongsuteugjeonsadan" }
+		5 = { "je%dgongsuteugjeonsadan" }
+		6 = { "je%dgongsuteugjeonsadan" }
+		7 = { "je%dgongsuteugjeonsadan" }
+		8 = { "je%dgongsuteugjeonsadan" }
+		9 = { "je%dgongsuteugjeonsadan" }
+		10 = { "je%dgongsuteugjeonsadan" }
+	}
+}

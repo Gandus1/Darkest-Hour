@@ -1,0 +1,87 @@
+operations = {
+	HUN_Attack_Slovakia = {
+		icon = generic_operation
+		fire_only_once = yes
+		allowed = {
+			original_tag = HUN
+		}
+		visible = {
+			has_start_date < 1939.3.23
+			SLO = {
+				exists = yes
+				NOT = {
+					is_in_faction_with = ROOT
+				}
+			}
+			73 = {
+				is_owned_and_controlled_by = ROOT
+			}
+			1108 = {
+				is_owned_and_controlled_by = SLO
+				is_claimed_by = ROOT
+			}
+		}
+		available = {
+			SLO = {
+				exists = yes
+				NOT = {
+					is_in_faction_with = ROOT
+				}
+			}
+			73 = {
+				is_owned_and_controlled_by = ROOT
+			}
+			1108 = {
+				is_owned_and_controlled_by = SLO
+				is_claimed_by = ROOT
+			}
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 13
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 73
+					num_provinces = 2
+					on_win = HUN_Border_War_with_Slovakia.1
+					on_lose = HUN_Border_War_with_Slovakia.2
+				}
+				defender = {
+					state = 1108
+					num_provinces = 1
+					on_win = HUN_Border_War_with_Slovakia.2
+					on_lose = HUN_Border_War_with_Slovakia.1
+				}
+			}
+			hidden_effect = {
+				set_border_war_data = {
+					attacker = 73
+					defender = 1108
+					attacker_modifier = 0.1
+					defender_modifier = -0.1
+				}
+			}
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = "SLO"
+				value = -200
+			}
+			73 = {
+				set_border_war = yes
+			}
+			1108 = {
+				set_border_war = yes
+			}
+		}
+		complete_effect = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = "SLO"
+				value = 200
+			}
+		}
+	}
+}

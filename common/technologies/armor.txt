@@ -1,0 +1,2245 @@
+#!gfx:interface\replace\_Technologies_Armor.gfx
+technologies = {
+	@Mobile_Infantry_line = -8
+	@Mobile_Infantry_line_2 = -4
+	@Armored_Car_line = -4
+	@early_tank_line = 4
+	@light_tank_line = 0
+	@medium_tank_line = 4
+	@main_battle_tank_line = 6
+	@heavy_tank_line = 8
+	@modern_heavy_tank_line = 10
+	@super_heavy_tank_line = 12
+	@1910 = 0
+	@1916 = 2
+	@1917 = 4
+	@1926 = 6
+	@1934 = 8
+	@1936 = 10
+	@1939 = 12
+	@1941 = 14
+	@1943 = 16
+	@1945 = 18
+	@1950 = 20
+	@1955 = 22
+	#################################################################
+	## Mobile Infantry
+	##################################################################
+	Motorized_1916 = {
+		enable_equipments = {
+			Motorized_equipment_1916
+		}
+		path = {
+			leads_to_tech = Motorized_1932
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1916
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Mobile_Infantry_line
+				y = @1916
+			}
+		}
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 300
+		}
+	}
+	Motorized_1932 = {
+		enable_subunits = {
+			motorized
+		}
+		enable_equipments = {
+			Motorized_equipment_1932
+		}
+		path = {
+			leads_to_tech = Motorized_1938
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1932
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Mobile_Infantry_line
+				y = @1934
+			}
+		}
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 300
+		}
+	}
+	Motorized_1938 = {
+		enable_equipments = {
+			Motorized_equipment_1938
+		}
+		path = {
+			leads_to_tech = APC_1941
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Mobile_Infantry_line
+				y = @1939
+			}
+		}
+		sub_technologies = {
+			motorized_rocket_unit
+		}
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+		}
+	}
+	motorized_rocket_unit = {
+		enable_subunits = {
+			motorized_rocket_artillery_battalion
+		}
+		enable_equipments = {
+			motorized_rocket_equipment_1
+		}
+		research_cost = 1.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 2
+				tag = SOV
+			}
+			modifier = {
+				factor = 0
+				is_major = no
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { tag = SOV }
+			}
+		}
+		categories = {
+			mot_rockets
+		}
+	}
+	# Halftrack 1941
+	APC_1941 = {
+		enable_equipments = {
+			APC_equipment_1941
+		}
+		motorized = {
+			hardness = 1
+		}
+		path = {
+			leads_to_tech = APC_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Mobile_Infantry_line
+				y = @1941
+			}
+		}
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+		}
+	}
+	# Halftrack 1943
+	APC_1943 = {
+		enable_equipments = {
+			APC_equipment_1943
+		}
+		path = {
+			leads_to_tech = APC_1950
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Mobile_Infantry_line
+				y = @1943
+			}
+		}
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	# 1950 APC
+	APC_1950 = {
+		enable_equipments = {
+			APC_equipment_1950
+		}
+		path = {
+			leads_to_tech = APC_1960
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = IFV_1960
+			research_cost_coeff = 1
+		}
+		mechanized = {
+			soft_attack = 0.15
+			hard_attack = 0.15
+		}
+		research_cost = 3
+		start_year = 1950
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Mobile_Infantry_line
+				y = @1950
+			}
+		}
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+		}
+	}
+	##########################################################################################################################
+	###  Armoured Cars
+	##########################################################################################################################
+	### 1911 Armored Car
+	Armored_Car_1911 = {
+		enable_equipments = {
+			armored_car_equipment_1911
+		}
+		dependencies = {
+			Industrial_Management = 1
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1916
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Armored_Car_1916
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Motorized_1916
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1911
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Armored_Car_line
+				y = @1910
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 0.1
+				is_major = no
+			}
+		}
+		categories = {
+			armor
+			cat_armored_car
+		}
+	}
+	### 1916 Armored Car
+	Armored_Car_1916 = {
+		enable_equipments = {
+			armored_car_equipment_1916
+		}
+		path = {
+			leads_to_tech = Armored_Car_1926
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1916
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Armored_Car_line
+				y = @1916
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 0.1
+				is_major = no
+			}
+		}
+		categories = {
+			armor
+			cat_armored_car
+		}
+	}
+	### 1926 Armored Car
+	Armored_Car_1926 = {
+		enable_equipments = {
+			armored_car_equipment_1926
+		}
+		path = {
+			leads_to_tech = Armored_Car_1936
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1926
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Armored_Car_line
+				y = @1926
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 0.1
+				is_major = no
+			}
+		}
+		categories = {
+			armor
+			cat_armored_car
+		}
+	}
+	### 1936 Armored Car
+	Armored_Car_1936 = {
+		enable_equipments = {
+			armored_car_equipment_1936
+		}
+		path = {
+			leads_to_tech = Armored_Car_1942
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Armored_Car_line
+				y = @1936
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 0.1
+				is_major = no
+			}
+		}
+		categories = {
+			armor
+			cat_armored_car
+		}
+	}
+	### 1942 Armored Car
+	Armored_Car_1942 = {
+		enable_equipments = {
+			armored_car_equipment_1942
+		}
+		path = {
+			leads_to_tech = Armored_Car_1945
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Light_Tank_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Armored_Car_line
+				y = @1941
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 0.1
+				is_major = no
+			}
+		}
+		categories = {
+			armor
+			cat_armored_car
+		}
+	}
+	### 1948 Armored Car
+	Armored_Car_1945 = {
+		enable_equipments = {
+			armored_car_equipment_1945
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = armour_folder
+			position = {
+				x = @Armored_Car_line
+				y = @1945
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_armored_car
+		}
+	}
+	#########################################################################
+	###  Early Tank
+	#########################################################################
+	### 1916 Tank (A7V)
+	Heavy_Tank_1916 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1916
+		}
+		path = {
+			leads_to_tech = Light_Tank_1917
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1917
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Super_Heavy_Tank_1917
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1916
+		folder = {
+			name = armour_folder
+			position = {
+				x = @early_tank_line
+				y = @1916
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1917 Tank (A7VU; Mark IV)
+	Heavy_Tank_1917 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1917
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1926
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1917
+		folder = {
+			name = armour_folder
+			position = {
+				x = @heavy_tank_line
+				y = @1917
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1917 Super Heavy Tank (K-Wagen)
+	Super_Heavy_Tank_1917 = {
+		enable_equipments = {
+			Super_Heavy_Tank_equipment_1917
+		}
+		research_cost = 2
+		start_year = 1917
+		path = {
+			leads_to_tech = Medium_Tank_1926
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = armour_folder
+			position = {
+				x = @super_heavy_tank_line
+				y = @1917
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1917 Light Tank (LK I, Whippet)
+	Light_Tank_1917 = {
+		enable_equipments = {
+			Light_Tank_equipment_1917
+		}
+		path = {
+			leads_to_tech = Light_Tank_1919
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Light_Tank_1926
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1926
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1917
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1917
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1917 Light Tank (LK I, Whippet)
+	Light_Tank_1919 = {
+		enable_equipments = {
+			Light_Tank_equipment_1919
+		}
+		path = {
+			leads_to_tech = Light_Tank_1926
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 1919
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1917
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	#########################################################################
+	###  Lights Tank
+	#########################################################################
+	### 1926  Light Tank (Oberschlesien)
+	Light_Tank_1926 = {
+		enable_equipments = {
+			Light_Tank_equipment_1926
+		}
+		path = {
+			leads_to_tech = Light_Tank_1934
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1926
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1926
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1934  Light Tank (PzKpfw. I)
+	Light_Tank_1934 = {
+		enable_equipments = {
+			Light_Tank_equipment_1934
+		}
+		path = {
+			leads_to_tech = Light_Tank_1936
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1934
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1934
+			}
+		}
+		sub_technologies = {
+			Light_TD_1939
+			Light_SPG_1939
+			Light_SPAA_1939
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1933.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1936 Light Tank (PzKpfw. II)
+	Light_Tank_1936 = {
+		enable_equipments = {
+			Light_Tank_equipment_1936
+		}
+		path = {
+			leads_to_tech = Light_Tank_1939
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1939
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1936
+			}
+		}
+		sub_technologies = {
+			Light_TD_1942
+			Light_SPG_1942
+			Light_SPAA_1942
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1939 Light Tank (PzKpfw. 38t)
+	Light_Tank_1939 = {
+		enable_equipments = {
+			Light_Tank_equipment_1939
+		}
+		path = {
+			leads_to_tech = Light_Tank_1943
+			research_cost_coeff = 1
+		}
+		enable_subunits = {
+			light_armor
+		}
+		sub_technologies = {
+			Light_TD_1944
+			Light_SPG_1944
+			Light_SPAA_1944
+		}
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1939
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1943 Light Tank (PzKpfw. Leopard)
+	Light_Tank_1943 = {
+		enable_equipments = {
+			Light_Tank_equipment_1943
+		}
+		path = {
+			leads_to_tech = Light_Tank_1950
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1943
+			}
+		}
+		sub_technologies = {
+			Light_TD_1946
+			Light_SPG_1946
+			Light_SPAA_1946
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+	### 1950 Light Tank (M41 Walker Bulldog)
+	Light_Tank_1950 = {
+		enable_equipments = {
+			Light_Tank_equipment_1950
+		}
+		path = {
+			leads_to_tech = Light_Tank_1970
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1950
+		folder = {
+			name = armour_folder
+			position = {
+				x = @light_tank_line
+				y = @1950
+			}
+		}
+		sub_technologies = {
+			Light_TD_1950
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_light_armor
+			cat_standard_panzer
+		}
+	}
+	##########################################################################################################################
+	###  Medium Tank
+	##########################################################################################################################
+	### 1926  Light Tank (Oberschlesien)
+	Medium_Tank_1926 = {
+		enable_equipments = {
+			Medium_Tank_equipment_1926
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1936
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1926
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1926
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	### 1936  Light Tank (Oberschlesien)
+	Medium_Tank_1936 = {
+		enable_equipments = {
+			Medium_Tank_equipment_1936
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1939
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1939
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1936
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	### 1939 Medium Tank (PzKpfw. III)
+	Medium_Tank_1939 = {
+		enable_equipments = {
+			Medium_Tank_equipment_1939
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1941
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1941
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1939
+			}
+		}
+		sub_technologies = {
+			Medium_TD_1939
+			Medium_SPG_1939
+			Medium_SPAA_1939
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	### 1941 Medium Tank (PzKpfw. IV)
+	Medium_Tank_1941 = {
+		enable_equipments = {
+			Medium_Tank_equipment_1941
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1941
+			}
+		}
+		sub_technologies = {
+			Medium_TD_1941
+			Medium_SPG_1941
+			Medium_SPAA_1941
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	### 1943 Medium Tank (PzKpfw. V Panther)
+	Medium_Tank_1943 = {
+		enable_equipments = {
+			Medium_Tank_equipment_1943
+		}
+		path = {
+			leads_to_tech = Medium_Tank_1945
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1943
+			}
+		}
+		sub_technologies = {
+			Medium_TD_1943
+			Medium_SPG_1943
+			Medium_SPAA_1943
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	### 1945 Medium Tank (PzKpfw. V Panther Ausf. D)
+	Medium_Tank_1945 = {
+		enable_equipments = {
+			Medium_Tank_equipment_1945
+		}
+		path = {
+			leads_to_tech = Main_Battle_Tank_1952
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = armour_folder
+			position = {
+				x = @medium_tank_line
+				y = @1945
+			}
+		}
+		sub_technologies = {
+			Medium_TD_1945
+			Medium_SPG_1945
+			Medium_SPAA_1945
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	##########################################################################################################################
+	### -------------------------------------- Heavy Tank -------------------------------------------------------
+	##########################################################################################################################
+	### 1939 Heavy Tank (10,5cm K(gp.Sfl.) 'Dicker Max')
+	Heavy_Tank_1939 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1936
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1941
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = armour_folder
+			position = {
+				x = @heavy_tank_line
+				y = @1936
+			}
+		}
+		sub_technologies = {
+			Heavy_TD_1939
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	### 1941 Heavy Tank (12,8cm K(gp.Sfl.) 'Sturer Emil')
+	Heavy_Tank_1941 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1941
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = armour_folder
+			position = {
+				x = @heavy_tank_line
+				y = @1941
+			}
+		}
+		sub_technologies = {
+			Heavy_TD_1941
+			Heavy_SPG_1941
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	### 1943 Heavy Tank (PzKpfw.VI Tiger I)
+	Heavy_Tank_1943 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1943
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1945
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Super_Heavy_Tank_1944
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = armour_folder
+			position = {
+				x = @heavy_tank_line
+				y = @1943
+			}
+		}
+		sub_technologies = {
+			Heavy_TD_1943
+			Heavy_SPG_1943
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	### 1945 Heavy Tank (PzKpfw.VI Tiger II)
+	Heavy_Tank_1945 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1945
+		}
+		path = {
+			leads_to_tech = Heavy_Tank_1956
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Main_Battle_Tank_1952
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = armour_folder
+			position = {
+				x = @heavy_tank_line
+				y = @1945
+			}
+		}
+		sub_technologies = {
+			Heavy_TD_1944
+			Heavy_SPG_1944
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	### 1956 Heavy Tank (E-100)
+	Heavy_Tank_1956 = {
+		enable_equipments = {
+			Heavy_Tank_equipment_1956
+		}
+		research_cost = 2
+		start_year = 1956
+		folder = {
+			name = armour_folder
+			position = {
+				x = @modern_heavy_tank_line
+				y = @1955
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1955.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_heavy_armor
+			cat_standard_panzer
+		}
+	}
+	### 1944 Super Heavy Tank (Maus)
+	Super_Heavy_Tank_1944 = {
+		enable_equipments = {
+			Super_Heavy_Tank_equipment_1944
+		}
+		path = {
+			leads_to_tech = main_battle_tank
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1944
+		folder = {
+			name = armour_folder
+			position = {
+				x = @super_heavy_tank_line
+				y = @1945
+			}
+		}
+		sub_technologies = {
+			super_Heavy_TD_1944
+			super_Heavy_SPG_1944
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+	}
+	##########################################################################################################################
+	### -------------------------------------- Main Battle Tank -------------------------------------------------------
+	##########################################################################################################################
+	### MBT '50 ( E-50 Standardpanzer, T-54)
+	Main_Battle_Tank_1952 = {
+		enable_equipments = {
+			Main_Battle_Tank_equipment_1952
+		}
+		path = {
+			leads_to_tech = Main_Battle_Tank_1956
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = armour_folder
+			position = {
+				x = @main_battle_tank_line
+				y = @1950
+			}
+		}
+		research_cost = 2.5
+		start_year = 1950
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+			modifier = {
+				factor = 2
+				date > "1948.1.1"
+			}
+			modifier = {
+				factor = 2
+				date > "1949.1.1"
+			}
+			modifier = {
+				factor = 2
+				date > "1950.1.1"
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+			cat_standard_panzer
+		}
+	}
+	### MBT '55 ( E-75 Tiger III, T-55)
+	Main_Battle_Tank_1956 = {
+		enable_equipments = {
+			Main_Battle_Tank_equipment_1956
+		}
+		path = {
+			leads_to_tech = Main_Battle_Tank_1962
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 1956
+		folder = {
+			name = armour_folder
+			position = {
+				x = @main_battle_tank_line
+				y = @1955
+			}
+		}
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1955.6.1"
+			}
+			modifier = {
+				factor = 2
+				date > "1952.1.1"
+			}
+			modifier = {
+				factor = 2
+				date > "1953.1.1"
+			}
+			modifier = {
+				factor = 2
+				date > "1954.1.1"
+			}
+		}
+		categories = {
+			armor
+			cat_medium_armor
+			cat_standard_panzer
+		}
+	}
+	##########################################################################################################################
+	###  Light Tank Destroyers
+	##########################################################################################################################
+	### 1934/1939 TD
+	Light_TD_1939 = {
+		enable_equipments = {
+			Light_TD_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 100
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+				any_enemy_country = {
+					ROOT = {
+						estimated_intel_max_armor = {
+							tag = PREV
+							value > 25
+						}
+					}
+				}
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1936/1942 TD
+	Light_TD_1942 = {
+		enable_equipments = {
+			Light_TD_equipment_1942
+		}
+		research_cost = 0.5
+		start_year = 1942
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+			modifier = {
+				factor = 120
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+				any_enemy_country = {
+					ROOT = {
+						estimated_intel_max_armor = {
+							tag = PREV
+							value > 27
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				can_research = Light_TD_1939
+			}
+			modifier = {
+				factor = 0
+				has_tech = Light_TD_1939
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1939/1944 TD
+	Light_TD_1944 = {
+		enable_equipments = {
+			Light_TD_equipment_1944
+		}
+		research_cost = 0.5
+		start_year = 1944
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+			modifier = {
+				factor = 130
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+				any_enemy_country = {
+					ROOT = {
+						estimated_intel_max_armor = {
+							tag = PREV
+							value > 27
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				can_research = Light_TD_1944
+			}
+			modifier = {
+				factor = 0
+				has_tech = Light_TD_1944
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1943/1946 TD
+	Light_TD_1946 = {
+		enable_equipments = {
+			Light_TD_equipment_1946
+		}
+		research_cost = 0.5
+		start_year = 1946
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1945.6.1"
+			}
+			modifier = {
+				factor = 130
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+				any_enemy_country = {
+					ROOT = {
+						estimated_intel_max_armor = {
+							tag = PREV
+							value > 27
+						}
+					}
+				}
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1950 TD
+	Light_TD_1950 = {
+		enable_equipments = {
+			Light_TD_equipment_1950
+		}
+		research_cost = 0.5
+		start_year = 1950
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	##########################################################################################################################
+	###  Light Self-Propelled Guns/Howitzers 
+	##########################################################################################################################
+	### 1934/1939 SPG
+	Light_SPG_1939 = {
+		enable_equipments = {
+			Light_SPG_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1936/1942 SPG
+	Light_SPG_1942 = {
+		enable_equipments = {
+			Light_SPG_equipment_1942
+		}
+		research_cost = 0.5
+		start_year = 1942
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1939/1944 SPG
+	Light_SPG_1944 = {
+		enable_equipments = {
+			Light_SPG_equipment_1944
+		}
+		research_cost = 0.5
+		start_year = 1944
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1943/1946 SPG
+	Light_SPG_1946 = {
+		enable_equipments = {
+			Light_SPG_equipment_1946
+		}
+		research_cost = 0.5
+		start_year = 1946
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1945.6.1"
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	##########################################################################################################################
+	###  Light Self-Propelled Anti Air Guns 
+	##########################################################################################################################
+	### 1934/1939 SPG
+	Light_SPAA_1939 = {
+		enable_equipments = {
+			Light_SPAA_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	### 1936/1942 SPG
+	Light_SPAA_1942 = {
+		enable_equipments = {
+			Light_SPAA_equipment_1942
+		}
+		research_cost = 0.5
+		start_year = 1942
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1941.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	### 1939/1944 SPG
+	Light_SPAA_1944 = {
+		enable_equipments = {
+			Light_SPAA_equipment_1944
+		}
+		research_cost = 0.5
+		start_year = 1944
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	### 1943/1946 SPG
+	Light_SPAA_1946 = {
+		enable_equipments = {
+			Light_SPAA_equipment_1946
+		}
+		research_cost = 0.5
+		start_year = 1946
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1945.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	##########################################################################################################################
+	###  Medium Tank Destroyers
+	##########################################################################################################################
+	### 1939 TD
+	Medium_TD_1939 = {
+		enable_equipments = {
+			Medium_TD_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_TD_1941
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_TD_1941
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1941 TD
+	Medium_TD_1941 = {
+		enable_equipments = {
+			Medium_TD_equipment_1941
+		}
+		research_cost = 0.5
+		start_year = 1941
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_TD_1943
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_TD_1943
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1943 TD
+	Medium_TD_1943 = {
+		enable_equipments = {
+			Medium_TD_equipment_1943
+		}
+		research_cost = 0.5
+		start_year = 1943
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_TD_1945
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_TD_1945
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1945 TD
+	Medium_TD_1945 = {
+		enable_equipments = {
+			Medium_TD_equipment_1945
+		}
+		research_cost = 0.5
+		start_year = 1945
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	##########################################################################################################################
+	###  Medium Self-Propelled Guns/Howitzers 
+	##########################################################################################################################
+	### 1939 SPG
+	Medium_SPG_1939 = {
+		enable_equipments = {
+			Medium_SPG_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_SPG_1941
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_SPG_1941
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1941 SPG
+	Medium_SPG_1941 = {
+		enable_equipments = {
+			Medium_SPG_equipment_1941
+		}
+		research_cost = 0.5
+		start_year = 1941
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_SPG_1943
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_SPG_1943
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1943 SPG
+	Medium_SPG_1943 = {
+		enable_equipments = {
+			Medium_SPG_equipment_1943
+		}
+		research_cost = 0.5
+		start_year = 1943
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_SPG_1945
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_SPG_1945
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1945 SPG
+	Medium_SPG_1945 = {
+		enable_equipments = {
+			Medium_SPG_equipment_1945
+		}
+		research_cost = 0.5
+		start_year = 1945
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	##########################################################################################################################
+	###  Medium Self-Propelled Anti Air Guns 
+	##########################################################################################################################
+	### 1939 SPG
+	Medium_SPAA_1939 = {
+		enable_equipments = {
+			Medium_SPAA_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_SPAA_1941
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_SPAA_1941
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	### 1941 SPG
+	Medium_SPAA_1941 = {
+		enable_equipments = {
+			Medium_SPAA_equipment_1941
+		}
+		research_cost = 0.5
+		start_year = 1941
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_SPAA_1943
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_SPAA_1943
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	### 1943 SPG
+	Medium_SPAA_1943 = {
+		enable_equipments = {
+			Medium_SPAA_equipment_1943
+		}
+		research_cost = 0.5
+		start_year = 1943
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Medium_SPAA_1945
+			}
+			modifier = {
+				factor = 0
+				has_tech = Medium_SPAA_1945
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	### 1945 SPG
+	Medium_SPAA_1945 = {
+		enable_equipments = {
+			Medium_SPAA_equipment_1945
+		}
+		research_cost = 0.5
+		start_year = 1945
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_anti_air
+		}
+	}
+	##########################################################################################################################
+	###  Heavy Tank Destroyers
+	##########################################################################################################################
+	### 1939 TD
+	Heavy_TD_1939 = {
+		enable_equipments = {
+			Heavy_TD_equipment_1939
+		}
+		research_cost = 0.5
+		start_year = 1939
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1938.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Heavy_TD_1941
+			}
+			modifier = {
+				factor = 0
+				has_tech = Heavy_TD_1941
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1941 TD
+	Heavy_TD_1941 = {
+		enable_equipments = {
+			Heavy_TD_equipment_1941
+		}
+		research_cost = 0.5
+		start_year = 1941
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Heavy_TD_1943
+			}
+			modifier = {
+				factor = 0
+				has_tech = Heavy_TD_1943
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1943 TD
+	Heavy_TD_1943 = {
+		enable_equipments = {
+			Heavy_TD_equipment_1943
+		}
+		research_cost = 0.5
+		start_year = 1943
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Heavy_TD_1944
+			}
+			modifier = {
+				factor = 0
+				has_tech = Heavy_TD_1944
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	### 1944 TD
+	Heavy_TD_1944 = {
+		enable_equipments = {
+			Heavy_TD_equipment_1944
+		}
+		research_cost = 0.5
+		start_year = 1944
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+		}
+		categories = {
+			armor
+			tank_destroyers
+		}
+	}
+	##########################################################################################################################
+	###  Heavy Self-Propelled Guns/Howitzers 
+	##########################################################################################################################
+	### 1941 SPG
+	Heavy_SPG_1941 = {
+		enable_equipments = {
+			Heavy_SPG_equipment_1941
+		}
+		research_cost = 0.5
+		start_year = 1941
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1940.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Heavy_SPG_1943
+			}
+			modifier = {
+				factor = 0
+				has_tech = Heavy_SPG_1943
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1943 SPG
+	Heavy_SPG_1943 = {
+		enable_equipments = {
+			Heavy_SPG_equipment_1943
+		}
+		research_cost = 0.5
+		start_year = 1943
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+			modifier = {
+				factor = 0
+				can_research = Heavy_SPG_1944
+			}
+			modifier = {
+				factor = 0
+				has_tech = Heavy_SPG_1944
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+	### 1944 SPG
+	Heavy_SPG_1944 = {
+		enable_equipments = {
+			Heavy_SPG_equipment_1944
+		}
+		research_cost = 0.5
+		start_year = 1944
+		ai_will_do = {
+			factor = 300
+			modifier = {
+				factor = 0
+				date < "1943.6.1"
+			}
+		}
+		categories = {
+			armor
+			mobile_artillery
+		}
+	}
+}

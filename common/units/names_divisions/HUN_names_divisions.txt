@@ -1,0 +1,1525 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+HUN_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_INF_02 HUN_LGH_01 HUN_RES_01 HUN_MOT_01 HUN_MEC_01 }
+
+	fallback_name = "%d. gyalogsági hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		6 = { "%d. gyalogsági hadosztály" }
+		7 = { "%d. gyalogsági hadosztály" }
+		10 = { "%d. gyalogsági hadosztály" }
+		13 = { "%d. gyalogsági hadosztály" }
+		16 = { "%d. gyalogsági hadosztály" }
+		20 = { "%d. gyalogsági hadosztály" }
+		24 = { "%d. gyalogsági hadosztály" }
+		25 = { "%d. gyalogsági hadosztály" }
+		27 = { "%d. Székely gyalogsági hadosztály" }  # On 1 OCT44 the 27th Light Infantry added a regiment of Székler Militia to become a full infantry division.
+		1 = { "%d. gyalogsági hadosztály" } # These never upgraded from a light division
+		2 = { "%d. gyalogsági hadosztály" }
+		4 = { "%d. gyalogsági hadosztály" }
+		8 = { "%d. gyalogsági hadosztály" }
+		11 = { "%d. gyalogsági hadosztály" }
+		14 = { "%d. gyalogsági hadosztály" }
+		15 = { "%d. gyalogsági hadosztály" }
+		17 = { "%d. gyalogsági hadosztály" }
+		21 = { "%d. gyalogsági hadosztály" }
+		22 = { "%d. gyalogsági hadosztály" }
+		26 = { "%d. gyalogsági hadosztály" }
+		3 = { "%d. gyalogsági hadosztály" } # 3. Infantry Brigade never got upgraded to a Division
+		5 = { "%d. gyalogsági hadosztály" } # These became reserve divisions
+		9 = { "%d. gyalogsági hadosztály" }
+		12 = { "%d. gyalogsági hadosztály" }
+		18 = { "%d. gyalogsági hadosztály" }
+		19 = { "%d. gyalogsági hadosztály" }
+		23 = { "%d. gyalogsági hadosztály" }
+		28 = { "%d. gyalogsági hadosztály" } # start fictional units to keep good numbering
+		29 = { "%d. gyalogsági hadosztály" }
+	}
+}
+
+		# Not until the Huba III Plan in 1943 did Hungary finally organize full 3-regiment infantry divisions.
+
+HUN_INF_02 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_INF_01 HUN_LGH_01 HUN_RES_01 HUN_MOT_01 HUN_MEC_01 }
+
+	fallback_name = "%d. gyalogsági dandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. gyalogsági dandár" }
+		2 = { "%d. gyalogsági dandár" }
+		3 = { "%d. gyalogsági dandár" }
+		4 = { "%d. gyalogsági dandár" }
+		5 = { "%d. gyalogsági dandár" }
+		6 = { "%d. gyalogsági dandár" }
+		7 = { "%d. gyalogsági dandár" }
+		8 = { "%d. gyalogsági dandár" }
+		9 = { "%d. gyalogsági dandár" }
+		10 = { "%d. gyalogsági dandár" }
+		11 = { "%d. gyalogsági dandár" }
+		12 = { "%d. gyalogsági dandár" }
+		13 = { "%d. gyalogsági dandár" }
+		14 = { "%d. gyalogsági dandár" }
+		15 = { "%d. gyalogsági dandár" }
+		16 = { "%d. gyalogsági dandár" }
+		17 = { "%d. gyalogsági dandár" }
+		18 = { "%d. gyalogsági dandár" }
+		19 = { "%d. gyalogsági dandár" }
+		20 = { "%d. gyalogsági dandár" }
+		21 = { "%d. gyalogsági dandár" }
+		22 = { "%d. gyalogsági dandár" }
+		23 = { "%d. gyalogsági dandár" }
+		24 = { "%d. gyalogsági dandár" }
+		25 = { "%d. gyalogsági dandár" }
+		26 = { "%d. gyalogsági dandár" }
+		27 = { "%d. gyalogsági dandár" }
+		102 = { "%d. gyalogsági dandár" }
+		105 = { "%d. gyalogsági dandár" }
+		108 = { "%d. gyalogsági dandár" }
+		121 = { "%d. gyalogsági dandár" }
+		124 = { "%d. gyalogsági dandár" }
+		28 = { "%d. gyalogsági dandár" } # start fictional units to keep good numbering
+		29 = { "%d. gyalogsági dandár" }
+
+		# October 1938 Hungary reorganizes the army and creates Infantry Brigades from the existing infantry battalions.
+	}
+}
+
+HUN_LGH_01 = 
+{
+	name = "Light Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_INF_01 HUN_INF_02 HUN_RES_01 HUN_MOT_01 HUN_MEC_01 }
+
+	fallback_name = "%d. könnyű hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. könnyű hadosztály" }
+		2 = { "%d. könnyű hadosztály" }
+		4 = { "%d. könnyű hadosztály" }
+		5 = { "%d. könnyű hadosztály" }
+		6 = { "%d. könnyű hadosztály" }
+		7 = { "%d. könnyű hadosztály" }
+		8 = { "%d. könnyű hadosztály" }
+		9 = { "%d. könnyű hadosztály" }
+		10 = { "%d. könnyű hadosztály" }
+		11 = { "%d. könnyű hadosztály" }
+		12 = { "%d. könnyű hadosztály" }
+		13 = { "%d. könnyű hadosztály" }
+		14 = { "%d. könnyű hadosztály" }
+		15 = { "%d. könnyű hadosztály" }
+		16 = { "%d. könnyű hadosztály" }
+		17 = { "%d. könnyű hadosztály" }
+		18 = { "%d. könnyű hadosztály" }
+		19 = { "%d. könnyű hadosztály" }
+		20 = { "%d. könnyű hadosztály" }
+		21 = { "%d. könnyű hadosztály" }
+		22 = { "%d. könnyű hadosztály" }
+		23 = { "%d. könnyű hadosztály" }
+		24 = { "%d. könnyű hadosztály" }
+		25 = { "%d. könnyű hadosztály" }
+		26 = { "%d. könnyű hadosztály" }
+		27 = { "%d. könnyű hadosztály" }
+		102 = { "%d. könnyű hadosztály" }
+		105 = { "%d. könnyű hadosztály" }
+		108 = { "%d. könnyű hadosztály" }
+		121 = { "%d. könnyű hadosztály" }
+		124 = { "%d. könnyű hadosztály" }
+		201 = { "%d. könnyű hadosztály" }
+		3 = { "%d. könnyű hadosztály" } # 3. Infantry Brigade never got upgraded to a Division
+		28 = { "%d. könnyű hadosztály" } # start fictional units to keep good numbering
+		29 = { "%d. könnyű hadosztály" }
+		
+		# 17 FEB 42 The infantry brigades are renamed to Light Divisions still containing only 2 infantry regiments.
+
+	}
+}
+
+HUN_RES_01 = 
+{
+	name = "Reserve Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_INF_01 HUN_INF_02 HUN_LGH_01 HUN_MOT_01 HUN_MEC_01 }
+
+	fallback_name = "%d. tartalék hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		5 = { "%d. tartalék hadosztály" } # These became reserve divisions
+		9 = { "%d. tartalék hadosztály" }
+		12 = { "%d. tartalék hadosztály" }
+		18 = { "%d. tartalék hadosztály" }
+		19 = { "%d. tartalék hadosztály" }
+		23 = { "%d. tartalék hadosztály" }
+		1 = { "%d. tartalék hadosztály" } # These never upgraded from a light division
+		2 = { "%d. tartalék hadosztály" }
+		4 = { "%d. tartalék hadosztály" }
+		8 = { "%d. tartalék hadosztály" }
+		11 = { "%d. tartalék hadosztály" }
+		14 = { "%d. tartalék hadosztály" }
+		15 = { "%d. tartalék hadosztály" }
+		17 = { "%d. tartalék hadosztály" }
+		21 = { "%d. tartalék hadosztály" }
+		22 = { "%d. tartalék hadosztály" }
+		26 = { "%d. tartalék hadosztály" }
+		3 = { "%d. tartalék hadosztály" } # 3. Infantry Brigade never got upgraded to a Division
+		6 = { "%d. tartalék hadosztály" } #These became regular infantry
+		7 = { "%d. tartalék hadosztály" }
+		10 = { "%d. tartalék hadosztály" }
+		13 = { "%d. tartalék hadosztály" }
+		16 = { "%d. tartalék hadosztály" }
+		20 = { "%d. tartalék hadosztály" }
+		24 = { "%d. tartalék hadosztály" }
+		25 = { "%d. tartalék hadosztály" }
+		27 = { "%d. tartalék hadosztály" }
+		28 = { "%d. tartalék hadosztály" } # start fictional units to keep good numbering
+		29 = { "%d. tartalék hadosztály" }
+
+		# When Huba III created full Infantry Divisions, the smaller 2-regiment divisions were renamed to Reserve Divisions and allocated on a 1-to-1 basis to support the frontline Infantry Divisions
+	}
+}
+
+HUN_MIX_01 = 
+{
+	name = "Mixed Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { HUN_INF_01 HUN_GAR_01 }
+
+	fallback_name = "%d. vegyesdandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. vegyesdandár" }
+		2 = { "%d. vegyesdandár" }
+		3 = { "%d. vegyesdandár" }
+		4 = { "%d. vegyesdandár" }
+		5 = { "%d. vegyesdandár" }
+		6 = { "%d. vegyesdandár" }
+		7 = { "%d. vegyesdandár" }
+		8 = { "%d. vegyesdandár" }
+		9 = { "%d. vegyesdandár" }
+		10 = { "%d. vegyesdandár" }
+		11 = { "%d. vegyesdandár" }
+		12 = { "%d. vegyesdandár" }
+		13 = { "%d. vegyesdandár" }
+		14 = { "%d. vegyesdandár" }
+		15 = { "%d. vegyesdandár" }
+		16 = { "%d. vegyesdandár" }
+		17 = { "%d. vegyesdandár" }
+		18 = { "%d. vegyesdandár" }
+		19 = { "%d. vegyesdandár" }
+		20 = { "%d. vegyesdandár" }
+		21 = { "%d. vegyesdandár" }
+		22 = { "%d. vegyesdandár" }
+		23 = { "%d. vegyesdandár" }
+		24 = { "%d. vegyesdandár" }
+		25 = { "%d. vegyesdandár" }
+		26 = { "%d. vegyesdandár" }
+		27 = { "%d. vegyesdandár" }
+		102 = { "%d. vegyesdandár" }
+		105 = { "%d. vegyesdandár" }
+		108 = { "%d. vegyesdandár" }
+		124 = { "%d. vegyesdandár" }
+
+		# During the 30s, each military district had a Mixed Brigade, and the two land acquisitions of the late 30s each added a District which got their own brigade.  These brigades became Corps in 1938 and the battalions were scaled up to brigades.
+	}
+}
+
+HUN_FRD_01 = 
+{
+	name = "Field Replacement Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HUN_INF_01 }
+
+	fallback_name = "%d. tábori póthadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		2 = { "%d. tábori póthadosztály" }
+		3 = { "%d. tábori póthadosztály" }
+		4 = { "%d. tábori póthadosztály" }
+		5 = { "%d. tábori póthadosztály" }
+		6 = { "%d. tábori póthadosztály" }
+		7 = { "%d. tábori póthadosztály" }
+		8 = { "%d. tábori póthadosztály" }
+		9 = { "%d. tábori póthadosztály" }
+		1 = { "%d. tábori póthadosztály" }
+		10 = { "%d. tábori póthadosztály" }
+	}
+}
+
+HUN_GAR_01 = 
+{
+	name = "Border Guard Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_GAR_02 }
+
+	fallback_name = "%d. határőr dandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. határőr dandár" }
+		2 = { "%d. határőr dandár" }
+		3 = { "%d. határőr dandár" }
+		4 = { "%d. határőr dandár" }
+		5 = { "%d. határőr dandár" }
+		6 = { "%d. határőr dandár" }
+		7 = { "%d. határőr dandár" }
+		8 = { "%d. határőr dandár" }
+		9 = { "%d. határőr dandár" }
+		10 = { "%d. határőr dandár" }
+	}
+}
+
+HUN_GAR_02 = 
+{
+	name = "Border Guard Regiments"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "infantry" "light_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_GAR_01 }
+
+	fallback_name = "%d. határőrezred"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. határőrezred" }
+		2 = { "%d. határőrezred" }
+		3 = { "%d. határőrezred" }
+		4 = { "%d. határőrezred" }
+		5 = { "%d. határőrezred" }
+		6 = { "%d. határőrezred" }
+		7 = { "%d. határőrezred" }
+		8 = { "%d. határőrezred" }
+		9 = { "%d. határőrezred" }
+		10 = { "%d. határőrezred" }
+	}
+}
+
+HUN_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GER_Gar_01 }
+
+	fallback_name = "%d. lovassági hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. lovassági hadosztály" }
+		2 = { "%d. lovassági hadosztály" }
+		3 = { "%d. lovassági hadosztály" }
+		4 = { "%d. lovassági hadosztály" }
+		5 = { "%d. lovassági hadosztály" }
+		6 = { "%d. lovassági hadosztály" }
+		7 = { "%d. lovassági hadosztály" }
+		8 = { "%d. lovassági hadosztály" }
+		9 = { "%d. lovassági hadosztály" }
+		10 = { "%d. lovassági hadosztály" }
+		11 = { "%d. lovassági hadosztály" }
+		12 = { "%d. lovassági hadosztály" }
+		13 = { "%d. lovassági hadosztály" }
+		14 = { "%d. lovassági hadosztály" }
+		15 = { "%d. lovassági hadosztály" }
+		16 = { "%d. lovassági hadosztály" }
+		17 = { "%d. lovassági hadosztály" }
+		18 = { "%d. lovassági hadosztály" }
+		19 = { "%d. lovassági hadosztály" }
+		20 = { "%d. lovassági hadosztály" }
+		21 = { "%d. lovassági hadosztály" }
+		22 = { "%d. lovassági hadosztály" }
+		23 = { "%d. lovassági hadosztály" }
+		24 = { "%d. lovassági hadosztály" }
+		25 = { "%d. lovassági hadosztály" }
+		26 = { "%d. lovassági hadosztály" }
+		27 = { "%d. lovassági hadosztály" }
+		28 = { "%d. lovassági hadosztály" }
+		29 = { "%d. lovassági hadosztály" }
+		30 = { "%d. lovassági hadosztály" }
+		31 = { "%d. lovassági hadosztály" }
+		32 = { "%d. lovassági hadosztály" }
+		33 = { "%d. lovassági hadosztály" }
+		34 = { "%d. lovassági hadosztály" }
+		35 = { "%d. lovassági hadosztály" }
+		36 = { "%d. lovassági hadosztály" }
+		37 = { "%d. lovassági hadosztály" }
+		38 = { "%d. lovassági hadosztály" }
+		39 = { "%d. lovassági hadosztály" }
+		40 = { "%d. lovassági hadosztály" }
+		41 = { "%d. lovassági hadosztály" }
+		42 = { "%d. lovassági hadosztály" }
+		43 = { "%d. lovassági hadosztály" }
+		44 = { "%d. lovassági hadosztály" }
+		45 = { "%d. lovassági hadosztály" }
+		46 = { "%d. lovassági hadosztály" }
+		47 = { "%d. lovassági hadosztály" }
+		48 = { "%d. lovassági hadosztály" }
+		49 = { "%d. lovassági hadosztály" }
+		50 = { "%d. lovassági hadosztály" }
+		51 = { "%d. lovassági hadosztály" }
+		52 = { "%d. lovassági hadosztály" }
+		53 = { "%d. lovassági hadosztály" }
+
+		# Historically, there's no way HUN would have had 53 Cav divisions the list taken this far because of cav's suppression role in-game.  Apparently there was no 2, 3 or 4 cav div.
+	}
+}
+
+HUN_CAV_02 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GER_Gar_01 }
+
+	fallback_name = "%d. lovassági dandár" # WW2-era mounted brigades were called cavalry, but the regiments of those brigades were called Hussars
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. lovassági dandár" }
+		2 = { "%d. lovassági dandár" }
+		3 = { "%d. lovassági dandár" }
+		4 = { "%d. lovassági dandár" }
+		5 = { "%d. lovassági dandár" }
+		6 = { "%d. lovassági dandár" }
+		7 = { "%d. lovassági dandár" }
+		8 = { "%d. lovassági dandár" }
+		9 = { "%d. lovassági dandár" }
+		10 = { "%d. lovassági dandár" }
+		11 = { "%d. lovassági dandár" }
+		12 = { "%d. lovassági dandár" }
+		13 = { "%d. lovassági dandár" }
+		14 = { "%d. lovassági dandár" }
+		15 = { "%d. lovassági dandár" }
+		16 = { "%d. lovassági dandár" }
+		17 = { "%d. lovassági dandár" }
+		18 = { "%d. lovassági dandár" }
+		19 = { "%d. lovassági dandár" }
+		20 = { "%d. lovassági dandár" }
+		21 = { "%d. lovassági dandár" }
+		22 = { "%d. lovassági dandár" }
+		23 = { "%d. lovassági dandár" }
+		24 = { "%d. lovassági dandár" }
+		25 = { "%d. lovassági dandár" }
+		26 = { "%d. lovassági dandár" }
+		27 = { "%d. lovassági dandár" }
+		28 = { "%d. lovassági dandár" }
+		29 = { "%d. lovassági dandár" }
+		30 = { "%d. lovassági dandár" }
+		31 = { "%d. lovassági dandár" }
+		32 = { "%d. lovassági dandár" }
+		33 = { "%d. lovassági dandár" }
+		34 = { "%d. lovassági dandár" }
+		35 = { "%d. lovassági dandár" }
+		36 = { "%d. lovassági dandár" }
+		37 = { "%d. lovassági dandár" }
+		38 = { "%d. lovassági dandár" }
+		39 = { "%d. lovassági dandár" }
+		40 = { "%d. lovassági dandár" }
+		41 = { "%d. lovassági dandár" }
+		42 = { "%d. lovassági dandár" }
+		43 = { "%d. lovassági dandár" }
+		44 = { "%d. lovassági dandár" }
+		45 = { "%d. lovassági dandár" }
+		46 = { "%d. lovassági dandár" }
+		47 = { "%d. lovassági dandár" }
+		48 = { "%d. lovassági dandár" }
+		49 = { "%d. lovassági dandár" }
+		50 = { "%d. lovassági dandár" }
+		51 = { "%d. lovassági dandár" }
+		52 = { "%d. lovassági dandár" }
+		53 = { "%d. lovassági dandár" }
+
+		# Historically, there's no way HUN would have had 53 Cav divisions the list taken this far because of cav's suppression role in-game.  Apparently there was no 2, 3 or 4 cav div.
+	}
+}
+
+HUN_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_INF_01 HUN_INF_02 HUN_LGH_01 HUN_RES_01 HUN_MEC_01 }
+
+	fallback_name = "%d. gépkocsizó hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. gépkocsizó hadosztály" }
+		2 = { "%d. gépkocsizó hadosztály" }
+		3 = { "%d. gépkocsizó hadosztály" }
+		4 = { "%d. gépkocsizó hadosztály" }
+		5 = { "%d. gépkocsizó hadosztály" }
+		6 = { "%d. gépkocsizó hadosztály" }
+		7 = { "%d. gépkocsizó hadosztály" }
+		8 = { "%d. gépkocsizó hadosztály" }
+		9 = { "%d. gépkocsizó hadosztály" }
+		10 = { "%d. gépkocsizó hadosztály" }
+		12 = { "%d. gépkocsizó hadosztály" }
+		13 = { "%d. gépkocsizó hadosztály" }
+		16 = { "%d. gépkocsizó hadosztály" }
+		20 = { "%d. gépkocsizó hadosztály" }
+		24 = { "%d. gépkocsizó hadosztály" }
+		25 = { "%d. gépkocsizó hadosztály" }
+		26 = { "%d. gépkocsizó hadosztály" }
+		27 = { "%d. gépkocsizó hadosztály" }
+		28 = { "%d. gépkocsizó hadosztály" }
+		29 = { "%d. gépkocsizó hadosztály" }
+		30 = { "%d. gépkocsizó hadosztály" }
+		31 = { "%d. gépkocsizó hadosztály" }
+		32 = { "%d. gépkocsizó hadosztály" }
+		33 = { "%d. gépkocsizó hadosztály" }
+		34 = { "%d. gépkocsizó hadosztály" }
+		35 = { "%d. gépkocsizó hadosztály" }
+		36 = { "%d. gépkocsizó hadosztály" }
+		37 = { "%d. gépkocsizó hadosztály" }
+		38 = { "%d. gépkocsizó hadosztály" }
+		39 = { "%d. gépkocsizó hadosztály" }
+		40 = { "%d. gépkocsizó hadosztály" }
+		41 = { "%d. gépkocsizó hadosztály" }
+		42 = { "%d. gépkocsizó hadosztály" }
+		43 = { "%d. gépkocsizó hadosztály" }
+
+	}
+}
+
+HUN_MOT_02 = 
+{
+	name = "Motorised Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_MEC_02 }
+
+	fallback_name = "%d. gépkocsizó dandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. gépkocsizó dandár" }
+		2 = { "%d. gépkocsizó dandár" }
+		3 = { "%d. gépkocsizó dandár" }
+		4 = { "%d. gépkocsizó dandár" }
+		5 = { "%d. gépkocsizó dandár" }
+		6 = { "%d. gépkocsizó dandár" }
+		7 = { "%d. gépkocsizó dandár" }
+		8 = { "%d. gépkocsizó dandár" }
+		9 = { "%d. gépkocsizó dandár" }
+		10 = { "%d. gépkocsizó dandár" }
+		12 = { "%d. gépkocsizó dandár" }
+		13 = { "%d. gépkocsizó dandár" }
+		16 = { "%d. gépkocsizó dandár" }
+		20 = { "%d. gépkocsizó dandár" }
+		24 = { "%d. gépkocsizó dandár" }
+		25 = { "%d. gépkocsizó dandár" }
+		26 = { "%d. gépkocsizó dandár" }
+		27 = { "%d. gépkocsizó dandár" }
+		28 = { "%d. gépkocsizó dandár" }
+		29 = { "%d. gépkocsizó dandár" }
+		30 = { "%d. gépkocsizó dandár" }
+		31 = { "%d. gépkocsizó dandár" }
+		32 = { "%d. gépkocsizó dandár" }
+		33 = { "%d. gépkocsizó dandár" }
+		34 = { "%d. gépkocsizó dandár" }
+		35 = { "%d. gépkocsizó dandár" }
+		36 = { "%d. gépkocsizó dandár" }
+		37 = { "%d. gépkocsizó dandár" }
+		38 = { "%d. gépkocsizó dandár" }
+		39 = { "%d. gépkocsizó dandár" }
+		40 = { "%d. gépkocsizó dandár" }
+		41 = { "%d. gépkocsizó dandár" }
+		42 = { "%d. gépkocsizó dandár" }
+		43 = { "%d. gépkocsizó dandár" }
+
+	}
+}
+
+HUN_ARM_01 = 
+{
+	name = "Armoured Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HUN_INF_01 }
+
+	fallback_name = "%d. páncéloshadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. páncéloshadosztály" }
+		2 = { "%d. páncéloshadosztály" }
+		3 = { "%d. páncéloshadosztály" }
+		4 = { "%d. páncéloshadosztály" }
+		5 = { "%d. páncéloshadosztály" }
+		6 = { "%d. páncéloshadosztály" }
+		7 = { "%d. páncéloshadosztály" }
+		8 = { "%d. páncéloshadosztály" }
+		9 = { "%d. páncéloshadosztály" }
+		10 = { "%d. páncéloshadosztály" }
+		11 = { "%d. páncéloshadosztály" }
+		12 = { "%d. páncéloshadosztály" }
+		13 = { "%d. páncéloshadosztály" }
+		14 = { "%d. páncéloshadosztály" }
+		15 = { "%d. páncéloshadosztály" }
+		16 = { "%d. páncéloshadosztály" }
+		17 = { "%d. páncéloshadosztály" }
+		18 = { "%d. páncéloshadosztály" }
+		19 = { "%d. páncéloshadosztály" }
+		20 = { "%d. páncéloshadosztály" }
+		21 = { "%d. páncéloshadosztály" }
+		22 = { "%d. páncéloshadosztály" }
+		23 = { "%d. páncéloshadosztály" }
+		24 = { "%d. páncéloshadosztály" }
+		25 = { "%d. páncéloshadosztály" }
+		26 = { "%d. páncéloshadosztály" }
+		27 = { "%d. páncéloshadosztály" }
+		28 = { "%d. páncéloshadosztály" }
+		29 = { "%d. páncéloshadosztály" }
+		30 = { "%d. páncéloshadosztály" }
+		31 = { "%d. páncéloshadosztály" }
+		32 = { "%d. páncéloshadosztály" }
+		33 = { "%d. páncéloshadosztály" }
+
+	}
+}
+
+HUN_MEC_01 = 
+{
+	name = "Mechanised Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_INF_01 HUN_INF_02 HUN_LGH_01 HUN_RES_01 HUN_MOT_01 }
+
+	fallback_name = "%d. páncélgránátos hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. páncélgránátos hadosztály" }
+		2 = { "%d. páncélgránátos hadosztály" }
+		3 = { "%d. páncélgránátos hadosztály" }
+		4 = { "%d. páncélgránátos hadosztály" }
+		5 = { "%d. páncélgránátos hadosztály" }
+		6 = { "%d. páncélgránátos hadosztály" }
+		7 = { "%d. páncélgránátos hadosztály" }
+		8 = { "%d. páncélgránátos hadosztály" }
+		9 = { "%d. páncélgránátos hadosztály" }
+		10 = { "%d. páncélgránátos hadosztály" }
+		11 = { "%d. páncélgránátos hadosztály" }
+		12 = { "%d. páncélgránátos hadosztály" }
+		13 = { "%d. páncélgránátos hadosztály" }
+		14 = { "%d. páncélgránátos hadosztály" }
+		15 = { "%d. páncélgránátos hadosztály" }
+		16 = { "%d. páncélgránátos hadosztály" }
+		17 = { "%d. páncélgránátos hadosztály" }
+		18 = { "%d. páncélgránátos hadosztály" }
+		19 = { "%d. páncélgránátos hadosztály" }
+		20 = { "%d. páncélgránátos hadosztály" }
+		21 = { "%d. páncélgránátos hadosztály" }
+		22 = { "%d. páncélgránátos hadosztály" }
+		23 = { "%d. páncélgránátos hadosztály" }
+		24 = { "%d. páncélgránátos hadosztály" }
+		25 = { "%d. páncélgránátos hadosztály" }
+		26 = { "%d. páncélgránátos hadosztály" }
+		27 = { "%d. páncélgránátos hadosztály" }
+		28 = { "%d. páncélgránátos hadosztály" }
+		29 = { "%d. páncélgránátos hadosztály" }
+		30 = { "%d. páncélgránátos hadosztály" }
+		31 = { "%d. páncélgránátos hadosztály" }
+		32 = { "%d. páncélgránátos hadosztály" }
+		33 = { "%d. páncélgránátos hadosztály" }
+
+		# None historically.
+	}
+}
+
+HUN_MEC_02 = 
+{
+	name = "Mechanised Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HUN_MOT_02 }
+
+	fallback_name = "%d. páncélgránátos dandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. páncélgránátos dandár" }
+		2 = { "%d. páncélgránátos dandár" }
+		3 = { "%d. páncélgránátos dandár" }
+		4 = { "%d. páncélgránátos dandár" }
+		5 = { "%d. páncélgránátos dandár" }
+		6 = { "%d. páncélgránátos dandár" }
+		7 = { "%d. páncélgránátos dandár" }
+		8 = { "%d. páncélgránátos dandár" }
+		9 = { "%d. páncélgránátos dandár" }
+		10 = { "%d. páncélgránátos dandár" }
+		11 = { "%d. páncélgránátos dandár" }
+		12 = { "%d. páncélgránátos dandár" }
+		13 = { "%d. páncélgránátos dandár" }
+		14 = { "%d. páncélgránátos dandár" }
+		15 = { "%d. páncélgránátos dandár" }
+		16 = { "%d. páncélgránátos dandár" }
+		17 = { "%d. páncélgránátos dandár" }
+		18 = { "%d. páncélgránátos dandár" }
+		19 = { "%d. páncélgránátos dandár" }
+		20 = { "%d. páncélgránátos dandár" }
+		21 = { "%d. páncélgránátos dandár" }
+		22 = { "%d. páncélgránátos dandár" }
+		23 = { "%d. páncélgránátos dandár" }
+		24 = { "%d. páncélgránátos dandár" }
+		25 = { "%d. páncélgránátos dandár" }
+		26 = { "%d. páncélgránátos dandár" }
+		27 = { "%d. páncélgránátos dandár" }
+		28 = { "%d. páncélgránátos dandár" }
+		29 = { "%d. páncélgránátos dandár" }
+		30 = { "%d. páncélgránátos dandár" }
+		31 = { "%d. páncélgránátos dandár" }
+		32 = { "%d. páncélgránátos dandár" }
+		33 = { "%d. páncélgránátos dandár" }
+
+		# None historically.
+	}
+}
+
+HUN_MAR_01 = 
+{
+	name = "River Guard Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HUN_GAR_01 }
+
+	fallback_name = "%d. folyamdandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. folyamdandár" }
+		2 = { "%d. folyamdandár" }
+		3 = { "%d. folyamdandár" }
+		4 = { "%d. folyamdandár" }
+		5 = { "%d. folyamdandár" }
+		6 = { "%d. folyamdandár" }
+		7 = { "%d. folyamdandár" }
+		8 = { "%d. folyamdandár" }
+		9 = { "%d. folyamdandár" }
+		10 = { "%d. folyamdandár" }
+		11 = { "%d. folyamdandár" }
+		12 = { "%d. folyamdandár" }
+		13 = { "%d. folyamdandár" }
+		14 = { "%d. folyamdandár" }
+		15 = { "%d. folyamdandár" }
+		16 = { "%d. folyamdandár" }
+		17 = { "%d. folyamdandár" }
+		18 = { "%d. folyamdandár" }
+		19 = { "%d. folyamdandár" }
+		20 = { "%d. folyamdandár" }
+		21 = { "%d. folyamdandár" }
+		22 = { "%d. folyamdandár" }
+		23 = { "%d. folyamdandár" }
+		24 = { "%d. folyamdandár" }
+		25 = { "%d. folyamdandár" }
+		26 = { "%d. folyamdandár" }
+		27 = { "%d. folyamdandár" }
+		28 = { "%d. folyamdandár" }
+		29 = { "%d. folyamdandár" }
+		30 = { "%d. folyamdandár" }
+
+		# HUN didn't have any Marine divisions, these are all fictional.  Based on HoI3 lists, numbering independent of main sequence.
+	}
+}
+
+HUN_MTN_01 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HUN_INF_01 }
+
+	fallback_name = "%d. hegyidandár"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. hegyidandár" }
+		2 = { "%d. hegyidandár" }
+		3 = { "%d. hegyidandár" }
+		4 = { "%d. hegyidandár" }
+		5 = { "%d. hegyidandár" }
+		6 = { "%d. hegyidandár" }
+		7 = { "%d. hegyidandár" }
+		8 = { "%d. hegyidandár" }
+		9 = { "%d. hegyidandár" }
+		10 = { "%d. hegyidandár" }
+		11 = { "%d. hegyidandár" }
+		12 = { "%d. hegyidandár" }
+		13 = { "%d. hegyidandár" }
+		14 = { "%d. hegyidandár" }
+		15 = { "%d. hegyidandár" }
+		16 = { "%d. hegyidandár" }
+		17 = { "%d. hegyidandár" }
+		18 = { "%d. hegyidandár" }
+		19 = { "%d. hegyidandár" }
+		20 = { "%d. hegyidandár" }
+		21 = { "%d. hegyidandár" }
+		22 = { "%d. hegyidandár" }
+		23 = { "%d. hegyidandár" }
+		24 = { "%d. hegyidandár" }
+		25 = { "%d. hegyidandár" }
+		26 = { "%d. hegyidandár" }
+		27 = { "%d. hegyidandár" }
+		28 = { "%d. hegyidandár" }
+		29 = { "%d. hegyidandár" }
+		30 = { "%d. hegyidandár" }
+		31 = { "%d. hegyidandár" }
+		32 = { "%d. hegyidandár" }
+		33 = { "%d. hegyidandár" }
+		34 = { "%d. hegyidandár" }
+		35 = { "%d. hegyidandár" }
+		36 = { "%d. hegyidandár" }
+		37 = { "%d. hegyidandár" }
+		38 = { "%d. hegyidandár" }
+		39 = { "%d. hegyidandár" }
+		40 = { "%d. hegyidandár" }
+		41 = { "%d. hegyidandár" }
+		42 = { "%d. hegyidandár" }
+		43 = { "%d. hegyidandár" }
+		44 = { "%d. hegyidandár" }
+		45 = { "%d. hegyidandár" }
+		46 = { "%d. hegyidandár" }
+		47 = { "%d. hegyidandár" }
+		48 = { "%d. hegyidandár" }
+		49 = { "%d. hegyidandár" }
+		50 = { "%d. hegyidandár" }
+		51 = { "%d. hegyidandár" }
+		52 = { "%d. hegyidandár" }
+		53 = { "%d. hegyidandár" }
+
+	}
+}
+
+HUN_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		OR = {
+			tag = HUN
+			has_cosmetic_tag = HUN_EMPIRE
+		}
+	}
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+
+	fallback_name = "%d. ejtöernyös hadosztály"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Szent László hadosztály" } # The Saint Laszlo Division was an elite Hungarian infantry unit which combined army and air force troops.  If any unit was going to be an airborne unit, this would have been it.
+		2 = { "%d. ejtöernyös hadosztály" }
+		3 = { "%d. ejtöernyös hadosztály" }
+		4 = { "%d. ejtöernyös hadosztály" }
+		5 = { "%d. ejtöernyös hadosztály" }
+		6 = { "%d. ejtöernyös hadosztály" }
+		7 = { "%d. ejtöernyös hadosztály" }
+		8 = { "%d. ejtöernyös hadosztály" }
+		9 = { "%d. ejtöernyös hadosztály" }
+		10 = { "%d. ejtöernyös hadosztály" }
+		11 = { "%d. ejtöernyös hadosztály" }
+		12 = { "%d. ejtöernyös hadosztály" }
+		13 = { "%d. ejtöernyös hadosztály" }
+		14 = { "%d. ejtöernyös hadosztály" }
+		15 = { "%d. ejtöernyös hadosztály" }
+		16 = { "%d. ejtöernyös hadosztály" }
+		17 = { "%d. ejtöernyös hadosztály" }
+		18 = { "%d. ejtöernyös hadosztály" }
+		19 = { "%d. ejtöernyös hadosztály" }
+		20 = { "%d. ejtöernyös hadosztály" }
+		21 = { "%d. ejtöernyös hadosztály" }
+		22 = { "%d. ejtöernyös hadosztály" }
+		23 = { "%d. ejtöernyös hadosztály" }
+		24 = { "%d. ejtöernyös hadosztály" }
+		25 = { "%d. ejtöernyös hadosztály" }
+		26 = { "%d. ejtöernyös hadosztály" }
+		27 = { "%d. ejtöernyös hadosztály" }
+		28 = { "%d. ejtöernyös hadosztály" }
+		29 = { "%d. ejtöernyös hadosztály" }
+		30 = { "%d. ejtöernyös hadosztály" }
+
+	}
+}
+
+AUSHUN_INF_01 = 
+{
+	name = "Austro-Hungarian Infantry Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { AUSHUN_MOT_01 AUSHUN_MEC_01 AUSHUN_GAR_01 }
+
+	fallback_name = "%d. Infanterietruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Infanterietruppendivision „Sarajevo“" }
+		2 = { "%d. Infanterietruppendivision „Jaroslau“" }
+		3 = { "%d. Infanterietruppendivision „Linz“" }
+		4 = { "%d. Infanterietruppendivision „Brunn“" }
+		5 = { "%d. Infanterietruppendivision „Olmütz“" }
+		6 = { "%d. Infanterietruppendivision „Graz“" }
+		7 = { "%d. Infanterietruppendivision „Esseg“" }
+		8 = { "%d. Infanterietruppendivision „Bozen“" }
+		9 = { "%d. Infanterietruppendivision „Prag“" }
+		10 = { "%d. Infanterietruppendivision „Josephstadt“" }
+		11 = { "%d. Infanterietruppendivision „Lemberg“" }
+		12 = { "%d. Infanterietruppendivision „Krakau“" }
+		14 = { "%d. Infanterietruppendivision „Pozsony“" }
+		15 = { "%d. Infanterietruppendivision „Miskolcz“" }
+		16 = { "%d. Infanterietruppendivision „Nagyszeben“" }
+		17 = { "%d. Infanterietruppendivision „Nagy-Várad“" }
+		18 = { "%d. Infanterietruppendivision „Mostar“" }
+		19 = { "%d. Infanterietruppendivision „Pilsen“" }
+		24 = { "%d. Infanterietruppendivision „Przemyśl“" }
+		25 = { "%d. Infanterietruppendivision „Wien“" }
+		27 = { "%d. Infanterietruppendivision „Kassa“" }
+		28 = { "%d. Infanterietruppendivision „Laibach“" }
+		29 = { "%d. Infanterietruppendivision „Theresienstadt“" }
+		30 = { "%d. Infanterietruppendivision „Lemberg“" }
+		31 = { "%d. Infanterietruppendivision „Budapest“" }
+		32 = { "%d. Infanterietruppendivision „Budapest“" }
+		33 = { "%d. Infanterietruppendivision „Komáron“" }
+		34 = { "%d. Infanterietruppendivision „Temesvár“" }
+		35 = { "%d. Infanterietruppendivision „Kolosvár“" }
+		36 = { "%d. Infanterietruppendivision „Agram“" }
+		47 = { "%d. Infanterietruppendivision „Castelnuovo“" }
+		48 = { "%d. Infanterietruppendivision „Sarajevo“" }
+		49 = { "%d. Infanterietruppendivision „Wien“" }
+		13 = { "%d. Infanterietruppendivision" }
+		20 = { "%d. Infanterietruppendivision" }
+		21 = { "%d. Infanterietruppendivision" }
+		22 = { "%d. Infanterietruppendivision" }
+		23 = { "%d. Infanterietruppendivision" }
+		26 = { "%d. Infanterietruppendivision" }
+		37 = { "%d. Infanterietruppendivision" }
+		38 = { "%d. Infanterietruppendivision" }
+		39 = { "%d. Infanterietruppendivision" }
+		40 = { "%d. Infanterietruppendivision" }
+		41 = { "%d. Infanterietruppendivision" }
+		42 = { "%d. Infanterietruppendivision" }
+		43 = { "%d. Infanterietruppendivision" }
+		44 = { "%d. Infanterietruppendivision" }
+		45 = { "%d. Infanterietruppendivision" }
+		46 = { "%d. Infanterietruppendivision" }
+		50 = { "%d. Infanterietruppendivision" }
+		51 = { "%d. Infanterietruppendivision" }
+		52 = { "%d. Infanterietruppendivision" }
+		53 = { "%d. Infanterietruppendivision" }
+		54 = { "%d. Infanterietruppendivision" }
+		55 = { "%d. Infanterietruppendivision" }
+		56 = { "%d. Infanterietruppendivision" }
+		57 = { "%d. Infanterietruppendivision" }
+		58 = { "%d. Infanterietruppendivision" }
+		59 = { "%d. Infanterietruppendivision" }
+		60 = { "%d. Infanterietruppendivision" }
+		61 = { "%d. Infanterietruppendivision" }
+		62 = { "%d. Infanterietruppendivision" }
+		63 = { "%d. Infanterietruppendivision" }
+		64 = { "%d. Infanterietruppendivision" }
+		65 = { "%d. Infanterietruppendivision" }
+		66 = { "%d. Infanterietruppendivision" }
+		67 = { "%d. Infanterietruppendivision" }
+		68 = { "%d. Infanterietruppendivision" }
+		69 = { "%d. Infanterietruppendivision" }
+
+	# Based on 1914 Austro-Hungarian Divisions structure.
+	}
+}
+
+AUSHUN_CAV_01 = 
+{
+	name = "Austro-Hungarian Cavalry Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HUN_INF_02 HUN_GAR_01 }
+
+	fallback_name = "%d. Kavallerietruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Kavallerietruppendivision „Temesvár“" }
+		2 = { "%d. Kavallerietruppendivision „Pozsony“" }
+		3 = { "%d. Kavallerietruppendivision „Wien“" }
+		4 = { "%d. Kavallerietruppendivision „Lemberg“" }
+		6 = { "%d. Kavallerietruppendivision „Jaroslau“" }
+		7 = { "%d. Kavallerietruppendivision „Krakau“" }
+		8 = { "%d. Kavallerietruppendivision „Stanislau“" }
+		10 = { "%d. Kavallerietruppendivision „Budapest“" }
+		5 = { "%d. Kavallerietruppendivision" }
+		9 = { "%d. Kavallerietruppendivision" }
+		11 = { "%d. Kavallerietruppendivision" }
+		12 = { "%d. Kavallerietruppendivision" }
+		13 = { "%d. Kavallerietruppendivision" }
+		14 = { "%d. Kavallerietruppendivision" }
+		15 = { "%d. Kavallerietruppendivision" }
+		16 = { "%d. Kavallerietruppendivision" }
+		17 = { "%d. Kavallerietruppendivision" }
+		18 = { "%d. Kavallerietruppendivision" }
+		19 = { "%d. Kavallerietruppendivision" }
+		20 = { "%d. Kavallerietruppendivision" }
+		21 = { "%d. Kavallerietruppendivision" }
+		22 = { "%d. Kavallerietruppendivision" }
+		23 = { "%d. Kavallerietruppendivision" }
+		24 = { "%d. Kavallerietruppendivision" }
+		25 = { "%d. Kavallerietruppendivision" }
+		26 = { "%d. Kavallerietruppendivision" }
+		27 = { "%d. Kavallerietruppendivision" }
+		28 = { "%d. Kavallerietruppendivision" }
+		29 = { "%d. Kavallerietruppendivision" }
+		30 = { "%d. Kavallerietruppendivision" }
+		31 = { "%d. Kavallerietruppendivision" }
+		32 = { "%d. Kavallerietruppendivision" }
+		33 = { "%d. Kavallerietruppendivision" }
+		34 = { "%d. Kavallerietruppendivision" }
+		35 = { "%d. Kavallerietruppendivision" }
+
+	# Based on 1914 Austro-Hungarian Divisions structure.
+	}
+}
+
+AUSHUN_MOT_01 = 
+{
+	name = "Austro-Hungarian Motorized Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { AUSHUN_INF_01 AUSHUN_GAR_01 AUSHUN_MEC_01 }
+
+	fallback_name = "%d. Kraftfahrjägerdivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Kraftfahrjägerdivision" }
+		2 = { "%d. Kraftfahrjägerdivision" }
+		3 = { "%d. Kraftfahrjägerdivision" }
+		4 = { "%d. Kraftfahrjägerdivision" }
+		5 = { "%d. Kraftfahrjägerdivision" }
+		6 = { "%d. Kraftfahrjägerdivision" }
+		7 = { "%d. Kraftfahrjägerdivision" }
+		8 = { "%d. Kraftfahrjägerdivision" }
+		9 = { "%d. Kraftfahrjägerdivision" }
+		10 = { "%d. Kraftfahrjägerdivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}
+
+AUSHUN_MEC_01 = 
+{
+	name = "Austro-Hungarian Mechanized Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { AUSHUN_INF_01 AUSHUN_GAR_01 AUSHUN_MEC_01 }
+
+	fallback_name = "%d. Panzergrenadiertruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Panzergrenadiertruppendivision" }
+		2 = { "%d. Panzergrenadiertruppendivision" }
+		3 = { "%d. Panzergrenadiertruppendivision" }
+		4 = { "%d. Panzergrenadiertruppendivision" }
+		5 = { "%d. Panzergrenadiertruppendivision" }
+		6 = { "%d. Panzergrenadiertruppendivision" }
+		7 = { "%d. Panzergrenadiertruppendivision" }
+		8 = { "%d. Panzergrenadiertruppendivision" }
+		9 = { "%d. Panzergrenadiertruppendivision" }
+		10 = { "%d. Panzergrenadiertruppendivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}
+
+AUSHUN_GAR_01 = 
+{
+	name = "Austro-Hungarian Garrison Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { AUSHUN_INF_01 AUSHUN_MOT_01 AUSHUN_MEC_01 }
+
+	fallback_name = "%d. Sicherungstruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Sicherungstruppendivision" }
+		2 = { "%d. Sicherungstruppendivision" }
+		3 = { "%d. Sicherungstruppendivision" }
+		4 = { "%d. Sicherungstruppendivision" }
+		5 = { "%d. Sicherungstruppendivision" }
+		6 = { "%d. Sicherungstruppendivision" }
+		7 = { "%d. Sicherungstruppendivision" }
+		8 = { "%d. Sicherungstruppendivision" }
+		9 = { "%d. Sicherungstruppendivision" }
+		10 = { "%d. Sicherungstruppendivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}
+
+AUSHUN_ARM_01 = 
+{
+	name = "Austro-Hungarian Armored Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { AUSHUN_INF_01 }
+
+	fallback_name = "%d. Panzertruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Panzertruppendivision" }
+		2 = { "%d. Panzertruppendivision" }
+		3 = { "%d. Panzertruppendivision" }
+		4 = { "%d. Panzertruppendivision" }
+		5 = { "%d. Panzertruppendivision" }
+		6 = { "%d. Panzertruppendivision" }
+		7 = { "%d. Panzertruppendivision" }
+		8 = { "%d. Panzertruppendivision" }
+		9 = { "%d. Panzertruppendivision" }
+		10 = { "%d. Panzertruppendivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}
+
+AUSHUN_MTN_01 = 
+{
+	name = "Austro-Hungarian Mountain Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { AUSHUN_INF_01 }
+
+	fallback_name = "%d. Gebirgstruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Gebirgstruppendivision" }
+		2 = { "%d. Gebirgstruppendivision" }
+		3 = { "%d. Gebirgstruppendivision" }
+		4 = { "%d. Gebirgstruppendivision" }
+		5 = { "%d. Gebirgstruppendivision" }
+		6 = { "%d. Gebirgstruppendivision" }
+		7 = { "%d. Gebirgstruppendivision" }
+		8 = { "%d. Gebirgstruppendivision" }
+		9 = { "%d. Gebirgstruppendivision" }
+		10 = { "%d. Gebirgstruppendivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}
+
+AUSHUN_MAR_01 = 
+{
+	name = "Austro-Hungarian Marine Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { AUSHUN_INF_01 }
+
+	fallback_name = "%d. Marinetruppendivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Marinetruppendivision" }
+		2 = { "%d. Marinetruppendivision" }
+		3 = { "%d. Marinetruppendivision" }
+		4 = { "%d. Marinetruppendivision" }
+		5 = { "%d. Marinetruppendivision" }
+		6 = { "%d. Marinetruppendivision" }
+		7 = { "%d. Marinetruppendivision" }
+		8 = { "%d. Marinetruppendivision" }
+		9 = { "%d. Marinetruppendivision" }
+		10 = { "%d. Marinetruppendivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}
+
+AUSHUN_PAR_01 = 
+{
+	name = "Austro-Hungarian Paratrooper Divisions"
+
+	for_countries = { AUS HUN CZE }
+
+	can_use = {
+		has_cosmetic_tag = HUN_EMPIRE
+	}
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { AUSHUN_INF_01 }
+
+	fallback_name = "%d. Fallschirmjägerdivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Fallschirmjägerdivision" }
+		2 = { "%d. Fallschirmjägerdivision" }
+		3 = { "%d. Fallschirmjägerdivision" }
+		4 = { "%d. Fallschirmjägerdivision" }
+		5 = { "%d. Fallschirmjägerdivision" }
+		6 = { "%d. Fallschirmjägerdivision" }
+		7 = { "%d. Fallschirmjägerdivision" }
+		8 = { "%d. Fallschirmjägerdivision" }
+		9 = { "%d. Fallschirmjägerdivision" }
+		10 = { "%d. Fallschirmjägerdivision" }
+
+	# Hypothetical names - German used instead of HUN as it was language of Austro-Hungarian Empire.
+	}
+}

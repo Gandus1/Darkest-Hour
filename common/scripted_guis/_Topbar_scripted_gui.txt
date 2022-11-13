@@ -1,0 +1,60 @@
+scripted_gui = {
+	dh_topbar_window = {
+		context_type = player_context
+
+		window_name = "dh_topbar_window"
+		parent_window_token = top_bar
+
+		visible = {
+			is_ai = no
+		}
+
+		triggers = {
+			stability_indicator_icon_visible = {
+				set_temp_variable = { stability_indicator = modifier@stability_weekly }
+				if = {
+					limit = {
+						check_variable = { stability_indicator > 0 }
+					}
+					set_temp_variable = { stability_indicator_icon_frame = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { stability_indicator < 0 }
+					}
+					set_temp_variable = { stability_indicator_icon_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { stability_indicator_icon_frame = 3 }
+				}
+			}
+			war_support_indicator_icon_visible = {
+				set_temp_variable = { war_support_indicator = modifier@war_support_weekly }
+				if = {
+					limit = {
+						check_variable = { war_support_indicator > 0 }
+					}
+					set_temp_variable = { war_support_indicator_icon_frame = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { war_support_indicator < 0 }
+					}
+					set_temp_variable = { war_support_indicator_icon_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { war_support_indicator_icon_frame = 3 }
+				}
+			}
+		}
+
+		properties = {
+			stability_indicator_icon = {
+				frame = stability_indicator_icon_frame
+			}
+			war_support_indicator_icon = {
+				frame = war_support_indicator_icon_frame
+			}
+		}
+	}
+}

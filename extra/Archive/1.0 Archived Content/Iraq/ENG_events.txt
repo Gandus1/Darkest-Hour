@@ -1,0 +1,450 @@
+#########################################################################
+# A New Iraqi Treaty
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.1
+	title = ENG_Anglo_Iraqi_Treaty.1.t
+	desc = ENG_Anglo_Iraqi_Treaty.1.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# We shall send a diplomatic delegation
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.1.A
+		country_event  = {
+			days = 2
+			id = ENG_Anglo_Iraqi_Treaty.2
+		}
+	}
+}
+
+#########################################################################
+# The Question of Resources
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.2
+	title = ENG_Anglo_Iraqi_Treaty.2.t
+	desc = ENG_Anglo_Iraqi_Treaty.2.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# It all belongs to UK
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.2.A
+		set_global_flag = IRQ_Trade_High_England_flag
+		IRQ = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.3
+			}
+		}
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.5
+		}
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = IRQ
+				modifier = IRQ_Trade_High_England
+			}
+			IRQ = {
+				set_temp_variable = { eng_power_in_iraq_to_gain = 2 } 
+				add_eng_influence_with_tooltip_effect = yes
+			}
+		}
+	}
+
+	# We shall only increase trade a bit 
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.2.B
+		set_global_flag = IRQ_Trade_Medium_England_flag
+		IRQ = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.3
+			}
+		}
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.5
+		}		
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = IRQ
+				modifier = IRQ_Trade_Medium_England
+			}	
+		}	
+	}
+
+	# No trade changes
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.2.C
+		set_temp_variable = { eng_power_in_iraq_to_gain = -1 } 
+		add_eng_influence_with_tooltip_effect = yes
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.5
+		}	
+	}
+}
+#########################################################################
+# United Kingdom Demands More Economic Power
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.3
+	title = ENG_Anglo_Iraqi_Treaty.3.t
+	desc = ENG_Anglo_Iraqi_Treaty.3.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# We shall not accept these demands
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.3.A
+		ENG = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.4
+			}			
+		}
+	}
+	# We shall accept
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.3.B
+		if = {
+			limit = {
+				has_global_flag = IRQ_Trade_High_England_flag
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = IRQ
+					modifier = IRQ_Trade_High_England
+				}
+			}
+			set_temp_variable = { eng_power_in_iraq_to_gain = 2 } 
+			add_eng_influence_with_tooltip_effect = yes		
+			set_global_flag = IRQ_Trade_High_England_Accepted_flag
+		}
+		if = {
+			limit = {
+				has_global_flag = IRQ_Trade_Medium_England_flag
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = IRQ
+					modifier = IRQ_Trade_Medium_England
+				}
+			}
+			set_global_flag = IRQ_Trade_Medium_England_Accepted_flag		
+		}
+	}
+}
+#########################################################################
+# Iraq Has Rejected The Demands
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.4
+	title = ENG_Anglo_Iraqi_Treaty.4.t
+	desc = ENG_Anglo_Iraqi_Treaty.4.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# A small setback
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.4.A
+	}
+
+	# There is no point on continuing negotiations
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.4.B
+		IRQ = {
+			set_temp_variable = { eng_power_in_iraq_to_gain = -5 } 
+			add_eng_influence_with_tooltip_effect = yes				
+		}
+		set_global_flag = Anglo_Iraqi_Renegociation_Stopped
+	}
+}
+#########################################################################
+# Political Influence
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.5
+	title = ENG_Anglo_Iraqi_Treaty.5.t
+	desc = ENG_Anglo_Iraqi_Treaty.5.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = Anglo_Iraqi_Renegociation_Stopped }
+	}
+	
+	# Full influence over Iraqi politics
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.5.A
+		set_global_flag = IRQ_Political_High_England_flag
+		IRQ = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.6
+			}
+		}
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.7
+		}
+		effect_tooltip = {
+			IRQ = {
+				set_temp_variable = { eng_power_in_iraq_to_gain = 2 } 
+				add_eng_influence_with_tooltip_effect = yes
+			}
+		}
+	}
+
+	# More Political 'guidance'
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.5.B
+		set_global_flag = IRQ_Political_Medium_England_flag
+		IRQ = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.6
+			}
+		}
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.7
+		}
+		effect_tooltip = {
+		}	
+	}
+
+	# Current political influence 
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.5.C
+		set_temp_variable = { eng_power_in_iraq_to_gain = -1 } 
+		add_eng_influence_with_tooltip_effect = yes	
+	}
+}
+#########################################################################
+# United Kingdom Demands More Political Power
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.6
+	title = ENG_Anglo_Iraqi_Treaty.6.t
+	desc = ENG_Anglo_Iraqi_Treaty.6.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# We shall not accept these demands
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.6.A
+		ENG = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.4
+			}			
+		}
+	}
+	# We shall accept
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.6.B
+		if = {
+			limit = {
+				has_global_flag = IRQ_Political_High_England_flag
+			}
+			set_temp_variable = { eng_power_in_iraq_to_gain = 2 } 
+			add_eng_influence_with_tooltip_effect = yes	
+			set_global_flag = IRQ_Political_High_England_Accepted_flag		
+		}
+		if = {
+			limit = {
+				has_global_flag = IRQ_Political_Medium_England_flag
+			}	
+			set_global_flag = IRQ_Political_Medium_England_Accepted_flag		
+		}
+	}
+}
+#########################################################################
+# Military Influence
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.7
+	title = ENG_Anglo_Iraqi_Treaty.7.t
+	desc = ENG_Anglo_Iraqi_Treaty.7.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_global_flag = Anglo_Iraqi_Renegociation_Stopped }
+	}
+	
+	# Full influence over Iraqi politics
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.7.A
+		set_global_flag = IRQ_Military_High_England_flag
+		IRQ = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.8
+			}
+		}
+		effect_tooltip = {
+			set_temp_variable = { eng_power_in_iraq_to_gain = 1 } 
+			add_eng_influence_with_tooltip_effect = yes
+		}
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.9
+		}
+	}
+
+	# More Political 'guidance'
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.7.B
+		set_global_flag = IRQ_Military_Medium_England_flag
+		IRQ = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.8
+			}
+		}
+		effect_tooltip = {
+		}	
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.9
+		}
+	}
+
+	# Current political influence 
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.7.C
+		set_temp_variable = { eng_power_in_iraq_to_gain = -1 } 
+		add_eng_influence_with_tooltip_effect = yes	
+		country_event  = {
+			days = 5
+			id = ENG_Anglo_Iraqi_Treaty.9
+		}
+	}
+}
+#########################################################################
+# United Kingdom Demands More Military Power
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.8
+	title = ENG_Anglo_Iraqi_Treaty.8.t
+	desc = ENG_Anglo_Iraqi_Treaty.8.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# We shall not accept these demands
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.8.A
+		ENG = {
+			country_event  = {
+				days = 1
+				id = ENG_Anglo_Iraqi_Treaty.4
+			}			
+		}
+	}
+	# We shall accept
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.8.B
+		if = {
+			limit = {
+				has_global_flag = IRQ_Military_High_England_flag
+			}
+			set_temp_variable = { eng_power_in_iraq_to_gain = 1 } 
+			add_eng_influence_with_tooltip_effect = yes	
+			set_global_flag = IRQ_Military_High_England_Accepted_flag		
+
+		}
+		if = {
+			limit = {
+				has_global_flag = IRQ_Military_Medium_England_flag
+			}		
+			set_global_flag = IRQ_Military_Medium_England_Accepted_flag		
+		}
+	}
+}
+#########################################################################
+# The Final Page
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.9
+	title = ENG_Anglo_Iraqi_Treaty.9.t
+	desc = ENG_Anglo_Iraqi_Treaty.9.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# Signed by $getUKledername$ and $GetIRQleadername$
+	option = {
+		name = ENG_Anglo_Iraqi_Treaty.9.A
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = IRQ_Military_High_England_Accepted_flag
+					has_global_flag = IRQ_Trade_High_England_Accepted_flag
+					has_global_flag = IRQ_Political_High_England_Accepted_flag
+				}
+			}
+			IRQ = {
+				swap_ideas = {
+					remove_idea = IRQ_Anglo_Iraqi_Treaty
+					add_idea = IRQ_Anglo_Iraqi_Treaty_High
+				}
+			}
+			set_temp_variable = { eng_power_in_iraq_to_gain = 15 } 
+			add_eng_influence_with_tooltip_effect = yes				
+		}
+		else_if  = {
+			limit  = {
+				OR = {
+					has_global_flag = IRQ_Military_Medium_England_Accepted_flag
+					has_global_flag = IRQ_Trade_Medium_England_Accepted_flag
+					has_global_flag = IRQ_Political_Medium_England_Accepted_flag
+				}
+			}
+			set_temp_variable = { eng_power_in_iraq_to_gain = 5 } 
+			IRQ = {
+				swap_ideas = {
+					remove_idea = IRQ_Anglo_Iraqi_Treaty
+					add_idea = IRQ_Anglo_Iraqi_Treaty_Medium
+				}
+			}
+		}
+		else = {
+			set_temp_variable = { eng_power_in_iraq_to_gain = -5 } 
+		}
+	}
+}
+#########################################################################
+# CODE EVENT NO LOC
+#########################################################################
+country_event = {
+	id = ENG_Anglo_Iraqi_Treaty.10
+	title = ENG_Anglo_Iraqi_Treaty.10.t
+	desc = ENG_Anglo_Iraqi_Treaty.10.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		IRQ = {	
+			is_puppet_of = ENG
+		}
+	}
+	immediate = {	
+		set_country_flag = IRQ_New_Colony_Decision_Unlock
+	}
+	# We shall send a diplomatic delegation
+	option = {
+		
+	}
+}

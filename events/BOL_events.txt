@@ -1,0 +1,117 @@
+###########################
+# Darkest Hour Events : Bolivia
+###########################
+add_namespace = BOL_Politics
+#########################################################################
+#  Military Socialist Revolution
+#########################################################################
+news_event = {
+	id = BOL_Politics.1
+	title = BOL_Politics.1.t
+	desc = BOL_Politics.1.d
+	picture = GFX_news_BOL_Bolivian_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = BOL
+		date > 1936.5.21
+		has_start_date < 1936.5.21
+	}
+	option = {
+		name = BOL_Politics.1.A
+		add_ideas = BOL_Very_Low_Popular_Support
+		remove_ideas = BOL_D_Jose_Tejada_Sorzano
+		set_politics = {
+			ruling_party = socialist
+		}
+		set_party_name = {
+			ideology = socialist
+			long_name = "Military Socialist Government"
+			name = "MSG"
+		}
+		create_country_leader = {
+			name = "David Toro"
+			desc = ""
+			picture = GFX_P_S_David_Toro
+			ideology = socialism
+			traits = {
+				POSITION_President
+				SUBIDEOLOGY_Military_Dictatorship
+			}
+		}
+		set_cosmetic_tag = BOL_Socialist
+	}
+}
+
+#########################################################################
+#  Germán Busch Takes Power
+#########################################################################
+country_event = {
+	id = BOL_Politics.2
+	title = BOL_Politics.2.t
+	desc = BOL_Politics.2.d
+	picture = GFX_news_BOL_German_Busch_Reviwing_Troops
+	fire_only_once = yes
+	trigger = {
+		original_tag = BOL
+		date > 1937.7.12
+		has_start_date < 1937.7.12
+	}
+	option = {
+		name = BOL_Politics.2.A
+		retire_ideology_leader = socialist
+		create_country_leader = {
+			name = "Germán Busch"
+			desc = ""
+			picture = GFX_P_S_German_Busch
+			ideology = socialism
+			traits = {
+				POSITION_President
+				SUBIDEOLOGY_Socialism
+			}
+		}
+		swap_ideas = {
+			remove_idea = BOL_Very_Low_Popular_Support
+			add_idea = BOL_Low_Popular_Support
+		}
+	}
+}
+
+#########################################################################
+#  Germán Busch Dead!
+#########################################################################
+country_event = {
+	id = BOL_Politics.3
+	title = BOL_Politics.3.t
+	desc = BOL_Politics.3.d
+	picture = GFX_news_BOL_German_Busch
+	fire_only_once = yes
+	trigger = {
+		original_tag = BOL
+		date > 1939.8.22
+		has_start_date < 1939.8.22
+	}
+	option = {
+		name = BOL_Politics.3.A
+		drop_cosmetic_tag = yes
+		kill_ideology_leader = socialist
+		set_party_name = {
+			ideology = authoritarian
+			long_name = "Interim Military Government"
+			name = "IMG"
+		}
+		set_politics = {
+			ruling_party = authoritarian
+		}
+		create_country_leader = {
+			name = "Carlos Quintanilla"
+			desc = ""
+			picture = GFX_P_A_Carlos_Quintanilla
+			ideology = authoritarian_democracy
+			traits = {
+				POSITION_President
+				SUBIDEOLOGY_Despotism
+			}
+		}
+		set_cosmetic_tag = BOL_AUT
+	}
+}

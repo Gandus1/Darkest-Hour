@@ -1,0 +1,844 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+
+FRG_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_MEC_01 FRG_GAR_01 FRG_MTN_01 FRG_PAR_01 FRG_ARM_01 FRG_CAV_01 }
+
+	fallback_name = "%d. Jägerdivision"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		2 = { "%d. Jägerdivision „Hessische“" }
+		4 = { "%d. Jägerdivision" }
+		1 = { "%d. Jägerdivision „Die Erste“" }
+		3 = { "%d. Jägerdivision" }
+		5 = { "%d. Jägerdivision" }
+		6 = { "%d. Jägerdivision" }
+		7 = { "%d. Jägerdivision „Westfälische“" }
+		8 = { "%d. Jägerdivision" }
+		9 = { "%d. Jägerdivision" }
+		10 = { "%d. Jägerdivision „Löwendivision“" }
+		11 = { "%d. Jägerdivision" }
+		12 = { "%d. Jägerdivision „Fränkische“" }
+		13 = { "%d. Jägerdivision" }
+		14 = { "%d. Jägerdivision „Hanse“" }
+		15 = { "%d. Jägerdivision" }
+		16 = { "%d. Jägerdivision" }
+		17 = { "%d. Jägerdivision" }
+		18 = { "%d. Jägerdivision" }
+		19 = { "%d. Jägerdivision" }
+		20 = { "%d. Jägerdivision" }
+	}
+}
+
+FRG_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_01 FRG_GAR_01 FRG_MTN_01 FRG_PAR_01 FRG_ARM_01 FRG_CAV_01 }
+
+	fallback_name = "%d. Panzergrenadierdivision"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Panzergrenadierdivision „Die Erste“" }
+		2 = { "%d. Panzergrenadierdivision „Hessische“" }
+		4 = { "%d. Panzergrenadierdivision" }
+		6 = { "%d. Panzergrenadierdivision" }
+		7 = { "%d. Panzergrenadierdivision „Westfälische“" }
+		10 = { "%d. Panzergrenadierdivision „Löwendivision“" }
+		11 = { "%d. Panzergrenadierdivision" }
+		12 = { "%d. Panzergrenadierdivision „Fränkische“" }
+		13 = { "%d. Panzergrenadierdivision" }
+		14 = { "%d. Panzergrenadierdivision „Hanse“" }
+		3 = { "%d. Panzergrenadierdivision" }
+		5 = { "%d. Panzergrenadierdivision" }
+		8 = { "%d. Panzergrenadierdivision" }
+		9 = { "%d. Panzergrenadierdivision" }
+		15 = { "%d. Panzergrenadierdivision" }
+		16 = { "%d. Panzergrenadierdivision" }
+		17 = { "%d. Panzergrenadierdivision" }
+		18 = { "%d. Panzergrenadierdivision" }
+		19 = { "%d. Panzergrenadierdivision" }
+		20 = { "%d. Panzergrenadierdivision" }
+	}
+}
+
+FRG_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_01 FRG_MEC_01 FRG_GAR_01 FRG_MTN_01 FRG_PAR_01 FRG_CAV_01 }
+
+	fallback_name = "%d. Panzerdivision"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Panzerdivision „Die Erste“" }
+		3 = { "%d. Panzerdivision" }
+		5 = { "%d. Panzerdivision" }
+		7 = { "%d. Panzerdivision „Westfälische“" }
+		10 = { "%d. Panzerdivision „Löwendivision“" }
+		12 = { "%d. Panzerdivision „Fränkische“" }
+		2 = { "%d. Panzerdivision „Hessische“" }
+		4 = { "%d. Panzerdivision" }
+		6 = { "%d. Panzerdivision" }
+		8 = { "%d. Panzerdivision" }
+		9 = { "%d. Panzerdivision" }
+		11 = { "%d. Panzerdivision" }
+		13 = { "%d. Panzerdivision" }
+		14 = { "%d. Panzerdivision „Hanse“" }
+		15 = { "%d. Panzerdivision" }
+		16 = { "%d. Panzerdivision" }
+		17 = { "%d. Panzerdivision" }
+		18 = { "%d. Panzerdivision" }
+		19 = { "%d. Panzerdivision" }
+		20 = { "%d. Panzerdivision" }
+	}
+}
+
+FRG_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_01 FRG_MEC_01 FRG_GAR_01 FRG_MTN_01 FRG_PAR_01 FRG_ARM_01 }
+
+	fallback_name = "%d. Kavalleriedivision"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Kavalleriedivision „Die Erste“" }
+		2 = { "%d. Kavalleriedivision „Hessische“" }
+		3 = { "%d. Kavalleriedivision" }
+		4 = { "%d. Kavalleriedivision" }
+		5 = { "%d. Kavalleriedivision" }
+		6 = { "%d. Kavalleriedivision" }
+		7 = { "%d. Kavalleriedivision „Westfälische“" }
+		8 = { "%d. Kavalleriedivision" }
+		9 = { "%d. Kavalleriedivision" }
+		10 = { "%d. Kavalleriedivision „Löwendivision“" }
+		11 = { "%d. Kavalleriedivision" }
+		12 = { "%d. Kavalleriedivision „Fränkische“" }
+		13 = { "%d. Kavalleriedivision" }
+		14 = { "%d. Kavalleriedivision „Hanse“" }
+		15 = { "%d. Kavalleriedivision" }
+		16 = { "%d. Kavalleriedivision" }
+		17 = { "%d. Kavalleriedivision" }
+		18 = { "%d. Kavalleriedivision" }
+		19 = { "%d. Kavalleriedivision" }
+		20 = { "%d. Kavalleriedivision" }
+	}
+}
+
+FRG_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_01 FRG_MEC_01 FRG_GAR_01 FRG_PAR_01 FRG_ARM_01 FRG_CAV_01 }
+
+	fallback_name = "%d. Gebirgsdivision"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		8 = { "1. Gebirgsdivision" }
+		2 = { "%d. Gebirgsdivision" }
+		3 = { "%d. Gebirgsdivision" }
+		4 = { "%d. Gebirgsdivision" }
+		5 = { "%d. Gebirgsdivision" }
+		6 = { "%d. Gebirgsdivision" }
+		7 = { "%d. Gebirgsdivision" }
+		9 = { "%d. Gebirgsdivision" }
+		10 = { "%d. Gebirgsdivision" }
+		11 = { "%d. Gebirgsdivision" }
+		12 = { "%d. Gebirgsdivision" }
+		13 = { "%d. Gebirgsdivision" }
+		14 = { "%d. Gebirgsdivision" }
+		15 = { "%d. Gebirgsdivision" }
+		16 = { "%d. Gebirgsdivision" }
+		17 = { "%d. Gebirgsdivision" }
+		18 = { "%d. Gebirgsdivision" }
+		19 = { "%d. Gebirgsdivision" }
+		20 = { "%d. Gebirgsdivision" }
+	}
+}
+
+FRG_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_01 FRG_MEC_01 FRG_GAR_01 FRG_MTN_01 FRG_ARM_01 FRG_CAV_01 }
+
+	fallback_name = "%d. Luftlandedivision"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		9 = { "1. Luftlandedivision" }
+		2 = { "%d. Luftlandedivision" }
+		3 = { "%d. Luftlandedivision" }
+		4 = { "%d. Luftlandedivision" }
+		5 = { "%d. Luftlandedivision" }
+		6 = { "%d. Luftlandedivision" }
+		7 = { "%d. Luftlandedivision" }
+		8 = { "%d. Luftlandedivision" }
+		10 = { "%d. Luftlandedivision" }
+		11 = { "%d. Luftlandedivision" }
+		12 = { "%d. Luftlandedivision" }
+		13 = { "%d. Luftlandedivision" }
+		14 = { "%d. Luftlandedivision" }
+		15 = { "%d. Luftlandedivision" }
+		16 = { "%d. Luftlandedivision" }
+		17 = { "%d. Luftlandedivision" }
+		18 = { "%d. Luftlandedivision" }
+		19 = { "%d. Luftlandedivision" }
+		20 = { "%d. Luftlandedivision" }
+	}
+}
+
+FRG_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { FRG_MAR_02 }
+
+	fallback_name = "%d. Seedivision"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. Seedivision" }
+		2 = { "%d. Seedivision" }
+		3 = { "%d. Seedivision" }
+		4 = { "%d. Seedivision" }
+		5 = { "%d. Seedivision" }
+		6 = { "%d. Seedivision" }
+		7 = { "%d. Seedivision" }
+		8 = { "%d. Seedivision" }
+		9 = { "%d. Seedivision" }
+		10 = { "%d. Seedivision" }
+		11 = { "%d. Seedivision" }
+		12 = { "%d. Seedivision" }
+		13 = { "%d. Seedivision" }
+		14 = { "%d. Seedivision" }
+		15 = { "%d. Seedivision" }
+		16 = { "%d. Seedivision" }
+		17 = { "%d. Seedivision" }
+		18 = { "%d. Seedivision" }
+		19 = { "%d. Seedivision" }
+		20 = { "%d. Seedivision" }
+	}
+}
+
+FRG_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { FRG_INF_01 FRG_MEC_01 FRG_MTN_01 FRG_PAR_01 FRG_ARM_01 FRG_CAV_01 }
+
+	fallback_name = "Wehrbereichskommando %s"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "Wehrbereichskommando %s" }
+		2 = { "Wehrbereichskommando %s" }
+		3 = { "Wehrbereichskommando %s" }
+		4 = { "Wehrbereichskommando %s" }
+		5 = { "Wehrbereichskommando %s" }
+		6 = { "Wehrbereichskommando %s" }
+		7 = { "Wehrbereichskommando %s" }
+		8 = { "Wehrbereichskommando %s" }
+		9 = { "Wehrbereichskommando %s" }
+		10 = { "Wehrbereichskommando %s" }
+		11 = { "Wehrbereichskommando %s" }
+		12 = { "Wehrbereichskommando %s" }
+		13 = { "Wehrbereichskommando %s" }
+		14 = { "Wehrbereichskommando %s" }
+		15 = { "Wehrbereichskommando %s" }
+		16 = { "Wehrbereichskommando %s" }
+		17 = { "Wehrbereichskommando %s" }
+		18 = { "Wehrbereichskommando %s" }
+		19 = { "Wehrbereichskommando %s" }
+		20 = { "Wehrbereichskommando %s" }
+	}
+}
+
+FRG_INF_02 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_MEC_02 FRG_GAR_02 FRG_MTN_02 FRG_PAR_02 FRG_ARM_02 FRG_CAV_02 }
+
+	fallback_name = "%d. Infanterie-Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		4 = { "Jägerbrigade %d" }
+		10 = { "Jägerbrigade %d" }
+		11 = { "Jägerbrigade %d „Bayerwald“" }
+		37 = { "Jägerbrigade %d „Freistaat Sachsen“" }
+		1 = { "Jägerbrigade %d" }
+		2 = { "Jägerbrigade %d" }
+		3 = { "Jägerbrigade %d „Weser-Leine“" }
+		5 = { "Jägerbrigade %d „Kurhessen“" }
+		6 = { "Jägerbrigade %d" }
+		7 = { "Jägerbrigade %d „Hansestadt Hamburg“" }
+		8 = { "Jägerbrigade %d „Lüneburg“" }
+		9 = { "Jägerbrigade %d" }
+		12 = { "Jägerbrigade %d „Oberpfalz“" }
+		13 = { "Jägerbrigade %d" }
+		14 = { "Jägerbrigade %d „Hessischer Löwe“" }
+		15 = { "Jägerbrigade %d „Westerwald“" }
+		16 = { "Jägerbrigade %d „Herzogtum Lauenburg“" }
+		17 = { "Jägerbrigade %d „Hamburger Hausbrigade“" }
+		18 = { "Jägerbrigade %d „Holstein“" }
+		19 = { "Jägerbrigade %d „Münsterland“" }
+		20 = { "Jägerbrigade %d „Märkisches Sauerland“" }
+		21 = { "Jägerbrigade %d „Lipperland“" }
+		22 = { "Jägerbrigade %d „Oberland“" }
+		23 = { "Jägerbrigade %d „Bayern“" }
+		24 = { "Jägerbrigade %d „Niederbayern“" }
+		25 = { "Jägerbrigade %d „Schwarzwald“" }
+		26 = { "Jägerbrigade %d „Saarland“" }
+		27 = { "Jägerbrigade %d" }
+		28 = { "Jägerbrigade %d" }
+		29 = { "Jägerbrigade %d „Südbaden-Hohenzollern“" }
+		30 = { "Jägerbrigade %d „Alb-Brigade“" }
+		31 = { "Jägerbrigade %d „Die Oldenburgische“" }
+		32 = { "Jägerbrigade %d" }
+		33 = { "Jägerbrigade %d „Celle“" }
+		34 = { "Jägerbrigade %d „Koblenz“" }
+		35 = { "Jägerbrigade %d" }
+		36 = { "Jägerbrigade %d „Mainfranken“" }
+		38 = { "Jägerbrigade %d „Sachsen-Anhalt“" }
+		39 = { "Jägerbrigade %d „Thüringen“" }
+		40 = { "Jägerbrigade %d „Mecklenburg“" }
+		41 = { "Jägerbrigade %d „Vorpommern“" }
+		42 = { "Jägerbrigade %d „Brandenburg“" }
+	}
+}
+
+FRG_MEC_02 = 
+{
+	name = "Mechanized Brgades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_02 FRG_GAR_02 FRG_MTN_02 FRG_PAR_02 FRG_ARM_02 FRG_CAV_02 }
+
+	fallback_name = "Panzergrenadierbrigade %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "Panzergrenadierbrigade %d" }
+		2 = { "Panzergrenadierbrigade %d" }
+		4 = { "Panzergrenadierbrigade %d" }
+		5 = { "Panzergrenadierbrigade %d „Kurhessen“" }
+		7 = { "Panzergrenadierbrigade %d „Hansestadt Hamburg“" }
+		10 = { "Panzergrenadierbrigade %d" }
+		11 = { "Panzergrenadierbrigade %d „Bayerwald“" }
+		13 = { "Panzergrenadierbrigade %d" }
+		16 = { "Panzergrenadierbrigade %d „Herzogtum Lauenburg“" }
+		17 = { "Panzergrenadierbrigade %d „Hamburger Hausbrigade“" }
+		19 = { "Panzergrenadierbrigade %d „Münsterland“" }
+		20 = { "Panzergrenadierbrigade %d „Märkisches Sauerland“" }
+		22 = { "Panzergrenadierbrigade %d „Oberland“" }
+		24 = { "Panzergrenadierbrigade %d „Niederbayern“" }
+		28 = { "Panzergrenadierbrigade %d" }
+		29 = { "Panzergrenadierbrigade %d „Südbaden-Hohenzollern“" }
+		30 = { "Panzergrenadierbrigade %d „Alb-Brigade“" }
+		31 = { "Panzergrenadierbrigade %d „Die Oldenburgische“" }
+		32 = { "Panzergrenadierbrigade %d" }
+		35 = { "Panzergrenadierbrigade %d" }
+		37 = { "Panzergrenadierbrigade %d „Freistaat Sachsen“" }
+		38 = { "Panzergrenadierbrigade %d „Sachsen-Anhalt“" }
+		40 = { "Panzergrenadierbrigade %d „Mecklenburg“" }
+		41 = { "Panzergrenadierbrigade %d „Vorpommern“" }
+		3 = { "Panzergrenadierbrigade %d „Weser-Leine“" }
+		6 = { "Panzergrenadierbrigade %d" }
+		8 = { "Panzergrenadierbrigade %d „Lüneburg“" }
+		9 = { "Panzergrenadierbrigade %d" }
+		12 = { "Panzergrenadierbrigade %d „Oberpfalz“" }
+		14 = { "Panzergrenadierbrigade %d „Hessischer Löwe“" }
+		15 = { "Panzergrenadierbrigade %d „Westerwald“" }
+		18 = { "Panzergrenadierbrigade %d „Holstein“" }
+		21 = { "Panzergrenadierbrigade %d „Lipperland“" }
+		23 = { "Panzergrenadierbrigade %d „Bayern“" }
+		25 = { "Panzergrenadierbrigade %d „Schwarzwald“" }
+		26 = { "Panzergrenadierbrigade %d „Saarland“" }
+		27 = { "Panzergrenadierbrigade %d" }
+		33 = { "Panzergrenadierbrigade %d „Celle“" }
+		34 = { "Panzergrenadierbrigade %d „Koblenz“" }
+		36 = { "Panzergrenadierbrigade %d „Mainfranken“" }
+		39 = { "Panzergrenadierbrigade %d „Thüringen“" }
+		42 = { "Panzergrenadierbrigade %d „Brandenburg“" }
+	}
+}
+
+FRG_ARM_02 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_02 FRG_MEC_02 FRG_GAR_02 FRG_MTN_02 FRG_PAR_02 FRG_CAV_02 }
+
+	fallback_name = "Panzerbrigade %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		2 = { "Panzerbrigade %d" }
+		3 = { "Panzerbrigade %d „Weser-Leine“" }
+		6 = { "Panzerbrigade %d" }
+		8 = { "Panzerbrigade %d „Lüneburg“" }
+		9 = { "Panzerlehrbrigade %d" }
+		12 = { "Panzerbrigade %d „Oberpfalz“" }
+		14 = { "Panzerbrigade %d „Hessischer Löwe“" }
+		15 = { "Panzerbrigade %d „Westerwald“" }
+		18 = { "Panzerbrigade %d „Holstein“" }
+		20 = { "Panzerbrigade %d „Märkisches Sauerland“" }
+		21 = { "Panzerbrigade %d „Lipperland“" }
+		24 = { "Panzerbrigade %d „Niederbayern“" }
+		28 = { "Panzerbrigade %d" }
+		29 = { "Panzerbrigade %d „Südbaden-Hohenzollern“" }
+		30 = { "Panzerbrigade %d „Alb-Brigade“" }
+		33 = { "Panzerbrigade %d „Celle“" }
+		34 = { "Panzerbrigade %d „Koblenz“" }
+		36 = { "Panzerbrigade %d „Mainfranken“" }
+		39 = { "Panzerbrigade %d „Thüringen“" }
+		42 = { "Panzerbrigade %d „Brandenburg“" }
+		1 = { "Panzerbrigade %d" }
+		4 = { "Panzerbrigade %d" }
+		5 = { "Panzerbrigade %d „Kurhessen“" }
+		7 = { "Panzerbrigade %d „Hansestadt Hamburg“" }
+		10 = { "Panzerbrigade %d" }
+		11 = { "Panzerbrigade %d „Bayerwald“" }
+		13 = { "Panzerbrigade %d" }
+		16 = { "Panzerbrigade %d „Herzogtum Lauenburg“" }
+		17 = { "Panzerbrigade %d „Hamburger Hausbrigade“" }
+		19 = { "Panzerbrigade %d „Münsterland“" }
+		22 = { "Panzerbrigade %d „Oberland“" }
+		23 = { "Panzerbrigade %d „Bayern“" }
+		25 = { "Panzerbrigade %d „Schwarzwald“" }
+		26 = { "Panzerbrigade %d „Saarland“" }
+		27 = { "Panzerbrigade %d" }
+		31 = { "Panzerbrigade %d „Die Oldenburgische“" }
+		32 = { "Panzerbrigade %d" }
+		35 = { "Panzerbrigade %d" }
+		37 = { "Panzerbrigade %d „Freistaat Sachsen“" }
+		38 = { "Panzerbrigade %d „Sachsen-Anhalt“" }
+		40 = { "Panzerbrigade %d „Mecklenburg“" }
+		41 = { "Panzerbrigade %d „Vorpommern“" }
+	}
+}
+
+FRG_CAV_02 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_02 FRG_MEC_02 FRG_GAR_02 FRG_MTN_02 FRG_PAR_02 FRG_ARM_02 }
+
+	fallback_name = "Kavalleriebrigade %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "Kavalleriebrigade %d" }
+		2 = { "Kavalleriebrigade %d" }
+		3 = { "Kavalleriebrigade %d „Weser-Leine“" }
+		4 = { "Kavalleriebrigade %d" }
+		5 = { "Kavalleriebrigade %d „Kurhessen“" }
+		6 = { "Kavalleriebrigade %d" }
+		7 = { "Kavalleriebrigade %d „Hansestadt Hamburg“" }
+		8 = { "Kavalleriebrigade %d „Lüneburg“" }
+		9 = { "Kavalleriebrigade %d" }
+		10 = { "Kavalleriebrigade %d" }
+		11 = { "Kavalleriebrigade %d „Bayerwald“" }
+		12 = { "Kavalleriebrigade %d „Oberpfalz“" }
+		13 = { "Kavalleriebrigade %d" }
+		14 = { "Kavalleriebrigade %d „Hessischer Löwe“" }
+		15 = { "Kavalleriebrigade %d „Westerwald“" }
+		16 = { "Kavalleriebrigade %d „Herzogtum Lauenburg“" }
+		17 = { "Kavalleriebrigade %d „Hamburger Hausbrigade“" }
+		18 = { "Kavalleriebrigade %d „Holstein“" }
+		19 = { "Kavalleriebrigade %d „Münsterland“" }
+		20 = { "Kavalleriebrigade %d „Märkisches Sauerland“" }
+		21 = { "Kavalleriebrigade %d „Lipperland“" }
+		22 = { "Kavalleriebrigade %d „Oberland“" }
+		23 = { "Kavalleriebrigade %d „Bayern“" }
+		24 = { "Kavalleriebrigade %d „Niederbayern“" }
+		25 = { "Kavalleriebrigade %d „Schwarzwald“" }
+		26 = { "Kavalleriebrigade %d „Saarland“" }
+		27 = { "Kavalleriebrigade %d" }
+		28 = { "Kavalleriebrigade %d" }
+		29 = { "Kavalleriebrigade %d „Südbaden-Hohenzollern“" }
+		30 = { "Kavalleriebrigade %d „Alb-Brigade“" }
+		31 = { "Kavalleriebrigade %d „Die Oldenburgische“" }
+		32 = { "Kavalleriebrigade %d" }
+		33 = { "Kavalleriebrigade %d „Celle“" }
+		34 = { "Kavalleriebrigade %d „Koblenz“" }
+		35 = { "Kavalleriebrigade %d" }
+		36 = { "Kavalleriebrigade %d „Mainfranken“" }
+		37 = { "Kavalleriebrigade %d „Freistaat Sachsen“" }
+		38 = { "Kavalleriebrigade %d „Sachsen-Anhalt“" }
+		39 = { "Kavalleriebrigade %d „Thüringen“" }
+		40 = { "Kavalleriebrigade %d „Mecklenburg“" }
+		41 = { "Kavalleriebrigade %d „Vorpommern“" }
+		42 = { "Kavalleriebrigade %d „Brandenburg“" }
+	}
+}
+
+FRG_MTN_02 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_02 FRG_MEC_02 FRG_GAR_02 FRG_PAR_02 FRG_ARM_02 FRG_CAV_02 }
+
+	fallback_name = "Gebirgsjägerbrigade %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		22 = { "Gebirgsjägerbrigade %d „Oberland“" }
+		23 = { "Gebirgsjägerbrigade %d „Bayern“" }
+		1 = { "Gebirgsjägerbrigade %d" }
+		2 = { "Gebirgsjägerbrigade %d" }
+		3 = { "Gebirgsjägerbrigade %d „Weser-Leine“" }
+		4 = { "Gebirgsjägerbrigade %d" }
+		5 = { "Gebirgsjägerbrigade %d „Kurhessen“" }
+		6 = { "Gebirgsjägerbrigade %d" }
+		7 = { "Gebirgsjägerbrigade %d „Hansestadt Hamburg“" }
+		8 = { "Gebirgsjägerbrigade %d „Lüneburg“" }
+		9 = { "Gebirgsjägerbrigade %d" }
+		10 = { "Gebirgsjägerbrigade %d" }
+		11 = { "Gebirgsjägerbrigade %d „Bayerwald“" }
+		12 = { "Gebirgsjägerbrigade %d „Oberpfalz“" }
+		13 = { "Gebirgsjägerbrigade %d" }
+		14 = { "Gebirgsjägerbrigade %d „Hessischer Löwe“" }
+		15 = { "Gebirgsjägerbrigade %d „Westerwald“" }
+		16 = { "Gebirgsjägerbrigade %d „Herzogtum Lauenburg“" }
+		17 = { "Gebirgsjägerbrigade %d „Hamburger Hausbrigade“" }
+		18 = { "Gebirgsjägerbrigade %d „Holstein“" }
+		19 = { "Gebirgsjägerbrigade %d „Münsterland“" }
+		20 = { "Gebirgsjägerbrigade %d „Märkisches Sauerland“" }
+		21 = { "Gebirgsjägerbrigade %d „Lipperland“" }
+		24 = { "Gebirgsjägerbrigade %d „Niederbayern“" }
+		25 = { "Gebirgsjägerbrigade %d „Schwarzwald“" }
+		26 = { "Gebirgsjägerbrigade %d „Saarland“" }
+		27 = { "Gebirgsjägerbrigade %d" }
+		28 = { "Gebirgsjägerbrigade %d" }
+		29 = { "Gebirgsjägerbrigade %d „Südbaden-Hohenzollern“" }
+		30 = { "Gebirgsjägerbrigade %d „Alb-Brigade“" }
+		31 = { "Gebirgsjägerbrigade %d „Die Oldenburgische“" }
+		32 = { "Gebirgsjägerbrigade %d" }
+		33 = { "Gebirgsjägerbrigade %d „Celle“" }
+		34 = { "Gebirgsjägerbrigade %d „Koblenz“" }
+		35 = { "Gebirgsjägerbrigade %d" }
+		36 = { "Gebirgsjägerbrigade %d „Mainfranken“" }
+		37 = { "Gebirgsjägerbrigade %d „Freistaat Sachsen“" }
+		38 = { "Gebirgsjägerbrigade %d „Sachsen-Anhalt“" }
+		39 = { "Gebirgsjägerbrigade %d „Thüringen“" }
+		40 = { "Gebirgsjägerbrigade %d „Mecklenburg“" }
+		41 = { "Gebirgsjägerbrigade %d „Vorpommern“" }
+		42 = { "Gebirgsjägerbrigade %d „Brandenburg“" }
+	}
+}
+
+FRG_PAR_02 = 
+{
+	name = "Paratrooper Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { FRG_INF_02 FRG_MEC_02 FRG_GAR_02 FRG_MTN_02 FRG_ARM_02 FRG_CAV_02 }
+
+	fallback_name = "Luftlandebrigade %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		25 = { "Luftlandebrigade %d „Schwarzwald“" }
+		26 = { "Luftlandebrigade %d „Saarland“" }
+		27 = { "Luftlandebrigade %d" }
+		31 = { "Luftlandebrigade %d „Die Oldenburgische“" }
+		1 = { "Luftlandebrigade %d" }
+		2 = { "Luftlandebrigade %d" }
+		3 = { "Luftlandebrigade %d „Weser-Leine“" }
+		4 = { "Luftlandebrigade %d" }
+		5 = { "Luftlandebrigade %d „Kurhessen“" }
+		6 = { "Luftlandebrigade %d" }
+		7 = { "Luftlandebrigade %d „Hansestadt Hamburg“" }
+		8 = { "Luftlandebrigade %d „Lüneburg“" }
+		9 = { "Luftlandebrigade %d" }
+		10 = { "Luftlandebrigade %d" }
+		11 = { "Luftlandebrigade %d „Bayerwald“" }
+		12 = { "Luftlandebrigade %d „Oberpfalz“" }
+		13 = { "Luftlandebrigade %d" }
+		14 = { "Luftlandebrigade %d „Hessischer Löwe“" }
+		15 = { "Luftlandebrigade %d „Westerwald“" }
+		16 = { "Luftlandebrigade %d „Herzogtum Lauenburg“" }
+		17 = { "Luftlandebrigade %d „Hamburger Hausbrigade“" }
+		18 = { "Luftlandebrigade %d „Holstein“" }
+		19 = { "Luftlandebrigade %d „Münsterland“" }
+		20 = { "Luftlandebrigade %d „Märkisches Sauerland“" }
+		21 = { "Luftlandebrigade %d „Lipperland“" }
+		22 = { "Luftlandebrigade %d „Oberland“" }
+		23 = { "Luftlandebrigade %d „Bayern“" }
+		24 = { "Luftlandebrigade %d „Niederbayern“" }
+		28 = { "Luftlandebrigade %d" }
+		29 = { "Luftlandebrigade %d „Südbaden-Hohenzollern“" }
+		30 = { "Luftlandebrigade %d „Alb-Brigade“" }
+		32 = { "Luftlandebrigade %d" }
+		33 = { "Luftlandebrigade %d „Celle“" }
+		34 = { "Luftlandebrigade %d „Koblenz“" }
+		35 = { "Luftlandebrigade %d" }
+		36 = { "Luftlandebrigade %d „Mainfranken“" }
+		37 = { "Luftlandebrigade %d „Freistaat Sachsen“" }
+		38 = { "Luftlandebrigade %d „Sachsen-Anhalt“" }
+		39 = { "Luftlandebrigade %d „Thüringen“" }
+		40 = { "Luftlandebrigade %d „Mecklenburg“" }
+		41 = { "Luftlandebrigade %d „Vorpommern“" }
+		42 = { "Luftlandebrigade %d „Brandenburg“" }
+	}
+}
+
+FRG_MAR_02 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { FRG_MAR_01 }
+
+	fallback_name = "Seebrigade %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "Seebrigade %d" }
+		2 = { "Seebrigade %d" }
+		3 = { "Seebrigade %d" }
+		4 = { "Seebrigade %d" }
+		5 = { "Seebrigade %d" }
+		6 = { "Seebrigade %d" }
+		7 = { "Seebrigade %d" }
+		8 = { "Seebrigade %d" }
+		9 = { "Seebrigade %d" }
+		10 = { "Seebrigade %d" }
+		11 = { "Seebrigade %d" }
+		12 = { "Seebrigade %d" }
+		13 = { "Seebrigade %d" }
+		14 = { "Seebrigade %d" }
+		15 = { "Seebrigade %d" }
+		16 = { "Seebrigade %d" }
+		17 = { "Seebrigade %d" }
+		18 = { "Seebrigade %d" }
+		19 = { "Seebrigade %d" }
+		20 = { "Seebrigade %d" }
+		21 = { "Seebrigade %d" }
+		22 = { "Seebrigade %d" }
+		23 = { "Seebrigade %d" }
+		24 = { "Seebrigade %d" }
+		25 = { "Seebrigade %d" }
+		26 = { "Seebrigade %d" }
+		27 = { "Seebrigade %d" }
+		28 = { "Seebrigade %d" }
+		29 = { "Seebrigade %d" }
+		30 = { "Seebrigade %d" }
+		31 = { "Seebrigade %d" }
+		32 = { "Seebrigade %d" }
+		33 = { "Seebrigade %d" }
+		34 = { "Seebrigade %d" }
+		35 = { "Seebrigade %d" }
+		36 = { "Seebrigade %d" }
+		37 = { "Seebrigade %d" }
+		38 = { "Seebrigade %d" }
+		39 = { "Seebrigade %d" }
+		40 = { "Seebrigade %d" }
+		41 = { "Seebrigade %d" }
+		42 = { "Seebrigade %d" }
+	}
+}
+
+FRG_GAR_02 = 
+{
+	name = "Garrison Brigades"
+
+	for_countries = { FRG }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { FRG_INF_02 FRG_MEC_02 FRG_MTN_02 FRG_PAR_02 FRG_ARM_02 FRG_CAV_02 }
+
+	fallback_name = "Verteidigungsbezirkskommando %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "Verteidigungsbezirkskommando %d" }
+		2 = { "Verteidigungsbezirkskommando %d" }
+		3 = { "Verteidigungsbezirkskommando %d" }
+		4 = { "Verteidigungsbezirkskommando %d" }
+		5 = { "Verteidigungsbezirkskommando %d" }
+		6 = { "Verteidigungsbezirkskommando %d" }
+		7 = { "Verteidigungsbezirkskommando %d" }
+		8 = { "Verteidigungsbezirkskommando %d" }
+		9 = { "Verteidigungsbezirkskommando %d" }
+		10 = { "Verteidigungsbezirkskommando %d" }
+		11 = { "Verteidigungsbezirkskommando %d" }
+		12 = { "Verteidigungsbezirkskommando %d" }
+		13 = { "Verteidigungsbezirkskommando %d" }
+		14 = { "Verteidigungsbezirkskommando %d" }
+		15 = { "Verteidigungsbezirkskommando %d" }
+		16 = { "Verteidigungsbezirkskommando %d" }
+		17 = { "Verteidigungsbezirkskommando %d" }
+		18 = { "Verteidigungsbezirkskommando %d" }
+		19 = { "Verteidigungsbezirkskommando %d" }
+		20 = { "Verteidigungsbezirkskommando %d" }
+	}
+}
+

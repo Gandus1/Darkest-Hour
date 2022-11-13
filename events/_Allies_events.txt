@@ -1,0 +1,985 @@
+add_namespace = GER_Oster_Coup 
+add_namespace = Treaty_of_Danzig
+add_namespace = Treaty_of_Munich
+add_namespace = Operation_Torch
+
+#####
+
+country_event = { #Panic in the Wehrmacht
+	id = GER_Oster_Coup.1
+	title = GER_Oster_Coup.1.t
+	desc = GER_Oster_Coup.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = GER
+		has_war_with = FRA
+		has_war_with = POL
+		FRA = {
+			controls_state = 806
+			controls_state = 1498
+			controls_state = 42
+			controls_state = 51
+		}
+	}
+
+	option = {
+		name = GER_Oster_Coup.1.A
+		activate_mission = GER_Oster_Conspiracy_WW2
+		add_war_support = -0.2
+		add_stability = -0.1
+		add_political_power = -100
+	}
+}
+
+country_event = { #Oster Coup
+	id = GER_Oster_Coup.2
+	title = GER_Oster_Coup.2.t
+	desc = GER_Oster_Coup.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = GER_Oster_Coup.2.A
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.25
+		}
+		set_politics = {
+			ruling_party = authoritarian
+		}
+		add_country_leader_role = {
+			Character = GER_Hans_Oster
+			promote_leader = yes
+			country_leader = {
+				ideology = military_dictatorship
+				traits = {
+					POSITION_Leader
+				}
+			}
+		}
+
+		add_war_support = -0.3
+		add_stability = -0.2
+
+		hidden_effect = {
+			news_event = { id = GER_Oster_Coup.3 }
+			FRA = {
+				country_event = { id = GER_Oster_Coup.4 days = 4 }
+			}
+		}
+	}
+}
+
+news_event = { #Coup d'Etat in Germany
+	id = GER_Oster_Coup.3
+	title = GER_Oster_Coup.3.t
+	desc = GER_Oster_Coup.3.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = GER_Oster_Coup.3.A
+	}
+}
+
+country_event = { #Germany seek Peace
+	id = GER_Oster_Coup.4
+	title = GER_Oster_Coup.4.t
+	desc = GER_Oster_Coup.4.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #no
+		name = GER_Oster_Coup.4.A
+		add_war_support = 0.05
+		add_stability = -0.025
+		GER = {
+			country_event = GER_Oster_Coup.5
+		}
+	}
+
+	option = {#yes
+		name = GER_Oster_Coup.4.B
+		add_stability = 0.1
+		news_event = { id = GER_Oster_Coup.7 }
+	}
+}
+
+country_event = { #France refuse peace
+	id = GER_Oster_Coup.5
+	title = GER_Oster_Coup.5.t
+	desc = GER_Oster_Coup.5.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = GER_Oster_Coup.5.A
+		add_stability = -0.05
+		add_political_power = -50
+	}
+}
+
+news_event = { #Germany capitulate
+	id = GER_Oster_Coup.6
+	title = GER_Oster_Coup.6.t
+	desc = GER_Oster_Coup.6.d
+	picture = GFX_news_event_002
+	major = yes
+
+	trigger = {
+		original_tag = GER
+		GER_Hans_Oster = {
+			is_country_leader = yes
+		}
+		has_war_with = FRA
+		surrender_progress > 0.1
+	}
+
+	immediate = {
+		GER = {
+			white_peace = FRA
+			white_peace = ENG
+			white_peace = POL
+		}
+		FRA = {
+			country_event = { id = Treaty_of_Munich.1 days = 5 }
+		}
+	}
+
+	option = {
+		name = GER_Oster_Coup.6.A
+		add_threat = -10
+	}
+}
+
+news_event = { #Frankfurt Armistice
+	id = GER_Oster_Coup.7
+	title = GER_Oster_Coup.7.t
+	desc = GER_Oster_Coup.7.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		GER = {
+			white_peace = FRA
+			white_peace = ENG
+			white_peace = POL
+		}
+		FRA = {
+			country_event = { id = Treaty_of_Danzig.1 days = 5 }
+		}
+	}
+
+	option = {
+		name = GER_Oster_Coup.7.A
+		add_threat = -5
+	}
+}
+
+country_event = { # Treaty of Danzig / Main Treaty
+	id = Treaty_of_Danzig.1
+	title = Treaty_of_Danzig.1.t
+	desc = Treaty_of_Danzig.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Treaty_of_Danzig.1.A
+		hidden_effect = {
+			806 = {
+				transfer_state_to = FRA
+				remove_core_of = GER
+			}
+			POL = { transfer_state = 85 }
+			GER = {
+				# Poland
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 768
+							state = 1436
+							state = 67
+						}
+					}
+					transfer_state_to = POL
+				}
+				#Rhineland
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 1498
+							state = 42
+							state = 51
+							state = 809
+							state = 1160
+						}
+					}
+					transfer_state_to = RHI
+					remove_core_of = BAV
+					remove_core_of = GER
+				}
+				#United Kingdom / International Treaty Port
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 1183
+							state = 1524
+							state = 1523
+							state = 1579
+						}
+					}
+					transfer_state_to = ENG
+				}
+				#Czechosolvakia 
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 1120
+							is_core_of = CZE
+						}
+					}
+					transfer_state_to = CZE
+					remove_core_of = GER
+					remove_claim_by = GER
+				}
+				#Lituania
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 188
+						}
+					}
+					transfer_state_to = LIT
+				}
+				#Demilitarization
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 807
+							state = 961
+							state = 808
+							state = 55
+							state = 56
+							state = 57
+							state = 63
+							state = 68
+							state = 66
+							state = 1571
+						}
+					}
+					set_demilitarized_zone = yes
+				}
+				# Disband Army
+				every_controlled_state = {
+                    PREV = {
+                        delete_unit = {
+                            state = PREV
+                            disband = no
+                        }
+                    }
+                }
+			}
+			CZE = {
+				annex_country = {
+					target = BOH
+					transfer_troops = no
+				}
+				annex_country = {
+					target = SLO
+					transfer_troops = no
+				}
+				every_owned_state = {
+					remove_core_of = BOH
+				}
+			}
+	
+			FRA = {
+				set_autonomy = {
+					target = RHI
+					autonomy_state = AUTONOMY_Protectorate
+				}
+			}
+		}
+		if = {
+			limit = { 
+				AUS = {
+					any_core_state = {
+						is_owned_by = GER
+					}
+				}
+			}
+			country_event = { id = Treaty_of_Danzig.2 }
+		}
+		else = {
+			news_event = { id = Treaty_of_Danzig.3 }
+		}
+	}
+}
+
+country_event = { # Treaty of Danzig / Austria
+	id = Treaty_of_Danzig.2
+	title = Treaty_of_Danzig.2.t
+	desc = Treaty_of_Danzig.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Treaty_of_Danzig.2.A
+		GER = {
+			every_owned_state = {
+				limit = {
+					is_core_of = AUS
+				}
+				transfer_state_to = AUS
+				remove_core_of = GER
+			}	
+		}
+		news_event = { id = Treaty_of_Danzig.3 }
+	}
+	option = {
+		name = Treaty_of_Danzig.2.B
+		news_event = { id = Treaty_of_Danzig.3 }
+	}
+}
+
+news_event = {
+	id = Treaty_of_Danzig.3
+	title = Treaty_of_Danzig.3.t
+	desc = Treaty_of_Danzig.3.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = Treaty_of_Danzig.3.A
+		add_threat = -10
+	}
+}
+
+
+country_event = { # Treaty of Munich / Main Treaty
+	id = Treaty_of_Munich.1
+	title = Treaty_of_Munich.1.t
+	desc = Treaty_of_Munich.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Treaty_of_Munich.1.A
+		hidden_effect = {
+			806 = {
+				transfer_state_to = FRA
+				remove_core_of = GER
+			}
+			POL = { transfer_state = 85 }
+			GER = {
+				# Poland
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 768
+							state = 85
+							state = 1436
+							state = 67
+							state = 66
+							state = 68
+							state = 1666
+						}
+					}
+					transfer_state_to = POL
+				}
+				#Rhineland
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 1498
+							state = 42
+							state = 51
+							state = 809
+							state = 1160
+						}
+					}
+					transfer_state_to = RHI
+					remove_core_of = BAV
+					remove_core_of = GER
+				}
+				#United Kingdom / International Treaty Port
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 1183
+							state = 1524
+							state = 1523
+							state = 1579
+						}
+					}
+					transfer_state_to = ENG
+				}
+				#Czechosolvakia 
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 1120
+							is_core_of = CZE
+						}
+					}
+					transfer_state_to = CZE
+					remove_core_of = GER
+					remove_claim_by = GER
+				}
+				#Lituania
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 188
+						}
+					}
+					transfer_state_to = LIT
+				}
+				# Disband Army
+				every_controlled_state = {
+                    PREV = {
+                        delete_unit = {
+                            state = PREV
+                            disband = no
+                        }
+                    }
+                }
+				#Politics
+				set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			}
+			CZE = {
+				annex_country = {
+					target = BOH
+					transfer_troops = no
+				}
+				annex_country = {
+					target = SLO
+					transfer_troops = no
+				}
+				every_owned_state = {
+					remove_core_of = BOH
+				}
+			}
+	
+			FRA = {
+				set_autonomy = {
+					target = RHI
+					autonomy_state = AUTONOMY_Protectorate
+				}
+			}
+		}
+		country_event = { id = Treaty_of_Munich.2 }
+	}
+}
+
+country_event = {
+	id = Treaty_of_Munich.2
+	title = Treaty_of_Munich.2.t
+	desc = Treaty_of_Munich.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Desunite Germany
+		name = Treaty_of_Munich.2.A
+		hidden_effect = {
+			GER = {
+				#South Germany
+				set_cosmetic_tag = GER_North_Germany
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 52
+							state = 53
+							state = 54
+							state = 50
+							state = 962
+							state = 807
+							state = 961
+							state = 808
+							state = 1471
+						}
+					}
+					transfer_state_to = BAV
+					add_core_of = BAV
+					remove_core_of = GER
+				}
+			}
+			BAV = {
+				set_cosmetic_tag = BAV_South_Germany
+			}
+		}
+		if = {
+			limit = { 
+				AUS = {
+					any_core_state = {
+						is_owned_by = GER
+					}
+				}
+			}
+			country_event = { id = Treaty_of_Munich.3 }
+		}
+		else = {
+			news_event = { id = Treaty_of_Munich.4 }
+		}
+	}
+	option = { #Germany United
+		name = Treaty_of_Munich.2.B
+		if = {
+			limit = { 
+				AUS = {
+					any_core_state = {
+						is_owned_by = GER
+					}
+				}
+			}
+			country_event = { id = Treaty_of_Munich.3 }
+		}
+		else = {
+			news_event = { id = Treaty_of_Munich.4 }
+		}
+	}
+}
+
+country_event = {
+	id = Treaty_of_Munich.3
+	title = Treaty_of_Munich.3.t
+	desc = Treaty_of_Munich.3.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Treaty_of_Munich.3.A
+		GER = {
+			every_owned_state = {
+				limit = {
+					is_core_of = AUS
+				}
+				transfer_state_to = AUS
+				remove_core_of = GER
+			}	
+		}
+		news_event = { id = Treaty_of_Munich.4 }
+	}
+	option = {
+		name = Treaty_of_Munich.3.B
+		trigger = {
+			country_exists = BAV
+		}
+		GER = {
+			every_owned_state = {
+				limit = {
+					is_core_of = AUS
+				}
+				transfer_state_to = BAV
+				add_core_of = BAV
+				remove_core_of = GER
+			}	
+		}
+		news_event = { id = Treaty_of_Munich.4 }
+	}
+	option = {
+		name = Treaty_of_Munich.3.C
+		trigger = {
+			NOT = {
+				country_exists = BAV
+			}
+		}
+		news_event = { id = Treaty_of_Munich.4 }
+	}
+}
+
+news_event = {
+	id = Treaty_of_Munich.4
+	title = Treaty_of_Munich.4.t
+	desc = Treaty_of_Munich.4.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = Treaty_of_Munich.4.A
+		add_threat = -20
+	}
+}
+
+# The Cherchell Conference
+country_event = {
+	id = Operation_Torch.1
+	title = Operation_Torch.1.t
+	desc = Operation_Torch.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Operation_Torch.1.A
+		set_global_flag = Allies_Cherchell_Ended
+	}
+}
+# Albion Strikes 
+country_event = {
+	id = Operation_Torch.2
+	title = Operation_Torch.2.t
+	desc = Operation_Torch.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Operation_Torch.2.A
+		add_war_support = 0.05
+	}
+}
+# Allies Defeated in French North Africa
+news_event = {
+	id = Operation_Torch.3
+	title = Operation_Torch.3.t
+	desc = Operation_Torch.3.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = Operation_Torch.3.A
+		trigger = {
+			OR = {
+				original_tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+		add_war_support = -0.1
+		add_political_power = -100
+	}
+	option = {
+		name = Operation_Torch.3.B
+		trigger = {
+			original_tag = FRA
+			has_cosmetic_tag = FRA_VICHY
+		}
+		add_stability = 0.05
+		add_war_support = 0.1
+		add_political_power = 100
+		GER = {
+			add_to_faction = FRA
+		}
+		hidden_effect = {
+			news_event = { id = Operation_Torch.6 days = 3 }
+		}
+	}
+	option = {
+		name = Operation_Torch.3.C
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = FRA
+					original_tag = ENG
+					is_in_faction_with = ENG
+				}
+			}
+		}
+	}
+}
+# Allies Landed in French North Africa
+news_event = {
+	id = Operation_Torch.4
+	title = Operation_Torch.4.t
+	desc = Operation_Torch.4.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = Operation_Torch.4.A
+		trigger = {
+			OR = {
+				original_tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+		add_war_support = 0.05
+		add_political_power = 50
+	}
+	option = {
+		name = Operation_Torch.4.B
+		trigger = {
+			original_tag = FRA
+			has_cosmetic_tag = FRA_VICHY
+		}
+		add_stability = -0.05
+		add_war_support = -0.1
+		add_political_power = -100
+		GER = {
+			add_to_faction = FRA
+		}
+		hidden_effect = {
+			news_event = { id = Operation_Torch.6 days = 3 }
+		}
+	}
+	option = {
+		name = Operation_Torch.4.C
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = FRA
+					original_tag = ENG
+					is_in_faction_with = ENG
+				}
+			}
+		}
+	}
+}
+# Operation Torch Succeeds
+news_event = {
+	id = Operation_Torch.5
+	title = Operation_Torch.5.t
+	desc = Operation_Torch.5.d
+	picture = GFX_news_event_002
+	trigger = {
+		OR = {
+			tag = ENG
+			tag = USA
+		}
+		has_decision = ENG_Operation_Torch
+		461 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		842 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		459 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	major = yes
+	immediate = {
+		set_global_flag = Allies_Torch_Success
+	}
+	option = {
+		name = Operation_Torch.5.A
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+		add_war_support = 0.1
+		add_stability = 0.05
+		add_political_power = 100
+	}
+	option = {
+		name = Operation_Torch.5.B
+		trigger = {
+			tag = FRA
+			has_cosmetic_tag = FRA_VICHY
+		}
+		add_war_support = -0.1
+		add_stability = -0.2
+		add_political_power = -200
+		custom_effect_tooltip = FRA_HCFA_is_released
+		hidden_effect = {
+			release = ALG
+			country_event = { id = Operation_Torch.7 days = 1 }
+			set_nationality = {
+				target_country = ALG
+				character = FRA_JeanFrancois_Darlan
+			}
+			set_nationality = {
+				target_country = ALG
+				character = FRA_Henri_Giraud
+			}
+			set_nationality = {
+				target_country = ALG
+				character = FRA_Alphonse_Juin
+			}
+			ALG = {
+				set_cosmetic_tag = ALG_HCFA
+				add_country_leader_role = {
+					character = FRA_JeanFrancois_Darlan
+					promote_leader = yes
+					country_leader = {
+						ideology = military_dictatorship
+						expire = "1964.1.1"
+						traits = {
+							SUBIDEOLOGY_Military_Dictatorship
+							POSITION_High_Commissioner
+							L_PowerHungry_Demagogue 
+						}
+					}
+				}
+				add_popularity = {
+					ideology = authoritarian
+					popularity = 0.4
+				}
+				set_politics = {
+					ruling_party = authoritarian
+					elections_allowed = no
+				}
+				transfer_state = 1213
+				transfer_state = 842
+				transfer_state = 1207
+				transfer_state = 1211
+				transfer_state = 1209
+				transfer_state = 459
+				transfer_state = 1210
+				transfer_state = 1208
+				transfer_state = 460
+				transfer_state = 1212
+				transfer_state = 1139
+				transfer_state = 1140
+				transfer_state = 1141
+				transfer_state = 1142
+				transfer_state = 461
+				transfer_state = 462
+				transfer_state = 793
+				transfer_state = 557
+				transfer_state = 1205
+				transfer_state = 1233
+				transfer_state = 272
+				transfer_state = 1591
+				transfer_state = 1104
+				transfer_state = 785
+				transfer_state = 1216
+				transfer_state = 794
+				transfer_state = 1234
+				transfer_state = 1217
+				transfer_state = 1218
+				transfer_state = 556
+				transfer_state = 1232
+				transfer_state = 795
+				transfer_state = 786
+				transfer_state = 787
+				transfer_state = 788
+				transfer_state = 1181
+				transfer_state = 844
+				transfer_state = 845
+				if = {
+					limit = {
+						FRA = {
+							owns_state = 854
+						}
+					}
+					transfer_state = 854
+				}
+				country_event = { id = FRA_Africa_Commission.1 days = 45 }
+			}
+			FROM = { add_to_faction = ALG }
+		}
+	}
+	option = {
+		name = Operation_Torch.5.C
+		trigger = {
+			tag = GER
+		}
+		annex_country = {
+			target = TUN
+			transfer_troops = no
+		}
+	}
+	option = {
+		name = Operation_Torch.5.D
+		trigger = { 
+			tag = FFL
+		}
+		hidden_effect = {
+			country_event = { id = Operation_Torch.7 days = 1 }
+		}
+	}
+	option = {
+		name = Operation_Torch.5.E
+		trigger = { 
+			NOT = {
+				OR = {
+					tag = ENG
+					is_in_faction_with = ENG
+					AND = {
+						tag = FRA
+						has_cosmetic_tag = FRA_VICHY
+					}
+					tag = GER
+					tag = FFL
+				}
+			}
+		}
+	}
+}
+# Petain Signs the Pact of Steel
+news_event = {
+	id = Operation_Torch.6
+	title = Operation_Torch.6.t
+	desc = Operation_Torch.6.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = Operation_Torch.6.A
+		trigger = {
+			OR = {
+				original_tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+	option = {
+		name = Operation_Torch.6.B
+		trigger = {
+			original_tag = FRA
+			has_cosmetic_tag = FRA_VICHY
+		}
+	}
+	option = {
+		name = Operation_Torch.6.C
+		trigger = {
+			original_tag = GER
+			is_in_faction_with = GER
+		}
+	}
+	option = {
+		name = Operation_Torch.6.D
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = ENG
+					is_in_faction_with = ENG
+					AND = {
+						original_tag = FRA
+						has_cosmetic_tag = FRA_VICHY
+					}
+					original_tag = GER
+					is_in_faction_with = GER
+				}	
+			}
+		}
+	}
+}
+
+# Romance of the Three Nations
+country_event = {
+	id = Operation_Torch.7
+	title = Operation_Torch.7.t
+	desc = Operation_Torch.7.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+
+	option = {
+		name = Operation_Torch.7.A
+		
+	}
+}

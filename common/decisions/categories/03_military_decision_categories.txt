@@ -1,0 +1,786 @@
+#########################################################################
+#  Military Decision Categories
+#########################################################################
+operations = {
+	icon = GFX_decision_category_military_operation
+	visible = {
+		always = yes
+	}
+}
+war_measures = {
+	icon = generic_propaganda
+	visible = {
+		has_war = yes
+	}
+}
+assassionation_decisions_category = {
+	icon = placeholder
+	scripted_gui = decision_assassination_window
+	allowed = {
+		tag = ENG		# currently only ENG can assassination Heydrich, but might be used for different countries as well
+	}
+	visible = {
+		is_ai = no		# testing
+	}
+}
+ENG_Defence_of_the_Isles = {
+	allowed = {
+		original_tag = ENG
+	}
+	visible = {
+		has_completed_focus = ENG_The_Homefront
+	}
+}
+ENG_British_Indian_Army_Category = {
+	icon = GFX_decision_category_army_reform
+	allowed = {
+		original_tag = ENG
+	}
+	visible = {
+		has_completed_focus = ENG_Develop_the_British_Indian_Army
+	}
+}
+ENG_Imperial_Defence_Shakeup_Category = {
+	icon = GFX_decision_category_army_reform
+	allowed = {
+		original_tag = ENG
+	}
+	visible = {
+		has_completed_focus = ENG_Imperial_Defence_Shakeup
+	}
+}
+USA_Mobilization_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+	}
+}
+USA_Expand_the_Pacific_Defenses_Category = {
+	icon = generic_military
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Expand_the_Pacific_Defenses
+	}
+}
+USA_USACE_Projects_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_USACE_Projects
+	}
+}
+USA_OSS_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_country_flag = USA_OSS_Decisions
+	}
+}
+USA_Air_War_Plans_Division_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Air_War_Plans_Division
+	}
+}
+USA_War_Plans_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_War_Plans_Division
+	}
+}
+USA_The_Rainbow_Plans_Category = {
+	icon = generic_propaganda
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Rainbow_Plans
+	}
+}
+SPR_intervene_civil_war = {
+	allowed = {
+		always = yes
+	}
+	visible = {
+		SPR = {
+			has_war_with = SPA
+		}
+		OR = {
+			is_major = yes
+			tag = GER
+			tag = ITA
+			tag = POR
+			tag = ENG
+			tag = FRA
+			tag = MEX
+			tag = SOV
+		}
+	}
+}
+AUS_Raise_Paramilitary_Troops_Category = {
+	allowed = {
+		original_tag = AUS
+	}
+}
+CHI_Army_Reform_Actions = {
+	allowed = {
+		tag = CHI
+		always = no
+	}
+}
+CHI_Sino_Japanese_War = {
+	allowed = {
+		tag = CHI
+	}
+	visible = {
+		has_war_with = JAP
+	}
+}
+FIN_joint_wargames_decisions = {
+	allowed = {
+		always = no
+	}
+	visible = {
+		always = yes
+	}
+}
+FIN_winter_war_decisions = {
+	allowed = {
+		OR = {
+			has_country_flag = FIN_winter_war
+			has_country_flag = FIN_continuation_war
+		}
+	}
+	visible = {
+		always = yes
+	}
+}
+FRA_Motorisation_de_Armee_category = {
+	icon = army_reform
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_Cavalerie_Motorisee
+	}
+}
+FRA_Finish_the_Maginot_Line_category = {
+	icon = GFX_decision_category_FRA_Maginot_line
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_The_Maginot_Line
+		NOT = { has_country_flag = FRA_Maginot_Finished }
+	}
+}
+FRA_La_Armee_delAir_category = {
+	icon = army_reform
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_Armee_de_lAir
+	}
+}
+FRA_Programme_des_12_Milliards_category = {
+	icon = army_reform
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_Decret_National_Defence
+	}
+}
+FRA_Grand_Quartier_General_category = {
+	icon = army_reform
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_The_GQG
+	}
+}
+FRA_Battle_of_France_category = {
+	icon = army_reform
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_country_flag = FRA_Battle_of_France
+	}
+}
+
+FRA_Case_Anton_category = {
+	icon = army_reform
+	allowed = {
+		tag = FRA
+	}
+	visible = {
+		has_global_flag = VIC_Vichy_Established
+	}
+}
+GER_Reichsverteidigung_category = {
+	icon = military_operation
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		original_tag = GER
+		has_government = fascist
+		has_war = yes
+	}
+}
+ITA_reform_military_category = {
+	icon = army_reform
+	allowed = {
+		original_tag = ITA
+	}
+}
+ITA_spanish_cw_intervention_category = {
+	icon = spr_the_inevitable_civil_war
+	allowed = {
+		original_tag = ITA
+	}
+}
+ITA_ETH_war = {
+	icon = army_reform
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		has_country_flag = ITA_ETH_first_decisions
+		country_exists = ETH
+            is_ai = no
+		NOT = {
+			has_country_flag = ITA_War_with_Ethiopia_Avoided
+		}
+	}
+}
+ITA_The_Balkan_Strategy = {
+	icon = army_reform
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		has_completed_focus = ITA_The_Balkan_Strategy
+	}
+}
+MEN_Military_Campaign = {
+	allowed = {
+		tag = MEN
+	}
+}
+POL_Defending_the_Fringes = {
+	icon = generic_military
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_Enemies_at_the_Gates
+	}
+}
+POL_Protecting_the_Polish_Heartlands = {
+	icon = generic_military
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_The_Internal_Defense
+	}
+}
+POL_Emergency_Measures = {
+	icon = generic_military
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_The_Emergency
+	}
+}
+POL_Prospect_New_Airfields = {
+	icon = generic_military
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_Modernise_Civil_Aviation
+		NOT = {
+			has_country_flag = POL_Civil_Aviation_Decision_Completed
+		}
+	}
+}
+POL_Infrastructure_Disruption = {
+	icon = generic_military
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_Build_the_Resistance
+	}
+}
+POL_Sabotaging_our_Hardwork = {
+	icon = generic_military
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_Build_the_Resistance
+	}
+}
+PRC_Long_March = {
+	on_map_area = {
+		state = 1
+		name = PRC_Long_March
+		zoom = 250
+	}
+	allowed = {
+		tag = PRC
+	}
+}
+### ETH
+ETH_Second_Italo_Ethiopian_War = {
+	icon = generic_propaganda
+	picture = GFX_decision_cat_generic_mefo_bills
+	allowed = {
+		original_tag = ETH
+	}
+	visible = {
+		has_country_flag = eth_second_italo_ethiopian_war
+	}
+}
+ETH_The_Dervish_Accord = {
+	icon = generic_propaganda
+	picture = GFX_decision_cat_generic_mefo_bills
+	allowed = {
+		original_tag = ETH
+	}
+	visible = {
+		has_country_flag = eth_dervish_accord
+	}
+}
+GER_Treaty_of_Versaille = {
+	icon = decision_category_generic_economy
+	picture = GFX_decision_cat_generic_mefo_bills
+	allowed = {
+		original_tag = GER
+	}
+}
+GER_Alpenfestung_category = {
+	icon = decision_category_generic_economy
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_government = fascist
+	}
+}
+GER_Waffen_SS_category = {
+	icon = decision_category_generic_economy
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_SS_VT
+	}
+	visible_when_empty = yes
+}
+GER_Aufbau_Ost_category = {
+	icon = decision_category_generic_economy
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_country_flag = GER_Preparation_for_Barbarossa
+		NOT = {
+			has_war_with = SOV
+		}
+	}
+	visible_when_empty = yes
+}
+GER_War_Operations_category = {
+	icon = decision_category_generic_economy
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_war = yes
+	}
+	visible_when_empty = yes
+}
+GER_The_Great_Eastern_Crusade_category = {
+	icon = decision_category_generic_economy
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_war_with = SOV
+	}
+	visible_when_empty = yes
+}
+SOV_Western_Military_Reorganisation_category = {
+	icon = decision_category_generic_economy
+	allowed = {
+		original_tag = SOV
+	}
+	visible = {
+		has_country_flag = SOV_Partition_of_Poland_Happened
+		NOT = {
+			has_war_with = GER
+		}
+	}
+}
+SOV_The_Great_Patriotic_War_category = {
+	icon = GFX_decision_category_sov_great_patriotic_war
+	allowed = {
+		original_tag = SOV
+	}
+	visible = {
+		has_completed_focus = SOV_The_Great_Patriotic_War
+		has_war_with = GER
+	}
+	visible_when_empty = yes
+}
+SOV_Operation_Groza_category = {
+	icon = GFX_decision_category_military_operation
+	allowed = {
+		original_tag = SOV
+	}
+	visible = {
+		has_completed_focus = SOV_The_Revolution_Marches_West
+		NOT = {
+			has_global_flag = Barbarossa_Initiated
+		}
+	}
+	scripted_gui = sov_operation_groza_decision_gui
+	visible_when_empty = yes
+}
+SPA_foreign_support_category_1 = {
+	icon = placeholder
+	picture = placeholder
+	visible = {
+		#has_completed_focus =SPA_Ties_to_the_Reactionary_Powers
+	}
+	allowed = {
+	}
+}
+SPA_foreign_support_category_2 = {
+	icon = placeholder
+	picture = placeholder
+	visible = {
+		#has_completed_focus =SPA_Meeting_with_the_Foreign_Attaches
+	}
+	allowed = {
+	}
+}
+SPR_foreign_support_category = {
+	icon = placeholder
+	picture = placeholder
+	visible = {
+		has_war_with = SPA
+	}
+	allowed = {
+	}
+}
+SPR_defense_of_madrid = {
+	icon = placeholder
+	picture = placeholder
+	visible = {
+		has_war_with = SPA
+		#has_completed_focus =SPR_No_Parasan
+	}
+	allowed = {
+	}
+}
+JAP_American_Japanese_Trade = {
+	icon = GFX_decision_category_JAP_Japanese_American_Trade
+	allowed = {
+		tag = JAP
+	}
+	available = {
+		has_war_with = CHI
+		NOT = {
+			has_war_with = USA
+		}
+	}
+	visible = {
+		has_war_with = CHI
+		NOT = {
+			has_war_with = USA
+		}
+	}
+}
+JAP_Sino_Japanese_War_category = {
+	icon = GFX_decision_category_jap_intervene_in_china
+	allowed = {
+		tag = JAP
+	}
+	visible = {
+		has_completed_focus = JAP_Manchuria_Triumphant
+	}
+}
+JAP_Soviet_Japanese_Border_Clashes_category = {
+	allowed = {
+		OR = {
+			tag = JAP
+			tag = SOV
+		}
+	}
+	visible = {
+		has_country_flag = JAP_SOV_Border_Tensions
+		OR = {
+			has_country_flag = JAP_SOV_Turan_Incident
+			has_country_flag = JAP_SOV_Kanchazu_Incident
+			has_country_flag = JAP_SOV_Khasan_Incident
+			has_country_flag = JAP_SOV_Khalkin_Gol_Incident
+			has_country_flag = JAP_SOV_Heihe_Incident
+		}
+	}
+	scripted_gui = jap_sov_incidents_decision_gui
+}
+JAP_Imperial_General_Headquarters = {
+	icon = GFX_decision_category_power_struggle
+	allowed = {
+		original_tag = JAP
+	}
+	visible_when_empty = yes
+}
+JAP_Strike_North_category = {
+	icon = GFX_decision_category_power_struggle
+	allowed = {
+		original_tag = JAP
+	}
+	visible = {
+		has_country_flag = JAP_Northern_Doctrine_Selected
+	}
+	visible_when_empty = yes
+}
+JAP_Strike_South_category = {
+	icon = GFX_decision_category_jap_southern_expansion
+	allowed = {
+		original_tag = JAP
+	}
+	visible = {
+		has_completed_focus = JAP_Strike_on_the_Southern_Resource_Area
+	}
+	visible_when_empty = yes
+}
+JAP_Maru_Keikaku_category = {
+	icon = GFX_decision_category_power_struggle
+	allowed = {
+		original_tag = JAP
+	}
+	visible = {
+		has_completed_focus = JAP_Continue_the_Maru_Keikaku
+		NOT = {
+			OR = {
+				has_war_with = USA
+				has_war_with = ENG
+				has_war_with = HOL
+			}
+		}
+	}
+	visible_when_empty = no
+}
+TUR_volunteer_air_wing_category = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Volunteer_Air_Wings
+		always = no
+	}
+}
+TUR_international_wargames = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Assess_The_Military
+		always = no
+	}
+}
+TUR_recalling_the_heroes_category = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Loyal_Officers
+		always = no
+	}
+}
+TUR_buying_foreign_designs = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Expand_the_Air_Force
+		always = no
+	}
+}
+TUR_foreign_arms_deals_category = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Seek_European_Arm_Deals
+		always = no
+	}
+}
+TUR_expanding_the_navy_category = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Order_Foreign_Warships
+		always = no
+	}
+}
+demobilization = {
+	icon = generic_crisis
+	priority = 100
+	visible = {
+		has_war = no
+	}
+}
+SAF_anti_colonialist_crusade = {
+	allowed = {
+		original_tag = SAF
+	}
+}
+#########################################################################
+#  La Resistance
+#########################################################################
+lar_local_recruitment = {
+	allowed = {
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		has_done_agency_upgrade = upgrade_training_centers
+	}
+	visibility_type = map_and_decisions_view
+	on_map_area = {
+		state = 8
+		name = LAR_recruitment_europe
+		zoom = 650
+		target_root_trigger = {
+			OR = {
+				has_country_flag = europe_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = europe
+				}
+			}
+		}
+	}
+	on_map_area = {
+		state = 373
+		name = LAR_recruitment_north_america
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = north_america_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = north_america
+				}
+			}
+		}
+	}
+	on_map_area = {
+		state = 487
+		name = LAR_recruitment_south_america
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = south_america_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = south_america
+				}
+			}
+		}
+	}
+	on_map_area = {
+		state = 295
+		name = LAR_recruitment_africa
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = africa_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = africa
+				}
+			}
+		}
+	}
+	on_map_area = {
+		state = 597
+		name = LAR_recruitment_asia
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = asia_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = asia
+				}
+			}
+			NOT = {
+				tag = RAJ
+				tag = PAK
+				tag = BAN
+				tag = NEP
+				tag = BHU
+				tag = SRL
+			}
+		}
+	}
+	on_map_area = {
+		state = 521
+		name = LAR_recruitment_oceania
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = australia_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = australia
+				}
+			}
+		}
+	}
+	on_map_area = {
+		state = 439
+		name = LAR_recruitment_india
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = india_recruitment_unlocked
+				tag = RAJ
+				tag = PAK
+				tag = BAN
+				tag = NEP
+				tag = BHU
+				tag = SRL
+			}
+		}
+	}
+	on_map_area = {
+		state = 656
+		name = LAR_recruitment_middle_east
+		zoom = 850
+		target_root_trigger = {
+			OR = {
+				has_country_flag = middle_east_recruitment_unlocked
+				capital_scope = {
+					is_on_continent = middle_east
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,502 @@
+######################################################################
+# Darkest Hour Events : Soviet-German War
+######################################################################
+add_namespace = GER_SOV_War
+###########################
+# Barbarossa Thwarted; New Directives Required
+###########################
+country_event = {
+	id = GER_SOV_War.0
+	title = GER_SOV_War.0.t
+	desc = GER_SOV_War.0.d
+	picture = GFX_news_event_polish_tanks
+	is_triggered_only = yes
+	# Advance in the North
+	option = {
+		name = GER_SOV_War.0.A
+		unlock_decision_tooltip = GER_Unternehmen_Hirsch
+		set_country_flag = GER_Advance_in_the_North_Second_Year
+	}
+	# Advance in the Centre
+	option = {
+		name = GER_SOV_War.0.B
+		unlock_decision_tooltip = GER_Fall_Kreml
+		set_country_flag = GER_Advance_in_the_Centre_Second_Year
+	}
+	# Advance in the South 
+	option = {
+		name = GER_SOV_War.0.C
+		unlock_decision_tooltip = GER_Fall_Blau
+		set_country_flag = GER_Advance_in_the_South_Second_Year
+	}
+}
+###########################
+# German Betrayal
+###########################
+country_event = {
+	id = GER_SOV_War.1
+	title = GER_SOV_War.1.t
+	desc = GER_SOV_War.1.d
+	picture = GFX_report_event_generic_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = GER_SOV_War.1.A
+		add_ideas = SOV_The_German_Betrayal
+	}
+}
+###########################
+# The Great Eastern Crusade
+###########################
+country_event = {
+	id = GER_SOV_War.2
+	title = GER_SOV_War.2.t
+	desc = GER_SOV_War.2.d
+	picture = GFX_report_event_generic_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = GER_SOV_War.2.A
+		
+	}
+}
+###########################
+# Germany Commence Hostilities with the Soviet Union
+###########################
+news_event = {
+	id = GER_SOV_War.3
+	title = GER_SOV_War.3.t
+	desc = GER_SOV_War.3.d
+	picture = GFX_report
+
+	major = yes
+
+	is_triggered_only = yes
+	# 
+	option = {
+		name = GER_SOV_War.3.A
+		
+	}
+}
+###########################
+# Stalin flees to his Dacha
+###########################
+country_event = {
+	id = GER_SOV_War.4
+	title = GER_SOV_War.4.t
+	desc = GER_SOV_War.4.d
+	picture = GFX_report_event_generic_army
+	fire_only_once = yes
+	trigger = {
+		original_tag = SOV
+		SOV = { has_war_with = GER }
+		OR = {
+			NOT = { controls_state = 195 }
+			NOT = { controls_state = 219 }
+			NOT = { controls_state = 206 }
+			NOT = { controls_state = 202 }
+			NOT = { controls_state = 218 }
+			NOT = { controls_state = 137 }
+			NOT = { controls_state = 217 }
+			NOT = { controls_state = 1352 }
+			NOT = { controls_state = 229 }
+		}
+	}
+	# 
+	option = {
+		name = GER_SOV_War.4.A
+		add_country_leader_trait = L_Command_Structure_without_Commander
+		hidden_effect = {
+			country_event = { id = GER_SOV_War.5 days = 3 }
+		}
+	}
+}
+###########################
+# Party Members Meet Stalin
+###########################
+country_event = {
+	id = GER_SOV_War.5
+	title = GER_SOV_War.5.t
+	desc = GER_SOV_War.5.d
+	picture = GFX_report_event_generic_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = GER_SOV_War.5.A
+		add_political_power = -50
+		remove_country_leader_trait = L_Command_Structure_without_Commander
+		hidden_effect = {
+			country_event = { id = GER_SOV_War.6 days = 5 }
+		}
+	}
+}
+###########################
+# The Great Patriotic War
+###########################
+country_event = {
+	id = GER_SOV_War.6
+	title = GER_SOV_War.6.t
+	desc = GER_SOV_War.6.d
+	picture = GFX_report_event_generic_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = GER_SOV_War.6.A
+		add_political_power = 100
+		remove_ideas = SOV_The_German_Betrayal
+		set_country_flag = SOV_The_Great_Patriotic_War
+		complete_national_focus = SOV_The_Great_Patriotic_War
+		unlock_decision_category_tooltip = SOV_The_Great_Patriotic_War_category
+	}
+}
+###########################
+# Red Star Rising
+###########################
+country_event = {
+	id = GER_SOV_War.7
+	title = GER_SOV_War.7.t
+	desc = GER_SOV_War.7.d
+	picture = GFX_report_event_generic_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = GER_SOV_War.7.A
+	}
+}
+###########################
+# First Moscow Conference
+###########################
+news_event = {
+	id = GER_SOV_War.8
+	title = GER_SOV_War.8.t
+	desc = GER_SOV_War.8.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	major = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.8.A
+	}
+}
+###########################
+# Destruction of the Dneprostroi Dam
+###########################
+news_event = {
+	id = GER_SOV_War.9
+	title = GER_SOV_War.9.t
+	desc = GER_SOV_War.9.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	major = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.9.A
+	}
+}
+###########################
+# Your Mother's Prayer
+###########################
+country_event = {
+	id = GER_SOV_War.10
+	title = GER_SOV_War.10.t
+	desc = GER_SOV_War.10.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	major = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.10.A
+	}
+}
+###########################
+# Every Hand Helps
+###########################
+country_event = {
+	id = GER_SOV_War.11
+	title = GER_SOV_War.11.t
+	desc = GER_SOV_War.11.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	major = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.11.A
+	}
+}
+###########################
+# Meet with the Rising Sun?
+###########################
+country_event = {
+	id = GER_SOV_War.12
+	title = GER_SOV_War.12.t
+	desc = GER_SOV_War.12.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.12.A
+		JAP = {
+			country_event = { id = GER_SOV_War.13 days = 3 }
+		}
+	}
+}
+###########################
+# An Invitation to Moscow
+###########################
+country_event = {
+	id = GER_SOV_War.13
+	title = GER_SOV_War.13.t
+	desc = GER_SOV_War.13.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	# Accept
+	option = {
+		name = GER_SOV_War.13.A
+		SOV = {
+			country_event = { id = GER_SOV_War.14 days = 3 }
+		}
+	}
+
+	#Refuse
+	option = {
+		name = GER_SOV_War.13.B
+		SOV = {
+			news_event = { id = GER_SOV_War.15 days = 3 }
+		}
+	}
+}
+###########################
+# Soviet–Japanese Neutrality Pact Signed
+###########################
+news_event = {
+	id = GER_SOV_War.14
+	title = GER_SOV_War.14.t
+	desc = GER_SOV_War.14.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+	major = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.14.A
+		trigger = {
+			original_tag = SOV
+		}
+		diplomatic_relation = {
+			country = JAP
+			relation = non_aggression_pact
+			active = no
+		}
+	}
+	option = {
+		name = GER_SOV_War.14.B
+		trigger = {
+			original_tag = JAP
+		}
+		effect_tooltip = {
+			diplomatic_relation = {
+				country = SOV
+				relation = non_aggression_pact
+				active = no
+			}
+		}
+	}
+	option = {
+		name = GER_SOV_War.14.C
+		trigger = {
+			NOT = {
+				original_tag = SOV
+				original_tag = JAP
+			}
+		}
+	}
+}
+###########################
+# Japan Refuses the Pact
+###########################
+country_event = {
+	id = GER_SOV_War.15
+	title = GER_SOV_War.15.t
+	desc = GER_SOV_War.15.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	# 
+	option = {
+		name = GER_SOV_War.15.A
+
+	}
+}
+###########################
+# Our Focus Shifts to the Defensive
+###########################
+country_event = {
+	id = GER_SOV_War.100
+	title = GER_SOV_War.100.t
+	desc = GER_SOV_War.100.d
+	picture = GFX_report_event_generic_army
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_For_The_Motherland
+		NOT = {
+			has_country_flag = SOV_focus_on_defensive
+		}
+		OR = {
+			NOT = {
+				controls_state = 202
+			}
+			NOT = {
+				controls_state = 206
+			}
+			NOT = {
+				controls_state = 263
+			}
+		}
+	}
+
+	# 
+	option = {
+		name = GER_SOV_War.100.A
+		set_country_flag = SOV_focus_on_defensive
+		if = {
+			limit = {
+				has_country_flag = SOV_focus_on_offensive
+			}
+			clr_country_flag = SOV_focus_on_offensive
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_completed_focus = SOV_For_the_Soviet_Union
+				}
+				has_idea = SOV_The_Great_Patriotic_War_Offence_1
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Offence_1
+				add_idea = SOV_The_Great_Patriotic_War_Defence_1
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_completed_focus = SOV_For_the_Soviet_Union
+				}
+				has_idea = SOV_The_Great_Patriotic_War_Offence_2
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Offence_2
+				add_idea = SOV_The_Great_Patriotic_War_Defence_1
+			}
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = SOV_For_the_Soviet_Union
+				has_idea = SOV_The_Great_Patriotic_War_Offence_1
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Offence_2
+				add_idea = SOV_The_Great_Patriotic_War_Defence_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = SOV_For_the_Soviet_Union
+				has_idea = SOV_The_Great_Patriotic_War_Offence_2
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Offence_2
+				add_idea = SOV_The_Great_Patriotic_War_Defence_2
+			}
+		}
+	}
+}
+###########################
+# Our Focus Shifts to the Offensive
+###########################
+country_event = {
+	id = GER_SOV_War.101
+	title = GER_SOV_War.101.t
+	desc = GER_SOV_War.101.d
+	picture = GFX_report_event_generic_army
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_Arise_Our_Mighty_Land
+		NOT = {
+			has_country_flag = SOV_focus_on_offensive
+		}
+		controls_state = 202
+		controls_state = 206
+		controls_state = 263
+	}
+
+	# 
+	option = {
+		name = GER_SOV_War.101.A
+		set_country_flag = SOV_focus_on_offensive
+		if = {
+			limit = {
+				has_country_flag = SOV_focus_on_defensive
+			}
+			clr_country_flag = SOV_focus_on_defensive
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_completed_focus = SOV_Arise_for_Sacred_War
+				}
+				has_idea = SOV_The_Great_Patriotic_War_Defence_1
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Defence_1
+				add_idea = SOV_The_Great_Patriotic_War_Offence_1
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_completed_focus = SOV_Arise_for_Sacred_War
+				}
+				has_idea = SOV_The_Great_Patriotic_War_Defence_2
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Defence_2
+				add_idea = SOV_The_Great_Patriotic_War_Offence_1
+			}
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = SOV_Arise_for_Sacred_War
+				has_idea = SOV_The_Great_Patriotic_War_Defence_1
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Defence_1
+				add_idea = SOV_The_Great_Patriotic_War_Offence_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = SOV_Arise_for_Sacred_War
+				has_idea = SOV_The_Great_Patriotic_War_Defence_2
+			}
+			swap_ideas = {
+				remove_idea = SOV_The_Great_Patriotic_War_Defence_2
+				add_idea = SOV_The_Great_Patriotic_War_Offence_2
+			}
+		}
+	}
+}

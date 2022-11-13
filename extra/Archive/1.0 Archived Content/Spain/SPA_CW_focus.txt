@@ -1,0 +1,305 @@
+focus_tree = {
+	id = SPA_CW
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SPA
+		}
+	}
+	default = no
+	focus = {
+		id = SPA_The_Crusade_Begins
+		icon = GFX_SPA_The_Crusade_Begins
+		cost = 10
+		x = 4
+		y = 0
+		completion_reward = {
+			add_political_power = 100
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1916
+				amount = 1000
+				producer = SPA
+			}
+		}
+	}
+	focus = {
+		id = SPA_Ties_to_the_Reactionary_Powers
+		icon = GFX_SPA_Ties_with_Reactionary_Powers
+		cost = 10
+		prerequisite = {
+			focus = SPA_The_Crusade_Begins
+		}
+		x = 1
+		y = 1
+		completion_reward = {
+			SPA = {
+				unlock_decision_category_tooltip = SPA_foreign_support_category_1
+			}
+		}
+	}
+	focus = {
+		id = SPA_Meeting_with_the_Foreign_Attaches
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		prerequisite = {
+			focus = SPA_Ties_to_the_Reactionary_Powers
+		}
+		x = 1
+		y = 2
+		completion_reward = {
+			SPA = {
+				unlock_decision_category_tooltip = SPA_foreign_support_category_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Organize_the_Generals
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		prerequisite = {
+			focus = SPA_The_Crusade_Begins
+		}
+		x = 4
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SPA_military_power_struggles_1
+				add_idea = SPA_military_power_struggles_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Smash_Francos_Power
+		icon = GFX_SPA_Smash_Francos_Power
+		cost = 10
+		prerequisite = {
+			focus = SPA_Organize_the_Generals
+		}
+		mutually_exclusive = {
+			focus = SPA_Propel_Franco
+		}
+		x = 3
+		y = 2
+		available = {
+			has_country_flag = mola_survived
+		}
+		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = SPA_Propel_Franco
+		icon = GFX_SPA_Propel_Franco
+		cost = 10
+		prerequisite = {
+			focus = SPA_Organize_the_Generals
+		}
+		mutually_exclusive = {
+			focus = SPA_Smash_Francos_Power
+		}
+		x = 5
+		y = 2
+		available = {
+			SPA = {
+				has_country_leader = {
+					name = "Francisco Franco Bahamonde"
+				}
+			}
+		}
+		completion_reward = {
+			add_political_power = 20
+			if = {
+				limit = {
+					has_idea = SPA_african_army_1
+				}
+				swap_ideas = {
+					remove_idea = SPA_african_army_1
+					add_idea = SPA_african_army_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = SPA_african_army_3
+				}
+				swap_ideas = {
+					remove_idea = SPA_african_army_3
+					add_idea = SPA_african_army_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_Ejercito_de_Africa
+		icon = GFX_SPA_Ejercito_de_Africa
+		cost = 10
+		prerequisite = {
+			focus = SPA_The_Crusade_Begins
+		}
+		x = 8
+		y = 1
+		completion_reward = {
+			add_ideas = SPA_african_army_1
+			every_army_leader = {
+				add_attack = 1
+			}
+		}
+	}
+	focus = {
+		id = SPA_Engage_in_Concentrated_Offensives
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 10
+		prerequisite = {
+			focus = SPA_Ejercito_de_Africa
+		}
+		x = 7
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_civilwar_army_1
+				add_idea = SPA_civilwar_army_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Mobilize_the_Spanish_Right
+		icon = GFX_SPA_Mobilize_the_Spanish_Right
+		cost = 10
+		prerequisite = {
+			focus = SPA_Ejercito_de_Africa
+		}
+		x = 9
+		y = 2
+		completion_reward = {
+			add_popularity = {
+				ideology = authoritarian
+				popularity = 0.05
+			}
+			add_ideas = SPA_political_militias_1
+		}
+	}
+	focus = {
+		id = SPA_A_Strong_and_Reliable_Leader
+		icon = GFX_SPA_A_Strong_and_Reliable_Leader
+		cost = 10
+		prerequisite = {
+			focus = SPA_Propel_Franco
+		}
+		x = 5
+		y = 3
+		available = {
+			SPA = {
+				has_country_leader = {
+					name = "Francisco Franco Bahamonde"
+				}
+			}
+		}
+		completion_reward = {
+			remove_ideas = SPA_military_power_struggles_2
+			add_country_leader_trait = el_caudillo
+		}
+	}
+	focus = {
+		id = SPA_Carlist_Leadership
+		icon = GFX_SPA_Carlist_Leadership
+		cost = 10
+		prerequisite = {
+			focus = SPA_Smash_Francos_Power
+		}
+		x = 3
+		y = 3
+		completion_reward = {
+			add_ideas = SPA_carlist_leadership
+		}
+	}
+	focus = {
+		id = SPA_A_Political_Army
+		icon = GFX_GENERIC_Political_Army
+		cost = 10
+		prerequisite = {
+			focus = SPA_Mobilize_the_Spanish_Right
+		}
+		mutually_exclusive = {
+			focus = SPA_Maintain_a_Professional_Army
+		}
+		x = 9
+		y = 3
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SPA_political_militias_1
+				add_idea = SPA_political_militias_2
+			}
+		}
+	}
+	focus = {
+		id = SPA_Maintain_a_Professional_Army
+		icon = GFX_GENERIC_Professional_Army
+		cost = 10
+		prerequisite = {
+			focus = SPA_Engage_in_Concentrated_Offensives
+		}
+		mutually_exclusive = {
+			focus = SPA_A_Political_Army
+		}
+		x = 7
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_civilwar_army_2
+				add_idea = SPA_civilwar_army_3
+			}
+		}
+	}
+	focus = {
+		id = SPA_Cuerpo_de_Ejercito_Marroqui
+		icon = GFX_GENERIC_Army
+		cost = 10
+		prerequisite = {
+			focus = SPA_Ejercito_de_Africa
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SPA_african_army_1
+				}
+				swap_ideas = {
+					remove_idea = SPA_african_army_1
+					add_idea = SPA_african_army_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = SPA_african_army_2
+				}
+				swap_ideas = {
+					remove_idea = SPA_african_army_2
+					add_idea = SPA_african_army_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = SPA_Seek_International_Recognition
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 10
+		prerequisite = {
+			focus = SPA_Meeting_with_the_Foreign_Attaches
+		}
+		x = 1
+		y = 3
+		available = {
+			41 = {
+				is_controlled_by = SPA
+			}
+		}
+		cancel_if_invalid = yes
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.1
+		}
+	}
+}

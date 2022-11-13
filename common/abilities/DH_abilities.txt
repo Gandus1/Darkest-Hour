@@ -1,0 +1,171 @@
+ability = {
+	JAP_last_stand = {
+		name = ABILITY_LAST_STAND
+		desc = ABILITY_LAST_STAND_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			is_leading_army_group = no
+			is_border_war = no
+			OWNER = {
+				has_completed_focus = JAP_The_True_Guardians_of_Nippon
+			}
+		}
+		
+		cost = 0.05
+		duration = 168
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_defense = 0.2
+				combat_entrenchment = 0.25
+				org_damage_multiplier = -1.0
+				str_damage_multiplier = 0.6
+				cannot_retreat_while_defending = 1.0
+				
+				days = 7
+				tooltip = ABILITY_LAST_STAND_TOOLTIP
+			}
+		}
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					has_war_support > 0.4
+				}
+				
+				check_variable = { num_units_defensive_combats > 6 }
+				
+				set_temp_variable = { temp = avg_defensive_combat_status }
+				check_variable = { temp < 0.40 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+	}
+	JAP_gas_attack = {
+		name = ABILITY_GAS_ATTACK
+		desc = ABILITY_GAS_ATTACK_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			OWNER = {
+				original_tag = JAP
+			}
+			is_leading_army_group = no
+			is_border_war = no
+			JAP = {
+				OR = {
+					has_war_with = CHI
+					has_war_with = SHD
+					has_war_with = SHX
+					has_war_with = XSM
+					has_war_with = GND
+					has_war_with = GXC
+					has_war_with = YUN
+				}
+				NOT = {
+					OR = {
+						has_war_with = USA
+						has_war_with = ENG
+						has_war_with = DEI
+						has_war_with = AST
+						has_war_with = PHI
+					}
+				}
+			}
+		}
+		
+		cost = 0.10
+		duration = 48
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_offense = 0.5
+				combat_defense = -0.2
+				combat_entrenchment = -0.25
+				org_damage_multiplier = -1.0
+				str_damage_multiplier = 0.6
+				cannot_retreat_while_defending = 1.0
+				
+				days = 7
+				tooltip = ABILITY_GAS_ATTACK_TOOLTIP
+			}
+		}
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					has_war_support > 0.4
+				}
+				
+				check_variable = { num_units_defensive_combats > 6 }
+				
+				set_temp_variable = { temp = avg_defensive_combat_status }
+				check_variable = { temp < 0.40 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+	}
+	FRA_gas_attack = {
+		name = ABILITY_GAS_ATTACK
+		desc = ABILITY_GAS_ATTACK_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		allowed = {
+			is_leading_army_group = no
+			is_border_war = no
+			OWNER = {
+				original_tag = FRA
+				has_completed_focus = FRA_Restart_Yperit
+			}
+		}
+		
+		cost = 0.10
+		duration = 48
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_offense = 0.5
+				combat_defense = -0.2
+				combat_entrenchment = -0.25
+				org_damage_multiplier = -1.0
+				str_damage_multiplier = 0.6
+				cannot_retreat_while_defending = 1.0
+				
+				days = 7
+				tooltip = ABILITY_GAS_ATTACK_TOOLTIP
+			}
+		}
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					has_war_support > 0.4
+				}
+				
+				check_variable = { num_units_defensive_combats > 6 }
+				
+				set_temp_variable = { temp = avg_defensive_combat_status }
+				check_variable = { temp < 0.40 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+	}
+}

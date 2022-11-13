@@ -1,0 +1,74 @@
+add_namespace = BOL_Chaco_War
+######################################
+# Chaco War
+######################################
+country_event = { # Paraguay Wins Chaco War
+	id = BOL_Chaco_War.1
+	title = BOL_Chaco_War.1.t
+	desc = BOL_Chaco_War.1.d
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		original_tag = PAR
+		has_war_with = BOL
+		has_start_date < 1936.1.1
+		has_full_control_of_state = 688
+		has_full_control_of_state = 1400
+	}
+	option = {
+		name = PAR_Chaco_War.1.A
+		white_peace = BOL
+		transfer_state = 688
+		transfer_state = 1400
+		688 = { remove_core_of = BOL }
+		1400 = { remove_core_of = BOL }
+		1619 = { remove_claim_by = PAR }
+		news_event = BOL_Chaco_War.3
+	}
+}
+country_event = { #Bolivia Wins Chaco War
+	id = BOL_Chaco_War.2
+	title = BOL_Chaco_War.2.t
+	desc = BOL_Chaco_War.12.d
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		original_tag = BOL
+		has_war_with = PAR
+		has_start_date < 1936.1.1
+		has_full_control_of_state = 688
+		has_full_control_of_state = 1400
+	}
+	option = {
+		name = BOL_Chaco_War.2.A
+		white_peace = PAR
+		transfer_state = 688
+		transfer_state = 1400
+		688 = { remove_core_of = PAR }
+		1400 = { remove_core_of = PAR }
+		1619 = { remove_claim_by = PAR }
+		news_event = BOL_Chaco_War.4
+	}
+}
+news_event = { # Paraguay Wins Chaco War
+	id = BOL_Chaco_War.3
+	title = BOL_Chaco_War.3.t
+	desc = BOL_Chaco_War.3.d
+	picture = GFX_news_BOL_Chaco_War
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = BOL_Chaco_War.3.A
+	}
+}
+news_event = { # Bolivia Wins Chaco War
+	id = BOL_Chaco_War.4
+	title = BOL_Chaco_War.4.t
+	desc = BOL_Chaco_War.4.d
+	picture = GFX_news_BOL_Chaco_War
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = BOL_Chaco_War.4.A
+	}
+}

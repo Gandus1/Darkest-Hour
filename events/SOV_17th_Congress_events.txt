@@ -1,0 +1,312 @@
+﻿#########################################################################
+# Darkest Hour Events : SOV Congress
+#########################################################################
+add_namespace = SOV_Politburo_Weakened
+add_namespace = SOV_XVII_Congress
+#########################################################################
+# Rise of the Stalin Opposition
+#########################################################################
+country_event = {
+	id = SOV_Politburo_Weakened.1
+	title = SOV_Politburo_Weakened.1.t
+	desc = SOV_Politburo_Weakened.1.d
+	picture = GFX_report_SOV_17th_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Maintain the status quo
+	option = {
+		name = SOV_Politburo_Weakened.1.A
+		set_country_flag = strong_politburo
+		custom_effect_tooltip = SOV_Politburo_Weakened.1.A.tt
+	}
+	# Denounce Stalinist Atrocities
+	option = {
+		name = SOV_Politburo_Weakened.1.B
+		random_list = {
+			30 = {
+				country_event = {
+					id = SOV_Politburo_Weakened.2
+					hours = 12
+				}
+			}
+			70 = {
+				country_event = {
+					id = SOV_Politburo_Weakened.3
+					hours = 12
+				}
+			}
+		}
+	}
+}
+#########################################################################
+# The Politiburo Supports the Opposition
+#########################################################################
+country_event = {
+	id = SOV_Politburo_Weakened.2
+	title = SOV_Politburo_Weakened.2.t
+	desc = SOV_Politburo_Weakened.2.d
+	picture = GFX_report_SOV_17th_Congress_vote
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Maintain the status quo
+	option = {
+		name = SOV_Politburo_Weakened.2.A
+		set_country_flag = very_strong_politburo
+		custom_effect_tooltip = SOV_Politburo_Weakened.2.A.tt
+		add_political_power = -75
+		add_stability = -0.05
+	}
+}
+#########################################################################
+# Stalin Denounces the Opposition's Plot
+#########################################################################
+country_event = {
+	id = SOV_Politburo_Weakened.3
+	title = SOV_Politburo_Weakened.3.t
+	desc = SOV_Politburo_Weakened.3.d
+	picture = GFX_report_SOV_Stalin_Report
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Maintain the status quo
+	option = {
+		name = SOV_Politburo_Weakened.3.A
+		set_country_flag = very_strong_politburo
+		custom_effect_tooltip = SOV_Politburo_Weakened.3.A.tt
+		add_political_power = -100
+		add_stability = -0.075
+	}
+}
+#########################################################################
+# First day of the 17th Congress
+#########################################################################
+news_event = {
+	id = SOV_XVII_Congress.1
+	title = SOV_XVII_Congress.1.t
+	desc = SOV_XVII_Congress.1.d
+	picture = GFX_news_SOV_17th_Congress
+	fire_only_once = yes
+	trigger = {
+		original_tag = SOV
+		date > 1934.1.26
+		has_start_date < 1934.1.26
+	}
+	#The Congress begins
+	option = {
+		name = SOV_XVII_Congress.1.A
+		add_political_power = 25
+		country_event = {
+			id = SOV_XVII_Congress.2
+			hours = 6
+		}
+	}
+}
+#########################################################################
+# Stalin's Reports
+#########################################################################
+country_event = {
+	id = SOV_XVII_Congress.2
+	title = SOV_XVII_Congress.2.t
+	desc = SOV_XVII_Congress.2.d
+	picture = GFX_report_SOV_Stalin_Report
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Praise the party
+	option = {
+		name = SOV_XVII_Congress.2.A
+		add_political_power = -50
+		add_stability = 0.025
+		country_event = {
+			id = SOV_XVII_Congress.5
+			hours = 12
+		}
+	}
+}
+#########################################################################
+# The Five Years Plan Debate
+#########################################################################
+country_event = {
+	id = SOV_XVII_Congress.5
+	title = SOV_XVII_Congress.5.t
+	desc = SOV_XVII_Congress.5.d
+	picture = GFX_report_SOV_Second_Five_Year_Plan
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Efficiency to improve
+	option = {
+		name = SOV_XVII_Congress.5.A
+		add_political_power = 5
+		country_event = {
+			id = SOV_XVII_Congress.6
+			hours = 12
+		}
+	}
+}
+#########################################################################
+# Organisational issues
+#########################################################################
+country_event = {
+	id = SOV_XVII_Congress.6
+	title = SOV_XVII_Congress.6.t
+	desc = SOV_XVII_Congress.6.d
+	picture = GFX_report_SOV_Stalin_and_Voroshilov
+	fire_only_once = yes
+	is_triggered_only = yes
+	# End rabkrin System
+	option = {
+		name = SOV_XVII_Congress.6.A
+		custom_effect_tooltip = SOV_XVII_Congress.6.A.tt
+		add_stability = -0.05
+		add_timed_idea = {
+			idea = SOV_Congress_End_Rabkrin_System
+			days = 400
+		}
+		country_event = {
+			id = SOV_XVII_Congress.7
+			hours = 12
+		}
+	}
+	# Reform rabkrin System
+	option = {
+		name = SOV_XVII_Congress.6.B
+		custom_effect_tooltip = SOV_XVII_Congress.6.B.tt
+		add_political_power = -100
+		add_stability = 0.01
+		add_timed_idea = {
+			idea = SOV_Congress_Reform_Rabkrin_System
+			days = 400
+		}
+		country_event = {
+			id = SOV_XVII_Congress.7
+			hours = 12
+		}
+	}
+}
+#########################################################################
+# Elections to the central organs of the Party
+#########################################################################
+country_event = {
+	id = SOV_XVII_Congress.7
+	title = SOV_XVII_Congress.7.t
+	desc = SOV_XVII_Congress.7.d
+	picture = GFX_report_SOV_17th_Congress_vote
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Significant Votes against stalin.
+	option = {
+		name = SOV_XVII_Congress.7.A
+		custom_effect_tooltip = SOV_XVII_Congress.7.A.tt
+		country_event = {
+			id = SOV_XVII_Congress.11
+			hours = 12
+		}
+	}
+}
+#########################################################################
+# Politburo votes for Stalin
+#########################################################################
+country_event = {
+	id = SOV_XVII_Congress.11
+	title = SOV_XVII_Congress.11.t
+	desc = SOV_XVII_Congress.11.d
+	picture = GFX_report_SOV_17th_Congress_vote
+	fire_only_once = yes
+	is_triggered_only = yes
+	# You there. Get me... Sergei Kirov.
+	option = {
+		name = SOV_XVII_Congress.11.A
+		country_event = {
+			id = SOV_XVII_Congress.12
+			hours = 12
+		}
+	}
+}
+#########################################################################
+# Kirvos denounces a plot against Stalin
+#########################################################################
+country_event = {
+	id = SOV_XVII_Congress.12
+	title = SOV_XVII_Congress.12.t
+	desc = SOV_XVII_Congress.12.d
+	picture = GFX_report_SOV_Kirov_and_Stalin
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Even the sword doesn't cut the head of the one who confesses.
+	option = {
+		name = SOV_XVII_Congress.12.A
+		set_country_flag = congress_finished
+		hidden_effect = {
+			news_event = { id = SOV_XVII_Congress.13 days = 10 }
+		}
+	}
+}
+#########################################################################
+# The end of the 17th Congress
+#########################################################################
+news_event = {
+	id = SOV_XVII_Congress.13
+	title = SOV_XVII_Congress.13.t
+	desc = {
+		text = SOV_XVII_Congress.13.d
+		trigger = { always = yes }
+	}
+	picture = GFX_news_SOV_17th_Congress
+	major = yes
+	is_triggered_only = yes
+	# Kirov is loyal to the party, we dont need to do nothing about him
+	option = {
+		name = SOV_XVII_Congress.13.C
+		trigger = {
+			original_tag = SOV
+		}
+		set_country_flag = kirov_path
+		custom_effect_tooltip = SOV_XVII_Congress.13.C.tt
+		add_political_power = -25
+		set_country_flag = SOV_XVII_Congress_complete
+		hidden_effect = {
+			create_country_leader = {
+				name = "Iosif V. Stalin"
+				desc = "Joseph_Stalin_desc"
+				picture = GFX_P_C_Joseph_Stalin
+				ideology = stalinism
+				traits = {
+					POSITION_General_Secretary
+					SUBIDEOLOGY_Stalinism
+					L_Paranoid_Megalomaniac
+				}
+			}
+		}
+	}
+	# Congrats, to Comrade Stalin.
+	option = {
+		name = SOV_XVII_Congress.13.Com_Stalin
+		trigger = {
+			NOT = { original_tag = SOV }
+			OR = {
+				is_puppet_of = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	# Enjoy it, while it lasts.
+	option = {
+		name = SOV_XVII_Congress.13.Fas
+		trigger = {
+			NOT = { original_tag = SOV }
+			has_government = fascist
+		}
+	}
+	# Lets see what the future holds for the Soviet people.
+	option = {
+		name = SOV_XVII_Congress.13.Neu
+		trigger = {
+			NOT = { 
+				original_tag = SOV
+				OR = {
+					has_government = fascist
+					is_puppet_of = SOV
+					is_in_faction_with = SOV
+				}
+			}
+		}
+	}
+}

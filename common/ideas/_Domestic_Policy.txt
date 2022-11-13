@@ -1,0 +1,114 @@
+ideas = {
+	#########################################################################
+	#  Foreign Policy
+	#########################################################################
+	domestic_policies = {
+		law = yes
+		use_list_view = yes
+		full_civil_liberties = {
+			picture = GENERIC_Full_Civil_Liberties
+			cost = 400
+			removal_cost = -1
+			level = 5
+			available = {
+				has_government = democratic
+			}
+			modifier = {
+				political_power_gain = -0.10
+				war_support_factor = -0.05
+				research_speed_factor = 0.05
+				drift_defence_factor = -0.15
+				trade_opinion_factor = 0.20
+			}
+			cancel_if_invalid = no
+		}
+		limited_civil_liberties = {
+			picture = GENERIC_Limited_Civil_Liberties
+			cost = 400
+			removal_cost = -1
+			level = 4
+			available = {
+				AND = {
+					NOT = { has_government = communist }
+					NOT = { has_government = socialist }
+					NOT = { has_government = fascist }
+				}
+			}
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = -0.02
+				research_speed_factor = 0.02
+				drift_defence_factor = -0.10
+			}
+			cancel_if_invalid = no
+			default = yes
+		}
+		legalistic_restrictions = {
+			picture = GENERIC_Police_State
+			cost = 400
+			removal_cost = -1
+			level = 3
+			available = {}
+			modifier = {
+				stability_factor = -0.05
+				# partisan_effect = -0.15
+				drift_defence_factor = 0.10
+			}
+			cancel_if_invalid = no
+		}
+		repressive_system = {
+			picture = GENERIC_Martial_Law
+			cost = 400
+			removal_cost = -1
+			level = 2
+			available = {
+				NOT = { has_government = democratic }
+			}
+			modifier = {
+				stability_factor = 0.10
+				war_support_factor = -0.10
+				conscription_factor = 0.05
+			}
+			cancel_if_invalid = no
+		}
+		totalitarian_system = {
+			picture = GENERIC_Totalitarian_System
+			cost = 400
+			removal_cost = -1
+			level = 1
+			available = {
+				NOT = { has_government = democratic }
+			}
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = -0.10
+				war_support_factor = 0.10
+				drift_defence_factor = 0.10
+				conscription_factor = 0.10
+			}
+			cancel_if_invalid = no
+		}
+		reign_of_jim_crow = {
+			picture = USA_Reign_Of_Jim_Crow
+			cost = 400
+			removal_cost = -1
+			level = 1
+			allowed = {
+				tag = USA
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			available = {
+				
+			}
+			modifier = {
+				political_power_gain = -0.10
+				stability_factor = -0.05
+				drift_defence_factor = -0.15
+				conscription_factor = -0.05
+			}
+			cancel_if_invalid = no
+		}
+	}
+}

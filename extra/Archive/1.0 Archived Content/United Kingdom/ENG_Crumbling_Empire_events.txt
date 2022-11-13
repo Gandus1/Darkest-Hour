@@ -1,0 +1,360 @@
+﻿###########################
+# Darkest Hour Surrender Events : The Crumbling Empire
+###########################
+
+add_namespace = Crumbling_Empire
+add_namespace = Crumbling_Empire_GER_Response
+add_namespace = Crumbling_Empire_Leadership
+###
+
+#########################################################################
+# The Crumbling Empire
+#########################################################################
+country_event = {
+	id = Crumbling_Empire.1
+	title = Crumbling_Empire.1.t
+	desc = Crumbling_Empire.1.desc
+	picture = GFX_report_ENG_Coventry_Cathedral
+	fire_only_once = yes
+
+	trigger = {
+        tag = ENG
+		any_country = {
+			OR = {
+				tag = GER
+				is_subject_of = GER
+			}
+			has_government = fascist
+			owns_state = 16 #Paris
+			owns_state = 126 #London	
+		}
+		ENG = { surrender_progress > 0.75 }
+	}
+	
+	# All is lost
+	option = {
+		name = Crumbling_Empire.1.A
+		GER = { country_event = { id = Crumbling_Empire_GER_Response.1 hours = 4 }}		
+	}
+
+	#We fight on!
+	option = {
+		name = Crumbling_Empire.1.B
+		custom_effect_tooltip = "We will keep resisting the German invasion"
+	}
+}
+
+#########################################################################
+# The Empire Surrenders
+#########################################################################
+country_event = {
+	id = Crumbling_Empire_GER_Response.1
+	title = Crumbling_Empire_GER_Response.1.t
+	desc = Crumbling_Empire_GER_Response.1.desc
+	picture = GFX_report_ENG_London_Blitz
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+	
+	# Dismantle the Empire but leave British Isles
+	option = {
+		name = Crumbling_Empire_GER_Response.1.A
+		set_country_flag = isolation_of_uk
+		ENG = { country_event = { id = Crumbling_Empire.2 hours = 6 }}	
+	}
+
+	# Take some lands and leave British Isles
+	option = {
+		name = Crumbling_Empire_GER_Response.1.B
+		set_country_flag = dissolution_of_uk
+		ENG = { country_event = { id = Crumbling_Empire.2 hours = 6 }}	
+	}
+
+	# Dismantle the United Kingdom completely!
+	option = {
+		name = Crumbling_Empire_GER_Response.1.C
+		set_country_flag = annexation_of_uk
+		ENG = { country_event = { id = Crumbling_Empire.2 hours = 6 }}
+		custom_effect_tooltip = "Establish the Reichsprotectorate in the Isles"		
+	}
+
+	# No deal with the brits!
+	option = {
+		name = Crumbling_Empire_GER_Response.1.D
+		custom_effect_tooltip = "We will crush the brits"		
+	}
+}
+
+#########################################################################
+# Fate of the United Kingdom
+#########################################################################
+country_event = {
+	id = Crumbling_Empire.2
+	title = Crumbling_Empire.2.t
+	desc = Crumbling_Empire.2.desc
+	picture = GFX_report_ENG_Lord_Halifax
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+
+	# London answers in German
+	option = {
+		name = Crumbling_Empire.2.A
+		create_country_leader = { 
+			name = "Lord Halifax" 
+			desc = "" 
+			picture = GFX_P_D_Edward_Halifax 
+			ideology = social_conservatism traits = { } 
+		}	
+
+		end_puppet = NZL
+		end_puppet = MAL
+		end_puppet = RAJ
+		end_puppet = CAN
+		end_puppet = SAF
+		end_puppet = AST
+		
+		country_event = { id = Crumbling_Empire.3 days = 7 }
+	}
+}
+
+#########################################################################
+# The Defeated Empire (Instrument of surrender is signed)
+#########################################################################
+country_event = {
+	id = Crumbling_Empire.3
+	title = Crumbling_Empire.3.t
+	desc = Crumbling_Empire.3.desc
+	picture = GFX_report_ENG_Lord_Halifax
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	# London answers in German
+	option = {
+		name = Crumbling_Empire.3.A
+		
+		white_peace = GER
+		white_peace = ITA
+		white_peace = JAP
+		
+		dismantle_faction = yes
+		# Dismantling the Empire in Africa + Asia as events
+		if = {
+			limit = {
+				GER = {
+					OR = {
+						has_country_flag = isolation_of_uk
+						has_country_flag = dissolution_of_uk
+					}
+				}
+			}
+			GER = { country_event = { id = Crumbling_Empire.4 days = 7 }}
+		}		
+		if = {
+			limit = {
+				GER = {
+					has_country_flag = annexation_of_uk
+				}
+			}
+			GER = { country_event = { id = Crumbling_Empire.5 days = 7 }}
+		}
+	}
+}
+
+#########################################################################
+# Leadership for the United Kingdom
+#########################################################################
+country_event = {
+	id = Crumbling_Empire.4
+	title = Crumbling_Empire.4.t
+	desc = Crumbling_Empire.4.desc
+	picture = GFX_Foggy_London
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+
+	# Install an isolationist government
+	option = {
+		name = Crumbling_Empire.4.A
+		ENG = { country_event = { id = Crumbling_Empire_Leadership.1 hours = 2 }}
+	}
+
+	# Install an isolationist government and invite HRH Edward VIII
+	option = {
+		name = Crumbling_Empire.4.B
+		ENG = { country_event = { id = Crumbling_Empire_Leadership.2 hours = 2 }}
+	}
+
+	# Install a Fascist government
+	option = {
+		name = Crumbling_Empire.4.C
+		puppet = ENG
+		ENG = { country_event = { id = Crumbling_Empire_Leadership.3 hours = 2 }}
+	}	
+}
+
+#########################################################################
+# Leadership for the United Kingdom - Splendid isolation
+#########################################################################
+country_event = {
+	id = Crumbling_Empire_Leadership.1
+	title = Crumbling_Empire_Leadership.1.t
+	desc = Crumbling_Empire_Leadership.1.desc
+	picture = GFX_Halifax_Goering
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+	# We will behave well!
+	option = {
+		name = Crumbling_Empire_Leadership.1.A
+		ENG = {
+			add_ai_strategy = {
+				type = befriend
+				id = "GER"
+				value = 200
+			}
+			add_ai_strategy = {
+				type = conquer
+				id = "GER"
+				value = -120
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = "GER"
+				value = -200
+			}			
+		}
+		
+	}
+}
+
+#########################################################################
+# Leadership for the United Kingdom - God Save King Edward VIII!
+#########################################################################
+country_event = {
+	id = Crumbling_Empire_Leadership.2
+	title = Crumbling_Empire_Leadership.2.t
+	desc = Crumbling_Empire_Leadership.2.desc
+	picture = GFX_Edward_VIII_Hitler
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+	# We will behave well!
+	option = {
+		name = Crumbling_Empire_Leadership.2.A
+		#Add Edward VII as an idea
+		ENG = {
+			add_ai_strategy = {
+				type = befriend
+				id = "GER"
+				value = 50
+			}
+			add_ai_strategy = {
+				type = conquer
+				id = "GER"
+				value = -120
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = "GER"
+				value = -50
+			}			
+		}		
+	}
+}
+
+#########################################################################
+# Leadership for the United Kingdom - Blackshirts come to power!
+#########################################################################
+country_event = {
+	id = Crumbling_Empire_Leadership.3
+	title = Crumbling_Empire_Leadership.3.t
+	desc = Crumbling_Empire_Leadership.3.desc
+	picture = GFX_Oswald_Mosley
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+	# Hail Mosley!
+	option = {
+		name = Crumbling_Empire_Leadership.3.A
+		set_politics = { ruling_party = fascist elections_allowed = no }
+		set_political_party = { ideology = fascist popularity = 0.5 }
+	}
+}
+
+#########################################################################
+# Dissolution of the United Kingdom
+#########################################################################
+country_event = {
+	id = Crumbling_Empire.5
+	title = Crumbling_Empire.5.t
+	desc = Crumbling_Empire.5.desc
+	picture = GFX_Westminister_Fire
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+
+	# The sun set for the Empire
+	option = {
+		name = Crumbling_Empire.5.A
+		custom_effect_tooltip = "Establish the Reichsprotectorate in the Isles."
+		
+		hidden_effect = {
+			127 = { add_core_of = EGL }
+			123 = { add_core_of = EGL }
+			122 = { add_core_of = EGL }
+			126 = { add_core_of = EGL }
+			125 = { add_core_of = EGL }
+			338 = { add_core_of = EGL }
+			128 = { add_core_of = EGL }
+			129 = { add_core_of = EGL }
+			130 = { add_core_of = EGL }
+			132 = { add_core_of = EGL }
+			131 = { add_core_of = EGL }
+			133 = { add_core_of = SCO }
+			121 = { add_core_of = SCO }
+			136 = { add_core_of = SCO }
+			120 = { add_core_of = SCO }
+			ENG = { release = SCO }
+			ENG = { release = EGL }
+			SCO = { set_political_party = { ideology = fascist popularity = 1 } }
+			EGL = { set_political_party = { ideology = fascist popularity = 1 } }              
+			SCO = { set_politics = { ruling_party = fascist elections_allowed = no } }
+			EGL = { set_politics = { ruling_party = fascist elections_allowed = no } }
+			IRE = { transfer_state = 119 }
+			CAN = { transfer_state = 332 }
+			CAN = { transfer_state = 331 }
+			GER = {
+				if = {
+					limit = {
+						has_dlc = "Death or Dishonor"
+					}
+					set_autonomy = {
+						target = SCO
+						autonomous_state = AUTONOMY_Reichskommissariat
+					}
+					set_autonomy = {
+						target = EGL
+						autonomous_state = AUTONOMY_Reichskommissariat
+					}
+					else = {
+						puppet = SCO
+						puppet = EGL
+					}
+				}
+			}
+			EGL = { set_cosmetic_tag = EGL_GER_RP }
+			SCO = { set_cosmetic_tag = SCO_GER_RP }
+			EGL = { set_country_flag = friendly_regime }
+			GER = { country_event = { id = cityname.31 } }
+		}		
+	}
+}
+

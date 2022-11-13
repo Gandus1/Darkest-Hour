@@ -1,0 +1,219 @@
+parliament_decision_category = {
+	USA_Lobby_Republican = {
+		icon = GFX_decision_USA_Lobby_Republican_Support
+		fire_only_once = no
+		days_remove = 30
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 0
+		modifier = {
+			political_power_gain = -0.25
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			## Republicans
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+		}
+	}
+	USA_Lobby_Democratic = {
+		icon = GFX_decision_USA_Lobby_Democrat_Support
+		fire_only_once = no
+		days_remove = 30
+		cost = 0
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		modifier = {
+			political_power_gain = -0.25
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				party_id = 6
+			}			## Democrats
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+		}
+	}
+	USA_Lobby_Progressive = {
+		fire_only_once = no
+		days_remove = 30
+		cost = 0
+		visible = {
+			original_tag = USA
+			set_temp_variable = {
+				party_id = 7
+			}			## Progressive
+			has_party_in_parliament = yes
+			has_country_flag = USA_SocDem_Progressive
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		modifier = {
+			political_power_gain = -0.25
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				party_id = 7
+			}			## Progressive
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+		}
+	}
+	USA_Republican_Campaign = {
+		icon = GFX_decision_USA_Pro_Republican_Campaign
+		fire_only_once = no
+		days_remove = 45
+		cost = 50
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			check_variable = {
+				party_relative_popularity_4 < 0.55
+			}			## Republicans
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		modifier = {
+			political_power_gain = -0.15
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				party_id = 4
+			}			## Republicans
+			set_temp_variable = {
+				popularity_to_add = 0.02
+			}
+			add_relative_popularity_to_parliament_party = yes
+		}
+	}
+	USA_Democratic_Campaign = {
+		icon = GFX_decision_USA_Pro_Democrat_Campaign
+		fire_only_once = no
+		days_remove = 45
+		cost = 50
+		visible = {
+			original_tag = USA
+		}
+		available = {
+			check_variable = {
+				party_relative_popularity_6 < 0.55
+			}			## Democrats
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		modifier = {
+			political_power_gain = -0.15
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			#Add 2.00% Conservative Popularity
+			set_temp_variable = {
+				party_id = 6
+			}			## Democrats
+			set_temp_variable = {
+				popularity_to_add = 0.02
+			}
+			add_relative_popularity_to_parliament_party = yes
+		}
+	}
+	USA_Progressive_Campaign = {
+		fire_only_once = no
+		days_remove = 45
+		cost = 50
+		visible = {
+			original_tag = USA
+			set_temp_variable = {
+				party_id = 7
+			}			## Progressive
+			has_party_in_parliament = yes
+			always = no
+		}
+		available = {
+			check_variable = {
+				party_relative_popularity_7 < 0.55
+			}			## Progressive
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		modifier = {
+			political_power_gain = -0.15
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			#Add 2.00% Progressive Popularity
+			set_temp_variable = {
+				party_id = 7
+			}			## Democrats
+			set_temp_variable = {
+				popularity_to_add = 0.02
+			}
+			add_relative_popularity_to_parliament_party = yes
+		}
+	}
+}

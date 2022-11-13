@@ -1,0 +1,2638 @@
+#########################################################################
+#  Turkish Diplomactic Decisions
+#########################################################################
+foreign_politics = {
+###########################
+# Ask for Hatay
+###########################
+	TUR_Ask_for_Hatay = {
+		icon = generic_civil_support
+		fire_only_once = yes
+		visible = {
+			original_tag = TUR
+			is_puppet = no
+			date > 1939.1.1
+			FRA = { exists = yes }
+			FRA = { controls_state = 803 }
+		}
+		available = {
+			FRA = { controls_state = 803 }
+			NOT = {
+				OR = {
+					country_exists = SYR
+					has_war_with = FRA
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				date > 1939.6.29 #29 June 1939
+			}
+		}
+
+		complete_effect = {
+			FRA = { country_event = { id = FRA_Question_of_Hatay.1 hours = 6 } }
+		}
+	}
+}
+
+#########################################################################
+#  Eyes to the East Decisions
+#########################################################################
+TUR_eyes_to_the_east_category = {
+	
+	TUR_demand_mosul = {
+
+		available = {
+			country_exists = IRQ
+			NOT = { has_full_control_of_state = 676 has_war_with = IRQ }
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_state_core = 676
+			IRQ = {
+				country_event = { id = TUR_Politics.30 hours = 6 }
+			}
+		}
+	}
+
+	TUR_a_solution_for_mosul = {
+
+		available = {
+			country_exists = IRQ
+			NOT = { has_full_control_of_state = 676 has_war_with = IRQ }
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = TUR_a_solution_for_mosul_unlock
+		}
+
+		complete_effect = {
+			TUR = {
+				country_event = { id = TUR_Politics.31 hours = 6 }
+			}
+		}
+	}
+
+	TUR_demand_hatay = {
+
+		available = {
+			country_exists = FRA
+			NOT = { has_full_control_of_state = 803 has_war_with = FRA }
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_state_core = 803
+			FRA = {
+				country_event = { id = TUR_Politics.32 hours = 6 }
+			}
+		}
+	}
+
+	TUR_integration_of_hatay = {
+
+		available = {
+			country_exists = FRA
+			NOT = { has_full_control_of_state = 803 has_war_with = FRA }
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = TUR_integration_of_hatay_available
+		}
+
+		complete_effect = {
+			country_event = { id = TUR_Politics.19 hours = 6 }
+		}
+	}
+
+	TUR_fund_the_freedom_fighters_in_hatay = {
+
+		available = {
+			country_exists = FRA
+			NOT = { has_full_control_of_state = 803 has_war_with = FRA }
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = TUR_fund_the_freedom_fighters_in_hatay_available
+		}
+
+		complete_effect = {
+			803 = {
+				add_resistance_target = -5
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Eyes to the West Decisions
+#########################################################################
+TUR_eyes_to_the_west_category = {
+	
+	TUR_demand_aegean_islands_and_thessaloniki = {
+
+		available = {
+			country_exists = GRE
+			NOT = { has_full_control_of_state = 187 has_full_control_of_state = 1114 has_war_with = GRE }
+		}
+
+		fire_only_once = yes
+
+		days_remove = 10
+
+		complete_effect = {
+			set_country_flag = TUR_demand_northern_thrace_available
+			country_event = { id = TUR_Politics.33 hours = 6 }
+		}
+	}
+
+	TUR_demand_northern_thrace = {
+
+		available = {
+			country_exists = BUL
+			NOT = { has_full_control_of_state = 184 has_war_with = BUL }
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = TUR_demand_northern_thrace_available
+		}
+
+		complete_effect = {
+			
+		}
+	}
+}
+
+#########################################################################
+#  First Five Year Plan Decisions
+#########################################################################
+TUR_first_five_year_plan_category = {
+	
+	TUR_develop_civlian_industries = { }
+
+	TUR_expand_the_iron_web = {}
+
+	TUR_search_for_the_resources_under_us = {}
+
+	TUR_build_our_own_weapons = {}
+}
+
+#########################################################################
+#  Recalling the Heroes Decisions
+#########################################################################
+TUR_recalling_the_heroes_category = {
+	
+	TUR_phase_i = {
+
+		available = {
+			has_idea = one_year_service
+			has_manpower < 1
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			
+		}
+	}
+
+	TUR_phase_ii = {
+
+		available = {
+			surrender_progress > 0.19
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			
+		}
+	}
+
+	TUR_phase_iii = {
+
+		available = {
+			surrender_progress > 0.49
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			
+		}
+	}
+}
+
+
+#########################################################################
+#  International Wargames Decisions
+#########################################################################
+TUR_international_wargames = {
+	
+	TUR_invite_allied_delegation = {
+
+		available = {
+			country_exists = ENG
+			country_exists = FRA
+			NOT = { 
+				has_war_with = FRA has_war_with = ENG
+				is_in_faction_with = FRA is_in_faction_with = ENG
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = ENG
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = FRA
+			}
+			army_experience = 20
+			FRA = {
+				army_experience = 20
+			}
+			ENG = {
+				army_experience = 20
+			}
+		}
+	}
+
+	TUR_invite_axis_delegation = {
+
+		available = {
+			country_exists = GER
+			country_exists = ITA
+			NOT = { 
+				has_war_with = ITA has_war_with = GER
+				is_in_faction_with = ITA is_in_faction_with = GER
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = GER
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = ITA
+			}
+			army_experience = 20
+			ITA = {
+				army_experience = 20
+			}
+			GER = {
+				army_experience = 20
+			}
+		}
+	}
+
+	TUR_invite_us_delegation = {
+
+		available = {
+			country_exists = USA
+			NOT = { 
+				has_war_with = USA
+				is_in_faction_with = USA
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = USA
+			}
+			army_experience = 20
+			USA = {
+				army_experience = 20
+			}
+		}
+	}
+
+	TUR_invite_ussr_delegation = {
+
+		available = {
+			country_exists = SOV
+			NOT = { 
+				has_war_with = SOV
+				is_in_faction_with = SOV
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = SOV
+			}
+			army_experience = 20
+			SOV = {
+				army_experience = 20
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Buying Foreign Designs Decisions
+#########################################################################
+TUR_buying_foreign_designs = {
+	
+	TUR_buy_fighters_from_allies = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = ENG
+			}
+		}
+	}
+
+	TUR_buy_fighters_from_axis = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = GER
+			}			
+		}
+	}
+
+	TUR_buy_fighters_from_us = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = USA
+			}			
+		}
+	}
+
+	TUR_buy_fighters_from_ussr = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = SOV
+			}			
+		}
+	}
+
+	TUR_buy_bombers_from_allies = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 100
+				producer = ENG
+			}
+		}
+	}
+
+	TUR_buy_bombers_from_axis = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 100
+				producer = GER
+			}			
+		}
+	}
+
+	TUR_buy_bombers_from_us = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 100
+				producer = USA
+			}			
+		}
+	}
+
+	TUR_buy_bombers_from_ussr = {
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -2000
+			}
+			add_money_with_tooltip_effect = yes
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 100
+				producer = SOV
+			}			
+		}
+	}
+}
+
+#########################################################################
+#  Choosing a Side Decisions
+#########################################################################
+TUR_choosing_a_side_category = {
+	
+	TUR_send_invite_to_axis_consulate = {
+
+		available = {
+			country_exists = GER
+			country_exists = ITA
+			NOT = { 
+				has_war_with = ITA has_war_with = GER
+				is_in_faction_with = ITA is_in_faction_with = GER
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = GER
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = ITA
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = ENG
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = FRA
+			}
+		}
+	}
+
+	TUR_send_invite_to_allies_consulate = {
+
+		available = {
+			country_exists = ENG
+			country_exists = FRA
+			NOT = { 
+				has_war_with = FRA has_war_with = ENG
+				is_in_faction_with = FRA is_in_faction_with = ENG
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = ENG
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = FRA
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = GER
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = ITA
+			}
+		}
+	}
+
+	TUR_send_invite_to_us_consulate = {
+
+		available = {
+			country_exists = USA
+			NOT = { 
+				has_war_with = USA is_in_faction_with = USA
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = USA
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = JAP
+			}
+		}
+	}
+
+	TUR_send_invite_to_ussr_consulate = {
+
+		available = {
+			country_exists = SOV
+			NOT = { 
+				has_war_with = SOV is_in_faction_with = SOV
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = SOV
+			}
+			every_country = {
+				limit = {
+					OR = {
+						is_in_faction_with = GER
+						original_tag = GER
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						modifier = large_decrease 
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+
+	TUR_deport_allies_consulate = {
+
+		available = {
+			country_exists = GER
+			country_exists = ITA
+			NOT = { 
+				has_war_with = ITA has_war_with = GER
+				is_in_faction_with = ITA is_in_faction_with = GER
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = GER
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = ITA
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = ENG
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = FRA
+			}
+		}
+	}
+
+	TUR_deport_axis_consulate = {
+
+		available = {
+			country_exists = ENG
+			country_exists = FRA
+			NOT = { 
+				has_war_with = FRA has_war_with = ENG
+				is_in_faction_with = FRA is_in_faction_with = ENG
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = ENG
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = FRA
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = GER
+			}
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = ITA
+			}
+		}
+	}
+
+	TUR_deport_us_consulate = {
+
+		available = {
+			country_exists = USA
+			NOT = { 
+				has_war_with = USA is_in_faction_with = USA
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = USA
+			}
+			add_opinion_modifier = {
+				modifier = large_increase 
+				target = JAP
+			}
+		}
+	}
+
+	TUR_deport_ussr_consulate = {
+
+		available = {
+			country_exists = SOV
+			NOT = { 
+				has_war_with = SOV is_in_faction_with = SOV
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_opinion_modifier = {
+				modifier = large_decrease 
+				target = SOV
+			}
+			every_country = {
+				limit = {
+					OR = {
+						is_in_faction_with = GER
+						original_tag = GER
+					}
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						modifier = large_increase 
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Foreign Arms Deals Decisions
+#########################################################################
+TUR_foreign_arms_deals_category = {
+	
+	TUR_sell_guns = {
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = CHI tag = SOV tag = ENG tag = ROM tag = HUN tag = FRA
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+
+		}
+	}
+
+	TUR_buy_guns = {
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = GER tag = USA tag = ENG tag = SOV
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+
+		}
+	}
+}
+
+#########################################################################
+#  Volunteer Air Wing Decisions
+#########################################################################
+TUR_volunteer_air_wing_category = {
+	
+	TUR_send_air_wings_to_china = {
+
+		available = {
+			CHI = {
+				exists = yes
+				has_war_with = JAP
+			}
+			NOT = { 
+				has_war_with = CHI 
+				is_in_faction_with = CHI
+				is_in_faction_with = JAP
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			air_experience = 20
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_positive_opinion
+				target = CHI
+			}
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_negative_opinion
+				target = JAP
+			}
+			send_equipment = {
+			    equipment = fighter_equipment
+			    amount = 100
+			    target = CHI
+			}
+		}
+	}
+
+	TUR_send_air_wings_to_france = {
+
+		available = {
+			FRA = {
+				exists = yes
+				has_war_with = GER
+			}
+			NOT = { 
+				has_war_with = FRA 
+				is_in_faction_with = FRA
+				is_in_faction_with = GER
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			air_experience = 20
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_positive_opinion
+				target = FRA
+			}
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_negative_opinion
+				target = GER
+			}
+			send_equipment = {
+			    equipment = fighter_equipment
+			    amount = 100
+			    target = FRA
+			}
+		}
+	}
+
+	TUR_send_air_wings_to_axis = {
+
+		available = {
+			HUN = {
+				exists = yes
+				has_war_with = SOV
+			}
+			ROM = {
+				exists = yes
+				has_war_with = SOV
+			}
+			NOT = { 
+				has_war_with = HUN 
+				has_war_with = ROM 
+				is_in_faction_with = HUN
+				is_in_faction_with = ROM
+				is_in_faction_with = SOV
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			air_experience = 20
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_positive_opinion
+				target = HUN
+			}
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_positive_opinion
+				target = ROM
+			}
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_negative_opinion
+				target = SOV
+			}
+			send_equipment = {
+			    equipment = fighter_equipment
+			    amount = 100
+			    target = HUN
+			}
+			send_equipment = {
+			    equipment = fighter_equipment
+			    amount = 100
+			    target = ROM
+			}
+		}
+	}
+
+	TUR_send_air_wings_to_ussr = {
+
+		available = {
+			SOV = {
+				exists = yes
+				has_war_with = GER
+			}
+			NOT = { 
+				has_war_with = SOV 
+				is_in_faction_with = SOV
+				is_in_faction_with = GER
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			air_experience = 20
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_positive_opinion
+				target = SOV
+			}
+			add_opinion_modifier = {
+				modifier = TUR_airwings_send_negative_opinion
+				target = GER
+			}
+			send_equipment = {
+			    equipment = fighter_equipment
+			    amount = 100
+			    target = SOV
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Expanding the Navy Decisions
+#########################################################################
+TUR_expanding_the_navy_category = {
+
+}
+
+#########################################################################
+#  Rebellion Risk
+#########################################################################
+TUR_rebelliousness_of_the_minorities_category = {
+	TUR_Bribe_Kurdish_Figureheads = {
+		icon = generic_civil_support
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Deal_Kurds
+		}
+
+		available = {
+
+		}
+
+		days_re_enable = 30
+
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 500 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = CRACKDOWN_KURD_CUSTOM_COST_TEXT
+
+		complete_effect = {
+			set_temp_variable = { money_to_gain = -500 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+
+	TUR_Adopt_Surname_Law = {
+		icon = generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Nationalist_Laws_1
+		}
+
+
+		days_remove = 10
+
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Promote_Turkish_Culture = {
+		icon = generic_nationalism
+
+		visible = {
+			original_tag = TUR
+		}
+
+
+		days_remove = 30
+
+		days_re_enable = 31
+
+		complete_effect = {
+			add_stability = 0.01
+			add_war_support = 0.01
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 7 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Send_Independence_Courts = {
+		icon = generic_civil_support
+
+		visible = {
+			original_tag = TUR
+		}
+
+
+		days_remove = 30
+
+		complete_effect = {
+			add_popularity = {
+			    ideology = authoritarian
+			    popularity = 0.05
+			}
+			set_temp_variable = { faction_id = 11 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Appoint_Turkish_Nationalist = {
+		icon = generic_civil_support
+
+		visible = {
+			original_tag = TUR
+		}
+
+
+		days_remove = 180
+
+		complete_effect = {
+			add_popularity = {
+			    ideology = authoritarian
+			    popularity = 0.05
+			}
+			set_temp_variable = { faction_id = 11 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 13 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Force_Turkish_Teachings = {
+		icon = generic_civil_support
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Nationalist_Laws_1
+		}
+
+
+		days_remove = 365
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Declare_Martial_Law_East = {
+		icon = oppression
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_instate_Direct_Rule
+		}
+
+		highlight_states = {
+			state = 353
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_4
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			set_country_flag = TUR_martial_law_declared_flag
+
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 20 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Disestablish_Martial_Law = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_martial_law_declared_flag
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_5
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_4
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_4
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			clr_country_flag = TUR_martial_law_declared_flag
+
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -20 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_One_Child_Policy = {
+		icon = oppression
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Nationalist_Laws_1
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_4
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			add_ideas = TUR_One_child_idea
+			set_temp_variable = { faction_id = 11 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes
+			add_stability = 0.05
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 15 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Stop_Population_Controls = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_idea = TUR_One_child_idea
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_5
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_4
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_4
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			remove_ideas = TUR_One_child_idea
+			set_temp_variable = { faction_id = 11 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes
+			add_stability = -0.05
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -15 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Instate_Forced_Labor = {
+		icon = oppression
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Forced_Labor
+		}
+
+		complete_effect = {
+			add_ideas = TUR_Ethnic_Labor_Camp
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes
+			hidden_effect = {
+				country_event = {
+					id = TUR_Politics.43
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 20 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Shutdown_Illegal_Labour_Camps = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_idea = TUR_Ethnic_Labor_Camp
+		}
+
+		complete_effect = {
+			remove_ideas = TUR_Ethnic_Labor_Camp
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -20 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Reopen_Slave_Market = {
+		icon = oppression
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Slave_Labor
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = TUR_Ethnic_Labor_Camp
+				add_idea = TUR_Ethnic_Labor_Camp_2
+			}
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = -10 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 12 }
+			set_temp_variable = { loyalty_to_add = -10 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { loyalty_to_add = -10 }
+			change_faction_loyalty = yes
+			every_country = {
+				limit = {
+					has_government = democratic
+				}
+				add_opinion_modifier = {
+					target = TUR
+					modifier = TUR_Slave_Trade_opinion
+				}
+			}			
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 20 }
+			add_minority_rebellion_progress = yes
+			set_country_flag = TUR_Reopen_Slave_Market_FLAG
+		}
+	}
+	TUR_CLose_the_Slave_Market = {
+		icon = oppression
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Reopen_Slave_Market_FLAG
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = TUR_Ethnic_Labor_Camp_2
+				add_idea = TUR_Ethnic_Labor_Camp
+			}
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = 10 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 12 }
+			set_temp_variable = { loyalty_to_add = 10 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { loyalty_to_add = 10 }
+			change_faction_loyalty = yes
+			every_country = {
+				limit = {
+					has_government = democratic
+				}
+				remove_opinion_modifier = {
+					target = TUR
+					modifier = TUR_Slave_Trade_opinion
+				}
+			}			
+		}
+		remove_effect = {
+			clr_country_flag = TUR_Reopen_Slave_Market_FLAG
+			set_temp_variable = { progress_to_add = -20 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Enact_Religion_Standard = {
+		icon = GFX_GENERIC_Catholic_Fire
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Nationalist_Laws_1
+		}
+
+		complete_effect = {
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_4
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_country_flag = TUR_Religion_Standard_Enacted
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = 10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Revert_Religion_Standard = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Religion_Standard_Enacted
+		}
+
+		complete_effect = {
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_5
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_4
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_4
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			add_stability = -0.05
+			add_war_support = -0.05
+			set_country_flag = TUR_Religion_Standard_Enacted
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Lift_The_Culture_Ban = {
+		days_remove = 180
+
+		icon = generic_break_treaty
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_lift_bans
+		}
+
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_5
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			add_war_support = -0.05
+			set_temp_variable = { progress_to_add = -5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Lift_The_Language_Ban = {
+		days_remove = 180
+
+		icon = generic_break_treaty
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_lift_bans
+		}
+
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_5
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			add_stability = -0.05
+			set_temp_variable = { progress_to_add = -10 }
+			add_minority_rebellion_progress = yes
+		}
+	}	
+	TUR_Restore_the_Culture_Ban = {
+		days_remove = 180
+
+		
+		fire_only_once = yes
+
+		visible = {	
+			original_tag = TUR
+			has_decision = TUR_Lift_The_Culture_Ban
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			add_stability = 0.05
+			set_temp_variable = { progress_to_add = 10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+
+	TUR_Restore_The_Language_Ban = {
+		days_remove = 180
+
+		fire_only_once = yes
+
+		visible = {	
+			original_tag = TUR
+			has_decision = TUR_Lift_The_Language_Ban
+		}
+
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_3
+				}
+			}
+			add_war_support = 0.05
+			set_temp_variable = { progress_to_add = 5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Banish_Kuridish_Dissenters = {
+		days_remove = 60
+		days_re_enable = 180
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Enemies_at_Sight
+		}
+
+		complete_effect = {	
+			add_manpower = -10000
+			set_temp_variable = { progress_to_add = -7.5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Assassinate_Well_Known_Revolutionaries = {
+		days_remove = 30
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Turanist_Symbolism
+		}
+
+		days_re_enable = 93
+
+		remove_effect = {
+			set_temp_variable = { faction_id = 12 }
+			set_temp_variable = { influence_to_add = -10 }
+			change_faction_influence = yes
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { influence_to_add = -10 }
+			change_faction_influence = yes
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { influence_to_add = -10 }
+			change_faction_influence = yes
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities_4
+				}
+			}
+			add_stability = 0.1
+			set_temp_variable = { progress_to_add = 10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Resettle_Jewish_Communities = {
+		days_remove = 180
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Jewish_Amnesty
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			set_temp_variable = { faction_id = 12 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes		
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes	
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes
+			set_temp_variable = { progress_to_add = 5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Lockdown_the_Kurdish_Province = {
+		days_remove = 180
+		fire_only_once = yes
+		
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_A_Victory_for_Turkey
+		}
+
+		remove_effect = {
+			set_country_flag = TUR_Lockdown_the_Kurdish_Province_flag
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { influence_to_add = -50 }
+			change_faction_influence = yes
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = -50 }
+			change_faction_loyalty = yes
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Locked_Rebelious_Societies
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Locked_Rebelious_Societies
+				}
+			}
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Locked_Rebelious_Societies
+				}
+			}
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Locked_Rebelious_Societies
+				}
+			}
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Locked_Rebelious_Societies
+				}
+			}
+			set_temp_variable = { progress_to_add = 50 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Minorities_No_More = {
+		days_remove = 50
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Lockdown_the_Kurdish_Province_flag
+		}
+
+		remove_effect = {
+			release = KUR
+			KUR = {
+				declare_war_on = {
+					target = ROOT
+					type = topple_government
+				}
+			}
+			remove_ideas = TUR_Locked_Rebelious_Societies
+		}
+	}
+	TUR_Assign_Local_Courts = {
+		icon = generic_political_discourse
+		days_remove = 180
+		visible = {
+			original_tag = TUR
+		}
+		remove_effect = {
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = -5 }
+			change_faction_loyalty = yes		
+			set_temp_variable = { faction_id = 12 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes
+			set_temp_variable = { progress_to_add = -7.5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Population_Exchange_Greece = {
+		icon = hol_exchange_intelligence_data
+		fire_only_once = yes
+		days_remove = 100
+		visible = {
+			original_tag = TUR
+			NOT = { has_country_flag = TUR_Nationalist_Laws_1 }
+			has_country_flag = TUR_Borders_at_Europe
+		}
+
+		remove_effect = {
+			GRE = {
+				country_event = {
+					id = TUR_Politics.45
+					days = 1
+				}
+			}		
+		}
+	}
+	TUR_Build_Local_Schools = {
+		icon = generic_political_discourse
+		days_remove = 180
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Anatolian_Economic_Program
+		}
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 700 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = LOCAL_SCHOOLS_CUSTOM_COST_TEXT
+
+
+		complete_effect = {
+				
+		}
+		remove_effect = {
+			set_temp_variable = { money_to_gain = -700 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes		
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes	
+			set_temp_variable = { progress_to_add = -10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Build_Local_Radio_Shows = {
+		icon = hol_radio_oranje
+		days_remove = 180
+		visible = {
+			original_tag = TUR
+			has_country_flag = TUR_Anatolian_Economic_Program
+		}
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 250 }
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = LOCAL_RADIO_CUSTOM_COST_TEXT
+
+
+		complete_effect = {
+					
+		}
+		remove_effect = {
+			set_temp_variable = { money_to_gain = -250 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes		
+			set_temp_variable = { faction_id = 14 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes
+			set_temp_variable = { progress_to_add = -10 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Invite_Investors_to_Kurdistan = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Invite_Foreign_Investors
+		}
+
+		complete_effect = {
+			random_list = {
+				50 = {
+					every_owned_state = {
+						limit = {
+							is_core_of = KUR
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+				50 = {
+					every_owned_state = {
+						limit = {
+							is_core_of = KUR
+						}
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+
+		days_remove = 70
+
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Improve_Healthcare_in_Kurdistan = {
+		days_re_enable = 365
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Enhance_Living_Standars
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Rebellious_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_4
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_4
+					add_idea = TUR_Rebellious_Minorities_2
+				}
+			}
+			set_temp_variable = { faction_id = 13 }
+			set_temp_variable = { loyalty_to_add = 5 }
+			change_faction_loyalty = yes	
+		}
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -5 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_Allow_Kurdish_Parties = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_A_Victory_for_Turkey
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities
+					add_idea = TUR_Integrated_Minorities
+				}
+			}
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_1
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_1
+					add_idea = TUR_Integrated_Minorities
+				}
+			}
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_2
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_2
+					add_idea = TUR_Integrated_Minorities
+				}
+			}
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_3
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_3
+					add_idea = TUR_Integrated_Minorities
+				}
+			}
+
+			if = {
+				limit = {
+					has_idea = TUR_Rebellious_Minorities_5
+				}
+				swap_ideas = {
+					remove_idea = TUR_Rebellious_Minorities_5
+					add_idea = TUR_Integrated_Minorities
+				}
+			}
+		}
+
+		remove_effect = {
+			set_temp_variable = { progress_to_add = -40 }
+			add_minority_rebellion_progress = yes
+		}
+	}
+	TUR_A_New_Turkish_Province = {
+		fire_only_once = yes
+
+		visible = {
+			original_tag = TUR
+			has_idea = TUR_Integrated_Minorities
+		}
+
+		complete_effect = {
+			remove_ideas = TUR_Integrated_Minorities
+		}
+
+		remove_effect = {
+
+		}
+	}
+}
+fortification_projects = {
+	###########################
+	# Western Border
+	#########################
+
+	TUR_Fortify_Western_Border = {
+		icon = eng_trade_unions_support
+		fire_only_once = yes
+		days_remove = 100
+
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = TUR_walls
+		cost = 100		
+ 		allowed = {
+			original_tag = TUR	
+		}
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Borders_at_Europe
+			has_country_flag = TUR_Fortify_West
+		}
+		available = {
+			controls_state = 341
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		highlight_states = {
+			state = 341
+		}		
+		complete_effect = {
+			set_temp_variable = { money_to_gain = -100 }
+			add_money_with_tooltip_effect = yes			
+		}
+		remove_effect = {	
+			341 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 3
+				    instant_build = yes
+				    province = 922
+				}	
+				add_building_construction = {
+				    type = bunker
+				    level = 3
+				    instant_build = yes
+				    province = 11842
+				}		
+				add_building_construction = {
+				    type = bunker
+				    level = 3
+				    instant_build = yes
+				    province = 3893
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 3
+				    instant_build = yes
+				    province = 849
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 1
+				    instant_build = yes
+				    province = 13250
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 1
+				    instant_build = yes
+				    province = 9833
+				}
+			}										
+		}
+	}
+	TUR_Fortify_Western_Coast = {
+		icon = eng_trade_unions_support
+		fire_only_once = yes
+		days_remove = 100
+
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = TUR_walls
+		cost = 100		
+ 		allowed = {
+			original_tag = TUR	
+		}
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Borders_at_Europe
+			has_country_flag = TUR_Fortify_West
+		}
+		available = {
+			controls_state = 339
+			controls_state = 340
+			controls_state = 342
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		highlight_states = {
+			state = 339
+		}		
+		complete_effect = {
+			set_temp_variable = { money_to_gain = -100 }
+			add_money_with_tooltip_effect = yes			
+		}
+		remove_effect = {	
+			339 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = 4112
+				}
+				add_building_construction = {
+				    type = coastal_bunker
+				    level = 4
+				    instant_build = yes
+				    province = 4112
+				}
+				add_building_construction = {
+				    type = coastal_bunker
+				    level = 2
+				    instant_build = yes
+				    province = 7130
+				}	
+		
+			}
+			340 = {
+				add_building_construction = {
+				    type = coastal_bunker
+				    level = 3
+				    instant_build = yes
+				    province = 13249
+				}	
+				add_building_construction = {
+				    type = coastal_bunker
+				    level = 1
+				    instant_build = yes
+				    province = 9799
+				}			
+			}	
+			342 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 1
+				    instant_build = yes
+				    province = 1005
+				}
+				add_building_construction = {
+				    type = coastal_bunker
+				    level = 2
+				    instant_build = yes
+				    province = 1005
+				}	
+				add_building_construction = {
+				    type = coastal_bunker
+				    level = 2
+				    instant_build = yes
+				    province = 342
+				}
+			}									
+		}
+	}
+	TUR_Fortify_Caucasus = {
+		icon = eng_trade_unions_support
+		fire_only_once = yes
+		days_remove = 100
+
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = TUR_walls
+		cost = 100		
+ 		allowed = {
+			original_tag = TUR	
+		}
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Borders_at_Europe
+			has_country_flag = TUR_Fortify_East
+		}
+		available = {
+			controls_state = 887
+			controls_state = 353
+			controls_state = 352
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		highlight_states = {
+			state = 887
+		}		
+		complete_effect = {
+			set_temp_variable = { money_to_gain = -100 }
+			add_money_with_tooltip_effect = yes			
+		}
+		remove_effect = {
+			887 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = {
+				        all_provinces = yes
+				        limit_to_border = yes
+				    }
+				}			
+			}
+			353 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = {
+				        all_provinces = yes
+				        limit_to_border = yes
+				    }
+				}			
+			}
+			353 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = 6935
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = 864
+				}			
+			}
+		}
+	}
+	TUR_Fortify_South = {
+		icon = eng_trade_unions_support
+		fire_only_once = yes
+		days_remove = 100
+
+		available = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_trigger = {
+			set_temp_variable = { amount_of_money_to_check = 100 }
+			has_specific_amount_of_money = yes
+		}
+		custom_cost_text = TUR_walls
+		cost = 100		
+ 		allowed = {
+			original_tag = TUR	
+		}
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_Borders_at_Europe
+			has_country_flag = TUR_Fortify_East
+		}
+		available = {
+			controls_state = 344
+			controls_state = 350
+			controls_state = 352
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		highlight_states = {
+			state = 350
+		}		
+		complete_effect = {
+			set_temp_variable = { money_to_gain = -100 }
+			add_money_with_tooltip_effect = yes			
+		}
+		remove_effect = {
+			344 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = {
+				        all_provinces = yes
+				        limit_to_border = yes
+				    }
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 1
+				    instant_build = yes
+				    province = 9893
+				}			
+			}
+			350 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = {
+				        all_provinces = yes
+				        limit_to_border = yes
+				    }
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 1
+				    instant_build = yes
+				    province = 11871
+				}		
+			}
+			352 = {
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = 7530
+				}
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = 12476
+				}	
+				add_building_construction = {
+				    type = bunker
+				    level = 2
+				    instant_build = yes
+				    province = 1463
+				}		
+			}
+		}
+	}
+}

@@ -1,0 +1,191 @@
+scripted_gui = {
+	open_dh_starting_screen_window = {
+		context_type = player_context
+		
+		window_name = open_dh_starting_screen_window
+		parent_window_token = top_bar
+		
+		visible = {
+			is_ai = no
+		}
+		
+		effects = {
+			open_button_click = {
+				if = {
+					limit = {
+						has_variable = show_dh_starting_screen_window
+					}
+					clear_variable = show_dh_starting_screen_window
+				}
+				else = {
+					set_variable = { show_dh_starting_screen_window = 1 }
+				}
+			}
+		}
+	}
+	
+	dh_welcome_screen_window = {
+		context_type = player_context
+		
+		window_name = "dh_welcome_screen_window"
+		
+		visible = {
+			is_ai = no
+			check_variable = { show_dh_welcome_screen_window > 0 }
+		}
+		
+		effects = {
+			close_button_click = {
+				clear_variable = show_dh_welcome_screen_window
+			}
+			more_information_button_click = {
+				clear_variable = show_dh_welcome_screen_window
+				set_variable = { show_dh_starting_screen_window = 1 }
+			}
+		}
+	}
+	
+	dh_starting_screen_window = {
+		context_type = player_context
+		
+		window_name = "dh_starting_screen_window"
+		
+		visible = {
+			is_ai = no
+			check_variable = { show_dh_starting_screen_window > 0 }
+		}
+		
+		effects = {
+			close_button_click = {
+				clear_variable = show_dh_starting_screen_window
+			}
+			back_button_click = {
+				divide_variable = { show_dh_starting_screen_window = 1000 }
+				multiply_variable = { show_dh_starting_screen_window = 1000 }
+			}
+			tab_1_button_click = {
+				set_variable = { show_dh_starting_screen_window = 1 }
+			}
+			tab_2_button_click = {
+				set_variable = { show_dh_starting_screen_window = 2 }
+			}
+		}
+		
+		triggers = {
+			back_button_visible = {
+				NOT = { check_variable = { show_dh_starting_screen_window = 1 } }
+				NOT = { check_variable = { show_dh_starting_screen_window = 2 } }
+			}
+			tab_1_button_visible = {
+				OR = {
+					NOT = { check_variable = { var = show_dh_starting_screen_window value = 1 compare = greater_than_or_equals } }
+					NOT = { check_variable = { show_dh_starting_screen_window < 2 } }
+				}
+			}
+			tab_1_selected_visible = {
+				check_variable = { var = show_dh_starting_screen_window value = 1 compare = greater_than_or_equals }
+				check_variable = { show_dh_starting_screen_window < 2 }
+			}
+			tab_2_button_visible = {
+				OR = {
+					NOT = { check_variable = { var = show_dh_starting_screen_window value = 2 compare = greater_than_or_equals } }
+					NOT = { check_variable = { show_dh_starting_screen_window < 3 } }
+				}
+			}
+			tab_2_selected_visible = {
+				check_variable = { var = show_dh_starting_screen_window value = 2 compare = greater_than_or_equals }
+				check_variable = { show_dh_starting_screen_window < 3 }
+			}
+		}
+	}
+	
+	dh_starting_screen_tab_1_window = {
+		context_type = player_context
+		
+		window_name = "dh_starting_screen_tab_1_window"
+		parent_window_name = "dh_starting_screen_window"
+		
+		visible = {
+			check_variable = { show_dh_starting_screen_window > 1 }
+			check_variable = { show_dh_starting_screen_window < 2 }
+			set_temp_variable = { v = show_dh_starting_screen_window }
+		}
+		
+		effects = {
+			flag_click = {
+				capital_scope = {
+					ROOT = {
+						goto_state = PREV
+					}
+				}
+			}
+		}
+		
+		properties = {
+			flag = {
+				image = "[This.GetFlag]"
+			}
+		}
+	}
+	
+	dh_starting_screen_tab_1_list_window = {
+		context_type = player_context
+		
+		window_name = "dh_starting_screen_tab_1_list_window"
+		parent_window_name = "dh_starting_screen_window"
+		
+		visible = {
+			check_variable = { show_dh_starting_screen_window = 1 }
+		}
+		
+		effects = {
+			entry_button_click = {
+				set_variable = { show_dh_starting_screen_window = v }
+			}
+		}
+		
+		dynamic_lists = {
+			dh_starting_screen_tab_1_list_gridbox = {
+				array = global.dh_starting_screen_tab_1_list_array
+				entry_container = dh_starting_screen_tab_list_entry
+			}
+		}
+	}
+	
+	dh_starting_screen_tab_2_window = {
+		context_type = player_context
+		
+		window_name = "dh_starting_screen_tab_2_window"
+		parent_window_name = "dh_starting_screen_window"
+		
+		visible = {
+			check_variable = { show_dh_starting_screen_window > 2 }
+			check_variable = { show_dh_starting_screen_window < 3 }
+			set_temp_variable = { v = show_dh_starting_screen_window }
+		}
+	}
+	
+	dh_starting_screen_tab_2_list_window = {
+		context_type = player_context
+		
+		window_name = "dh_starting_screen_tab_2_list_window"
+		parent_window_name = "dh_starting_screen_window"
+		
+		visible = {
+			check_variable = { show_dh_starting_screen_window = 2 }
+		}
+		
+		effects = {
+			entry_button_click = {
+				set_variable = { show_dh_starting_screen_window = v }
+			}
+		}
+		
+		dynamic_lists = {
+			dh_starting_screen_tab_2_list_gridbox = {
+				array = global.dh_starting_screen_tab_2_list_array
+				entry_container = dh_starting_screen_tab_list_entry
+			}
+		}
+	}
+}

@@ -1,0 +1,124 @@
+﻿###########################
+# Darkest Hour Events : Portugal
+###########################
+add_namespace = portugal
+#########################################################################
+# Operation Isabella: Portugese Reply Verde
+#########################################################################
+country_event = {
+	id = portugal.1
+	title = portugal.1.t
+	desc = portugal.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We accept this transition
+	option = {
+		name = portugal.1.A
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					any_other_country = {
+						NOT = { tag = GER }
+						has_guaranteed = POR
+						is_major = yes
+					}
+					any_other_country = {
+						is_in_faction_with = POR
+						NOT = { tag = GER }
+					}
+				}
+				factor = 0
+			}
+		}
+		GER = {
+			country_event = { hours = 6 id = Germany_Isabella.2 }
+		}
+	}
+	#We cannot sell our sovereignty!
+	option = {
+		name = portugal.1.B
+		GER = { country_event = { hours = 6 id = Germany_Isabella.3 }}
+		ai_chance = {
+			factor = 40
+			modifier = {
+				POR = {
+					is_in_faction_with = GER
+				}
+				factor = 0
+			}
+			modifier = {
+				GER = {
+					has_army_manpower = { size > 2499999}
+				}
+				factor = 0.7
+			}
+			modifier = {
+				GER = {
+					is_in_faction_with = ITA
+				}
+				factor = 0.7
+			}
+		}
+	}
+}
+#########################################################################
+# Operation Isabella: Portugese Reply Both
+#########################################################################
+country_event = {
+	id = portugal.2
+	title = portugal.2.t
+	desc = portugal.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+	#We accept this transition
+	option = {
+		name = portugal.2.A
+		GER = { news_event = { hours = 6 id = germany.4 }}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					any_other_country = {
+						NOT = { tag = GER }
+						has_guaranteed = POR
+						is_major = yes
+					}
+					any_other_country = {
+						is_in_faction_with = POR
+						NOT = { tag = GER }
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+	#We cannot sell our sovereignty!
+	option = {
+		name = portugal.2.B
+		GER = { news_event = { hours = 6 id = germany.5 }}
+		ai_chance = {
+			factor = 60
+			modifier = {
+				POR = {
+					is_in_faction_with = GER
+				}
+				factor = 0
+			}
+			modifier = {
+				GER = {
+					has_army_manpower = { size > 2499999 }
+				}
+				factor = 0.7.
+			}
+			modifier = {
+				GER = {
+					is_in_faction_with = ITA
+				}
+				factor = 0.7
+			}
+		}
+	}
+}

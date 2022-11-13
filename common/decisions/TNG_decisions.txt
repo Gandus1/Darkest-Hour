@@ -1,0 +1,183 @@
+#########################################################################
+#  Ma Zhongying
+#########################################################################
+TNG_Ma_Zhongying = {
+	###########################
+	# Keep a Personal Treasury
+	###########################
+	TNG_Keep_a_Personal_Treasury = {
+		icon = hol_attract_foreign_investors
+		fire_only_once = no
+		cost = 50
+		visible = {
+			original_tag = TNG
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 40
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -40
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			custom_effect_tooltip = TNG_Keep_a_Personal_Treasury_tt
+			add_to_variable = {
+				var = TNG_Ma_Zhongying_Mood
+				value = 2
+			}
+			calculate_leader_mood = yes
+		}
+	}
+	###########################
+	# Pick up some Girls
+	###########################
+	TNG_Pick_up_some_Girls = {
+		icon = generic_independence
+		fire_only_once = no
+		cost = 50
+		days_re_enable = 30
+		visible = {
+			original_tag = TNG
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 5
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -5
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			custom_effect_tooltip = TNG_Pick_up_some_Girls_tt
+			hidden_effect = {
+				add_manpower = -3
+			}
+			custom_effect_tooltip = TNG_Keep_a_Personal_Treasury_tt
+			add_to_variable = {
+				var = TNG_Ma_Zhongying_Mood
+				value = 2
+			}
+			calculate_leader_mood = yes
+		}
+	}
+	###########################
+	# Go on a Raid
+	###########################
+	TNG_Go_on_a_Raid = {
+		icon = generic_prepare_civil_war
+		fire_only_once = no
+		cost = 0
+		days_remove = 10
+		days_re_enable = 20
+		visible = {
+			original_tag = TNG
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 10
+			}
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -10
+			}
+			custom_effect_tooltip = TNG_Keep_a_Personal_Treasury_tt
+			add_to_variable = {
+				var = TNG_Ma_Zhongying_Mood
+				value = 2
+			}
+			calculate_leader_mood = yes
+		}
+	}
+	###########################
+	# Hold a Party
+	###########################
+	TNG_Hold_a_Party = {
+		icon = generic_political_discourse
+		fire_only_once = no
+		cost = 0
+		days_re_enable = 20
+		visible = {
+			original_tag = TNG
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 50
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -50
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			custom_effect_tooltip = TNG_Keep_a_Personal_Treasury_tt
+			add_to_variable = {
+				var = TNG_Ma_Zhongying_Mood
+				value = 2
+			}
+			calculate_leader_mood = yes
+		}
+	}
+	###########################
+	# Blood and Terror
+	###########################
+	TNG_Blood_and_Terror = {
+		icon = generic_ignite_civil_war
+		fire_only_once = no
+		cost = 0
+		days_remove = 10
+		days_re_enable = 30
+		visible = {
+			original_tag = TNG
+		}
+		available = {
+			has_stability > 0.1
+			has_equipment = {
+				infantry_equipment > 50
+			}
+		}
+		remove_effect = {
+			add_stability = -0.03
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -50
+			}
+			custom_effect_tooltip = TNG_Blood_and_Terror_tt
+			add_to_variable = {
+				var = TNG_Ma_Zhongying_Mood
+				value = -3
+			}
+			calculate_leader_mood = yes
+		}
+	}
+	###########################
+	# Inspect the Divisions
+	###########################
+	TNG_Inspect_the_Divisions = {
+		icon = generic_army_support
+		fire_only_once = no
+		cost = 10
+		days_re_enable = 20
+		visible = {
+			original_tag = TNG
+		}
+		available = {
+		}
+		complete_effect = {
+			army_experience = 2
+			custom_effect_tooltip = TNG_Inspect_the_Divisions_tt
+			add_to_variable = {
+				var = TNG_Ma_Zhongying_Mood
+				value = -2
+			}
+			calculate_leader_mood = yes
+		}
+	}
+}

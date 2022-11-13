@@ -1,0 +1,2232 @@
+#!gfx:interface\_Goals.gfx
+focus_tree = {
+	id = CHI
+	country = {
+		factor = 0
+		modifier = {
+			add = 0
+			tag = CHI
+		}
+	}
+	default = no
+	continuous_focus_position = {
+		x = 30
+		y = 1350
+	}
+	initial_show_position = {
+		focus = CHI_Fourth_Encirclement_Campaign
+	}
+	######################################################
+	# Political Branch									 #
+	######################################################
+	focus = {
+		id = CHI_Fourth_Encirclement_Campaign
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 7
+		cancelable = no
+		x = 6
+		y = 0
+		select_effect = {
+			country_event = {
+				id = CHI_Civil_War.1
+				hours = 6
+			}
+		}
+		completion_reward = {
+			country_event = {
+				id = CHI_Civil_War.2
+			}
+		}
+	}
+	focus = {
+		id = CHI_Final_Encirclement
+		icon = GFX_focus_attack_soviet
+		cost = 90
+		cancelable = no
+		available = {
+			has_country_flag = fourth_encirclement
+			date > 1933.6.25
+		}
+		prerequisite = {
+			focus = CHI_Fourth_Encirclement_Campaign
+		}
+		x = 7
+		y = 1
+		select_effect = {
+			country_event = {
+				id = CHI_Civil_War.4
+				days = 7
+			}
+		}
+		completion_reward = {
+		}
+	}
+	#Internal Politics
+	focus = {
+		id = CHI_Political_Tutelage
+		icon = GFX_CHI_Three_Principles_of_the_People
+		cost = 50
+		relative_position_id = CHI_Fourth_Encirclement_Campaign
+		x = 10
+		y = 1
+		prerequisite = {
+			focus = CHI_Fourth_Encirclement_Campaign
+		}
+		completion_reward = {
+			add_political_power = 100
+			unlock_decision_category_tooltip = CHI_Peoples_Tutelage_Category
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = CHI_Dang_Guo
+		icon = GFX_CHI_Single_Party
+		cost = 35
+		prerequisite = {
+			focus = CHI_Political_Tutelage
+		}
+		relative_position_id = CHI_Political_Tutelage
+		x = -6
+		y = 1
+		completion_reward = {
+			add_ideas = CHI_yi_dang_zhi_guo
+		}
+	}
+	focus = {
+		id = CHI_Central_Exec_Committee
+		icon = GFX_GENERIC_Parliament
+		cost = 50
+		prerequisite = {
+			focus = CHI_Dang_Guo
+		}
+		relative_position_id = CHI_Dang_Guo
+		x = 1
+		y = 1
+		completion_reward = {
+			add_political_power = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = CHI_Political_Mobilization
+		icon = GFX_focus_generic_self_management
+		cost = 35
+		prerequisite = {
+			focus = CHI_Dang_Guo
+		}
+		relative_position_id = CHI_Dang_Guo
+		x = -1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Mobilize_Trade_Unions
+			unlock_decision_tooltip = CHI_Mobilize_Student_Associations
+			unlock_decision_tooltip = CHI_Mobilize_Newspaper_Companies
+		}
+	}
+	focus = {
+		id = CHI_Absorb_Civilian_Orgs
+		icon = GFX_goal_unknown
+		cost = 35
+		prerequisite = {
+			focus = CHI_Political_Mobilization
+		}
+		prerequisite = {
+			focus = CHI_Central_Exec_Committee
+		}
+		relative_position_id = CHI_Political_Mobilization
+		x = -1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Absorb_Trade_Unions
+			unlock_decision_tooltip = CHI_Absorb_Student_Associations
+			unlock_decision_tooltip = CHI_Absorb_Newspaper_Companies
+		}
+	}
+	focus = {
+		id = CHI_Centralization
+		icon = GFX_GENERIC_Centralization
+		cost = 35
+		prerequisite = {
+			focus = CHI_Central_Exec_Committee
+		}
+		relative_position_id = CHI_Central_Exec_Committee
+		x = 1
+		y = 1
+		completion_reward = {
+			set_variable = {
+				government_reform = 0
+			}
+			unlock_decision_tooltip = CHI_Centralise_Taxation_Offices
+			unlock_decision_tooltip = CHI_Centralise_Customs_Offices
+			unlock_decision_tooltip = CHI_Centralise_Banking_Offices
+			unlock_decision_tooltip = CHI_Centralise_Transportation_Offices
+		}
+	}
+	focus = {
+		id = CHI_Purge_Bureaucrats
+		icon = GFX_goal_anti_comintern_pact
+		cost = 70
+		available = {
+			has_completed_focus = CHI_Restrict_Membership
+		}
+		prerequisite = {
+			focus = CHI_Political_Mobilization
+		}
+		prerequisite = {
+			focus = CHI_Central_Exec_Committee
+		}
+		relative_position_id = CHI_Dang_Guo
+		x = 0
+		y = 2
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = CHI_restricted_party_membership
+				add_idea = CHI_Government_Purge_1
+			}
+			custom_effect_tooltip = CHI_Corruption_Mission_Lower_Focus_tt
+			activate_mission = CHI_Corruption_Timer_Mission
+			clr_country_flag = CHI_max_corruption
+			add_to_variable = {
+				CHI_Corruption_Political_Power = 0.25
+			}
+			add_to_variable = {
+				CHI_Corruption_Build_Speed = 0.5
+			}
+			add_to_variable = {
+				CHI_Corruption_Consumer_Goods = -0.1
+			}
+			add_to_variable = {
+				CHI_Corruption_Stability = 0.15
+			}
+			add_to_variable = {
+				CHI_Corruption_War_Support = 0.15
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = CHI_Provincial_Authority
+		icon = GFX_GENERIC_Justice_System
+		cost = 35
+		prerequisite = {
+			focus = CHI_Centralization
+		}
+		prerequisite = {
+			focus = CHI_Purge_Bureaucrats
+		}
+		prerequisite = {
+			focus = CHI_Absorb_Civilian_Orgs
+		}
+		relative_position_id = CHI_Purge_Bureaucrats
+		x = -1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_Provincial_Authority_tt
+		}
+	}
+	focus = {
+		id = CHI_Skilled_Administrators
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 35
+		prerequisite = {
+			focus = CHI_Centralization
+		}
+		prerequisite = {
+			focus = CHI_Purge_Bureaucrats
+		}
+		prerequisite = {
+			focus = CHI_Absorb_Civilian_Orgs
+		}
+		relative_position_id = CHI_Purge_Bureaucrats
+		x = 1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_Skilled_Administrators_tt
+		}
+	}
+	focus = {
+		id = CHI_Final_Push_Against_Corruption
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 90
+		cancelable = no
+		prerequisite = {
+			focus = CHI_Skilled_Administrators
+		}
+		prerequisite = {
+			focus = CHI_Provincial_Authority
+		}
+		available = {
+			has_country_flag = provincial_authority_3
+			has_country_flag = administrators_3
+		}
+		relative_position_id = CHI_Skilled_Administrators
+		x = -1
+		y = 1
+		completion_reward = {
+			remove_dynamic_modifier = {
+				modifier = CHI_Corruption
+			}
+		}
+	}
+	focus = {
+		id = CHI_Nationalism
+		icon = GFX_CHI_Minzu
+		cost = 10
+		prerequisite = {
+			focus = CHI_Fourth_Encirclement_Campaign
+		}
+		relative_position_id = CHI_Fourth_Encirclement_Campaign
+		x = -5
+		y = 1
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = CHI_Side_With_Landlords
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Nationalism
+		}
+		relative_position_id = CHI_Nationalism
+		mutually_exclusive = {
+			focus = CHI_Commit_to_Reform
+		}
+		x = 1
+		y = 1
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = CHI_Restrict_Membership
+		icon = GFX_CHI_Limit_Kuomintang_Membership
+		cost = 10
+		prerequisite = {
+			focus = CHI_Side_With_Landlords
+		}
+		relative_position_id = CHI_Side_With_Landlords
+		x = -1
+		y = 1
+		completion_reward = {
+			add_ideas = CHI_restricted_party_membership
+		}
+	}
+	focus = {
+		id = CHI_Curtail_Blue_Shirts
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Restrict_Membership
+		}
+		mutually_exclusive = {
+			focus = CHI_Embrace_Fascist_Influence
+		}
+		relative_position_id = CHI_Restrict_Membership
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Embrace_Fascist_Influence
+		icon = GFX_GENERIC_Ideology_Fascism
+		cost = 10
+		prerequisite = {
+			focus = CHI_Restrict_Membership
+		}
+		mutually_exclusive = {
+			focus = CHI_Curtail_Blue_Shirts
+		}
+		relative_position_id = CHI_Restrict_Membership
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_New_Life_Movement
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Embrace_Fascist_Influence
+			focus = CHI_Curtail_Blue_Shirts
+		}
+		relative_position_id = CHI_Restrict_Membership
+		x = 0
+		y = 2
+	}
+	focus = {
+		id = CHI_Zhongtong
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Embrace_Fascist_Influence
+			focus = CHI_Curtail_Blue_Shirts
+		}
+		relative_position_id = CHI_Restrict_Membership
+		x = -2
+		y = 2
+	}
+	focus = {
+		id = CHI_CC_Clique_Power
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Embrace_Fascist_Influence
+			focus = CHI_Curtail_Blue_Shirts
+		}
+		relative_position_id = CHI_Restrict_Membership
+		x = 2
+		y = 2
+	}
+	focus = {
+		id = CHI_Chiangs_Cadres
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_New_Life_Movement
+		}
+		prerequisite = {
+			focus = CHI_Zhongtong
+		}
+		prerequisite = {
+			focus = CHI_CC_Clique_Power
+		}
+		relative_position_id = CHI_New_Life_Movement
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Commit_to_Reform
+		icon = GFX_goal_unknown
+		cost = 10
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = CHI_Nationalism
+		}
+		mutually_exclusive = {
+			focus = CHI_Side_With_Landlords
+		}
+		relative_position_id = CHI_Nationalism
+		x = -1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_Commit_to_Reform_tt
+		}
+	}
+	#External Politics
+	focus = {
+		id = CHI_Chinese_Hindenberg_Line
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Final_Encirclement
+		}
+		prerequisite = {
+			focus = CHI_National_Defense_Council
+		}
+		relative_position_id = CHI_Final_Encirclement
+		x = 1
+		y = 1
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = CHI_Destroy_the_Remaining_Soviets
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Chinese_Hindenberg_Line
+		}
+		relative_position_id = CHI_Chinese_Hindenberg_Line
+		x = -1
+		y = 1
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = CHI_National_Defense_Council
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 10
+		prerequisite = {
+			focus = CHI_Fourth_Encirclement_Campaign
+		}
+		relative_position_id = CHI_Fourth_Encirclement_Campaign
+		x = -1
+		y = 1
+		completion_reward = {
+			add_ideas = CHI_nat_defense_council
+		}
+	}
+	focus = {
+		id = CHI_Reproachment
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		prerequisite = {
+			focus = CHI_National_Defense_Council
+		}
+		mutually_exclusive = {
+			focus = CHI_Containment
+		}
+		relative_position_id = CHI_National_Defense_Council
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Containment
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 10
+		prerequisite = {
+			focus = CHI_National_Defense_Council
+		}
+		mutually_exclusive = {
+			focus = CHI_Reproachment
+		}
+		relative_position_id = CHI_National_Defense_Council
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Appeasement
+		icon = GFX_focus_generic_concessions
+		cost = 10
+		prerequisite = {
+			focus = CHI_Containment
+			focus = CHI_Reproachment
+		}
+		relative_position_id = CHI_National_Defense_Council
+		x = 0
+		y = 2
+		completion_reward = {
+			add_ideas = CHI_appeasement_policy
+		}
+	}
+	focus = {
+		id = CHI_Ally_In_Guangdong
+		icon = GFX_goal_unknown
+		cost = 10
+		available = {
+			has_country_flag = hu_hanmin_dead
+		}
+		prerequisite = {
+			focus = CHI_Appeasement
+			focus = CHI_Destroy_the_Remaining_Soviets
+		}
+		relative_position_id = CHI_Appeasement
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Realign_Priorities
+		icon = GFX_CHI_Xian_Incident
+		cost = 10
+		bypass = {
+			is_in_faction_with = PRC
+		}
+		prerequisite = {
+			focus = CHI_Ally_In_Guangdong
+		}
+		relative_position_id = CHI_Ally_In_Guangdong
+		x = 0
+		y = 1
+		select_effect = {
+			news_event = {
+				id = CHI_Xian.1
+				days = 2
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = xian_chiang
+			hidden_effect = {
+				news_event = CHI_Xian.2
+			}
+		}
+	}
+	focus = {
+		id = CHI_Heart_Disease
+		icon = GFX_CHI_Treat_The_Heart_Disease
+		cost = 10
+		prerequisite = {
+			focus = CHI_Realign_Priorities
+		}
+		mutually_exclusive = {
+			focus = CHI_Skin_Disease
+		}
+		available = {
+			always = no
+			has_country_flag = xian_failed
+			has_completed_focus = CHI_Reproachment
+		}
+		relative_position_id = CHI_Realign_Priorities
+		x = -2
+		y = 1
+		completion_reward = {
+			news_event = CHI_Xian.3
+			custom_effect_tooltip = CHI_Heart_Disease_tt
+		}
+	}
+	focus = {
+		id = CHI_Skin_Disease
+		icon = GFX_focus_attack_japan
+		cost = 10
+		bypass = {
+			is_in_faction_with = PRC
+		}
+		prerequisite = {
+			focus = CHI_Realign_Priorities
+		}
+		mutually_exclusive = {
+			focus = CHI_Heart_Disease
+		}
+		available = {
+			has_country_flag = xian_success
+		}
+		relative_position_id = CHI_Realign_Priorities
+		x = 2
+		y = 1
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = CHI_Comintern_Coop
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		cost = 10
+		prerequisite = {
+			focus = CHI_Skin_Disease
+		}
+		relative_position_id = CHI_Skin_Disease
+		x = 1
+		y = 1
+		completion_reward = {
+			SOV = {
+				add_opinion_modifier = {
+					target = CHI
+					modifier = CHI_sov_pact_opinion
+				}
+			}
+			add_opinion_modifier = {
+				target = SOV
+				modifier = CHI_sov_pact_opinion
+			}
+		}
+	}
+	focus = {
+		id = CHI_Negotiation
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		cost = 10
+		prerequisite = {
+			focus = CHI_Comintern_Coop
+		}
+		relative_position_id = CHI_Comintern_Coop
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Eliminate_Warlordism
+		icon = GFX_TNG_Seek_Assisstance_from_the_KMT
+		cost = 10
+		prerequisite = {
+			focus = CHI_Negotiation
+		}
+		relative_position_id = CHI_Negotiation
+		x = 0
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = CHI_Warlords.1
+				hours = 10
+			}
+		}
+	}
+	focus = {
+		id = CHI_Fortress_China
+		icon = GFX_goal_generic_construct_military
+		cost = 10
+		prerequisite = {
+			focus = CHI_Comintern_Coop
+		}
+		relative_position_id = CHI_Comintern_Coop
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Efforts_of_the_Four
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Negotiation
+		}
+		available = {
+			has_completed_focus = CHI_Mass_Literacy
+			has_war_with = JAP
+		}
+		relative_position_id = CHI_Negotiation
+		x = -2
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Efforts_of_the_Four
+		}
+	}
+	focus = {
+		id = CHI_War_in_Chongqing
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Yellow_River
+		}
+		prerequisite = {
+			focus = CHI_Eliminate_Warlordism
+		}
+		mutually_exclusive = {
+			focus = CHI_Peace_with_Japan
+		}
+		relative_position_id = CHI_Fortress_China
+		x = 0
+		y = 2
+	}
+	focus = {
+		id = CHI_Lure_Them_In
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_War_in_Chongqing
+		}
+		available = {
+			has_completed_focus = CHI_Prepare_Countryside_for_War
+			has_war_with = JAP
+		}
+		relative_position_id = CHI_War_in_Chongqing
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Prepare_Partisans
+		}
+	}
+	focus = {
+		id = CHI_War_National_Liberation
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Lure_Them_In
+		}
+		available = {
+			has_war_with = JAP
+		}
+		relative_position_id = CHI_Lure_Them_In
+		x = 0
+		y = 1
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = CHI_Peace_with_Japan
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Eliminate_Warlordism
+		}
+		prerequisite = {
+			focus = CHI_Yellow_River
+		}
+		mutually_exclusive = {
+			focus = CHI_War_in_Chongqing
+		}
+		relative_position_id = CHI_Eliminate_Warlordism
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Ratify_the_Pact
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Peace_with_Japan
+		}
+		relative_position_id = CHI_Peace_with_Japan
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Yangtze_River
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Fortress_China
+		}
+		relative_position_id = CHI_Fortress_China
+		x = 2
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_Yangtze_River_tt
+			hidden_effect = {
+				613 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 10076
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11982
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11913
+							instant_build = yes
+						}
+					}
+				}
+				749 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 1099
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 1171
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11937
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 10044
+							instant_build = yes
+						}
+					}
+				}
+				600 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 1153
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 1628
+							instant_build = yes
+						}
+					}
+				}
+				620 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 1036
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 4619
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 12467
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 4130
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 1612
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 7609
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 10474
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 7019
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 8072
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Yellow_River
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Fortress_China
+		}
+		relative_position_id = CHI_Fortress_China
+		x = 0
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_Yellow_River_tt
+			hidden_effect = {
+				597 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 4089
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 10102
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 1069
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 10072
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 12069
+							instant_build = yes
+						}
+					}
+				}
+				614 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 7129
+							instant_build = yes
+						}
+					}
+				}
+				607 = {
+					if = {
+						limit = {
+							is_controlled_by = ROOT
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 7656
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 9958
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 1004
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 11931
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 4
+							province = 6932
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	######################################################
+	# Economy Branch									 #
+	######################################################
+	focus = {
+		id = CHI_Great_Awakening
+		icon = GFX_CHI_Minsheng
+		cost = 56
+		prerequisite = {
+			focus = CHI_Political_Tutelage
+		}
+		relative_position_id = CHI_Political_Tutelage
+		x = 5
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	# Path to Economic Recovery
+	focus = {
+		id = CHI_Path_to_Economic_Recovery
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 56
+		available = {
+			has_country_flag = depression_easing
+		}
+		prerequisite = {
+			focus = CHI_Great_Awakening
+		}
+		relative_position_id = CHI_Great_Awakening
+		x = -2
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = CHI_Economic_Reform_Actions
+			add_stability = 0.1
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = CHI_Invest_Major_Trade
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 10
+		prerequisite = {
+			focus = CHI_Path_to_Economic_Recovery
+		}
+		relative_position_id = CHI_Path_to_Economic_Recovery
+		x = -2
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Invest_in_Trade
+			613 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			868 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			608 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			592 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Commission_Industry_Mining
+		icon = GFX_CHI_Commission_for_Industry_and_Mining
+		cost = 10
+		prerequisite = {
+			focus = CHI_Path_to_Economic_Recovery
+		}
+		relative_position_id = CHI_Path_to_Economic_Recovery
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Nationalize_Key_Industry
+			unlock_decision_tooltip = CHI_Nationalize_Mining
+			add_ideas = CHI_ROC_Commission_1
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Militarize_Private_Business
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 10
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = CHI_Invest_Major_Trade
+		}
+		prerequisite = {
+			focus = CHI_Commission_Industry_Mining
+		}
+		relative_position_id = CHI_Invest_Major_Trade
+		x = 1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Militarize_Private_Business
+		}
+	}
+	focus = {
+		id = CHI_Expand_State_Owned_Mining
+		icon = GFX_focus_generic_steel
+		cost = 10
+		prerequisite = {
+			focus = CHI_Commission_Industry_Mining
+		}
+		relative_position_id = CHI_Commission_Industry_Mining
+		x = 1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Expand_State_Steel_Mining
+			unlock_decision_tooltip = CHI_Expand_State_Tungsten_Mining
+			add_resource = {
+				type = steel
+				amount = 5
+				state = 613
+			}
+			add_resource = {
+				type = steel
+				amount = 5
+				state = 606
+			}
+			add_resource = {
+				type = steel
+				amount = 5
+				state = 622
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Expand_State_Industry
+		icon = GFX_SPR_1933_Industria_Regeneracionista
+		cost = 10
+		prerequisite = {
+			focus = CHI_Expand_State_Owned_Mining
+		}
+		prerequisite = {
+			focus = CHI_Militarize_Private_Business
+		}
+		relative_position_id = CHI_Expand_State_Owned_Mining
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Expand_State_Business
+		}
+	}
+	focus = {
+		id = CHI_Coerce_Shanghai
+		icon = GFX_CHI_Coerce_Shanghai_Merchants
+		cost = 10
+		prerequisite = {
+			focus = CHI_Invest_Major_Trade
+		}
+		relative_position_id = CHI_Invest_Major_Trade
+		x = -1
+		y = 1
+		completion_reward = {
+			add_political_power = -25
+			868 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Seize_Assets
+		icon = GFX_GENERIC_Factory_Takeover
+		cost = 10
+		prerequisite = {
+			focus = CHI_Coerce_Shanghai
+		}
+		relative_position_id = CHI_Coerce_Shanghai
+		x = 0
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+			868 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Banking_Coup
+		icon = GFX_GENERIC_Banker_Coup
+		cost = 10
+		available = {
+			has_country_flag = chiang_speaks_against_bankers
+		}
+		prerequisite = {
+			focus = CHI_Path_to_Economic_Recovery
+		}
+		relative_position_id = CHI_Path_to_Economic_Recovery
+		x = -5
+		y = 1
+		completion_reward = {
+			news_event = {
+				id = CHI_Economy.7
+				hours = 6
+			}
+			unlock_decision_tooltip = CHI_Introduce_Fabi_Currency
+		}
+	}
+	focus = {
+		id = CHI_Nationalize_Smaller_Banks
+		icon = GFX_GENERIC_Nationalize_Banks
+		cost = 10
+		prerequisite = {
+			focus = CHI_Banking_Coup
+		}
+		relative_position_id = CHI_Banking_Coup
+		x = 0
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+			set_temp_variable = {
+				money_to_gain = 5000
+			}
+			add_money_with_tooltip_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	# Rural Reconstruction Movement
+	focus = {
+		id = CHI_Support_Rural_Reconstruction
+		icon = GFX_goal_unknown
+		cost = 10
+		bypass = {
+			always = yes
+		}
+		prerequisite = {
+			focus = CHI_Great_Awakening
+		}
+		relative_position_id = CHI_Great_Awakening
+		x = 2
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = CHI_Rural_Reconstruction_Actions
+		}
+	}
+	focus = {
+		id = CHI_Accept_American_Missionaries
+		icon = GFX_CHI_Chinese_Church
+		cost = 10
+		prerequisite = {
+			focus = CHI_Support_Rural_Reconstruction
+		}
+		relative_position_id = CHI_Support_Rural_Reconstruction
+		x = 3
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_Accept_American_Missionaries_tt
+			add_to_variable = {
+				rural_reconstruction_cost = -5
+			}
+		}
+	}
+	focus = {
+		id = CHI_JCRR
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Accept_American_Missionaries
+		}
+		relative_position_id = CHI_Accept_American_Missionaries
+		x = 0
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CHI_JCRR_tt
+			add_ideas = CHI_JCRR
+			add_to_variable = {
+				rural_reconstruction_cost = -5
+			}
+		}
+	}
+	focus = {
+		id = CHI_Invest_Rural_Infrastructure
+		icon = GFX_GENERIC_Road_Construction
+		cost = 10
+		prerequisite = {
+			focus = CHI_Support_Rural_Reconstruction
+		}
+		relative_position_id = CHI_Support_Rural_Reconstruction
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Reconstruct_Infrastructure
+			613 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			598 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			606 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			749 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			596 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Connect_Villages
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 10
+		prerequisite = {
+			focus = CHI_Invest_Rural_Infrastructure
+		}
+		relative_position_id = CHI_Invest_Rural_Infrastructure
+		x = 1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Reconstruct_Industry
+			613 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			868 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Expand_Rural_Administration
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 10
+		prerequisite = {
+			focus = CHI_Invest_Rural_Infrastructure
+		}
+		relative_position_id = CHI_Invest_Rural_Infrastructure
+		x = -1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Reconstruct_Administration
+			set_variable = {
+				CHI_Admin = CHI_Admin_Chaos_Build_Speed
+			}
+			set_variable = {
+				CHI_Political = CHI_Admin_Chaos_Political_Power
+			}
+			set_variable = {
+				CHI_Resources = CHI_Admin_Chaos_Resources
+			}
+			set_variable = {
+				CHI_Stability = CHI_Admin_Chaos_Stablity
+			}
+			multiply_variable = {
+				CHI_Admin = -0.1
+			}
+			multiply_variable = {
+				CHI_Political = -0.1
+			}
+			multiply_variable = {
+				CHI_Resources = -0.1
+			}
+			multiply_variable = {
+				CHI_Stability = -0.1
+			}
+		}
+	}
+	focus = {
+		id = CHI_Prepare_Countryside_for_War
+		icon = GFX_GENERIC_Urban_Warfare
+		cost = 10
+		prerequisite = {
+			focus = CHI_Connect_Villages
+		}
+		relative_position_id = CHI_Connect_Villages
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Reconstruct_Mil_Industry
+		}
+	}
+	focus = {
+		id = CHI_Mass_Literacy
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 10
+		prerequisite = {
+			focus = CHI_Connect_Villages
+		}
+		prerequisite = {
+			focus = CHI_Expand_Rural_Administration
+		}
+		relative_position_id = CHI_Expand_Rural_Administration
+		x = 0
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Reconstruct_Literacy
+		}
+	}
+	focus = {
+		id = CHI_The_Dragon_Awakened
+		icon = GFX_CHI_Dragon_Awakens
+		cost = 10
+		prerequisite = {
+			focus = CHI_Mass_Literacy
+		}
+		prerequisite = {
+			focus = CHI_Expand_State_Industry
+		}
+		relative_position_id = CHI_Great_Awakening
+		x = 0
+		y = 5
+	}
+	######################################################
+	# Military Branch									 #
+	######################################################
+	#National Revolutionary Army
+	focus = {
+		id = CHI_Reorganize_NRA
+		icon = GFX_CHI_Chinese_National_Army
+		cost = 10
+		x = 37
+		y = 0
+		completion_reward = {
+			army_experience = 50
+			air_experience = 50
+			navy_experience = 50
+		}
+		search_filters = {  }
+	}
+	focus = {
+		id = CHI_Political_Reorg
+		icon = GFX_GENERIC_Political_Army
+		cost = 10
+		prerequisite = {
+			focus = CHI_Reorganize_NRA
+		}
+		relative_position_id = CHI_Reorganize_NRA
+		x = 4
+		y = 1
+	}
+	focus = {
+		id = CHI_Reconcile_Opposition
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		prerequisite = {
+			focus = CHI_Political_Reorg
+		}
+		mutually_exclusive = {
+			focus = CHI_Remove_Opposition
+		}
+		relative_position_id = CHI_Political_Reorg
+		x = -1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Reconcile_Li_Jishen
+			unlock_decision_tooltip = CHI_Reconcile_Tang_Shengzi
+			unlock_decision_tooltip = CHI_Reconcile_Zhang_Fakui
+		}
+	}
+	focus = {
+		id = CHI_Remove_Opposition
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 10
+		prerequisite = {
+			focus = CHI_Political_Reorg
+		}
+		mutually_exclusive = {
+			focus = CHI_Reconcile_Opposition
+		}
+		relative_position_id = CHI_Political_Reorg
+		x = 1
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = CHI_Purge_Generals
+		}
+	}
+	focus = {
+		id = CHI_Reward_Loyalty
+		icon = GFX_goal_tripartite_pact
+		cost = 10
+		prerequisite = {
+			focus = CHI_Remove_Opposition
+			focus = CHI_Reconcile_Opposition
+		}
+		relative_position_id = CHI_Reconcile_Opposition
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Cull_Incompetency
+		icon = GFX_CHI_Promote_Competent_Officers
+		cost = 10
+		prerequisite = {
+			focus = CHI_Remove_Opposition
+			focus = CHI_Reconcile_Opposition
+		}
+		relative_position_id = CHI_Remove_Opposition
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_War_Theory
+		icon = GFX_GENERIC_Military_Academy
+		cost = 10
+		prerequisite = {
+			focus = CHI_Reorganize_NRA
+		}
+		relative_position_id = CHI_Reorganize_NRA
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Professional_Army
+		icon = GFX_GENERIC_Army
+		cost = 10
+		prerequisite = {
+			focus = CHI_War_Theory
+		}
+		mutually_exclusive = {
+			focus = CHI_Human_Wave
+		}
+		relative_position_id = CHI_War_Theory
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Selective_Integration
+		icon = GFX_GENERIC_Ideology_Military_Dictatorship
+		cost = 10
+		prerequisite = {
+			focus = CHI_Professional_Army
+		}
+		prerequisite = {
+			focus = CHI_Seeckt_Military_Affairs_Council
+		}
+		available = {
+			has_country_flag = CHI_Careful_Policy
+		}
+		relative_position_id = CHI_Professional_Army
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Human_Wave
+		icon = GFX_GENERIC_Mass_Assault
+		cost = 10
+		prerequisite = {
+			focus = CHI_War_Theory
+		}
+		mutually_exclusive = {
+			focus = CHI_Professional_Army
+		}
+		relative_position_id = CHI_War_Theory
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Full_Integration
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 10
+		prerequisite = {
+			focus = CHI_Human_Wave
+		}
+		available = {
+			has_country_flag = CHI_Agressive_Policy
+		}
+		relative_position_id = CHI_Human_Wave
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Modern_Fighting_Force
+		icon = GFX_focus_generic_license_production
+		cost = 10
+		prerequisite = {
+			focus = CHI_Selective_Integration
+			focus = CHI_Full_Integration
+		}
+		relative_position_id = CHI_Full_Integration
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Hire_Engineering_Companies
+		icon = GFX_GENERIC_Support_Privatization
+		cost = 10
+		prerequisite = {
+			focus = CHI_Modern_Fighting_Force
+		}
+		prerequisite = {
+			focus = CHI_Expand_Military_Production
+		}
+		relative_position_id = CHI_Modern_Fighting_Force
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Open_Taiyuan_Arsenal
+		icon = GFX_goal_generic_axis_build_infantry
+		cost = 10
+		prerequisite = {
+			focus = CHI_Hire_Engineering_Companies
+		}
+		relative_position_id = CHI_Hire_Engineering_Companies
+		x = -3
+		y = 1
+	}
+	focus = {
+		id = CHI_Expand_Minsheng
+		icon = GFX_focus_generic_tank_production
+		cost = 10
+		prerequisite = {
+			focus = CHI_Hire_Engineering_Companies
+		}
+		relative_position_id = CHI_Hire_Engineering_Companies
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Qishuyuan_Contracts
+		icon = GFX_GENERIC_Road_Construction
+		cost = 10
+		prerequisite = {
+			focus = CHI_Hire_Engineering_Companies
+		}
+		relative_position_id = CHI_Hire_Engineering_Companies
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Overhaul_Logistics
+		icon = GFX_focus_generic_combined_arms
+		cost = 10
+		prerequisite = {
+			focus = CHI_Hire_Engineering_Companies
+		}
+		relative_position_id = CHI_Hire_Engineering_Companies
+		x = 3
+		y = 1
+	}
+	# German Coop
+	focus = {
+		id = CHI_Hans_von_Seeckt
+		icon = GFX_goal_tripartite_pact
+		cost = 10
+		prerequisite = {
+			focus = CHI_Reorganize_NRA
+		}
+		relative_position_id = CHI_Reorganize_NRA
+		x = -4
+		y = 1
+	}
+	focus = {
+		id = CHI_Seeckt_Military_Affairs_Council
+		icon = GFX_CHI_Hans_von_Seeckt_Visit
+		cost = 10
+		prerequisite = {
+			focus = CHI_Hans_von_Seeckt
+		}
+		relative_position_id = CHI_Hans_von_Seeckt
+		x = 1
+		y = 1
+		completion_reward = {
+			army_experience = 20
+		}
+		search_filters = { }
+	}
+	focus = {
+		id = CHI_Training_Brigade
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 10
+		prerequisite = {
+			focus = CHI_Seeckt_Military_Affairs_Council
+		}
+		relative_position_id = CHI_Seeckt_Military_Affairs_Council
+		x = 0
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_Incompetent_NRA
+				add_idea = CHI_Incompetent_NRA_2
+			}
+			add_ideas = CHI_Modernized_General_Staff
+		}
+	}
+	focus = {
+		id = CHI_German_Officer_Training
+		icon = GFX_GENERIC_Lessons_from_the_War_German
+		cost = 10
+		prerequisite = {
+			focus = CHI_Training_Brigade
+		}
+		relative_position_id = CHI_Training_Brigade
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Sino_German_Cooperation
+		icon = GFX_CHI_Sino_German_Cooperation
+		cost = 10
+		prerequisite = {
+			focus = CHI_Hans_von_Seeckt
+		}
+		relative_position_id = CHI_Hans_von_Seeckt
+		x = -2
+		y = 1
+		completion_reward = {
+			598 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			606 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Sino_German_Resource_Agreement
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 10
+		prerequisite = {
+			focus = CHI_Sino_German_Cooperation
+		}
+		relative_position_id = CHI_Sino_German_Cooperation
+		x = 0
+		y = 1
+		completion_reward = {
+			613 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Industrial_Build_Up
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 10
+		available = {
+			has_completed_focus = CHI_Path_to_Economic_Recovery
+		}
+		prerequisite = {
+			focus = CHI_Sino_German_Resource_Agreement
+		}
+		prerequisite = {
+			focus = CHI_Great_Awakening
+		}
+		relative_position_id = CHI_Great_Awakening
+		x = 7
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = electronics
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Expand_Military_Production
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 10
+		available = {
+			has_completed_focus = CHI_Path_to_Economic_Recovery
+		}
+		prerequisite = {
+			focus = CHI_Sino_German_Resource_Agreement
+		}
+		relative_position_id = CHI_Sino_German_Resource_Agreement
+		x = -1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = armor
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = CHI_Three_Year_Plan
+		icon = GFX_goal_unknown
+		cost = 10
+		available = {
+			has_war = no
+		}
+		prerequisite = {
+			focus = CHI_Expand_Military_Production
+		}
+		prerequisite = {
+			focus = CHI_Industrial_Build_Up
+		}
+		relative_position_id = CHI_Sino_German_Resource_Agreement
+		x = -2
+		y = 2
+	}
+	focus = {
+		id = CHI_Nat_Resource_Commission_Oversight
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Three_Year_Plan
+		}
+		relative_position_id = CHI_Three_Year_Plan
+		x = -2
+		y = 1
+	}
+	focus = {
+		id = CHI_Monopolize_Tungsten
+		icon = GFX_focus_generic_tungsten
+		cost = 10
+		available = {
+			has_completed_focus = CHI_Expand_State_Owned_Mining
+		}
+		prerequisite = {
+			focus = CHI_Nat_Resource_Commission_Oversight
+		}
+		relative_position_id = CHI_Nat_Resource_Commission_Oversight
+		x = -1
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					HNN = {
+						exists = yes
+					}
+				}
+				HNN = {
+					give_resource_rights = {
+						receiver = CHI
+						state = 602
+					}
+				}
+			}
+			if = {
+				limit = {
+					GND = {
+						exists = yes
+					}
+				}
+				GND = {
+					give_resource_rights = {
+						receiver = CHI
+						state = 593
+					}
+				}
+			}
+			if = {
+				limit = {
+					GXC = {
+						exists = yes
+					}
+				}
+				GXC = {
+					give_resource_rights = {
+						receiver = CHI
+						state = 599
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = CHI_Metal_Exports
+		icon = GFX_GENERIC_Money
+		cost = 10
+		prerequisite = {
+			focus = CHI_Nat_Resource_Commission_Oversight
+		}
+		relative_position_id = CHI_Nat_Resource_Commission_Oversight
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Rail_Construction
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Three_Year_Plan
+		}
+		relative_position_id = CHI_Three_Year_Plan
+		x = 2
+		y = 1
+	}
+	focus = {
+		id = CHI_Guangzhou_Hankou
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CHI_Rail_Construction
+		}
+		relative_position_id = CHI_Rail_Construction
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Develop_Power
+		icon = GFX_GENERIC_Electric_Grid
+		cost = 10
+		prerequisite = {
+			focus = CHI_Rail_Construction
+		}
+		relative_position_id = CHI_Rail_Construction
+		x = 1
+		y = 1
+	}
+	# Other Branches
+	focus = {
+		id = CHI_Foreign_Assistance
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		prerequisite = {
+			focus = CHI_Reorganize_NRA
+		}
+		relative_position_id = CHI_Reorganize_NRA
+		x = 10
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = CHI_Army_Reform_Actions
+		}
+	}
+	# Air Force
+	focus = {
+		id = CHI_Air_Force
+		icon = GFX_CHI_Chinese_National_Air_Force
+		cost = 10
+		prerequisite = {
+			focus = CHI_Foreign_Assistance
+		}
+		relative_position_id = CHI_Foreign_Assistance
+		x = -2
+		y = 1
+	}
+	focus = {
+		id = CHI_Nat_Aviation_Coop
+		icon = GFX_goal_generic_air_fighter2
+		cost = 10
+		prerequisite = {
+			focus = CHI_Air_Force
+		}
+		relative_position_id = CHI_Air_Force
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Camco
+		icon = GFX_GENERIC_Import_Fighters
+		cost = 10
+		prerequisite = {
+			focus = CHI_Air_Force
+		}
+		relative_position_id = CHI_Air_Force
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Chennaults_Program
+		icon = GFX_focus_chi_flying_tigers
+		cost = 10
+		prerequisite = {
+			focus = CHI_Camco
+		}
+		relative_position_id = CHI_Camco
+		x = 0
+		y = 3
+	}
+	#Navy
+	focus = {
+		id = CHI_Navy
+		icon = GFX_CHI_Chinese_National_Navy
+		cost = 10
+		prerequisite = {
+			focus = CHI_Foreign_Assistance
+		}
+		relative_position_id = CHI_Foreign_Assistance
+		x = 2
+		y = 1
+	}
+	focus = {
+		id = CHI_Naval_Sec_Commanders
+		icon = GFX_GENERIC_Naval_School
+		cost = 10
+		prerequisite = {
+			focus = CHI_Navy
+		}
+		relative_position_id = CHI_Navy
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Coast_Guard
+		icon = GFX_GENERIC_Coastal_Defense
+		cost = 10
+		prerequisite = {
+			focus = CHI_Naval_Sec_Commanders
+		}
+		relative_position_id = CHI_Naval_Sec_Commanders
+		x = -1
+		y = 1
+	}
+	focus = {
+		id = CHI_Renovate_Kiangnan
+		icon = GFX_GENERIC_Navy
+		cost = 10
+		prerequisite = {
+			focus = CHI_Naval_Sec_Commanders
+		}
+		relative_position_id = CHI_Naval_Sec_Commanders
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = CHI_Marine_Corps
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 10
+		prerequisite = {
+			focus = CHI_Coast_Guard
+		}
+		relative_position_id = CHI_Coast_Guard
+		x = 0
+		y = 2
+	}
+	focus = {
+		id = CHI_Open_Aviation
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 10
+		prerequisite = {
+			focus = CHI_Nat_Aviation_Coop
+		}
+		relative_position_id = CHI_Nat_Aviation_Coop
+		x = 0
+		y = 1
+	}
+	focus = {
+		id = CHI_Eurasia_Aviation
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 10
+		prerequisite = {
+			focus = CHI_Open_Aviation
+		}
+		relative_position_id = CHI_Open_Aviation
+		x = 0
+		y = 1
+	}
+}

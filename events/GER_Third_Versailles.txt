@@ -1,0 +1,636 @@
+add_namespace = GER_Third_Versailles
+
+#####################################
+## Dusk Over England
+#####################################
+country_event = {
+	id = GER_Third_Versailles.1
+	title = GER_Third_Versailles.1.t
+	desc = GER_Third_Versailles.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.1.a
+		custom_effect_tooltip = GER_Third_Versailles.1.tt
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.2
+				hours = 12
+			}
+		}
+	}
+}
+######################################
+## The King in Exile
+######################################
+country_event = {
+	id = GER_Third_Versailles.2
+	title = GER_Third_Versailles.2.t
+	desc = GER_Third_Versailles.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.2.a
+		release_puppet = ENG
+		set_global_flag = England_Capitulation
+		news_event = {
+			id = GER_Third_Versailles.3
+			hours = 6
+		}
+		hidden_effect = {
+			set_country_flag = GER_Edward_VIII_Installed
+			ENG = {
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				remove_ideas = ENG_George_V_HoG
+				add_ideas = ENG_Edward_VIII_HoG
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Lord Edward Halifax"
+					desc = ""
+					picture = GFX_P_A_Edward_Halifax
+					ideology = conservative_autocracy
+					traits = {
+						POSITION_Prime_Minister
+						SUBIDEOLOGY_Conservative_Autocracy
+						FM_The_Appeaser
+					}
+				}
+				drop_cosmetic_tag = yes
+				set_cosmetic_tag = ENG_Edward_Installed
+			}
+		}
+	}
+}
+###################################
+## Re-Coronation of Edward VIII
+###################################
+news_event = {
+	id = GER_Third_Versailles.3
+	title = GER_Third_Versailles.3.t
+	desc = GER_Third_Versailles.3.d
+	picture = GFX_
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.3.a 
+		trigger = {
+			OR = {
+				original_tag = ENG
+				has_war_with = GER
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.3.b
+		trigger = {
+			OR = {
+				original_tag = GER
+				has_war_with = ENG
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.3.c
+		trigger = {
+			NOT = {
+				has_war_with = GER
+				original_tag = ENG
+				has_war_with = ENG
+				original_tag = GER
+			}
+		}
+	}
+}
+######################################
+## Das Ende der Westlichen Welt
+######################################
+country_event = {
+	id = GER_Third_Versailles.4
+	title = GER_Third_Versailles.4.t
+	desc = GER_Third_Versailles.4.d
+	picture = GFX_
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = GER
+		has_country_flag = GER_Edward_VIII_Installed
+		controls_state = 16
+		NOT = {
+			has_war_with = FRA
+			has_war_with = ENG
+		}
+	}
+	
+	option = {
+		name = GER_Third_Versailles.4.a
+		custom_effect_tooltip = GER_Third_Versailles.4.tt
+		unlock_decision_category_tooltip = GER_Third_Versailles_category
+		hidden_effect = {
+			set_country_flag = GER_Third_Versailles_Dictates
+		}
+	}
+}
+#################################################
+## The Third Treaty of Versailles - England
+#################################################
+country_event = {
+	id = GER_Third_Versailles.5
+	title = GER_Third_Versailles.5.t
+	desc = GER_Third_Versailles.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.5.a
+		WAL = {
+			transfer_state = 122
+			set_politics = {
+				ruling_party = authoritarian
+			}
+		}
+		GER = { add_to_faction = WAL }
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.6
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.5.b
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.6
+				hours = 6
+			}
+		}
+	}
+}
+###################################
+## The Channel Islands
+###################################
+country_event = {
+	id = GER_Third_Versailles.6
+	title = GER_Third_Versailles.6.t
+	desc = GER_Third_Versailles.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.6.a
+		FRA = {
+			transfer_state = 801
+		}
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.7
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.6.b
+		GER = {
+			transfer_state = 801
+		}
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.7
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.6.c
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.6
+				hours = 6
+			}
+		}
+	}
+}
+#################################
+## The Status of Cornwall
+#################################
+country_event = {
+	id = GER_Third_Versailles.7
+	title = GER_Third_Versailles.7.t
+	desc = GER_Third_Versailles.7.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.7.a
+		GER = {
+			transfer_state = 1630
+		}
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.8
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.7.b
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.8
+				hours = 6
+			}
+		}
+	}
+}
+##############################################
+## The Issue of Armament and Security
+##############################################
+country_event = {
+	id = GER_Third_Versailles.8
+	title = GER_Third_Versailles.8.t
+	desc = GER_Third_Versailles.8.d
+	picture = GFX_
+	is_triggered_only = yes	
+	
+	option = {
+		name = GER_Third_Versailles.8.a
+		ENG = {
+			add_ideas = ENG_Britannia_Disarmed
+		}
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.9
+				hours = 6
+			}
+		}		
+	}
+}
+############################################
+## Final Issue - War Reparations
+############################################
+country_event = {
+	id = GER_Third_Versailles.9
+	title = GER_Third_Versailles.9.t
+	desc = GER_Third_Versailles.9.d
+	picture = GFX_
+	is_triggered_only = yes	
+	
+	option = {
+		name = GER_Third_Versailles.9.a
+		set_country_flag = GER_English_Terms_Dictated
+		end_puppet = ENG
+		ENG = {
+			add_ideas = ENG_Britannia_Endentured
+		}		
+	}
+}
+##################################################
+## The Third Treaty of Versailles - France
+##################################################
+country_event = {
+	id = GER_Third_Versailles.10
+	title = GER_Third_Versailles.10.t
+	desc = GER_Third_Versailles.10.d
+	picture = GFX_
+	is_triggered_only = yes	
+	
+	option = { # Light Terms
+		name = GER_Third_Versailles.10.a
+		trigger = {
+			has_global_flag = VIC_Vichy_Established
+		}
+		custom_effect_tooltip = GER_Third_Versailles.10.tta
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1637
+						state = 19
+						state = 23
+						state = 14
+						state = 30
+						state = 15
+						state = 24
+						state = 16
+						state = 27
+						state = 18
+						state = 1027
+						state = 1026
+						state = 29
+						state = 1023
+						state = 1022
+						state = 763
+						state = 762
+						state = 1505
+						state = 847
+						state = 17
+						state = 1028
+						state = 1024
+					}
+				}
+				transfer_state_to = FRA
+				add_core_of = FRA
+			}
+			GER = { add_to_faction = FRA }
+			set_country_flag = GER_VIC_Light_Terms
+			country_event = {
+				id = GER_Third_Versailles.11
+				hours = 6
+			}
+		}
+	}
+	option = { # Medium Terms
+		name = GER_Third_Versailles.10.b
+		trigger = {
+			has_global_flag = VIC_Vichy_Established
+		}
+		custom_effect_tooltip = GER_Third_Versailles.10.ttb
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1637
+						state = 19
+						state = 23
+						state = 14
+						state = 30
+						state = 15
+						state = 24
+						state = 16
+						state = 27
+						state = 18
+						state = 1027
+						state = 1026
+						state = 29
+						state = 1023
+						state = 1022
+						state = 763
+						state = 17
+						state = 1028
+						state = 1024
+					}
+				}
+				transfer_state_to = FRA
+				add_core_of = FRA
+			}
+			GER = { add_to_faction = FRA }
+			country_event = {
+				id = GER_Third_Versailles.11
+				hours = 6
+			}
+		}
+	}
+	option = { # Harsh Terms - Ordenstaat Burgund
+		name = GER_Third_Versailles.10.c
+		trigger = {
+			has_global_flag = VIC_Vichy_Established
+		}
+		custom_effect_tooltip = GER_Third_Versailles.10.ttc
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1637
+						state = 19
+						state = 23
+						state = 14
+						state = 30
+						state = 15
+						state = 24
+						state = 16
+						state = 27
+						state = 18
+						state = 1027
+						state = 1026
+						state = 1028
+						state = 29
+						state = 1024
+					}
+				}
+				transfer_state_to = FRA
+				add_core_of = FRA
+			}
+			GER = { add_to_faction = FRA }
+			SSB = {
+				transfer_state = 17
+				transfer_state = 763
+				transfer_state = 847
+				transfer_state = 1022
+				transfer_state = 1023
+				transfer_state = 762
+				transfer_state = 1505
+				transfer_state = 1553
+				transfer_state = 1204
+				transfer_state = 34
+				transfer_state = 6
+				transfer_state = 964
+			}
+			puppet = SSB
+			country_event = {
+				id = GER_Third_Versailles.11
+				hours = 6
+			}
+		}
+	}
+	option = { # France will become a German Protectorate
+		name = GER_Third_Versailles.10.e
+		trigger = {
+			has_global_flag = VIC_Vichy_Not_Established
+		}
+		custom_effect_tooltip = GER_Third_Versailles.10.tte
+		hidden_effect = {
+			FRA = {
+				every_core_state = {
+					FRA = { transfer_state = PREV }
+				}
+			}
+			GER = {
+				set_autonomy = {
+					target = FRA
+					autonomy_state = AUTONOMY_Reichsprotectorate
+				}
+				transfer_state = 28
+				transfer_state = 1169
+			}
+			if = {
+				limit = {
+					country_exists = RBF
+				}
+				transfer_state = 1505
+				transfer_state = 762
+			}
+			country_event = {
+				id = GER_Third_Versailles.11
+				hours = 6
+			}
+		}
+	}
+}
+###############################
+## The Status of Britanny
+###############################
+country_event = {
+	id = GER_Third_Versailles.11
+	title = GER_Third_Versailles.11.t
+	desc = GER_Third_Versailles.11.d
+	picture = GFX_
+	is_triggered_only = yes
+
+	option = {
+		name = GER_Third_Versailles.11.a
+		trigger = {
+			NOT = {
+				has_country_flag = GER_VIC_Light_Terms
+			}
+		}
+		BRT = {
+			transfer_state = 1028
+			transfer_state = 14
+		}
+		GER = { add_to_faction = BRT }
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.12
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.11.b
+		hidden_effect = {
+			country_event = {
+				id = GER_Third_Versailles.12
+				hours = 6
+			}
+		}		
+	}
+}
+########################################
+## The Franco-Italian Border
+########################################
+country_event = {
+	id = GER_Third_Versailles.12
+	title = GER_Third_Versailles.12.t
+	desc = GER_Third_Versailles.12.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.12.a
+		ITA = {
+			transfer_state = 1
+			transfer_state = 846
+			transfer_state = 735
+			transfer_state = 764
+			transfer_state = 268
+			annex_country = {
+				target = TUN
+				transfer_troops = no
+			}
+		}
+		hidden_effect = {
+			set_country_flag = GER_French_Terms_Dictated
+			ITA = {
+				country_event = {
+					id = GER_Third_Versailles.13
+					hours = 6
+				}
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.12.b
+		trigger = {
+			NOT = {
+				has_country_flag = GER_VIC_Light_Terms
+			}
+		}
+		ITA = {
+			transfer_state = 1
+			transfer_state = 846
+			transfer_state = 735
+			transfer_state = 764
+			transfer_state = 268
+			transfer_state = 32
+			transfer_state = 21
+			transfer_state = 1030
+			transfer_state = 1021
+			annex_country = {
+				target = TUN
+				transfer_troops = no
+			}
+		}
+		hidden_effect = {
+			set_country_flag = GER_French_Terms_Dictated
+			ITA = {
+				country_event = {
+					id = GER_Third_Versailles.13
+					hours = 6
+				}
+			}
+		}
+	}
+}
+######################################
+## Italy - Germany Gives us Land!
+######################################
+country_event = {
+	id = GER_Third_Versailles.13
+	title = GER_Third_Versailles.13.t
+	desc = GER_Third_Versailles.13.d
+	picture = GFX_
+	is_triggered_only = yes
+	
+	option = {
+		name = GER_Third_Versailles.13.a
+	}
+}
+#######################################
+## The Third Treaty of Versailles
+#######################################
+news_event = {
+	id = GER_Third_Versailles.14
+	title = GER_Third_Versailles.14.t
+	desc = GER_Third_Versailles.14.d
+	picture = GFX_
+	is_triggered_only = yes	
+	major = yes
+	
+	option = {
+		name = GER_Third_Versailles.14.A
+		trigger = {
+			OR = {
+				original_tag = GER
+				is_in_faction_with = GER
+				original_tag = JAP
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.14.B
+		trigger = {
+			OR = {
+				original_tag = CAN
+				is_in_faction_with = CAN
+			}
+		}
+	}
+	option = {
+		name = GER_Third_Versailles.14.C
+		trigger = {
+			NOT = {
+				original_tag = GER
+				is_in_faction_with = GER
+				original_tag = JAP
+				original_tag = CAN
+				is_in_faction_with = CAN
+			}
+		}
+	}
+}

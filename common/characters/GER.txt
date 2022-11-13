@@ -1,0 +1,5446 @@
+characters={
+	GER_Hermann_Goring={
+		name=GER_Hermann_Goring
+		portraits={
+			civilian={
+				large="GFX_P_F_Hermann_Goring_1933"
+			}
+			army={
+				small="GFX_idea_Hermann_Goring"
+				large="GFX_M_Hermann_Goring"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Hermann_Goring_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Chancellor_Hitler
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hermann_Goring_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Deputy_Fuhrer
+				L_Old_Airmarshal
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Hermann_Goring_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Four_Year_Plan
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hermann_Goring_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Plenipotentiary_of_the_Four_Year_Plan
+				AM_Air_To_Ground_Proponent
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Hermann_Goring_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hermann_Goring_unavailable
+				}
+			}
+			available = {
+				has_completed_focus = GER_Luftwaffe
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Luftwaffe
+				CoAir_The_Iron_Knight
+			}
+		}
+	}
+	GER_Adolf_Hitler={
+		name=GER_Adolf_Hitler
+		portraits={
+			civilian={
+				large="GFX_P_F_Adolf_Hitler_1932"
+			}
+			army={
+				small="GFX_idea_Adolf_Hitler"
+			}
+		}
+		country_leader={
+			ideology=national_socialism
+			desc=GER_Adolf_Hitler_desc
+			traits={ 
+				POSITION_GER_Reichskanzler
+				SUBIDEOLOGY_National_Socialism
+				L_Paranoid_Megalomaniac
+			}
+			expire = "1945.4.30"
+			id=-1
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Adolf_Hitler_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Adolf_Hitler_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				L_Flamboyant_Tough_Guy
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Adolf_Hitler_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Adolf_Hitler_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Commander_in_Chief_of_the_Heer
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Paul_von_Hindenburg={
+		name=GER_Paul_von_Hindenburg
+		portraits={
+			civilian={
+				large="GFX_P_A_Paul_von_Hindenburg"
+			}
+			army={
+				small="GFX_idea_Paul_von_Hindenburg"
+				large="GFX_M_Paul_von_Hindenburg"
+			}
+		}
+		country_leader={
+			ideology=authoritarian_democracy
+			desc=GER_Paul_von_Hindenburg_desc
+			traits={ 
+				POSITION_GER_Reichsprasident
+				SUBIDEOLOGY_Authoritarian_Democracy
+				L_Der_Alte
+			}
+			expire = "1934.8.3"
+			id=-1
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Paul_Von_Hindenburg_HoG
+			desc=GER_Paul_von_Hindenburg_desc
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1934.8.3
+				NOT = {
+					has_country_flag = Paul_von_Hindenburg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsprasident
+				L_Der_Alte
+			}
+		}
+	}
+	GER_Otto_Wels={
+		name=GER_Otto_Wels
+		portraits={
+			civilian={
+				large="GFX_P_D_Otto_Wels"
+			}
+		}
+		country_leader={
+			ideology=social_democracy
+			desc=GER_Otto_Wels_desc
+			traits={ 
+				POSITION_GER_Reichsprasident
+				SUBIDEOLOGY_Social_Democracy
+				L_Silent_Workhorse
+			}
+			expire = "1939.9.16"
+			id=-1
+		}
+	}
+	GER_Otto_Ruhle={
+		name=GER_Otto_Ruhle
+		portraits={
+			civilian={
+				large="GFX_P_S_Otto_Ruhle"
+			}
+		}
+		country_leader={
+			ideology=luxemburgism
+			desc=GER_Otto_Ruhle_desc
+			traits={ 
+				POSITION_GER_Reichsprasident
+				SUBIDEOLOGY_Luxemburgism
+				L_Ambitious_Union_Boss
+			}
+			expire = "1944.8.18"
+			id=-1
+		}
+	}
+	GER_Reichstag={
+		name=GER_Reichstag
+		portraits={
+			army={
+				small="GFX_idea_Reichstag"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Reichstag_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				always = no
+				F_Minister_Allowed = yes
+			}
+			traits = {
+				
+			}
+		}
+	}
+	GER_Gregor_Strasser={
+		name=GER_Gregor_Strasser
+		portraits={
+			army={
+				small="GFX_idea_Gregor_Strasser"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Gregor_Strasser_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1930.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gregor_Strasser_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Parteikanzlei
+				L_Backroom_Backstabber
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Gregor_Strasser_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gregor_Strasser_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Infantry_Proponent
+			}
+		}
+	}
+	GER_Rudolf_Hess={
+		name=GER_Rudolf_Hess
+		portraits={
+			army={
+				small="GFX_idea_Rudolf_Hess"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Rudolf_Hess_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				AND = {
+					NOT = {
+						has_country_flag = Rudolf_Hess_unavailable
+					}
+					NOT = {
+						has_country_flag = flight_of_hess_killed
+					}
+					NOT = {
+						has_country_flag = flight_of_hess
+					}
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Deputy_Fuhrer
+				L_Silent_Workhorse
+			}
+		}
+	}
+	GER_Hans_Heinrich_Lammers={
+		name=GER_Hans_Heinrich_Lammers
+		portraits={
+			army={
+				small="GFX_idea_Hans_Heinrich_Lammers"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Hans_Heinrich_Lammers_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Chancellor_Hitler
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Heinrich_Lammers_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Reichskanzlei
+				L_Political_Protege
+			}
+		}
+	}
+	GER_Martin_Bormann={
+		name=GER_Martin_Bormann
+		portraits={
+			army={
+				small="GFX_idea_Martin_Bormann"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Martin_Bormann_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Chancellor_Hitler
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Martin_Bormann_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Parteikanzlei
+				L_The_Brown_Eminence
+			}
+		}
+	}
+	GER_Joseph_Goebbels={
+		name=GER_Joseph_Goebbels
+		portraits={
+			army={
+				small="GFX_idea_Joseph_Goebbels"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Joseph_Goebbels_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Chancellor_Hitler
+				date < 1946.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Joseph_Goebbels_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Parteikanzlei
+				L_Backroom_Backstabber
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Joseph_Goebbels_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1946.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Joseph_Goebbels_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_The_Cloak_N_Dagger_Schemer
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Joseph_Goebbels_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1946.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Joseph_Goebbels_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Master_Of_Propaganda
+			}
+		}
+	}
+	GER_Heinrich_Himmler={
+		name=GER_Heinrich_Himmler
+		portraits={
+			army={
+				small="GFX_idea_Heinrich_Himmler"
+				large="GFX_M_Heinrich_Himmler"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Heinrich_Himmler_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Chancellor_Hitler
+				date < 1979.5.23
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Heinrich_Himmler_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Deputy_Fuhrer
+				L_Old_General
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Heinrich_Himmler_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Establish_The_Gestapo
+				date < 1979.5.23
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Heinrich_Himmler_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_SS_Reichsfuhrer
+			}
+		}
+	}
+	GER_Albert_Speer={
+		name=GER_Albert_Speer
+		portraits={
+			army={
+				small="GFX_idea_Albert_Speer"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Albert_Speer_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Chancellor_Hitler
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Albert_Speer_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Deputy_Fuhrer
+				L_Corporate_Suit
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Albert_Speer_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				OR = {
+					date > 1943.1.1
+					has_completed_focus = GER_The_Genius_Organizer
+				}
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Albert_Speer_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Armaments_and_War_Production
+				AM_Genius_Organizer
+			}
+		}
+	}
+	GER_Kurt_von_Schleicher={
+		name=GER_Kurt_von_Schleicher
+		portraits={
+			army={
+				small="GFX_idea_Kurt_von_Schleicher"
+				large="GFX_M_Kurt_von_Schleicher"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Kurt_von_Schleicher_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1952.11.20
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_von_Schleicher_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				L_Scheming_General
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Kurt_von_Schleicher_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1952.11.20
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_von_Schleicher_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Heeresleitung
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Alfred_Hugenberg={
+		name=GER_Alfred_Hugenberg
+		portraits={
+			army={
+				small="GFX_idea_Alfred_Hugenberg"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Alfred_Hugenberg_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Hugenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				MoS_Media_Magnate
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Alfred_Hugenberg_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Hugenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				MoS_Compassionate_Gentleman
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Alfred_Hugenberg_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Hugenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Franz_von_Papen={
+		name=GER_Franz_von_Papen
+		portraits={
+			army={
+				small="GFX_idea_Franz_von_Papen"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Franz_von_Papen_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_von_Papen_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				L_Happy_Amateur
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Franz_von_Papen_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_von_Papen_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Great_Compromiser
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Franz_von_Papen_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_von_Papen_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Compassionate_Gentleman
+			}
+		}
+	}
+	GER_Carl_Friedrich_Goerdeler={
+		name=GER_Carl_Friedrich_Goerdeler
+		portraits={
+			army={
+				small="GFX_idea_Carl_Friedrich_Goerdeler"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Carl_Friedrich_Goerdeler_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1946.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Carl_Friedrich_Goerdeler_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				L_Happy_Amateur
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Carl_Friedrich_Goerdeler_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1940.1.1
+				date < 1946.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Carl_Friedrich_Goerdeler_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Military_Entrepreneur
+			}
+		}
+	}
+	GER_Lutz_von_Schwerin_Krosigk={
+		name=GER_Lutz_von_Schwerin_Krosigk
+		portraits={
+			army={
+				small="GFX_idea_Lutz_von_Schwerin_Krosigk"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Lutz_von_Schwerin_Krosigk_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Lutz_von_SchwerinKrosigk_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				L_Silent_Workhorse
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Lutz_von_Schwerin_Krosigk_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Lutz_von_SchwerinKrosigk_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Finance
+				AM_Resource_Industrialist
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Lutz_von_Schwerin_Krosigk_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Lutz_von_SchwerinKrosigk_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Apologetic_Clerk
+			}
+		}
+	}
+	GER_Konrad_Adenauer={
+		name=GER_Konrad_Adenauer
+		portraits={
+			army={
+				small="GFX_idea_Konrad_Adenauer"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Konrad_Adenauer_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Konrad_Adenauer_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichskanzler
+				L_Silent_Workhorse
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Konrad_Adenauer_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1947.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Konrad_Adenauer_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Great_Compromiser
+			}
+		}
+	}
+	GER_Ernst_Thalmann={
+		name=GER_Ernst_Thalmann
+		portraits={
+			army={
+				large="GFX_M_Ernst_Thalmann"
+				small="GFX_idea_Ernst_Thalmann"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Ernst_Thalmann_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Thalmann_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_General_Secretary
+				L_Backroom_Backstabber
+			}
+		}
+	}
+	GER_Ernst_Toller={
+		name=GER_Ernst_Toller
+		portraits={
+			army={
+				small="GFX_idea_Ernst_Toller"
+			}
+		}
+		advisor={
+			slot=Head_of_Government
+			idea_token=GER_Ernst_Toller_HoG
+			removal_cost = -1
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Toller_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_General_Secretary
+				L_Ambitious_Union_Boss
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Ernst_Toller_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Toller_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Man_Of_The_People
+			}
+		}
+	}
+	GER_Joachim_von_Ribbentrop={
+		name=GER_Joachim_von_Ribbentrop
+		portraits={
+			army={
+				small="GFX_idea_Joachim_von_Ribbentrop"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Joachim_von_Ribbentrop_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Heim_ins_Reich
+				date < 1976.10.16
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Joachim_von_Ribbentrop_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Salesman_Of_Deception
+			}
+		}
+	}
+	GER_Alfred_Rosenberg={
+		name=GER_Alfred_Rosenberg
+		portraits={
+			army={
+				small="GFX_idea_Alfred_Rosenberg"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Alfred_Rosenberg_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1943.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Rosenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_NSDAP_Office_of_Foreign_Affairs
+				FM_Ideological_Crusader
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Alfred_Rosenberg_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Adopt_Positive_Christianity
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Rosenberg_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Efficient_Sociopath
+			}
+		}
+	}
+	GER_Arthur_SeyssInquart={
+		name=GER_Arthur_SeyssInquart
+		portraits={
+			army={
+				small="GFX_idea_Arthur_SeyssInquart"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Arthur_SeyssInquart_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Arthur_SeyssInquart_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Iron_Fisted_Brute
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Arthur_SeyssInquart_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1943.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Arthur_SeyssInquart_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Silent_Lawyer
+			}
+		}
+	}
+	GER_Konstantin_von_Neurath={
+		name=GER_Konstantin_von_Neurath
+		portraits={
+			army={
+				small="GFX_idea_Konstantin_von_Neurath"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Konstantin_von_Neurath_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Konstantin_von_Neurath_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Respectable_Compromiser
+			}
+		}
+	}
+	GER_Heinrich_Bruning={
+		name=GER_Heinrich_Bruning
+		portraits={
+			army={
+				small="GFX_idea_Heinrich_Bruning"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Heinrich_Bruning_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1943.6.29
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Heinrich_Bruning_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Great_Compromiser
+			}
+		}
+	}
+	GER_FriedrichWerner_von_der_Schulenberg={
+		name=GER_FriedrichWerner_von_der_Schulenberg
+		portraits={
+			army={
+				small="GFX_idea_FriedrichWerner_von_der_Schulenberg"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_FriedrichWerner_von_der_Schulenberg_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = FriedrichWerner_von_der_Schulenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Ideological_Crusader
+			}
+		}
+	}
+	GER_Ernst_Junger={
+		name=GER_Ernst_Junger
+		portraits={
+			army={
+				small="GFX_idea_Ernst_Junger"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Ernst_Junger_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1970.1.1
+				date < 1998.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Junger_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_General_Staffer
+			}
+		}
+	}
+	GER_Theodor_Heuss={
+		name=GER_Theodor_Heuss
+		portraits={
+			army={
+				small="GFX_idea_Theodor_Heuss"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Theodor_Heuss_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Theodor_Heuss_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Apologetic_Clerk
+			}
+		}
+	}
+	GER_Philipp_Scheidemann={
+		name=GER_Philipp_Scheidemann
+		portraits={
+			army={
+				small="GFX_idea_Philipp_Scheidemann"
+			}
+		}
+		advisor={
+			slot=Foreign_Minister
+			idea_token=GER_Philipp_Scheidemann_FM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1930.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Philipp_Scheidemann_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				FM_Great_Compromiser
+			}
+		}
+	}
+	GER_Reinhard_Heydrich={
+		name=GER_Reinhard_Heydrich
+		portraits={
+			army={
+				small="GFX_idea_Reinhard_Heydrich"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Reinhard_Heydrich_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1931.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Reinhard_Heydrich_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Secret_Police_Chief
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Reinhard_Heydrich_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1931.1.1
+				date < 1943.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Reinhard_Heydrich_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Director_of_the_Reichssicherheitshauptamt
+				HoI_The_Hangman
+			}
+		}
+	}
+	GER_Wilhelm_Frick={
+		name=GER_Wilhelm_Frick
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Frick"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Wilhelm_Frick_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Frick_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Ruthless_Organizer
+			}
+		}
+	}
+	GER_Kurt_Daluege={
+		name=GER_Kurt_Daluege
+		portraits={
+			army={
+				small="GFX_idea_Kurt_Daluege"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Kurt_Daluege_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_Daluege_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Secret_Police_Chief
+			}
+		}
+	}
+	GER_Walter_Buch={
+		name=GER_Walter_Buch
+		portraits={
+			army={
+				small="GFX_idea_Walter_Buch"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Walter_Buch_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Unternehmen_Kolibri
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_Buch_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Man_Of_The_People
+			}
+		}
+	}
+	GER_Walther_Darre={
+		name=GER_Walther_Darre
+		portraits={
+			army={
+				small="GFX_idea_Walther_Darre"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Walther_Darre_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Establish_The_Gestapo
+				date < 1953.9.5
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walther_Darre_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Efficient_Sociopath
+			}
+		}
+	}
+	GER_Viktor_Lutze={
+		name=GER_Viktor_Lutze
+		portraits={
+			army={
+				small="GFX_idea_Viktor_Lutze"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Viktor_Lutze_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Unternehmen_Kolibri
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Viktor_Lutze_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Compassionate_Gentleman
+			}
+		}
+	}
+	GER_Karl_Hanke={
+		name=GER_Karl_Hanke
+		portraits={
+			army={
+				small="GFX_idea_Karl_Hanke"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Karl_Hanke_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Karl_Hanke_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Back_Stabber
+			}
+		}
+	}
+	GER_Paul_Giesler={
+		name=GER_Paul_Giesler
+		portraits={
+			army={
+				small="GFX_idea_Paul_Giesler"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Paul_Giesler_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Paul_Giesler_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Efficient_Sociopath
+			}
+		}
+	}
+	GER_Werner_Naumann={
+		name=GER_Werner_Naumann
+		portraits={
+			army={
+				small="GFX_idea_Werner_Naumann"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Werner_Naumann_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Werner_Naumann_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Compassionate_Gentleman
+			}
+		}
+	}
+	GER_Otto_Ernst_Remer={
+		name=GER_Otto_Ernst_Remer
+		portraits={
+			army={
+				small="GFX_idea_Otto_Ernst_Remer"
+				large="GFX_M_Otto_Remer"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Otto_Ernst_Remer_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1947.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Otto_Ernst_Remer_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Prince_Of_Terror
+			}
+		}
+	}
+	GER_Arthur_Nebe={
+		name=GER_Arthur_Nebe
+		portraits={
+			army={
+				small="GFX_idea_Arthur_Nebe"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Arthur_Nebe_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1941.1.1
+				date < 1946.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Arthur_Nebe_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Crime_Fighter
+			}
+		}
+	}
+	GER_Walter_Schellenberg={
+		name=GER_Walter_Schellenberg
+		portraits={
+			army={
+				small="GFX_idea_Walter_Schellenberg"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Walter_Schellenberg_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_Schellenberg_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Efficient_Sociopath
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Walter_Schellenberg_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1940.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				has_completed_focus = GER_Merge_the_Abwehr_into_the_SD
+				NOT = {
+					has_country_flag = Walter_Schellenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Ausland_SD
+				HoI_Dismal_Enigma
+			}
+		}
+	}
+	GER_Arthur_Axmann={
+		name=GER_Arthur_Axmann
+		portraits={
+			army={
+				small="GFX_idea_Arthur_Axmann"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Arthur_Axmann_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Arthur_Axmann_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Man_Of_The_People
+			}
+		}
+	}
+	GER_Ernst_Trendelenburg={
+		name=GER_Ernst_Trendelenburg
+		portraits={
+			army={
+				small="GFX_idea_Ernst_Trendelenburg"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Arthur_Axmann_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Trendelenburg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				MoS_Compassionate_Gentleman
+			}
+		}
+	}
+	GER_Franz_Bracht={
+		name=GER_Franz_Bracht
+		portraits={
+			army={
+				small="GFX_idea_Franz_Bracht"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Franz_Bracht_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				F_Minister_Allowed = no
+				NOT = {
+					has_country_flag = Franz_Bracht_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Crime_Fighter
+			}
+		}
+	}
+	GER_Rudolf_Diels={
+		name=GER_Rudolf_Diels
+		portraits={
+			army={
+				small="GFX_idea_Rudolf_Diels"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Rudolf_Diels_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Rudolf_Diels_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				MoS_Crime_Fighter
+			}
+		}
+	}
+	GER_Heinrich_Muller={
+		name=GER_Heinrich_Muller
+		portraits={
+			army={
+				small="GFX_idea_Heinrich_Muller"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Heinrich_Muller_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Heinrich_Muller_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				MoS_Efficient_Sociopath
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Heinrich_Muller_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1943.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Heinrich_Muller_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Director_of_the_Gestapo
+				HoI_Political_Specialist
+			}
+		}
+	}
+	GER_Henning_von_Tresckow={
+		name=GER_Henning_von_Tresckow
+		portraits={
+			army={
+				small="GFX_idea_Henning_von_Tresckow"
+				large="GFX_M_Henning_von_Tresckow"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Henning_von_Tresckow_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Heer
+				date < 1971.8.20
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Henning_von_Tresckow_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Foreign_Affairs
+				MoS_Crime_Fighter
+			}
+		}
+	}
+	GER_Karl_Arnold={
+		name=GER_Karl_Arnold
+		portraits={
+			army={
+				small="GFX_idea_Karl_Arnold"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Karl_Arnold_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Karl_Arnold_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Crime_Fighter
+			}
+		}
+	}
+	GER_Gustav_Heinemann={
+		name=GER_Gustav_Heinemann
+		portraits={
+			army={
+				small="GFX_idea_Gustav_Heinemann"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Gustav_Heinemann_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1947.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gustav_Heinemann_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Man_Of_The_People
+			}
+		}
+	}
+	GER_Eduard_David={
+		name=GER_Eduard_David
+		portraits={
+			army={
+				small="GFX_idea_Eduard_David"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Eduard_David_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1930.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Eduard_David_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Compassionate_Gentleman
+			}
+		}
+	}
+	GER_Ludwig_Renn={
+		name=GER_Ludwig_Renn
+		portraits={
+			army={
+				small="GFX_idea_Ludwig_Renn"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Ludwig_Renn_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ludwig_Renn_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Efficient_Sociopath
+			}
+		}
+	}
+	GER_Julius_Leber={
+		name=GER_Julius_Leber
+		portraits={
+			army={
+				small="GFX_idea_Julius_Leber"
+			}
+		}
+		advisor={
+			slot=Minister_of_Security
+			idea_token=GER_Julius_Leber_MoS
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1941.1.1
+				date < 1946.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Julius_Leber_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Compassionate_Gentleman
+			}
+		}
+	}
+	GER_Werner_von_Blomberg={
+		name=GER_Werner_von_Blomberg
+		portraits={
+			army={
+				small="GFX_idea_Werner_von_Blomberg"
+				large="GFX_M_Werner_von_Blomberg"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Werner_von_Blomberg_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1941.1.1
+				date < 1946.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Werner_von_Blomberg_unavailable
+				}
+			}
+			traits = {
+				
+				MoS_Compassionate_Gentleman
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Werner_von_Blomberg_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Werner_von_Blomberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Defence
+				CoStaff_School_Of_Fire_Support
+			}
+		}
+		corps_commander={
+			traits = {
+				inflexible_strategist
+				politically_connected
+				# defensive_doctrine
+			}
+			legacy_id = 104005
+			skill = 3
+			attack_skill = 3
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 3
+		}
+	}
+	GER_Walther_Wever={
+		name=GER_Walther_Wever
+		portraits={
+			army={
+				small="GFX_idea_Walther_Wever"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Walther_Wever_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walther_Wever_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Commander_of_the_RLM
+				AM_Strategic_Air_Proponent
+			}
+		}
+	}
+	GER_Franz_Xaver_Schwarz={
+		name=GER_Franz_Xaver_Schwarz
+		portraits={
+			army={
+				small="GFX_idea_Franz_Xaver_Schwarz"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Franz_Xaver_Schwarz_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1943.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_Xaver_Schwarz_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Robert_Ley={
+		name=GER_Robert_Ley
+		portraits={
+			army={
+				small="GFX_idea_Robert_Ley"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Robert_Ley_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				has_completed_focus = GER_Deutsche_Arbeitsfront
+				NOT = {
+					has_country_flag = Robert_Ley_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Deutsche_Arbeitsfront
+				AM_Corrupt_Kleptocrat
+			}
+		}
+	}
+	GER_Franz_Seldte={
+		name=GER_Franz_Seldte
+		portraits={
+			army={
+				small="GFX_idea_Franz_Seldte"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Franz_Seldte_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_Seldte_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Labour
+				AM_Military_Entrepreneur
+			}
+		}
+	}
+	GER_Konstantin_Hierl={
+		name=GER_Konstantin_Hierl
+		portraits={
+			army={
+				small="GFX_idea_Konstantin_Hierl"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Konstantin_Hierl_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Konstantin_Hierl_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsarbeitsfuhrer
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Walther_Funk={
+		name=GER_Walther_Funk
+		portraits={
+			army={
+				small="GFX_idea_Walther_Funk"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Walther_Funk_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walther_Funk_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Oil_Baron
+			}
+		}
+	}
+	GER_Fritz_Sauckel={
+		name=GER_Fritz_Sauckel
+		portraits={
+			army={
+				small="GFX_idea_Fritz_Sauckel"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Fritz_Sauckel_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.3.21
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Fritz_Sauckel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Plenipotentiary_for_Labour_Deployment
+				AM_Infantry_Proponent
+			}
+		}
+	}
+	GER_Oswald_Pohl={
+		name=GER_Oswald_Pohl
+		portraits={
+			army={
+				small="GFX_idea_Oswald_Pohl"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Oswald_Pohl_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1943.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Oswald_Pohl_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_SSWVHA
+				AM_Military_Entrepreneur
+			}
+		}
+	}
+	GER_Kurt_Schmitt={
+		name=GER_Kurt_Schmitt
+		portraits={
+			army={
+				small="GFX_idea_Kurt_Schmitt"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Kurt_Schmitt_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1950.11.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_Schmitt_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Karl_Otto_Saur={
+		name=GER_Karl_Otto_Saur
+		portraits={
+			army={
+				small="GFX_idea_Karl_Otto_Saur"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Karl_Otto_Saur_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Karl_Otto_Saur_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Armaments_and_War_Production
+				AM_Planned_Economy_Proponent
+			}
+		}
+	}
+	GER_Fritz_Todt={
+		name=GER_Fritz_Todt
+		portraits={
+			army={
+				small="GFX_idea_Fritz_Todt"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Fritz_Todt_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Westwall
+				date < 1942.2.8
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Fritz_Todt_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Armaments_and_War_Production
+				AM_Organization_todt
+			}
+		}
+	}
+	GER_Alfried_Krupp={
+		name=GER_Alfried_Krupp
+		portraits={
+			army={
+				small="GFX_idea_Alfried_Krupp"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Alfried_Krupp_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfried_Krupp_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Steel_Magnate
+			}
+		}
+	}
+	GER_Franz_Xaver_Dorsch={
+		name=GER_Franz_Xaver_Dorsch
+		portraits={
+			army={
+				small="GFX_idea_Franz_Xaver_Dorsch"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Franz_Xaver_Dorsch_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_Xaver_Dorsch_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Armaments_and_War_Production
+				AM_Construction_Magnate
+			}
+		}
+	}
+	GER_Fritz_Thyssen={
+		name=GER_Fritz_Thyssen
+		portraits={
+			army={
+				small="GFX_idea_Fritz_Thyssen"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Fritz_Thyssen_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1940.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Fritz_Thyssen_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Steel_Magnate
+			}
+		}
+	}
+	GER_Hjalmar_Schacht={
+		name=GER_Hjalmar_Schacht
+		portraits={
+			army={
+				small="GFX_idea_Hjalmar_Schacht"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Hjalmar_Schacht_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hjalmar_Schacht_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Administrative_Genius
+			}
+		}
+	}
+	GER_Gustav_Krupp={
+		name=GER_Gustav_Krupp
+		portraits={
+			army={
+				small="GFX_idea_Gustav_Krupp"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Gustav_Krupp_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gustav_Krupp_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Tank_Proponent
+			}
+		}
+	}
+	GER_Julius_Curtius={
+		name=GER_Julius_Curtius
+		portraits={
+			army={
+				small="GFX_idea_Julius_Curtius"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Julius_Curtius_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Julius_Curtius_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichswirtschaftsminister
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Paul_Lejeune_Jung={
+		name=GER_Paul_Lejeune_Jung
+		portraits={
+			army={
+				small="GFX_idea_Paul_Lejeune_Jung"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Paul_Lejeune_Jung_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1936.1.1
+				date < 1945.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Paul_LejeuneJung_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Mixed_Economy
+			}
+		}
+	}
+	GER_Karl_Krauch={
+		name=GER_Karl_Krauch
+		portraits={
+			army={
+				small="GFX_idea_Karl_Krauch"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Karl_Krauch_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1947.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Karl_Krauch_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Plenipotentiary_of_the_Four_Year_Plan
+				AM_Industrial_Chemist
+			}
+		}
+	}
+	GER_Georg_Thomas={
+		name=GER_Georg_Thomas
+		portraits={
+			army={
+				small="GFX_idea_Georg_Thomas"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Georg_Thomas_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1940.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Georg_Thomas_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_Economic_Strategist_for_the_Wehrmacht
+				AM_Reformer
+			}
+		}
+	}
+	GER_Johannes_Popitz={
+		name=GER_Johannes_Popitz
+		portraits={
+			army={
+				small="GFX_idea_Johannes_Popitz"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Johannes_Popitz_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1941.1.1
+				date < 1946.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Johannes_Popitz_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Finance
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Emil_Schlee={
+		name=GER_Emil_Schlee
+		portraits={
+			army={
+				small="GFX_idea_Emil_Schlee"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Emil_Schlee_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1975.1.1
+				date < 2009.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Emil_Schlee_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Finance
+				AM_Administrative_Genius
+			}
+		}
+	}
+	GER_Fritz_Schaffer={
+		name=GER_Fritz_Schaffer
+		portraits={
+			army={
+				small="GFX_idea_Fritz_Schaffer"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Fritz_Schaffer_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Fritz_Schaffer_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Finance
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Ludwig_Erhard={
+		name=GER_Ludwig_Erhard
+		portraits={
+			army={
+				small="GFX_idea_Ludwig_Erhard"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Ludwig_Erhard_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1947.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ludwig_Erhard_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Mixed_Economy
+			}
+		}
+	}
+	GER_Bernhard_Dernburg={
+		name=GER_Bernhard_Dernburg
+		portraits={
+			army={
+				small="GFX_idea_Bernhard_Dernburg"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Bernhard_Dernburg_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1930.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Bernhard_Dernburg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Administrative_Genius
+			}
+		}
+	}
+	GER_Albert_Kuntz={
+		name=GER_Albert_Kuntz
+		portraits={
+			army={
+				small="GFX_idea_Albert_Kuntz"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Bernhard_Dernburg_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Albert_Kuntz_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Resource_Industrialist
+			}
+		}
+	}
+	GER_Willie_Munzenberg={
+		name=GER_Willie_Munzenberg
+		portraits={
+			army={
+				small="GFX_idea_Willie_Munzenberg"
+			}
+		}
+		advisor={
+			slot=Armaments_Minister
+			idea_token=GER_Bernhard_Dernburg_AM
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Willie_Munzenberg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Reichsminister_of_Economics
+				AM_Administrative_Genius
+			}
+		}
+	}
+	GER_Ernst_Kaltenbrunner={
+		name=GER_Ernst_Kaltenbrunner
+		portraits={
+			army={
+				small="GFX_idea_Ernst_Kaltenbrunner"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Bernhard_Dernburg_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Kaltenbrunner_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Director_of_the_Reichssicherheitshauptamt
+				HoI_Logistics_Specialist
+			}
+		}
+	}
+	GER_HansGeorg_von_Friedeburg={
+		name=GER_HansGeorg_von_Friedeburg
+		portraits={
+			army={
+				small="GFX_idea_HansGeorg_von_Friedeburg"
+				large="GFX_M_HansGeorg_von_Friedeburg"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Bernhard_Dernburg_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = HansGeorg_von_Friedeburg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abwehr
+				HoI_Naval_Intelligence_Specialist
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Bernhard_Dernburg_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1967.5.3
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = HansGeorg_von_Friedeburg_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Indirect_Approach_Doctrine
+			}
+		}
+	}
+	GER_Wilhelm_Burgdorf={
+		name=GER_Wilhelm_Burgdorf
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Burgdorf"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Bernhard_Dernburg_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Burgdorf_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abwehr
+				HoI_Political_Specialist
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Bernhard_Dernburg_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Burgdorf_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Mass_Combat
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Bernhard_Dernburg_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Burgdorf_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Konrad_Patzig={
+		name=GER_Konrad_Patzig
+		portraits={
+			army={
+				small="GFX_idea_Konrad_Patzig"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Konrad_Patzig_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1932.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Konrad_Patzig_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abwehr
+				HoI_Naval_Intelligence_Specialist
+			}
+		}
+	}
+	GER_Walter_Nicolai={
+		name=GER_Walter_Nicolai
+		portraits={
+			army={
+				small="GFX_idea_Walter_Nicolai"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Walter_Nicolai_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1930.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_Nicolai_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abteilung_IIIb
+				HoI_Dismal_Enigma
+			}
+		}
+	}
+	GER_Hans_Oster={
+		name=GER_Hans_Oster
+		portraits={
+			army={
+				small="GFX_idea_Hans_Oster"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Hans_Oster_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1946.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Oster_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abwehr
+				HoI_Industrial_Specialist
+			}
+		}
+	}
+	GER_Georg_Hansen={
+		name=GER_Georg_Hansen
+		portraits={
+			army={
+				small="GFX_idea_Georg_Hansen"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Georg_Hansen_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1940.1.1
+				date < 1945.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Georg_Hansen_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abwehr
+				HoI_Technical_Specialist
+			}
+		}
+	}
+	GER_Wilhelm_Canaris={
+		name=GER_Wilhelm_Canaris
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Canaris"
+			}
+		}
+		advisor={
+			slot=Head_of_Intelligence
+			idea_token=GER_Wilhelm_Canaris_HoI
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1946.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Canaris_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_the_Abwehr
+				HoI_Brilliant_Spymaster
+			}
+		}
+	}
+	GER_Ernst_Rohm={
+		name=GER_Ernst_Rohm
+		portraits={
+			army={
+				small="GFX_idea_Ernst_Rohm"
+			}
+			civilian={
+				large="GFX_P_F_Ernst_Rohm"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Ernst_Rohm_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1949.2.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Rohm_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Stabchef_of_the_Sturmabteilung
+				CoStaff_School_Of_Mass_Combat
+			}
+		}
+	}
+	GER_Wilhelm_Keitel={
+		name=GER_Wilhelm_Keitel
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Keitel"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Wilhelm_Keitel_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Keitel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Manoeuvre
+			}
+		}
+	}
+	GER_Alfred_Jodl={
+		name=GER_Alfred_Jodl
+		portraits={
+			army={
+				small="GFX_idea_Alfred_Jodl"
+				large="GFX_M_Alfred_Jodl"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Alfred_Jodl_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Jodl_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Psychology
+			}
+		}
+		corps_commander={
+			traits = {
+				politically_connected
+				career_officer
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 104022
+		}
+	}
+	GER_Ernst_Busch={
+		name=GER_Ernst_Busch
+		portraits={
+			army={
+				small="GFX_idea_Ernst_Busch"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Ernst_Busch_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ernst_Busch_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Fire_Support
+			}
+		}
+	}
+	GER_Gerd_von_Rundstedt={
+		name=GER_Gerd_von_Rundstedt
+		portraits={
+			army={
+				small="GFX_idea_Gerd_von_Rundstedt"
+				large="GFX_M_Gerd_von_Rundstedt"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Gerd_von_Rundstedt_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Reorganize_the_Oberkommando
+				date < 1953.2.24
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gerd_Von_Rundstedt_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Manoeuvre
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Gerd_von_Rundstedt_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gerd_Von_Rundstedt_unavailable
+				}
+			}
+			traits = {
+				
+				army_regrouping_2
+			}
+			ai_will_do = {
+				factor = 1.5
+			}
+		}
+		corps_commander={
+			traits = {
+				defensive_doctrine
+				offensive_doctrine
+				old_guard
+			}
+			legacy_id = 104007
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+		}
+	}
+	GER_Walter_Warlimont={
+		name=GER_Walter_Warlimont
+		portraits={
+			army={
+				small="GFX_idea_Walter_Warlimont"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Walter_Warlimont_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_Warlimont_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Fire_Support
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Walter_Warlimont_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_Warlimont_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+	}
+	GER_Otto_Riehs={
+		name=GER_Otto_Riehs
+		portraits={
+			army={
+				small="GFX_idea_Otto_Riehs"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Otto_Riehs_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1975.1.1
+				date < 2008.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Otto_Riehs_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Psychology
+			}
+		}
+	}
+	GER_Wilhelm_Groener={
+		name=GER_Wilhelm_Groener
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Groener"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Wilhelm_Groener_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1939.5.3
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Groener_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Defence
+			}
+		}
+	}
+	GER_Wilhelm_Heye={
+		name=GER_Wilhelm_Heye
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Heye"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Wilhelm_Heye_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1947.3.11
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Heye_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Psychology
+			}
+		}
+	}
+	GER_Erich_von_Manstein={
+		name=GER_Erich_von_Manstein
+		portraits={
+			army={
+				large="GFX_M_Erich_von_Manstein"
+				small="GFX_idea_Erich_von_Manstein"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Erich_von_Manstein_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erich_von_Manstein_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Manoeuvre
+			}
+		}
+		corps_commander={
+			traits = {
+				trickster
+				armor_officer
+				brilliant_strategist
+				trait_engineer
+			}
+			legacy_id = 104001
+			skill = 4
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 4
+		}
+	}
+	GER_Walther_Buhle={
+		name=GER_Walther_Buhle
+		portraits={
+			army={
+				small="GFX_idea_Walther_Buhle"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Walther_Buhle_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walther_Buhle_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Fire_Support
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Walther_Buhle_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walther_Buhle_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+	}
+	GER_Erwin_Rommel={
+		name=GER_Erwin_Rommel
+		portraits={
+			army={
+				small="GFX_idea_Erwin_Rommel"
+				large="GFX_M_Erwin_Rommel"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Erwin_Rommel_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1943.1.1
+				date < 1945.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erwin_Rommel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Manoeuvre
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Erwin_Rommel_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1945.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erwin_Rommel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Doctrine_Of_Autonomy
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Erwin_Rommel_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erwin_Rommel_unavailable
+				}
+			}
+			traits = {
+				
+				army_armored_3
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		corps_commander={
+			legacy_id = 104002
+			traits = {
+				trickster
+				trait_reckless
+				war_hero
+				armor_officer
+				media_personality
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 3
+		}
+	}
+	GER_Hans_Speidel={
+		name=GER_Hans_Speidel
+		portraits={
+			army={
+				small="GFX_idea_Hans_Speidel"
+			}
+		}
+		advisor={
+			slot=Chief_of_Staff
+			idea_token=GER_Hans_Speidel_CoStaff
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1946.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Speidel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKW_General_Staff
+				CoStaff_School_Of_Mass_Combat
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Hans_Speidel_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1947.1.1
+				date < 1964.1.1
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Speidel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Kurt_von_Hammerstein_Equord={
+		name=GER_Kurt_von_Hammerstein_Equord
+		portraits={
+			army={
+				small="GFX_idea_Kurt_von_Hammerstein_Equord"
+				large="GFX_M_Kurt_von_Hammerstein_Equord"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Kurt_von_Hammerstein_Equord_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1943.4.24
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_von_Hammerstein_Equord_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Heeresleitung
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Ludwig_Beck={
+		name=GER_Ludwig_Beck
+		portraits={
+			army={
+				small="GFX_idea_Ludwig_Beck"
+				large="GFX_M_Ludwig_Beck"
+			}
+			civilian = {
+				large="GFX_P_A_Ludwig_Beck"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Ludwig_Beck_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1945.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ludwig_Beck_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Armoured_Spearhead_Doctrine
+			}
+		}
+	}
+	GER_Franz_Halder={
+		name=GER_Franz_Halder
+		portraits={
+			army={
+				small="GFX_idea_Franz_Halder"
+				large="GFX_M_Franz_Halder"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Franz_Halder_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Reorganize_the_Oberkommando
+				date < 1943.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Franz_Halder_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Guns_And_Butter_Doctrine
+			}
+		}
+	}
+	GER_Kurt_Zeitzler={
+		name=GER_Kurt_Zeitzler
+		portraits={
+			army={
+				small="GFX_idea_Kurt_Zeitzler"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Kurt_Zeitzler_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_Zeitzler_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+	}
+	GER_Adolf_Heusinger={
+		name=GER_Adolf_Heusinger
+		portraits={
+			army={
+				small="GFX_idea_Adolf_Heusinger"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Adolf_Heusinger_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1982.11.30
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Adolf_Heusinger_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Heinz_Guderian={
+		name=GER_Heinz_Guderian
+		portraits={
+			army={
+				small="GFX_idea_Heinz_Guderian"
+				large="GFX_M_Heinz_Guderian"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Heinz_Guderian_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Heinz_Guderian_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Armoured_Spearhead_Doctrine
+			}
+		}
+	}
+	GER_Hans_Krebs={
+		name=GER_Hans_Krebs
+		portraits={
+			army={
+				small="GFX_idea_Hans_Krebs"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Hans_Krebs_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Krebs_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+	}
+	GER_Ferdinand_Schorner={
+		name=GER_Ferdinand_Schorner
+		portraits={
+			army={
+				small="GFX_idea_Ferdinand_Schorner"
+				large="GFX_M_Ferdinand_Schorner"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Ferdinand_Schorner_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ferdinand_Schorner_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Commander_in_Chief_of_the_Heer
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Ferdinand_Schorner_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Ferdinand_Schorner_unavailable
+				}
+			}
+			traits = {
+				
+				army_infantry_2
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	GER_Paul_Hausser={
+		name=GER_Paul_Hausser
+		portraits={
+			army={
+				small="GFX_idea_Paul_Hausser"
+				large="GFX_M_Paul_Hausser"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Paul_Hausser_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Paul_Hausser_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Armoured_Spearhead_Doctrine
+			}
+		}
+	}
+	GER_Walther_von_Brauchitsch={
+		name=GER_Walther_von_Brauchitsch
+		portraits={
+			army={
+				small="GFX_idea_Walther_von_Brauchitsch"
+				large="GFX_M_Walther_von_Brauchitsch"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Walther_von_Brauchitsch_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walther_von_Brauchitsch_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Commander_in_Chief_of_the_Heer
+				CoArmy_Armoured_Spearhead_Doctrine
+			}
+		}
+	}
+	GER_Fedor_von_Bock={
+		name=GER_Fedor_von_Bock
+		portraits={
+			army={
+				small="GFX_idea_Fedor_von_Bock"
+				large="GFX_M_Fedor_von_Bock"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Fedor_von_Bock_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Fedor_von_Bock_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+		corps_commander={
+			traits = {
+				harsh_leader
+				trait_cautious
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 4
+			logistics_skill = 2
+			legacy_id = 104012
+		}
+	}
+	GER_Werner_von_Fritsch={
+		name=GER_Werner_von_Fritsch
+		portraits={
+			army={
+				small="GFX_idea_Werner_von_Fritsch"
+				large="GFX_M_Werner_von_Fritsch"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Werner_von_Fritsch_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1940.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Werner_von_Fritsch_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Commander_in_Chief_of_the_Heer
+				CoArmy_Armoured_Spearhead_Doctrine
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Werner_von_Fritsch_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Werner_Von_Fritsch_unavailable
+				}
+			}
+			traits = {
+				
+				army_logistics_2
+			}
+			ai_will_do = {
+				factor = 1.5
+			}
+		}
+	}
+	GER_Erich_Ludendorff={
+		name=GER_Erich_Ludendorff
+		portraits={
+			army={
+				small="GFX_idea_Erich_Ludendorff"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Erich_Ludendorff_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1937.12.20
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erich_Ludendorff_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Heeresleitung
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+	}
+	GER_Walter_von_Luttwitz={
+		name=GER_Walter_von_Luttwitz
+		portraits={
+			army={
+				small="GFX_idea_Walter_von_Luttwitz"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Walter_von_Luttwitz_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1942.9.20
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_von_Luttwitz_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Heeresleitung
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Julius_Ringel={
+		name=GER_Julius_Ringel
+		portraits={
+			army={
+				small="GFX_idea_Julius_Ringel"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Julius_Ringel_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1967.2.11
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Julius_Ringel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Heeresleitung
+				CoArmy_Guns_And_Butter_Doctrine
+			}
+		}
+	}
+	GER_Gunther_von_Kluge={
+		name=GER_Gunther_von_Kluge
+		portraits={
+			army={
+				small="GFX_idea_Gunther_von_Kluge"
+				large="GFX_M_Gunther_von_Kluge"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Gunther_von_Kluge_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1959.8.19
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gunther_von_Kluge_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+		corps_commander={
+			traits = {
+				offensive_doctrine
+				armor_officer
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id = 104008
+		}
+	}
+	GER_Erwin_von_Witzleben={
+		name=GER_Erwin_von_Witzleben
+		portraits={
+			army={
+				small="GFX_idea_Erwin_von_Witzleben"
+				large="GFX_M_Erwin_von_Witzleben"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Erwin_von_Witzleben_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1945.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erwin_von_Witzleben_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Static_Defence_Doctrine
+			}
+		}
+		corps_commander={
+			traits = {
+				infantry_officer
+				career_officer
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 4
+			legacy_id = 104017
+		}
+	}
+	GER_Gunther_Blumentritt={
+		name=GER_Gunther_Blumentritt
+		portraits={
+			army={
+				small="GFX_idea_Gunther_Blumentritt"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Gunther_Blumentritt_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gunther_Blumentritt_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Elastic_Defence_Doctrine
+			}
+		}
+	}
+	GER_Reinhard_Gunzel={
+		name=GER_Reinhard_Gunzel
+		portraits={
+			army={
+				small="GFX_idea_Reinhard_Gunzel"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Reinhard_Gunzel_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1980.1.1
+				date < 2030.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Reinhard_Gunzel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Commando_Doctrine_Army
+			}
+		}
+	}
+	GER_Hans_von_Seeckt={
+		name=GER_Hans_von_Seeckt
+		portraits={
+			army={
+				small="GFX_idea_Hans_von_Seeckt"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Hans_von_Seeckt_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1936.12.27
+				D_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_von_Seeckt_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Head_of_the_Heeresleitung
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Hans_Kahle={
+		name=GER_Hans_Kahle
+		portraits={
+			army={
+				small="GFX_idea_Hans_Kahle"
+			}
+		}
+		advisor={
+			slot=Chief_of_Army
+			idea_token=GER_Hans_Kahle_CoArmy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				C_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Kahle_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKH_General_Staff
+				CoArmy_Decisive_Battle_Doctrine
+			}
+		}
+	}
+	GER_Erich_Raeder={
+		name=GER_Erich_Raeder
+		portraits={
+			army={
+				small="GFX_idea_Erich_Raeder"
+				large="GFX_M_Erich_Raedar"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Erich_Raeder_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1960.11.6
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erich_Raeder_unavailable
+				}
+				NOT = {
+					has_completed_focus = GER_Kriegsmarine
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Decisive_Naval_Battle_Doctrine
+			}
+		}
+		navy_leader ={
+			traits = {
+				naval_lineage
+				battleship_adherent
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 4
+			maneuvering_skill = 3
+			coordination_skill = 3
+		}
+	}
+	GER_Karl_Donitz={
+		name=GER_Karl_Donitz
+		portraits={
+			army={
+				small="GFX_idea_Karl_Donitz"
+				large="GFX_M_Karl_Donitz"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Karl_Donitz_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				has_completed_focus = GER_Donitz_UBoot_Fleet
+				date < 1980.11.24
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Karl_Donitz_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Indirect_Approach_Doctrine
+			}
+		}
+		navy_leader ={
+			traits = {
+				navy_career_officer
+				seawolf
+			}
+			skill = 5
+			attack_skill = 5
+			defense_skill = 3
+			maneuvering_skill = 3
+			coordination_skill = 5
+		}
+	}
+	GER_Wilhelm_Marschall={
+		name=GER_Wilhelm_Marschall
+		portraits={
+			army={
+				small="GFX_idea_Wilhelm_Marschall"
+				large="GFX_M_Wilhelm_Marschall"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Wilhelm_Marschall_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1941.1.1
+				date < 1976.3.20
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Wilhelm_Marschall_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Open_Seas_Doctrine
+			}
+		}
+		navy_leader ={
+			traits = {
+				old_guard_navy
+				bold
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 2
+			maneuvering_skill = 3
+			coordination_skill = 4
+		}
+	}
+	GER_Kurt_Freiwald={
+		name=GER_Kurt_Freiwald
+		portraits={
+			army={
+				small="GFX_idea_Kurt_Freiwald"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Kurt_Freiwald_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1945.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_Freiwald_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Base_Control_Doctrine
+			}
+		}
+	}
+	GER_Alfred_Saalwachter={
+		name=GER_Alfred_Saalwachter
+		portraits={
+			army={
+				small="GFX_idea_Alfred_Saalwachter"
+				large="GFX_M_Alfred_Saalwachter"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Alfred_Saalwachter_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1958.12.6
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Alfred_Saalwachter_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Open_Seas_Doctrine
+			}
+		}
+		navy_leader ={
+			traits = {
+				old_guard_navy
+				bold
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 2
+			maneuvering_skill = 3
+			coordination_skill = 4
+		}
+	}
+	GER_Reinhard_Scheer={
+		name=GER_Reinhard_Scheer
+		portraits={
+			army={
+				small="GFX_idea_Reinhard_Scheer"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Reinhard_Scheer_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1914.1.1
+				date < 1930.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Reinhard_Scheer_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Decisive_Naval_Battle_Doctrine
+			}
+		}
+	}
+	GER_Conrad_Albrecht={
+		name=GER_Conrad_Albrecht
+		portraits={
+			army={
+				small="GFX_idea_Conrad_Albrecht"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Conrad_Albrecht_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Conrad_Albrecht_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Open_Seas_Doctrine
+			}
+		}
+	}
+	GER_Walter_Warzecha={
+		name=GER_Walter_Warzecha
+		portraits={
+			army={
+				small="GFX_idea_Walter_Warzecha"
+			}
+		}
+		advisor={
+			slot=Chief_of_Navy
+			idea_token=GER_Walter_Warzecha_CoNavy
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Walter_Warzecha_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Marine
+				CoNavy_Indirect_Approach_Doctrine
+			}
+		}
+	}
+	GER_Hugo_Sperrle={
+		name=GER_Hugo_Sperrle
+		portraits={
+			army={
+				small="GFX_idea_Hugo_Sperrle"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Hugo_Sperrle_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hugo_Sperrle_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Carpet_Bombing_Doctrine
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Hugo_Sperrle_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hugo_Sperrle_unavailable
+				}
+			}
+			traits = {
+				
+				air_close_air_support_2
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	GER_Otto_Dessloch={
+		name=GER_Otto_Dessloch
+		portraits={
+			army={
+				small="GFX_idea_Otto_Dessloch"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Otto_Dessloch_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1939.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Otto_Dessloch_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Army_Aviation_Doctrine
+			}
+		}
+	}
+	GER_Robert_Ritter_von_Greim={
+		name=GER_Robert_Ritter_von_Greim
+		portraits={
+			army={
+				small="GFX_idea_Robert_Ritter_von_Greim"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Robert_Ritter_von_Greim_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Robert_Ritter_von_Greim_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Oberbefehlshaber_der_Luftwaffe
+				CoAir_Air_Superiority_Doctrine
+			}
+		}
+	}
+	GER_Hans_Jurgen_Stumpff={
+		name=GER_Hans_Jurgen_Stumpff
+		portraits={
+			army={
+				small="GFX_idea_Hans_Jurgen_Stumpff"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Hans_Jurgen_Stumpff_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1944.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = HansJurgen_Stumpff_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Army_Aviation_Doctrine
+			}
+		}
+	}
+	GER_Karl_Koller={
+		name=GER_Karl_Koller
+		portraits={
+			army={
+				small="GFX_idea_Karl_Koller"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Karl_Koller_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Karl_Koller_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Army_Aviation_Doctrine
+			}
+		}
+	}
+	GER_Eberhard_Milch={
+		name=GER_Eberhard_Milch
+		portraits={
+			army={
+				small="GFX_idea_Erhard_Milch"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Eberhard_Milch_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erhard_Milch_unavailable
+				}
+			}
+			available = {
+				has_completed_focus = GER_Reichsluftfahrtministerium
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Air_Superiority_Doctrine
+			}
+		}
+	}
+	GER_Albert_Kesselring={
+		name=GER_Albert_Kesselring
+		portraits={
+			army={
+				small="GFX_idea_Albert_Kesselring"
+				large="GFX_M_Albert_Kesselring"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Albert_Kesselring_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				has_completed_focus = GER_Luftwaffe
+				NOT = {
+					has_country_flag = Albert_Kesselring_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Vertical_Envelopment_Doctrine
+			}
+		}
+	}
+	GER_Hans_Ulrich_Rudel={
+		name=GER_Hans_Ulrich_Rudel
+		portraits={
+			army={
+				small="GFX_idea_Hans_Ulrich_Rudel"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Hans_Ulrich_Rudel_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1949.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Hans_Ulrich_Rudel_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Air_Superiority_Doctrine
+			}
+		}
+	}
+	GER_Adolf_Galland={
+		name=GER_Adolf_Galland
+		portraits={
+			army={
+				small="GFX_idea_Adolf_Galland"
+			}
+		}
+		advisor={
+			slot=Chief_of_Airforce
+			idea_token=GER_Adolf_Galland_CoAir
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1942.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Adolf_Galland_unavailable
+				}
+			}
+			traits = {
+				
+				POSITION_GER_Chief_of_OKL_General_Staff
+				CoAir_Air_Superiority_Doctrine
+			}
+		}
+	}
+	GER_Erhard_Milch={
+		name=GER_Erhard_Milch
+		portraits={
+			army={
+				small="GFX_idea_Erhard_Milch"
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Erhard_Milch_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				F_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erhard_Milch_unavailable
+				}
+			}
+			traits = {
+				
+				air_bomber_interception_2
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	GER_Kurt_Student={
+		name=GER_Kurt_Student
+		portraits={
+			army={
+				small="GFX_idea_Kurt_Student"
+				large="GFX_M_Kurt_Student"
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Kurt_Student_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Kurt_Student_unavailable
+				}
+			}
+			traits = {
+				
+				air_airborne_2
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	GER_Erich_Bay={
+		name=GER_Erich_Bay
+		portraits={
+			army={
+				small="GFX_idea_Erich_Bay"
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Erich_Bay_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Erich_Bey_unavailable
+				}
+			}
+			traits = {
+				
+				navy_naval_air_defense_2
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	GER_Gunther_Lutjens={
+		name=GER_Gunther_Lutjens
+		portraits={
+			army={
+				small="GFX_idea_Gunther_Lutjens"
+				large="GFX_M_Gunther_Lutjens"
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Gunther_Lutjens_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Gunther_Lutjens_unavailable
+				}
+			}
+			traits = {
+				
+				navy_fleet_logistics_2
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		navy_leader ={
+			traits = {
+				gentlemanly
+				navy_career_officer
+				superior_tactician
+			}
+			skill = 3
+			attack_skill = 4
+			defense_skill = 1
+			maneuvering_skill = 1
+			coordination_skill = 4
+		}
+	}
+	GER_Viktor_Schutze={
+		name=GER_Viktor_Schutze
+		portraits={
+			army={
+				small="GFX_idea_Viktor_Schutze"
+			}
+		}
+		advisor={
+			slot=high_command
+			idea_token=GER_Viktor_Schutze_HC
+			allowed = {
+				tag = GER
+			}
+			visible = {
+				date > 1933.1.1
+				date < 1964.1.1
+				A_Minister_Allowed = yes
+				NOT = {
+					has_country_flag = Viktor_Schutze_unavailable
+				}
+			}
+			traits = {
+				
+				navy_anti_submarine_1
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	GER_Walther_Model={
+		name=GER_Walther_Model
+		portraits={
+			army={
+				large="GFX_M_Walther_Model"
+			}
+		}
+		corps_commander={
+			traits = {
+				defensive_doctrine
+				brilliant_strategist
+				trait_cautious
+				politically_connected
+			}
+			legacy_id = 104000
+			skill = 4
+			attack_skill = 5
+			defense_skill = 5
+			planning_skill = 3
+			logistics_skill = 4
+		}
+	}
+	GER_Eugen_Ritter_von_Schobert={
+		name=GER_Eugen_Ritter_von_Schobert
+		portraits={
+			army={
+				large="GFX_M_Ritter_von_Schobert"
+			}
+		}
+		corps_commander={
+			traits = {
+				old_guard
+				trait_engineer
+				trickster
+				ranger
+			}
+			legacy_id = 104003
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+		}
+	}
+	GER_Paul_Ludwig_Ewald_von_Kleist={
+		name=GER_Paul_Ludwig_Ewald_von_Kleist
+		portraits={
+			army={
+				large="GFX_M_Paul_Ludwig_Ewald_von_Kleist"
+			}
+		}
+		corps_commander={
+			traits = {
+				old_guard
+				armor_officer
+				panzer_leader
+				ranger
+			}
+			legacy_id = 104004
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 3
+		}
+	}
+	GER_Heinrich_von_Stulpnagel={
+		name=GER_Heinrich_von_Stulpnagel
+		portraits={
+			army={
+				large="GFX_M_Carl_Heinrich_von_Stulpnagel"
+			}
+		}
+		corps_commander={
+			traits = {
+				career_officer
+				infantry_officer
+				skilled_staffer
+			}
+			legacy_id = 104006
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 4
+		}
+	}
+	GER_Friedrich_Paulus={
+		name=GER_Friedrich_Paulus
+		portraits={
+			army={
+				large="GFX_M_Friedrich_Paulus"
+			}
+		}
+		corps_commander={
+			traits = {
+				trait_cautious
+				armor_officer
+			}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = 104009
+		}
+	}
+	GER_Wilhelm_List={
+		name=GER_Wilhelm_List
+		portraits={
+			army={
+				large="GFX_M_Wilhelm_List"
+			}
+		}
+		corps_commander={
+			traits = {
+				career_officer
+				inflexible_strategist
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+			legacy_id = 104010
+		}
+	}
+	GER_Helmuth_Weidling={
+		name=GER_Helmuth_Weidling
+		portraits={
+			army={
+				large="GFX_M_Helmuth_Weidling"
+			}
+		}
+		corps_commander={
+			traits = {
+				infantry_officer
+				urban_assault_specialist
+			}
+			skill = 2
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = 104011
+		}
+	}
+	GER_Maximilian_Von_Weichs={
+		name=GER_Maximilian_Von_Weichs
+		portraits={
+			army={
+				large="GFX_M_Maximilian_von_Weichs"
+			}
+		}
+		corps_commander={
+			traits = {
+				cavalry_officer
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 4
+			legacy_id = 104013
+		}
+	}
+	GER_Wilhelm_Ritter_von_Leeb={
+		name=GER_Wilhelm_Ritter_von_Leeb
+		portraits={
+			army={
+				large="GFX_M_Wilhelm_Ritter_von_Leeb"
+			}
+		}
+		corps_commander={
+			traits = {
+				old_guard
+				infantry_officer
+			}
+			skill = 3
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 2
+			legacy_id = 104014
+		}
+	}
+	GER_Georg_Hans_Reinhardt={
+		name=GER_Georg_Hans_Reinhardt
+		portraits={
+			army={
+				large="GFX_M_Georg_Hans_Reinhardt"
+			}
+		}
+		corps_commander={
+			traits = {
+				trait_cautious
+				armor_officer
+			}
+			skill = 3
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 3
+			legacy_id = 104015
+		}
+	}
+	GER_Walter_Kruger={
+		name=GER_Walter_Kruger
+		portraits={
+			army={
+				large="GFX_M_Walter_Kruger"
+			}
+		}
+		corps_commander={
+			traits = {
+				armor_officer
+				trait_reckless
+				politically_connected
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 3
+			legacy_id = 104016
+		}
+	}
+	GER_Hermann_Hoth={
+		name=GER_Hermann_Hoth
+		portraits={
+			army={
+				large="GFX_M_Hermann_Hoth"
+			}
+		}
+		corps_commander={
+			traits = {
+				trait_reckless
+				armor_officer
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 104018
+		}
+	}
+	GER_Johannes_Blaskowitz={
+		name=GER_Johannes_Blaskowitz
+		portraits={
+			army={
+				large="GFX_M_Johannes_Blaskowitz"
+			}
+		}
+		corps_commander={
+			traits = {
+				infantry_officer
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = 104019
+		}
+	}
+	GER_Friedrich_Schulz={
+		name=GER_Friedrich_Schulz
+		portraits={
+			army={
+				large="GFX_M_Friedrich_Schulz"
+			}
+		}
+		corps_commander={
+			traits = {
+				infantry_officer
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 3
+			legacy_id = 104020
+		}
+	}
+	GER_Georg_von_Kuchler={
+		name=GER_Georg_von_Kuchler
+		portraits={
+			army={
+				large="GFX_M_Georg_von_Kuchler"
+			}
+		}
+		corps_commander={
+			traits = {
+				bearer_of_artillery
+			}
+			skill = 4
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 104021
+		}
+	}
+	GER_Alexander_Von_Falkenhousen={
+		name=GER_Alexander_Von_Falkenhousen
+		portraits={
+			army={
+				large="GFX_M_Alexander_von_Falkenhousen"
+			}
+		}
+		corps_commander={
+			traits = {
+				infantry_officer
+				guerilla_fighter
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = 104023
+		}
+	}
+	GER_Hasso_Von_Manteuffel={
+		name=GER_Hasso_Von_Manteuffel
+		portraits={
+			army={
+				large="GFX_M_Hasso_von_Manteuffel"
+			}
+		}
+		corps_commander={
+			traits = {
+				armor_officer
+				career_officer
+				trait_cautious
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 104024
+		}
+	}
+	GER_Gotthard_Heinrici={
+		name=GER_Gotthard_Heinrici
+		portraits={
+			army={
+				large="GFX_M_Gotthard_Heinrici"
+			}
+		}
+		corps_commander={
+			traits = {
+				trait_engineer
+				infantry_officer
+				trait_cautious
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 104026
+		}
+	}
+	GER_Ernst_Eberhard_Hell={
+		name=GER_Ernst_Eberhard_Hell
+		portraits={
+			army={
+				large="GFX_M_Ernst_Eberhard_Hell"
+			}
+		}
+		corps_commander={
+			traits = {
+				winter_specialist
+				trait_engineer
+				war_hero
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = 104027
+		}
+	}
+	GER_Hermann_Boehm={
+		name=GER_Hermann_Boehm
+		portraits={
+			army={
+				large="GFX_M_Hermann_Boehm"
+			}
+		}
+		navy_leader={
+			traits = {
+				craven
+				superior_tactician
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 4
+			maneuvering_skill = 4
+			coordination_skill = 2
+		}
+	}
+	GER_Wilhelm_III={
+		name=GER_Wilhelm_III
+		portraits={
+			civilian={
+				large="GFX_P_A_Wilhelm_III"
+			}
+		}
+	}
+	GER_Wilhelm_II={
+		name=GER_Wilhelm_II
+		portraits={
+			civilian={
+				large="GFX_P_A_Wilhelm_II"
+			}
+			army={
+				large="GFX_M_Wilhelm_II"
+			}
+		}
+	}
+}

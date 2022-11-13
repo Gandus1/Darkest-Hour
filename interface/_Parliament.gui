@@ -1,0 +1,367 @@
+@PARLIAMENT_WINDOW_WIDTH = 481
+@PARLIAMENT_WINDOW_HEIGHT = 217
+
+guiTypes = {
+	containerWindowType = {
+		name = "open_parliament_political_tab_window"
+		position = { x = 242 y = 4 }
+		size = { width = 100 height = 100 }
+
+		buttonType = {
+			name = "open_button"
+			spriteType = "GFX_government_circle_button"
+			position = { x = 0 y = 0 }
+			buttonFont = "hoi_18mbs"
+			pdx_tooltip = "OPEN_PARLIAMENT_POLITICAL_TAB_WINDOW_TT"
+		}
+
+		iconType = {
+			name = "button_icon"
+			spriteType = "GFX_party_influence_icon"
+			scale = 1.3
+			position = { x = 7 y = 6 }
+			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "open_parliament_diplomacy_tab_window"
+		position = { x = 242 y = 4 }
+		size = { width = 100 height = 100 }
+
+		buttonType = {
+			name = "open_button"
+			spriteType = "button_right"
+			position = { x = 172 y = 116 }
+			scale = 0.85
+			orientation = upper_right
+			buttonFont = "hoi_18mbs"
+			pdx_tooltip = "OPEN_PARLIAMENT_POLITICAL_TAB_WINDOW_TT"
+		}
+
+		buttonType = {
+			name = "close_button"
+			spriteType = "button_left"
+			position = { x = 172 y = 116 }
+			scale = 0.85
+			orientation = upper_right
+			buttonFont = "hoi_18mbs"
+			pdx_tooltip = "CLOSE_PARLIAMENT_POLITICAL_TAB_WINDOW_TT"
+		}
+	}
+
+	containerWindowType = {
+		name = "parliament_political_tab_panel_window"
+		position = { x = 543 y = 0 }
+		size = { width = @PARLIAMENT_WINDOW_WIDTH height = @PARLIAMENT_WINDOW_HEIGHT }
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window_transparent_transparent"
+		}
+	}
+
+	containerWindowType = {
+		name = "parliament_political_tab_window"
+		position = { x = -543 y = 0 }
+		show_position = { x = 0 y = 0 }
+		size = { width = 100%% height = 100%% }
+
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_bg"
+		}
+
+		iconType = {
+			name = "header_bg"
+			position = { x = 5 y = 4 }
+			spriteType = "GFX_macrobuild_header_bg"
+		}
+
+		instantTextBoxType = {
+			name = "title"
+			position = { x = 25 y = 3 }
+			font = "hoi_36header"
+			format = left
+			text = "PARLIAMENT_POLITICAL_TAB_WINDOW_TITLE"
+			maxWidth = 390
+			multiline = no
+			truncate = yes
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "entry_window"
+			position = { x = 0 y = 43 }
+			size = { width = 100%% height = 100%% }
+			margin = { left = 13 right = 13 bottom = 13 top = 0 }
+
+			containerWindowType = {
+				name = "background_window"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 160 }
+				margin = { left = 5 right = 0 bottom = 5 top = 5 }
+
+				background = {
+					name = "background"
+					spriteType = "GFX_tiled_window_small"
+				}
+
+				containerWindowType = {
+					name = "piechart_window"
+					position = { x = 0 y = 0 }
+					size = { width = 162 height = 100%% }
+					scale = 0.125
+
+					background = {
+						name = "background"
+						spriteType = "GFX_tiled_decisions_bg_small"
+					}
+
+					# Pie Chart created by Yard1 and changed by lemonporn/LimonenZitrone
+					gridboxtype = {
+						name = "parliament_piechart_gridbox"
+						position = { x = 640 y = 600 }
+						size = { width = 100%% height = 100%% }
+						slotsize = { width = 0 height = 0 }
+						add_horizontal = no
+						max_slots_horizontal = 1
+						format = "UPPER_LEFT"
+					}
+				}
+
+				containerWindowType = {
+					name = "piechart_overlay_window"
+					position = { x = 0 y = 0 }
+					size = { width = 162 height = 100%% }
+
+					iconType = {
+						name = "piechart_overlay"
+						position = { x = 8 y = 3 }
+						spriteType = "GFX_pol_piechart_overlay"
+						scale = 2.05
+					}
+				}
+
+				containerWindowType = {
+					name = "parties_window"
+					position = { x = 167 y = 0 }
+					size = { width = 100%% height = 100%% }
+					margin = { top = 3 bottom = 3 }
+					verticalScrollbar = "right_vertical_sliderno_bg"
+
+					background = {
+						name = "background"
+						spriteType = "GFX_tiled_window_transparent"
+					}
+
+					gridboxtype = {
+						name = "parliament_party_gridbox"
+						position = { x = 0 y = 0 }
+						size = { width = 100%% height = 100%% }
+						slotsize = { width = 1 height = 1 }
+						add_horizontal = no
+						max_slots_horizontal = 1
+						format = "UPPER_LEFT"
+					}
+				}
+			}
+		}
+
+		buttonType = {
+			name = "close_button"
+			spriteType = "GFX_closebutton"
+			position = { x = -45 y = 7 }
+			orientation = upper_right
+			pdx_tooltip = "DIPLOMACY_CLOSE"
+			shortcut = "ESCAPE"
+		}
+	}
+
+	containerWindowType = {
+		name = "parliament_diplomacy_tab_window"
+		position = { x = 543 y = -47 }
+		size = { width = @PARLIAMENT_WINDOW_WIDTH height = @PARLIAMENT_WINDOW_HEIGHT }
+
+		fade_type = linear
+		fade_time = 300
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_bg"
+		}
+
+		iconType = {
+			name = "header_bg"
+			position = { x = 5 y = 4 }
+			spriteType = "GFX_macrobuild_header_bg"
+		}
+
+		instantTextBoxType = {
+			name = "title"
+			position = { x = 25 y = 8 }
+			font = "bombardier_30"
+			format = left
+			text = "PARLIAMENT_POLITICAL_TAB_WINDOW_TITLE"
+			maxWidth = 390
+			multiline = no
+			truncate = yes
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "entry_window"
+			position = { x = 0 y = 43 }
+			size = { width = 100%% height = 100%% }
+			margin = { left = 13 right = 13 bottom = 13 top = 0 }
+
+			containerWindowType = {
+				name = "background_window"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 160 }
+				margin = { left = 5 right = 0 bottom = 5 top = 5 }
+
+				background = {
+					name = "background"
+					spriteType = "GFX_tiled_window_small"
+				}
+
+				containerWindowType = {
+					name = "piechart_window"
+					position = { x = 0 y = 0 }
+					size = { width = 162 height = 100%% }
+					scale = 0.125
+
+					background = {
+						name = "background"
+						spriteType = "GFX_tiled_decisions_bg_small"
+					}
+
+					# Pie Chart created by Yard1 and changed by lemonporn/LimonenZitrone
+					gridboxtype = {
+						name = "parliament_piechart_gridbox"
+						position = { x = 640 y = 600 }
+						size = { width = 100%% height = 100%% }
+						slotsize = { width = 0 height = 0 }
+						add_horizontal = no
+						max_slots_horizontal = 1
+						format = "UPPER_LEFT"
+					}
+				}
+
+				containerWindowType = {
+					name = "piechart_overlay_window"
+					position = { x = 0 y = 0 }
+					size = { width = 162 height = 100%% }
+
+					iconType = {
+						name = "piechart_overlay"
+						position = { x = 8 y = 3 }
+						spriteType = "GFX_pol_piechart_overlay"
+						scale = 2.05
+					}
+				}
+
+				containerWindowType = {
+					name = "parties_window"
+					position = { x = 167 y = 0 }
+					size = { width = 100%% height = 100%% }
+					margin = { top = 3 bottom = 3 }
+					verticalScrollbar = "right_vertical_sliderno_bg"
+
+					background = {
+						name = "background"
+						spriteType = "GFX_tiled_window_transparent"
+					}
+
+					gridboxtype = {
+						name = "parliament_party_gridbox"
+						position = { x = 0 y = 0 }
+						size = { width = 100%% height = 100%% }
+						slotsize = { width = 1 height = 1 }
+						add_horizontal = no
+						max_slots_horizontal = 1
+						format = "UPPER_LEFT"
+					}
+				}
+			}
+		}
+
+		buttonType = {
+			name = "close_button"
+			spriteType = "GFX_closebutton"
+			position = { x = -45 y = 7 }
+			orientation = upper_right
+			pdx_tooltip = "DIPLOMACY_CLOSE"
+			shortcut = "ESCAPE"
+		}
+	}
+
+	containerWindowType = {
+		name = "parliament_political_tab_parliament_party_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 400 height = 20 }
+
+		iconType = {
+			name = "party_color_icon_bg"
+			position = { x = 0 y = -2 }
+			spriteType = "GFX_pol_party_colour_bg"
+			pdx_tooltip = "PARLIAMENT_ENTRY_TT"
+			pdx_tooltip_delayed = "PARLIAMENT_ENTRY_TT_DELAYED"
+		}
+
+		iconType = {
+			name = "party_color_icon"
+			position = { x = 4 y = 2 }
+			spriteType = "GFX_party_color_icon"
+			frame = 2
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "party_name"
+			position = { x = 25 y = 0 }
+			format = left
+			font = "hoi_16mbs"
+			text = "PARLIAMENT_ENTRY_NAME"
+			maxWidth = 150
+			maxHeight = 20
+			fixedsize = yes
+			truncate = yes
+			pdx_tooltip = "PARLIAMENT_ENTRY_TT"
+			pdx_tooltip_delayed = "PARLIAMENT_ENTRY_TT_DELAYED"
+		}
+
+		instantTextBoxType = {
+			name = "party_influence"
+			position = { x = 180 y = 0 }
+			format = left
+			font = "hoi_16mbs"
+			text = "PARLIAMENT_ENTRY_INFLUENCE"
+			maxWidth = 47
+			maxHeight = 20
+			fixedsize = yes
+			truncate = yes
+			pdx_tooltip = "PARLIAMENT_ENTRY_INFLUENCE_TT"
+			pdx_tooltip_delayed = "PARLIAMENT_ENTRY_ONLY_ELECTION_CHANGE_TT"
+		}
+
+		instantTextBoxType = {
+			name = "party_current_popularity"
+			position = { x = 230 y = 0 }
+			format = left
+			font = "hoi_16mbs"
+			text = "PARLIAMENT_ENTRY_CURRENT_POPULARITY"
+			maxWidth = 47
+			maxHeight = 20
+			fixedsize = yes
+			truncate = yes
+			pdx_tooltip = "PARLIAMENT_ENTRY_CURRENT_POPULARITY_TT"
+			pdx_tooltip_delayed = "PARLIAMENT_ENTRY_DYNAMIC_CHANGE_TT"
+		}
+	}
+}

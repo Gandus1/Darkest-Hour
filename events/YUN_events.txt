@@ -1,0 +1,119 @@
+#########################################################################
+# Darkest Hour Events : Yunnan
+#########################################################################
+add_namespace = YUN_Sino_Japanese_War_Chinese_Defeat
+######################################
+# On Our Own
+######################################
+country_event = {
+	id = YUN_Sino_Japanese_War_Chinese_Defeat.1
+	title = YUN_Sino_Japanese_War_Chinese_Defeat.1.t
+	desc = YUN_Sino_Japanese_War_Chinese_Defeat.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # Long Yun will guide us through.
+		name = YUN_Sino_Japanese_War_Chinese_Defeat.1.A
+		release = YUN
+		add_ideas = YUN_The_Last_Bastion_1_idea
+	}
+}
+######################################
+# Tokyo's Demand
+######################################
+country_event = {
+	id = YUN_Sino_Japanese_War_Chinese_Defeat.2
+	title = YUN_Sino_Japanese_War_Chinese_Defeat.2.t
+	desc = YUN_Sino_Japanese_War_Chinese_Defeat.2.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # We have little choice...
+		name = YUN_Sino_Japanese_War_Chinese_Defeat.2.A
+		remove_ideas = YUN_The_Last_Bastion_1_idea
+		add_stability = -0.15
+		JAP = {
+			puppet = YUN
+			set_autonomy = {
+				target = YUN
+				autonomy_state = AUTONOMY_Imperial_Associate
+			}
+		}
+		JAP = {
+			country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.3 days = 1 }
+		}
+	}
+	option = { # We will never submit! Long live Yunnan, Long live China!
+		name = YUN_Sino_Japanese_War_Chinese_Defeat.2.B
+		swap_ideas = {
+			remove_idea = YUN_The_Last_Bastion_1_idea
+			add_idea = YUN_The_Last_Bastion_2_idea
+		}
+		every_state = {
+			limit = {
+				is_core_of = CHI
+			}
+			add_core_of = YUN
+		}
+		set_cosmetic_tag = YUN_NRA
+		set_country_flag = YUN_long_yun_defiant
+		JAP = {
+			country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.4 days = 1 }
+		}
+	}
+	option = { # I recall having some "Connections" in Hanoi...
+		name = YUN_Sino_Japanese_War_Chinese_Defeat.2.C
+		FRA = {
+			country_event = { id = FRA_Sino_Japanese_War_Chinese_Defeat.1 days = 5 }
+		}
+	}
+}
+######################################
+# The Yunnan Protectorate
+######################################
+country_event = {
+	id = YUN_Sino_Japanese_War_Chinese_Defeat.3
+	title = YUN_Sino_Japanese_War_Chinese_Defeat.3.t
+	desc = YUN_Sino_Japanese_War_Chinese_Defeat.3.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # We have little choice...
+		name = YUN_Sino_Japanese_War_Chinese_Defeat.3.A
+		remove_ideas = YUN_The_Last_Bastion_1_idea
+		add_stability = -0.15
+		FRA = {
+			puppet = YUN
+			set_autonomy = {
+				target = YUN
+				autonomy_state = AUTONOMY_Dominion
+			}
+		}
+		set_cosmetic_tag = YUN_FRADOMINION
+		JAP = {
+			country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.6 days = 1 }
+		}
+	}
+}
+######################################
+# France Refuses
+######################################
+country_event = {
+	id = YUN_Sino_Japanese_War_Chinese_Defeat.4
+	title = YUN_Sino_Japanese_War_Chinese_Defeat.4.t
+	desc = YUN_Sino_Japanese_War_Chinese_Defeat.4.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # We have little choice...
+		name = YUN_Sino_Japanese_War_Chinese_Defeat.4.A
+		remove_ideas = YUN_The_Last_Bastion_1_idea
+		add_stability = -0.15
+		JAP = {
+			puppet = YUN
+			set_autonomy = {
+				target = YUN
+				autonomy_state = AUTONOMY_Imperial_Associate
+			}
+		}
+		JAP = {
+			country_event = { id = JAP_Sino_Japanese_War_Chinese_Defeat.3 days = 1 }
+		}
+	}
+}

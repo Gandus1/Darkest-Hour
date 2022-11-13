@@ -1,0 +1,536 @@
+#########################################################################
+#  Political Decisions
+#########################################################################
+political_actions = {
+	###########################
+	# Purge the National Will
+	###########################
+	HUN_Purge_the_National_Will = {
+		visible = {
+			tag = HUN
+			has_manpower > 0
+		}
+		cost = 50
+		
+		ai_will_do = {
+			factor = 2	
+			modifier = {
+				factor = 20
+			}
+		}
+		
+		complete_effect = {
+			add_stability = 0.15
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.05
+			}
+		}
+	}
+	
+	HUN_Austria_Hungary_Empire = {
+			visible = {
+				tag = HUN
+				NOT = { has_country_flag = Austria_Hungary_EE }
+			}
+			cost = 20
+			available = {
+				owns_state = 4
+				owns_state = 774
+				owns_state = 152
+				owns_state = 153
+			}
+		
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+
+		complete_effect = {
+			HUN = { country_event = { days = 0 id = DH_Hungary.12 } }
+			set_country_flag = Austria_Hungary_EE
+			add_political_power = 200
+			add_stability = 0.2
+			set_capital = 4
+			set_country_flag = Austria_Hungary_Formed
+		}	
+	}
+	
+	HUN_Push_Out_Of_Triannon = {
+		cost = 200
+		visible = {
+			tag = HUN
+			has_idea = HUN_treaty_of_triannon
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}		
+		complete_effect = {
+			remove_ideas = HUN_treaty_of_triannon
+		}	
+	}
+
+	HUN_Push_Down_The_Front = {
+		visible = {
+			tag = HUN
+			NOT = { has_country_flag = front_pushed } 
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}		
+		complete_effect = {
+			add_timed_idea = { idea = HUN_idea_Construction_Improvements  days = 182 }
+			set_country_flag = front_pushed
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.35
+			}
+		}	
+	}
+
+}
+#########################
+# Claim Territories
+########################
+HUN_Claim_Land = {
+	HUN_Claim_East = {
+		visible = {
+			NOT = { has_country_flag = east_claimed }
+		}
+		cost = 50
+		available = {
+			NOT = { has_idea = HUN_treaty_of_triannon }
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_state_claim = 839
+			add_state_claim = 76
+			add_state_claim = 838
+			set_country_flag = east_claimed
+		}
+	}
+
+	HUN_Claim_South = {	
+		visible = {
+			NOT = { has_country_flag = south_claimed }
+		}
+		cost = 50
+		available = {
+			NOT = { has_idea = HUN_treaty_of_triannon }
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+
+		complete_effect = {
+			add_stability = 0.05
+			add_state_claim = 45
+			set_country_flag = south_claimed
+		}
+	}
+
+	HUN_Claim_West = {
+		visible = {
+			NOT = { has_country_flag = west_claimed }
+		}
+		cost = 50
+		available = {
+			NOT = {
+				has_idea = HUN_treaty_of_triannon
+			}
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_state_claim = 770
+			set_country_flag = west_claimed
+		}
+	}
+
+	HUN_Claim_North = {
+		visible = {
+			NOT = { has_country_flag = north_claimed }
+		}
+		cost = 50
+		available = {
+			NOT = {
+				has_idea = HUN_treaty_of_triannon
+			}
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_state_claim = 664
+			add_state_claim = 73
+			set_country_flag = north_claimed
+		}
+	}
+
+	HUN_Claim_Transylvania = {
+		visible = {
+			NOT = { has_country_flag = trans_claimed }
+		}
+		cost = 50
+		available = {
+			NOT = {
+				has_idea = HUN_treaty_of_triannon
+			}
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_state_claim = 839
+			add_state_claim = 76
+			add_state_claim = 838
+			add_state_claim = 84
+			add_state_claim = 83
+			add_state_claim = 82
+			set_country_flag = trans_claimed
+			HUN = { country_event = { days = 1 id = DH_Hungary.22 } }
+		}
+	}	
+}
+#########################################################################
+# Appeasing Our Superiors
+#########################################################################
+HUN_Appeasing_Our_Superiors = {
+	HUN_Anti_Jewish_Laws = {
+		visible = {
+		}
+		cost = 20
+			ai_will_do = {
+				factor = 1	
+				modifier = {
+					factor = 1
+				}
+			}
+		complete_effect = {
+			add_stability = -0.01
+			add_opinion_modifier = {
+				target = GER
+				modifier = medium_increase
+			}
+		}	
+	}
+	
+	HUN_National_Socialist_Propiganda = {
+		visible = {
+		}
+		cost = 50
+		complete_effect = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+	
+	HUN_Seats_for_the_Arrow_Party = {
+		visible = {
+		}
+		cost = 100
+		complete_effect = {
+			add_stability = -0.05
+			add_manpower = 100000
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+}
+########################################################################
+# Claim Greater Hungary
+########################################################################
+HUN_Claim_Greater_Hungary = {
+	HUN_Fullfill_Greater_Hungary = {
+		visible = {
+			NOT = { has_country_flag = Greater_Hungary }
+		}
+		cost = 10
+		available = {
+			owns_state = 839
+			owns_state = 76
+			owns_state = 838
+			owns_state = 84
+			owns_state = 83
+			owns_state = 82
+			owns_state = 770
+			owns_state = 45
+			owns_state = 664
+			owns_state = 73
+		}
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}			
+		complete_effect = {
+			HUN = { country_event = { days = 0 id = DH_Hungary.11 } }
+			set_country_flag = Greater_Hungary
+			add_political_power = 200
+			add_stability = 0.2
+		}
+	}
+}
+########################################################################
+# A Supportive Alliance
+########################################################################
+HUN_A_Supportive_Alliance = {
+	HUN_German_Support_Troops = {
+		visible = {
+			has_manpower > 0
+		}
+		cost = 100
+		ai_will_do = {
+			factor = 0	
+			modifier = {
+				factor = 0
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			army_experience = 40
+			add_manpower = -60000
+			GER = { add_manpower = 60000 }
+		}
+	}
+}
+#########################################################################
+#  Diplomactic Decisions
+#########################################################################
+foreign_politics = {
+	###########################
+	# Assure our Keepers
+	###########################
+	HUN_Assure_Our_Keepers = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			NOT = { has_country_flag = Keepers_Assured }
+		}
+		cost = 75
+		ai_will_do = {
+			factor = 2.5	
+			modifier = {
+				factor = 200
+			}
+		}
+		complete_effect = {
+			ENG = { country_event = { days = 1 id = DH_Hungary.5 } }
+			FRA = { country_event = { days = 1 id = DH_Hungary.5 } }
+			set_country_flag = Keepers_Assured
+		}
+	}
+	
+	HUN_Support_Austrian_Autonomy = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			NOT = { has_war_with = AUS } 
+			NOT = { has_country_flag = contenders_asked }
+			AUS = { exists = yes }
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 2	
+			modifier = {
+				factor = 50
+			}
+		}
+		complete_effect = {
+			AUS = {	
+				add_popularity = {
+					ideology = authoritarian
+					popularity = 0.1
+				}	
+			}
+			add_opinion_modifier = {
+				target = AUS
+				modifier = medium_increase
+			}
+			set_global_flag = Austrian_Autonomy_Supported
+		}
+	}
+
+	HUN_Ask_Our_contenders = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			NOT = { has_country_flag = Keepers_Assured }
+			NOT = { has_country_flag = contenders_asked }
+		}
+		cost = 125
+		ai_will_do = {
+			factor = 1	
+			modifier = {
+				factor = 1
+			}
+		}
+		complete_effect = {
+			FRA = { country_event = { days = 2 id = DH_Hungary.14 } }
+			ENG = { country_event = { days = 2 id = DH_Hungary.14 } }
+			set_country_flag = contenders_asked
+			set_country_flag = Austrians_Asked
+		}
+	}
+
+	HUN_European_Solidarity = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			NOT = { has_war_with = ROM } 			
+		}
+		cost = 35
+		ai_will_do = {
+			factor = 0.5	
+			modifier = {
+				factor = 10
+			}
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					OR = {
+						is_neighbor_of = HUN
+					}
+				}
+				add_opinion_modifier = {
+					target = PREV
+					modifier = small_increase
+				}
+			}
+		}
+	}
+
+	HUN_Ask_The_Austrian_People = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			#has_completed_focus =HUN_The_Plebicite
+			NOT = { has_country_flag = Austrians_Asked }
+		}
+		cost = 100
+		ai_will_do = {
+			factor = 1	
+			modifier = {
+				factor = 10
+			}
+		}
+		complete_effect = {
+			AUS = { country_event = { days = 1 id = DH_Hungary.9 } }
+			set_country_flag = Austrians_Asked
+		}
+	}
+
+	HUN_Bohemian_Lordship = {
+		allowed = { 
+			original_tag = HUN
+		}	
+		visible = {
+			#has_completed_focus =HUN_An_Empire_Yet_Again
+			NOT = { has_country_flag = Bohemia_Asked }
+		}
+		cost = 10
+		available = { has_country_flag = Austria_Hungary_Formed }
+		ai_will_do = {
+			factor = 1	
+			modifier = {
+				factor = 10
+			}
+		}
+		complete_effect = {
+			CZE = { country_event = { days = 1 id = DH_Hungary.25 } }
+			set_country_flag = Bohemia_Asked
+		}
+	}
+
+	HUN_Protector_of_Yugoslavia = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			#has_completed_focus =HUN_An_Empire_Yet_Again
+			NOT = { has_country_flag = Yugoslav_Asked }
+		}
+		cost = 10
+		available = { has_country_flag = Austria_Hungary_Formed }
+		ai_will_do = {
+			factor = 1	
+			modifier = {
+				factor = 10
+			}
+		}
+		complete_effect = {
+			YUG = { country_event = { days = 1 id = DH_Hungary.28 } }
+			set_country_flag = Yugoslav_Asked
+		}	
+	}
+
+	HUN_Reach_Out_To_Enemy = {
+		allowed = { 
+			original_tag = HUN
+		}		
+		visible = {
+			#has_completed_focus =HUN_Old_Friends_Older_Enemies
+			NOT = { has_country_flag = Reached_Out }
+		}
+		available = {
+			HUN = { is_in_faction_with = GER }
+			HUN = { has_war_with = ENG }
+			GER = { surrender_progress  > 0.6 }
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 0	
+			modifier = {
+				factor = 0
+			}
+		}
+		complete_effect = {
+			ENG = { country_event = { days = 1 id = DH_Hungary.17 } }
+			GER = { country_event = { days = 0 id = DH_Hungary.20 } }
+			set_country_flag = Reached_Out
+		}
+	}
+}

@@ -1,0 +1,162 @@
+# example usage:
+## country_has_factions = yes
+country_has_factions = {
+	check_variable = { active_factions_array^num > 0 }
+}
+
+# example usage:
+##	set_temp_variable = { amount_of_factions = 1 }
+##	has_num_of_active_factions = yes
+has_num_of_active_factions = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NUM_OF_ACTIVE_FACTIONS_TT
+		NOT = { is_in_array = { active_factions_array^num < amount_of_factions } }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { amount_of_factions = 1 }
+##	has_less_num_of_active_factions = yes
+has_less_num_of_active_factions = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_NUM_OF_ACTIVE_FACTIONS_TT
+		is_in_array = { active_factions_array^num < amount_of_factions }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+##	has_active_faction = yes
+has_active_faction = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_ACTIVE_FACTION_TT
+		is_in_array = { active_factions_array = faction_id }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+##	has_not_active_faction = yes
+has_not_active_faction = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NOT_ACTIVE_FACTION_TT
+		NOT = { is_in_array = { active_factions_array = faction_id } }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+##	set_temp_variable = { influence_to_check = 10 }
+##	has_at_least_faction_influence = yes
+has_at_least_faction_influence = {
+	if = {
+		limit = {
+			is_in_array = { active_factions_array = faction_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_AT_LEAST_FACTION_INFLUENCE_TT
+			meta_trigger = {
+				text = {
+					NOT = { check_variable = { faction_influence_[FACTION] < influence_to_check } }
+				}
+				FACTION = "[?faction_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+##	set_temp_variable = { influence_to_check = 10 }
+##	has_less_faction_influence = yes
+has_less_faction_influence = {
+	if = {
+		limit = {
+			is_in_array = { active_factions_array = faction_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_LESS_FACTION_INFLUENCE_TT
+			meta_trigger = {
+				text = {
+					check_variable = { faction_influence_[FACTION] < influence_to_check }
+				}
+				FACTION = "[?faction_id]"
+			}
+		}
+	}
+}
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+##	set_temp_variable = { loyalty_to_check = 10 }
+##	has_at_least_faction_loyalty = yes
+has_at_least_faction_loyalty = {
+	if = {
+		limit = {
+			is_in_array = { active_factions_array = faction_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_AT_LEAST_FACTION_LOYALTY_TT
+			meta_trigger = {
+				text = {
+					NOT = { check_variable = { faction_loyalty_[FACTION] < loyalty_to_check } }
+				}
+				FACTION = "[?faction_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+##	set_temp_variable = { loyalty_to_check = 10 }
+##	has_less_faction_loyalty = yes
+has_less_faction_loyalty = {
+	if = {
+		limit = {
+			is_in_array = { active_factions_array = faction_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_LESS_FACTION_LOYALTY_TT
+			meta_trigger = {
+				text = {
+					check_variable = { faction_loyalty_[FACTION] < loyalty_to_check }
+				}
+				FACTION = "[?faction_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+## calculate_weekly_faction_influence_change = yes
+calculate_weekly_faction_influence_change = {
+	set_temp_variable = { weekly_faction_influence_change = 0 }
+	if = {
+		limit = {
+			check_variable = { faction_id = 20 }
+		}
+		add_to_temp_variable = { weekly_faction_influence_change = tur_chp_influence_decrease_var }
+	}
+	meta_trigger = {
+		text = {
+			add_to_temp_variable = { weekly_faction_influence_change = modifier@weekly_faction_[FACTION]_influence }
+		}
+		FACTION = "[?faction_id]"
+	}
+	always = yes
+}
+
+# example usage:
+##	set_temp_variable = { faction_id = 1 }
+## calculate_weekly_faction_loyalty_change = yes
+calculate_weekly_faction_loyalty_change = {
+	set_temp_variable = { weekly_faction_loyalty_change = 0 }
+	meta_trigger = {
+		text = {
+			add_to_temp_variable = { weekly_faction_loyalty_change = modifier@weekly_faction_[FACTION]_loyalty }
+		}
+		FACTION = "[?faction_id]"
+	}
+	always = yes
+}

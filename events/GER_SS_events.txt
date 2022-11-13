@@ -1,0 +1,766 @@
+﻿###########################
+# Darkest Hour Events : German SS Events
+###########################
+add_namespace = GER_SS
+add_namespace = GER_SS_Recruitment_Decision_Events
+add_namespace = GER_SS_Recruitment_Name_Explanation_Events
+#########################################################################
+#  Generals protest the deploymento of the SS Dispositional Troops
+#########################################################################
+country_event = {
+	id = GER_SS.1
+	title = GER_SS.1.t
+	desc = GER_SS.1.d
+	picture = GFX_report_GER_SS_VT
+	is_triggered_only = yes
+	fire_only_once = yes
+	# Halt Development of the SS
+	option = {
+		name = GER_SS.1.A
+		custom_effect_tooltip = GER_SS.1.A.tt
+		set_country_flag = GER_SS_Expansion_Halted
+		set_temp_variable = { faction_id = 19 }
+		set_temp_variable = { loyalty_to_add = 10 }
+		change_faction_loyalty = yes
+		set_temp_variable = { faction_id = 17 }
+		set_temp_variable = { loyalty_to_add = -10 }
+		change_faction_loyalty = yes
+	}
+	# The SS is none of the Wehrmacht's business
+	option = {
+		name = GER_SS.1.B
+		custom_effect_tooltip = GER_SS.1.B.tt
+		set_temp_variable = { faction_id = 19 }
+		set_temp_variable = { loyalty_to_add = -10 }
+		change_faction_loyalty = yes
+	}
+}
+#########################################################################
+#  Neither of the Army, Nor of the Police
+#########################################################################
+country_event = {
+	id = GER_SS.2
+	title = GER_SS.2.t
+	desc = GER_SS.2.d
+	picture = GFX_report_GER_LSSAH
+	is_triggered_only = yes
+	fire_only_once = yes
+	# The SS is none of the Wehrmacht's business
+	option = {
+		name = GER_SS.2.A
+		set_temp_variable = { faction_id = 19 }
+		set_temp_variable = { loyalty_to_add = -5 }
+		change_faction_loyalty = yes
+	}
+}
+#############################################
+### Event for the SS Recruitment Decision ###
+#############################################
+country_event = {
+	id = GER_SS_Recruitment_Decision_Events.1
+	title = GER_SS_Recruitment_Decision_Events.EVTNAME1
+	desc = GER_SS_Recruitment_Decision_Events.EVTDESC1
+	picture = GFX_report_event_german_troops
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_SS_recruitment_decision_active
+		}
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT1
+		trigger = {
+			GER_SS_division_type_can_be_infantry = yes
+			set_temp_variable = { ss_division_type_temp = 1 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_infantry = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT2
+		trigger = {
+			GER_SS_division_type_can_be_mountaineers = yes
+			set_temp_variable = { ss_division_type_temp = 2 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_mountaineers = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT3
+		trigger = {
+			GER_SS_division_type_can_be_cavalry = yes
+			set_temp_variable = { ss_division_type_temp = 3 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_cavalry = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT4
+		trigger = {
+			GER_SS_division_type_can_be_motorized = yes
+			set_temp_variable = { ss_division_type_temp = 4 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_motorized = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT5
+		trigger = {
+			GER_SS_division_type_can_be_mechanized = yes
+			set_temp_variable = { ss_division_type_temp = 5 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_mechanized = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT6
+		trigger = {
+			GER_SS_division_type_can_be_panzer = yes
+			set_temp_variable = { ss_division_type_temp = 6 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_panzer = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT7
+		trigger = {
+			GER_SS_division_type_can_be_marines = yes
+			set_temp_variable = { ss_division_type_temp = 7 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_marines = yes
+	}
+	option = {
+		name = GER_SS_Recruitment_Decision_Events1.EVTOPT8
+		trigger = {
+			GER_SS_division_type_can_be_paratroopers = yes
+			set_temp_variable = { ss_division_type_temp = 8 }
+			GER_SS_division_names_available = yes
+		}
+		GER_SS_set_division_type_paratroopers = yes
+	}
+}
+##############################################################
+### Events for the Explanation of Custom SS-Division Names ###
+##############################################################
+country_event = {
+	id = GER_SS_Recruitment_Name_Explanation_Events.1
+	title = GER_SS_Recruitment_Name_Explanation_Events.1.t
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 1 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.1.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 2 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.2.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 3 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.3.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 4 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.4.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 5 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.5.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 6 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.6.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 7 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.7.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 8 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.8.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 9 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.9.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 10 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.10.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 11 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.11.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 12 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.12.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 13 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.13.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 14 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.14.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 15 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.15.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 16 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.16.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 17 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.17.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 18 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.18.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 19 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.19.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 20 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.20.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 21 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.21.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 22 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.22.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 23 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.23.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 24 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.24.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 25 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.25.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 26 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.26.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 27 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.27.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 28 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.28.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 29 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.29.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 30 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.30.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 31 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.31.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 32 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.32.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 33 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.33.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 34 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.34.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 35 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.35.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 36 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.36.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 37 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.37.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 38 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.38.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 39 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.39.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 40 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.40.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 41 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.41.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 42 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.42.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 43 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.43.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 44 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.44.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 45 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.45.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 46 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.46.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 47 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.47.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 48 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.48.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 49 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.49.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 50 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.50.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 51 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.51.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 52 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.52.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 53 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.53.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 54 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.54.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 55 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.55.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 56 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.56.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 57 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.57.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 58 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.58.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 59 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.59.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 60 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.60.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 61 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.61.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 62 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.62.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 63 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.63.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 64 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.64.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 65 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.65.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 66 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.66.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 67 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.67.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 68 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.68.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 69 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.69.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 70 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.70.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 71 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.71.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 72 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.72.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 73 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.73.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 74 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.74.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 75 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.75.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 76 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.76.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 77 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.77.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 78 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.78.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 79 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.79.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 80 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.80.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 81 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.81.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 82 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.82.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 83 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.83.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 84 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.84.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 85 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.85.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 86 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.86.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 87 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.87.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 88 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.88.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 89 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.89.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 90 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.90.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 91 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.91.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 92 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.92.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 93 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.93.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 94 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.94.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 95 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.95.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 96 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.96.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 97 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.97.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 98 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.98.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 99 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.99.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 100 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.100.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 101 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.101.d
+	}
+	desc = {
+		trigger = {
+			check_variable = { ss_division_name = 102 }
+		}
+		text = GER_SS_Recruitment_Name_Explanation_Events.102.d
+	}
+	picture = GFX_report_GER_SS_VT
+	is_triggered_only = yes
+	option = {
+		name = GER_SS_Recruitment_Name_Explanation_Events.1.A
+	}
+}

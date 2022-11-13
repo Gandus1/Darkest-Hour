@@ -1,0 +1,397 @@
+state_decision_completed_condition = {
+	if = {
+		limit = {
+			check_variable = { v = 1 }
+		}
+		hidden_trigger = {
+			is_owned_and_controlled_by = ROOT
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_variable = change_capital_state_mission_target
+				}
+			}
+			OR = {
+				is_capital = yes
+				ROOT = {
+					check_variable = { change_capital_state_mission_target = PREV.id }
+				}
+			}
+		}
+		else = {
+			is_capital = yes
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 2 }
+		}
+		OR = {
+			is_owned_by = ROOT
+			is_claimed_by = ROOT
+			is_core_of = ROOT
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 3 }
+		}
+		check_variable = { show_state_decision_cede_state_list_window = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 4 }
+		}
+		check_variable = { show_state_decision_cede_state_list_window = 2 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 5 }
+		}
+		OR = {
+			AND = {
+				state_has_all_unlocked_shared_building_slots_used = yes
+				NOT = { state_has_not_all_shared_building_slots_unlocked = yes }
+			}
+			ROOT = {
+				check_variable = { add_shared_building_slot_state_mission_target = PREV.id }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 6 }
+		}
+		has_state_flag = state_decision_resource_rights_cooldown
+	}
+	else = {
+		always = no
+	}
+}
+
+state_decision_enact_condition = {
+	if = {
+		limit = {
+			check_variable = { v = 1 }
+		}
+		impassable = no
+		is_owned_and_controlled_by = ROOT
+		is_demilitarized_zone = no
+		is_capital = no
+		is_core_of = ROOT
+		ROOT = {
+			has_political_power > 100
+			custom_trigger_tooltip = {
+				tooltip = CHANGE_CAPITAL_STATE_MISSION_MISSION_NOT_ACTIVE
+				NOT = { has_variable = change_capital_state_mission_target }
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 2 }
+		}
+		NOT = { is_owned_by = ROOT }
+		NOT = { is_claimed_by = ROOT }
+		NOT = { is_core_of = ROOT }
+		any_neighbor_state = {
+			is_owned_and_controlled_by = ROOT
+		}
+		owner = {
+			NOT = { has_war_with = ROOT }
+			controls_state = PREV
+		}
+		calculate_state_decision_add_claim_cost = yes
+		ROOT = {
+			has_political_power > state_decision_add_claim_cost
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 3 }
+		}
+		ROOT = {
+			has_war = no
+		}
+		is_owned_and_controlled_by = ROOT
+		is_capital = no
+		custom_trigger_tooltip = {
+			tooltip = STATE_DECISION_CEDE_STATE_NOT_ACTIVE
+			NOT = { has_variable = show_state_decision_cede_state_list_window }
+		}
+		any_country = {
+			NOT = { tag = ROOT }
+			has_war = no
+			PREV = { is_core_of = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 4 }
+		}
+		ROOT = {
+			has_war = no
+		}
+		is_owned_and_controlled_by = ROOT
+		is_capital = no
+		custom_trigger_tooltip = {
+			tooltip = STATE_DECISION_CEDE_STATE_NOT_ACTIVE
+			NOT = { has_variable = show_state_decision_cede_state_list_window }
+		}
+		any_country = {
+			NOT = { tag = ROOT }
+			has_war = no
+			PREV = { is_claimed_by = PREV }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 5 }
+		}
+		ROOT = {
+			has_political_power > 50
+			custom_trigger_tooltip = {
+				tooltip = ADD_SHARED_BUILDING_SLOT_STATE_MISSION_MISSION_NOT_ACTIVE
+				NOT = { has_variable = add_shared_building_slot_state_mission_target }
+			}
+		}
+		impassable = no
+		is_fully_controlled_by = ROOT
+		state_has_all_unlocked_shared_building_slots_used = yes
+		state_has_not_all_shared_building_slots_unlocked = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = { v = 6 }
+		}
+		owner = {
+			controls_state = PREV
+			is_subject_of = ROOT
+		}
+		if = {
+			limit = {
+				OR = {
+					NOT = { check_variable = { resource_rights_receiver = ROOT.id } }
+					owner = {
+						PREV = {
+							NOT = { check_variable = { resource_rights_give = PREV.id } }
+						}
+					}
+				}
+			}
+			ROOT = {
+				has_political_power > 200
+			}
+			OR = {
+				has_resources_amount = {
+					resource = oil
+					amount > 0
+				}
+				has_resources_amount = {
+					resource = aluminium
+					amount > 0
+				}
+				has_resources_amount = {
+					resource = rubber
+					amount > 0
+				}
+				has_resources_amount = {
+					resource = tungsten
+					amount > 0
+				}
+				has_resources_amount = {
+					resource = steel
+					amount > 0
+				}
+				has_resources_amount = {
+					resource = chromium
+					amount > 0
+				}
+			}
+		}
+		hidden_trigger = {
+			NOT = { has_state_flag = state_decision_resource_rights_cooldown }
+		}
+	}
+	else = {
+		always = no
+	}
+}
+
+state_has_all_unlocked_shared_building_slots_used = {
+	custom_trigger_tooltip = {
+		tooltip = STATE_DECISION_STATE_HAS_ALL_UNLOCKED_SHARED_BUILDING_SLOTS_USED
+		free_building_slots = {
+			building = arms_factory
+			size < 1
+			include_locked = no
+		}
+		free_building_slots = {
+			building = industrial_complex
+			size < 1
+			include_locked = no
+		}
+		free_building_slots = {
+			building = dockyard
+			size < 1
+			include_locked = no
+		}
+		free_building_slots = {
+			building = synthetic_refinery
+			size < 1
+			include_locked = no
+		}
+		free_building_slots = {
+			building = fuel_silo
+			size < 1
+			include_locked = no
+		}
+		free_building_slots = {
+			building = rocket_site
+			size < 1
+			include_locked = no
+		}
+		free_building_slots = {
+			building = nuclear_reactor
+			size < 1
+			include_locked = no
+		}
+	}
+}
+
+state_has_not_all_shared_building_slots_unlocked = {
+	custom_trigger_tooltip = {
+		tooltip = STATE_DECISION_STATE_HAS_NOT_ALL_SHARED_BUILDING_SLOTS_UNLOCKED
+		OR = {
+			AND = {
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = arms_factory
+					size < 1
+					include_locked = no
+				}
+			}
+			AND = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = no
+				}
+			}
+			AND = {
+				free_building_slots = {
+					building = dockyard
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = dockyard
+					size < 1
+					include_locked = no
+				}
+			}
+			AND = {
+				free_building_slots = {
+					building = synthetic_refinery
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = synthetic_refinery
+					size < 1
+					include_locked = no
+				}
+			}
+			AND = {
+				free_building_slots = {
+					building = fuel_silo
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = fuel_silo
+					size < 1
+					include_locked = no
+				}
+			}
+			AND = {
+				free_building_slots = {
+					building = rocket_site
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = rocket_site
+					size < 1
+					include_locked = no
+				}
+			}
+			AND = {
+				free_building_slots = {
+					building = nuclear_reactor
+					size > 0
+					include_locked = yes
+				}
+				free_building_slots = {
+					building = nuclear_reactor
+					size < 1
+					include_locked = no
+				}
+			}
+		}
+	}
+}
+
+calculate_state_decision_add_claim_cost = {
+	hidden_trigger = {
+		set_temp_variable = { state_decision_add_claim_cost = 150 }
+		set_temp_variable = { state_decision_add_claim_cost_modifier = 1 }
+		# Modifiers:
+		if = {
+			limit = {
+				owner = {
+					any_owned_state = {
+						is_claimed_by = ROOT
+					}
+				}
+			}
+			owner = {
+				all_owned_state = {
+					OR = {
+						NOT = { is_claimed_by = ROOT }
+						AND = {
+							is_claimed_by = ROOT
+							add_to_temp_variable = { state_decision_add_claim_cost_modifier = 0.25 }
+						}
+					}
+				}
+			}
+		}
+		# Result:
+		multiply_temp_variable = { state_decision_add_claim_cost = state_decision_add_claim_cost_modifier }
+		## Min Value:
+		if = {
+			limit = {
+				check_variable = { state_decision_add_claim_cost < 25 }
+			}
+			set_temp_variable = { state_decision_add_claim_cost = 25 }
+		}
+		## Max Value:
+		else_if = {
+			limit = {
+				check_variable = { state_decision_add_claim_cost > 2000 }
+			}
+			set_temp_variable = { state_decision_add_claim_cost = 2000 }
+		}
+	}
+}

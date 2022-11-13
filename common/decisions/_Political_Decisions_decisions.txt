@@ -1,0 +1,3013 @@
+#########################################################################
+#  Political Actions
+#########################################################################
+political_actions = {
+	###########################
+	# Join Anti-Comintern Pact
+	###########################
+	join_anti_comintern_pact = {
+		icon = GFX_decision_GER_Join_Anti_Comintern_Pact
+		fire_only_once = yes
+		allowed = {
+			OR = {
+				original_tag = ITA
+				original_tag = HUN
+				original_tag = MAN
+				original_tag = SPA
+				original_tag = FIN
+				original_tag = ROM
+				original_tag = BUL
+				original_tag = SLO
+				original_tag = CRO
+			}
+		}
+		visible = {
+			has_global_flag = Anti_Comintern_Pact
+			if = {
+				limit = {
+					original_tag = ITA
+				}
+				has_start_date < 1937.6.11
+			}
+			else_if = {
+				limit = {
+					OR = {
+						original_tag = HUN
+						original_tag = MAN
+					}
+				}
+				has_start_date < 1939.2.24
+			}
+			else_if = {
+				limit = {
+					original_tag = SPA
+				}
+				has_start_date < 1939.3.27
+			}
+			else_if = {
+				limit = {
+					OR = {
+						original_tag = FIN
+						original_tag = ROM
+						original_tag = BUL
+						original_tag = SLO
+						original_tag = CRO
+					}
+				}
+				has_start_date < 1941.11.25
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				original_tag = ITA
+				date > 1937.6.11
+				has_start_date < 1937.6.11
+				factor = 100
+			}
+			modifier = {
+				OR = {
+					original_tag = HUN
+					original_tag = MAN
+				}
+				date > 1939.2.24
+				has_start_date < 1939.2.24
+				factor = 100
+			}
+			modifier = {
+				original_tag = SPA
+				date > 1939.3.27
+				has_start_date < 1939.3.27
+				factor = 100
+			}
+			modifier = {
+				OR = {
+					original_tag = FIN
+					original_tag = ROM
+					original_tag = BUL
+					original_tag = SLO
+					original_tag = CRO
+				}
+				date > 1941.11.25
+				has_start_date < 1941.11.25
+				GER = {
+					has_war_with = SOV
+				}
+				factor = 100
+			}
+		}
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = GER_AntiKomintern.2
+					days = 1
+				}
+			}
+		}
+	}
+	#########################################################################
+	#  Political Raids
+	#########################################################################
+	###########################
+	# Raids against the Fascist party
+	###########################
+	anti_fascist_raids = {
+		icon = GFX_decision_GENERIC_Anti_Fascist_Raid
+		visible = {
+			NOT = {
+				has_government = fascist
+			}
+			fascist > 0.07
+		}
+		available = {
+			fascist > 0.07
+		}
+		modifier = {
+			fascist_drift = -0.05
+			stability_weekly = 0.005
+		}
+		days_remove = 120
+		cost = 100
+		complete_effect = {
+			add_stability = -0.2
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	###########################
+	# Raids against the Authoritarian party
+	###########################
+	anti_autocrat_raids = {
+		icon = GFX_decision_GENERIC_Anti_Authoritarian_Raid
+		visible = {
+			NOT = {
+				has_government = authoritarian
+			}
+			authoritarian > 0.07
+		}
+		available = {
+			authoritarian > 0.07
+		}
+		modifier = {
+			authoritarian_drift = -0.05
+			stability_weekly = 0.005
+		}
+		days_remove = 120
+		cost = 100
+		complete_effect = {
+			add_stability = -0.2
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	###########################
+	# Raids against the democratic parties
+	###########################
+	anti_democratic_raids = {
+		icon = GFX_decision_GENERIC_Anti_Democratic_Raid
+		visible = {
+			NOT = {
+				has_government = democratic
+			}
+			OR = {
+				democratic > 0.07
+			}
+		}
+		available = {
+			OR = {
+				democratic > 0.07
+			}
+		}
+		modifier = {
+			democratic_drift = -0.05
+			stability_weekly = 0.005
+		}
+		days_remove = 120
+		cost = 50
+		complete_effect = {
+			add_stability = -0.22			#Slighty increased cause democracies
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	###########################
+	# Raids against the Socialist Parties
+	###########################
+	anti_socialist_raids = {
+		icon = GFX_decision_GENERIC_Anti_Socialist_Raid
+		visible = {
+			NOT = {
+				has_government = socialist
+			}
+			socialist > 0.07
+		}
+		available = {
+			socialist > 0.07
+		}
+		modifier = {
+			socialist_drift = -0.05
+			stability_weekly = 0.005
+		}
+		days_remove = 120
+		cost = 100
+		complete_effect = {
+			add_stability = -0.2
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	###########################
+	# Raids against the ML party
+	###########################
+	anti_communist_raids = {
+		icon = GFX_decision_GENERIC_Anti_Communist_Raid
+		visible = {
+			NOT = {
+				has_government = communist
+			}
+			communist > 0.07
+		}
+		available = {
+			communist > 0.07
+		}
+		modifier = {
+			communist_drift = -0.05
+			stability_weekly = 0.005
+		}
+		days_remove = 120
+		cost = 100
+		complete_effect = {
+			add_stability = -0.2
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+#########################################################################
+#  Communism on the Rise
+#########################################################################
+communist_on_the_rise = {
+	prepare_for_communist_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			communist > 0.1
+		}
+		visible = {
+			NOT = {
+				has_country_flag = preparation_for_communist_civil_war
+			}
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			set_country_flag = preparation_for_communist_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	expand_civil_communist_support = {
+		icon = generic_civil_support
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_communist_civil_war
+				has_country_flag = open_up_political_discourse_communist
+			}
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_remove = 30
+		modifier = {
+			communist_drift = 0.02
+			stability_weekly = -0.03
+			political_power_gain = -0.2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	army_support_for_communist_civil_war = {
+		icon = generic_army_support
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
+		modifier = {
+			command_power_gain = -0.02
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			set_country_flag = military_support_for_communist_civil_war
+		}
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_general_loyalty_for_communist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war
+			has_idea_with_trait = C_drift
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_marshal_loyalty_for_communist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war
+			has_idea_with_trait = C_drift
+			any_army_leader = {
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.2
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	siphon_equipment_stockpiles_for_communist_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war
+			has_country_flag = military_support_for_communist_civil_war
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	formulate_surprise_attack_plan_for_communist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ignite_the_communist_civil_war = {
+		icon = generic_ignite_civil_war
+		available = {
+			has_stability < 0.5
+		}
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@socialist
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@authoritarian
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = communist
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}
+			}
+			clr_country_flag = preparation_for_communist_civil_war
+			clr_country_flag = military_support_for_communist_civil_war
+			clr_country_flag = civil_support_for_communist_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	rebuild_the_nation_communist = {
+		icon = generic_construction
+		visible = {
+			has_country_flag = won_ideology_civil_war
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 365
+		modifier = {
+			political_power_gain = -1
+			industry_repair_factor = 0.2
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.1
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	open_up_political_discourse_communist = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.9
+			fascist < 0.9
+			authoritarian < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			communist < 0.9
+			communist < 0.9
+			socialist < 0.9
+		}
+		visible = {
+			has_idea_with_trait = C_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		remove_trigger = {
+			has_government = communist
+		}
+		fire_only_once = yes
+		cost = 75
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_communist
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	discredit_government_communist = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.8
+			fascist < 0.8
+			authoritarian < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			communist < 0.8
+			communist < 0.8
+			socialist < 0.8
+			has_idea_with_trait = C_drift
+		}
+		visible = {
+			has_country_flag = open_up_political_discourse_communist
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = communist
+			}
+		}
+		remove_trigger = {
+			has_government = communist
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_stability = -0.01
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				add_popularity = {
+					ideology = socialist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				add_popularity = {
+					ideology = authoritarian
+					popularity = -0.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	hold_the_communist_national_referendum = {
+		icon = generic_political_discourse
+		available = {
+			communist > 0.8
+		}
+		visible = {
+			NOT = {
+				has_government = communist
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			OR = {
+				communist > 0.6
+				has_country_flag = open_up_political_discourse_communist
+			}
+		}
+		remove_trigger = {
+			has_government = communist
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			country_event = {
+				id = Political.3
+			}
+		}
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				communist > 0.6
+				factor = 10
+			}
+		}
+	}
+}
+#########################################################################
+#  Socialism on the Rise
+#########################################################################
+socialist_on_the_rise = {
+	prepare_for_socialist_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			socialist > 0.1
+		}
+		visible = {
+			NOT = {
+				has_country_flag = preparation_for_socialist_civil_war
+			}
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			set_country_flag = preparation_for_socialist_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	expand_civil_socialist_support = {
+		icon = generic_civil_support
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_socialist_civil_war
+				has_country_flag = open_up_political_discourse_socialist
+			}
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_remove = 30
+		modifier = {
+			socialist_drift = 0.02
+			stability_weekly = -0.03
+			political_power_gain = -0.2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	army_support_for_socialist_civil_war = {
+		icon = generic_army_support
+		visible = {
+			has_country_flag = preparation_for_socialist_civil_war
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
+		modifier = {
+			command_power_gain = -0.02
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			set_country_flag = military_support_for_socialist_civil_war
+		}
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_general_loyalty_for_socialist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_socialist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_socialist_civil_war
+			has_idea_with_trait = S_drift
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_marshal_loyalty_for_socialist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_socialist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_socialist_civil_war
+			has_idea_with_trait = S_drift
+			any_army_leader = {
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.2
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	siphon_equipment_stockpiles_for_socialist_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = military_support_for_socialist_civil_war
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_socialist_civil_war
+			has_country_flag = military_support_for_socialist_civil_war
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	formulate_surprise_attack_plan_for_socialist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_socialist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_socialist_civil_war
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ignite_the_socialist_civil_war = {
+		icon = generic_ignite_civil_war
+		available = {
+			has_stability < 0.5
+		}
+		visible = {
+			has_country_flag = preparation_for_socialist_civil_war
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@authoritarian
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = socialist
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}
+			}
+			clr_country_flag = preparation_for_socialist_civil_war
+			clr_country_flag = military_support_for_socialist_civil_war
+			clr_country_flag = civil_support_for_socialist_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	rebuild_the_nation_socialist = {
+		icon = generic_construction
+		visible = {
+			has_country_flag = won_ideology_civil_war
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 365
+		modifier = {
+			political_power_gain = -1
+			industry_repair_factor = 0.2
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.1
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	open_up_political_discourse_socialist = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.9
+			fascist < 0.9
+			authoritarian < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			communist < 0.9
+			communist < 0.9
+			socialist < 0.9
+		}
+		visible = {
+			has_idea_with_trait = S_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		remove_trigger = {
+			has_government = socialist
+		}
+		fire_only_once = yes
+		cost = 75
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_socialist
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	discredit_government_socialist = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.8
+			fascist < 0.8
+			authoritarian < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			communist < 0.8
+			communist < 0.8
+			socialist < 0.8
+			has_idea_with_trait = S_drift
+		}
+		visible = {
+			has_country_flag = open_up_political_discourse_socialist
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = socialist
+			}
+		}
+		remove_trigger = {
+			has_government = socialist
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_stability = -0.01
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				add_popularity = {
+					ideology = authoritarian
+					popularity = -0.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	hold_the_socialist_national_referendum = {
+		icon = generic_political_discourse
+		available = {
+			socialist > 0.8
+		}
+		visible = {
+			NOT = {
+				has_government = socialist
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			OR = {
+				socialist > 0.6
+				has_country_flag = open_up_political_discourse_socialist
+			}
+		}
+		remove_trigger = {
+			has_government = socialist
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			country_event = {
+				id = Political.9
+			}
+		}
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				socialist > 0.6
+				factor = 10
+			}
+		}
+	}
+}
+#########################################################################
+#  Fascism on the Rise
+#########################################################################
+fascist_on_the_rise = {
+	prepare_for_fascist_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			fascist > 0.1
+		}
+		visible = {
+			NOT = {
+				has_country_flag = preparation_for_fascist_civil_war
+			}
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			set_country_flag = preparation_for_fascist_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	expand_civil_fascist_support = {
+		icon = generic_civil_support
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_fascist_civil_war
+				has_country_flag = open_up_political_discourse_fascist
+			}
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_remove = 30
+		modifier = {
+			fascist_drift = 0.02
+			stability_weekly = -0.03
+			political_power_gain = -0.2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	army_support_for_fascist_civil_war = {
+		icon = generic_army_support
+		visible = {
+			has_country_flag = preparation_for_fascist_civil_war
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
+		modifier = {
+			command_power_gain = -0.02
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			set_country_flag = military_support_for_fascist_civil_war
+		}
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_general_loyalty_for_fascist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_fascist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_fascist_civil_war
+			has_idea_with_trait = F_drift
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_marshal_loyalty_for_fascist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_fascist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_fascist_civil_war
+			has_idea_with_trait = F_drift
+			any_army_leader = {
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.2
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	siphon_equipment_stockpiles_for_fascist_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = military_support_for_fascist_civil_war
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_fascist_civil_war
+			has_country_flag = military_support_for_fascist_civil_war
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	formulate_surprise_attack_plan_for_fascist_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_fascist_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_fascist_civil_war
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ignite_the_fascist_civil_war = {
+		icon = generic_ignite_civil_war
+		available = {
+			has_stability < 0.5
+		}
+		visible = {
+			has_country_flag = preparation_for_fascist_civil_war
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@socialist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@authoritarian
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = fascist
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}
+			}
+			clr_country_flag = preparation_for_fascist_civil_war
+			clr_country_flag = military_support_for_fascist_civil_war
+			clr_country_flag = civil_support_for_fascist_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	rebuild_the_nation_fascist = {
+		icon = generic_construction
+		visible = {
+			has_country_flag = won_ideology_civil_war
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 365
+		modifier = {
+			political_power_gain = -1
+			industry_repair_factor = 0.2
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.1
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	open_up_political_discourse_fascist = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.9
+			fascist < 0.9
+			authoritarian < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			communist < 0.9
+			communist < 0.9
+			socialist < 0.9
+		}
+		visible = {
+			has_idea_with_trait = F_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		remove_trigger = {
+			has_government = fascist
+		}
+		fire_only_once = yes
+		cost = 75
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_fascist
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	discredit_government_fascist = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.8
+			fascist < 0.8
+			authoritarian < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			communist < 0.8
+			communist < 0.8
+			socialist < 0.8
+			has_idea_with_trait = F_drift
+		}
+		visible = {
+			has_country_flag = open_up_political_discourse_fascist
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = fascist
+			}
+		}
+		remove_trigger = {
+			has_government = fascist
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_stability = -0.01
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				add_popularity = {
+					ideology = socialist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				add_popularity = {
+					ideology = authoritarian
+					popularity = -0.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	hold_the_fascist_national_referendum = {
+		icon = generic_political_discourse
+		available = {
+			fascist > 0.8
+		}
+		visible = {
+			NOT = {
+				has_government = fascist
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			OR = {
+				fascist > 0.6
+				has_country_flag = open_up_political_discourse_fascist
+			}
+		}
+		remove_trigger = {
+			has_government = fascist
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			country_event = {
+				id = Political.12
+			}
+		}
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				fascist > 0.6
+				factor = 10
+			}
+		}
+	}
+}
+#########################################################################
+#  Authoritarianism on the Rise
+#########################################################################
+authoritarian_on_the_rise = {
+	prepare_for_authoritarian_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			authoritarian > 0.1
+		}
+		visible = {
+			NOT = {
+				has_country_flag = preparation_for_authoritarian_civil_war
+			}
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			set_country_flag = preparation_for_authoritarian_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	expand_civil_authoritarian_support = {
+		icon = generic_civil_support
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_authoritarian_civil_war
+				has_country_flag = open_up_political_discourse_authoritarian
+			}
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_remove = 30
+		modifier = {
+			authoritarian_drift = 0.02
+			stability_weekly = -0.03
+			political_power_gain = -0.2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	army_support_for_authoritarian_civil_war = {
+		icon = generic_army_support
+		visible = {
+			has_country_flag = preparation_for_authoritarian_civil_war
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
+		modifier = {
+			command_power_gain = -0.02
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			set_country_flag = military_support_for_authoritarian_civil_war
+		}
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_general_loyalty_for_authoritarian_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_authoritarian_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_authoritarian_civil_war
+			has_idea_with_trait = A_drift
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_marshal_loyalty_for_authoritarian_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_authoritarian_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_authoritarian_civil_war
+			has_idea_with_trait = A_drift
+			any_army_leader = {
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.2
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	siphon_equipment_stockpiles_for_authoritarian_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = military_support_for_authoritarian_civil_war
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_authoritarian_civil_war
+			has_country_flag = military_support_for_authoritarian_civil_war
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	formulate_surprise_attack_plan_for_authoritarian_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_authoritarian_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_authoritarian_civil_war
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ignite_the_authoritarian_civil_war = {
+		icon = generic_ignite_civil_war
+		available = {
+			has_stability < 0.5
+		}
+		visible = {
+			has_country_flag = preparation_for_authoritarian_civil_war
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@socialist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = authoritarian
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}
+			}
+			clr_country_flag = preparation_for_authoritarian_civil_war
+			clr_country_flag = military_support_for_authoritarian_civil_war
+			clr_country_flag = civil_support_for_authoritarian_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	rebuild_the_nation_authoritarian = {
+		icon = generic_construction
+		visible = {
+			has_country_flag = won_ideology_civil_war
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 365
+		modifier = {
+			political_power_gain = -1
+			industry_repair_factor = 0.2
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.1
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	open_up_political_discourse_authoritarian = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.9
+			fascist < 0.9
+			authoritarian < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			communist < 0.9
+			communist < 0.9
+			socialist < 0.9
+		}
+		visible = {
+			has_idea_with_trait = A_drift
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		remove_trigger = {
+			has_government = authoritarian
+		}
+		fire_only_once = yes
+		cost = 75
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_authoritarian
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	discredit_government_authoritarian = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.8
+			fascist < 0.8
+			authoritarian < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			communist < 0.8
+			communist < 0.8
+			socialist < 0.8
+			has_idea_with_trait = A_drift
+		}
+		visible = {
+			has_country_flag = open_up_political_discourse_authoritarian
+			##check_has_focus_tree_to_switch_to_communism = yes
+			NOT = {
+				has_government = authoritarian
+			}
+		}
+		remove_trigger = {
+			has_government = authoritarian
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_stability = -0.01
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				add_popularity = {
+					ideology = socialist
+					popularity = -0.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	hold_the_authoritarian_national_referendum = {
+		icon = generic_political_discourse
+		available = {
+			authoritarian > 0.8
+		}
+		visible = {
+			NOT = {
+				has_government = authoritarian
+			}
+			##check_has_focus_tree_to_switch_to_communism = yes
+			OR = {
+				authoritarian > 0.6
+				has_country_flag = open_up_political_discourse_authoritarian
+			}
+		}
+		remove_trigger = {
+			has_government = authoritarian
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			country_event = {
+				id = Political.18
+			}
+		}
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				authoritarian > 0.6
+				factor = 10
+			}
+		}
+	}
+}
+#########################################################################
+#  Democracy on the Rise
+#########################################################################
+democratic_on_the_rise = {
+	prepare_for_democratic_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			democratic > 0.1
+		}
+		visible = {
+			NOT = {
+				has_country_flag = preparation_for_democratic_civil_war
+			}
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			set_country_flag = preparation_for_democratic_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	expand_civil_democratic_support = {
+		icon = generic_civil_support
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_democratic_civil_war
+				has_country_flag = open_up_political_discourse_democratic
+			}
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_remove = 30
+		modifier = {
+			democratic_drift = 0.02
+			stability_weekly = -0.03
+			political_power_gain = -0.2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	army_support_for_democratic_civil_war = {
+		icon = generic_army_support
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 30
+		modifier = {
+			command_power_gain = -0.02
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = army_support_var
+						value = 0.1
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = army_support_var
+					value = 0.1
+				}
+			}
+			set_country_flag = military_support_for_democratic_civil_war
+		}
+		complete_effect = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_general_loyalty_for_democratic_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_democratic_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			has_idea_with_trait = C_drift
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ensure_marshal_loyalty_for_democratic_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_democratic_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			has_idea_with_trait = C_drift
+			any_army_leader = {
+				NOT = {
+					has_trait = hidden_sympathies
+				}
+			}
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			country_event = {
+				id = decisions.2
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	siphon_equipment_stockpiles_for_democratic_civil_war = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_country_flag = military_support_for_democratic_civil_war
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			has_country_flag = military_support_for_democratic_civil_war
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		fire_only_once = no
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	formulate_surprise_attack_plan_for_democratic_civil_war = {
+		icon = generic_army_support
+		available = {
+			has_country_flag = military_support_for_democratic_civil_war
+			command_power > 2
+		}
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	ignite_the_democratic_civil_war = {
+		icon = generic_ignite_civil_war
+		available = {
+			has_stability < 0.5
+		}
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@socialist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@authoritarian
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communist
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascist
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = democratic
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}
+			}
+			clr_country_flag = preparation_for_democratic_civil_war
+			clr_country_flag = military_support_for_democratic_civil_war
+			clr_country_flag = civil_support_for_democratic_civil_war
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	rebuild_the_nation_democratic = {
+		icon = generic_construction
+		visible = {
+			has_country_flag = won_ideology_civil_war
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 365
+		modifier = {
+			political_power_gain = -1
+			industry_repair_factor = 0.2
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.1
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	open_up_political_discourse_democratic = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.9
+			fascist < 0.9
+			authoritarian < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			democratic < 0.9
+			communist < 0.9
+			communist < 0.9
+			socialist < 0.9
+		}
+		visible = {
+			has_idea_with_trait = C_drift
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		remove_trigger = {
+			has_government = democratic
+		}
+		fire_only_once = yes
+		cost = 75
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_democratic
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	discredit_government_democratic = {
+		icon = generic_political_discourse
+		available = {
+			fascist < 0.8
+			fascist < 0.8
+			authoritarian < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			democratic < 0.8
+			communist < 0.8
+			communist < 0.8
+			socialist < 0.8
+			has_idea_with_trait = C_drift
+		}
+		visible = {
+			has_country_flag = open_up_political_discourse_democratic
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			NOT = {
+				has_government = democratic
+			}
+		}
+		remove_trigger = {
+			has_government = democratic
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_stability = -0.01
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = fascist
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian
+				}
+				add_popularity = {
+					ideology = authoritarian
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = socialist
+				}
+				add_popularity = {
+					ideology = socialist
+					popularity = -0.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	hold_the_democratic_national_referendum = {
+		icon = generic_political_discourse
+		available = {
+			democratic > 0.8
+		}
+		visible = {
+			NOT = {
+				has_government = democratic
+			}
+			NOT = {
+				original_tag = JAP
+			}
+			#check_has_focus_tree_to_switch_to_democratic = yes
+			OR = {
+				democratic > 0.6
+				has_country_flag = open_up_political_discourse_democratic
+			}
+		}
+		remove_trigger = {
+			has_government = democratic
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			country_event = {
+				id = Political.21
+			}
+		}
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				democratic > 0.6
+				factor = 10
+			}
+		}
+	}
+}

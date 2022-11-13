@@ -1,0 +1,138 @@
+is_valid_goal_or_achievement = {
+	if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 1 }
+		}
+		original_tag = SOV
+		has_country_leader = {
+			name = "Joseph Stalin"
+			ruling_only = yes
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 2 }
+		}
+		original_tag = SOV
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 3 }
+		}
+		original_tag = SOV
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 4 }
+		}
+		original_tag = SOV
+		has_idea = goal_idea_invincible_and_legendary
+		GER = {
+			NOT = { has_government = communist }
+		}
+		# claims on poland?
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 5 }
+		}
+		original_tag = SOV
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 6 }
+		}
+		original_tag = SOV
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 7 }
+		}
+		original_tag = SOV
+	}
+	else = {
+		always = no
+	}
+}
+
+can_complete_goal_or_achievement = {
+	is_valid_goal_or_achievement = yes
+	if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 1 }
+		}
+		has_stability > 0.5
+		# requirements for successful purges
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 2 }
+		}
+		owns_state = 191
+		owns_state = 13
+		owns_state = 12
+		owns_state = 190
+		owns_state = 11
+		owns_state = 189
+		NOT = { country_exists = EST }
+		NOT = { country_exists = LAT }
+		NOT = { country_exists = LIT }
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 3 }
+		}
+		has_government = communist
+		date < 1943.1.1
+		any_other_country = {
+			original_tag = FIN
+			is_puppet_of = ROOT
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 4 }
+		}
+		always = no # fail to win a war?
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 5 }
+		}
+		always = no # successfully reformed red army?
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 6 }
+		}
+		has_idea = goal_idea_invincible_and_legendary
+		has_offensive_war_with = GER
+		GER = {
+			# dominates half of poland?
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { goal_or_achievement_id = 7 }
+		}
+		controls_state = 64
+	}
+	else = {
+		always = no
+	}
+	hidden_trigger = {
+		NOT = { has_completed_goal_or_achievement = yes }
+	}
+}
+
+has_completed_goal_or_achievement = {
+	custom_trigger_tooltip = {
+		tooltip = DH_HAS_COMPLETED_GOAL_OR_ACHIEVEMENT
+		meta_trigger = {
+			text = {
+				has_country_flag = completed_goal_or_achievement_[ID]
+			}
+			ID = "[?goal_or_achievement_id]"
+		}
+	}
+}

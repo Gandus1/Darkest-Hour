@@ -1,0 +1,966 @@
+focus_tree = {
+	id = ETH_focus_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = ETH
+		}
+	}
+	default = no
+	focus = {
+		id = ETH_Wal_Wal_Incident
+		icon = GFX_focus_generic_provoke_border_clashes
+		cost = 70
+		x = 2
+		y = 0
+		available = {
+			always = no
+		}
+		completion_reward = {
+			custom_effect_tooltip = ETH_Wal_Wal_incident_tt
+		}
+	}
+	focus = {
+		id = ETH_Selassies_Modernisation
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 70
+		x = 11
+		y = 0
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_The_Lion_of_Judah
+		icon = GFX_ETH_The_Lion_of_Judah
+		cost = 70
+		x = 6
+		y = 0
+		completion_reward = {
+			add_political_power = 150
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = ETH_Ethiopian_Imperial_Army
+		icon = GFX_ETH_Ethiopian_Imperial_Army
+		cost = 70
+		x = 18
+		y = 0
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = infantry_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Imperial_Ethiopian_Navy
+		icon = GFX_ETH_Imperial_Ethiopian_Navy
+		cost = 70
+		x = 22
+		y = 0
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Mobilising_The_NDF
+		icon = GFX_focus_ETH_expand_the_levy
+		cost = 70
+		prerequisite = {
+			focus = ETH_Wal_Wal_Incident
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Wal_Wal_Incident
+		completion_reward = {
+			custom_effect_tooltip = ETH_Mobilising_The_NDF_tt
+			hidden_effect = {
+				load_oob = ETH_mobilise_NDF
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+	}
+	focus = {
+		id = ETH_Establishing_The_Ethiopia_Airways
+		icon = GFX_GENERIC_International_Airport
+		cost = 70
+		prerequisite = {
+			focus = ETH_Selassies_Modernisation
+		}
+		x = 0
+		y = 2
+		relative_position_id = ETH_Selassies_Modernisation
+		completion_reward = {
+			add_ideas = ETH_Establishing_The_Ethiopia_Airways_idea
+		}
+	}
+	focus = {
+		id = ETH_Imperial_Ethiopian_Air_Force
+		icon = GFX_ETH_Imperial_Ethiopian_Air_Force
+		cost = 70
+		prerequisite = {
+			focus = ETH_Establishing_The_Ethiopia_Airways
+		}
+		x = 3
+		y = 1
+		relative_position_id = ETH_Establishing_The_Ethiopia_Airways
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = air_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Pleas_to_the_League_of_Nations
+		icon = GFX_focus_ETH_addressing_the_league_of_nations
+		cost = 70
+		prerequisite = {
+			focus = ETH_Wal_Wal_Incident
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Wal_Wal_Incident
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = ETH_The_Second_Italo_Ethiopian_War
+		icon = GFX_focus_ETH_the_lion_stands_firm
+		cost = 70
+		prerequisite = {
+			focus = ETH_Pleas_to_the_League_of_Nations
+		}
+		prerequisite = {
+			focus = ETH_Mobilising_The_NDF
+		}
+		x = 0
+		y = 2
+		relative_position_id = ETH_Wal_Wal_Incident
+		available = {
+			always = no
+		}
+		completion_reward = {
+			custom_effect_tooltip = ETH_The_Second_Italo_Ethiopian_War_tt
+		}
+	}
+	focus = {
+		id = ETH_Mobilise_The_Zebeyna
+		icon = GFX_ETH_Mobilize_the_Zebenya
+		cost = 70
+		prerequisite = {
+			focus = ETH_The_Second_Italo_Ethiopian_War
+		}
+		x = 0
+		y = 3
+		relative_position_id = ETH_Wal_Wal_Incident
+		completion_reward = {
+			custom_effect_tooltip = ETH_Mobilise_The_Zebeyna_tt
+			hidden_effect = {
+				load_oob = ETH_mobilize_zebeyna
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+	}
+	focus = {
+		id = ETH_Digging_In
+		icon = GFX_goal_generic_construct_military
+		cost = 70
+		prerequisite = {
+			focus = ETH_Mobilise_The_Zebeyna
+		}
+		x = -1
+		y = 4
+		relative_position_id = ETH_Wal_Wal_Incident
+		completion_reward = {
+			add_timed_idea = {
+				idea = ETH_Digging_in_idea
+				days = 60
+			}
+		}
+	}
+	focus = {
+		id = ETH_The_Lion_of_Africa
+		icon = GFX_ETH_The_Lion_of_Africa
+		cost = 70
+		prerequisite = {
+			focus = ETH_Mobilise_The_Zebeyna
+		}
+		x = 0
+		y = 5
+		relative_position_id = ETH_Wal_Wal_Incident
+		available = {
+			has_country_flag = ETH_Won_Second_Italio_Ethiopian_War
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ETH_Lion_of_Africa
+				add_idea = ETH_Lion_of_Africa_1
+			}
+		}
+	}
+	focus = {
+		id = ETH_Guerrilla_Regiments
+		icon = GFX_focus_prc_infiltration
+		cost = 70
+		prerequisite = {
+			focus = ETH_Mobilise_The_Zebeyna
+		}
+		x = 1
+		y = 4
+		relative_position_id = ETH_Wal_Wal_Incident
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = support_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Consolidating_Royal_Titles
+		icon = GFX_focus_rom_handle_king
+		cost = 70
+		prerequisite = {
+			focus = ETH_The_Lion_of_Judah
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_The_Lion_of_Judah
+		completion_reward = {
+			add_ideas = ETH_Consolidating_Royal_Legitimacy
+		}
+	}
+	focus = {
+		id = ETH_Cult_of_Personality
+		icon = GFX_ETH_Cult_of_Personality
+		cost = 70
+		prerequisite = {
+			focus = ETH_The_Lion_of_Judah
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_The_Lion_of_Judah
+		completion_reward = {
+			add_stability = 0.1
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = ETH_Greater_Privileges_for_the_Zebeyna
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 70
+		prerequisite = {
+			focus = ETH_Consolidating_Royal_Titles
+		}
+		prerequisite = {
+			focus = ETH_Cult_of_Personality
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Consolidating_Royal_Titles
+		completion_reward = {
+			add_political_power = 150
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = ETH_Reasserting_Noble_Perogatives
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 70
+		prerequisite = {
+			focus = ETH_Greater_Privileges_for_the_Zebeyna
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Greater_Privileges_for_the_Zebeyna
+		completion_reward = {
+			add_timed_idea = {
+				idea = ETH_Reasserting_Noble_Perogatives_idea
+				days = 60
+			}
+		}
+	}
+	focus = {
+		id = ETH_Military_Loyalty_Oaths
+		icon = GFX_focus_generic_military_mission
+		cost = 70
+		prerequisite = {
+			focus = ETH_Greater_Privileges_for_the_Zebeyna
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Greater_Privileges_for_the_Zebeyna
+		completion_reward = {
+			add_ideas = ETH_Military_Loyalty_Oaths_idea
+		}
+	}
+	focus = {
+		id = ETH_Legacy_of_Solomon
+		icon = GFX_ETH_Legacy_of_Solomon
+		cost = 70
+		prerequisite = {
+			focus = ETH_Reasserting_Noble_Perogatives
+		}
+		prerequisite = {
+			focus = ETH_Military_Loyalty_Oaths
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Reasserting_Noble_Perogatives
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ETH_Consolidating_Royal_Legitimacy
+				add_idea = ETH_Solomon_Dynasty
+			}
+			add_country_leader_trait = L_Legacy_of_Solomon
+		}
+	}
+	focus = {
+		id = ETH_Finalise_The_Electric_Grid
+		icon = GFX_GENERIC_Electric_Grid
+		cost = 70
+		prerequisite = {
+			focus = ETH_Selassies_Modernisation
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Selassies_Modernisation
+		completion_reward = {
+			878 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			879 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			880 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Constructing_More_Schools
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 70
+		prerequisite = {
+			focus = ETH_Finalise_The_Electric_Grid
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Finalise_The_Electric_Grid
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ETH_Illiteracy_Problem
+				add_idea = ETH_Illiteracy_Problem_1
+			}
+		}
+	}
+	focus = {
+		id = ETH_Rural_Education_Scheme
+		icon = GFX_focus_generic_military_academy
+		cost = 70
+		prerequisite = {
+			focus = ETH_Establishing_The_Ethiopia_Airways
+		}
+		x = -2
+		y = 1
+		relative_position_id = ETH_Establishing_The_Ethiopia_Airways
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ETH_Illiteracy_Problem_1
+				add_idea = ETH_Illiteracy_Problem_2
+			}
+			add_research_slot = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_State_Funded_Refineries
+		icon = GFX_goal_generic_oil_refinery
+		cost = 70
+		prerequisite = {
+			focus = ETH_Rural_Education_Scheme
+		}
+		x = 0
+		y = 1
+		relative_position_id = ETH_Rural_Education_Scheme
+		completion_reward = {
+			880 = {
+				add_resource = {
+					type = oil
+					amount = 7
+				}
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = synth_resources
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Ammunition_Sector_of_Addis_Adaba
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 70
+		prerequisite = {
+			focus = ETH_Establishing_The_Ethiopia_Airways
+		}
+		x = 0
+		y = 1
+		relative_position_id = ETH_Establishing_The_Ethiopia_Airways
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ETH_Pre_Industrial_Society
+				add_idea = ETH_Pre_Industrial_Society_1
+			}
+			271 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Enforce_Abolition_of_Slavery
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 70
+		prerequisite = {
+			focus = ETH_Ammunition_Sector_of_Addis_Adaba
+		}
+		x = 0
+		y = 1
+		relative_position_id = ETH_Ammunition_Sector_of_Addis_Adaba
+		completion_reward = {
+			remove_ideas = ETH_Stain_of_Slavery
+		}
+	}
+	focus = {
+		id = ETH_Sidamo_Mining_Subsidies
+		icon = GFX_focus_generic_steel
+		cost = 70
+		prerequisite = {
+			focus = ETH_State_Funded_Refineries
+		}
+		prerequisite = {
+			focus = ETH_Enforce_Abolition_of_Slavery
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_State_Funded_Refineries
+		completion_reward = {
+			879 = {
+				add_resource = {
+					type = tungsten
+					amount = 2
+				}
+				add_resource = {
+					type = steel
+					amount = 12
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Western_Dream_Achieved
+		icon = GFX_GENERIC_Westernization
+		cost = 70
+		prerequisite = {
+			focus = ETH_Sidamo_Mining_Subsidies
+		}
+		x = 0
+		y = 1
+		relative_position_id = ETH_Sidamo_Mining_Subsidies
+		completion_reward = {
+			add_ideas = ETH_Western_Dream_Achieved_idea
+			remove_ideas = ETH_Pre_Industrial_Society_1
+		}
+	}
+	focus = {
+		id = ETH_Connecting_The_Northern_Roads
+		icon = GFX_GENERIC_Road_Construction
+		cost = 70
+		prerequisite = {
+			focus = ETH_Selassies_Modernisation
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Selassies_Modernisation
+		completion_reward = {
+			875 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			876 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			271 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Subsiding_Coffee_Farms
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 70
+		prerequisite = {
+			focus = ETH_Connecting_The_Northern_Roads
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Connecting_The_Northern_Roads
+		completion_reward = {
+			878 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			880 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Militarising_Lideta_Airport
+		icon = GFX_GENERIC_Militarize_Civilian_Airports
+		cost = 70
+		prerequisite = {
+			focus = ETH_Imperial_Ethiopian_Air_Force
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Imperial_Ethiopian_Air_Force
+		completion_reward = {
+			271 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Flight_Schools
+		icon = GFX_GENERIC_Flight_School
+		cost = 70
+		prerequisite = {
+			focus = ETH_Imperial_Ethiopian_Air_Force
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Imperial_Ethiopian_Air_Force
+		completion_reward = {
+			add_ideas = ETH_Flight_Schools_idea
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.2
+				category = air_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Import_Fighters
+		icon = GFX_GENERIC_Import_Fighters
+		cost = 70
+		prerequisite = {
+			focus = ETH_Militarising_Lideta_Airport
+		}
+		prerequisite = {
+			focus = ETH_Flight_Schools
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Militarising_Lideta_Airport
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = air_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Sticks_and_Stones_No_More
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		cost = 70
+		prerequisite = {
+			focus = ETH_Ethiopian_Imperial_Army
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Ethiopian_Imperial_Army
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = infantry_weapons
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_British_Military_Mission
+		icon = GFX_focus_chi_british_cooperation
+		cost = 70
+		prerequisite = {
+			focus = ETH_Ethiopian_Imperial_Army
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Ethiopian_Imperial_Army
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = ETH_Expanding_The_Holeta_Military_School
+		icon = GFX_GENERIC_Military_Academy
+		cost = 70
+		prerequisite = {
+			focus = ETH_British_Military_Mission
+		}
+		prerequisite = {
+			focus = ETH_Sticks_and_Stones_No_More
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Sticks_and_Stones_No_More
+		completion_reward = {
+			add_ideas = ETH_Expanding_The_Holeta_Military_School_idea
+			every_army_leader = {
+				add_attack = 1
+			}
+		}
+	}
+	focus = {
+		id = ETH_Importing_Western_Tanks
+		icon = GFX_goal_generic_army_tanks
+		cost = 70
+		prerequisite = {
+			focus = ETH_Expanding_The_Holeta_Military_School
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Expanding_The_Holeta_Military_School
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = Light_Tank_equipment_1926
+				amount = 20
+				producer = ENG
+			}
+		}
+	}
+	focus = {
+		id = ETH_French_Artillery_Imports
+		icon = GFX_goal_generic_army_artillery2
+		cost = 70
+		prerequisite = {
+			focus = ETH_Expanding_The_Holeta_Military_School
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Expanding_The_Holeta_Military_School
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_African_Foreign_Legions
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 70
+		prerequisite = {
+			focus = ETH_Importing_Western_Tanks
+		}
+		prerequisite = {
+			focus = ETH_French_Artillery_Imports
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Importing_Western_Tanks
+		completion_reward = {
+			add_ideas = ETH_African_Foreign_Legions_idea
+		}
+	}
+	focus = {
+		id = ETH_Submarine_Project
+		icon = GFX_GENERIC_Submarine
+		cost = 70
+		prerequisite = {
+			focus = ETH_Imperial_Ethiopian_Navy
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Imperial_Ethiopian_Navy
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = ss_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Comission_New_Vessels
+		icon = GFX_GENERIC_Destroyer
+		cost = 70
+		prerequisite = {
+			focus = ETH_Imperial_Ethiopian_Navy
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Imperial_Ethiopian_Navy
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = dd_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = ETH_Asmara_Naval_Academy
+		icon = GFX_GENERIC_Naval_School
+		cost = 70
+		prerequisite = {
+			focus = ETH_Submarine_Project
+		}
+		prerequisite = {
+			focus = ETH_Comission_New_Vessels
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Submarine_Project
+		completion_reward = {
+			add_ideas = ETH_Asmara_Naval_Academy_idea
+		}
+	}
+	focus = {
+		id = ETH_Coastal_Batteries
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 70
+		prerequisite = {
+			focus = ETH_Asmara_Naval_Academy
+		}
+		x = -1
+		y = 1
+		relative_position_id = ETH_Asmara_Naval_Academy
+		available = {
+			550 = {
+				is_controlled_by = ETH
+			}
+		}
+		completion_reward = {
+			550 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+					province = 12766
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = ETH_Minelayers_Development
+		icon = GFX_GENERIC_Naval_Mine
+		cost = 70
+		prerequisite = {
+			focus = ETH_Asmara_Naval_Academy
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Asmara_Naval_Academy
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = ETH_Expand_The_Red_Sea_Fleet
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 70
+		prerequisite = {
+			focus = ETH_Coastal_Batteries
+		}
+		prerequisite = {
+			focus = ETH_Minelayers_Development
+		}
+		x = 1
+		y = 1
+		relative_position_id = ETH_Coastal_Batteries
+		completion_reward = {
+		}
+	}
+}

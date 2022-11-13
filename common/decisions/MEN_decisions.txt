@@ -1,0 +1,127 @@
+#########################################################################
+MEN_Form_New_Governments = {
+	#########################################################################
+	MEN_Second_Assembly_Of_The_Mongols = {
+		icon = jap_conquer_china
+		available = {
+			tag = MEN
+			has_global_flag = Pailingmiao_Defects
+		}
+		visible = {
+			tag = MEN
+			has_global_flag = Pailingmiao_Defects
+			NOT = {
+				has_global_flag = Mongol_Second_Assembly
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 2.5
+			modifier = {
+				factor = 0
+				date < 1936.6.6
+			}
+			modifier = {
+				factor = 200
+			}
+		}
+		cost = 50
+		complete_effect = {
+			hidden_effect = {
+				MEN = {
+					set_cosmetic_tag = MEN_ASSEMBLY
+				}
+			}
+			set_global_flag = Mongol_Second_Assembly
+		}
+	}
+	MEN_Form_Mengkukuo = {
+		icon = jap_conquer_china
+		available = {
+			MEN = {
+				controls_state = 825
+				controls_state = 611
+			}
+		}
+		visible = {
+			tag = MEN
+			has_global_flag = Mongol_Second_Assembly
+			NOT = {
+				has_global_flag = Mengkukuo_Formed
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 2.5
+			modifier = {
+				factor = 0
+				date < 1937.7.7
+			}
+			modifier = {
+				factor = 200
+			}
+		}
+		cost = 50
+		complete_effect = {
+			hidden_effect = {
+				drop_cosmetic_tag = yes
+				set_cosmetic_tag = MEN_mengkukuo
+				MEN = {
+					set_capital = {
+						state = 611 
+						remember_old_capital = no
+					}
+				}
+			}
+			MEN = {
+				country_event = {
+					days = 0
+					id = MEN_Politics.7
+				}
+			}
+			set_global_flag = Mengkukuo_Formed
+		}
+	}
+}
+#########################################################################
+#  Military Campaign
+#########################################################################
+MEN_Military_Campaign = {
+	MEN_Suiyan_campaign = {
+		icon = jap_conquer_china
+		available = {
+			tag = MEN
+			has_global_flag = Pailingmiao_Split
+			has_global_flag = Pailingmiao_Defects
+		}
+		visible = {
+			tag = MEN
+			has_global_flag = Pailingmiao_Defects
+			has_global_flag = Pailingmiao_Split
+			NOT = {
+				has_global_flag = Suiyan_Campaign
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 2.5
+			modifier = {
+				factor = 0
+				date < 1936.8.8
+			}
+			modifier = {
+				factor = 200
+			}
+		}
+		cost = 50
+		complete_effect = {
+			MEN = {
+				country_event = {
+					days = 0
+					id = MEN_Politics.2
+				}
+			}
+			set_global_flag = Suiyan_Campaign
+		}
+	}
+}

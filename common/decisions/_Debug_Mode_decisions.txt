@@ -1,0 +1,566 @@
+#########################################################################
+#  Debug
+#########################################################################
+Debug_Decisions = {
+	###########################
+	# Debug Show all Path France
+	###########################
+	FRA_Show_All_Path = {
+		visible = {
+			original_tag = FRA
+		}
+		complete_effect = {
+			set_country_flag = Daladier_Government_Post_FP
+			set_country_flag = FRA_Popular_Front_Victory
+			set_country_flag = National_Union_Doumergue
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+
+	###########################
+	# Debug German Civil War
+	###########################
+	DB_German_Civil_War = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			# NSDAP (SA Uprising)
+			GER = {
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				set_cosmetic_tag = GER_OKH_GCW
+				start_civil_war = {
+					ideology = fascist
+					size = 0
+					air_ratio = 0.4
+					capital = 5
+					states = {
+						1182
+						768
+						5
+						68
+						63
+						58
+						59
+						62
+						60
+						61
+					}
+				}
+				set_province_controller = 3572
+				set_province_controller = 6513
+				set_province_controller = 11402
+				set_province_controller = 11493
+				set_province_controller = 526
+				set_province_controller = 9375
+				set_province_controller = 6377
+				set_province_controller = 3395
+			}
+			random_other_country = {
+				limit = {
+					original_tag = GER
+					has_government = fascist
+				}
+				set_cosmetic_tag = GER_NSDAP_GCW
+				set_province_controller = 11544
+				set_province_controller = 9416
+				set_province_controller = 11404
+				set_province_controller = 3474
+				set_province_controller = 692
+				set_province_controller = 3705
+				set_province_controller = 6693
+				set_province_controller = 11620
+				set_province_controller = 9652
+				declare_war_on = {
+					target = DDR
+					type = civil_war
+				}
+				load_oob = GER_SA_militia_GER
+			}
+			# Communists
+			DDR = {
+				set_cosmetic_tag = DDR_KPD_GCW
+				transfer_state = 1183
+				set_capital = {
+					state = 1183 
+					remember_old_capital = no
+				}
+				set_province_controller = 11331				# Lubeck
+				set_province_controller = 587
+				set_province_controller = 13264
+				set_province_controller = 6469
+				set_province_controller = 495
+				set_province_controller = 3444
+				set_province_controller = 6622
+				set_province_controller = 3512
+				set_province_controller = 6582
+				set_province_controller = 11545
+				set_province_controller = 6441
+				set_province_controller = 9441
+				set_province_controller = 6501
+				set_province_controller = 538
+				set_province_controller = 6524
+				set_province_controller = 6535				# Munster
+				set_province_controller = 3499				# Berlin - Potsdam
+				set_province_controller = 9428				# Berlin
+				declare_war_on = {
+					target = GER
+					type = civil_war
+				}
+			}
+		}
+	}
+	###########################
+	# Debug British Civil War
+	###########################
+	DB_British_Civil_War = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			# Edwardites
+			ENG = {
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				set_cosmetic_tag = ENG_EDWARD
+				start_civil_war = {
+					ideology = democratic
+					size = 0.5
+					states = {
+						133
+						121
+						136
+						120
+					}
+				}
+				set_province_controller = 6300
+			}
+			# Georgists
+			random_other_country = {
+				limit = {
+					original_tag = ENG
+					has_government = democratic
+				}
+				set_cosmetic_tag = ENG_GEORGE
+				create_country_leader = {
+					name = "George VI"
+					desc = ""
+					picture = GFX_D_George_VI
+					ideology = social_conservatism
+					traits = {
+						POSITION_King
+						SUBIDEOLOGY_Social_Conservatism
+						L_Autocratic_Charmer
+					}
+				}
+				set_province_controller = 271
+				set_province_controller = 322
+				set_province_controller = 125
+				set_province_controller = 13070
+				set_province_controller = 3501
+				set_province_controller = 11446
+			}
+			# Ireland
+			IRE = {
+				transfer_state = 119
+			}
+		}
+	}
+	###########################
+	# Debug 2nd American Civil War
+	###########################
+	DB_American_Civil_War = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			# Military Governemnt
+			USA = {
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				set_cosmetic_tag = USA_MILITARY
+				start_civil_war = {
+					ideology = fascist
+					size = 0.4
+					capital = 375
+					states = {
+						375
+						374
+						373
+						369
+						780
+						362
+						363
+						364
+						365
+						366
+						370
+						371
+						372
+						368
+						367
+						357
+						782
+						778
+						779
+						781
+					}
+				}
+			}
+			# Provisional Govt (Huey Long)
+			random_other_country = {
+				limit = {
+					original_tag = USA
+					has_government = fascist
+				}
+				CSA = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+			}
+			CSA = {
+				declare_war_on = {
+					target = USA
+					type = civil_war
+				}
+				set_cosmetic_tag = CSA_USA_LONG
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				create_country_leader = {
+					name = "Huey P. Long"
+					desc = ""
+					picture = GFX_D_Huey_Long
+					ideology = authoritarian_democracy
+					traits = {
+						POSITION_President
+						SUBIDEOLOGY_Authoritarian_Democracy
+						L_The_Kingfish
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = USA
+					}
+					CSA = {
+						add_state_core = PREV
+					}
+				}
+			}
+			# American Soviet Republic
+			USA = {
+				start_civil_war = {
+					ideology = communist
+					size = 0.2
+					capital = 395
+					states = {
+						360
+						261
+						396
+						395
+						359
+						393
+						394
+						361
+						783
+					}
+				}
+				set_province_controller = 3894
+				set_province_controller = 10333
+				set_province_controller = 10516
+				set_province_controller = 7449
+				set_province_controller = 10391
+				set_province_controller = 10717
+				set_province_controller = 1564
+				set_province_controller = 1534
+				set_province_controller = 4567
+				set_province_controller = 12624
+				set_province_controller = 7762
+				set_province_controller = 10702
+				set_province_controller = 10798
+				set_province_controller = 11802
+				set_province_controller = 7904
+				set_province_controller = 1806
+				set_province_controller = 2043
+				set_province_controller = 9908
+				set_province_controller = 2055
+				set_province_controller = 3972
+				set_province_controller = 12893
+				set_province_controller = 12848
+				set_province_controller = 9773
+				set_province_controller = 12301
+				set_province_controller = 1998
+				set_province_controller = 4955
+				set_province_controller = 10894
+				set_province_controller = 10740
+				set_province_controller = 3917
+				set_province_controller = 3894
+				set_province_controller = 3878
+			}
+			random_other_country = {
+				limit = {
+					original_tag = USA
+					has_government = communist
+				}
+				declare_war_on = {
+					target = CSA
+					type = civil_war
+				}
+				set_cosmetic_tag = USA_ASR
+				set_province_controller = 6850
+				set_province_controller = 6707
+				set_province_controller = 11654
+				set_province_controller = 9664
+				set_province_controller = 11680
+				set_province_controller = 11650
+				set_province_controller = 9923
+				set_province_controller = 801
+			}
+		}
+	}
+	###########################
+	# Debug German Kaiserreich Restoration - W2
+	###########################
+	DB_German_Strasserist = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			GER = {
+				drop_cosmetic_tag = yes
+				#load_focus_tree = {
+				#	tree = GER_Strasserist
+				#}				
+				news_event = {
+					id = GER_SA_Purge.9
+				}
+			}
+		}
+	}
+	###########################
+	# Debug German Kaiserreich Restoration - W2
+	###########################
+	DB_German_Kaiserreich_Restoration_W2 = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			GER = {
+				drop_cosmetic_tag = yes
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				set_popularities = {
+					fascist = 0
+					authoritarian = 100
+					democratic = 0
+					socialist = 0
+					communist = 0
+				}
+				create_country_leader = {
+					name = "Wilhelm II"
+					desc = ""
+					picture = GFX_A_Wilhelm_II
+					ideology = monarchism
+					traits = {
+						POSITION_GER_Kaiser
+						SUBIDEOLOGY_Monarchism
+						L_Weary_Stiff_Neck
+					}
+				}
+				#load_focus_tree = GER_KR
+				transfer_state = 86
+				transfer_state = 798
+				transfer_state = 85
+				transfer_state = 188
+				transfer_state = 804
+				transfer_state = 28
+				transfer_state = 1169
+				transfer_state = 802
+				transfer_state = 806
+				transfer_state = 766
+			}
+		}
+	}
+	###########################
+	# Debug German Kaiserreich Restoration - W3
+	###########################
+	DB_German_Kaiserreich_Restoration_W3 = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			GER = {
+				drop_cosmetic_tag = yes
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				set_popularities = {
+					fascist = 0
+					authoritarian = 100
+					democratic = 0
+					socialist = 0
+					communist = 0
+				}
+				create_country_leader = {
+					name = "Wilhelm III"
+					desc = "Wilhelm_III_desc"
+					picture = GFX_A_Wilhelm_III
+					ideology = monarchism
+					traits = {
+						POSITION_GER_Kaiser
+						SUBIDEOLOGY_Monarchism
+						L_Benevolent_Gentleman
+					}
+				}
+				#load_focus_tree = GER_KR
+				transfer_state = 86
+				transfer_state = 798
+				transfer_state = 85
+				transfer_state = 188
+				transfer_state = 804
+				transfer_state = 28
+				transfer_state = 1169
+				transfer_state = 802
+				transfer_state = 806
+				transfer_state = 766
+			}
+		}
+	}
+	###########################
+	# Debug Chinese Civil War - Failed Xi'an
+	###########################
+	DB_Chinese_Civil_War_Xian = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			RNG = {
+				transfer_state = 591
+				transfer_state = 592
+				transfer_state = 593
+				transfer_state = 903
+				set_politics = {
+					ruling_party = authoritarian
+					last_election = "1936.1.1"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities = {
+					authoritarian = 100
+				}
+				create_country_leader = {
+					name = "Wang Jingwei"
+					desc = ""
+					picture = GFX_F_Wang_Jingwei
+					ideology = authoritarian_democracy
+					traits = {
+						POSITION_President
+					}
+				}
+				add_ideas = RNG_D_Zhou_Fohai
+				add_ideas = CHI_Depression_2
+				set_cosmetic_tag = RNG_LEFT_CCW
+			}
+			CHI = {
+				remove_ideas = CHI_D_Chiang_Kaishek
+				add_ideas = CHI_D_Li_Zongren
+			}
+			PRC = {
+				transfer_state = 833
+				transfer_state = 861
+				transfer_state = 909
+				transfer_state = 862
+				transfer_state = 902
+				transfer_state = 903
+				transfer_state = 744
+				transfer_state = 756
+				transfer_state = 622
+				transfer_state = 908
+				transfer_state = 748
+			}
+		}
+	}
+	###########################
+	# Debug Jabotinsky Revolt
+	###########################
+	DB_Jabotinsky_Revolt = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			# Jabotinsky Uprising
+			ISR = {
+				set_cosmetic_tag = ISR_JABOTINSKY
+				set_politics = {
+					ruling_party = authoritarian
+				}
+				transfer_state = 822
+				transfer_state = 454
+				transfer_state = 823
+				transfer_state = 824
+				transfer_state = 821
+				transfer_state = 820
+				declare_war_on = {
+					target = ENG
+					type = civil_war
+				}
+				load_oob = ISR_Jabotinsky_Revolt
+			}
+		}
+	}
+}

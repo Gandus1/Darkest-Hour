@@ -1,0 +1,296 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+ICE_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ICE_MOT_01 ICE_MEC_01 ICE_MTN_01 }
+
+	fallback_name = "%d. Fótgöngudeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Fótgöngudeild" }
+		2 = { "%d. Fótgöngudeild" }
+		3 = { "%d. Fótgöngudeild" }
+		4 = { "%d. Fótgöngudeild" }
+		5 = { "%d. Fótgöngudeild" }
+		6 = { "%d. Fótgöngudeild" }
+		7 = { "%d. Fótgöngudeild" }
+		8 = { "%d. Fótgöngudeild" }
+		9 = { "%d. Fótgöngudeild" }
+		10 = { "%d. Fótgöngudeild" }
+
+	}
+}
+
+ICE_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ICE_INF_01 }
+
+	fallback_name = "%d. Riddaradeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Riddaradeild" }
+		2 = { "%d. Riddaradeild" }
+		3 = { "%d. Riddaradeild" }
+		4 = { "%d. Riddaradeild" }
+		5 = { "%d. Riddaradeild" }
+		6 = { "%d. Riddaradeild" }
+		7 = { "%d. Riddaradeild" }
+		8 = { "%d. Riddaradeild" }
+		9 = { "%d. Riddaradeild" }
+		10 = { "%d. Riddaradeild" }
+
+	}
+}
+
+ICE_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ICE_INF_01 ICE_MEC_01 ICE_MTN_01 }
+
+	fallback_name = "%d. Vélknúin Fótgöngudeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Vélknúin Fótgöngudeild" }
+		2 = { "%d. Vélknúin Fótgöngudeild" }
+		3 = { "%d. Vélknúin Fótgöngudeild" }
+		4 = { "%d. Vélknúin Fótgöngudeild" }
+		5 = { "%d. Vélknúin Fótgöngudeild" }
+		6 = { "%d. Vélknúin Fótgöngudeild" }
+		7 = { "%d. Vélknúin Fótgöngudeild" }
+		8 = { "%d. Vélknúin Fótgöngudeild" }
+		9 = { "%d. Vélknúin Fótgöngudeild" }
+		10 = { "%d. Vélknúin Fótgöngudeild" }
+
+	}
+}
+
+ICE_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ICE_INF_01 }
+
+	fallback_name = "%d. Brynjudeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Brynjudeild" }
+		2 = { "%d. Brynjudeild" }
+		3 = { "%d. Brynjudeild" }
+		4 = { "%d. Brynjudeild" }
+		5 = { "%d. Brynjudeild" }
+		6 = { "%d. Brynjudeild" }
+		7 = { "%d. Brynjudeild" }
+		8 = { "%d. Brynjudeild" }
+		9 = { "%d. Brynjudeild" }
+		10 = { "%d. Brynjudeild" }
+
+	}
+}
+
+ICE_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ICE_INF_01 ICE_MOT_01 ICE_MTN_01 }
+
+	fallback_name = "%d. Vélræn Fótgöngudeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Vélræn Fótgöngudeild" }
+		2 = { "%d. Vélræn Fótgöngudeild" }
+		3 = { "%d. Vélræn Fótgöngudeild" }
+		4 = { "%d. Vélræn Fótgöngudeild" }
+		5 = { "%d. Vélræn Fótgöngudeild" }
+		6 = { "%d. Vélræn Fótgöngudeild" }
+		7 = { "%d. Vélræn Fótgöngudeild" }
+		8 = { "%d. Vélræn Fótgöngudeild" }
+		9 = { "%d. Vélræn Fótgöngudeild" }
+		10 = { "%d. Vélræn Fótgöngudeild" }
+
+	}
+}
+
+ICE_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ICE_INF_01 }
+
+	fallback_name = "%d. Sjávardeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Sjávardeild" }
+		2 = { "%d. Sjávardeild" }
+		3 = { "%d. Sjávardeild" }
+		4 = { "%d. Sjávardeild" }
+		5 = { "%d. Sjávardeild" }
+		6 = { "%d. Sjávardeild" }
+		7 = { "%d. Sjávardeild" }
+		8 = { "%d. Sjávardeild" }
+		9 = { "%d. Sjávardeild" }
+		10 = { "%d. Sjávardeild" }
+
+	}
+}
+
+ICE_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ICE_INF_01 ICE_MOT_01 ICE_MEC_01 }
+
+	fallback_name = "%d. Fjalladeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Fjalladeild" }
+		2 = { "%d. Fjalladeild" }
+		3 = { "%d. Fjalladeild" }
+		4 = { "%d. Fjalladeild" }
+		5 = { "%d. Fjalladeild" }
+		6 = { "%d. Fjalladeild" }
+		7 = { "%d. Fjalladeild" }
+		8 = { "%d. Fjalladeild" }
+		9 = { "%d. Fjalladeild" }
+		10 = { "%d. Fjalladeild" }
+
+	}
+}
+
+ICE_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { ICE }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ICE_INF_01 }
+
+	fallback_name = "%d. Fallhlífardeild"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Fallhlífardeild" }
+		2 = { "%d. Fallhlífardeild" }
+		3 = { "%d. Fallhlífardeild" }
+		4 = { "%d. Fallhlífardeild" }
+		5 = { "%d. Fallhlífardeild" }
+		6 = { "%d. Fallhlífardeild" }
+		7 = { "%d. Fallhlífardeild" }
+		8 = { "%d. Fallhlífardeild" }
+		9 = { "%d. Fallhlífardeild" }
+		10 = { "%d. Fallhlífardeild" }
+
+	}
+}

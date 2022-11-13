@@ -1,0 +1,8353 @@
+#!gfx:interface\_Goals.gfx
+focus_tree = {
+	id = USA_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = USA
+		}
+	}
+	continuous_focus_position = {
+		x = 3300
+		y = 1000
+	}
+	default = no
+	##################################################
+	###	1932 - FDR
+	##################################################
+	## New Deal
+	focus = {
+		# Houdini In the House
+		id = USA_Houdini_in_the_House
+		icon = GFX_USA_1933_Franklin_Roosevelt
+		cost = 10
+		x = 12
+		y = 0
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Franklin D. Roosevelt"
+			}
+		}
+		completion_reward = {
+			country_event = {
+				id = USA_FDR_New_Deal.2
+			}
+		}
+		allow_branch = {
+			NOT = {
+				OR = {
+					has_country_flag = USA_Roosevelt_1936
+					has_country_flag = USA_Landon_1936
+				}
+			}
+		}
+	}
+	focus = {
+		# The Good Neighbor
+		id = USA_the_Good_Neighbour
+		icon = GFX_USA_The_Good_Neighbor
+		cost = 10
+		available = {
+			NOT = {
+				has_country_flag = USA_100_Days_Mission
+			}
+		}
+		prerequisite = {
+			focus = USA_Houdini_in_the_House
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Houdini_in_the_House
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = ARG
+						original_tag = BOL
+						original_tag = BRA
+						original_tag = CHL
+						original_tag = COL
+						original_tag = COS
+						original_tag = CUB
+						original_tag = DOM
+						original_tag = ECU
+						original_tag = ELS
+						original_tag = GUA
+						original_tag = HAI
+						original_tag = MEX
+						original_tag = NIC
+						original_tag = HON
+						original_tag = PAN
+						original_tag = PAR
+						original_tag = PRU
+						original_tag = URG
+						original_tag = VEN
+					}
+					not = {
+						has_war_with = ROOT
+					}
+					exists = yes
+				}
+				country_event = USA_FDR_New_Deal.8
+			}
+			country_event = {
+				id = USA_FDR_New_Deal.10
+			}
+		}
+	}
+	focus = {
+		# Shore Up the Banks
+		id = USA_Shore_up_Banks
+		icon = GFX_GENERIC_Money
+		cost = 10
+		prerequisite = {
+			focus = USA_Houdini_in_the_House
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Houdini_in_the_House
+		completion_reward = {
+			news_event = {
+				id = USA_FDR_New_Deal.3
+			}
+		}
+	}
+	focus = {
+		# Employment for the Youth
+		id = USA_Employment_for_the_Youth
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 15
+		prerequisite = {
+			focus = USA_the_Good_Neighbour
+			focus = USA_Shore_up_Banks
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_the_Good_Neighbour
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_1
+					add_idea = USA_New_Deal_3
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_New_Deal_2
+					add_idea = USA_New_Deal_4
+				}
+			}
+		}
+	}
+	focus = {
+		# Alleviate Household Unemployment
+		id = USA_Alleviate_Household_Unemployment
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 20
+		prerequisite = {
+			focus = USA_Employment_for_the_Youth
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Employment_for_the_Youth
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.015
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		# Provide Aid and Relief
+		id = USA_Provide_Aid_and_Relief
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 40
+		available = {
+			NOT = {
+				has_country_flag = USA_100_Days_Mission
+			}
+		}
+		prerequisite = {
+			focus = USA_Employment_for_the_Youth
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Employment_for_the_Youth
+		completion_reward = {
+			add_popularity = {
+				ideology = socialist
+				popularity = -0.01
+			}
+			add_stability = 0.02
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		# Drinks on the House
+		id = USA_Drinks_on_the_House
+		icon = GFX_USA_Drinks_on_the_House
+		cost = 50
+		prerequisite = {
+			focus = USA_Alleviate_Household_Unemployment
+		}
+		prerequisite = {
+			focus = USA_Provide_Aid_and_Relief
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Alleviate_Household_Unemployment
+		completion_reward = {
+			add_political_power = 60
+			remove_ideas = USA_the_Noble_Experiment
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Raise Food Prices
+		id = USA_Raise_Food_Prices
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 50
+		prerequisite = {
+			focus = USA_Drinks_on_the_House
+		}
+		mutually_exclusive = {
+			focus = USA_Push_Public_Works_Budget
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Drinks_on_the_House
+		completion_reward = {
+			add_stability = -0.03
+			add_timed_idea = {
+				idea = USA_Raised_Food_Prices
+				days = 365
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		# Boost the Public Works Budget
+		id = USA_Push_Public_Works_Budget
+		icon = GFX_goal_generic_construct_civilian
+		cost = 50
+		prerequisite = {
+			focus = USA_Drinks_on_the_House
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		mutually_exclusive = {
+			focus = USA_Raise_Food_Prices
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Drinks_on_the_House
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.02
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_3
+					add_idea = USA_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_4
+					add_idea = USA_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_6
+					add_idea = USA_New_Deal_7
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_New_Deal_8
+					add_idea = USA_New_Deal_9
+				}
+			}
+		}
+	}
+	focus = {
+		# Reduce Agricultural Surplus
+		id = USA_Reduce_Agricultural_Surplus
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 15
+		prerequisite = {
+			focus = USA_the_Good_Neighbour
+			focus = USA_Shore_up_Banks
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_the_Good_Neighbour
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.035
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		# Invest in Public Works
+		id = USA_Invest_in_Public_Works
+		icon = GFX_goal_generic_construction
+		cost = 20
+		prerequisite = {
+			focus = USA_Reduce_Agricultural_Surplus
+		}
+		prerequisite = {
+			focus = USA_Employment_for_the_Youth
+		}
+		prerequisite = {
+			focus = USA_Provide_Affordable_Power
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Reduce_Agricultural_Surplus
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_4
+					add_idea = USA_New_Deal_6
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_New_Deal_5
+					add_idea = USA_New_Deal_7
+				}
+			}
+		}
+	}
+	focus = {
+		# Civil Works Administration
+		id = USA_Civil_Works_Administration
+		icon = GFX_USA_Civil_Works_Administration
+		cost = 50
+		available = {
+			NOT = {
+				has_country_flag = USA_100_Days_Mission
+			}
+		}
+		prerequisite = {
+			focus = USA_Invest_in_Public_Works
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Invest_in_Public_Works
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_6
+					add_idea = USA_New_Deal_8
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_New_Deal_7
+					add_idea = USA_New_Deal_9
+				}
+			}
+		}
+	}
+	focus = {
+		# Protect the Currency
+		id = USA_Protect_Currency
+		icon = GFX_GENERIC_Money
+		cost = 50
+		available = {
+			NOT = {
+				has_country_flag = USA_100_Days_Mission
+			}
+		}
+		prerequisite = {
+			focus = USA_Invest_in_Public_Works
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Invest_in_Public_Works
+		completion_reward = {
+			add_stability = 0.03
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		# The Blue Eagle Campaign
+		id = USA_Blue_Eagle_Campaing
+		icon = GFX_USA_Blue_Eagle_Campaign
+		cost = 50
+		prerequisite = {
+			focus = USA_Protect_Currency
+		}
+		prerequisite = {
+			focus = USA_Civil_Works_Administration
+		}
+		x = 12
+		y = 5
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_the_Blue_Eagle
+				days = 60
+			}
+		}
+	}
+	focus = {
+		# Provide Affordable Power
+		id = USA_Provide_Affordable_Power
+		icon = GFX_GENERIC_Electric_Grid
+		cost = 15
+		prerequisite = {
+			focus = USA_the_Good_Neighbour
+			focus = USA_Shore_up_Banks
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Shore_up_Banks
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.035
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_1
+					add_idea = USA_New_Deal_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_3
+					add_idea = USA_New_Deal_4
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_New_Deal_4
+					add_idea = USA_New_Deal_5
+				}
+			}
+		}
+	}
+	focus = {
+		# Abandon the Gold Standard
+		id = USA_Abandon_Gold_Standard
+		icon = GFX_USA_Abandon_the_Gold_Standard
+		cost = 60
+		available = {
+			NOT = {
+				has_country_flag = USA_100_Days_Mission
+			}
+		}
+		prerequisite = {
+			focus = USA_Provide_Affordable_Power
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Provide_Affordable_Power
+		completion_reward = {
+			country_event = {
+				id = USA_FDR_New_Deal.11
+			}
+			hidden_effect = {
+				news_event = {
+					id = USA_FDR_New_Deal.4
+				}
+			}
+		}
+	}
+	focus = {
+		# Reduce Fraudulent Wall Street Activities
+		id = USA_Reduce_Fraudulent_Wall_Street_Activities
+		icon = GFX_GENERIC_Austerity_Measures
+		cost = 60
+		available = {
+			NOT = {
+				has_country_flag = USA_100_Days_Mission
+			}
+		}
+		prerequisite = {
+			focus = USA_Provide_Affordable_Power
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Provide_Affordable_Power
+		completion_reward = {
+			add_popularity = {
+				ideology = socialist
+				popularity = -0.01
+			}
+			add_political_power = -70
+			add_stability = -0.05
+			set_temp_variable = {
+				unemployment_value = -0.013
+			}			#need changing
+			add_unemployment_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		# Restore Confidence in the Banks
+		id = USA_Restore_Confidence_in_the_Banks
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 50
+		prerequisite = {
+			focus = USA_Abandon_Gold_Standard
+		}
+		prerequisite = {
+			focus = USA_Reduce_Fraudulent_Wall_Street_Activities
+		}
+		x = 15
+		y = 4
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_Restore_Confidence_in_the_Banks
+				days = 80
+			}
+		}
+	}
+	focus = {
+		# The Road Goes Both Ways
+		id = USA_Road_Goes_Both_Ways
+		icon = GFX_GENERIC_Road_Construction
+		cost = 50
+		prerequisite = {
+			focus = USA_Restore_Confidence_in_the_Banks
+		}
+		x = 14
+		y = 5
+		completion_reward = {
+			add_political_power = 70
+			unlock_decision_category_tooltip = USA_Reciprocal_Deals_Category
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Regulate the Securities Exchange
+		id = USA_Regulate_Securities_Exchange
+		icon = GFX_GENERIC_Burn_the_Parliament
+		cost = 50
+		prerequisite = {
+			focus = USA_Restore_Confidence_in_the_Banks
+		}
+		x = 16
+		y = 5
+		completion_reward = {
+			add_stability = -0.05
+			set_temp_variable = {
+				unemployment_value = -0.012
+			}
+			add_unemployment_effect = yes
+			add_timed_idea = {
+				idea = USA_New_Regulations
+				days = 365
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	## Second Deal
+	focus = {
+		# The Second New Deal
+		id = USA_The_Second_New_Deal
+		icon = GFX_USA_Second_New_Deal
+		cost = 55
+		prerequisite = {
+			focus = USA_Raise_Food_Prices
+			focus = USA_Push_Public_Works_Budget
+		}
+		prerequisite = {
+			focus = USA_Blue_Eagle_Campaing
+		}
+		prerequisite = {
+			focus = USA_Road_Goes_Both_Ways
+		}
+		prerequisite = {
+			focus = USA_Regulate_Securities_Exchange
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Blue_Eagle_Campaing
+		completion_reward = {
+			add_political_power = 50
+			if = {
+				limit = {
+					has_idea = USA_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_New_Deal_8
+					add_idea = USA_Second_New_Deal_1
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_New_Deal_9
+					add_idea = USA_Second_New_Deal_2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Expand the Youth Programs
+		id = USA_Expand_Youth_Program
+		icon = GFX_USA_Expand_the_Youth_Programs
+		cost = 45
+		prerequisite = {
+			focus = USA_The_Second_New_Deal
+		}
+		x = -4
+		y = 1
+		relative_position_id = USA_The_Second_New_Deal
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.02
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_1
+					add_idea = USA_Second_New_Deal_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_2
+					add_idea = USA_Second_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_3
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+		}
+	}
+	focus = {
+		# Curtail Unfair Labor Practices
+		id = USA_Curtail_Unfair_Labor_Practices
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 45
+		prerequisite = {
+			focus = USA_The_Second_New_Deal
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_The_Second_New_Deal
+		completion_reward = {
+			news_event = {
+				id = USA.9
+			}
+		}
+	}
+	focus = {
+		# Aid the Elderly
+		id = USA_Aid_the_Elderly
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 45
+		prerequisite = {
+			focus = USA_Expand_Youth_Program
+		}
+		prerequisite = {
+			focus = USA_Curtail_Unfair_Labor_Practices
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Curtail_Unfair_Labor_Practices
+		completion_reward = {
+			add_stability = 0.02
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_3
+					add_idea = USA_Second_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_10
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_11
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_11
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_12
+					add_idea = USA_Second_New_Deal_13
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		# Relieve Puerto Rico
+		id = USA_Relieve_Puerto_Rico
+		icon = GFX_goal_unknown
+		cost = 45
+		prerequisite = {
+			focus = USA_Aid_the_Elderly
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Aid_the_Elderly
+		completion_reward = {
+			country_event = USA_FDR_New_Deal.6
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_10
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_11
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_11
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_12
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_12
+					add_idea = USA_Second_New_Deal_13
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_13
+					add_idea = USA_Second_New_Deal_14
+				}
+			}
+		}
+	}
+	focus = {
+		# The Federal Petroleum Board
+		id = USA_Federal_Petroleum_Board
+		icon = GFX_goal_generic_oil_refinery
+		cost = 45
+		prerequisite = {
+			focus = USA_Aid_the_Elderly
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Aid_the_Elderly
+		completion_reward = {
+			add_stability = 0.03
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		# Improve the Nation's Infrastructure
+		id = USA_Improve_Nation_Infrastructure
+		icon = GFX_USA_WPA
+		cost = 45
+		prerequisite = {
+			focus = USA_The_Second_New_Deal
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_The_Second_New_Deal
+		completion_reward = {
+			unlock_decision_tooltip = USA_Public_Works_in_the_Northeast
+			unlock_decision_tooltip = USA_Public_Works_in_the_Midwest
+			unlock_decision_tooltip = USA_Public_Works_in_the_South
+			unlock_decision_tooltip = USA_Public_Works_in_the_West
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_1
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_2
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_3
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_13
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_14
+				}
+			}
+		}
+	}
+	focus = {
+		# Threaten Big Corporations
+		id = USA_Threaten_Big_Corporations
+		icon = GFX_CHI_Commission_for_Industry_and_Mining
+		cost = 45
+		prerequisite = {
+			focus = USA_Improve_Nation_Infrastructure
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Improve_Nation_Infrastructure
+		completion_reward = {
+			country_event = USA_FDR_New_Deal.5
+		}
+	}
+	focus = {
+		# Introduce the Wealth Tax
+		id = USA_Introduce_the_Wealth_Tax
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 60
+		prerequisite = {
+			focus = USA_Threaten_Big_Corporations
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = 0
+		y = 2
+		relative_position_id = USA_Improve_Nation_Infrastructure
+		completion_reward = {
+			add_ideas = USA_Soak_The_Rich
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+		}
+	}
+	focus = {
+		# Electrify the Countryside
+		id = USA_Electrify_Countryside
+		icon = GFX_USA_Electrify_the_Countryside
+		cost = 40
+		prerequisite = {
+			focus = USA_The_Second_New_Deal
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_The_Second_New_Deal
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.025
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_1
+					add_idea = USA_Second_New_Deal_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_2
+					add_idea = USA_Second_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_3
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_10
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_11
+					add_idea = USA_Second_New_Deal_13
+				}
+			}
+		}
+	}
+	focus = {
+		# Ressetle Dust Bowl Families
+		id = USA_Ressetle_Dust_Bowl_Families
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 45
+		prerequisite = {
+			focus = USA_The_Second_New_Deal
+		}
+		x = 4
+		y = 1
+		relative_position_id = USA_The_Second_New_Deal
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = 0.013
+			}
+			add_unemployment_effect = yes
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						infrastructure < 10
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						infrastructure < 10
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						infrastructure < 10
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_1
+					add_idea = USA_Second_New_Deal_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_2
+					add_idea = USA_Second_New_Deal_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_3
+					add_idea = USA_Second_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_10
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_11
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_11
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_12
+					add_idea = USA_Second_New_Deal_13
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		# Support American Artisans
+		id = USA_Support_American_Artisans
+		icon = GFX_USA_Suport_American_Artisans
+		cost = 45
+		prerequisite = {
+			focus = USA_Electrify_Countryside
+		}
+		prerequisite = {
+			focus = USA_Ressetle_Dust_Bowl_Families
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Electrify_Countryside
+		completion_reward = {
+			unlock_decision_tooltip = USA_Federal_Art_Project
+			unlock_decision_tooltip = USA_Federal_Music_Project
+			unlock_decision_tooltip = USA_Federal_Theater_Project
+			unlock_decision_tooltip = USA_Federal_Writers_Project
+			unlock_decision_tooltip = USA_Historical_Records_Survey
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_4
+					add_idea = USA_Second_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_5
+					add_idea = USA_Second_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_6
+					add_idea = USA_Second_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_7
+					add_idea = USA_Second_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_8
+					add_idea = USA_Second_New_Deal_9
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_9
+					add_idea = USA_Second_New_Deal_10
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_10
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_10
+					add_idea = USA_Second_New_Deal_11
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_11
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_11
+					add_idea = USA_Second_New_Deal_12
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_12
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_12
+					add_idea = USA_Second_New_Deal_13
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_13
+					add_idea = USA_Second_New_Deal_14
+				}
+			}
+		}
+	}
+	focus = {
+		# An Act of Neutrality
+		id = USA_an_Act_of_Neutrality
+		icon = GFX_USA_An_Act_of_Neutrality
+		cost = 45
+		prerequisite = {
+			focus = USA_Support_American_Artisans
+		}
+		mutually_exclusive = {
+			focus = USA_A_Defense_Against_Agression
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Support_American_Artisans
+		completion_reward = {
+			add_political_power = 120
+			add_ideas = USA_Neutrality_Act
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		# A Defense Against Aggression
+		id = USA_A_Defense_Against_Agression
+		icon = GFX_USA_A_Defence_against_Aggression
+		cost = 45
+		prerequisite = {
+			focus = USA_Support_American_Artisans
+		}
+		available = {
+			threat > 0.3
+			set_temp_variable = {
+				total_support_to_check = 0.66
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		mutually_exclusive = {
+			focus = USA_an_Act_of_Neutrality
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Support_American_Artisans
+		completion_reward = {
+			add_political_power = -200
+			add_stability = -0.15
+			unlock_decision_category_tooltip = USA_Defence_Against_Agression_Category
+			activate_mission = USA_Defence_Against_Agression_Mission
+			set_country_flag = USA_Defense_Against_Aggression_Selected
+			set_variable = {
+				var = USA_Isolationist_Decision_Count
+				value = 0
+			}
+			set_variable = {
+				var = USA_People_Decision_Count
+				value = 0
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		# Prevent Another Bonus Army
+		id = USA_Prevent_Another_Bonus_Army
+		icon = GFX_USA_Prevent_Another_Bonus_Army
+		cost = 60
+		prerequisite = {
+			focus = USA_an_Act_of_Neutrality
+			focus = USA_A_Defense_Against_Agression
+		}
+		prerequisite = {
+			focus = USA_Introduce_the_Wealth_Tax
+		}
+		prerequisite = {
+			focus = USA_Relieve_Puerto_Rico
+		}
+		prerequisite = {
+			focus = USA_Federal_Petroleum_Board
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Introduce_the_Wealth_Tax
+		completion_reward = {
+			add_political_power = 30
+			add_timed_idea = {
+				idea = USA_Great_War_Veteran_Payments
+				days = 100
+			}
+			hidden_effect = {
+				country_event = {
+					days = 100
+					id = USA_FDR_New_Deal.7
+				}
+			}
+			mark_focus_tree_layout_dirty = yes
+			set_country_flag = USA_Completed_1936
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	##################################################
+	###	Military Tree
+	##################################################
+	focus = {
+		# Prepare to Move the US Department of War
+		id = USA_Prepare_to_Move_the_US_Department_of_War
+		icon = GFX_focus_usa_build_the_pentagon
+		cost = 36
+		x = 39
+		y = 0
+		completion_reward = {
+			country_event = {
+				id = USA_Department_of_War.5
+			}
+		}
+	}
+	## US Army Branch
+	focus = {
+		# The US Army
+		id = USA_the_US_Army
+		icon = GFX_USA_US_Army
+		cost = 35
+		prerequisite = {
+			focus = USA_Prepare_to_Move_the_US_Department_of_War
+		}
+		x = 25
+		y = 1
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+			threat > 0.35
+			has_war_support > 0.4
+		}
+		completion_reward = {
+			country_event = USA_Army.1
+		}
+	}
+	focus = {
+		# Prepare to Federalize the National Guard
+		id = USA_Call_National_Guard_into_Active_Service
+		icon = GFX_USA_Prepare_to_Federalize_the_National_Guard
+		cost = 40
+		prerequisite = {
+			focus = USA_the_US_Army
+		}
+		x = 24
+		y = 2
+		available = {
+			has_war_support > 0.45
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Mobilization_Category
+		}
+	}
+	focus = {
+		# The Louisiana Maneuvers
+		id = USA_the_Louisiana_Maneuvers
+		icon = GFX_USA_Louisiana_Maneuvers
+		cost = 40
+		prerequisite = {
+			focus = USA_the_US_Army
+		}
+		x = 26
+		y = 2
+		completion_reward = {
+			country_event = USA_Army.3
+		}
+	}
+	focus = {
+		# Eisenhower's Grand Battleplan
+		id = USA_Eisenhower_Grand_Battleplan
+		icon = GFX_goal_generic_army_doctrines
+		cost = 35
+		prerequisite = {
+			focus = USA_Call_National_Guard_into_Active_Service
+		}
+		prerequisite = {
+			focus = USA_the_Louisiana_Maneuvers
+		}
+		mutually_exclusive = {
+			focus = USA_Marshall_Overwhelming_Firepower
+			focus = USA_Patton_Advance_Armour
+		}
+		x = 21
+		y = 3
+		completion_reward = {
+			country_event = USA_Army.4
+		}
+	}
+	focus = {
+		# Reorganize Field Command Structures
+		id = USA_Reorganize_Field_Command_Structure
+		icon = GFX_focus_generic_military_academy
+		cost = 50
+		prerequisite = {
+			focus = USA_Eisenhower_Grand_Battleplan
+		}
+		x = 21
+		y = 5
+		completion_reward = {
+			army_experience = 15
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.2
+				category = cat_grand_battle_plan
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Marshall's Overwhelming Firepower
+		id = USA_Marshall_Overwhelming_Firepower
+		icon = GFX_goal_generic_army_artillery
+		cost = 35
+		prerequisite = {
+			focus = USA_Call_National_Guard_into_Active_Service
+		}
+		prerequisite = {
+			focus = USA_the_Louisiana_Maneuvers
+		}
+		mutually_exclusive = {
+			focus = USA_Eisenhower_Grand_Battleplan
+			focus = USA_Patton_Advance_Armour
+		}
+		x = 25
+		y = 3
+		completion_reward = {
+			country_event = USA_Army.5
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		# The Tank Destroyer Doctrine
+		id = USA_Tank_Destroyer_Doctrine
+		icon = GFX_focus_usa_tank_destroyer_doctrine
+		cost = 45
+		prerequisite = {
+			focus = USA_Marshall_Overwhelming_Firepower
+			focus = USA_Patton_Advance_Armour
+			focus = USA_Eisenhower_Grand_Battleplan
+		}
+		x = 25
+		y = 4
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = cat_anti_tank
+			}
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 1
+				category = tank_destroyers
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Make the Thunder Louder
+		id = USA_Make_Thunder_Louder
+		icon = GFX_USA_Make_Thunder_Louder
+		cost = 50
+		prerequisite = {
+			focus = USA_Marshall_Overwhelming_Firepower
+		}
+		x = 25
+		y = 5
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = artillery
+			}
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.2
+				category = cat_superior_firepower
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Patton's Armored Advances
+		id = USA_Patton_Advance_Armour
+		icon = GFX_USA_Mechanized_Infantry
+		cost = 35
+		prerequisite = {
+			focus = USA_Call_National_Guard_into_Active_Service
+		}
+		prerequisite = {
+			focus = USA_the_Louisiana_Maneuvers
+		}
+		mutually_exclusive = {
+			focus = USA_Marshall_Overwhelming_Firepower
+			focus = USA_Eisenhower_Grand_Battleplan
+		}
+		x = 29
+		y = 3
+		completion_reward = {
+			country_event = USA_Army.6
+		}
+	}
+	focus = {
+		# The Use of Combined Arms
+		id = USA_Use_of_Combined_Arms
+		icon = GFX_focus_generic_combined_arms
+		cost = 50
+		prerequisite = {
+			focus = USA_Patton_Advance_Armour
+		}
+		x = 29
+		y = 5
+		completion_reward = {
+			army_experience = 5
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.4
+				category = cat_mobile_warfare
+			}
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Form Airborne Divisions
+		id = USA_Form_Airbone_Division
+		icon = GFX_USA_Form_Airborne_Divisions
+		cost = 40
+		prerequisite = {
+			focus = USA_Reorganize_Field_Command_Structure
+			focus = USA_Make_Thunder_Louder
+			focus = USA_Use_of_Combined_Arms
+		}
+		x = 23
+		y = 6
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 2
+				category = para_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# The Cavalry of the Future
+		id = USA_Cavalry_of_the_Future
+		icon = GFX_USA_Mechanized_Infantry
+		cost = 40
+		prerequisite = {
+			focus = USA_Reorganize_Field_Command_Structure
+			focus = USA_Make_Thunder_Louder
+			focus = USA_Use_of_Combined_Arms
+		}
+		x = 25
+		y = 6
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 2
+				category = motorized_equipment
+			}
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 2
+				category = cat_mechanized_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# The Sherman Tank
+		id = USA_Sherman_Tank
+		icon = GFX_USA_The_Sherman_Tank
+		cost = 40
+		prerequisite = {
+			focus = USA_Reorganize_Field_Command_Structure
+			focus = USA_Make_Thunder_Louder
+			focus = USA_Use_of_Combined_Arms
+		}
+		x = 27
+		y = 6
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = cat_medium_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Better Equipment, Better Results
+		id = USA_Better_Equipement_Better_Results
+		icon = GFX_focus_generic_license_production
+		cost = 30
+		prerequisite = {
+			focus = USA_Reorganize_Field_Command_Structure
+		}
+		prerequisite = {
+			focus = USA_Form_Airbone_Division
+		}
+		prerequisite = {
+			focus = USA_Cavalry_of_the_Future
+		}
+		prerequisite = {
+			focus = USA_Sherman_Tank
+		}
+		x = 20
+		y = 7
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.7
+				uses = 1
+				category = infantry_tech
+			}
+			add_tech_bonus = {
+				bonus = 0.3
+				uses = 2
+				category = support_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Information on the Battlefield
+		id = USA_Information_on_the_Battlefield
+		icon = GFX_focus_prc_infiltration
+		cost = 30
+		prerequisite = {
+			focus = USA_Reorganize_Field_Command_Structure
+		}
+		prerequisite = {
+			focus = USA_Form_Airbone_Division
+		}
+		prerequisite = {
+			focus = USA_Cavalry_of_the_Future
+		}
+		prerequisite = {
+			focus = USA_Sherman_Tank
+		}
+		x = 22
+		y = 7
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 2
+				category = recon_tech
+			}
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 1
+				category = signal_company_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# The Broad Front
+		id = USA_Broad_Front
+		icon = GFX_GENERIC_Grand_Battleplan
+		cost = 60
+		prerequisite = {
+			focus = USA_Better_Equipement_Better_Results
+		}
+		prerequisite = {
+			focus = USA_Information_on_the_Battlefield
+		}
+		x = 21
+		y = 8
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.25
+				category = cat_grand_battle_plan
+			}
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 2
+				category = logistics_tech
+			}
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 1
+				category = hospital_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Instill Fear Into Enemy Pilots
+		id = USA_Instill_Fear_Into_Enemy_Pilots
+		icon = GFX_GENERIC_Anti_Air_Units
+		cost = 30
+		prerequisite = {
+			focus = USA_Cavalry_of_the_Future
+		}
+		prerequisite = {
+			focus = USA_Form_Airbone_Division
+		}
+		prerequisite = {
+			focus = USA_Sherman_Tank
+		}
+		prerequisite = {
+			focus = USA_Make_Thunder_Louder
+		}
+		x = 24
+		y = 7
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 2
+				category = anti_air
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Improve the Gun Motor Carriages
+		id = USA_Improve_Gun_Motor_Carriages
+		icon = GFX_GENERIC_Mobile_Artillery
+		cost = 30
+		prerequisite = {
+			focus = USA_Make_Thunder_Louder
+		}
+		prerequisite = {
+			focus = USA_Sherman_Tank
+		}
+		prerequisite = {
+			focus = USA_Cavalry_of_the_Future
+		}
+		prerequisite = {
+			focus = USA_Form_Airbone_Division
+		}
+		x = 26
+		y = 7
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = mobile_artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Shock and Awe
+		id = USA_Shock_and_Awe
+		icon = GFX_GENERIC_Superior_Firepower
+		cost = 60
+		prerequisite = {
+			focus = USA_Instill_Fear_Into_Enemy_Pilots
+		}
+		prerequisite = {
+			focus = USA_Improve_Gun_Motor_Carriages
+		}
+		x = 25
+		y = 8
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.25
+				category = cat_superior_firepower
+			}
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# The Only Sure Defense Is Offense
+		id = USA_the_Only_Sure_Defense_is_Offense
+		icon = GFX_USA_The_Only_Sure_Defense_is_Offense
+		cost = 30
+		prerequisite = {
+			focus = USA_Use_of_Combined_Arms
+		}
+		prerequisite = {
+			focus = USA_Sherman_Tank
+		}
+		prerequisite = {
+			focus = USA_Form_Airbone_Division
+		}
+		x = 28
+		y = 7
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 3
+				cost_reduction = 0.2
+				category = cat_mobile_warfare
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Armored Research-Development Program
+		id = USA_Armoured_Research_Development_Program
+		icon = GFX_focus_generic_tank_production
+		cost = 10
+		prerequisite = {
+			focus = USA_Use_of_Combined_Arms
+		}
+		prerequisite = {
+			focus = USA_Sherman_Tank
+		}
+		prerequisite = {
+			focus = USA_Cavalry_of_the_Future
+		}
+		prerequisite = {
+			focus = USA_Form_Airbone_Division
+		}
+		x = 30
+		y = 7
+		completion_reward = {
+			country_event = USA_Army.7
+		}
+	}
+	focus = {
+		# Attack, Attack, and Attack Some More!
+		id = USA_Attack_Attack_Attack
+		icon = GFX_USA_Attack_Attack_and_Attack_Some_More
+		cost = 60
+		prerequisite = {
+			focus = USA_the_Only_Sure_Defense_is_Offense
+		}
+		prerequisite = {
+			focus = USA_Armoured_Research_Development_Program
+		}
+		x = 29
+		y = 8
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.25
+				category = cat_mobile_warfare
+			}
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				category = armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# Expand the Engineer Combat Battalion
+		id = USA_Expand_Engineer_Batallion
+		icon = GFX_goal_generic_construction2
+		cost = 50
+		prerequisite = {
+			focus = USA_Broad_Front
+			focus = USA_Shock_and_Awe
+			focus = USA_Attack_Attack_Attack
+		}
+		x = 24
+		y = 9
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 2
+				category = engineers_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		# The M47 Patton
+		id = USA_M47_Patton
+		icon = GFX_GENERIC_MBT
+		cost = 50
+		prerequisite = {
+			focus = USA_Broad_Front
+			focus = USA_Shock_and_Awe
+			focus = USA_Attack_Attack_Attack
+		}
+		x = 26
+		y = 9
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.3
+				category = cat_mobile_warfare
+			}
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 1
+				technology = Main_Battle_Tank_1952
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	## War Plan Branch
+	focus = {
+		# War Plans Division
+		id = USA_War_Plans_Division
+		icon = GFX_USA_The_War_Plans_Division
+		cost = 35
+		available = {
+			threat > 0.2
+		}
+		prerequisite = {
+			focus = USA_Prepare_to_Move_the_US_Department_of_War
+		}
+		completion_reward = {
+			custom_effect_tooltip = USA_War_Plans_tt
+		}
+		x = 33
+		y = 1
+	}
+	focus = {
+		# The American Theater
+		id = USA_American_Theater
+		icon = GFX_USA_American_Theater
+		cost = 35
+		prerequisite = {
+			focus = USA_War_Plans_Division
+		}
+		completion_reward = {
+			custom_effect_tooltip = USA_American_Theater_tt
+		}
+		x = 31
+		y = 2
+	}
+	focus = {
+		# The European Theater
+		id = USA_European_Theater
+		icon = GFX_focus_usa_focus_on_europe
+		cost = 35
+		prerequisite = {
+			focus = USA_War_Plans_Division
+		}
+		completion_reward = {
+			custom_effect_tooltip = USA_European_Theater_tt
+		}
+		x = 33
+		y = 2
+	}
+	focus = {
+		# The Pacific Theater
+		id = USA_Pacific_Theater
+		icon = GFX_focus_usa_focus_on_asia
+		cost = 35
+		prerequisite = {
+			focus = USA_War_Plans_Division
+		}
+		completion_reward = {
+			custom_effect_tooltip = USA_Pacific_Theater_tt
+		}
+		x = 35
+		y = 2
+	}
+	focus = {
+		# The Rainbow Plans
+		id = USA_Rainbow_Plans
+		icon = GFX_USA_The_Rainbow_Plans
+		cost = 40
+		prerequisite = {
+			focus = USA_American_Theater
+		}
+		prerequisite = {
+			focus = USA_European_Theater
+		}
+		prerequisite = {
+			focus = USA_Pacific_Theater
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_The_Rainbow_Plans_Category
+		}
+		x = 33
+		y = 3
+	}
+	focus = {
+		# Reafirm the Monroe Doctrine
+		id = USA_Reafirm_Monroe_Doctrine
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 35
+		prerequisite = {
+			focus = USA_Rainbow_Plans
+		}
+		mutually_exclusive = {
+			focus = USA_Leave_Them_to_their_Device
+		}
+		completion_reward = {
+			reverse_add_opinion_modifier = {
+				target = CUB
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = BRA
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = CHL
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = COS
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = DOM
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = ECU
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = ELS
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = GUA
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = HAI
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = HON
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = MEX
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = NIC
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = PAN
+				modifier = monroe_doctrine_trade
+			}
+			reverse_add_opinion_modifier = {
+				target = VEN
+				modifier = monroe_doctrine_trade
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		x = 32
+		y = 4
+	}
+	focus = {
+		# Leave Them to Their Devices
+		id = USA_Leave_Them_to_their_Device
+		icon = GFX_goal_generic_attack_allies
+		cost = 60
+		prerequisite = {
+			focus = USA_Rainbow_Plans
+		}
+		mutually_exclusive = {
+			focus = USA_Reafirm_Monroe_Doctrine
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					is_guaranteed_by = USA
+					OR = {
+						tag = MEX
+						tag = GUA
+						tag = HON
+						tag = NIC
+						tag = ELS
+						tag = COS
+						tag = PAN
+						tag = CUB
+						tag = HAI
+						tag = DOM
+						tag = COL
+						tag = VEN
+						tag = ECU
+						tag = PRU
+						tag = CHL
+						tag = ARG
+						tag = PAR
+						tag = BOL
+						tag = URG
+						tag = BRA
+					}
+				}
+				diplomatic_relation = {
+					country = FROM
+					relation = guarantee
+					active = no
+				}
+			}
+			add_stability = 0.05
+			add_political_power = -100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		x = 34
+		y = 4
+	}
+	## USACE Branch
+	focus = {
+		# Expand the USACE
+		id = USA_Expand_the_USACE
+		icon = GFX_USA_Expand_the_USACE
+		cost = 40
+		available = {
+			has_war_support > 0.15
+		}
+		prerequisite = {
+			focus = USA_Prepare_to_Move_the_US_Department_of_War
+		}
+		x = 38
+		y = 1
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		# Begin the Manhattan Project
+		id = USA_Begin_Manhattan_Project
+		icon = GFX_focus_wonderweapons
+		cost = 40
+		available = {
+			has_war_support > 0.15
+		}
+		prerequisite = {
+			focus = USA_Prepare_to_Move_the_US_Department_of_War
+		}
+		x = 40
+		y = 1
+		completion_reward = {
+			country_event = USA_Department_of_War.1
+		}
+	}
+	focus = {
+		# The Military Construction Program
+		id = USA_Military_Construction_Program
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 60
+		available = {
+			has_war_support > 0.3
+		}
+		prerequisite = {
+			focus = USA_Expand_the_USACE
+		}
+		prerequisite = {
+			focus = USA_Begin_Manhattan_Project
+		}
+		x = 39
+		y = 2
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		# A Unified High Command
+		id = USA_a_Unified_High_Command
+		icon = GFX_USA_A_Unified_High_Command
+		cost = 35
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_Military_Construction_Program
+		}
+		x = 38
+		y = 3
+		completion_reward = {
+			country_event = USA_Department_of_War.2
+		}
+	}
+	focus = {
+		# Form the OSS
+		id = USA_Form_the_OSS
+		icon = GFX_USA_Form_the_OSS
+		cost = 35
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_Military_Construction_Program
+		}
+		available = {
+			has_intelligence_agency = yes
+		}
+		x = 40
+		y = 3
+		completion_reward = {
+			country_event = USA_Department_of_War.3
+		}
+	}
+	focus = {
+		# The X-2 Branch
+		id = USA_X-2_Branch
+		icon = GFX_USA_X_2_Branch
+		cost = 50
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_a_Unified_High_Command
+		}
+		x = 37
+		y = 4
+		completion_reward = {
+			add_ideas = USA_The_X_2_Branch_Idea
+		}
+	}
+	focus = {
+		# Sow Distrust Among the Enemy
+		id = USA_Sow_Distrust_Among_the_Enemy
+		icon = GFX_USA_Distrust_Among_the_Enemy
+		cost = 40
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_a_Unified_High_Command
+		}
+		prerequisite = {
+			focus = USA_Form_the_OSS
+		}
+		mutually_exclusive = {
+			focus = USA_Use_Terror_Propaganda_At_Home
+		}
+		completion_reward = {
+			unlock_decision_tooltip = USA_Sow_Distrust
+		}
+		x = 39
+		y = 4
+	}
+	focus = {
+		# Use Terror Propaganda at Home
+		id = USA_Use_Terror_Propaganda_At_Home
+		icon = GFX_goal_generic_propaganda
+		available = {
+			has_war = yes
+		}
+		cost = 40
+		prerequisite = {
+			focus = USA_Form_the_OSS
+		}
+		mutually_exclusive = {
+			focus = USA_Sow_Distrust_Among_the_Enemy
+		}
+		completion_reward = {
+			unlock_decision_tooltip = USA_Terror_Propaganda_at_Home
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		x = 41
+		y = 4
+	}
+	focus = {
+		# Establish Advanced OSS Training Camps
+		id = USA_Establish_Advanced_OSS_Training_Camps
+		icon = GFX_GENERIC_Professional_Army
+		cost = 35
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_Sow_Distrust_Among_the_Enemy
+			focus = USA_Use_Terror_Propaganda_At_Home
+		}
+		prerequisite = {
+			focus = USA_X-2_Branch
+		}
+		completion_reward = {
+			unlock_decision_tooltip = USA_Advanced_OSS_Training_Camps
+		}
+		x = 38
+		y = 5
+	}
+	focus = {
+		# Train Resistance Movements
+		id = USA_Train_Resistance_Movements
+		icon = GFX_focus_focus_fra_maquis
+		cost = 35
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_Sow_Distrust_Among_the_Enemy
+			focus = USA_Use_Terror_Propaganda_At_Home
+		}
+		completion_reward = {
+			unlock_decision_tooltip = USA_Resistance_Movement_Training
+		}
+		x = 40
+		y = 5
+	}
+	focus = {
+		# National Security Act
+		id = USA_National_Security_Act
+		icon = GFX_focus_generic_treaty
+		cost = 70
+		available = {
+			has_war = no
+		}
+		prerequisite = {
+			focus = USA_Establish_Advanced_OSS_Training_Camps
+		}
+		prerequisite = {
+			focus = USA_Train_Resistance_Movements
+		}
+		completion_reward = {
+			country_event = USA_Department_of_War.4
+		}
+		x = 39
+		y = 6
+	}
+	## USAF Branch
+	focus = {
+		id = USA_the_US_Air_Corps
+		icon = GFX_USA_US_Army_Air_Corps
+		cost = 50
+		available = {
+			threat > 0.3
+		}
+		prerequisite = {
+			focus = USA_Prepare_to_Move_the_US_Department_of_War
+		}
+		relative_position_id = USA_Prepare_to_Move_the_US_Department_of_War
+		x = 10
+		y = 1
+		completion_reward = {
+			air_experience = 15
+		}
+		search_filters = { }
+	}
+	focus = {
+		id = USA_Establish_General_Headquarters
+		icon = GFX_USA_USAF
+		cost = 21
+		prerequisite = {
+			focus = USA_the_US_Air_Corps
+		}
+		relative_position_id = USA_the_US_Air_Corps
+		x = 0
+		y = 1
+		completion_reward = {
+			add_ideas = {
+				USA_General_Headquarters_Airforce
+			}
+		}
+	}
+	focus = {
+		id = USA_Call_for_Increased_Plane_Production
+		icon = GFX_GENERIC_Military_Production
+		cost = 50
+		prerequisite = {
+			focus = USA_Establish_General_Headquarters
+		}
+		relative_position_id = USA_Establish_General_Headquarters
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_Increased_Plane_Production
+				days = 365
+			}
+		}
+	}
+	focus = {
+		id = USA_Air_War_Plans_Division
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 50
+		prerequisite = {
+			focus = USA_Establish_General_Headquarters
+		}
+		relative_position_id = USA_Establish_General_Headquarters
+		x = -1
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Air_War_Plans_Division_Category
+		}
+	}
+	focus = {
+		id = USA_Limit_the_Corps_Autonomy
+		icon = GFX_USA_Limit_the_Corpse_Autonomy
+		cost = 35
+		prerequisite = {
+			focus = USA_Air_War_Plans_Division
+		}
+		prerequisite = {
+			focus = USA_Call_for_Increased_Plane_Production
+		}
+		mutually_exclusive = {
+			focus = USA_a_More_Independent_Air_Force
+		}
+		relative_position_id = USA_Air_War_Plans_Division
+		x = -3
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.25
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Listen_to_the_Old_Leatherface
+		icon = GFX_goal_generic_air_fighter2
+		cost = 40
+		prerequisite = {
+			focus = USA_Limit_the_Corps_Autonomy
+		}
+		mutually_exclusive = {
+			focus = USA_Kenneys_Ground_and_Air_Cooperation
+		}
+		relative_position_id = USA_Limit_the_Corps_Autonomy
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Air_Force.1
+				days = 4
+			}
+		}
+	}
+	focus = {
+		id = USA_Prove_the_Use_of_the_Figher_Once_More
+		icon = GFX_goal_generic_air_fighter
+		cost = 40
+		prerequisite = {
+			focus = USA_Listen_to_the_Old_Leatherface
+		}
+		relative_position_id = USA_Listen_to_the_Old_Leatherface
+		x = 0
+		y = 1
+		completion_reward = {
+			air_experience = 15
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 1
+				category = light_fighter
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Kenneys_Ground_and_Air_Cooperation
+		icon = GFX_goal_generic_Attacker
+		cost = 40
+		prerequisite = {
+			focus = USA_Limit_the_Corps_Autonomy
+		}
+		mutually_exclusive = {
+			focus = USA_Listen_to_the_Old_Leatherface
+		}
+		relative_position_id = USA_Limit_the_Corps_Autonomy
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Air_Force.2
+				days = 4
+			}
+		}
+	}
+	focus = {
+		id = USA_a_Supporting_Role
+		icon = GFX_goal_generic_army_doctrines
+		cost = 40
+		prerequisite = {
+			focus = USA_Kenneys_Ground_and_Air_Cooperation
+		}
+		relative_position_id = USA_Kenneys_Ground_and_Air_Cooperation
+		x = 0
+		y = 1
+		completion_reward = {
+			air_experience = 15
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 1
+				category = cas_bomber
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_New_Pursuit_Strategies
+		icon = GFX_goal_generic_air_doctrine
+		cost = 60
+		prerequisite = {
+			focus = USA_a_Supporting_Role
+			focus = USA_Prove_the_Use_of_the_Figher_Once_More
+		}
+		relative_position_id = USA_Prove_the_Use_of_the_Figher_Once_More
+		x = 1
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 2
+				cost_reduction = 0.4
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_the_A36_Modification
+		icon = GFX_USA_the_A36_Modification
+		cost = 35
+		prerequisite = {
+			focus = USA_New_Pursuit_Strategies
+		}
+		relative_position_id = USA_New_Pursuit_Strategies
+		x = -1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				technology = Attacker_1943
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Further_Develop_the_Thatch_Weave
+		icon = GFX_GENERIC_Gliders
+		cost = 35
+		prerequisite = {
+			focus = USA_New_Pursuit_Strategies
+		}
+		relative_position_id = USA_New_Pursuit_Strategies
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_Improved_Thatch_Weave
+				days = 730
+			}
+		}
+	}
+	focus = {
+		id = USA_Fund_The_NACA
+		icon = GFX_USA_Fund_NACA
+		cost = 50
+		prerequisite = {
+			focus = USA_Limit_the_Corps_Autonomy
+			focus = USA_a_More_Independent_Air_Force
+		}
+		relative_position_id = USA_Establish_General_Headquarters
+		x = 0
+		y = 4
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.6
+				uses = 1
+				category = cat_strategic_bomber
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Commission_New_Carrier_Based_Aircraft_Designs
+		icon = GFX_goal_generic_navy_carrier
+		cost = 35
+		prerequisite = {
+			focus = USA_Fund_The_NACA
+		}
+		relative_position_id = USA_Fund_The_NACA
+		x = -1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 2
+				category = naval_air
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_The_Mustang
+		icon = GFX_USA_The_Mustang
+		cost = 35
+		prerequisite = {
+			focus = USA_Fund_The_NACA
+		}
+		relative_position_id = USA_Fund_The_NACA
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				technology = Fighter_1943
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Enlarge_the_JPSL_Budget
+		icon = GFX_GENERIC_Hierarchical_Economics
+		cost = 50
+		prerequisite = {
+			focus = USA_Commission_New_Carrier_Based_Aircraft_Designs
+		}
+		prerequisite = {
+			focus = USA_The_Mustang
+		}
+		relative_position_id = USA_Fund_The_NACA
+		x = 0
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.4
+				uses = 2
+				category = jet_technology
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_a_More_Independent_Air_Force
+		icon = GFX_GENERIC_Militarize_Civilian_Airports
+		cost = 35
+		prerequisite = {
+			focus = USA_Air_War_Plans_Division
+		}
+		prerequisite = {
+			focus = USA_Call_for_Increased_Plane_Production
+		}
+		mutually_exclusive = {
+			focus = USA_Limit_the_Corps_Autonomy
+		}
+		relative_position_id = USA_Call_for_Increased_Plane_Production
+		x = 3
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.25
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_HL_Georges_Bomber_Mafia
+		icon = GFX_USA_Harold_Georges_Bomber_Mafia
+		cost = 40
+		prerequisite = {
+			focus = USA_a_More_Independent_Air_Force
+		}
+		mutually_exclusive = {
+			focus = USA_Hap_Arnolds_Compromise
+		}
+		relative_position_id = USA_a_More_Independent_Air_Force
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Air_Force.3
+				days = 4
+			}
+		}
+	}
+	focus = {
+		id = USA_a_Massive_Bomber_Fleet
+		icon = GFX_GENERIC_Grand_Battleplan
+		cost = 40
+		prerequisite = {
+			focus = USA_HL_Georges_Bomber_Mafia
+		}
+		relative_position_id = USA_HL_Georges_Bomber_Mafia
+		x = 0
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_Bomber_Fleet_Construction_Program
+				days = 1095
+			}
+		}
+	}
+	focus = {
+		id = USA_Hap_Arnolds_Compromise
+		icon = GFX_goal_generic_air_bomber
+		cost = 40
+		prerequisite = {
+			focus = USA_a_More_Independent_Air_Force
+		}
+		mutually_exclusive = {
+			focus = USA_HL_Georges_Bomber_Mafia
+		}
+		relative_position_id = USA_a_More_Independent_Air_Force
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Air_Force.4
+				days = 4
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Lift_the_Doctrines_Restriction_on_Fighters
+		icon = GFX_GENERIC_Political_Army
+		cost = 40
+		prerequisite = {
+			focus = USA_Hap_Arnolds_Compromise
+		}
+		relative_position_id = USA_Hap_Arnolds_Compromise
+		x = 0
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_The_Bomber_Mafia_Compromise
+				days = 730
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Flying_Fortresses
+		icon = GFX_USA_Flying_Fortresses
+		cost = 60
+		prerequisite = {
+			focus = USA_Lift_the_Doctrines_Restriction_on_Fighters
+			focus = USA_a_Massive_Bomber_Fleet
+		}
+		relative_position_id = USA_a_Massive_Bomber_Fleet
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = cat_strategic_bomber
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Expand_and_Redesignate_the_School_of_Applied_Tactics
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 35
+		prerequisite = {
+			focus = USA_Flying_Fortresses
+		}
+		relative_position_id = USA_Flying_Fortresses
+		x = 1
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.3
+				category = strategic_destruction_tree
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Crush_the_Enemys_Industrial_Web
+		icon = GFX_GENERIC_Strategic_Bombing
+		cost = 35
+		prerequisite = {
+			focus = USA_Flying_Fortresses
+		}
+		relative_position_id = USA_Flying_Fortresses
+		x = -1
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				uses = 1
+				cost_reduction = 0.4
+				category = strategic_destruction_tree
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_The_Lockheed_Shooting_Star
+		icon = GFX_USA_The_Lockheed_Shooting_Star
+		cost = 40
+		prerequisite = {
+			focus = USA_Enlarge_the_JPSL_Budget
+		}
+		prerequisite = {
+			focus = USA_the_A36_Modification
+			focus = USA_Further_Develop_the_Thatch_Weave
+		}
+		mutually_exclusive = {
+			focus = USA_The_Convair_Peacemaker
+		}
+		relative_position_id = USA_Enlarge_the_JPSL_Budget
+		x = -1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				technology = Fighter_1945
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_The_Convair_Peacemaker
+		icon = GFX_USA_Peacemaker
+		cost = 40
+		prerequisite = {
+			focus = USA_Enlarge_the_JPSL_Budget
+		}
+		prerequisite = {
+			focus = USA_Crush_the_Enemys_Industrial_Web
+			focus = USA_Expand_and_Redesignate_the_School_of_Applied_Tactics
+		}
+		mutually_exclusive = {
+			focus = USA_The_Lockheed_Shooting_Star
+		}
+		relative_position_id = USA_Enlarge_the_JPSL_Budget
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.8
+				uses = 1
+				technology = Strategic_Bomber_1948
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	## USN Branch
+	focus = {
+		id = USA_the_US_Navy
+		icon = GFX_USA_US_Navy
+		cost = 35
+		prerequisite = {
+			focus = USA_Prepare_to_Move_the_US_Department_of_War
+		}
+		available = {
+			threat > 0.35
+		}
+		completion_reward = {
+			country_event = {
+				id = USA_Navy.1
+				days = 1
+			}
+		}
+		relative_position_id = USA_Prepare_to_Move_the_US_Department_of_War
+		x = 25
+		y = 1
+	}
+	focus = {
+		id = USA_Bureau_of_Ships
+		icon = GFX_GENERIC_Navy
+		cost = 35
+		prerequisite = {
+			focus = USA_the_US_Navy
+		}
+		relative_position_id = USA_the_US_Navy
+		x = -1
+		y = 1
+		completion_reward = {
+			add_ideas = USA_Bureau_Of_Ships
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = USA_Expand_the_Pacific_Defenses
+		icon = GFX_GENERIC_Anti_Air_Units
+		cost = 35
+		prerequisite = {
+			focus = USA_the_US_Navy
+		}
+		relative_position_id = USA_the_US_Navy
+		x = 1
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Expand_the_Pacific_Defenses_Category
+		}
+	}
+	focus = {
+		id = USA_Two_Ocean_Navy_Act
+		icon = GFX_GENERIC_Base_Strike
+		cost = 50
+		prerequisite = {
+			focus = USA_Bureau_of_Ships
+		}
+		prerequisite = {
+			focus = USA_Expand_the_Pacific_Defenses
+		}
+		relative_position_id = USA_Expand_the_Pacific_Defenses
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Navy.2
+				days = 1
+			}
+		}
+	}
+	focus = {
+		id = USA_Expand_the_Marine_Corps
+		icon = GFX_USA_USMC
+		cost = 40
+		prerequisite = {
+			focus = USA_Two_Ocean_Navy_Act
+		}
+		relative_position_id = USA_Two_Ocean_Navy_Act
+		x = -7
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_marine_research
+				bonus = 0.6
+				uses = 1
+				category = marine_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Develop_the_Marine_Corps_Assault_Craft
+		icon = GFX_GENERIC_Trade_Interdiction
+		cost = 35
+		prerequisite = {
+			focus = USA_Expand_the_Marine_Corps
+		}
+		relative_position_id = USA_Expand_the_Marine_Corps
+		mutually_exclusive = {
+			focus = USA_Develop_the_Marines_Amphibious_Armor
+		}
+		x = -1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_marine_research
+				bonus = 0.5
+				uses = 1
+				category = tp_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Develop_the_Marines_Amphibious_Armor
+		icon = GFX_USA_Donald_Duck_Tanks
+		cost = 35
+		prerequisite = {
+			focus = USA_Expand_the_Marine_Corps
+		}
+		relative_position_id = USA_Expand_the_Marine_Corps
+		mutually_exclusive = {
+			focus = USA_Develop_the_Marine_Corps_Assault_Craft
+		}
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_marine_research
+				bonus = 0.4
+				uses = 1
+				category = marine_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_the_Island_Hopping_Strategy
+		icon = GFX_GENERIC_Torpedo_Boat
+		cost = 60
+		prerequisite = {
+			focus = USA_Develop_the_Marine_Corps_Assault_Craft
+			focus = USA_Develop_the_Marines_Amphibious_Armor
+		}
+		relative_position_id = USA_Develop_the_Marine_Corps_Assault_Craft
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		icon = GFX_GENERIC_Large_Navy
+		cost = 50
+		mutually_exclusive = {
+			focus = USA_Carrier_Based_Power_Projection
+		}
+		prerequisite = {
+			focus = USA_Two_Ocean_Navy_Act
+		}
+		relative_position_id = USA_Two_Ocean_Navy_Act
+		x = -4
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = USA_marine_research
+				uses = 2
+				cost_reduction = 0.2
+				category = fleet_in_being_tree
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Design_New_Cruiser_Killers
+		icon = GFX_GENERIC_Cruiser
+		cost = 45
+		prerequisite = {
+			focus = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		}
+		relative_position_id = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		mutually_exclusive = {
+			focus = USA_New_Faster_Battleships
+		}
+		x = -1
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_marine_research
+				bonus = 0.6
+				uses = 1
+				category = bc_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_New_Faster_Battleships
+		icon = GFX_GENERIC_Missile_Battlecruiser
+		cost = 45
+		prerequisite = {
+			focus = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		}
+		relative_position_id = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		mutually_exclusive = {
+			focus = USA_Design_New_Cruiser_Killers
+		}
+		x = 1
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_marine_research
+				bonus = 0.6
+				uses = 1
+				category = bb_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_the_Montana_Class
+		icon = GFX_GENERIC_Battleship
+		cost = 60
+		prerequisite = {
+			focus = USA_Design_New_Cruiser_Killers
+			focus = USA_New_Faster_Battleships
+		}
+		relative_position_id = USA_Design_New_Cruiser_Killers
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_marine_research
+				bonus = 0.7
+				uses = 1
+				category = bb_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Invest_in_the_Gato
+		icon = GFX_GENERIC_Attack_Sub
+		cost = 35
+		prerequisite = {
+			focus = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+			focus = USA_Carrier_Based_Power_Projection
+		}
+		relative_position_id = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		x = 2
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_gato_submarine_research
+				bonus = 0.5
+				uses = 2
+				technology = SS_1940
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Empower_the_Bureau_of_Aeronautics
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 35
+		prerequisite = {
+			focus = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+			focus = USA_Carrier_Based_Power_Projection
+		}
+		relative_position_id = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		x = 4
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_aircraft_carrier_research
+				bonus = 0.5
+				uses = 2
+				category = cv_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Improve_the_Capital_Ship_Protectors
+		icon = GFX_GENERIC_Destroyer
+		cost = 35
+		prerequisite = {
+			focus = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+			focus = USA_Carrier_Based_Power_Projection
+		}
+		relative_position_id = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		x = 6
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_light_cruiser_research
+				bonus = 0.5
+				uses = 1
+				category = cl_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_destroyer_research
+				bonus = 0.5
+				uses = 1
+				category = dd_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Devise_New_Anti_Submarine_Technologies
+		icon = GFX_GENERIC_Naval_Mine
+		cost = 50
+		prerequisite = {
+			focus = USA_Empower_the_Bureau_of_Aeronautics
+		}
+		prerequisite = {
+			focus = USA_Improve_the_Capital_Ship_Protectors
+		}
+		prerequisite = {
+			focus = USA_Invest_in_the_Gato
+		}
+		relative_position_id = USA_Empower_the_Bureau_of_Aeronautics
+		x = 0
+		y = 1
+		completion_reward = {
+			add_ideas = USA_Hunter_Killers
+		}
+	}
+	focus = {
+		id = USA_Carrier_Based_Power_Projection
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 50
+		mutually_exclusive = {
+			focus = USA_Follow_in_the_Footsteps_of_the_Great_White_Fleet
+		}
+		prerequisite = {
+			focus = USA_Two_Ocean_Navy_Act
+		}
+		relative_position_id = USA_Two_Ocean_Navy_Act
+		x = 4
+		y = 1
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = USA_base_strike_research
+				uses = 2
+				cost_reduction = 0.2
+				category = base_strike_main
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Develop_the_Traditional_Carriers
+		icon = GFX_GENERIC_High_Seas_Airforce
+		cost = 45
+		prerequisite = {
+			focus = USA_Carrier_Based_Power_Projection
+		}
+		relative_position_id = USA_Carrier_Based_Power_Projection
+		x = -1
+		y = 2
+		mutually_exclusive = {
+			focus = USA_Invest_in_New_Baby_Flattops
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_carrier_research
+				bonus = 0.6
+				uses = 1
+				category = ca_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Invest_in_New_Baby_Flattops
+		icon = GFX_GENERIC_Light_Carrier
+		cost = 45
+		prerequisite = {
+			focus = USA_Carrier_Based_Power_Projection
+		}
+		relative_position_id = USA_Carrier_Based_Power_Projection
+		x = 1
+		y = 2
+		mutually_exclusive = {
+			focus = USA_Develop_the_Traditional_Carriers
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_escort_carrier_research
+				bonus = 0.6
+				uses = 1
+				technology = CVE_1940
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_the_Midway_Class
+		icon = GFX_GENERIC_Supercarrier
+		cost = 60
+		prerequisite = {
+			focus = USA_Invest_in_New_Baby_Flattops
+			focus = USA_Develop_the_Traditional_Carriers
+		}
+		relative_position_id = USA_Develop_the_Traditional_Carriers
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				name = USA_midway_research
+				bonus = 0.7
+				uses = 1
+				technology = CV_1945
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_the_Maritime_Commission
+		icon = GFX_GENERIC_Naval_School
+		cost = 40
+		prerequisite = {
+			focus = USA_Two_Ocean_Navy_Act
+		}
+		relative_position_id = USA_Two_Ocean_Navy_Act
+		x = 7
+		y = 1
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = USA_Deliver_Liberty_Across_the_Seas
+		icon = GFX_GENERIC_Marines
+		cost = 35
+		prerequisite = {
+			focus = USA_the_Maritime_Commission
+		}
+		relative_position_id = USA_the_Maritime_Commission
+		x = 0
+		y = 1
+		completion_reward = {
+			add_ideas = USA_Liberty_Across_The_Seas
+		}
+	}
+	##################################################
+	###	1936 - FDR
+	##################################################
+	focus = {
+		# A Third Deal
+		id = USA_Third_Deal
+		icon = GFX_USA_1936_Franklin_Roosevelt
+		cost = 70
+		available = {
+			has_country_flag = USA_Roosevelt_1936
+		}
+		mutually_exclusive = {
+			focus = USA_Landon_Boom
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			y = -11
+			x = 3
+		}
+		x = 9
+		y = 11
+		allow_branch = {
+			NOT = {
+				has_country_flag = USA_Landon_1936
+			}
+			NOT = {
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+			NOT = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+			}
+		}
+		completion_reward = {
+			add_political_power = 50
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_13
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_13
+					add_idea = USA_Third_New_Deal_1
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_14
+					add_idea = USA_Third_New_Deal_2
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		# Create the Housing Authority
+		id = USA_Create_Housing_Authority
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 65
+		prerequisite = {
+			focus = USA_Third_Deal
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Third_Deal
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.035
+			}
+			add_unemployment_effect = yes
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		# Market Pacific Power
+		id = USA_Market_Pacific_Power
+		icon = GFX_goal_generic_trade
+		cost = 65
+		prerequisite = {
+			focus = USA_Third_Deal
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Third_Deal
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.038
+			}
+			add_unemployment_effect = yes
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		# Farm Security Administration
+		id = USA_Farm_Security_Administration
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 65
+		prerequisite = {
+			focus = USA_Third_Deal
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Third_Deal
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.038
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		# Packing the Court
+		id = USA_Packing_the_Court
+		icon = GFX_USA_Packing_the_Court
+		cost = 170
+		prerequisite = {
+			focus = USA_Create_Housing_Authority
+		}
+		prerequisite = {
+			focus = USA_Market_Pacific_Power
+		}
+		prerequisite = {
+			focus = USA_Farm_Security_Administration
+		}
+		mutually_exclusive = {
+			focus = USA_Work_With_What_We_Have
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		cancelable = no
+		x = -1
+		y = 1
+		relative_position_id = USA_Market_Pacific_Power
+		completion_reward = {
+			custom_effect_tooltip = USA_Packing_the_Court_tt
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		# Work With What We Have
+		id = USA_Work_With_What_We_Have
+		icon = GFX_USA_Work_with_What_We_Have
+		cost = 70
+		prerequisite = {
+			focus = USA_Create_Housing_Authority
+		}
+		prerequisite = {
+			focus = USA_Market_Pacific_Power
+		}
+		prerequisite = {
+			focus = USA_Farm_Security_Administration
+		}
+		mutually_exclusive = {
+			focus = USA_Packing_the_Court
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Market_Pacific_Power
+		completion_reward = {
+			add_political_power = 75
+			set_country_flag = USA_Court_Packing_Failed
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Empower the Federation of Labor
+		id = USA_Empower_Federation_of_Labour
+		icon = GFX_USA_Empower_Federation_of_Labour
+		cost = 20
+		prerequisite = {
+			focus = USA_Packing_the_Court
+		}
+		available = {
+			has_country_flag = USA_Court_Packing_Pass
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Packing_the_Court
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.035
+			}
+			add_unemployment_effect = yes
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				else = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		# Second Social Security Act
+		id = USA_Second_Social_Security_Act
+		icon = GFX_GENERIC_Health_Care_Investement
+		cost = 20
+		prerequisite = {
+			focus = USA_Empower_Federation_of_Labour
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Empower_Federation_of_Labour
+		completion_reward = {
+			news_event = {
+				id = USA_FDR_1936.1
+			}
+			if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_1
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_1
+					add_idea = USA_Third_New_Deal_6
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_2
+					add_idea = USA_Third_New_Deal_7
+				}
+			}
+		}
+	}
+	focus = {
+		# Revise the Neutrality Act
+		id = USA_Cash_and_Carry_Provisions
+		icon = GFX_GENERIC_New_Constitution
+		cost = 70
+		prerequisite = {
+			focus = USA_Work_With_What_We_Have
+			focus = USA_Packing_the_Court
+		}
+		available = {
+			threat > 0.15
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Packing_the_Court
+		completion_reward = {
+			country_event = {
+				id = USA_FDR_1936.2
+			}
+		}
+	}
+	focus = {
+		# Implement Fair Labor Standards
+		id = USA_Implement_Fair_Labor_Standards
+		icon = GFX_USA_Implement_Fair_Labor_Standards
+		cost = 70
+		prerequisite = {
+			focus = USA_Cash_and_Carry_Provisions
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Cash_and_Carry_Provisions
+		completion_reward = {
+			news_event = {
+				id = USA_FDR_1936.3
+			}
+		}
+	}
+	focus = {
+		# Regulate the Aeronautics Industry
+		id = USA_Regulate_Aeoronautics_Industry
+		icon = GFX_GENERIC_International_Airport
+		cost = 70
+		prerequisite = {
+			focus = USA_Packing_the_Court
+			focus = USA_Work_With_What_We_Have
+		}
+		available = {
+			OR = {
+				has_country_flag = USA_Court_Packing_Failed
+				has_completed_focus = USA_Work_With_What_We_Have
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Work_With_What_We_Have
+		completion_reward = {
+			add_political_power = -75
+			set_temp_variable = {
+				unemployment_value = -0.04
+			}
+			add_unemployment_effect = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Loans To the Private Sector
+		id = USA_Loans_Private_Sector
+		icon = GFX_GENERIC_Money
+		cost = 70
+		prerequisite = {
+			focus = USA_Regulate_Aeoronautics_Industry
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Regulate_Aeoronautics_Industry
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_Private_Sector_Loans
+				days = 200
+			}
+			hidden_effect = {
+				country_event = {
+					id = USA_FDR_1936.4
+					days = 200
+				}
+			}
+		}
+	}
+	focus = {
+		# Ensure System Integrity
+		id = USA_Ensure_System_Integrity
+		icon = GFX_GENERIC_Hierarchical_Economics
+		cost = 50
+		prerequisite = {
+			focus = USA_Second_Social_Security_Act
+			focus = USA_Loans_Private_Sector
+		}
+		prerequisite = {
+			focus = USA_Implement_Fair_Labor_Standards
+		}
+		available = {
+			has_country_flag = USA_Executive_Reorganisation_Done
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Implement_Fair_Labor_Standards
+		completion_reward = {
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Reorganize the Executive
+		id = USA_Reorganize_Executive
+		icon = GFX_GENERIC_Centralization
+		cost = 45
+		prerequisite = {
+			focus = USA_Second_Social_Security_Act
+			focus = USA_Loans_Private_Sector
+		}
+		prerequisite = {
+			focus = USA_Implement_Fair_Labor_Standards
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Implement_Fair_Labor_Standards
+		completion_reward = {
+			set_country_flag = USA_Executive_Reorganisation_Done
+			add_timed_idea = {
+				idea = USA_Executive_Reorganisation
+				days = 100
+			}
+		}
+	}
+	focus = {
+		# The Executive Office of the President
+		id = USA_Executive_Office_President
+		icon = GFX_GENERIC_New_Constitution
+		cost = 50
+		prerequisite = {
+			focus = USA_Ensure_System_Integrity
+		}
+		prerequisite = {
+			focus = USA_Reorganize_Executive
+		}
+		available = {
+			NOT = {
+				has_idea = USA_Executive_Reorganisation
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Reorganize_Executive
+		completion_reward = {
+			add_political_power = 75
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		# Federal Security Agency
+		id = USA_Federal_Security_Agency
+		icon = GFX_focus_usa_recruit_the_free_corps
+		cost = 55
+		prerequisite = {
+			focus = USA_Executive_Office_President
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Executive_Office_President
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.04
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_2
+					add_idea = USA_Third_New_Deal_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_3
+					add_idea = USA_Third_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_4
+					add_idea = USA_Third_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_5
+					add_idea = USA_Third_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_6
+					add_idea = USA_Third_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_7
+					add_idea = USA_Third_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_8
+					add_idea = USA_Third_New_Deal_9
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_9
+					add_idea = USA_Third_New_Deal_10
+				}
+			}
+		}
+	}
+	focus = {
+		# Expand the RFC
+		id = USA_Expand_the_RFC
+		icon = GFX_USA_Expand_the_RFC
+		cost = 55
+		prerequisite = {
+			focus = USA_Executive_Office_President
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Executive_Office_President
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.04
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_2
+					add_idea = USA_Third_New_Deal_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_3
+					add_idea = USA_Third_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_4
+					add_idea = USA_Third_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_5
+					add_idea = USA_Third_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_6
+					add_idea = USA_Third_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_7
+					add_idea = USA_Third_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_8
+					add_idea = USA_Third_New_Deal_9
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_9
+					add_idea = USA_Third_New_Deal_10
+				}
+			}
+		}
+	}
+	focus = {
+		# Federal Works Agency
+		id = USA_Federal_Works_Agency
+		icon = GFX_USA_Federal_Works_Agency
+		cost = 35
+		prerequisite = {
+			focus = USA_Executive_Office_President
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Executive_Office_President
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.04
+			}
+			add_unemployment_effect = yes
+			if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_2
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_2
+					add_idea = USA_Third_New_Deal_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_3
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_3
+					add_idea = USA_Third_New_Deal_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_4
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_4
+					add_idea = USA_Third_New_Deal_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_5
+					add_idea = USA_Third_New_Deal_6
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_6
+					add_idea = USA_Third_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_7
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_7
+					add_idea = USA_Third_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_8
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_8
+					add_idea = USA_Third_New_Deal_9
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_9
+					add_idea = USA_Third_New_Deal_10
+				}
+			}
+		}
+	}
+	focus = {
+		# End the Arms Embargo
+		id = USA_End_the_Arms_Embargo
+		icon = GFX_goal_generic_small_arms
+		cost = 45
+		prerequisite = {
+			focus = USA_Federal_Security_Agency
+		}
+		prerequisite = {
+			focus = USA_Federal_Works_Agency
+		}
+		prerequisite = {
+			focus = USA_Expand_the_RFC
+		}
+		available = {
+			threat > 0.5
+			any_country = {
+				is_major = yes
+				has_government = democratic
+				has_war = yes
+			}
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Expand_the_RFC
+		completion_reward = {
+			country_event = {
+				id = USA_FDR_1936.5
+			}
+		}
+	}
+	focus = {
+		# The Food Stamp Plan
+		id = USA_Food_Stamp_Plan
+		icon = GFX_USA_Food_Stamp_Plan
+		cost = 60
+		prerequisite = {
+			focus = USA_End_the_Arms_Embargo
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_End_the_Arms_Embargo
+		completion_reward = {
+			news_event = {
+				id = USA_FDR_1936.6
+			}
+			if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_5
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_5
+					add_idea = USA_Third_New_Deal_7
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_6
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_6
+					add_idea = USA_Third_New_Deal_8
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Third_New_Deal_9
+				}
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_9
+					add_idea = USA_Third_New_Deal_11
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Third_New_Deal_10
+					add_idea = USA_Third_New_Deal_12
+				}
+			}
+		}
+	}
+	##LANDON BOOM
+	focus = {
+		id = USA_Landon_Boom
+		icon = GFX_USA_1936_Alf_Landon
+		cost = 65
+		mutually_exclusive = {
+			focus = USA_Third_Deal
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Landon_1936
+			}
+			y = -11
+			x = -3
+		}
+		x = 15
+		y = 11
+		available = {
+			has_country_flag = USA_Landon_1936
+		}
+		allow_branch = {
+			NOT = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			NOT = {
+				has_country_flag = USA_Landon_Wins_1940_Election
+			}
+			NOT = {
+				has_country_flag = USA_John_Nance_Garner_Wins_1940_Election
+			}
+		}
+		completion_reward = {
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = USA_Fair_Compromise
+		icon = GFX_goal_generic_improve_relations
+		cost = 70
+		prerequisite = {
+			focus = USA_Landon_Boom
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Landon_Boom
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = USA_Second_New_Deal_14
+				}
+				swap_ideas = {
+					remove_idea = USA_Second_New_Deal_14
+					add_idea = USA_Fair_Compromise
+				}
+			}
+			add_stability = 0.05
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_End_Economic_Hostility
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 70
+		prerequisite = {
+			focus = USA_Fair_Compromise
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Fair_Compromise
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.04
+			}
+			add_unemployment_effect = yes
+			add_stability = 0.02
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_Encourage_Private_Investment
+		icon = GFX_USA_Private_Investment
+		cost = 70
+		prerequisite = {
+			focus = USA_Fair_Compromise
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Fair_Compromise
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Landon_Private_Investments_Category
+		}
+	}
+	focus = {
+		id = USA_Cut_Welfare_and_Pension_Spending
+		icon = GFX_GENERIC_Austerity_Measures
+		cost = 70
+		prerequisite = {
+			focus = USA_Fair_Compromise
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Fair_Compromise
+		completion_reward = {
+			country_event = USA_Landon.1
+		}
+	}
+	focus = {
+		id = USA_Begin_to_Balance_Budget
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 60
+		prerequisite = {
+			focus = USA_End_Economic_Hostility
+		}
+		prerequisite = {
+			focus = USA_Encourage_Private_Investment
+		}
+		prerequisite = {
+			focus = USA_Cut_Welfare_and_Pension_Spending
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Encourage_Private_Investment
+		completion_reward = {
+			country_event = USA_Landon.3
+		}
+	}
+	focus = {
+		id = USA_Implement_Tax_Break
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 60
+		prerequisite = {
+			focus = USA_End_Economic_Hostility
+		}
+		prerequisite = {
+			focus = USA_Encourage_Private_Investment
+		}
+		prerequisite = {
+			focus = USA_Cut_Welfare_and_Pension_Spending
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Encourage_Private_Investment
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_Large_Scale_Tax_Breaks
+				days = 365
+			}
+			hidden_effect = {
+				country_event = {
+					id = USA_Landon.2
+					days = 365
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Support_Small_Business
+		icon = GFX_focus_generic_industry_1
+		cost = 65
+		prerequisite = {
+			focus = USA_Begin_to_Balance_Budget
+		}
+		prerequisite = {
+			focus = USA_Implement_Tax_Break
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Begin_to_Balance_Budget
+		completion_reward = {
+			country_event = USA_Landon.4
+		}
+	}
+	focus = {
+		id = USA_Lower_Tax_Burden
+		icon = GFX_USA_Lower_Tax_Burden
+		cost = 70
+		prerequisite = {
+			focus = USA_Begin_to_Balance_Budget
+		}
+		prerequisite = {
+			focus = USA_Implement_Tax_Break
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Begin_to_Balance_Budget
+		completion_reward = {
+			country_event = USA_Landon.5
+		}
+	}
+	focus = {
+		id = USA_Soften_Regulations
+		icon = GFX_GENERIC_Decentralization
+		cost = 65
+		prerequisite = {
+			focus = USA_Implement_Tax_Break
+		}
+		prerequisite = {
+			focus = USA_Begin_to_Balance_Budget
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Implement_Tax_Break
+		completion_reward = {
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.02
+			}
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 8
+			}			#Socialists
+			set_temp_variable = {
+				support_to_add = -0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = USA_Shift_to_Fiscal_Conservatism
+		icon = GFX_USA_Fiscal_Conservatism
+		cost = 90
+		prerequisite = {
+			focus = USA_Support_Small_Business
+		}
+		prerequisite = {
+			focus = USA_Lower_Tax_Burden
+		}
+		prerequisite = {
+			focus = USA_Soften_Regulations
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		mutually_exclusive = {
+			focus = USA_Continue_the_Compromise
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Lower_Tax_Burden
+		completion_reward = {
+			country_event = USA_Landon.6
+		}
+	}
+	focus = {
+		id = USA_Continue_the_Compromise
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 90
+		prerequisite = {
+			focus = USA_Support_Small_Business
+		}
+		prerequisite = {
+			focus = USA_Lower_Tax_Burden
+		}
+		prerequisite = {
+			focus = USA_Soften_Regulations
+		}
+		mutually_exclusive = {
+			focus = USA_Shift_to_Fiscal_Conservatism
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Lower_Tax_Burden
+		completion_reward = {
+			add_stability = 0.05
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = 0.1
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = 0.1
+			}
+			change_party_support = yes
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_Make_Publc_Works_Private
+		icon = GFX_GENERIC_Support_Privatization
+		cost = 70
+		prerequisite = {
+			focus = USA_Shift_to_Fiscal_Conservatism
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Shift_to_Fiscal_Conservatism
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.05
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	focus = {
+		id = USA_Empower_National_Civic_Federation
+		icon = GFX_USA_Empower_National_Civic_Federation
+		cost = 70
+		prerequisite = {
+			focus = USA_Continue_the_Compromise
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Continue_the_Compromise
+		completion_reward = {
+			country_event = USA_Landon.7
+		}
+	}
+	focus = {
+		id = USA_Implement_Protectionist_Tarrifs
+		icon = GFX_USA_Implement_Tariffs
+		cost = 10
+		prerequisite = {
+			focus = USA_Make_Publc_Works_Private
+			focus = USA_Fair_Labor_Management_Relations
+			focus = USA_Empower_National_Civic_Federation
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Make_Publc_Works_Private
+		completion_reward = {
+			country_event = USA_Smoot_Hawley.1
+		}
+	}
+	focus = {
+		id = USA_Support_Gas_Companies
+		icon = GFX_USA_Support_Gas_Companies
+		cost = 10
+		prerequisite = {
+			focus = USA_Empower_National_Civic_Federation
+			focus = USA_Fair_Labor_Management_Relations
+			focus = USA_Make_Publc_Works_Private
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Empower_National_Civic_Federation
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = synth_resources
+			}
+			add_ideas = USA_Subsidized_Fuel_Industry
+			375 = {
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_resource = {
+				type = oil
+				amount = 16
+				state = 375
+			}
+			add_resource = {
+				type = oil
+				amount = 16
+				state = 374
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = USA_Reform_Tax_Code
+		icon = GFX_USA_Reform_Tax_Code
+		cost = 10
+		prerequisite = {
+			focus = USA_Implement_Protectionist_Tarrifs
+			focus = USA_Support_Gas_Companies
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Implement_Protectionist_Tarrifs
+		completion_reward = {
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.02
+			}
+		}
+	}
+	focus = {
+		id = USA_Fair_Labor_Management_Relations
+		icon = GFX_goal_tripartite_pact
+		cost = 70
+		prerequisite = {
+			focus = USA_Shift_to_Fiscal_Conservatism
+			focus = USA_Continue_the_Compromise
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Shift_to_Fiscal_Conservatism
+		completion_reward = {
+			country_event = USA_Landon.8
+		}
+	}
+	focus = {
+		id = USA_Get_The_Party_Fall_In_Line
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		prerequisite = {
+			focus = USA_Reform_Tax_Code
+		}
+		mutually_exclusive = {
+			focus = USA_Work_Acroos_the_Aisle
+		}
+		available = {
+			has_completed_focus = USA_Shift_to_Fiscal_Conservatism
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Reform_Tax_Code
+		completion_reward = {
+			country_event = USA_Landon.9
+		}
+	}
+	focus = {
+		id = USA_Work_Acroos_the_Aisle
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 10
+		prerequisite = {
+			focus = USA_Reform_Tax_Code
+		}
+		mutually_exclusive = {
+			focus = USA_Get_The_Party_Fall_In_Line
+		}
+		available = {
+			has_completed_focus = USA_Continue_the_Compromise
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Reform_Tax_Code
+		completion_reward = {
+			country_event = USA_Landon.10
+		}
+	}
+	focus = {
+		id = USA_New_Threats_to_the_World
+		icon = GFX_focus_jap_strike_south
+		cost = 65
+		prerequisite = {
+			focus = USA_Get_The_Party_Fall_In_Line
+			focus = USA_Work_Acroos_the_Aisle
+			focus = USA_Food_Stamp_Plan
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			x = 0
+			y = -11
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Landon_1936
+			}
+			x = 3
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Get_The_Party_Fall_In_Line
+		allow_branch = {
+			OR = {
+				has_country_flag = USA_Roosevelt_1936
+				has_country_flag = USA_Landon_1936
+			}
+			NOT = {
+				has_country_flag = USA_John_Nance_Garner_Wins_1940_Election
+			}
+			NOT = {
+				has_country_flag = USA_Landon_Wins_1940_Election
+			}
+			NOT = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+			}
+			NOT = {
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			mark_focus_tree_layout_dirty = yes
+			set_country_flag = USA_1940_Completed
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	##################################################
+	###	1940-1944 - FDR
+	##################################################
+	focus = {
+		id = USA_Better_A_Third_Termer_Than_A_Third_Rater
+		icon = GFX_USA_1940_Franklin_Roosevelt
+		cost = 35
+		available = {
+			has_country_flag = USA_FDR_Wins_1940_Election
+		}
+		mutually_exclusive = {
+			focus = USA_Theres_No_Indispensible_Man
+		}
+		prerequisite = {
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			x = 10
+			y = -1
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+			}
+			x = 5
+			y = -12
+		}
+		allow_branch = {
+			has_country_flag = USA_Roosevelt_1936
+			NOT = {
+				has_country_flag = USA_Landon_1936
+			}
+			NOT = {
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+		}
+		x = -15
+		y = 2
+		relative_position_id = USA_New_Threats_to_the_World
+		completion_reward = {
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = USA_Prepare_For_Intervention
+		icon = GFX_GENERIC_Military_State
+		cost = 50
+		prerequisite = {
+			focus = USA_Better_A_Third_Termer_Than_A_Third_Rater
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Better_A_Third_Termer_Than_A_Third_Rater
+		completion_reward = {
+			if = {
+				limit = {
+					has_country_flag = USA_Defense_Against_Aggression_Selected
+				}
+				swap_ideas = {
+					remove_idea = USA_Neutrality_Act
+					add_idea = USA_Neutrality_Act_2
+				}
+				set_country_flag = USA_Selected_Neutrality_Act_2
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = USA_Neutrality_Act
+					add_idea = USA_Neutrality_Act_3
+				}
+				set_country_flag = USA_Selected_Neutrality_Act_3
+			}
+		}
+	}
+	focus = {
+		id = USA_Arsenal_Of_Democracy
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 40
+		prerequisite = {
+			focus = USA_Prepare_For_Intervention
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Prepare_For_Intervention
+		completion_reward = {
+			country_event = {
+				id = USA_Fireside.1
+			}
+		}
+	}
+	focus = {
+		id = USA_the_Giant_Wakes
+		icon = GFX_USA_the_Giant_Wakes
+		cost = 35
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_Land_Lease_Act
+		}
+		prerequisite = {
+			focus = USA_Office_of_Coordinator_of_Inter_American_Affairs
+		}
+		relative_position_id = USA_Better_A_Third_Termer_Than_A_Third_Rater
+		x = 0
+		y = 5
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Wartime_Economic_Recovery_Category
+		}
+	}
+	focus = {
+		id = USA_Begin_to_Shift_Economy_to_War_Footing
+		icon = GFX_GENERIC_Military_Production
+		cost = 40
+		prerequisite = {
+			focus = USA_Prepare_For_Intervention
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Prepare_For_Intervention
+		completion_reward = {
+			set_temp_variable = {
+				unemployment_value = -0.03
+			}
+			add_unemployment_effect = yes
+			swap_ideas = {
+				remove_idea = civilian_economy
+				add_idea = partial_economic_mobilisation
+			}
+		}
+	}
+	focus = {
+		id = USA_USACE_Projects
+		icon = GFX_GENERIC_Road_Construction
+		cost = 40
+		prerequisite = {
+			focus = USA_Prepare_For_Intervention
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Prepare_For_Intervention
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_USACE_Projects_Category
+		}
+	}
+	focus = {
+		id = USA_Pro_War_Propaganda
+		icon = GFX_GENERIC_Cabinet
+		cost = 40
+		prerequisite = {
+			focus = USA_Arsenal_Of_Democracy
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Arsenal_Of_Democracy
+		completion_reward = {
+			unlock_decision_tooltip = USA_Mass_Produce_Pro_War_Posters
+			unlock_decision_tooltip = USA_Pro_War_Radio_Speeches
+			unlock_decision_tooltip = USA_Hold_Pro_War_Rallies
+		}
+	}
+	focus = {
+		id = USA_the_Inevitable_War_Must_Be_Paid
+		icon = GFX_USA_the_Inevitable_War_Must_Be_Paid
+		cost = 40
+		prerequisite = {
+			focus = USA_Begin_to_Shift_Economy_to_War_Footing
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Begin_to_Shift_Economy_to_War_Footing
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = taxation_level_1
+				}
+				swap_ideas = {
+					add_idea = taxation_level_2
+					remove_idea = taxation_level_1
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_2
+				}
+				swap_ideas = {
+					add_idea = taxation_level_3
+					remove_idea = taxation_level_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_3
+				}
+				swap_ideas = {
+					add_idea = taxation_level_4
+					remove_idea = taxation_level_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_4
+				}
+				swap_ideas = {
+					add_idea = taxation_level_5
+					remove_idea = taxation_level_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_5
+				}
+				add_timed_idea = {
+					idea = USA_The_Inevitable_War_Must_Be_Paid_For_1
+					days = 365
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Rearm_The_Military
+		icon = GFX_GENERIC_Professional_Army
+		cost = 40
+		prerequisite = {
+			focus = USA_USACE_Projects
+		}
+		bypass = {
+			has_completed_focus = USA_A_Defense_Against_Agression
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_USACE_Projects
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Military_Rearmament_1940_Category
+		}
+	}
+	focus = {
+		id = USA_Land_Lease_Act
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 50
+		prerequisite = {
+			focus = USA_Pro_War_Propaganda
+		}
+		prerequisite = {
+			focus = USA_the_Inevitable_War_Must_Be_Paid
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_the_Inevitable_War_Must_Be_Paid
+		completion_reward = {
+			country_event = {
+				id = USA_1940_1944_FDR.1
+			}
+		}
+	}
+	focus = {
+		id = USA_Office_of_Coordinator_of_Inter_American_Affairs
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 50
+		prerequisite = {
+			focus = USA_the_Inevitable_War_Must_Be_Paid
+		}
+		prerequisite = {
+			focus = USA_Rearm_The_Military
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_the_Inevitable_War_Must_Be_Paid
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_The_Office_of_the_Coordinator_of_Inter_American_Affairs_Category
+		}
+	}
+	focus = {
+		id = USA_Expand_Office_Civilian_Defense
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 45
+		prerequisite = {
+			focus = USA_the_Giant_Wakes
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_the_Giant_Wakes
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_A_Special_Relationship
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 45
+		available = {
+			ENG = {
+				has_government = democratic
+			}
+		}
+		prerequisite = {
+			focus = USA_the_Giant_Wakes
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_the_Giant_Wakes
+		completion_reward = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = USA_A_Special_Relationship_opinion
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = USA_A_Special_Relationship_opinion
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Sell_War_Bonds
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 45
+		prerequisite = {
+			focus = USA_the_Giant_Wakes
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_the_Giant_Wakes
+		completion_reward = {
+			country_event = {
+				id = USA_1940_1944_FDR.2
+			}
+		}
+	}
+	focus = {
+		id = USA_War_Production_Board
+		icon = GFX_GENERIC_Burn_the_Parliament
+		cost = 50
+		prerequisite = {
+			focus = USA_Expand_Office_Civilian_Defense
+		}
+		prerequisite = {
+			focus = USA_A_Special_Relationship
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_A_Special_Relationship
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_The_War_Production_Board_Category
+		}
+	}
+	focus = {
+		id = USA_Reserve_Companies
+		icon = GFX_GENERIC_Public_Works
+		cost = 50
+		prerequisite = {
+			focus = USA_A_Special_Relationship
+		}
+		prerequisite = {
+			focus = USA_Sell_War_Bonds
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_A_Special_Relationship
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_The_Reserve_Companies_Category
+		}
+	}
+	focus = {
+		id = USA_Draft_Atlantic_Charter
+		icon = GFX_GENERIC_Draw_Borders
+		cost = 50
+		available = {
+			is_in_faction_with = ENG
+		}
+		prerequisite = {
+			focus = USA_War_Production_Board
+		}
+		prerequisite = {
+			focus = USA_Reserve_Companies
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_War_Production_Board
+		completion_reward = {
+			country_event = {
+				id = USA_1940_1944_FDR.3
+			}
+		}
+	}
+	focus = {
+		id = USA_Stick_to_American_Principles
+		icon = GFX_GENERIC_Ideology_Conservatism
+		cost = 40
+		prerequisite = {
+			focus = USA_Draft_Atlantic_Charter
+		}
+		mutually_exclusive = {
+			focus = USA_Establish_Internment_Camps
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Draft_Atlantic_Charter
+		completion_reward = {
+			add_stability = 0.05
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_Establish_Internment_Camps
+		icon = GFX_GENERIC_Forced_Labour
+		cost = 40
+		prerequisite = {
+			focus = USA_Draft_Atlantic_Charter
+		}
+		mutually_exclusive = {
+			focus = USA_Stick_to_American_Principles
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Draft_Atlantic_Charter
+		completion_reward = {
+			country_event = {
+				id = USA_1940_1944_FDR.4
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Office_Scientific_Research_Develpoment
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 50
+		prerequisite = {
+			focus = USA_Stick_to_American_Principles
+			focus = USA_Establish_Internment_Camps
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Stick_to_American_Principles
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = rocketry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Expand_Budget_Signal_Security_Agency
+		icon = GFX_GENERIC_Mass_Arrest_Political_Enemies
+		cost = 50
+		prerequisite = {
+			focus = USA_Office_Scientific_Research_Develpoment
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Office_Scientific_Research_Develpoment
+		completion_reward = {
+			add_ideas = USA_Expand_the_Budget_of_the_Signal_Security_Agency_Idea
+		}
+	}
+	focus = {
+		id = USA_Haven_For_Scientists
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 50
+		prerequisite = {
+			focus = USA_Office_Scientific_Research_Develpoment
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Office_Scientific_Research_Develpoment
+		completion_reward = {
+			add_ideas = USA_Haven_for_Scientists_Idea
+		}
+	}
+	focus = {
+		id = USA_Theres_No_Indispensible_Man
+		icon = GFX_USA_1940_Wendell_Willkie
+		cost = 35
+		available = {
+			has_country_flag = USA_Wilkie_Wins_1940_Election
+		}
+		mutually_exclusive = {
+			focus = USA_Better_A_Third_Termer_Than_A_Third_Rater
+		}
+		prerequisite = {
+		}
+		allow_branch = {
+			has_country_flag = USA_Roosevelt_1936
+			NOT = {
+				has_country_flag = USA_Landon_1936
+			}
+			NOT = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+			}
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			x = 10
+			y = -1
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+			x = -7
+			y = -12
+		}
+		x = -5
+		y = 2
+		relative_position_id = USA_New_Threats_to_the_World
+	}
+	focus = {
+		id = USA_Strengthen_Social_Security
+		icon = GFX_goal_generic_consumer_goods
+		cost = 60
+		prerequisite = {
+			focus = USA_Theres_No_Indispensible_Man
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Theres_No_Indispensible_Man
+	}
+	focus = {
+		id = USA_Prepare_Aid_Packages
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 70
+		prerequisite = {
+			focus = USA_Theres_No_Indispensible_Man
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Theres_No_Indispensible_Man
+	}
+	focus = {
+		id = USA_Slash_Taxes
+		icon = GFX_GENERIC_Austerity_Measures
+		cost = 60
+		prerequisite = {
+			focus = USA_Theres_No_Indispensible_Man
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Theres_No_Indispensible_Man
+	}
+	focus = {
+		id = USA_Streamline_the_New_Deal
+		icon = GFX_GENERIC_Depression
+		cost = 70
+		prerequisite = {
+			focus = USA_Strengthen_Social_Security
+		}
+		prerequisite = {
+			focus = USA_Prepare_Aid_Packages
+		}
+		prerequisite = {
+			focus = USA_Slash_Taxes
+		}
+		mutually_exclusive = {
+			focus = USA_Begin_to_Rearm
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Strengthen_Social_Security
+	}
+	focus = {
+		id = USA_Get_the_People_On_Our_Side
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 50
+		prerequisite = {
+			focus = USA_Streamline_the_New_Deal
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Streamline_the_New_Deal
+	}
+	focus = {
+		id = USA_Loosen_the_Noose_of_Neutrality
+		icon = GFX_GENERIC_Abolish_the_Agrarian_Decrees
+		cost = 50
+		prerequisite = {
+			focus = USA_Streamline_the_New_Deal
+			focus = USA_Begin_to_Rearm
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Streamline_the_New_Deal
+	}
+	focus = {
+		id = USA_Begin_to_Rearm
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 70
+		prerequisite = {
+			focus = USA_Strengthen_Social_Security
+		}
+		prerequisite = {
+			focus = USA_Prepare_Aid_Packages
+		}
+		prerequisite = {
+			focus = USA_Slash_Taxes
+		}
+		mutually_exclusive = {
+			focus = USA_Streamline_the_New_Deal
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_Strengthen_Social_Security
+	}
+	focus = {
+		id = USA_Enlarge_Military_Industry
+		icon = GFX_GENERIC_Military_Production
+		cost = 50
+		prerequisite = {
+			focus = USA_Begin_to_Rearm
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Begin_to_Rearm
+	}
+	focus = {
+		id = USA_An_Abrupt_Awakening
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 70
+		prerequisite = {
+			focus = USA_Get_the_People_On_Our_Side
+			focus = USA_Enlarge_Military_Industry
+		}
+		prerequisite = {
+			focus = USA_Loosen_the_Noose_of_Neutrality
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Get_the_People_On_Our_Side
+	}
+	focus = {
+		id = USA_Coordinate_Our_Resources
+		icon = GFX_goal_generic_construction2
+		cost = 40
+		prerequisite = {
+			focus = USA_An_Abrupt_Awakening
+		}
+		x = -3
+		y = 1
+		relative_position_id = USA_An_Abrupt_Awakening
+	}
+	focus = {
+		id = USA_Play_Catch_Up
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 40
+		prerequisite = {
+			focus = USA_An_Abrupt_Awakening
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_An_Abrupt_Awakening
+	}
+	focus = {
+		id = USA_Get_the_People_to_Work
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 40
+		prerequisite = {
+			focus = USA_An_Abrupt_Awakening
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_An_Abrupt_Awakening
+	}
+	focus = {
+		id = USA_Turn_the_People_Against_the_Enemy
+		icon = GFX_GENERIC_Political_Army
+		cost = 40
+		prerequisite = {
+			focus = USA_An_Abrupt_Awakening
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_An_Abrupt_Awakening
+	}
+	focus = {
+		id = USA_Invoke_the_Line_of_Succession
+		icon = GFX_GENERIC_Parliament
+		cost = 20
+		prerequisite = {
+			focus = USA_Coordinate_Our_Resources
+		}
+		prerequisite = {
+			focus = USA_Play_Catch_Up
+		}
+		prerequisite = {
+			focus = USA_Get_the_People_to_Work
+		}
+		prerequisite = {
+			focus = USA_Turn_the_People_Against_the_Enemy
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_Coordinate_Our_Resources
+	}
+	focus = {
+		id = USA_Disaster_Strikes_Twice
+		icon = GFX_GENERIC_Restore_Confidence_in_the_Bank
+		cost = 20
+		prerequisite = {
+			focus = USA_Invoke_the_Line_of_Succession
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Invoke_the_Line_of_Succession
+	}
+	focus = {
+		id = USA_We_Shall_Keep_Fighting
+		icon = GFX_GENERIC_Burn_the_Parliament
+		cost = 30
+		mutually_exclusive = {
+			focus = USA_A_Return_to_Isolation
+		}
+		prerequisite = {
+			focus = USA_Disaster_Strikes_Twice
+		}
+		x = -3
+		y = 1
+		relative_position_id = USA_Disaster_Strikes_Twice
+	}
+	focus = {
+		id = USA_Propagate_Pro_War_Sentiments
+		icon = GFX_GENERIC_Purge_the_Old_Guard
+		cost = 20
+		prerequisite = {
+			focus = USA_We_Shall_Keep_Fighting
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_We_Shall_Keep_Fighting
+	}
+	focus = {
+		id = USA_Strengthen_the_War_Machine
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 20
+		prerequisite = {
+			focus = USA_We_Shall_Keep_Fighting
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_We_Shall_Keep_Fighting
+	}
+	focus = {
+		id = USA_The_Military_Industrial_Complex
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 20
+		prerequisite = {
+			focus = USA_We_Shall_Keep_Fighting
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_We_Shall_Keep_Fighting
+	}
+	focus = {
+		id = USA_Enlarge_the_Research_Budget
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 20
+		prerequisite = {
+			focus = USA_Propagate_Pro_War_Sentiments
+		}
+		prerequisite = {
+			focus = USA_Strengthen_the_War_Machine
+		}
+		prerequisite = {
+			focus = USA_The_Military_Industrial_Complex
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Propagate_Pro_War_Sentiments
+	}
+	focus = {
+		id = USA_Increase_Counter_Espionage_Funding
+		icon = GFX_goal_generic_political_pressure
+		cost = 20
+		prerequisite = {
+			focus = USA_Propagate_Pro_War_Sentiments
+		}
+		prerequisite = {
+			focus = USA_Strengthen_the_War_Machine
+		}
+		prerequisite = {
+			focus = USA_The_Military_Industrial_Complex
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_Propagate_Pro_War_Sentiments
+	}
+	focus = {
+		id = USA_Complete_Mobilization
+		icon = GFX_GENERIC_Tank_Destroyers
+		cost = 3
+		prerequisite = {
+			focus = USA_Enlarge_the_Research_Budget
+		}
+		prerequisite = {
+			focus = USA_Increase_Counter_Espionage_Funding
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Enlarge_the_Research_Budget
+	}
+	focus = {
+		id = USA_A_Return_to_Isolation
+		icon = GFX_GENERIC_Peaceful
+		cost = 30
+		mutually_exclusive = {
+			focus = USA_We_Shall_Keep_Fighting
+		}
+		prerequisite = {
+			focus = USA_Disaster_Strikes_Twice
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_Disaster_Strikes_Twice
+	}
+	focus = {
+		id = USA_Assure_the_People
+		icon = GFX_GENERIC_Cabinet
+		cost = 20
+		prerequisite = {
+			focus = USA_A_Return_to_Isolation
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_A_Return_to_Isolation
+	}
+	focus = {
+		id = USA_Tear_Up_the_New_Deal
+		icon = GFX_GENERIC_Abolish_the_Agrarian_Decrees
+		cost = 20
+		prerequisite = {
+			focus = USA_A_Return_to_Isolation
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_A_Return_to_Isolation
+	}
+	focus = {
+		id = USA_Consolidate_the_Conservative_Coalition
+		icon = GFX_GENERIC_Ideology_Conservatism
+		cost = 20
+		prerequisite = {
+			focus = USA_A_Return_to_Isolation
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_A_Return_to_Isolation
+	}
+	focus = {
+		id = USA_Tax_Cuts_For_Businesses
+		icon = GFX_GENERIC_Tax_Cuts_for_Land_Owners
+		cost = 20
+		prerequisite = {
+			focus = USA_Assure_the_People
+		}
+		prerequisite = {
+			focus = USA_Tear_Up_the_New_Deal
+		}
+		prerequisite = {
+			focus = USA_Consolidate_the_Conservative_Coalition
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Assure_the_People
+	}
+	focus = {
+		id = USA_Weaken_the_National_Labor_Relations_Board
+		icon = GFX_goal_generic_production
+		cost = 20
+		prerequisite = {
+			focus = USA_Assure_the_People
+		}
+		prerequisite = {
+			focus = USA_Tear_Up_the_New_Deal
+		}
+		prerequisite = {
+			focus = USA_Consolidate_the_Conservative_Coalition
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_Assure_the_People
+	}
+	focus = {
+		id = USA_For_the_Good_of_the_Nation
+		icon = GFX_GENERIC_Restore_Confidence_in_the_Bank
+		cost = 30
+		prerequisite = {
+			focus = USA_Tax_Cuts_For_Businesses
+		}
+		prerequisite = {
+			focus = USA_Weaken_the_National_Labor_Relations_Board
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Tax_Cuts_For_Businesses
+	}
+	focus = {
+		id = USA_Return_to_Democratic_Establishment
+		icon = GFX_goal_unknown
+		cost = 35
+		available = {
+			has_country_flag = USA_John_Nance_Garner_Wins_1940_Election
+		}
+		mutually_exclusive = {
+			focus = USA_The_Republican_Grip_Strenghtens
+		}
+		prerequisite = {
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Landon_1936
+			}
+			x = -10
+			y = -1
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_John_Nance_Garner_Wins_1940_Election
+			}
+			x = 4
+			y = -12
+		}
+		allow_branch = {
+			has_country_flag = USA_Landon_1936
+			NOT = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			NOT = {
+				has_country_flag = USA_Landon_Wins_1940_Election
+			}
+		}
+		x = 5
+		y = 2
+		relative_position_id = USA_New_Threats_to_the_World
+	}
+	focus = {
+		id = USA_Expand_the_Influence_of_the_Vice_President
+		icon = GFX_GENERIC_Cabinet
+		cost = 70
+		prerequisite = {
+			focus = USA_Return_to_Democratic_Establishment
+		}
+		x = -1
+		y = 1
+		relative_position_id = USA_Return_to_Democratic_Establishment
+	}
+	focus = {
+		id = USA_Elimiate_Tariffs
+		icon = GFX_GENERIC_Dissolve_the_Parliament
+		cost = 70
+		prerequisite = {
+			focus = USA_Return_to_Democratic_Establishment
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Return_to_Democratic_Establishment
+	}
+	focus = {
+		id = USA_Protect_the_Judiciary
+		icon = GFX_GENERIC_Justice_System_Socialist
+		cost = 35
+		prerequisite = {
+			focus = USA_Expand_the_Influence_of_the_Vice_President
+		}
+		prerequisite = {
+			focus = USA_Elimiate_Tariffs
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Expand_the_Influence_of_the_Vice_President
+	}
+	focus = {
+		id = USA_Decentralize_the_Government
+		icon = GFX_GENERIC_Decentralization
+		cost = 70
+		prerequisite = {
+			focus = USA_Protect_the_Judiciary
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Protect_the_Judiciary
+	}
+	focus = {
+		id = USA_Introduce_a_National_Sales_Tax
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 70
+		prerequisite = {
+			focus = USA_Protect_the_Judiciary
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Protect_the_Judiciary
+	}
+	focus = {
+		id = USA_Introduce_a_National_Poll_Tax
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 70
+		prerequisite = {
+			focus = USA_Protect_the_Judiciary
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Protect_the_Judiciary
+	}
+	focus = {
+		id = USA_Expand_the_Rights_of_Businesses
+		icon = GFX_GENERIC_Agrarian_Reform
+		cost = 35
+		prerequisite = {
+			focus = USA_Decentralize_the_Government
+		}
+		prerequisite = {
+			focus = USA_Introduce_a_National_Sales_Tax
+		}
+		prerequisite = {
+			focus = USA_Introduce_a_National_Poll_Tax
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Decentralize_the_Government
+	}
+	focus = {
+		id = USA_Expand_the_Office_of_Education
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 70
+		prerequisite = {
+			focus = USA_Expand_the_Rights_of_Businesses
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Expand_the_Rights_of_Businesses
+	}
+	focus = {
+		id = USA_Defensive_Military_Expansion
+		icon = GFX_GENERIC_Military_Academy
+		cost = 70
+		prerequisite = {
+			focus = USA_Expand_the_Rights_of_Businesses
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Expand_the_Rights_of_Businesses
+	}
+	focus = {
+		id = USA_Deregulation_of_the_Oil_Industry
+		icon = GFX_GENERIC_Autarky
+		cost = 70
+		prerequisite = {
+			focus = USA_Expand_the_Rights_of_Businesses
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Expand_the_Rights_of_Businesses
+	}
+	focus = {
+		id = USA_Rally_Against_Tyranny
+		icon = GFX_GENERIC_Dissolve_Fascist_Organizations
+		cost = 35
+		prerequisite = {
+			focus = USA_Expand_the_Office_of_Education
+		}
+		prerequisite = {
+			focus = USA_Defensive_Military_Expansion
+		}
+		prerequisite = {
+			focus = USA_Deregulation_of_the_Oil_Industry
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Expand_the_Office_of_Education
+	}
+	focus = {
+		id = USA_Limit_the_Executives_Power
+		icon = GFX_GENERIC_New_Constitution
+		cost = 35
+		prerequisite = {
+			focus = USA_Expand_the_Office_of_Education
+		}
+		prerequisite = {
+			focus = USA_Defensive_Military_Expansion
+		}
+		prerequisite = {
+			focus = USA_Deregulation_of_the_Oil_Industry
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_Expand_the_Office_of_Education
+	}
+	focus = {
+		id = USA_Bring_the_New_Deal_to_a_Close
+		icon = GFX_GENERIC_Dissolve_the_Parliament
+		cost = 70
+		prerequisite = {
+			focus = USA_Rally_Against_Tyranny
+		}
+		prerequisite = {
+			focus = USA_Limit_the_Executives_Power
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Rally_Against_Tyranny
+	}
+	focus = {
+		id = USA_The_Military_Research_and_Development_Office
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 35
+		prerequisite = {
+			focus = USA_Bring_the_New_Deal_to_a_Close
+		}
+		x = -2
+		y = 1
+		relative_position_id = USA_Bring_the_New_Deal_to_a_Close
+	}
+	focus = {
+		id = USA_Coordinated_Military_Planning_Efforts
+		icon = GFX_GENERIC_Military_Academy
+		cost = 55
+		prerequisite = {
+			focus = USA_Bring_the_New_Deal_to_a_Close
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Bring_the_New_Deal_to_a_Close
+	}
+	focus = {
+		id = USA_Contain_the_HUAC
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 40
+		prerequisite = {
+			focus = USA_Bring_the_New_Deal_to_a_Close
+		}
+		x = 2
+		y = 1
+		relative_position_id = USA_Bring_the_New_Deal_to_a_Close
+	}
+	focus = {
+		id = USA_Re_issue_Liberty_Bonds
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 60
+		prerequisite = {
+			focus = USA_The_Military_Research_and_Development_Office
+		}
+		prerequisite = {
+			focus = USA_Coordinated_Military_Planning_Efforts
+		}
+		prerequisite = {
+			focus = USA_Contain_the_HUAC
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_The_Military_Research_and_Development_Office
+	}
+	focus = {
+		id = USA_Aid_the_Flagging_Democracies
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 40
+		prerequisite = {
+			focus = USA_The_Military_Research_and_Development_Office
+		}
+		prerequisite = {
+			focus = USA_Coordinated_Military_Planning_Efforts
+		}
+		prerequisite = {
+			focus = USA_Contain_the_HUAC
+		}
+		x = 3
+		y = 1
+		relative_position_id = USA_The_Military_Research_and_Development_Office
+	}
+	focus = {
+		id = USA_Resurrect_the_Committee_On_Public_Information
+		icon = GFX_GENERIC_Depression
+		cost = 60
+		prerequisite = {
+			focus = USA_Re_issue_Liberty_Bonds
+		}
+		prerequisite = {
+			focus = USA_Aid_the_Flagging_Democracies
+		}
+		x = 1
+		y = 1
+		relative_position_id = USA_Re_issue_Liberty_Bonds
+	}
+	focus = {
+		id = USA_The_Eyes_of_Texas_Program
+		icon = GFX_GENERIC_Banker_Coup
+		cost = 70
+		prerequisite = {
+			focus = USA_Resurrect_the_Committee_On_Public_Information
+		}
+		x = 0
+		y = 1
+		relative_position_id = USA_Resurrect_the_Committee_On_Public_Information
+	}
+	focus = {
+		id = USA_The_Republican_Grip_Strenghtens
+		icon = GFX_goal_unknown
+		cost = 35
+		available = {
+			has_country_flag = USA_Landon_Wins_1940_Election
+		}
+		mutually_exclusive = {
+			focus = USA_Return_to_Democratic_Establishment
+		}
+		prerequisite = {
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Landon_1936
+			}
+			x = -10
+			y = -1
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Landon_Wins_1940_Election
+			}
+			x = -8
+			y = -11
+		}
+		allow_branch = {
+			has_country_flag = USA_Landon_1936
+			NOT = {
+				has_country_flag = USA_Roosevelt_1936
+			}
+			NOT = {
+				has_country_flag = USA_John_Nance_Garner_Wins_1940_Election
+			}
+		}
+		relative_position_id = USA_New_Threats_to_the_World
+		x = 15
+		y = 2
+		completion_reward = {
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = USA_A_Return_To_the_Gold_Standard
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		cost = 45
+		mutually_exclusive = {
+			focus = USA_Increase_the_Minimum_Wage
+		}
+		prerequisite = {
+			focus = USA_The_Republican_Grip_Strenghtens
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		relative_position_id = USA_The_Republican_Grip_Strenghtens
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.1
+			}
+		}
+	}
+	focus = {
+		id = USA_Increase_the_Minimum_Wage
+		icon = GFX_GENERIC_Stimulus_Plan
+		cost = 45
+		mutually_exclusive = {
+			focus = USA_A_Return_To_the_Gold_Standard
+		}
+		prerequisite = {
+			focus = USA_The_Republican_Grip_Strenghtens
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.66
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		relative_position_id = USA_The_Republican_Grip_Strenghtens
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.2
+			}
+		}
+	}
+	focus = {
+		id = USA_Continue_Lowering_Taxes
+		icon = GFX_GENERIC_Austerity_Measures
+		cost = 40
+		prerequisite = {
+			focus = USA_A_Return_To_the_Gold_Standard
+		}
+		relative_position_id = USA_A_Return_To_the_Gold_Standard
+		x = -1
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = taxation_level_5
+				}
+				swap_ideas = {
+					add_idea = taxation_level_4
+					remove_idea = taxation_level_5
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_4
+				}
+				swap_ideas = {
+					add_idea = taxation_level_3
+					remove_idea = taxation_level_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_3
+				}
+				swap_ideas = {
+					add_idea = taxation_level_2
+					remove_idea = taxation_level_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_2
+				}
+				swap_ideas = {
+					add_idea = taxation_level_1
+					remove_idea = taxation_level_2
+				}
+			}
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = 0.02
+			}
+			change_party_support = yes
+		}
+	}
+	focus = {
+		id = USA_A_Completely_Balanced_Budget
+		icon = GFX_GENERIC_An_Act_Of_Neutrality
+		cost = 35
+		prerequisite = {
+			focus = USA_A_Return_To_the_Gold_Standard
+			focus = USA_Increase_the_Minimum_Wage
+		}
+		relative_position_id = USA_A_Return_To_the_Gold_Standard
+		x = 1
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = USA_Fair_Compromise_3
+				}
+				swap_ideas = {
+					add_idea = USA_Fair_Compromise_5
+					remove_idea = USA_Fair_Compromise_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = USA_Fair_Compromise_4
+				}
+				swap_ideas = {
+					add_idea = USA_Fair_Compromise_6
+					remove_idea = USA_Fair_Compromise_4
+				}
+			}
+			add_stability = -0.05
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_State_Funded_Housing_Projects
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 40
+		prerequisite = {
+			focus = USA_Increase_the_Minimum_Wage
+		}
+		relative_position_id = USA_A_Return_To_the_Gold_Standard
+		x = 3
+		y = 1
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = USA_Begin_To_Open_Up
+		icon = GFX_GENERIC_Economic_Cooperation
+		cost = 60
+		prerequisite = {
+			focus = USA_Continue_Lowering_Taxes
+			focus = USA_State_Funded_Housing_Projects
+		}
+		prerequisite = {
+			focus = USA_A_Completely_Balanced_Budget
+		}
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		relative_position_id = USA_Continue_Lowering_Taxes
+		x = 2
+		y = 1
+		completion_reward = {
+			#WIP
+		}
+	}
+	focus = {
+		id = USA_Small_Scale_Rearmament
+		icon = GFX_GENERIC_Army
+		cost = 40
+		prerequisite = {
+			focus = USA_Begin_To_Open_Up
+		}
+		relative_position_id = USA_Begin_To_Open_Up
+		x = -2
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = civilian_economy
+				}
+				swap_ideas = {
+					add_idea = low_economic_mobilisation
+					remove_idea = civilian_economy
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = low_economic_mobilisation
+				}
+				swap_ideas = {
+					add_idea = partial_economic_mobilisation
+					remove_idea = low_economic_mobilisation
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = partial_economic_mobilisation
+				}
+				swap_ideas = {
+					add_idea = war_economy
+					remove_idea = partial_economic_mobilisation
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = war_economy
+				}
+				swap_ideas = {
+					add_idea = tot_economic_mobilisation
+					remove_idea = war_economy
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Prepare_to_Mobilize_the_Economy
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 35
+		prerequisite = {
+			focus = USA_Begin_To_Open_Up
+		}
+		relative_position_id = USA_Begin_To_Open_Up
+		x = 0
+		y = 1
+		completion_reward = {
+			# activate_mission = USA_Wartime_Economic_Recovery
+		}
+	}
+	focus = {
+		id = USA_Make_Use_of_the_USACE
+		icon = GFX_GENERIC_Road_Construction
+		cost = 40
+		prerequisite = {
+			focus = USA_Begin_To_Open_Up
+		}
+		relative_position_id = USA_Begin_To_Open_Up
+		x = 2
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_USACE_Projects_Category
+		}
+	}
+	focus = {
+		id = USA_Prepare_For_the_Unavoidable
+		icon = GFX_GENERIC_Professional_Army
+		cost = 15
+		mutually_exclusive = {
+			focus = USA_An_Unexpected_Awakening
+		}
+		prerequisite = {
+			focus = USA_Small_Scale_Rearmament
+		}
+		prerequisite = {
+			focus = USA_Prepare_to_Mobilize_the_Economy
+		}
+		prerequisite = {
+			focus = USA_Make_Use_of_the_USACE
+		}
+		available = {
+			threat > 0.69
+			USA = {
+				has_war = no
+			}
+		}
+		relative_position_id = USA_Small_Scale_Rearmament
+		x = -1
+		y = 1
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = USA_An_Incremental_Rearmament_System
+		icon = GFX_GENERIC_Military_Production
+		cost = 35
+		prerequisite = {
+			focus = USA_Prepare_For_the_Unavoidable
+		}
+		relative_position_id = USA_Prepare_For_the_Unavoidable
+		x = -2
+		y = 1
+		completion_reward = {
+			#WIP
+		}
+	}
+	focus = {
+		id = USA_Convince_the_Isolationists
+		icon = GFX_GENERIC_Cabinet
+		cost = 45
+		prerequisite = {
+			focus = USA_Prepare_For_the_Unavoidable
+		}
+		relative_position_id = USA_Prepare_For_the_Unavoidable
+		x = 0
+		y = 1
+		completion_reward = {
+			set_temp_variable = {
+				party_id = 4
+			}			#Republicans
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+			set_temp_variable = {
+				party_id = 6
+			}			#Democrats
+			set_temp_variable = {
+				support_to_add = 0.05
+			}
+			change_party_support = yes
+			add_war_support = 0.1
+			add_stability = -0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_Small_Tax_Increases
+		icon = GFX_goal_generic_consumer_goods
+		cost = 35
+		prerequisite = {
+			focus = USA_Prepare_For_the_Unavoidable
+		}
+		relative_position_id = USA_Prepare_For_the_Unavoidable
+		x = 2
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.4
+			}
+		}
+	}
+	focus = {
+		id = USA_Drill_the_Army
+		icon = GFX_goal_generic_allies_build_infantry
+		cost = 60
+		prerequisite = {
+			focus = USA_An_Incremental_Rearmament_System
+		}
+		prerequisite = {
+			focus = USA_Convince_the_Isolationists
+		}
+		prerequisite = {
+			focus = USA_Small_Tax_Increases
+		}
+		relative_position_id = USA_An_Incremental_Rearmament_System
+		x = 1
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = American_Drill
+				days = 720
+			}
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = USA_Appeal_For_Volunteers
+		icon = GFX_GENERIC_Political_Army
+		cost = 60
+		prerequisite = {
+			focus = USA_An_Incremental_Rearmament_System
+		}
+		prerequisite = {
+			focus = USA_Convince_the_Isolationists
+		}
+		prerequisite = {
+			focus = USA_Small_Tax_Increases
+		}
+		relative_position_id = USA_An_Incremental_Rearmament_System
+		x = 3
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.5
+			}
+		}
+	}
+	focus = {
+		id = USA_Enlarge_the_Military_Budget
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 50
+		prerequisite = {
+			focus = USA_Drill_the_Army
+		}
+		prerequisite = {
+			focus = USA_Appeal_For_Volunteers
+		}
+		relative_position_id = USA_Drill_the_Army
+		x = 1
+		y = 1
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = Enlarged_Military_Budget
+				days = 1025
+			}
+			set_temp_variable = {
+				money_to_gain = -1250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+	}
+	focus = {
+		id = USA_It_is_Time
+		icon = GFX_GENERIC_Purge_the_Old_Guard
+		cost = 30
+		prerequisite = {
+			focus = USA_Enlarge_the_Military_Budget
+		}
+		relative_position_id = USA_Enlarge_the_Military_Budget
+		x = 0
+		y = 1
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.5
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		completion_reward = {
+			add_ideas = Live_Free_or_Die
+		}
+	}
+	focus = {
+		id = USA_Empower_the_OSS
+		icon = GFX_goal_generic_propaganda
+		cost = 50
+		prerequisite = {
+			focus = USA_It_is_Time
+			focus = USA_Surrender_is_Not_An_Option
+		}
+		relative_position_id = USA_It_is_Time
+		x = 1
+		y = 1
+		completion_reward = {
+			#WIP
+		}
+	}
+	focus = {
+		id = USA_Achieve_Full_Mobilization
+		icon = GFX_GENERIC_Tank_Destroyers
+		cost = 50
+		prerequisite = {
+			focus = USA_It_is_Time
+			focus = USA_Surrender_is_Not_An_Option
+		}
+		relative_position_id = USA_It_is_Time
+		x = 3
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = civilian_economy
+				}
+				swap_ideas = {
+					add_idea = war_economy
+					remove_idea = civilian_economy
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = low_economic_mobilisation
+				}
+				swap_ideas = {
+					add_idea = war_economy
+					remove_idea = low_economic_mobilisation
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = partial_economic_mobilisation
+				}
+				swap_ideas = {
+					add_idea = war_economy
+					remove_idea = partial_economic_mobilisation
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = war_economy
+				}
+				add_war_support = 0.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = USA_Support_Our_Allies
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 50
+		prerequisite = {
+			focus = USA_It_is_Time
+			focus = USA_Surrender_is_Not_An_Option
+		}
+		relative_position_id = USA_It_is_Time
+		x = 5
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_1940_1944_FDR.1
+			}
+		}
+	}
+	focus = {
+		id = USA_The_End_of_the_Landon_Era
+		icon = GFX_GENERIC_Socialist_Culture
+		cost = 80
+		prerequisite = {
+			focus = USA_Empower_the_OSS
+		}
+		prerequisite = {
+			focus = USA_Achieve_Full_Mobilization
+		}
+		prerequisite = {
+			focus = USA_Support_Our_Allies
+		}
+		relative_position_id = USA_Empower_the_OSS
+		x = 2
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.7
+			}
+		}
+	}
+	focus = {
+		id = USA_An_Unexpected_Awakening
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 15
+		mutually_exclusive = {
+			focus = USA_Prepare_For_the_Unavoidable
+		}
+		prerequisite = {
+			focus = USA_Small_Scale_Rearmament
+		}
+		prerequisite = {
+			focus = USA_Prepare_to_Mobilize_the_Economy
+		}
+		prerequisite = {
+			focus = USA_Make_Use_of_the_USACE
+		}
+		relative_position_id = USA_Small_Scale_Rearmament
+		x = 5
+		y = 1
+		completion_reward = {
+			add_war_support = 0.1
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = USA_Wartime_Rearmament
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 60
+		prerequisite = {
+			focus = USA_An_Unexpected_Awakening
+		}
+		relative_position_id = USA_An_Unexpected_Awakening
+		x = -2
+		y = 1
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {
+		id = USA_The_Money_Must_Come_From_Somewhere
+		icon = GFX_GENERIC_Money
+		cost = 45
+		prerequisite = {
+			focus = USA_An_Unexpected_Awakening
+		}
+		relative_position_id = USA_An_Unexpected_Awakening
+		x = 0
+		y = 1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = taxation_level_1
+				}
+				swap_ideas = {
+					add_idea = taxation_level_2
+					remove_idea = taxation_level_1
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_2
+				}
+				swap_ideas = {
+					add_idea = taxation_level_3
+					remove_idea = taxation_level_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_3
+				}
+				swap_ideas = {
+					add_idea = taxation_level_4
+					remove_idea = taxation_level_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = taxation_level_4
+				}
+				swap_ideas = {
+					add_idea = taxation_level_5
+					remove_idea = taxation_level_4
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Jobs_In_the_Factories
+		icon = GFX_GENERIC_Forced_Labour
+		cost = 60
+		prerequisite = {
+			focus = USA_An_Unexpected_Awakening
+		}
+		relative_position_id = USA_An_Unexpected_Awakening
+		x = 2
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.6
+			}
+		}
+	}
+	focus = {
+		id = USA_Emergency_Weapons_Research
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 35
+		prerequisite = {
+			focus = USA_Wartime_Rearmament
+		}
+		prerequisite = {
+			focus = USA_The_Money_Must_Come_From_Somewhere
+		}
+		prerequisite = {
+			focus = USA_Jobs_In_the_Factories
+		}
+		relative_position_id = USA_Wartime_Rearmament
+		x = 1
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = armor
+			}
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = infantry_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = USA_Empower_the_Office_of_War_Information
+		icon = GFX_GENERIC_Expand_the_University
+		cost = 35
+		prerequisite = {
+			focus = USA_Wartime_Rearmament
+		}
+		prerequisite = {
+			focus = USA_The_Money_Must_Come_From_Somewhere
+		}
+		prerequisite = {
+			focus = USA_Jobs_In_the_Factories
+		}
+		relative_position_id = USA_Wartime_Rearmament
+		x = 3
+		y = 1
+		completion_reward = {
+			add_ideas = Expanded_Office_of_War_Information
+		}
+	}
+	focus = {
+		id = USA_The_New_Freedom_Bonds
+		icon = GFX_goal_generic_consumer_goods
+		cost = 50
+		prerequisite = {
+			focus = USA_Emergency_Weapons_Research
+		}
+		prerequisite = {
+			focus = USA_Empower_the_Office_of_War_Information
+		}
+		relative_position_id = USA_Emergency_Weapons_Research
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Landon_1940_1944.3
+			}
+		}
+	}
+	focus = {
+		id = USA_Surrender_is_Not_An_Option
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 30
+		prerequisite = {
+			focus = USA_The_New_Freedom_Bonds
+		}
+		relative_position_id = USA_The_New_Freedom_Bonds
+		x = 0
+		y = 1
+		completion_reward = {
+			add_ideas = Live_Free_or_Die
+		}
+	}
+	focus = {
+		id = USA_The_War_Continues
+		icon = GFX_GENERIC_Scars_of_the_Civil_War
+		cost = 5
+		mutually_exclusive = {
+			focus = USA_Peace_For_Better_Or_for_Worse
+		}
+		available = {
+			has_war = yes
+		}
+		prerequisite = {
+			focus = USA_Complete_Mobilization
+			focus = USA_For_the_Good_of_the_Nation
+			focus = USA_The_Eyes_of_Texas_Program
+			focus = USA_The_End_of_the_Landon_Era
+			focus = USA_Expand_Budget_Signal_Security_Agency
+			focus = USA_Haven_For_Scientists
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+			}
+			x = -14
+			y = -1
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+			x = -11
+			y = -13
+		}
+		allow_branch = {
+			OR = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+		}
+		x = 16
+		y = 2
+		relative_position_id = USA_Expand_Budget_Signal_Security_Agency
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			add_war_support = 0.05
+			set_country_flag = USA_1944_Completed
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {
+		id = USA_Peace_For_Better_Or_for_Worse
+		icon = GFX_GENERIC_Peaceful
+		cost = 5
+		mutually_exclusive = {
+			focus = USA_The_War_Continues
+		}
+		available = {
+			has_war = no
+		}
+		prerequisite = {
+			focus = USA_Complete_Mobilization
+			focus = USA_For_the_Good_of_the_Nation
+			focus = USA_The_Eyes_of_Texas_Program
+			focus = USA_The_End_of_the_Landon_Era
+			focus = USA_Expand_Budget_Signal_Security_Agency
+			focus = USA_Haven_For_Scientists
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+			}
+			x = -18
+			y = -1
+		}
+		offset = {
+			trigger = {
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+			x = -15
+			y = -13
+		}
+		allow_branch = {
+			OR = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+		}
+		x = 18
+		y = 2
+		relative_position_id = USA_Expand_Budget_Signal_Security_Agency
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			add_stability = 0.05
+			set_country_flag = USA_1944_Completed
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_The_Final_Stretch
+		icon = GFX_USA_1944_Franklin_Roosevelt
+		cost = 40
+		available = {
+			has_country_flag = USA_FDR_Wins_1944_Election_focus
+		}
+		relative_position_id = USA_The_War_Continues
+		x = -1
+		y = 1
+		allow_branch = {
+			OR = {
+				has_country_flag = USA_FDR_Wins_1940_Election
+				has_country_flag = USA_Wilkie_Wins_1940_Election
+			}
+		}
+		completion_reward = {
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = USA_United_We_Stand
+		icon = GFX_GENERIC_Populist_Politics
+		cost = 50
+		prerequisite = {
+			focus = USA_The_Final_Stretch
+		}
+		relative_position_id = USA_The_Final_Stretch
+		x = -1
+		y = 1
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_Ensure_Victory_Through_Lend_Lease
+		icon = GFX_GENERIC_Seek_International_Recognition
+		cost = 50
+		prerequisite = {
+			focus = USA_The_Final_Stretch
+		}
+		relative_position_id = USA_The_Final_Stretch
+		x = 1
+		y = 1
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = USA_Global_Anti_Authoritarian_Rhetoric
+		icon = GFX_GENERIC_Dissolve_Fascist_Organizations
+		cost = 45
+		prerequisite = {
+			focus = USA_United_We_Stand
+		}
+		prerequisite = {
+			focus = USA_Ensure_Victory_Through_Lend_Lease
+		}
+		relative_position_id = USA_United_We_Stand
+		x = -4
+		y = 1
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						has_government = fascist
+						has_government = authoritarian
+						has_government = communist
+					}
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = USA_Global_Anti_Authoritarian_Rhetoric_opinion
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Encourage_Decolonisation
+		icon = GFX_GENERIC_New_Constitution
+		cost = 45
+		prerequisite = {
+			focus = USA_United_We_Stand
+		}
+		prerequisite = {
+			focus = USA_Ensure_Victory_Through_Lend_Lease
+		}
+		relative_position_id = USA_United_We_Stand
+		x = -2
+		y = 1
+		completion_reward = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = USA_Encourage_Decolonisation_opinion
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = USA_Encourage_Decolonisation_opinion
+			}
+		}
+	}
+	focus = {
+		id = USA_The_Truman_Doctrine
+		icon = GFX_GENERIC_Anti_Communism
+		cost = 70
+		prerequisite = {
+			focus = USA_Global_Anti_Authoritarian_Rhetoric
+		}
+		prerequisite = {
+			focus = USA_Encourage_Decolonisation
+		}
+		relative_position_id = USA_Global_Anti_Authoritarian_Rhetoric
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_1944_1948_FDR.1
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_government = fascist
+						has_government = authoritarian
+						has_government = communist
+					}
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = USA_The_Truman_Doctrine_opinion
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Cordial_But_Not_Friendly_Relations
+		icon = GFX_goal_generic_improve_relations
+		cost = 35
+		mutually_exclusive = {
+			focus = USA_Strict_Containment
+		}
+		prerequisite = {
+			focus = USA_The_Truman_Doctrine
+		}
+		relative_position_id = USA_The_Truman_Doctrine
+		x = -1
+		y = 1
+		completion_reward = {
+			add_political_power = 25
+			every_country = {
+				limit = {
+					OR = {
+						has_government = fascist
+						has_government = authoritarian
+						has_government = communist
+					}
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = USA_Cordial_But_Not_Friendly_Relations_opinion
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = USA_Strict_Containment
+		icon = GFX_goal_generic_political_pressure
+		cost = 35
+		mutually_exclusive = {
+			focus = USA_Cordial_But_Not_Friendly_Relations
+		}
+		prerequisite = {
+			focus = USA_The_Truman_Doctrine
+		}
+		relative_position_id = USA_The_Truman_Doctrine
+		x = 1
+		y = 1
+		completion_reward = {
+			add_political_power = 75
+			every_country = {
+				limit = {
+					OR = {
+						has_government = fascist
+						has_government = authoritarian
+						has_government = communist
+					}
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = USA_Strict_Containment_opinion
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Begin_the_Marshall_Plan
+		icon = GFX_USA_Begin_the_Marshall_Plan
+		cost = 50
+		prerequisite = {
+			focus = USA_Cordial_But_Not_Friendly_Relations
+			focus = USA_Strict_Containment
+		}
+		relative_position_id = USA_Cordial_But_Not_Friendly_Relations
+		x = 1
+		y = 1
+	}
+	focus = {
+		id = USA_Where_Free_Men_Now_Stand
+		icon = GFX_GENERIC_Ideology_Liberalism
+		cost = 60
+		prerequisite = {
+			focus = USA_United_We_Stand
+		}
+		prerequisite = {
+			focus = USA_Ensure_Victory_Through_Lend_Lease
+		}
+		relative_position_id = USA_United_We_Stand
+		x = 1
+		y = 1
+		completion_reward = {
+			#Note only european countries should get this idea
+			#so no every_country
+			ENG = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			GER = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			SOV = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			IRE = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			SPR = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			POR = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			ITA = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			AUS = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			POL = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			YUG = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			HUN = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			CZE = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			DEN = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			NOR = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			SWE = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			FIN = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			LIT = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			LAT = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			EST = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			ROM = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			BUL = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			ALB = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			GRE = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			BEL = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			HOL = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			LUX = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+			TUR = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_timed_idea = {
+						idea = USA_Where_Free_Men_Now_Stand_Idea
+						days = 365
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = USA_Rebuild_the_Destroyed_Enemy
+		icon = GFX_GENERIC_Urban_Warfare
+		cost = 35
+		prerequisite = {
+			focus = USA_Where_Free_Men_Now_Stand
+		}
+		relative_position_id = USA_Where_Free_Men_Now_Stand
+		x = 0
+		y = 1
+		completion_reward = {
+			add_timed_idea = {
+				idea = USA_European_Reconstruction_Idea
+				days = 730
+			}
+		}
+	}
+	focus = {
+		id = USA_Stabilize_the_Occupied_Economy
+		icon = GFX_GENERIC_Public_Works
+		cost = 50
+		prerequisite = {
+			focus = USA_Rebuild_the_Destroyed_Enemy
+		}
+		relative_position_id = USA_Rebuild_the_Destroyed_Enemy
+		x = -1
+		y = 1
+		completion_reward = {
+			set_variable = {
+				var = Economic_Stabilisation
+				value = 0
+			}
+			unlock_decision_category_tooltip = USA_Occupied_Economic_Stabilisation_Category
+		}
+	}
+	focus = {
+		id = USA_The_Question_of_the_Former_Leadership
+		icon = GFX_USA_Question_of_the_Former_Leadership
+		cost = 50
+		prerequisite = {
+			focus = USA_Rebuild_the_Destroyed_Enemy
+		}
+		relative_position_id = USA_Rebuild_the_Destroyed_Enemy
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_Japanese_Leaders_Trial.1
+			}
+		}
+	}
+	focus = {
+		id = USA_De_Militarization_of_Occupied_Society
+		icon = GFX_GENERIC_Purge_the_Old_Guard
+		cost = 70
+		prerequisite = {
+			focus = USA_Stabilize_the_Occupied_Economy
+		}
+		prerequisite = {
+			focus = USA_The_Question_of_the_Former_Leadership
+		}
+		relative_position_id = USA_Stabilize_the_Occupied_Economy
+		x = 1
+		y = 1
+		completion_reward = {
+			unlock_decision_category_tooltip = USA_Gradual_Occupied_De_Militarization_Category
+			set_variable = {
+				var = De_Militarization
+				value = 100
+			}
+		}
+	}
+	focus = {
+		id = USA_Deregulate_the_Insurance_Industry
+		icon = GFX_GENERIC_Support_Privatization
+		cost = 50
+		prerequisite = {
+			focus = USA_United_We_Stand
+		}
+		prerequisite = {
+			focus = USA_Ensure_Victory_Through_Lend_Lease
+		}
+		relative_position_id = USA_United_We_Stand
+		x = 4
+		y = 1
+		completion_reward = {
+			add_ideas = USA_Deregulated_Insurance_Industry_Idea
+		}
+	}
+	focus = {
+		id = USA_Ratify_the_New_Monetary_Order
+		icon = GFX_GENERIC_Tax_the_Rich
+		cost = 50
+		prerequisite = {
+			focus = USA_United_We_Stand
+		}
+		prerequisite = {
+			focus = USA_Ensure_Victory_Through_Lend_Lease
+		}
+		relative_position_id = USA_United_We_Stand
+		x = 6
+		y = 1
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {
+		id = USA_The_Joint_Economic_Committee
+		icon = GFX_goal_generic_major_alliance
+		cost = 60
+		prerequisite = {
+			focus = USA_Deregulate_the_Insurance_Industry
+		}
+		prerequisite = {
+			focus = USA_Ratify_the_New_Monetary_Order
+		}
+		relative_position_id = USA_Deregulate_the_Insurance_Industry
+		x = 1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = USA_1944_1948_FDR.2
+			}
+		}
+	}
+	focus = {
+		id = USA_Relax_Union_Regulations
+		icon = GFX_GENERIC_New_Constitution
+		cost = 50
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.6
+			}
+			has_at_least_parliament_total_support = yes
+		}
+		mutually_exclusive = {
+			focus = USA_Restrict_the_Labor_Unions
+		}
+		prerequisite = {
+			focus = USA_The_Joint_Economic_Committee
+		}
+		relative_position_id = USA_The_Joint_Economic_Committee
+		x = -1
+		y = 1
+		completion_reward = {
+			set_temp_variable = {
+				party_id = 6
+			}			# Democrats
+			set_temp_variable = {
+				popularity_to_add = 0.05
+			}
+			add_relative_popularity_to_parliament_party = yes
+			update_parliament_piechart = yes
+			set_temp_variable = {
+				party_id = 8
+			}			## Socialists
+			set_temp_variable = {
+				popularity_to_add = 0.03
+			}
+			add_relative_popularity_to_parliament_party = yes
+			update_parliament_piechart = yes
+		}
+	}
+	focus = {
+		id = USA_Restrict_the_Labor_Unions
+		icon = GFX_GENERIC_Dissolve_the_Parliament
+		cost = 50
+		available = {
+			set_temp_variable = {
+				total_support_to_check = 0.6
+			}
+			has_less_parliament_total_support = yes
+		}
+		mutually_exclusive = {
+			focus = USA_Relax_Union_Regulations
+		}
+		prerequisite = {
+			focus = USA_The_Joint_Economic_Committee
+		}
+		relative_position_id = USA_The_Joint_Economic_Committee
+		x = 1
+		y = 1
+		completion_reward = {
+			set_temp_variable = {
+				party_id = 6
+			}			# Democrats
+			set_temp_variable = {
+				popularity_to_add = -0.05
+			}
+			add_relative_popularity_to_parliament_party = yes
+			update_parliament_piechart = yes
+			set_temp_variable = {
+				party_id = 8
+			}			## Socialists
+			set_temp_variable = {
+				popularity_to_add = 0.05
+			}
+			add_relative_popularity_to_parliament_party = yes
+			update_parliament_piechart = yes
+			add_stability = 0.05
+			add_political_power = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_HISTORICAL }
+	}
+	focus = {
+		id = USA_Desegregate_the_Armed_Forces
+		icon = GFX_GENERIC_Army
+		cost = 50
+		prerequisite = {
+			focus = USA_Relax_Union_Regulations
+		}
+		prerequisite = {
+			focus = USA_Restrict_the_Labor_Unions
+		}
+		relative_position_id = USA_Relax_Union_Regulations
+		x = 1
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			set_temp_variable = {
+				party_id = 6
+			}			## Democrats
+			set_temp_variable = {
+				popularity_to_add = 0.03
+			}
+			add_relative_popularity_to_parliament_party = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = USA_The_End_of_an_Era
+		icon = GFX_GENERIC_Westernization
+		cost = 30
+		prerequisite = {
+			focus = USA_Begin_the_Marshall_Plan
+		}
+		prerequisite = {
+			focus = USA_De_Militarization_of_Occupied_Society
+		}
+		prerequisite = {
+			focus = USA_Desegregate_the_Armed_Forces
+		}
+		relative_position_id = USA_Begin_the_Marshall_Plan
+		x = 4
+		y = 1
+	}
+}

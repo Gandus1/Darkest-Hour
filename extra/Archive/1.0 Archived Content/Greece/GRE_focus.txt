@@ -1,0 +1,928 @@
+focus_tree = {
+	id = greek_focus 
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = GRE 
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1500 }
+
+  ##########################
+  # Political Tree - Start #
+  ##########################
+  
+	focus = {
+		id = GRE_Fragile_Democracy 
+		icon = GFX_goal_generic_position_armies
+		x = 6 
+		y = 0
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Elections_1933  
+		icon = GFX_goal_generic_position_armies
+		x = 6 
+		y = 1 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Fragile_Democracy
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Liberal_Victory_1933  
+		icon = GFX_goal_generic_position_armies
+		x = 3 
+		y = 2 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Elections_1933
+        }
+		
+        mutually_exclusive = {
+            focus = GRE_Conservative_Victory_1933
+        }	
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Conservative_Victory_1933  
+		icon = GFX_goal_generic_position_armies
+		x = 9  
+		y = 2 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Elections_1933
+        }
+		
+        mutually_exclusive = {
+            focus = GRE_Liberal_Victory_1933
+        }	
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Amnesty_Liberals  
+		icon = GFX_goal_generic_position_armies
+		x = 8   
+		y = 3  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Conservative_Victory_1933
+        }
+		
+        mutually_exclusive = {
+            focus = GRE_Punish_Liberals
+        }	
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Punish_Liberals  
+		icon = GFX_goal_generic_position_armies
+		x = 10    
+		y = 3 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Conservative_Victory_1933
+        }
+		
+        mutually_exclusive = {
+            focus = GRE_Amnesty_Liberals
+        }	
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Persecute_Communists  
+		icon = GFX_goal_generic_position_armies
+		x = 9   
+		y = 4 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Punish_Liberals focus = GRE_Amnesty_Liberals
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Elections_1935   
+		icon = GFX_goal_generic_position_armies
+		x = 9   
+		y = 5 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Persecute_Communists
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Royal_Coup   
+		icon = GFX_goal_generic_position_armies
+		x = 9 
+		y = 6  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Elections_1935
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Monarchy_Referendum   
+		icon = GFX_goal_generic_position_armies
+		x = 7    
+		y = 7  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Royal_Coup
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_King_George_Return   
+		icon = GFX_goal_generic_position_armies
+		x = 7    
+		y = 8  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Monarchy_Referendum
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Demertzis_Prime_Minister   
+		icon = GFX_goal_generic_position_armies
+		x = 7     
+		y = 9  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_King_George_Return
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Elections_1936    
+		icon = GFX_goal_generic_position_armies
+		x = 7     
+		y = 10   
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Demertzis_Prime_Minister
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Deal_Coup_Instigators    
+		icon = GFX_goal_generic_position_armies
+		x = 9     
+		y = 7  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Royal_Coup
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Limit_Constitution     
+		icon = GFX_goal_generic_position_armies
+		x = 11      
+		y = 7  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Royal_Coup
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Guard_Republic     
+		icon = GFX_goal_generic_position_armies
+		x = 3      
+		y = 3  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Liberal_Victory_1933
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Dismiss_Royalist_Officers     
+		icon = GFX_goal_generic_position_armies
+		x = 2      
+		y = 4  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Guard_Republic
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Reach_Conservatives     
+		icon = GFX_goal_generic_position_armies
+		x = 4       
+		y = 4  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Guard_Republic
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Force_Glucksburg_Resign      
+		icon = GFX_goal_generic_position_armies
+		x = 3        
+		y = 5  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Reach_Conservatives focus = GRE_Dismiss_Royalist_Officers
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Republic_Defended      
+		icon = GFX_goal_generic_position_armies
+		x = 3        
+		y = 6  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Force_Glucksburg_Resign
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Elections_1940       
+		icon = GFX_goal_generic_position_armies
+		x = 3        
+		y = 8   
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Republic_Defended
+        }
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_Liberal_Party       
+		icon = GFX_goal_generic_position_armies
+		x = 2        
+		y = 9   
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Elections_1940
+        }
+		
+		mutually_exclusive = {
+		    focus = GRE_People_Party
+		}
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GRE_People_Party       
+		icon = GFX_goal_generic_position_armies
+		x = 4         
+		y = 9   
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+        prerequisite = {
+            focus = GRE_Elections_1940
+        }
+		
+		mutually_exclusive = {
+		    focus = GRE_Liberal_Party
+		}
+		
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+  ########################
+  # Political Tree - End #
+  ########################
+  
+  #########################
+  # Economic Tree - Start #
+  #########################
+  
+ 	focus = {
+		id = GRE_Promote_Economic_Reform  
+		icon = GFX_goal_generic_position_armies
+		x = 18        
+		y = 0
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Classical_Liberalism   
+		icon = GFX_goal_generic_position_armies
+		x = 14           
+		y = 1 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Promote_Economic_Reform
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Industrial_Developement    
+		icon = GFX_goal_generic_position_armies
+		x = 18          
+		y = 1 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Promote_Economic_Reform
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_State_Interventionism     
+		icon = GFX_goal_generic_position_armies
+		x = 22             
+		y = 1 
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Promote_Economic_Reform
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+
+ 	focus = {
+		id = GRE_Debt_Repayments     
+		icon = GFX_goal_generic_position_armies
+		x = 14            
+		y = 2  
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Classical_Liberalism
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Foreign_Investments     
+		icon = GFX_goal_generic_position_armies
+		x = 13              
+		y = 3   
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Debt_Repayments 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Fight_Corruption      
+		icon = GFX_goal_generic_position_armies
+		x = 15              
+		y = 3   
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Debt_Repayments
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Expand_Administration       
+		icon = GFX_goal_generic_position_armies
+		x = 14               
+		y = 4    
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Foreign_Investments 
+        }
+        prerequisite = {
+            focus = GRE_Fight_Corruption 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Scaramanga_Shipyards       
+		icon = GFX_goal_generic_position_armies
+		x = 18                
+		y = 2     
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Industrial_Developement 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Promote_Tourism       
+		icon = GFX_goal_generic_position_armies
+		x = 17                 
+		y = 3     
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Scaramanga_Shipyards 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Hellenic_Steel        
+		icon = GFX_goal_generic_position_armies
+		x = 19                  
+		y = 3      
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Scaramanga_Shipyards 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Farmer_Relief         
+		icon = GFX_goal_generic_position_armies
+		x = 21                    
+		y = 2        
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_State_Interventionism 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Social_Security_Foundation         
+		icon = GFX_goal_generic_position_armies
+		x = 23                    
+		y = 2        
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_State_Interventionism 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Minimum_Wage         
+		icon = GFX_goal_generic_position_armies
+		x = 22                     
+		y = 3         
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Farmer_Relief 
+        }
+        prerequisite = {
+            focus = GRE_Social_Security_Foundation 
+        }
+
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+ 	focus = {
+		id = GRE_Agricultural_Reform          
+		icon = GFX_goal_generic_position_armies
+		x = 22                     
+		y = 4           
+		cost = 70.00
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = yes
+		
+        prerequisite = {
+            focus = GRE_Minimum_Wage 
+        }
+
+		bypass = {
+		}
+
+		completion_reward = {
+		}
+	}
+
+  
+}

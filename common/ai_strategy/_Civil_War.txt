@@ -1,0 +1,129 @@
+####################################################
+## Darkest Hour Civil War AI Strategies (Send Volunteers/ Lend Lease)
+#####################################################
+Spanish_Civil_War_Send_Volunteers_Fascist = {
+	enable = {
+		SPR = {
+			has_war_with = SPA
+		}
+		OR = {
+			original_tag = ITA
+			original_tag = GER
+		}
+		has_government = fascist
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = support
+		id = "SPA"
+		value = 1000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPA"
+		value = 1000
+	}
+	ai_strategy = {
+		type = support
+		id = "SPR"
+		value = -1000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPR"
+		value = -1000
+	}
+}
+Spanish_Civil_War_Send_Volunteers_Communist = {
+	enable = {
+		SPR = {
+			has_war_with = SPA
+		}
+		original_tag = SOV
+		has_government = communist
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = support
+		id = "SPA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = support
+		id = "SPR"
+		value = 1000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPR"
+		value = 1000
+	}
+}
+Spanish_Civil_War_Send_Volunteers_Other = {
+	enable = {
+		SPR = {
+			has_war_with = SPA
+		}
+		NOT = {
+			OR = {
+				AND = {
+					OR = {
+						original_tag = GER
+						original_tag = ITA
+					}
+					has_government = fascist
+				}
+				AND = {
+					original_tag = SOV
+					has_government = communist
+				}
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = support
+		id = "SPA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = support
+		id = "SPR"
+		value = -1000
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPR"
+		value = -1000
+	}
+}
+Spanish_Civil_War_Use_the_Troops = {
+	enable = {
+		OR = {
+			original_tag = SPR
+			original_tag = SPA
+		}
+		SPR = {
+			has_war_with = SPA
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = garrison_reinforcement_priority
+		value = -500
+	}
+	ai_strategy = {
+		type = spare_unit_factor
+		value = -100
+	}
+}

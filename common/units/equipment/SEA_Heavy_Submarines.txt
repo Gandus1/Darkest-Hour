@@ -1,0 +1,214 @@
+equipments = {
+	######################################################################
+	###################### Heavy Submarine  (HSS) ##################################
+	######################################################################
+	heavy_submarine = {
+		year = 1922
+		is_archetype = yes
+		is_buildable = no
+		type = submarine
+		group_by = archetype
+		# upgrades = {
+		# 	ship_reliability_upgrade
+		# 	sub_engine_upgrade
+		# 	sub_stealth_upgrade
+		# 	sub_torpedo_upgrade
+		# }
+		interface_category = interface_category_other_ships
+		#Misc Stats
+		build_cost_ic = 800
+		manpower = 200
+		# port_capacity_usage = 0.5
+		naval_range = 15000
+
+		module_slots = {
+			fixed_ship_torpedo_slot = {
+				required = yes
+				allowed_module_categories = { ship_torpedo_sub }
+			}
+			fixed_ship_engine_slot = {
+				required = yes
+				allowed_module_categories = { sub_ship_engine }
+			}
+			rear_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo_sub
+					ship_mine_layer_sub
+				}
+			}
+		}
+		
+		module_count_limit = {
+			category = ship_radar
+			count < 2
+		}
+		
+		default_modules = {
+			fixed_ship_torpedo_slot = empty
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		
+		lg_armor_piercing = 0
+		lg_attack = 0
+		
+		hg_armor_piercing = 0
+		hg_attack = 0
+		
+		torpedo_attack = 10
+		sub_attack = 0
+		
+		anti_air_attack = 0.5
+		
+		armor_value = 0
+	
+		surface_detection = 30
+		sub_detection = 0
+		surface_visibility = 10
+		sub_visibility = 30
+		naval_speed = 14
+		reliability = 0.60
+		
+		max_strength = 10
+		
+		fuel_consumption = 2
+		
+		resources = {
+			steel = 1
+		}
+	}
+	################################
+	# 1933 Heavy Sub
+	################################
+	HSS_equipment_1933 = {
+		year = 1933
+		archetype = heavy_submarine
+		priority = 2600
+		#Misc Stats
+		build_cost_ic = 1200
+		manpower = 200
+		# port_capacity_usage = 0.5
+		naval_range = 15000
+
+		module_slots = inherit
+		
+		default_modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 0
+		
+		surface_detection = 30
+		sub_detection = 0
+		surface_visibility = 10
+		sub_visibility = 30
+		naval_speed = 14
+		reliability = 0.65
+
+		max_strength = 20	
+		
+		resources = {
+			steel = 2
+		}
+		type = { 
+			submarine
+		}
+	}
+	################################
+	# 1940 Heavy Sub
+	################################
+	HSS_equipment_1940 = {
+		year = 1940
+		archetype = heavy_submarine
+		parent = HSS_equipment_1933
+		priority = 2600
+		naval_range = 20000
+
+		build_cost_ic = 1400
+		
+		module_slots = inherit
+		
+		default_modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = ship_torpedo_sub_1
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 20
+		
+		anti_air_attack = 2
+		
+		armor_value = 0
+	
+		surface_detection = 20
+		sub_detection = 5
+		surface_visibility = 6
+		sub_visibility = 30
+		naval_speed = 20
+		reliability = 0.7
+		
+		max_strength = 30
+		
+		resources = {
+			steel = 2
+			chromium = 1
+		}
+		type = { 
+			submarine
+		}
+	}
+	################################
+	# 1943 SuperHeavy Sub
+	################################
+	SHSS_equipment_1945 = {
+		year = 1943
+		archetype = heavy_submarine
+		parent = HSS_equipment_1940
+		priority = 2600
+		naval_range = 24000
+
+		build_cost_ic = 1800
+
+		module_slots = inherit
+		
+		default_modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 26
+		
+		anti_air_attack = 3
+		
+		armor_value = 0
+		
+		surface_detection = 25
+		sub_detection = 0
+		surface_visibility = 5
+		sub_visibility = 4
+		naval_speed = 22
+		reliability = 0.85
+
+		max_strength = 50
+				
+		resources = {
+			steel = 4
+			chromium = 1
+		}
+		type = { 
+			submarine
+		}
+	}
+	################################
+}

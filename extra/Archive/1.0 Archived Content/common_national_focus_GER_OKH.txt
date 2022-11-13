@@ -1,0 +1,132 @@
+focus_tree = {
+	id = GER_OKH
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = GER
+			has_country_leader = { name = "Ludwig Beck"	}
+		}
+	}
+	default = yes
+	focus = {
+		id = GER_Establish_Provisional_Government
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 1.00
+		x = 4
+		y = 0
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = {
+				GER_HoG_Carl_Friedrich_Goerdeler
+				GER_FM_Ulrich_von_Hassell
+				GER_AM_Paul_LejeuneJung
+				GER_HoI_Wilhelm_Canaris
+				GER_MoS_Henning_von_Tresckow
+				GER_CoStaff_Erwin_von_Witzleben
+				GER_CoArmy_Werner_von_Fritsch
+				GER_CoNavy_Erich_Raeder
+				GER_CoAir_Ernst_Udet
+			}
+		}	
+	}
+	focus = {
+		id = GER_Denazification
+		icon = GFX_GER_Denazification
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Establish_Provisional_Government
+		}
+		available = {
+			has_war = no
+		}
+		available_if_capitulated = no
+		x = 4
+		y = 1
+		completion_reward = {
+			add_ideas = { GER_Denazification  }
+		}
+	}
+	focus = {
+		id = GER_Reeducation_Program
+		icon = GFX_focus_generic_military_academy
+		cost = 14.00
+		prerequisite = {
+			focus = GER_Denazification
+		}
+		mutually_exclusive = {
+			focus = GER_Purge_the_Army
+		}
+		x = 3
+		y = 2
+		completion_reward = {
+			remove_ideas = GER_Denazification
+		}
+	}
+	focus = {
+		id = GER_Purge_the_Army
+		icon = GFX_focus_cze_german_puppet
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Denazification
+		}
+		mutually_exclusive = {
+			focus = GER_Reeducation_Program
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			remove_ideas = GER_Denazification
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+	}
+	focus = {
+		id = GER_Lift_Martial_Law
+		icon = GFX_goal_generic_small_arms
+		cost = 2.00
+		prerequisite = {
+			focus = GER_Reeducation_Program
+			focus = GER_Purge_the_Army
+		}
+		x = 4
+		y = 3
+		completion_reward = {
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = GER_Restore_the_Kaiserreich
+		icon = GFX_GER_Reestablish_the_Kaiserreich
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Lift_Martial_Law
+		}
+		mutually_exclusive = {
+			focus = GER_Consolidate_the_Junta
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			country_event = {
+				id = DH_Germany.55
+				hours = 6
+			}
+		}
+	}
+	focus = {
+		id = GER_Consolidate_the_Junta
+		icon = GFX_GENERIC_Military_State
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Lift_Martial_Law
+		}
+		mutually_exclusive = {
+			focus = GER_Restore_the_Kaiserreich
+		}
+		x = 3
+		y = 4
+
+	}
+}

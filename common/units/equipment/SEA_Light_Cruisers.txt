@@ -1,0 +1,584 @@
+equipments = {
+	######################################################################
+	###################### Light Cruisers  (CL) ##################################
+	######################################################################
+	CL_equipment = {
+		year = 1885
+		is_archetype = yes
+		is_buildable = no
+		type = screen_ship
+		# upgrades = {
+		# 	ship_reliability_upgrade
+		# 	ship_engine_upgrade
+		# 	ship_gun_upgrade
+		# 	ship_anti_air_upgrade
+		# }
+		interface_category = interface_category_screen_ships
+		#Misc Stats
+		build_cost_ic = 1800
+		manpower = 275
+		# port_capacity_usage = 1
+		naval_range = 2500
+		module_slots = {
+			fixed_ship_battery_slot = {
+				required = yes
+				allowed_module_categories = { ship_light_battery ship_medium_battery}
+			}
+			fixed_ship_anti_air_slot = {
+				required = no
+				allowed_module_categories = { ship_anti_air }
+			}
+			fixed_ship_fire_control_system_slot = {
+				required = yes
+				allowed_module_categories = { ship_fire_control_system ship_sonar }
+			}
+			fixed_ship_radar_slot = {
+				required = no
+				allowed_module_categories = { ship_radar ship_sonar }
+			}
+			fixed_ship_engine_slot = {
+				required = yes
+				allowed_module_categories = { cruiser_ship_engine }
+			}
+			fixed_ship_secondaries_slot = {
+				required = no
+				allowed_module_categories = { ship_secondaries }
+			}
+			fixed_ship_armor_slot = {
+				required = no
+				allowed_module_categories = { ship_cruiser_armor }	
+			}
+			mid_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo
+					ship_anti_air
+					ship_light_battery
+					ship_medium_battery
+					ship_secondaries
+					ship_airplane_launcher
+					ship_mine_layer
+				}
+			}
+			mid_2_custom_slot = mid_1_custom_slot
+			rear_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_anti_air
+					ship_light_battery
+					ship_medium_battery
+					ship_airplane_launcher
+					ship_mine_layer
+					ship_depth_charge
+				}
+			}
+		}
+		
+		module_count_limit = {
+			category = ship_radar
+			count < 2
+		}
+		
+		module_count_limit = {
+			category = ship_sonar
+			count < 2
+		}
+		
+		default_modules = {
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		
+		lg_armor_piercing = 0
+		lg_attack = 0
+		
+		hg_armor_piercing = 0
+		hg_attack = 0
+		
+		torpedo_attack = 0
+		sub_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 0
+
+		surface_detection = 20
+		sub_detection = 1
+		surface_visibility = 15
+		naval_speed = 20
+		reliability = 0.80
+		
+		max_strength = 100		
+		
+		fuel_consumption = 20
+		
+		resources = {
+			steel = 1
+		}
+	}
+	################################
+	#1885 Light Cruiser
+	################################
+	CL_equipment_1885 = {
+		year = 1885
+		archetype = CL_equipment
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 2200
+		manpower = 275
+		# port_capacity_usage = 1
+		naval_range = 2500
+
+		type = { 
+			screen_ship
+			anti_air
+		}
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 1
+		sub_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 3
+
+		surface_detection = 10
+		sub_detection = 0
+		surface_visibility = 10
+		naval_speed = 20
+		reliability = 0.70
+
+		max_strength = 60
+
+		resources = {
+			steel = 2
+		}
+	}
+	################################
+	#1900 Light Cruiser
+	################################
+	CL_equipment_1900 = {
+		year = 1900
+		archetype = CL_equipment
+		parent = CL_equipment_1885
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 2400
+		manpower = 300
+		naval_range = 3000
+
+		type = { 
+			screen_ship
+			anti_air
+		}
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 1
+		sub_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 3
+
+		surface_detection = 10
+		sub_detection = 0
+		surface_visibility = 12
+		naval_speed = 20
+		reliability = 0.70
+
+		max_strength = 70
+
+		resources = {
+			steel = 2
+		}
+	}
+	################################
+	#1912 Light Cruiser
+	################################
+	CL_equipment_1912 = {
+		year = 1912
+		archetype = CL_equipment
+		parent = CL_equipment_1900
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 2700
+		manpower = 400
+		naval_range = 5000
+
+		type = { 
+			screen_ship
+			anti_air
+		}
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_1
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 2
+		sub_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 4
+
+		surface_detection = 15
+		sub_detection = 0
+		surface_visibility = 15
+		naval_speed = 20
+		reliability = 0.75
+
+		max_strength = 80
+
+		resources = {
+			steel = 2
+		}
+	}
+	################################
+	#1922 Light Cruiser
+	################################
+	CL_equipment_1922 = {
+		year = 1922
+		archetype = CL_equipment
+		parent = CL_equipment_1912
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 2900
+		manpower = 550
+		naval_range = 7500
+
+		type = { 
+			screen_ship
+			anti_air
+		}
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_1
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 2
+		sub_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 4.5
+
+		surface_detection = 15
+		sub_detection = 5
+		surface_visibility = 15
+		naval_speed = 20
+		reliability = 0.8
+
+		resources = {
+			steel = 2
+		}
+	}
+	################################
+	#1933 Light Cruiser
+	################################
+	CL_equipment_1933 = {
+		year = 1933
+		archetype = CL_equipment
+		parent = CL_equipment_1922
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 3200
+		manpower = 575
+		naval_range = 8000
+
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_3
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			mid_1_custom_slot = ship_torpedo_2
+			mid_2_custom_slot = ship_anti_air_2
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 2
+		sub_attack = 5
+		
+		anti_air_attack = 0
+		
+		armor_value = 4.5
+	
+		surface_detection = 20
+		sub_detection = 5
+		naval_speed = 20
+		reliability = 0.85
+
+		max_strength = 110	
+	
+		type = { 
+			screen_ship
+			anti_air
+		}
+		resources = {
+			steel = 3
+		}
+	}
+	################################
+	#1936 Light Cruiser
+	################################
+	CL_equipment_1936 = {
+		year = 1936
+		archetype = CL_equipment
+		parent = CL_equipment_1933
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 3300
+		manpower = 750
+		# port_capacity_usage = 1
+		naval_range = 8500
+
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_3
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			mid_1_custom_slot = ship_torpedo_2
+			mid_2_custom_slot = ship_anti_air_3
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 2
+		sub_attack = 5
+		
+		anti_air_attack = 0
+		
+		armor_value = 6
+	
+		surface_detection = 20
+		sub_detection = 5
+		naval_speed = 25
+		reliability = 0.85
+
+		max_strength = 120	
+	
+		type = { 
+			screen_ship
+			anti_air
+		}
+		resources = {
+			steel = 3
+		}
+	}
+	################################
+	#1940 Light Cruiser
+	################################
+	CL_equipment_1940 = {
+		year = 1940
+		archetype = CL_equipment
+		parent = CL_equipment_1936
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 3600
+		manpower = 850
+		# port_capacity_usage = 1
+		naval_range = 9000
+
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_3
+			fixed_ship_anti_air_slot = ship_anti_air_3
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_3
+			mid_1_custom_slot = ship_torpedo_3
+			mid_2_custom_slot = ship_anti_air_3
+			rear_1_custom_slot = ship_light_medium_battery_3
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 2
+		sub_attack = 6
+		
+		anti_air_attack = 0
+		
+		armor_value = 7
+		
+		surface_detection = 30
+		sub_detection = 10
+		naval_speed = 28
+		reliability = 0.90
+
+		max_strength = 140
+		
+		type = { 
+			screen_ship
+			anti_air
+		}
+
+		resources = {
+			steel = 3
+		}
+	}
+	################################
+	#1945 Light Cruiser
+	################################
+	CL_equipment_1945 = {
+		year = 1945
+		archetype = CL_equipment
+		parent = CL_equipment_1940
+		priority = 1900
+		#Misc Stats
+		build_cost_ic = 3800
+		manpower = 850
+		# port_capacity_usage = 1
+		naval_range = 9500
+
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_4
+			fixed_ship_anti_air_slot = ship_anti_air_4
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_3
+			mid_1_custom_slot = ship_torpedo_4
+			mid_2_custom_slot = ship_anti_air_4
+			rear_1_custom_slot = ship_light_medium_battery_4
+		}
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 2
+		sub_attack = 8
+		
+		anti_air_attack = 0
+		
+		armor_value = 8
+	
+		surface_detection = 40
+		sub_detection = 10
+		naval_speed = 30
+		reliability = 0.92
+
+		max_strength = 160
+		
+		type = { 
+			screen_ship
+			anti_air
+		}
+		resources = {
+			steel = 4
+			chromium = 1
+		}
+	}
+	################################
+	#1955 Missile Light Cruiser
+	################################
+	CLG_equipment_1955 = {
+		year = 1955
+		archetype = CL_equipment
+		parent = CL_equipment_1945
+		priority = 1850
+		#Misc Stats
+		build_cost_ic = 5600
+		manpower = 800
+		# port_capacity_usage = 1
+		naval_range = 10000
+		naval_speed = 33
+		#Detection Stats
+		surface_detection = 90
+		sub_detection = 90
+		surface_visibility = 20
+		sub_visibility = 0
+		#Defensive Stats
+		max_strength = 225
+		# evasion = 80
+		reliability = 0.92
+		#Offensive Stats
+		# fire_range = 20
+		# attack = 22
+		torpedo_attack = 16
+		anti_air_attack = 42
+		sub_attack = 26
+		# shore_bombardment = 2
+		armor_value = 8
+		ap_attack = 8.5
+		#carrier_size = 45
+		#Resources
+		resources = { steel = 4 chromium = 1 }
+		type = { screen_ship anti_air }
+		#
+	}
+	################################
+	#1960 Missile Cruiser
+	################################
+	CG_equipment_1960 = {
+		year = 1960
+		archetype = CL_equipment
+		parent = CLG_equipment_1955
+		priority = 1850
+		type = { screen_ship anti_air }
+	}
+	################################
+	#1970 Missile Cruiser
+	################################
+	CG_equipment_1970 = {
+		year = 1970
+		archetype = CL_equipment
+		parent = CG_equipment_1960
+		priority = 1850
+		type = { screen_ship anti_air }
+	}
+	################################
+	#1980 Missile Cruiser
+	################################
+	CG_equipment_1980 = {
+		year = 1980
+		archetype = CL_equipment
+		parent = CG_equipment_1970
+		priority = 1850
+		type = { screen_ship anti_air }
+	}
+}

@@ -1,0 +1,1311 @@
+##################################################
+### SOV AI Strategies
+##################################################
+#########################
+# Diplomacy
+#########################
+# Soviet-Japanese NAP
+SOV_JAP_NAP = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		country_exists = JAP
+		country_exists = SOV
+		has_non_aggression_pact_with = JAP
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = ignore
+		id = "JAP"
+		value = 100
+	}
+}
+# Soviet-German Relations
+Soviet_German_Relations = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		SOV = {
+			is_fascist = no
+		}
+		GER = {
+			has_government = fascist
+		}
+	}
+	abort = {
+		GER = {
+			is_fascist = no
+		}
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "GER"
+		value = 100
+	}
+	ai_strategy = {
+		type = befriend
+		id = "GER"
+		value = -75
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = -200
+	}
+	ai_strategy = {
+		type = ignore
+		id = "GER"
+		value = -200
+	}
+	ai_strategy = {
+		type = invade
+		id = "GER"
+		value = -200
+	}
+	ai_strategy = {
+		type = conquer
+		id = "GER"
+		value = -200
+	}
+	ai_strategy = {
+		type = contain
+		id = "GER"
+		value = 200
+	}
+}
+# Soviet-Japanese Relations
+Soviet_Japanese_Relations = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		SOV = {
+			is_fascist = no
+		}
+		JAP = {
+			has_government = fascist
+		}
+	}
+	abort = {
+		JAP = {
+			is_fascist = no
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "JAP"
+		value = -50
+	}
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = -100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "JAP"
+		value = 100
+	}
+	ai_strategy = {
+		type = ignore
+		id = "JAP"
+		value = 200
+	}
+	ai_strategy = {
+		type = ignore
+		id = "MAN"
+		value = 200
+	}
+}
+SOV_Prepare_for_War_with_Germany = {
+	enable = {
+		tag = SOV
+		country_exists = GER
+		POL = {
+			OR = {
+				has_capitulated = yes
+				exists = no
+			}
+		}
+		GER = { has_completed_focus = GER_Eye_to_The_East }
+	}
+	abort = {
+		OR = {
+			has_war_with = JAP
+			has_war_with = CHI
+		}
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "FIN"
+		value = 100
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "GER"
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "HUN"
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "ROM"
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "GER"
+		value = -500
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "ROM"
+		value = -500
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = north_russia
+		value = 1000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = west_russia
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = south_russia
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = east_europe
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = -500 #less focus here
+	}
+}
+
+SOV_War_with_Germany = {
+	enable = {
+		tag = SOV
+		has_war_with = GER
+		NOT = {
+			has_war_with = CHI
+		}
+		NOT = {
+			has_war_with = JAP
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = conquer
+		id = "GER"
+		value = 5000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = "HUN"
+		value = 2000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = "ROM"
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "ROM"
+		value = -500
+	}
+
+	ai_strategy = {
+		type = invade
+		id = "GER"
+		value = -500
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+
+		area = east_europe
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+
+		area = north_russia
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+
+		area = west_russia
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+
+		area = south_russia
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = north_russia
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = west_russia
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = south_russia
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = east_europe
+		value = 2000 #more focus here
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = -500 #less focus here
+	}
+}
+SOV_Be_Defensive = {
+	allowed = {
+		tag = SOV
+	}
+
+	enable = {
+		has_war_with = GER
+		surrender_progress > 0
+		date < 1942.9.1
+		NOT = { GER = { surrender_progress > 0.2 } }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+		ordertype = front
+		execution_type = careful
+		manual_attack = yes
+	}
+}
+
+SOV_Dont_Be_Aggressive = {
+	allowed = {
+		tag = SOV
+	}
+
+	enable = {
+		has_war_with = GER
+		surrender_progress > 0
+		date > 1942.9.1
+		date < 1944.8.1
+		NOT = { GER = { surrender_progress > 0.2 } }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+		ordertype = front
+		execution_type = balanced
+		manual_attack = yes
+	}
+}
+
+SOV_Push = {
+	allowed = {
+		tag = SOV
+	}
+
+	enable = {
+		has_war_with = GER
+		date > 1944.8.1
+		date < 1945.1.1
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+		ordertype = front
+		execution_type = rush
+		manual_attack = yes
+	}
+}
+SOV_Defend_Leningrad = {
+	enable = {
+		original_tag = SOV
+		date > 1933.1.1
+		date < 1942.1.1
+	}
+
+	ai_strategy = {
+		type = garrison
+		value = -25
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+
+		order_id = 1
+
+		states = {
+			195
+		}
+
+		ratio = 0.4
+
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = no
+	}
+}
+
+SOV_Defend_Sevastapol = {
+	enable = {
+		original_tag = SOV
+		date > 1933.1.1
+		date < 1942.1.1
+	}
+
+	ai_strategy = {
+		type = garrison
+		value = -25
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+
+		order_id = 1
+
+		states = {
+			137
+			234
+		}
+
+		ratio = 0.4
+
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = no
+	}
+}
+
+SOV_Prepare_to_Invade_Persia = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		is_historical_focus_on = yes
+		date > 1941.7.20
+		SOV = {
+			has_war_with = GER
+		}
+	}
+	abort = {
+		has_global_flag = SOV_ENG_Successful_Invasion_of_Persia
+	}
+	
+	ai_strategy = {
+		type = prepare_for_war
+		id = "PER"
+		value = 500
+	}
+	ai_strategy = {
+		type = conquer
+		id = "PER"
+		value = 500
+	}
+	ai_strategy = {
+		type = invade
+		id = "PER"
+		value = 500
+	}
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 30
+	}
+}
+# Soviet-US Relations
+British_US_Relations = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		SOV = {
+			has_government = communist
+		}
+		USA = {
+			has_government = democratic
+		}
+	}
+	abort = {
+		USA = {
+			has_government = communist
+		}
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "USA"
+		value = 50
+	}
+	ai_strategy = {
+		type = alliance
+		id = "USA"
+		value = -150
+	}
+	ai_strategy = {
+		type = ignore
+		id = "USA"
+		value = -200
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "USA"
+		value = -150
+	}
+	ai_strategy = {
+		type = support
+		id = "USA"
+		value = -200
+	}
+	ai_strategy = {
+		type = protect
+		id = "USA"
+		value = -200
+	}
+}
+# Soviet-British Relations
+Soviet_British_Relations = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		SOV = {
+			is_fascist = no
+		}
+		ENG = {
+			has_government = democratic
+		}
+	}
+	abort = {
+		SOV = {
+			has_government = fascist
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "ENG"
+		value = 50
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ENG"
+		value = -150
+	}
+	ai_strategy = {
+		type = ignore
+		id = "ENG"
+		value = 200
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ENG"
+		value = -50
+	}
+	ai_strategy = {
+		type = support
+		id = "ENG"
+		value = 10
+	}
+	ai_strategy = {
+		type = protect
+		id = "ENG"
+		value = 25
+	}
+}
+# Soviet Volunteers to Xinjiang rebellion
+Soviet_Xinjiang_rebellion_response = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		SIK = {
+			has_war_with = ETS
+		}
+	}
+	abort = {
+		SIK = {
+			NOT = {
+				has_war_with = ETS
+			}
+		}
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SIK"
+		value = 200
+	}
+}
+# Soviet Intervention in the SCW
+SOV_SCW = {
+	enable = {
+		original_tag = SOV
+		country_exists = SPA
+		country_exists = SPR
+	}
+	abort = {
+		NOT = {
+			OR = {
+				country_exists = SPA
+				country_exists = SPR
+			}
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SPR"
+		value = 20
+	}
+	ai_strategy = {
+		type = support
+		id = "SPR"
+		value = 200
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPR"
+		value = 500
+	}
+}
+SOV_play_nice_with_ribbentrop_pact = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		has_global_flag = sov_yes_pact
+		GER = {
+			has_war_with = POL
+		}
+		date < 1941.1.1
+	}
+	abort = {
+		OR = {
+			GER = {
+				has_war_with = SOV
+			}
+			NOT = {
+				GER = {
+					has_war_with = POL
+				}
+			}
+			date > 1941.1.1
+		}
+	}
+	# respect the spirit of the law ;)
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "POL"
+		value = -100
+	}
+}
+SOV_No_Volunteers_to_China = {
+	allowed = {
+		tag = SOV
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = CHI
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = PRC
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = HNN
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = SHD
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = NEA
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = SHX
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = YUN
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = GXC
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = GND
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = GUZ
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = XSM
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = LXI
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = LWH
+		value = -500
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = TNG
+		value = -500
+	}
+}
+SOV_Prepare_to_Invade_Japan = {
+	enable = {
+		tag = SOV
+		JAP = { has_war_with = USA }
+		NOT = { has_war_with = FRA }
+		NOT = { has_war_with = ENG }
+		NOT = { has_war_with = USA }
+		GER = {
+			surrender_progress > 0.5
+		}
+		date > 1945.5.1
+		is_historical_focus_on = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = conquer
+		id = "JAP"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = "MAN"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		tag = JAP
+		value = 200
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		tag = MAN
+		value = 200
+	}
+}
+SOV_Ignore_Claims_in_Turkey = {
+	enable = {
+		tag = SOV
+		NOT = {
+			has_war_with = TUR
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = ignore_claim
+		id = "TUR"
+		value = 1
+	}
+}
+#########################
+# Military
+#########################
+#########################
+# Region Priority
+#########################
+## Soviet Region Priorities
+Soviet_area_priority = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		always = yes
+	}
+	ai_strategy = {
+		type = area_priority
+		id = europe
+		value = 200
+	}
+	ai_strategy = {
+		type = area_priority
+		id = north_america
+		value = 10
+	}
+	ai_strategy = {
+		type = area_priority
+		id = south_america
+		value = 10
+	}
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = 25
+	}
+	ai_strategy = {
+		type = area_priority
+		id = pacific
+		value = 10
+	}
+	ai_strategy = {
+		type = area_priority
+		id = oceania
+		value = 10
+	}
+	ai_strategy = {
+		type = area_priority
+		id = middle_east
+		value = 75
+	}
+	ai_strategy = {
+		type = area_priority
+		id = africa
+		value = 50
+	}
+}
+#########################
+# Production & Templates
+#########################
+SOV_unit_production = {
+	enable = {
+		original_tag = SOV
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 1
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = paratroopers
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 2
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = cavalry
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = mechanized
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 40 #because doctrine 70
+	}
+
+	#Air unit factors
+	ai_strategy = {
+		type = unit_ratio
+		id = fighter
+		value = 40
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = cas
+		value = 2 #because doctrine this = 15
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = tactical_bomber
+		value = 5
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = strategic_bomber
+		value = -50 # we can add a strategy later to increase this once Germany is beaten
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = naval_bomber
+		value = 4
+	}
+
+
+	# Naval unit factors
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 1
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = carrier
+		value = 1
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = submarine
+		value = 30
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 20
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 20
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = fighter
+		value = 25
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = tactical_bomber
+		value = -20
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = naval_bomber
+		value = -100
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = 15
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = artillery
+		value = 36
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = 4
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = anti_tank
+		value = 10
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 15
+	}
+}
+SOV_anti_armor = {
+	enable = {
+		original_tag = SOV
+		ai_wants_divisions > 5		#Decreasing the amount of motorized the AI wants
+		any_enemy_country = {
+			ROOT = {
+				estimated_intel_max_armor = {
+					tag = PREV
+					value > 25
+				}
+			}
+		}
+	}
+	abort = {
+		ai_wants_divisions < 6		#Decreasing the amount of motorized the AI wants
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = anti_armor
+		value = 15
+	}
+}
+SOV_Higher_Armor_Production = {
+	enable = {
+		original_tag = SOV
+		date > 1942.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 30
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 30
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = heavy_armor
+		value = 14
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -15
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = armor
+		value = 10
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = infantry
+		value = 30
+	}
+}
+
+SOV_template_design_1 = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		date < 1940.1.1
+	}
+	abort = {
+		date > 1940.1.1
+	}
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 10
+	}
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = -100
+	}
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = 50
+	}
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = -10
+	}
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = -50
+	}
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = -50
+	}
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = 50
+	}
+}
+SOV_template_design_2 = {
+	enable = {
+		original_tag = SOV
+		date > 1940.1.1
+	}
+	ai_strategy = {
+		type = template_prio
+		id = mechanized
+		value = 20
+	}
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = -100
+	}
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = 10
+	}
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = 50
+	}
+	ai_strategy = {
+		type = template_prio
+		id = modern_armor
+		value = 60
+	}
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = 20
+	}
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = -50
+	}
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = 10
+	}
+}
+
+SOV_naval_role_ratios_historical = {
+	allowed = {
+		has_dlc = "Man the Guns"
+		original_tag = SOV
+	}
+
+	enable = {
+		always = yes
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = -25
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = -100
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = -5
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 150
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 150
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = -15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = 80
+	}
+}
+
+SOV_pp_spending = {
+	enable = {
+		original_tag = SOV
+		has_manpower < 100000
+		has_political_power < 200
+	}
+	abort = {
+		OR = {
+			has_manpower > 100000
+			has_political_power > 200
+			date > 1944.1.1
+		}
+	}
+	ai_strategy = {
+		# dont burn PP on admirals if you need manpower laws
+		type = pp_spend_priority
+		id = admiral
+		value = -100
+	}
+}
+SOV_have_some_train_production = {
+	allowed = {
+		original_tag = SOV
+	}
+
+	enable = {
+		date > 1936.7.1
+		num_of_military_factories > 50
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = train
+		value = 3
+	}
+}

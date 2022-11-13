@@ -1,0 +1,341 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+GEO_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GEO_MOT_01 GEO_MEC_01 }
+
+	fallback_name = "%dya Kveiti Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Kveiti Divizia" }
+		2 = { "%dya Kveiti Divizia" }
+		3 = { "%dya Kveiti Divizia" }
+		4 = { "%dya Kveiti Divizia" }
+		5 = { "%dya Kveiti Divizia" }
+		6 = { "%dya Kveiti Divizia" }
+		7 = { "%dya Kveiti Divizia" }
+		8 = { "%dya Kveiti Divizia" }
+		9 = { "%dya Kveiti Divizia" }
+		10 = { "%dya Kveiti Divizia" }
+		11 = { "%dya Kveiti Divizia" }
+		12 = { "%dya Kveiti Divizia" }
+		13 = { "%dya Kveiti Divizia" }
+		14 = { "%dya Kveiti Divizia" }
+		15 = { "%dya Kveiti Divizia" }
+		16 = { "%dya Kveiti Divizia" }
+		17 = { "%dya Kveiti Divizia" }
+		18 = { "%dya Kveiti Divizia" }
+		19 = { "%dya Kveiti Divizia" }
+		20 = { "%dya Kveiti Divizia" }
+		21 = { "%dya Kveiti Divizia" }
+		22 = { "%dya Kveiti Divizia" }
+		23 = { "%dya Kveiti Divizia" }
+		24 = { "%dya Kveiti Divizia" }
+		25 = { "%dya Kveiti Divizia" }
+
+	}
+}
+
+GEO_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GEO_INF_01 }
+
+	fallback_name = "%dya Tskhenosanta Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Tskhenosanta Divizia" }
+		2 = { "%dya Tskhenosanta Divizia" }
+		3 = { "%dya Tskhenosanta Divizia" }
+		4 = { "%dya Tskhenosanta Divizia" }
+		5 = { "%dya Tskhenosanta Divizia" }
+		6 = { "%dya Tskhenosanta Divizia" }
+		7 = { "%dya Tskhenosanta Divizia" }
+		8 = { "%dya Tskhenosanta Divizia" }
+		9 = { "%dya Tskhenosanta Divizia" }
+		10 = { "%dya Tskhenosanta Divizia" }
+
+	}
+}
+
+GEO_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GEO_INF_01 GEO_MEC_01 }
+
+	fallback_name = "%dya Motorizebuli Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Motorizebuli Divizia" }
+		2 = { "%dya Motorizebuli Divizia" }
+		3 = { "%dya Motorizebuli Divizia" }
+		4 = { "%dya Motorizebuli Divizia" }
+		5 = { "%dya Motorizebuli Divizia" }
+		6 = { "%dya Motorizebuli Divizia" }
+		7 = { "%dya Motorizebuli Divizia" }
+		8 = { "%dya Motorizebuli Divizia" }
+		9 = { "%dya Motorizebuli Divizia" }
+		10 = { "%dya Motorizebuli Divizia" }
+		11 = { "%dya Motorizebuli Divizia" }
+		12 = { "%dya Motorizebuli Divizia" }
+		13 = { "%dya Motorizebuli Divizia" }
+		14 = { "%dya Motorizebuli Divizia" }
+		15 = { "%dya Motorizebuli Divizia" }
+		16 = { "%dya Motorizebuli Divizia" }
+		17 = { "%dya Motorizebuli Divizia" }
+		18 = { "%dya Motorizebuli Divizia" }
+		19 = { "%dya Motorizebuli Divizia" }
+		20 = { "%dya Motorizebuli Divizia" }
+		21 = { "%dya Motorizebuli Divizia" }
+		22 = { "%dya Motorizebuli Divizia" }
+		23 = { "%dya Motorizebuli Divizia" }
+		24 = { "%dya Motorizebuli Divizia" }
+		25 = { "%dya Motorizebuli Divizia" }
+
+	}
+}
+
+GEO_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GEO_INF_01 }
+
+	fallback_name = "%dya Satanko Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Satanko Divizia" }
+		2 = { "%dya Satanko Divizia" }
+		3 = { "%dya Satanko Divizia" }
+		4 = { "%dya Satanko Divizia" }
+		5 = { "%dya Satanko Divizia" }
+		6 = { "%dya Satanko Divizia" }
+		7 = { "%dya Satanko Divizia" }
+		8 = { "%dya Satanko Divizia" }
+		9 = { "%dya Satanko Divizia" }
+		10 = { "%dya Satanko Divizia" }
+
+	}
+}
+
+GEO_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GEO_INF_01 GEO_MOT_01 }
+
+	fallback_name = "%dya Mekanizebuli Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Mekanizebuli Divizia" }
+		2 = { "%dya Mekanizebuli Divizia" }
+		3 = { "%dya Mekanizebuli Divizia" }
+		4 = { "%dya Mekanizebuli Divizia" }
+		5 = { "%dya Mekanizebuli Divizia" }
+		6 = { "%dya Mekanizebuli Divizia" }
+		7 = { "%dya Mekanizebuli Divizia" }
+		8 = { "%dya Mekanizebuli Divizia" }
+		9 = { "%dya Mekanizebuli Divizia" }
+		10 = { "%dya Mekanizebuli Divizia" }
+		11 = { "%dya Mekanizebuli Divizia" }
+		12 = { "%dya Mekanizebuli Divizia" }
+		13 = { "%dya Mekanizebuli Divizia" }
+		14 = { "%dya Mekanizebuli Divizia" }
+		15 = { "%dya Mekanizebuli Divizia" }
+		16 = { "%dya Mekanizebuli Divizia" }
+		17 = { "%dya Mekanizebuli Divizia" }
+		18 = { "%dya Mekanizebuli Divizia" }
+		19 = { "%dya Mekanizebuli Divizia" }
+		20 = { "%dya Mekanizebuli Divizia" }
+		21 = { "%dya Mekanizebuli Divizia" }
+		22 = { "%dya Mekanizebuli Divizia" }
+		23 = { "%dya Mekanizebuli Divizia" }
+		24 = { "%dya Mekanizebuli Divizia" }
+		25 = { "%dya Mekanizebuli Divizia" }
+
+	}
+}
+
+GEO_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GEO_INF_01 }
+
+	fallback_name = "%dya Divizia Sazghvao Korpusi"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Divizia Sazghvao Korpusi" }
+		2 = { "%dya Divizia Sazghvao Korpusi" }
+		3 = { "%dya Divizia Sazghvao Korpusi" }
+		4 = { "%dya Divizia Sazghvao Korpusi" }
+		5 = { "%dya Divizia Sazghvao Korpusi" }
+		6 = { "%dya Divizia Sazghvao Korpusi" }
+		7 = { "%dya Divizia Sazghvao Korpusi" }
+		8 = { "%dya Divizia Sazghvao Korpusi" }
+		9 = { "%dya Divizia Sazghvao Korpusi" }
+		10 = { "%dya Divizia Sazghvao Korpusi" }
+
+	}
+}
+
+GEO_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GEO_INF_01 }
+
+	fallback_name = "%dya Samto Kveiti Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Samto Kveiti Divizia" }
+		2 = { "%dya Samto Kveiti Divizia" }
+		3 = { "%dya Samto Kveiti Divizia" }
+		4 = { "%dya Samto Kveiti Divizia" }
+		5 = { "%dya Samto Kveiti Divizia" }
+		6 = { "%dya Samto Kveiti Divizia" }
+		7 = { "%dya Samto Kveiti Divizia" }
+		8 = { "%dya Samto Kveiti Divizia" }
+		9 = { "%dya Samto Kveiti Divizia" }
+		10 = { "%dya Samto Kveiti Divizia" }
+
+	}
+}
+
+GEO_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { GEO ADJ }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GEO_INF_01 }
+
+	fallback_name = "%dya Sahaero Khomaldis Divizia"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dya Sahaero Khomaldis Divizia" }
+		2 = { "%dya Sahaero Khomaldis Divizia" }
+		3 = { "%dya Sahaero Khomaldis Divizia" }
+		4 = { "%dya Sahaero Khomaldis Divizia" }
+		5 = { "%dya Sahaero Khomaldis Divizia" }
+		6 = { "%dya Sahaero Khomaldis Divizia" }
+		7 = { "%dya Sahaero Khomaldis Divizia" }
+		8 = { "%dya Sahaero Khomaldis Divizia" }
+		9 = { "%dya Sahaero Khomaldis Divizia" }
+		10 = { "%dya Sahaero Khomaldis Divizia" }
+
+	}
+}

@@ -1,0 +1,71 @@
+###########################
+# Darkest Hour Events : Persia
+###########################
+add_namespace = PER_Iran
+add_namespace = PER_Flavour
+#########################################################################
+#  A Suggestion from our Ambassador to Germany
+#########################################################################
+country_event = {
+	id = PER_Iran.1
+	title = PER_Iran.1.t
+	desc = PER_Iran.1.d
+	picture = GFX_Royal_Family
+	fire_only_once = yes
+	trigger = {
+		original_tag = PER
+		NOT = { has_cosmetic_tag = PER_IRAN }
+		date > 1935.3.21
+		has_start_date < 1935.3.21
+		GER = {
+			exists = yes
+			has_government = fascist
+			NOT = { has_war_with = ROOT }
+		}
+	}
+	option = {
+		name = PER_Iran.1.A
+		ai_chance = {
+			factor = 100
+		}
+		set_cosmetic_tag = PER_IRAN
+	}
+	option = {
+		name = PER_Iran.1.B
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+#########################################################################
+#  The Iranian Famine
+#########################################################################
+news_event = {
+	id = PER_Flavour.1
+	title = PER_Flavour.1.t
+	desc = PER_Flavour.1.d
+	picture = GFX_news_PER_Iranian_Famine
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = PER_Flavour.1.A
+		trigger = {
+			original_tag = SOV
+		}
+	}
+	option = {
+		name = PER_Flavour.1.B
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	option = {
+		name = PER_Flavour.1.C
+		trigger = {
+			NOT = {
+				original_tag = SOV
+				original_tag = ENG
+			}
+		}
+	}
+}

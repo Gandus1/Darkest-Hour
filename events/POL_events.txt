@@ -1,0 +1,1523 @@
+﻿###########################
+# Darkest Hour Events : Poland
+###########################
+add_namespace = Poland
+add_namespace = POL_Death_of_Pilsudski
+add_namespace = POL_Front_Morges
+add_namespace = POL_Sanation
+add_namespace = POL_1933_Election
+add_namespace = POL_Colonel_Government
+add_namespace = POL_Mid_Politics
+add_namespace = POL_Economic
+add_namespace = POL_Economic_Four_Years_Plan
+add_namespace = POL_Economic_Mid
+add_namespace = POL_Military
+add_namespace = POL_Plan_East
+add_namespace = POL_Plan_West
+add_namespace = POL_Plan_Completed
+add_namespace = POL_Airforce
+add_namespace = POL_Navy
+add_namespace = POL_Innovative
+###########################
+# Pilsudski, The Polish “Iron Man”, Dead"
+###########################
+news_event = {
+	id = POL_Death_of_Pilsudski.1
+	title = POL_Death_of_Pilsudski.1.t
+	desc = POL_Death_of_Pilsudski.1.d
+	picture = GFX_news_POL_Death_of_Pilsudski
+	fire_only_once = yes
+	is_triggered_only = yes
+	# trigger = {
+	# 	date > 1935.5.12
+	# 	has_start_date < 1935.5.12
+	# }
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.POL
+		trigger = {
+			original_tag = POL
+		}
+		remove_ideas = POL_CoArmy_Jozef_Pilsudski
+		remove_ideas = POL_May_Coup
+		add_ideas = POL_Marian_ZyndramKoscialkowski_HoG
+		set_country_flag = Jozef_Pilsudski_unavailable
+		kill_country_leader = yes
+		hidden_effect = {
+			country_event = {
+				id = POL_Sanation.1
+				days = 10
+			}
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.SOV
+		trigger = {
+			original_tag = SOV
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.GER
+		trigger = {
+			original_tag = GER
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.ITA
+		trigger = {
+			original_tag = ITA
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.JAP
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.FRA
+		trigger = {
+			original_tag = FRA
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.ENG
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	# Powodzenia, Marszałku.
+	option = {
+		name = POL_Death_of_Pilsudski.1.AUS
+		trigger = {
+			original_tag = AUS
+		}
+	}
+	# The start of a dark road, perhaps...
+	option = {
+		name = POL_Death_of_Pilsudski.1.B
+		trigger = {
+			NOT = {
+				original_tag = POL
+				original_tag = SOV
+				original_tag = GER
+				original_tag = ITA
+				original_tag = JAP
+				original_tag = FRA
+				original_tag = ENG
+				original_tag = AUS
+			}
+		}
+	}
+}
+###########################
+# The Foundation of Front Morges
+###########################
+news_event = {
+	id = POL_Front_Morges.1
+	title = POL_Front_Morges.1.t
+	desc = POL_Front_Morges.1.d
+	picture = GFX_news_POL_Front_Morges
+	fire_only_once = yes
+	trigger = {
+		original_tag = POL
+		date > 1936.2.16
+		has_start_date < 1936.2.16
+	}
+	# They can only do little by this point
+	option = {
+		name = POL_Front_Morges.1.A
+		set_party_name = {
+			ideology = democratic
+			long_name = "Front Morges"
+			name = "FM"
+		}
+		add_stability = -0.03
+	}
+}
+###########################
+# Polish Events
+###########################
+add_namespace = poland
+# Eastward Expansion (Danzig Ceded)
+country_event = {
+	id = poland.1
+	title = poland.1.t
+	desc = poland.1.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.1.A
+		ai_chance = { factor = 10 }
+		add_state_claim = 198
+		add_state_claim = 199
+		add_state_claim = 201
+	}
+	option = {
+		name = poland.1.B
+		ai_chance = { factor = 10 }
+		add_opinion_modifier = { target = SOV modifier = medium_increase }
+	}
+}
+# Soviet Union Demands the East
+country_event = {
+	id = poland.2
+	title = poland.2.t
+	desc = poland.2.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.2.A
+		ai_chance = { factor = 30 }
+		effect_tooltip = {
+			SOV = {
+				if = {
+					limit = { POL = { owns_state = 96 controls_state = 96 } }
+					transfer_state = 96
+				}
+				if = {
+					limit = { POL = { owns_state = 95 controls_state = 95 } }
+					transfer_state = 95
+				}
+				if = {
+					limit = { POL = { owns_state = 94 controls_state = 94 } }
+					transfer_state = 94
+				}
+				if = {
+					limit = { POL = { owns_state = 93 controls_state = 93 } }
+					transfer_state = 93
+				}
+				if = {
+					limit = { POL = { owns_state = 91 controls_state = 91 } }
+					transfer_state = 91
+				}
+				if = {
+					limit = { POL = { owns_state = 89 controls_state = 89 } }
+					transfer_state = 89
+				}
+				if = {
+					limit = { POL = { owns_state = 885 controls_state = 885 } }
+					transfer_state = 885
+				}
+			}
+		}
+		SOV = {country_event = { id = poland.3} }
+	}
+	option = {
+		name = poland.2.B
+		ai_chance = { factor = 70 }
+		effect_tooltip = {
+			SOV = {
+				create_wargoal = {
+					type = take_state_focus
+					target = POL
+					generator = { 96 95 94 93 91 89 885 }
+				}
+			}
+		}
+		SOV = { country_event = { id = poland.4 } }
+	}
+}
+# Poland Cedes the East
+country_event = {
+	id = poland.3
+	title = poland.3.t
+	desc = poland.3.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.3.A
+		if = {
+			limit = {
+				POL = {
+					owns_state = 96
+					controls_state = 96
+				}
+			}
+			transfer_state = 96
+		}
+		if = {
+			limit = {
+				POL = {
+					owns_state = 95
+					controls_state = 95
+				}
+			}
+			transfer_state = 95
+		}
+		if = {
+			limit = {
+				POL = {
+					owns_state = 94
+					controls_state = 94
+				}
+			}
+			transfer_state = 94
+		}
+		if = {
+			limit = {
+				POL = {
+					owns_state = 93
+					controls_state = 93
+				}
+			}
+			transfer_state = 93
+		}
+		if = {
+			limit = {
+				POL = {
+					owns_state = 91
+					controls_state = 91
+				}
+			}
+			transfer_state = 91
+		}
+		if = {
+			limit = {
+				POL = {
+					owns_state = 885
+					controls_state = 885
+				}
+			}
+			transfer_state = 885
+		}
+		if = {
+			limit = {
+				POL = {
+					owns_state = 89
+					controls_state = 89
+				}
+			}
+			transfer_state = 89
+		}
+		hidden_effect = {
+			news_event = { id = news.194 }
+		}
+	}
+}
+# Poland Refuses to Cede the East
+country_event = {
+	id = poland.4
+	title = poland.4.t
+	desc = poland.4.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.4.A
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			generator = { 96 95 94 93 91 89 885 }
+		}
+	}
+}
+# Soviet Union Offers Protection
+country_event = {
+	id = poland.5
+	title = poland.5.t
+	desc = poland.5.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.5.A
+		ai_chance = { factor = 40 }
+		effect_tooltip = {
+			add_state_claim = 5
+			add_state_claim = 63
+			add_state_claim = 68
+			add_state_claim = 66
+			add_state_claim = 67
+			custom_effect_tooltip = SOV_offer_poland_protection_tt
+			SOV = {
+				if = {
+					limit = { POL = { owns_state = 96 controls_state = 96 } }
+					transfer_state = 96
+				}
+				if = {
+					limit = { POL = { owns_state = 95 controls_state = 95 } }
+					transfer_state = 95
+				}
+				if = {
+					limit = { POL = { owns_state = 94 controls_state = 94 } }
+					transfer_state = 94
+				}
+				if = {
+					limit = { POL = { owns_state = 93 controls_state = 93 } }
+					transfer_state = 93
+				}
+				if = {
+					limit = { POL = { owns_state = 91 controls_state = 91 } }
+					transfer_state = 91
+				}
+				if = {
+					limit = { POL = { owns_state = 89 controls_state = 89 } }
+					transfer_state = 89
+				}
+			}
+		}
+		SOV = { country_event = { id = poland.6 } }
+	}
+	option = {
+		name = poland.5.B
+		ai_chance = { factor = 60 }
+		effect_tooltip = {
+			SOV = {
+				create_wargoal = {
+					type = take_state_focus
+					target = POL
+					generator = { 96 95 94 93 91 89 }
+				}
+			}
+		}
+		SOV = { country_event = { id = poland.7 } }
+	}
+}
+# Poland Accepts Protection
+country_event = {
+	id = poland.6
+	title = poland.6.t
+	desc = poland.6.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.6.A
+		POL = {
+			add_state_claim = 5
+			add_state_claim = 63
+			add_state_claim = 68
+			add_state_claim = 66
+			add_state_claim = 67
+			set_country_flag = POL_accepted_soviet_protection
+		}
+		custom_effect_tooltip = SOV_offer_poland_protection_tt
+		if = {
+			limit = { POL = { owns_state = 96 } }
+			transfer_state = 96
+		}
+		if = {
+			limit = { POL = { owns_state = 95 } }
+			transfer_state = 95
+		}
+		if = {
+			limit = { POL = { owns_state = 94 } }
+			transfer_state = 94
+		}
+		if = {
+			limit = { POL = { owns_state = 93 } }
+			transfer_state = 93
+		}
+		if = {
+			limit = { POL = { owns_state = 91 } }
+			transfer_state = 91
+		}
+		if = {
+			limit = { POL = { owns_state = 89 } }
+			transfer_state = 89
+		}
+		hidden_effect = {
+			news_event = { id = news.194 }
+		}
+	}
+}
+# Poland Refuses Protection
+country_event = {
+	id = poland.7
+	title = poland.7.t
+	desc = poland.7.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.7.A
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			generator = { 96 95 94 93 91 89 }
+		}
+	}
+}
+# Poland Granted Eastern Germany
+country_event = {
+	id = poland.8
+	title = poland.8.t
+	desc = poland.8.d
+	picture = GFX_report_event_polish_tanks_01
+	trigger = {
+		POL = { has_country_flag = POL_accepted_soviet_protection }
+		tag = POL
+		SOV = {
+			OR = {
+				owns_state = 5
+				owns_state = 63
+				owns_state = 68
+				owns_state = 66
+				owns_state = 67
+			}
+		}
+	}
+	immediate = {
+		clr_country_flag = POL_accepted_soviet_protection
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = poland.8.A
+		if = {
+			limit = { SOV = { owns_state = 5 } }
+			transfer_state = 5
+		}
+		if = {
+			limit = { SOV = { owns_state = 63 } }
+			transfer_state = 63
+		}
+		if = {
+			limit = { SOV = { owns_state = 68 } }
+			transfer_state = 68
+		}
+		if = {
+			limit = { SOV = { owns_state = 66 } }
+			transfer_state = 66
+		}
+		if = {
+			limit = { SOV = { owns_state = 67 } }
+			transfer_state = 67
+		}
+		SOV = { country_event = { id = poland.9 } }
+	}
+}
+country_event = {
+	id = poland.9
+	title = poland.8.t
+	desc = poland.8.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.9.A
+		effect_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						SOV = { owns_state = 5 }
+						POL = { owns_state = 5 }
+					}
+				}
+				POL = { transfer_state = 5 }
+			}
+			if = {
+				limit = {
+					OR = {
+						SOV = { owns_state = 63 }
+						POL = { owns_state = 63 }
+					}
+				}
+				POL = { transfer_state = 63 }
+			}
+			if = {
+				limit = {
+					OR = {
+						SOV = { owns_state = 68 }
+						POL = { owns_state = 68 }
+					}
+				}
+				POL = { transfer_state = 68 }
+			}
+			if = {
+				limit = {
+					OR = {
+						SOV = { owns_state = 66 }
+						POL = { owns_state = 66 }
+					}
+				}
+				POL = { transfer_state = 66 }
+			}
+			if = {
+				limit = {
+					OR = {
+						SOV = { owns_state = 67 }
+						POL = { owns_state = 67 }
+					}
+				}
+				POL = { transfer_state = 67 }
+			}
+		}
+		hidden_effect = {
+			news_event = { id = news.195 }
+		}
+	}
+}
+country_event = {
+	id = poland.10
+	title = poland.10.t
+	desc = poland.10.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.10.A
+	}
+}
+country_event = {
+	id = poland.11
+	title = poland.11.t
+	desc = poland.11.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = poland.11.A
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+	}
+}
+country_event = { #The Sejm Reelects Moscicki to the Presidency
+	id = POL_1933_Election.1
+	title = POL_1933_Election.1.t
+	desc = POL_1933_Election.1.d
+	picture = GFX_report_POL_Moscicki_elected
+	trigger = {
+		tag = POL
+		date > 1933.05.08
+		has_start_date < 1933.05.08
+	}
+	fire_only_once = yes
+	option = {
+		name = POL_1933_Election.1.A
+		unlock_national_focus = POL_Economy
+		unlock_national_focus = POL_1933_Election
+		add_stability = 0.02
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.02
+		}
+	}
+}
+country_event = { #New Prison Camp in Bereza Kartuska
+	id = POL_1933_Election.2
+	title = POL_1933_Election.2.t
+	desc = POL_1933_Election.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_1933_Election.2.A
+		add_stability = -0.08
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = -0.08
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.02
+		}
+	}
+}
+country_event = { #The Westerplatte Incident
+	id = POL_1933_Election.3
+	title = POL_1933_Election.3.t
+	desc = POL_1933_Election.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_1933_Election.3.A
+		add_stability = 0.05
+		add_political_power = 25
+	}
+}
+country_event = { #Out of Many, One.
+	id = POL_1933_Election.4
+	title = POL_1933_Election.4.t
+	desc = POL_1933_Election.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_1933_Election.4.A
+	}
+}
+country_event = { #Safeguarding the Rzeczpospolita
+	id = POL_1933_Election.5
+	title = POL_1933_Election.5.t
+	desc = POL_1933_Election.5.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_1933_Election.5.A
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.04
+		}
+		add_popularity = {
+			ideology = socialist
+			popularity = -0.04
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = -0.02
+		}
+	}
+}
+country_event = { #Ratification of the April Constitution
+	id = POL_1933_Election.6
+	title = POL_1933_Election.6.t
+	desc = POL_1933_Election.6.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	trigger = {
+		tag = POL
+		date > 1935.04.22
+		has_start_date < 1935.04.22
+	}
+	fire_only_once = yes
+	option = {
+		name = POL_1933_Election.6.A
+		unlock_national_focus = POL_Ratify_April_Constitution
+		add_stability = 0.05
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.05
+		}
+	}
+}
+country_event = { # Rydz-Smigly Assumes the Marshallship
+	id = POL_Colonel_Government.1
+	title = POL_Colonel_Government.1.t
+	desc = POL_Colonel_Government.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Colonel_Government.1.A
+		remove_ideas = POL_Fractured_Government
+		add_timed_idea = {
+			idea = POL_New_Marshall
+			days = 365
+		}
+	}
+}
+country_event = { #Establish the OZON Movement
+	id = POL_Colonel_Government.2
+	title = POL_Colonel_Government.2.t
+	desc = POL_Colonel_Government.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Colonel_Government.2.A
+		set_party_name = {
+			ideology = authoritarian
+			long_name = POL_authoritarian_OZON_party_long
+			name = POL_authoritarian_OZON_party
+		}
+	}
+}
+country_event = { #Union of Young Poland
+	id = POL_Colonel_Government.3
+	title = POL_Colonel_Government.3.t
+	desc = POL_Colonel_Government.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Colonel_Government.3.A
+		add_ideas = one_year_service
+	}
+}
+country_event = { #Reevaluate the National Defense Fund
+	id = POL_Colonel_Government.4
+	title = POL_Colonel_Government.4.t
+	desc = POL_Colonel_Government.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Colonel_Government.4.A
+		unlock_national_focus = POL_The_Polish_Prestige
+	}
+}
+country_event = { #The Agrarian Shift
+	id = POL_Colonel_Government.6
+	title = POL_Colonel_Government.6.t
+	desc = POL_Colonel_Government.6.d
+	picture = something
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Colonel_Government.6.A
+		swap_ideas = {
+			remove_idea = industrializing_economy
+			add_idea = mixed_economy
+		}
+	}
+	option = {
+		name = POL_Colonel_Government.6.B
+		swap_ideas = {
+			remove_idea = industrializing_economy
+			add_idea = corporatism
+		}
+	}
+}
+country_event = { #Nationalization stabilizes the Zloty
+	id = POL_Mid_Politics.1
+	title = POL_Mid_Politics.1.t
+	desc = POL_Mid_Politics.1.d
+	picture = something
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Mid_Politics.1.A
+	}
+}
+country_event = { #The Sanation Party Fractures
+	id = POL_Sanation.1
+	title = POL_Sanation.1.t
+	desc = POL_Sanation.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Sanation.1.A
+		add_ideas = POL_Fractured_Government
+		set_party_name = {
+			ideology = authoritarian
+			long_name = POL_authoritarian_SANA_party_long
+			name = POL_authoritarian_SANA_party
+		}
+		country_event = {
+			id = POL_Sanation.2
+			days = 14
+		}
+	}
+}
+country_event = { #The Foundation of Front Morges
+	id = POL_Sanation.2
+	title = POL_Sanation.2.t
+	desc = POL_Sanation.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Sanation.2.A
+		add_ideas = POL_Fractured_Government
+		set_party_name = {
+			ideology = democratic
+			long_name = POL_democratic_FM_party_long
+			name = POL_democratic_FM_party
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		country_event = {
+			id = POL_Sanation.3
+			days = 14
+		}
+	}
+}
+country_event = { #The Path of the Second Republic
+	id = POL_Sanation.3
+	title = POL_Sanation.3.t
+	desc = POL_Sanation.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Sanation Collapses, the Republic Restored
+		name = POL_Sanation.3.A
+		ai_chance = {
+			factor = 0
+		}
+		add_stability = -0.2
+		load_focus_tree = generic_focus
+	}
+	option = { #Reformists Steady the Ship
+		name = POL_Sanation.3.B
+		ai_chance = {
+			factor = 0
+		}
+		add_stability = -0.1
+		set_party_name = {
+			ideology = authoritarian
+			long_name = POL_authoritarian_SANA_Colonels_party_long
+			name = POL_authoritarian_SANA_party
+		}
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.05
+		}
+		unlock_national_focus = POL_Keynesian_Economics
+		unlock_national_focus = POL_Sanation_Left
+	}
+	option = { #A Stable Status Quo
+		name = POL_Sanation.3.C
+		ai_chance = {
+			factor = 0
+		}
+		set_party_name = {
+			ideology = authoritarian
+			long_name = POL_authoritarian_SANA_Castle_party_long
+			name = POL_authoritarian_SANA_party
+		}
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.05
+		}
+		unlock_national_focus = POL_Continue_Four_Years_Plan
+		unlock_national_focus = POL_Castle_over_Varsaw
+	}
+	option = { #An Unexpected Alliance
+		name = POL_Sanation.3.D
+		ai_chance = {
+			factor = 100
+		}
+		add_stability = 0.1
+		set_party_name = {
+			ideology = authoritarian
+			long_name = POL_authoritarian_SANA_OZN_party_long
+			name = POL_authoritarian_SANA_party
+		}
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.05
+		}
+		create_country_leader = {
+			name = "Rydz-Smigly"
+			picture = GFX_M_Edward_Rydz_Smigly
+			expire = "1941.12.2"
+			ideology = authoritarian_democracy
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Authoritarian_Democracy
+			}
+		}
+		unlock_national_focus = POL_Continue_Four_Years_Plan
+		unlock_national_focus = POL_Power_Sharing_Agreement
+	}
+}
+country_event = { #Poland's Second Great Leader
+	id = POL_Sanation.4
+	title = POL_Sanation.4.t
+	desc = POL_Sanation.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Sanation.4.A
+		add_political_power = 350
+	}
+}
+country_event = { #United Factories of Nitrogen Compounds
+	id = POL_Economic.1
+	title = POL_Economic.1.t
+	desc = POL_Economic.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Economic.1.A
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = synth_resources
+		}
+	}
+}
+country_event = { #Cross City Railway opened for Passengers!
+	id = POL_Economic.2
+	title = POL_Economic.2.t
+	desc = POL_Economic.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Economic.2.A
+		10 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = { #H. Cegielski Manufacturing Company
+	id = POL_Economic_Four_Years_Plan.1
+	title = POL_Economic_Four_Years_Plan.1.t
+	desc = POL_Economic_Four_Years_Plan.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Economic_Four_Years_Plan.1.A
+		set_country_flag = POL_Cegielsky_Branched_Out
+	}
+}
+country_event = { #Consolidate the Centralny Okreg Przemyslowy
+	id = POL_Economic_Four_Years_Plan.2
+	title = POL_Economic_Four_Years_Plan.2.t
+	desc = POL_Economic_Four_Years_Plan.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Economic_Four_Years_Plan.2.A
+	}
+}
+country_event = { #Polish Chemical Contracts
+	id = POL_Economic_Four_Years_Plan.3
+	title = POL_Economic_Four_Years_Plan.3.t
+	desc = POL_Economic_Four_Years_Plan.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Economic_Four_Years_Plan.3.A
+		add_ideas = POL_Chemical_Exports
+	}
+}
+country_event = { #The Pride of Polish Armaments
+	id = POL_Economic_Mid.1
+	title = POL_Economic_Mid.1.t
+	desc = POL_Economic_Mid.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Economic_Mid.1.A
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = industry
+		}
+	}
+}
+country_event = { #Selling Republican Lands
+	id = POL_Military.1
+	title = POL_Military.1.t
+	desc = POL_Military.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Military.1.A
+		88 = {
+			add_extra_state_shared_building_slots = -1
+		}
+		86 = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_temp_variable = { money_to_gain = 200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+	}
+}
+country_event = { #A Pledge from the People
+	id = POL_Military.2
+	title = POL_Military.2.t
+	desc = POL_Military.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Military.2.A
+		set_temp_variable = { money_to_gain = 150 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		country_event = {id = POL_Military.3 days = 30}
+	}
+}
+country_event = { #A Nation Responds
+	id = POL_Military.3
+	title = POL_Military.3.t
+	desc = POL_Military.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Military.3.A
+		unlock_national_focus = POL_A_Nation_Responds
+	}
+}
+country_event = { #Plan East
+	id = POL_Plan_East.1
+	title = POL_Plan_East.1.t
+	desc = POL_Plan_East.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_East.1.A
+		set_country_flag = POL_Plan_East
+	}
+}
+country_event = { #Enemies at the Gates
+	id = POL_Plan_East.2
+	title = POL_Plan_East.2.t
+	desc = POL_Plan_East.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_East.2.A
+	}
+}
+country_event = { #Retreat is an option
+	id = POL_Plan_East.3
+	title = POL_Plan_East.3.t
+	desc = POL_Plan_East.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_East.3.A
+		add_ideas = POL_Retreat_is_an_Option
+	}
+}
+country_event = { #The Korpus Ochrony Pogranicza
+	id = POL_Plan_East.4
+	title = POL_Plan_East.4.t
+	desc = POL_Plan_East.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_East.4.A
+		custom_effect_tooltip = POL_Plan_East.4_tt
+		hidden_effect = {
+			load_oob = POL_Border_Protection_Corps
+		}
+	}
+}
+country_event = { #Plan West
+	id = POL_Plan_West.1
+	title = POL_Plan_West.1.t
+	desc = POL_Plan_West.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_West.1.A
+		set_country_flag = POL_Plan_West
+	}
+}
+country_event = { #The Etarnal Defense
+	id = POL_Plan_West.2
+	title = POL_Plan_West.2.t
+	desc = POL_Plan_West.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_West.2.A
+	}
+}
+country_event = { #Maczek's Mobile Battalions
+	id = POL_Plan_West.3
+	title = POL_Plan_West.3.t
+	desc = POL_Plan_West.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_West.3.A
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			technology = Motorized_1916
+		}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			technology = Armored_Car_1936
+		}
+	}
+}
+country_event = { #The Wz. 75 Anti-material Rifle
+	id = POL_Plan_West.4
+	title = POL_Plan_West.4.t
+	desc = POL_Plan_West.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_West.4.A
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			technology = Anti_Aircraft_Gun_1935
+		}
+	}
+}
+country_event = { #Our own Polish Tank?
+	id = POL_Plan_West.5
+	title = POL_Plan_West.5.t
+	desc = POL_Plan_West.5.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_West.5.A
+		set_technology = {
+			Light_Tank_1936 = 1
+		}
+	}
+}
+country_event = { #Employment in the National Defense
+	id = POL_Plan_West.6
+	title = POL_Plan_West.6.t
+	desc = POL_Plan_West.6.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_West.6.A
+	}
+}
+country_event = { #Poland on the Brink
+	id = POL_Plan_Completed.1
+	title = POL_Plan_Completed.1.t
+	desc = POL_Plan_Completed.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	trigger = {
+		has_war_with = GER
+		original_tag = POL
+	}
+	fire_only_once = yes
+	option = {
+		name = POL_Plan_Completed.1.A
+		add_ideas = POL_Emergency_Production
+		add_ideas = POL_Poland_is_Not_Yet_Lost
+		unlock_national_focus = POL_All_is_Not_Yet_Lost
+	}
+}
+country_event = { #The Great Siege
+	id = POL_Plan_Completed.2
+	title = POL_Plan_Completed.2.t
+	desc = POL_Plan_Completed.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	option = {
+		name = POL_Plan_Completed.2.A
+		add_ideas = POL_The_Great_Siege
+	}
+}
+country_event = { #Warsaw  Okiecie Opens for Business
+	id = POL_Airforce.1
+	title = POL_Airforce.1.t
+	desc = POL_Airforce.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	trigger = {
+		original_tag = POL
+		date > 1934.4.28
+		has_start_date < 1934.4.28
+	}
+	fire_only_once = yes
+	option = {
+		name = POL_Airforce.1.A
+		10 = {
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = { #Investing in Civil Aviation
+	id = POL_Airforce.2
+	title = POL_Airforce.2.t
+	desc = POL_Airforce.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Airforce.2.A
+	}
+}
+country_event = { #Rayski Resigns in Frustration
+	id = POL_Airforce.3
+	title = POL_Airforce.3.t
+	desc = POL_Airforce.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	trigger = {
+		original_tag = POL
+		date > 1938.2.28
+		has_start_date < 1938.2.28
+	}
+	option = {
+		name = POL_Airforce.3.A
+		unlock_national_focus = POL_Keep_Ludomil_Rayski
+	}
+	option = {
+		name = POL_Airforce.3.B
+		unlock_national_focus = POL_Appoint_Joseph_Zajac
+	}
+}
+country_event = { #Poland's Own Medium Bomber
+	id = POL_Airforce.4
+	title = POL_Airforce.4.t
+	desc = POL_Airforce.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Airforce.4.A
+		set_technology = {
+			Tactical_Bomber_1940 = 1
+		}
+	}
+}
+country_event = { #The PZL. 23 Karas
+	id = POL_Airforce.5
+	title = POL_Airforce.5.t
+	desc = POL_Airforce.5.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Airforce.5.A
+		set_technology = {
+			Attacker_1940 = 1
+		}
+	}
+}
+country_event = { #Pulawski's Gull-wing Design
+	id = POL_Airforce.6
+	title = POL_Airforce.6.t
+	desc = POL_Airforce.6.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Airforce.6.A
+		add_ideas = POL_Pulawskis_Gull_wing_Design
+	}
+}
+country_event = { #A New  Passenger Port for the Republic!
+	id = POL_Navy.1
+	title = POL_Navy.1.t
+	desc = POL_Navy.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.1.A
+	}
+}
+country_event = { #Marine Deployment Strategy
+	id = POL_Navy.2
+	title = POL_Navy.2.t
+	desc = POL_Navy.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.2.A
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = marine_tech
+		}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			technology = landing_craft
+		}
+	}
+}
+country_event = { #Approach the Western Powers
+	id = POL_Navy.3
+	title = POL_Navy.3.t
+	desc = POL_Navy.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.3.A
+	}
+	option = {
+		name = POL_Navy.3.B
+	}
+	option = {
+		name = POL_Navy.3.C
+	}
+	option = {
+		name = POL_Navy.3.D
+	}
+}
+country_event = { #Continued growth at the Gdynia Port'
+	id = POL_Navy.4
+	title = POL_Navy.4.t
+	desc = POL_Navy.4.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.4.A
+		798 = {
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				instant_build = yes
+				province = 9263
+			}
+			add_building_construction = {
+				type = anti_air_building
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = { #Expanding the Polska Marynarka Handlowa
+	id = POL_Navy.5
+	title = POL_Navy.5.t
+	desc = POL_Navy.5.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.5.A
+		add_equipment_to_stockpile = {
+			type = convoy
+			amount = 10
+			producer = POL
+		}
+	}
+}
+country_event = { #Golden Port of the Republic
+	id = POL_Navy.6
+	title = POL_Navy.6.t
+	desc = POL_Navy.6.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.6.A
+		798 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				instant_build = yes
+				province = 9263
+			}
+			add_building_construction = {
+				type = anti_air_building
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				instant_build = yes
+				province = 9263
+			}
+		}
+	}
+}
+country_event = { #Gdansk returns to Poland
+	id = POL_Navy.7
+	title = POL_Navy.7.t
+	desc = POL_Navy.7.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = POL_Navy.7.A
+	}
+}
+country_event = { #Direction of the Marynarka
+	id = POL_Navy.8
+	title = POL_Navy.8.t
+	desc = POL_Navy.8.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	trigger = {
+		original_tag = POL
+		date > 1934.2.28
+		has_start_date < 1934.2.28
+	}
+	option = {
+		name = POL_Navy.8.A
+		set_country_flag = POL_High_Fleet
+	}
+	option = {
+		name = POL_Navy.8.B
+		set_country_flag = POL_Indirect_Warfare
+	}
+}
+country_event = { #Restoring Polish Pride and Culture
+	id = POL_Innovative.1
+	title = POL_Innovative.1.t
+	desc = POL_Innovative.1.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	option = {
+		name = POL_Innovative.1.A
+		add_political_power = 100
+		add_war_support = 0.1
+		add_stability = 0.05
+	}
+}
+country_event = { #Deep in the Kabaty Woods
+	id = POL_Innovative.2
+	title = POL_Innovative.2.t
+	desc = POL_Innovative.2.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	is_triggered_only = yes
+	option = {
+		name = POL_Innovative.2.A
+		10 = {
+			add_building_construction = {
+				type = radar_station
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = encryption_tech
+		}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = decryption_tech
+		}
+	}
+}
+country_event = { #The Cipher Bureau & ENIGMA
+	id = POL_Innovative.3
+	title = POL_Innovative.3.t
+	desc = POL_Innovative.3.d
+	picture = GFX_report_POL_Moscicki_Smigly
+	fire_only_once = yes
+	trigger = {
+		original_tag = POL
+		date > 1933.2.4
+		has_start_date < 1933.2.4
+	}
+	option = {
+		name = POL_Innovative.3.A
+		set_country_flag = POL_Cipher_Bureau
+		custom_effect_tooltip = POL_Cipher_Bureau_tt
+	}
+}

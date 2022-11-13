@@ -1,0 +1,5772 @@
+﻿###########################
+# Darkest Hour Events : Britain
+###########################
+add_namespace = ENG_Politics
+add_namespace = ENG_Elections
+add_namespace = ENG
+add_namespace = ENG_Arab_Revolt
+add_namespace = ENG_Raid_On_Mers_El_Kebir
+add_namespace = ENG_Anglo_Iraqi_Treaty
+add_namespace = ENG_Oxford_Election
+add_namespace = ENG_Military_Tree
+add_namespace = ENG_Wartime_Tree
+add_namespace = ENG_Tizards_Research
+add_namespace = ENG_Indian_Reform
+add_namespace = ENG_Irish_Trade_War
+add_namespace = ENG_Abdication_Crisis
+add_namespace = ENG_Crumbling_Empire
+add_namespace = ENG_Sino_Japanese_War_Chinese_Defeat
+add_namespace = ENG_Ramsay_Events
+add_namespace = ENG_Baldwin_Events
+add_namespace = ENG_Chamberlain_Events
+add_namespace = ENG_End_of_Newfoundland
+add_namespace = ENG_Wartime_Decisions
+add_namespace = ENG_London_Economic_Conference_Events
+add_namespace = ENG_Focus_Tree_Layout
+#########################################################################
+#  PM Stanley Baldwin resigns
+#########################################################################
+news_event = {
+	id = ENG_Politics.1
+	title = ENG_Politics.1.t
+	desc = ENG_Politics.1.d
+	picture = GFX_news_ENG_Stanley_Baldwin_Radio
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_country_leader = {
+			name = "Stanley Baldwin"
+			ruling_only = yes
+		}
+		date > 1937.5.28
+		has_start_date < 1937.5.28
+	}
+	# Alright
+	option = {
+		name = ENG_Politics.1.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Neville Chamberlain"
+			desc = ""
+			picture = GFX_P_D_Neville_Chamberlain
+			ideology = social_conservatism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Social_Conservatism
+				L_The_Pacifier
+			}
+		}
+		set_country_flag = baldwin_resigned
+		custom_effect_tooltip = ENG_Chamberlains_Ministry_is_Formed
+		hidden_effect = {
+			add_ideas = {
+				ENG_FM_Anthony_Eden
+				ENG_AM_John_Simon
+				ENG_MoS_Samuel_Hoare
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}
+
+#########################################################################
+#  PM Chamberlain resigns
+#########################################################################
+news_event = {
+	id = ENG_Politics.2
+	title = ENG_Politics.2.t
+	desc = ENG_Politics.2.d
+	picture = GFX_news_ENG_Chamberlain_Quits
+	fire_only_once = yes
+	trigger = {
+		has_government = democratic
+		original_tag = ENG
+		date > 1940.5.10
+		has_start_date < 1940.5.10
+	}
+	# Winston Churchill
+	option = {
+		name = ENG_Politics.2.A
+		ai_chance = {
+			factor = 90
+		}
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Winston Churchill"
+			desc = "Winston_Churchill_desc"
+			picture = GFX_P_D_Winston_Churchill
+			ideology = social_conservatism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Social_Conservatism
+				L_Bulldog
+			}
+		}
+	}
+	# Lord Halifax
+	#option = {
+	#	name = ENG_Politics.2.B
+	#	ai_chance = {
+	#		factor = 10
+	#	}
+	#	retire_country_leader = yes
+	#	create_country_leader = {
+	#		name = "Lord Edward Halifax"
+	#		desc = ""
+	#		picture = GFX_P_D_Edward_Halifax
+	#		ideology = social_conservatism
+	#		traits = {
+	#			POSITION_Prime_Minister
+	#			SUBIDEOLOGY_Social_Conservatism
+	#			FM_The_Appeaser
+	#		}
+	#	}
+	#}
+}
+
+#########################################################################
+#  PM Ramsay Resigns
+#########################################################################
+news_event = {
+	id = ENG_Politics.3
+	title = ENG_Politics.3.t
+	desc = ENG_Politics.3.d
+	picture = GFX_Chamberlain_Quits
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			complete_national_focus = ENG_Resignation_of_Ramsay
+		}
+	}
+	option = {
+		name = ENG_Politics.3.A
+		ai_chance = {
+			factor = 100
+		}
+		complete_national_focus = ENG_Uncle_Stanley
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Stanley Baldwin"
+			desc = "Stanley_Baldwin_desc"
+			picture = GFX_P_D_Stanley_Baldwin
+			ideology = social_conservatism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Social_Conservatism
+				L_Naive_Optimist
+			}
+		}
+		activate_mission = ENG_Baldwins_Term
+		custom_effect_tooltip = ENG_Baldwins_Ministry_is_Formed
+		set_country_flag = ramsay_resigned
+		hidden_effect = {
+			add_ideas = {
+				ENG_FM_Samuel_Hoare
+				ENG_AM_Neville_Chamberlain
+				ENG_MoS_John_Simon
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	#option = {
+	#	name = ENG_Politics.3.B
+	#	ai_chance = {
+	#		factor = 0
+	#	}
+	#	complete_national_focus = ENG_The_British_Bulldog
+	#	retire_country_leader = yes
+	#	create_country_leader = {
+	#		name = "Winston Churchill"
+	#		desc = ""
+	#		picture = GFX_P_D_Winston_Churchill
+	#		ideology = social_conservatism
+	#		traits = {
+	#			POSITION_Prime_Minister
+	#			SUBIDEOLOGY_Social_Conservatism
+	#			L_Bulldog
+	#		}
+	#	}
+	#	custom_effect_tooltip = ENG_Churchills_1935_Ministry_is_Formed
+	#	hidden_effect = {
+	#		add_ideas = {
+	#			ENG_FM_Anthony_Eden
+	#			ENG_AM_Lord_Beaverbrook
+	#			ENG_MoS_John_Anderson
+	#		}
+	#	}
+	#}
+}
+
+#########################################################################
+#  Sir Kingsley Wood dies
+#########################################################################
+news_event = {
+	id = ENG_Politics.4
+	title = ENG_Politics.4.t
+	desc = ENG_Politics.4.d
+	picture = GFX_Chamberlain_Quits
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_idea = ENG_AM_Kingsley_Wood
+		date > 1943.9.21
+		has_start_date < 1943.9.21
+	}
+	option = {
+		name = ENG_Politics.4.A
+		custom_effect_tooltip = ENG_Kingsley_Wood_is_Replaced
+		hidden_effect = {
+			add_ideas = ENG_AM_John_Anderson
+		}
+		set_country_flag = Kingsley_Wood_unavailable
+	}
+}
+
+#########################################################################
+#  Jarrow March
+#########################################################################
+news_event = {
+	id = ENG.1
+	title = ENG.1.t
+	desc = ENG.1.d
+	picture = GFX_news_ENG_Jarrow_March
+	fire_only_once = yes
+	trigger = {
+		has_government = democratic
+		original_tag = ENG
+		date > 1936.10.5
+		has_start_date < 1936.10.5
+	}
+	# Send Relief to Jarrow
+	option = {
+		name = ENG.1.A
+		ai_chance = {
+			factor = 90
+		}
+		131 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.01
+		}
+	}
+	# The King wished receive the marchers
+	option = {
+		name = ENG.1.B
+		ai_chance = {
+			factor = 10
+		}
+		add_political_power = -50
+		131 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.02
+		}
+	}
+}
+
+#########################################################################
+#  The Crystal Palace burns!
+#########################################################################
+news_event = {
+	id = ENG.2
+	title = ENG.2.t
+	desc = ENG.2.d
+	picture = GFX_news_ENG_Crystal_Palace_Fire
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		date > 1936.11.30
+		has_start_date < 1936.11.30
+	}
+	# This is the end of an age
+	option = {
+		name = ENG.2.A
+		126 = {
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+		add_stability = -0.01
+	}
+}
+
+#########################################################################
+#  The Hobbit Published
+#########################################################################
+news_event = {
+	id = ENG.3
+	title = ENG.3.t
+	desc = ENG.3.d
+	picture = GFX_news_ENG_The_Hobbit
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		date > 1937.9.21
+		has_start_date < 1937.9.21
+	}
+	# Definitely worth a read!
+	option = {
+		name = ENG.3.A
+		add_stability = 0.01
+	}
+}
+
+#########################################################################
+#  Royal Family Evacuation
+#########################################################################
+news_event = {
+	id = ENG.4
+	title = ENG.4.t
+	desc = ENG.4.d
+	picture = GFX_news_ENG_Royal_Family
+	fire_only_once = yes
+	is_triggered_only = yes
+	# God Save the King!
+	option = {
+		name = ENG.4.A
+		add_stability = -0.05
+		add_war_support = 0.05
+	}
+}
+
+#########################################################################
+#  Women, Children and Conservatives first
+#########################################################################
+country_event = {
+	id = ENG.5
+	title = ENG.5.t
+	desc = ENG.5.d
+	picture = GFX_Royal_Family
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Tories...
+	option = {
+		name = ENG.5.A
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+}
+
+#########################################################################
+#  Preparations for a March
+#########################################################################
+country_event = {
+	id = ENG.6
+	title = ENG.6.t
+	desc = ENG.6.d
+	picture = GFX_Oswald_Mosley
+	fire_only_once = yes
+	trigger = {
+		has_government = democratic
+		original_tag = ENG
+		date > 1936.10.1
+		has_start_date < 1936.10.1
+	}
+	# We must ban the march! No fascists in Britain!
+	option = {
+		name = ENG.6.A
+		add_political_power = -50
+		add_stability = -0.02
+	}
+	# Allow the march.
+	option = {
+		name = ENG.6.B
+		add_political_power = -50
+		news_event = {
+			id = ENG.8
+			days = 4
+		}
+	}
+	# Allow the march, and send a police escort
+	option = {
+		name = ENG.6.C
+		news_event = {
+			id = ENG.7
+			days = 4
+		}
+	}
+}
+
+#########################################################################
+#  Battle of Cable Street (Cops Version)
+#########################################################################
+news_event = {
+	id = ENG.7
+	title = ENG.7.t
+	desc = ENG.7.d
+	picture = GFX_news_ENG_Battle_of_Cable_Street_Cops
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Mosley calls off the march and flees.
+	option = {
+		name = ENG.7.A
+		ai_chance = {
+			factor = 90
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.02
+		}
+	}
+	# The police manage to fight of the communists despite overwhelming odds
+	option = {
+		name = ENG.7.B
+		ai_chance = {
+			factor = 10
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+		add_stability = -0.1
+	}
+}
+
+#########################################################################
+#  Battle of Cable Street (No Cops Version)
+#########################################################################
+news_event = {
+	id = ENG.8
+	title = ENG.8.t
+	desc = ENG.8.d
+	picture = GFX_news_ENG_Battle_of_Cable_Street_No_Cops
+	fire_only_once = yes
+	is_triggered_only = yes
+	# The communists turn back the fascists and Mosley is killed.
+	option = {
+		name = ENG.8.A
+		ai_chance = {
+			factor = 10
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.03
+		}
+		add_stability = -0.1
+	}
+	# Mosley calls off the march and flees.
+	option = {
+		name = ENG.8.B
+		ai_chance = {
+			factor = 90
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.03
+		}
+		add_political_power = -50
+	}
+}
+
+#########################################################################
+#  RMS Queen Mary's Maiden Voyage
+#########################################################################
+news_event = {
+	id = ENG.9
+	title = ENG.9.t
+	desc = ENG.9.d
+	picture = GFX_news_ENG_RMS_Queen_Mary
+	major = yes
+	fire_only_once = yes
+	trigger = {
+		date > 1936.5.27
+		has_start_date < 1936.5.27
+		OR = {
+			tag = USA
+			tag = ENG
+			is_puppet_of = USA
+			is_puppet_of = ENG
+		}
+		NOT = {
+			ENG = {
+				has_war_with = USA
+			}
+		}
+	}
+	# Bon Voyage!
+	option = {
+		name = ENG.9.A
+	}
+}
+
+#########################################################################
+#  Anglo-Irish Trade Agreement
+#########################################################################
+country_event = {
+	id = ENG.10
+	title = ENG.10.t
+	desc = ENG.10.d
+	picture = GFX_report_ENG_Anglo_Irish_Trade_Agreement
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_government = democratic
+		date > 1938.4.24
+		has_start_date < 1938.4.24
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	# Sign It
+	option = {
+		name = ENG.10.A
+		ai_chance = {
+			factor = 90
+		}
+		add_stability = 0.02
+		set_country_flag = trade_agreement_signed
+	}
+	# The Irish are insane
+	option = {
+		name = ENG.10.B
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = -0.02
+		IRE = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = embargo
+			}
+		}
+		set_country_flag = trade_agreement_not_signed
+	}
+}
+
+#########################################################################
+#  Lord Haw-Haw
+#########################################################################
+news_event = {
+	id = ENG.11
+	title = ENG.11.t
+	desc = ENG.11.d
+	picture = GFX_news_ENG_Lord_HawHaw
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_government = democratic
+		has_war_with = GER
+		GER = {
+			has_government = fascist
+		}
+	}
+	mean_time_to_happen = {
+		days = 100
+	}
+	# Haw-Haw
+	option = {
+		name = ENG.11.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.01
+		}
+	}
+}
+
+#########################################################################
+#  The Blitz Begins
+#########################################################################
+news_event = {
+	id = ENG.12
+	title = ENG.12.t
+	desc = ENG.12.d
+	picture = GFX_news_ENG_The_Blitz
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_government = democratic
+		has_damaged_buildings = yes
+		has_war_with = GER
+		FRA = {
+			has_capitulated = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	# How Tragic
+	option = {
+		name = ENG.12.A
+		add_stability = -0.1
+		add_war_support = 0.1
+	}
+}
+
+#########################################################################
+#  IRA Coventry attack
+#########################################################################
+news_event = {
+	id = ENG.13
+	title = ENG.13.t
+	desc = ENG.13.d
+	picture = GFX_news_ENG_IRA_Coventry_Bombing
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_government = democratic
+		date > 1939.8.25
+		has_start_date < 1939.8.25
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	# Let those Irish be Damned
+	option = {
+		name = ENG.13.A
+		add_stability = -0.02
+	}
+}
+
+#########################################################################
+#  Altmark Incident
+#########################################################################
+news_event = {
+	id = ENG.14
+	title = ENG.14.t
+	desc = ENG.14.d
+	picture = GFX_news_ENG_The_Altmark
+	fire_only_once = yes
+	is_triggered_only = yes
+	# A Glorious Day for us
+	option = {
+		name = ENG.14.A
+		add_stability = 0.02
+		add_war_support = 0.02
+		NOR = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = protest_action_light
+			}
+		}
+	}
+}
+
+#########################################################################
+#  Their Finest Hour
+#########################################################################
+country_event = {
+	id = ENG.15
+	title = ENG.15.t
+	desc = ENG.15.d
+	picture = GFX_Winston_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We will survive, as we did before!
+		name = ENG.15.A
+		add_stability = 0.05
+	}
+}
+
+#########################################################################
+#  Occupation of the Channel Islands
+#########################################################################
+news_event = {
+	id = ENG.16
+	title = ENG.16.t
+	desc = ENG.16.d
+	picture = GFX_news_ENG_German_Occupation_of_the_Channel_Islands
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		has_government = democratic
+		has_war_with = GER
+		GER = {
+			controls_state = 801
+		}
+		has_start_date < 1940.6.30
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = ENG.16.A
+		add_stability = -0.02
+	}
+}
+
+#########################################################################
+#  BBC Launches Regular Television Broadcast
+#########################################################################
+news_event = {
+	id = ENG.17
+	title = ENG.17.t
+	desc = ENG.17.d
+	picture = GFX_news_ENG_BBC_Studio
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		date > 1936.11.2
+		has_start_date < 1936.11.2
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = ENG.17.A
+		add_political_power = 10
+	}
+}
+
+#########################################################################
+#  Frank Whittle Ground-Tests the world's first jet engine
+#########################################################################
+country_event = {
+	id = ENG.18
+	title = ENG.18.t
+	desc = ENG.18.d
+	picture = GFX_Frank_Whittle_Jet
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		date > 1937.4.12
+		has_start_date < 1937.4.12
+	}
+	option = {
+		name = ENG.18.A
+		add_tech_bonus = {
+			bonus = 0.3
+			uses = 1
+			category = jet_technology
+		}
+	}
+}
+
+#########################################################################
+# The Future of Warfare
+#########################################################################
+country_event = {
+	id = ENG.32
+	title = ENG.32.t
+	desc = ENG.32.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	#The Indirect Approach
+	option = {
+		name = ENG.32.A
+		set_country_flag = ENG_Allow_Hart
+		# add_ideas = ENG_Indirect_Approach
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = ENG_BH_Liddell_Hart_CoArmy
+		hidden_effect = {
+			complete_national_focus = ENG_The_Indirect_Approach
+		}
+		custom_effect_tooltip = ENG_Well_Listen_To_Liddell_Hart
+	}
+	#The Direct Approach
+	option = {
+		name = ENG.32.B
+		set_country_flag = ENG_Allow_Fuller
+		add_ideas = ENG_Direct_Approach
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = ENG_JFC_Fuller_CoArmy
+		hidden_effect = {
+			complete_national_focus = ENG_The_Direct_Approach
+		}
+		custom_effect_tooltip = ENG_Well_Listen_To_JFC_Fuller
+	}
+}
+
+#########################################################################
+# The Public Order Act
+#########################################################################
+#country_event = {
+#	id = ENG.36
+#	title = ENG.36.t
+#	desc = ENG.36.d
+#	picture = GFX_report_ENG_Future_of_Warfare
+#	is_triggered_only = yes
+#	option = {
+#		name = ENG.36.A
+#		add_popularity = {
+#			ideology = fascist
+#			popularity = -0.05
+#		}
+#		custom_effect_tooltip = ENG_A_More_Risky_Approach
+#		hidden_effect = {
+#			random_list = {
+#				50 = {
+#					set_country_flag = ENG_public_order_will_backfire
+#				}
+#				50 = {
+#				}
+#			}
+#		}
+#	}
+#	option = {
+#		name = ENG.36.B
+#		add_popularity = {
+#			ideology = fascist
+#			popularity = -0.02
+#		}
+#	}
+#}
+
+#########################################################################
+# UK Asks for Debt Relief
+#########################################################################
+country_event = {
+	id = ENG.38
+	title = ENG.38.t
+	desc = ENG.38.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	option = {
+		name = ENG.38.A
+		ENG = {
+			if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations
+					add_idea = ENG_World_War_One_Reparations_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations
+					add_idea = ENG_World_War_One_Reparations_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations_2
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations_2
+					add_idea = ENG_World_War_One_Reparations_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations_3
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations_3
+					add_idea = ENG_World_War_One_Reparations_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations_4
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations_4
+					add_idea = ENG_World_War_One_Reparations_5
+				}
+			}
+			else = {
+				remove_ideas = ENG_World_War_One_Reparations_5
+			}
+		}
+		add_political_power = 10
+	}
+	option = {
+		name = ENG.38.B
+		add_political_power = 10
+	}
+}
+
+#########################################################################
+# Blood, Toil, Tears and Sweat
+#########################################################################
+country_event = {
+	id = ENG.40
+	title = ENG.40.t
+	desc = ENG.40.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	option = {
+		name = ENG.40.A
+		add_political_power = 20
+	}
+}
+
+#########################################################################
+# The Cement Incident
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.1
+	title = ENG_Arab_Revolt.1.t
+	desc = ENG_Arab_Revolt.1.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		date > 1935.10.16
+		has_start_date < 1935.10.16
+		controls_state = 823
+	}
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.1.A
+		add_stability = -0.05
+		random_list = {
+			50 = {
+				country_event = {
+					days = 5
+					id = ENG_Arab_Revolt.2
+				}
+			}
+			50 = {
+				country_event = {
+					days = 5
+					id = ENG_Arab_Revolt.3
+				}
+			}
+		}
+	}
+}
+
+#########################################################################
+# No arrest were made ...
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.2
+	title = ENG_Arab_Revolt.2.t
+	desc = ENG_Arab_Revolt.2.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.2.A
+		country_event = {
+			days = 2
+			id = ENG_Arab_Revolt.4
+		}
+	}
+}
+
+#########################################################################
+# Arests have benn made !
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.3
+	title = ENG_Arab_Revolt.3.t
+	desc = ENG_Arab_Revolt.3.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.3.A
+		country_event = {
+			days = 2
+			id = ENG_Arab_Revolt.5
+		}
+	}
+}
+
+#########################################################################
+# Anti-Jewish raids in Palestine !
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.4
+	title = ENG_Arab_Revolt.4.t
+	desc = ENG_Arab_Revolt.4.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.4.A
+		every_state = {
+			limit = {
+				is_core_of = PAL
+				is_controlled_by = ENG
+			}
+			add_resistance = 15
+		}
+		country_event = {
+			days = 2
+			id = ENG_Arab_Revolt.8
+		}
+	}
+}
+
+#########################################################################
+# Small Scales Anti-Jewish raids in Palestine !
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.5
+	title = ENG_Arab_Revolt.5.t
+	desc = ENG_Arab_Revolt.5.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.5.A
+		every_state = {
+			limit = {
+				is_core_of = PAL
+				is_controlled_by = ENG
+			}
+			add_resistance = 10
+		}
+		random_list = {
+			50 = {
+				country_event = {
+					days = 2
+					id = ENG_Arab_Revolt.6
+				}
+			}
+			50 = {
+				country_event = {
+					days = 2
+					id = ENG_Arab_Revolt.7
+				}
+			}
+		}
+	}
+}
+
+#########################################################################
+# They Refuse To Give Up Their Fellow Scoundrels
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.6
+	title = ENG_Arab_Revolt.6.t
+	desc = ENG_Arab_Revolt.6.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.6.A
+		country_event = {
+			days = 2
+			id = ENG_Arab_Revolt.8
+		}
+	}
+}
+
+#########################################################################
+# The Arrests Have Lead Somewhere!
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.7
+	title = ENG_Arab_Revolt.7.t
+	desc = ENG_Arab_Revolt.7.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.7.A
+		country_event = {
+			days = 2
+			id = ENG_Arab_Revolt.9
+		}
+	}
+}
+
+#########################################################################
+# Death of Al-Qassam
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.8
+	title = ENG_Arab_Revolt.8.t
+	desc = ENG_Arab_Revolt.8.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.8.A
+		country_event = {
+			days = 50
+			id = ENG_Arab_Revolt.12
+		}
+	}
+}
+
+#########################################################################
+# We Shall Arrest The High-Ranking Arab Extremists
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.9
+	title = ENG_Arab_Revolt.9.t
+	desc = ENG_Arab_Revolt.9.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#How could they ?
+	option = {
+		name = ENG_Arab_Revolt.9.A
+		random_list = {
+			50 = {
+				country_event = {
+					days = 2
+					id = ENG_Arab_Revolt.10
+				}
+			}
+			50 = {
+				country_event = {
+					days = 2
+					id = ENG_Arab_Revolt.11
+				}
+			}
+		}
+	}
+}
+
+#########################################################################
+# Many Got Away, But At Least We Have Qassam
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.10
+	title = ENG_Arab_Revolt.10.t
+	desc = ENG_Arab_Revolt.10.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#Execute them.
+	option = {
+		name = ENG_Arab_Revolt.10.A
+		add_stability = 0.05
+		country_event = {
+			days = 20
+			id = ENG_Arab_Revolt.12
+		}
+		set_country_flag = ENG_Arab_Leaders_Killed
+	}
+	#Let them in Prison.
+	option = {
+		name = ENG_Arab_Revolt.10.B
+		add_political_power = 50
+		country_event = {
+			days = 20
+			id = ENG_Arab_Revolt.12
+		}
+	}
+}
+
+#########################################################################
+# We Have Rounded Up Most of Them
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.11
+	title = ENG_Arab_Revolt.11.t
+	desc = ENG_Arab_Revolt.11.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.11.A
+		add_stability = 0.05
+	}
+}
+
+#########################################################################
+# General Strike in Palestine !
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.12
+	title = ENG_Arab_Revolt.12.t
+	desc = ENG_Arab_Revolt.12.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.12.A
+		every_state = {
+			limit = {
+				is_core_of = PAL
+				is_controlled_by = ENG
+			}
+			add_resistance = 5
+			add_compliance = -20
+		}
+		if = {
+			limit = {
+				has_country_flag = ENG_Arab_Leaders_Killed
+			}
+			country_event = {
+				days = 15
+				id = ENG_Arab_Revolt.14
+			}
+		}
+		else = {
+			country_event = {
+				days = 15
+				id = ENG_Arab_Revolt.13
+			}
+		}
+	}
+}
+
+#########################################################################
+# Huge Qassime Rebellion
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.13
+	title = ENG_Arab_Revolt.13.t
+	desc = ENG_Arab_Revolt.13.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.13.A
+		every_state = {
+			limit = {
+				is_core_of = PAL
+				is_controlled_by = ENG
+			}
+			add_resistance = 10
+			add_compliance = -5
+		}
+		country_event = {
+			days = 15
+			id = ENG_Arab_Revolt.15
+		}
+	}
+}
+
+#########################################################################
+# Small Qassime Rebellion
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.14
+	title = ENG_Arab_Revolt.14.t
+	desc = ENG_Arab_Revolt.14.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.14.A
+		every_state = {
+			limit = {
+				is_core_of = PAL
+				is_controlled_by = ENG
+			}
+			add_resistance = 5
+			add_compliance = -5
+		}
+		country_event = {
+			days = 15
+			id = ENG_Arab_Revolt.15
+		}
+	}
+}
+
+#########################################################################
+# The Strike Is Now Over, But the Violence Continues
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.15
+	title = ENG_Arab_Revolt.15.t
+	desc = ENG_Arab_Revolt.15.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.15.A
+		every_state = {
+			limit = {
+				is_core_of = PAL
+				is_controlled_by = ENG
+			}
+			add_compliance = 5
+		}
+		country_event = {
+			days = 50
+			id = ENG_Arab_Revolt.16
+		}
+	}
+}
+
+#########################################################################
+# The Peel Commission
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.16
+	title = ENG_Arab_Revolt.16.t
+	desc = ENG_Arab_Revolt.16.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		ENG = {
+			controls_state = 454
+			controls_state = 822
+			controls_state = 823
+			controls_state = 820
+			controls_state = 821
+			controls_state = 824
+		}
+	}
+	#Partition Palestine
+	option = {
+		name = ENG_Arab_Revolt.16.A
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = {
+						days = 2
+						id = ENG_Arab_Revolt.17
+					}
+				}
+				50 = {
+					country_event = {
+						days = 2
+						id = ENG_Arab_Revolt.19
+					}
+				}
+			}
+		}
+	}
+	#Move the Arabs
+	option = {
+		name = ENG_Arab_Revolt.16.B
+		hidden_effect = {
+			country_event = {
+				days = 2
+				id = ENG_Arab_Revolt.18
+			}
+		}
+	}
+}
+
+#########################################################################
+# They Have Accepted, Wonderful!
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.17
+	title = ENG_Arab_Revolt.17.t
+	desc = ENG_Arab_Revolt.17.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#
+	option = {
+		name = ENG_Arab_Revolt.17.A
+		country_event = {
+			days = 45
+			id = ENG_Arab_Revolt.18
+		}
+	}
+}
+
+#########################################################################
+# Let's Hope It All Works Out!
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.18
+	title = ENG_Arab_Revolt.18.t
+	desc = ENG_Arab_Revolt.18.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.18.A
+		PAL = {
+			transfer_state = 820
+			transfer_state = 821
+		}
+		ISR = {
+			transfer_state = 454
+			transfer_state = 822
+			transfer_state = 823
+			transfer_state = 824
+		}
+		puppet = ISR
+		puppet = PAL
+	}
+}
+
+#########################################################################
+# They have all refused !
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.19
+	title = ENG_Arab_Revolt.19.t
+	desc = ENG_Arab_Revolt.19.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.19.A
+		add_stability = -0.05
+		country_event = {
+			days = 10
+			id = ENG_Arab_Revolt.20
+		}
+	}
+}
+
+#########################################################################
+# The revolt continues !
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.20
+	title = ENG_Arab_Revolt.20.t
+	desc = ENG_Arab_Revolt.20.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#We Have Averted A Potential Disaster
+	option = {
+		name = ENG_Arab_Revolt.20.A
+		country_event = {
+			days = 15
+			id = ENG_Arab_Revolt.21
+		}
+	}
+}
+
+#########################################################################
+# The Havlagah Policy
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.21
+	title = ENG_Arab_Revolt.21.t
+	desc = ENG_Arab_Revolt.21.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The Situation Is Getting Out of Hand, We Must Reinforce the Palestinian Government
+	option = {
+		name = ENG_Arab_Revolt.21.A
+		country_event = {
+			days = 10
+			id = ENG_Arab_Revolt.22
+		}
+		add_political_power = -75
+	}
+	#This Is Getting Too Costly, We Must Leave Palestine To It's Fate
+	option = {
+		name = ENG_Arab_Revolt.21.B
+		country_event = {
+			days = 10
+			id = ENG_Arab_Revolt.23
+		}
+	}
+}
+
+#########################################################################
+# The Revolt Has Ended, But At A Cost
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.22
+	title = ENG_Arab_Revolt.22.t
+	desc = ENG_Arab_Revolt.22.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The Situation Is Getting Out of Hand, We Must Reinforce the Palestinian Government
+	option = {
+		name = ENG_Arab_Revolt.22.A
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+
+#########################################################################
+# The Protectorate Has Fallen!
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.23
+	title = ENG_Arab_Revolt.23.t
+	desc = ENG_Arab_Revolt.23.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The Situation Is Getting Out of Hand, We Must Reinforce the Palestinian Government
+	option = {
+		name = ENG_Arab_Revolt.23.A
+		PAL = {
+			transfer_state = 820
+			transfer_state = 821
+		}
+		ISR = {
+			transfer_state = 454
+			transfer_state = 822
+			transfer_state = 823
+			transfer_state = 824
+			declare_war_on = {
+				target = PAL
+				type = annex_everything
+			}
+			load_oob = ISR_Jabotinsky_Revolt
+		}
+		set_global_flag = PAL_ISR_Civil_War
+	}
+}
+
+#########################################################################
+# The Arabs Now Dominate Our Former Colony
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.24
+	title = ENG_Arab_Revolt.24.t
+	desc = ENG_Arab_Revolt.24.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The Situation Is Getting Out of Hand, We Must Reinforce the Palestinian Government
+	option = {
+		name = ENG_Arab_Revolt.24.A
+	}
+}
+
+#########################################################################
+# The Jews Now Dominate Our Former Colony
+#########################################################################
+country_event = {
+	id = ENG_Arab_Revolt.25
+	title = ENG_Arab_Revolt.25.t
+	desc = ENG_Arab_Revolt.25.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	#The Situation Is Getting Out of Hand, We Must Reinforce the Palestinian Government
+	option = {
+		name = ENG_Arab_Revolt.25.A
+	}
+}
+
+#########################################################################
+# Somerville's Ultimatum
+#########################################################################
+country_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.1
+	title = ENG_Raid_On_Mers_El_Kebir.1.t
+	desc = ENG_Raid_On_Mers_El_Kebir.1.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # Vive la France libre!
+		name = ENG_Raid_On_Mers_El_Kebir.1.A
+		ai_chance = {
+			base = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		add_war_support = -0.15
+		custom_effect_tooltip = ENG_French_Fleet_Transferred_tt
+		transfer_ship = {
+			type = battleship
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = battleship
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = battleship
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = battleship
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = destroyer
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = destroyer
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = destroyer
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = destroyer
+			target = ENG
+			exclude_refitting = no
+		}
+		transfer_ship = {
+			type = destroyer
+			target = ENG
+			exclude_refitting = no
+		}
+		add_manpower = -7500
+		FRA = {
+			add_manpower = 7500
+		}
+		ENG = {
+			country_event = {
+				id = ENG_Raid_On_Mers_El_Kebir.2
+				days = 2
+			}
+		}
+	}
+	option = { # We can't give them our ships, but they will not aid the Hun
+		name = ENG_Raid_On_Mers_El_Kebir.1.B
+		ai_chance = {
+			base = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		add_war_support = -0.1
+		destroy_ships = {
+			type = BB_equipment
+			count = 4
+		}
+		destroy_ships = {
+			type = DD_equipment
+			count = 5
+		}
+		ENG = {
+			country_event = {
+				id = ENG_Raid_On_Mers_El_Kebir.3
+				days = 2
+			}
+		}
+	}
+	option = { # We have no choice but to refuse their obscene demands
+		name = ENG_Raid_On_Mers_El_Kebir.1.C
+		ai_chance = {
+			base = 70
+		}
+		ENG = {
+			country_event = {
+				id = ENG_Raid_On_Mers_El_Kebir.4
+				days = 2
+			}
+		}
+	}
+}
+
+#########################################################################
+# The French Fleet Defects
+#########################################################################
+country_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.2
+	title = ENG_Raid_On_Mers_El_Kebir.2.t
+	desc = ENG_Raid_On_Mers_El_Kebir.2.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Raid_On_Mers_El_Kebir.2.A
+		news_event = {
+			id = ENG_Raid_On_Mers_El_Kebir.5
+		}
+	}
+}
+
+#########################################################################
+# The French Scuttle Their Fleet
+#########################################################################
+country_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.3
+	title = ENG_Raid_On_Mers_El_Kebir.3.t
+	desc = ENG_Raid_On_Mers_El_Kebir.3.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Raid_On_Mers_El_Kebir.3.A
+		news_event = {
+			id = ENG_Raid_On_Mers_El_Kebir.6
+		}
+	}
+}
+
+#########################################################################
+# The French Refuse
+#########################################################################
+country_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.4
+	title = ENG_Raid_On_Mers_El_Kebir.4.t
+	desc = ENG_Raid_On_Mers_El_Kebir.4.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Raid_On_Mers_El_Kebir.4.A
+		FRA = {
+			destroy_ships = {
+				type = BB_equipment
+				count = 4
+			}
+			destroy_ships = {
+				type = DD_equipment
+				count = 5
+			}
+			add_manpower = -1500
+		}
+		news_event = {
+			id = ENG_Raid_On_Mers_El_Kebir.7
+		}
+	}
+}
+
+#########################################################################
+# The French Navy Defects to the British!
+#########################################################################
+news_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.5
+	title = ENG_Raid_On_Mers_El_Kebir.5.t
+	desc = ENG_Raid_On_Mers_El_Kebir.5.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	option = {
+		name = ENG_Raid_On_Mers_El_Kebir.5.A
+	}
+}
+
+#########################################################################
+# French Fleet Scuttled at Mers El Kebir!
+#########################################################################
+news_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.6
+	title = ENG_Raid_On_Mers_El_Kebir.6.t
+	desc = ENG_Raid_On_Mers_El_Kebir.6.d
+	picture = GFX_report_ENG_Future_of_Warfare
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	option = {
+		name = ENG_Raid_On_Mers_El_Kebir.6.A
+	}
+}
+
+#########################################################################
+# The British Attack at Mers El Kebir
+#########################################################################
+news_event = {
+	id = ENG_Raid_On_Mers_El_Kebir.7
+	title = ENG_Raid_On_Mers_El_Kebir.7.t
+	desc = ENG_Raid_On_Mers_El_Kebir.7.d
+	picture = GFX_news_ENG_Mers_El_Kebir_Attack
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	option = {
+		name = ENG_Raid_On_Mers_El_Kebir.7.A
+	}
+}
+
+#########################################################################
+# A Waning Power
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.1
+	title = ENG_Military_Tree.1.t
+	desc = ENG_Military_Tree.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.1.A
+	}
+}
+
+#########################################################################
+# The Legacy of the Great War
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.2
+	title = ENG_Military_Tree.2.t
+	desc = ENG_Military_Tree.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.2.A
+		army_experience = 10
+	}
+}
+
+#########################################################################
+# The New Defenders of Albion
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.3
+	title = ENG_Military_Tree.3.t
+	desc = ENG_Military_Tree.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.3.A
+		air_experience = 30
+	}
+}
+
+#########################################################################
+# Embracing Modern Warfare
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.4
+	title = ENG_Military_Tree.4.t
+	desc = ENG_Military_Tree.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.4.A
+		custom_effect_tooltip = available_chief_of_army
+		show_ideas_tooltip = ENG_CoArmy_BH_Liddell_Hart
+		create_corps_commander = {
+			name = "JFC Fuller"
+			GFX = GFX_M_JFC_Fuller
+			traits = {
+				trickster
+				brilliant_strategist
+				armor_officer
+				hidden_sympathies
+			}
+			skill = 3
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 3
+		}
+		create_corps_commander = {
+			name = "George Lindsay"
+			GFX = GFX_M_George_Lindsay
+			traits = {
+				war_hero
+				armor_officer
+				organizer
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 4
+			logistics_skill = 4
+		}
+	}
+}
+
+#########################################################################
+# Our Weakening Rule
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.5
+	title = ENG_Military_Tree.5.t
+	desc = ENG_Military_Tree.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.5.A
+		navy_experience = 30
+	}
+}
+
+#########################################################################
+# Hart's Doctrinal Purity
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.6
+	title = ENG_Military_Tree.6.t
+	desc = ENG_Military_Tree.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.6.A
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = cat_mobile_warfare
+		}
+		add_tech_bonus = {
+			bonus = 0.8
+			uses = 2
+			category = cat_light_armor
+		}
+	}
+}
+
+#########################################################################
+# A New Expeditionary Force
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.7
+	title = ENG_Military_Tree.7.t
+	desc = ENG_Military_Tree.7.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.7.A
+		army_experience = 30
+	}
+}
+
+#########################################################################
+# A Storm of Lightning and Thunder
+#########################################################################
+country_event = {
+	id = ENG_Military_Tree.8
+	title = ENG_Military_Tree.8.t
+	desc = ENG_Military_Tree.8.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Military_Tree.8.A
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = cat_mobile_warfare
+		}
+		add_tech_bonus = {
+			bonus = 0.8
+			uses = 2
+			category = cat_medium_armor
+		}
+	}
+}
+
+##################################################################
+#  Oxford chancellor elections
+#########################################################################
+country_event = {
+	id = ENG_Oxford_Election.1
+	title = ENG_Oxford_Election.1.t
+	desc = ENG_Oxford_Election.1.d
+	picture = GFX_report_USA_Congress
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		date > 1933.9.1
+		has_start_date < 1933.9.1
+	}
+	# Pursue the idea further
+	option = {
+		name = ENG_Oxford_Election.1.A
+		custom_effect_tooltip = DH_FOR_0.2
+		ai_chance = {
+			factor = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		#country_event = {
+		#	id = ENG_Oxford_Election.2
+		#	days = 10
+		#}
+		set_country_flag = ENG_Churchill_Returns
+	}
+	# Pursuing election would be a fool's errand
+	option = {
+		name = ENG_Oxford_Election.1.B
+		ai_chance = {
+			factor = 80
+			modifier = {
+				is_historical_focus_on = yes
+				add = 100
+			}
+		}
+		set_country_flag = ENG_Churchill_Not_Returning
+		# Unblock changing the foreing minister
+	}
+}
+
+#########################################################################
+#  The necessary prerequisite
+#########################################################################
+country_event = {
+	id = ENG_Oxford_Election.2
+	title = ENG_Oxford_Election.2.t
+	desc = ENG_Oxford_Election.2.d
+	picture = GFX_report_USA_Congress
+	is_triggered_only = yes
+	# Simon leaves the cabinet and is replaced by Walter Runciman
+	option = {
+		name = ENG_Oxford_Election.2.A
+		# swap_ideas = {
+		# 	remove_idea = ENG_FM_John_Simon
+		# 	add_idea = ENG_FM_Walter_Runciman			# This idea does not exist yet
+		# }
+		country_event = {
+			id = ENG_Oxford_Election.3
+			days = 5
+		}
+	}
+}
+
+#########################################################################
+#  Churchill's return from the wilderness
+#########################################################################
+country_event = {
+	id = ENG_Oxford_Election.3
+	title = ENG_Oxford_Election.3.t
+	desc = ENG_Oxford_Election.3.d
+	picture = GFX_report_USA_Congress
+	is_triggered_only = yes
+	# Churchill is chosen to replace Walter Runciman as president of the Board of Trade
+	option = {
+		name = ENG_Oxford_Election.3.A
+		# swap_ideas = {
+		# 	remove_idea = ENG_FM_Walter_Runciman			# This idea does not exist yet
+		# 	add_idea = ENG_FM_Winston_Churchill
+		# }
+		random_list = {
+			40 = {
+				country_event = {
+					id = ENG_Oxford_Election.4
+					days = 30
+				}
+			}
+			60 = {
+				country_event = {
+					id = ENG_Oxford_Election.5
+					days = 30
+				}
+			}
+		}
+		# Unblock changing the foreing minister
+	}
+}
+
+#########################################################################
+#  Simon's folly
+#########################################################################
+country_event = {
+	id = ENG_Oxford_Election.4
+	title = ENG_Oxford_Election.4.t
+	desc = ENG_Oxford_Election.4.d
+	picture = GFX_report_USA_Congress
+	is_triggered_only = yes
+	# Simon fails. Lord Irwin/Halifax wins
+	option = {
+		name = ENG_Oxford_Election.4.A
+		# Put him in power here
+	}
+}
+
+#########################################################################
+#  A worthwile endeavour
+#########################################################################
+country_event = {
+	id = ENG_Oxford_Election.5
+	title = ENG_Oxford_Election.5.t
+	desc = ENG_Oxford_Election.5.d
+	picture = GFX_report_USA_Congress
+	is_triggered_only = yes
+	# Simon wins, beating Lord Irwin/Halifax
+	option = {
+		name = ENG_Oxford_Election.5.A
+		# Put him in power here
+	}
+}
+
+##################################################################
+#  Tizard's Experimental Research
+#########################################################################
+country_event = {
+	id = ENG_Tizards_Research.1
+	title = ENG_Tizards_Research.1.t
+	desc = ENG_Tizards_Research.1.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Leave Him Be
+	option = {
+		name = ENG_Tizards_Research.1.A
+		ai_chance = {
+			base = 20
+			# Make it 5 by default if historical
+			modifier = {
+				is_historical_focus_on = yes
+				add = -15
+			}
+			# Make it less likely if it can choose others
+			modifier = {
+				set_temp_variable = {
+					amount_of_money_to_check = 175
+				}
+				has_specific_amount_of_money_with_inflation_included = yes
+				add = -15
+			}
+			# Make it more likely if it's the only option
+			modifier = {
+				set_temp_variable = {
+					amount_of_money_to_check = 150
+				}
+				has_less_than_specific_amount_of_money_with_inflation_included = yes
+				add = 25
+			}
+			# Make it default if they're broke
+			modifier = {
+				set_temp_variable = {
+					amount_of_money_to_check = 50
+				}
+				has_less_than_specific_amount_of_money_with_inflation_included = yes
+				factor = 100
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = ENG_Tizards_Research.2
+				days = 150
+			}
+		}
+		log = "Tizard - No fund"
+	}
+	# Lower Funding
+	option = {
+		name = ENG_Tizards_Research.1.B
+		ai_chance = {
+			base = 30
+			# Make it 15 by default if it's historical
+			modifier = {
+				is_historical_focus_on = yes
+				add = -15
+			}
+			modifier = {
+				# Make it more likely if it has enough, but not more than the next one
+				set_temp_variable = {
+					amount_of_money_to_check = 175
+				}
+				has_specific_amount_of_money_with_inflation_included = yes
+				set_temp_variable = {
+					amount_of_money_to_check = 325
+				}
+				has_less_than_specific_amount_of_money_with_inflation_included = yes
+				add = 30
+			}
+			modifier = {
+				# Make it less likely if he's rich
+				set_temp_variable = {
+					amount_of_money_to_check = 325
+				}
+				has_specific_amount_of_money_with_inflation_included = yes
+				add = -20
+			}
+		}
+		add_political_power = -25
+		set_temp_variable = {
+			money_to_gain = -150
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		hidden_effect = {
+			country_event = {
+				id = ENG_Tizards_Research.3
+				days = 125
+			}
+		}
+		log = "Tizard - Low fund"
+	}
+	# Higher Funding
+	option = {
+		name = ENG_Tizards_Research.1.C
+		ai_chance = {
+			base = 50
+			# Make it 80 by default if it's historical
+			modifier = {
+				is_historical_focus_on = yes
+				add = 30
+			}
+			modifier = {
+				# Make it more likely if he's rich
+				set_temp_variable = {
+					amount_of_money_to_check = 325
+				}
+				has_specific_amount_of_money_with_inflation_included = yes
+				add = 40
+			}
+			modifier = {
+				# Make it less likely if he's not rich
+				set_temp_variable = {
+					amount_of_money_to_check = 325
+				}
+				has_specific_amount_of_money_with_inflation_included = no
+				add = -60
+			}
+			modifier = {
+				# Make it impossible if they have little
+				set_temp_variable = {
+					amount_of_money_to_check = 100
+				}
+				has_less_than_specific_amount_of_money_with_inflation_included = yes
+				factor = 0
+			}
+		}
+		add_political_power = -50
+		set_temp_variable = {
+			money_to_gain = -300
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		hidden_effect = {
+			country_event = {
+				id = ENG_Tizards_Research.4
+				days = 100
+			}
+		}
+		log = "Tizard - High Fund"
+	}
+}
+
+##################################################################
+#  Tizard's Showcase
+#########################################################################
+country_event = {
+	id = ENG_Tizards_Research.2
+	title = ENG_Tizards_Research.2.t
+	desc = ENG_Tizards_Research.2.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = ENG_Tizards_Research.2.A
+		add_tech_bonus = {
+			uses = 1
+			bonus = 1
+			technology = radar_2
+		}
+	}
+}
+
+##################################################################
+#  A Potential Advantage
+#########################################################################
+country_event = {
+	id = ENG_Tizards_Research.3
+	title = ENG_Tizards_Research.3.t
+	desc = ENG_Tizards_Research.3.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = ENG_Tizards_Research.3.A
+		add_tech_bonus = {
+			uses = 1
+			bonus = 1
+			technology = radar_2
+		}
+		add_tech_bonus = {
+			uses = 1
+			ahead_reduction = 1
+			technology = radar_3
+		}
+	}
+}
+
+##################################################################
+#  The Fruits of Foresight
+#########################################################################
+country_event = {
+	id = ENG_Tizards_Research.4
+	title = ENG_Tizards_Research.4.t
+	desc = ENG_Tizards_Research.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Tizards_Research.4.A
+		add_tech_bonus = {
+			uses = 1
+			bonus = 1
+			technology = radar_2
+		}
+		add_tech_bonus = {
+			uses = 1
+			ahead_reduction = 1
+			technology = radar_3
+			technology = radar_4
+		}
+	}
+}
+
+##################################################################
+#  Indian Governmental Reform
+#########################################################################
+country_event = {
+	id = ENG_Indian_Reform.1
+	title = ENG_Indian_Reform.1.t
+	desc = ENG_Indian_Reform.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Indian_Reform.1.A
+		add_political_power = -100
+		add_stability = -0.05
+		RAJ = {
+			add_political_power = 75
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				add_autonomy_score = {
+					value = 300
+					localization = ENG_Indian_Reform_Autonomy
+				}
+			}
+		}
+		custom_effect_tooltip = ENG_Indian_Reform_Details
+		custom_effect_tooltip = ENG_Indian_Reform_Will_Cancel
+		hidden_effect = {
+			country_event = {
+				id = ENG_Indian_Reform.2
+				days = 730
+			}
+		}
+	}
+}
+
+##################################################################
+#  Finalisation of the Government of India Act
+#########################################################################
+country_event = {
+	id = ENG_Indian_Reform.2
+	title = ENG_Indian_Reform.2.t
+	desc = ENG_Indian_Reform.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Indian_Reform.2.A
+		every_state = {
+			limit = {
+				is_owned_by = RAJ
+				is_core_of = BRM
+			}
+			remove_core_of = RAJ
+			BRM = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				RAJ = {
+					owns_state = 659
+				}
+			}
+			transfer_state = 659
+		}
+		hidden_effect = {
+			ENG = {
+				set_autonomy = {
+					target = BRM
+					autonomy_state = AUTONOMY_Colony
+					end_wars = no
+					end_civil_wars = no
+				}
+			}
+			BRM = {
+				create_country_leader = {
+					name = "Ba Maw"
+					desc = ""
+					picture = GFX_P_S_Ba_Maw
+					expire = "1964.1.1"
+					ideology = socialism
+					traits = { POSITION_Prime_Minister SUBIDEOLOGY_Socialism }
+				}
+				add_popularity = {
+					ideology = socialist
+					popularity = 0.6
+				}
+				set_politics = {
+					ruling_party = socialist
+					elections_allowed = no
+					long_name = BRM_socialist_party_PMP_long
+					name = BRM_socialist_party_PMP
+				}
+				set_cosmetic_tag = BRM_ENG
+			}
+		}
+	}
+}
+
+##########################
+# The Jewel of the Empire
+##########################
+country_event = {
+	id = ENG_Indian_Reform.3
+	title = ENG_Indian_Reform.3.t
+	desc = ENG_Indian_Reform.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Indian_Reform.3.A
+		set_temp_variable = {
+			money_to_gain = -150
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		431 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		RAJ = {
+			add_stability = 0.05
+		}
+	}
+}
+
+##################################################################
+#  A Willingness to Back Down
+##################################################################
+country_event = {
+	id = ENG_Irish_Trade_War.1
+	title = ENG_Irish_Trade_War.1.t
+	desc = ENG_Irish_Trade_War.1.d
+	picture = GFX_
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		NOT = {
+			has_country_flag = Irish_Trade_War_Desperate
+		}
+		date > 1935.3.12
+	}
+	#De-Escalating the Situation Would be Mutually Beneficial
+	option = {
+		name = ENG_Irish_Trade_War.1.A
+		# Always pick mantain if possible
+		ai_chance = {
+			factor = 0
+		}
+		hidden_effect = {
+			news_event = {
+				id = ENG_Irish_Trade_War.2
+				days = 34
+			}
+		}
+	}
+	# We Must Mantain the Economic Pressure
+	option = {
+		name = ENG_Irish_Trade_War.1.B
+		trigger = {
+			OR = {
+				NOT = {
+					has_government = democratic
+				}
+				has_country_leader = {
+					name = "Winston Churchill"
+				}
+				has_idea = ENG_D_Winston_Churchill
+				# has_idea = ENG_FM_Winston_Churchill
+				has_idea = ENG_AM_Winston_Churchill
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = ENG_Irish_Trade_War.4
+				days = 1031
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Coal-Cattle Pact is Signed
+##################################################################
+news_event = {
+	id = ENG_Irish_Trade_War.2
+	title = ENG_Irish_Trade_War.2.t
+	desc = ENG_Irish_Trade_War.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		NOT = {
+			has_country_flag = Irish_Trade_War_Desperate
+		}
+	}
+	# Option for the UK
+	option = {
+		name = ENG_Irish_Trade_War.2.A
+		trigger = {
+			original_tag = ENG
+		}
+		swap_ideas = {
+			remove_idea = ENG_Anglo_Irish_Trade_War_1
+			add_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		effect_tooltip = {
+			IRE = {
+				swap_ideas = {
+					remove_idea = IRE_Anglo_Irish_Trade_War_1
+					add_idea = IRE_Anglo_Irish_Trade_War_2
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = ENG_Irish_Trade_War.3
+				days = 997
+			}
+		}
+	}
+	# Option for Ireland
+	option = {
+		name = ENG_Irish_Trade_War.2.B
+		trigger = {
+			original_tag = IRE
+		}
+		swap_ideas = {
+			remove_idea = IRE_Anglo_Irish_Trade_War_1
+			add_idea = IRE_Anglo_Irish_Trade_War_2
+		}
+		effect_tooltip = {
+			ENG = {
+				swap_ideas = {
+					remove_idea = ENG_Anglo_Irish_Trade_War_1
+					add_idea = ENG_Anglo_Irish_Trade_War_2
+				}
+			}
+		}
+	}
+	# Option for others
+	option = {
+		name = ENG_Irish_Trade_War.2.C
+		trigger = {
+			NOT = {
+				original_tag = ENG
+				original_tag = IRE
+			}
+		}
+	}
+}
+
+##################################################################
+#  A Return to the Table
+##################################################################
+country_event = {
+	id = ENG_Irish_Trade_War.3
+	title = ENG_Irish_Trade_War.3.t
+	desc = ENG_Irish_Trade_War.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		NOT = {
+			has_country_flag = Irish_Trade_War_Desperate
+		}
+	}
+	# Further De-Escalation is Necessary
+	option = {
+		name = ENG_Irish_Trade_War.3.A
+		ai_chance = {
+			factor = 50
+		}
+		country_event = {
+			id = ENG_Irish_Trade_War.5
+			days = 100
+		}
+	}
+	# Deny Them any Further Concessions
+	option = {
+		name = ENG_Irish_Trade_War.3.B
+		trigger = {
+			OR = {
+				NOT = {
+					has_government = democratic
+				}
+				has_country_leader = {
+					name = "Winston Churchill"
+				}
+				has_idea = ENG_D_Winston_Churchill
+				# has_idea = ENG_FM_Winston_Churchill
+				has_idea = ENG_AM_Winston_Churchill
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+		set_country_flag = Irish_Trade_War_Denied
+	}
+}
+
+##################################################################
+#  The Irish Crawl Back
+##################################################################
+country_event = {
+	id = ENG_Irish_Trade_War.4
+	title = ENG_Irish_Trade_War.4.t
+	desc = ENG_Irish_Trade_War.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		NOT = {
+			has_country_flag = Irish_Trade_War_Desperate
+		}
+	}
+	# Some Relief May Be What's Needed
+	option = {
+		name = ENG_Irish_Trade_War.4.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Irish_Trade_War.6
+				days = 100
+			}
+		}
+	}
+	# Deny Them any Concessions Whatsoever
+	option = {
+		name = ENG_Irish_Trade_War.4.B
+		set_country_flag = Irish_Trade_War_Denied
+	}
+}
+
+##################################################################
+#  The Financial, Trade and Defence Terms
+##################################################################
+country_event = {
+	id = ENG_Irish_Trade_War.5
+	title = ENG_Irish_Trade_War.5.t
+	desc = ENG_Irish_Trade_War.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+			owns_state = 1281
+			owns_state = 1282
+			owns_state = 1283
+		}
+		NOT = {
+			has_country_flag = Irish_Trade_War_Desperate
+		}
+	}
+	# These Terms are Acceptable
+	option = {
+		name = ENG_Irish_Trade_War.5.A
+		remove_ideas = ENG_Anglo_Irish_Trade_War_2
+		set_temp_variable = {
+			money_to_gain = 700
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		IRE = {
+			remove_ideas = IRE_Anglo_Irish_Trade_War_2
+			set_temp_variable = {
+				money_to_gain = -700
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		if = {
+			limit = {
+				any_owned_state = {
+					OR = {
+						state = 1281
+						state = 1282
+						state = 1283
+					}
+				}
+			}
+			custom_effect_tooltip = ENG_Withdraw_From_Treaty_Ports
+			IRE = {
+				# Lough Swilly
+				if = {
+					limit = {
+						1281 = {
+							is_owned_by = ENG
+						}
+					}
+					set_state_owner = 1281
+				}
+				# Spike Island
+				if = {
+					limit = {
+						1282 = {
+							is_owned_by = ENG
+						}
+					}
+					set_state_owner = 1282
+				}
+				# Berehaven
+				if = {
+					limit = {
+						1283 = {
+							is_owned_by = ENG
+						}
+					}
+					set_state_owner = 1283
+				}
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = ENG_Irish_Trade_War.7
+				days = 10
+			}
+		}
+	}
+	# We Cannot Accept These Alterations to Defence Policy
+	option = {
+		name = ENG_Irish_Trade_War.5.B
+		trigger = {
+			OR = {
+				NOT = {
+					has_government = democratic
+				}
+				has_country_leader = {
+					name = "Winston Churchill"
+				}
+				has_idea = ENG_D_Winston_Churchill
+				# has_idea = ENG_FM_Winston_Churchill
+				has_idea = ENG_AM_Winston_Churchill
+			}
+		}
+		set_country_flag = Irish_Trade_War_Denied
+	}
+}
+
+##################################################################
+#  The Irish Financial and Trade Terms
+##################################################################
+country_event = {
+	id = ENG_Irish_Trade_War.6
+	title = ENG_Irish_Trade_War.6.t
+	desc = ENG_Irish_Trade_War.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		NOT = {
+			has_country_flag = Irish_Trade_War_Desperate
+		}
+	}
+	# Accept
+	option = {
+		name = ENG_Irish_Trade_War.6.A
+		remove_ideas = ENG_Anglo_Irish_Trade_War_1
+		set_temp_variable = {
+			money_to_gain = 500
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		IRE = {
+			remove_ideas = IRE_Anglo_Irish_Trade_War_1
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		hidden_effect = {
+			news_event = {
+				id = ENG_Irish_Trade_War.8
+				days = 10
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Anglo-Irish Agreements
+##################################################################
+news_event = {
+	id = ENG_Irish_Trade_War.7
+	title = ENG_Irish_Trade_War.7.t
+	desc = ENG_Irish_Trade_War.7.d
+	picture = GFX_news_ENG_Anglo_Irish_Agreement
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Irish_Trade_War.7.A
+		trigger = {
+			original_tag = ENG
+		}
+		add_stability = 0.05
+	}
+	# Option for Ireland
+	option = {
+		name = ENG_Irish_Trade_War.7.B
+		trigger = {
+			original_tag = IRE
+		}
+		add_stability = 0.05
+	}
+	# Option for others
+	option = {
+		name = ENG_Irish_Trade_War.7.C
+		trigger = {
+			NOT = {
+				original_tag = ENG
+				original_tag = IRE
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Dual Anglo-Irish Agreements
+##################################################################
+news_event = {
+	id = ENG_Irish_Trade_War.8
+	title = ENG_Irish_Trade_War.8.t
+	desc = ENG_Irish_Trade_War.8.d
+	picture = GFX_news_ENG_anglo_irish_agreement
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Irish_Trade_War.8.A
+		trigger = {
+			original_tag = ENG
+		}
+		add_stability = 0.05
+	}
+	# Option for Ireland
+	option = {
+		name = ENG_Irish_Trade_War.8.B
+		trigger = {
+			original_tag = IRE
+		}
+		add_stability = 0.05
+	}
+	# Option for others
+	option = {
+		name = ENG_Irish_Trade_War.8.C
+		trigger = {
+			NOT = {
+				original_tag = ENG
+				original_tag = IRE
+			}
+		}
+	}
+}
+
+##################################################################
+#  A Desperate Irish Attempt
+##################################################################
+country_event = {
+	id = ENG_Irish_Trade_War.9
+	title = ENG_Irish_Trade_War.9.t
+	desc = ENG_Irish_Trade_War.9.d
+	picture = GFX_
+	fire_only_once = yes
+	trigger = {
+		has_country_flag = Irish_Trade_War_Denied
+		OR = {
+			has_idea = ENG_Anglo_Irish_Trade_War_1
+			has_idea = ENG_Anglo_Irish_Trade_War_2
+		}
+		OR = {
+			any_enemy_country = {
+				is_major = yes
+			}
+			IRE = {
+				has_war = yes
+			}
+		}
+	}
+	immediate = {
+		set_country_flag = Irish_Trade_War_Desperate
+	}
+	# Accept
+	option = {
+		name = ENG_Irish_Trade_War.9.A
+		effect_tooltip = {
+			remove_ideas = ENG_Anglo_Irish_Trade_War_1
+		}
+		hidden_effect = {
+			remove_ideas = {
+				ENG_Anglo_Irish_Trade_War_1
+				ENG_Anglo_Irish_Trade_War_2
+			}
+		}
+		set_temp_variable = {
+			money_to_gain = 400
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		IRE = {
+			effect_tooltip = {
+				remove_ideas = IRE_Anglo_Irish_Trade_War_1
+			}
+			hidden_effect = {
+				remove_ideas = {
+					IRE_Anglo_Irish_Trade_War_1
+					IRE_Anglo_Irish_Trade_War_2
+				}
+			}
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		hidden_effect = {
+			news_event = {
+				id = ENG_Irish_Trade_War.10
+				days = 5
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Anglo-Irish Agreement
+##################################################################
+news_event = {
+	id = ENG_Irish_Trade_War.10
+	title = ENG_Irish_Trade_War.10.t
+	desc = ENG_Irish_Trade_War.10.d
+	picture = GFX_news_ENG_Anglo_Irish_Agreement
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Irish_Trade_War.10.A
+		trigger = {
+			original_tag = ENG
+		}
+		add_stability = 0.05
+	}
+	# Option for Ireland
+	option = {
+		name = ENG_Irish_Trade_War.10.B
+		trigger = {
+			original_tag = IRE
+		}
+		add_stability = 0.05
+	}
+	# Option for others
+	option = {
+		name = ENG_Irish_Trade_War.10.C
+		trigger = {
+			NOT = {
+				original_tag = ENG
+				original_tag = IRE
+			}
+		}
+	}
+}
+
+##################################################################
+#  Death of King George V
+##################################################################
+news_event = {
+	id = ENG_Abdication_Crisis.1
+	title = ENG_Abdication_Crisis.1.t
+	desc = ENG_Abdication_Crisis.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	 trigger = {
+	 	original_tag = ENG
+	 	date > 1936.1.19
+		has_start_date < 1936.1.19
+	}
+	fire_only_once = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Abdication_Crisis.1.A
+		trigger = {
+			original_tag = ENG
+		}
+		remove_ideas = ENG_George_V_HoG
+		add_ideas = ENG_Edward_VIII_HoG
+		if = {
+			limit = {
+				RAJ = {
+					has_idea = RAJ_D_George_V
+				}
+			}
+			RAJ = {
+			 	remove_ideas = RAJ_D_George_V
+			 	add_ideas = RAJ_D_Edward_VIII
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.2
+				days = 200
+			}
+		}
+	}
+	# Option for UK puppets (Not the raj)
+	option = {
+		name = ENG_Abdication_Crisis.1.B
+		trigger = {
+			is_subject_of = ENG
+			NOT = {
+				original_tag = RAJ
+			}
+		}
+	}
+	# Option for UK puppets (The raj)
+	option = {
+		name = ENG_Abdication_Crisis.1.C
+		trigger = {
+			is_subject_of = ENG
+			original_tag = RAJ
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = RAJ_D_George_V
+				add_idea = RAJ_D_Edward_VIII
+			}
+		}
+	}
+	# Option for UK allies
+	option = {
+		name = ENG_Abdication_Crisis.1.D
+		trigger = {
+			is_in_faction_with = ENG
+			NOT = {
+				original_tag = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+	# Option for others
+	option = {
+		name = ENG_Abdication_Crisis.1.E
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+}
+
+##################################################################
+#  The King and... His Friend?
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.2
+	title = ENG_Abdication_Crisis.2.t
+	desc = ENG_Abdication_Crisis.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.2.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.3
+				days = 70
+			}
+		}
+	}
+}
+
+##################################################################
+#  Rumors of Intent
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.3
+	title = ENG_Abdication_Crisis.3.t
+	desc = ENG_Abdication_Crisis.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.3.A
+		# This will trigger a hidden event which will then trigger the actual event depending on who is PM
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.4
+				days = 35
+			}
+		}
+		# Fool the player :evil_emoji:
+		effect_tooltip = {
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Winston Churchill"
+					}
+				}
+				country_event = {
+					id = ENG_Abdication_Crisis.14
+					days = 35
+				}
+			}
+			else = {
+				country_event = {
+					id = ENG_Abdication_Crisis.5
+					days = 35
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  (HIDDEN) Trigger next event
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.4
+	title = ENG_Abdication_Crisis.4.t
+	desc = ENG_Abdication_Crisis.4.d
+	picture = GFX_
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				has_country_leader = {
+					name = "Winston Churchill"
+				}
+			}
+			country_event = ENG_Abdication_Crisis.14
+		}
+		else = {
+			country_event = ENG_Abdication_Crisis.5
+		}
+	}
+}
+
+##################################################################
+#  The King's Desire
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.5
+	title = ENG_Abdication_Crisis.5.t
+	desc = ENG_Abdication_Crisis.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Such a Marriage would be unacceptable
+	option = {
+		name = ENG_Abdication_Crisis.5.A
+		if = {
+			limit = {
+				is_historical_focus_on = yes
+			}
+			hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.6
+				days = 7
+			}
+		}
+		}
+		else = {
+			hidden_effect = {
+				random_list = {
+					90 = {
+						country_event = {
+							id = ENG_Abdication_Crisis.6
+							days = 7
+						}
+					}
+					10 = {
+						country_event = {
+							id = ENG_Abdication_Crisis.12
+							days = 5
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  Pushing for Abdication
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.6
+	title = ENG_Abdication_Crisis.6.t
+	desc = ENG_Abdication_Crisis.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.6.A
+		country_event = {
+			id = ENG_Abdication_Crisis.7
+			days = 6
+		}
+	}
+}
+
+##################################################################
+#  Addressing Commonwealth Leaders
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.7
+	title = ENG_Abdication_Crisis.7.t
+	desc = ENG_Abdication_Crisis.7.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.7.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.8
+				days = 6
+			}
+		}
+	}
+}
+
+##################################################################
+#  Censoring the King
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.8
+	title = ENG_Abdication_Crisis.8.t
+	desc = ENG_Abdication_Crisis.8.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.8.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.9
+				days = 6
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Threat of Resignation
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.9
+	title = ENG_Abdication_Crisis.9.t
+	desc = ENG_Abdication_Crisis.9.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.9.A
+		hidden_effect = {
+			news_event = {
+				id = ENG_Abdication_Crisis.10
+				days = 6
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Abdication of Edward VIII
+##################################################################
+news_event = {
+	id = ENG_Abdication_Crisis.10
+	title = ENG_Abdication_Crisis.10.t
+	desc = ENG_Abdication_Crisis.10.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Abdication_Crisis.10.A
+		trigger = {
+			original_tag = ENG
+		}
+		remove_ideas = ENG_Edward_VIII_HoG
+		add_ideas = ENG_George_VI_HoG
+		if = {
+		 	limit = {
+		 		RAJ = {
+		 			has_idea = RAJ_D_Edward_VIII
+		 		}
+		 	}
+		 	RAJ = {
+		 		remove_ideas = RAJ_D_Edward_VIII
+		 		add_ideas = RAJ_D_George_VI
+		 	}
+		}
+		hidden_effect = {
+			news_event = {
+				id = ENG_Abdication_Crisis.11
+				days = 177
+			}
+		}
+	}
+	# Option for UK puppets (Not the raj)
+	option = {
+		name = ENG_Abdication_Crisis.10.B
+		trigger = {
+			is_subject_of = ENG
+			NOT = {
+				original_tag = RAJ
+			}
+		}
+	}
+	# Option for UK puppets (The raj)
+	option = {
+		name = ENG_Abdication_Crisis.10.C
+		trigger = {
+			is_subject_of = ENG
+			original_tag = RAJ
+		}
+		effect_tooltip = {
+			remove_ideas = RAJ_D_Edward_VIII
+			add_ideas = RAJ_D_George_VI
+		}
+	}
+	# Option for UK allies
+	option = {
+		name = ENG_Abdication_Crisis.10.D
+		trigger = {
+			is_in_faction_with = ENG
+			NOT = {
+				original_tag = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+	# Option for others
+	option = {
+		name = ENG_Abdication_Crisis.10.E
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Coronation of George VI
+##################################################################
+news_event = {
+	id = ENG_Abdication_Crisis.11
+	title = ENG_Abdication_Crisis.11.t
+	desc = ENG_Abdication_Crisis.11.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Abdication_Crisis.11.A
+		trigger = {
+			original_tag = ENG
+		}
+		add_stability = 0.05
+	}
+	# Option for UK puppets (Not the raj)
+	option = {
+		name = ENG_Abdication_Crisis.11.B
+		trigger = {
+			is_subject_of = ENG
+			NOT = {
+				original_tag = RAJ
+			}
+		}
+	}
+	# Option for UK puppets (The raj)
+	option = {
+		name = ENG_Abdication_Crisis.11.C
+		trigger = {
+			is_subject_of = ENG
+			original_tag = RAJ
+		}
+	}
+	# Option for UK allies
+	option = {
+		name = ENG_Abdication_Crisis.11.D
+		trigger = {
+			is_in_faction_with = ENG
+			NOT = {
+				original_tag = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+	# Option for others
+	option = {
+		name = ENG_Abdication_Crisis.11.E
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+}
+
+##################################################################
+#  The King Relents
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.12
+	title = ENG_Abdication_Crisis.12.t
+	desc = ENG_Abdication_Crisis.12.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.12.A
+		hidden_effect = {
+			news_event = {
+				id = ENG_Abdication_Crisis.13
+				days = 30
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Coronation of Edward VIII (No marriage)
+##################################################################
+news_event = {
+	id = ENG_Abdication_Crisis.13
+	title = ENG_Abdication_Crisis.13.t
+	desc = ENG_Abdication_Crisis.13.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Abdication_Crisis.13.A
+		trigger = {
+			original_tag = ENG
+		}
+		add_stability = 0.05
+	}
+	# Option for UK puppets (Not the raj)
+	option = {
+		name = ENG_Abdication_Crisis.13.B
+		trigger = {
+			is_subject_of = ENG
+			NOT = {
+				original_tag = RAJ
+			}
+		}
+	}
+	# Option for UK puppets (The raj)
+	option = {
+		name = ENG_Abdication_Crisis.13.C
+		trigger = {
+			is_subject_of = ENG
+			original_tag = RAJ
+		}
+	}
+	# Option for UK allies
+	option = {
+		name = ENG_Abdication_Crisis.13.D
+		trigger = {
+			is_in_faction_with = ENG
+			NOT = {
+				original_tag = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+	# Option for others
+	option = {
+		name = ENG_Abdication_Crisis.13.E
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+}
+
+##################################################################
+#  A Favour from a Friend
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.14
+	title = ENG_Abdication_Crisis.14.t
+	desc = ENG_Abdication_Crisis.14.d
+	picture = GFX_
+	is_triggered_only = yes
+	# We Cannot Afford to Expend Political Capital on this Matter
+	option = {
+		name = ENG_Abdication_Crisis.14.A
+		ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 30
+			}
+		}
+		if = {
+			limit = {
+				is_historical_focus_on = yes
+			}
+			hidden_effect = {
+				country_event = {
+					id = ENG_Abdication_Crisis.6
+					days = 7
+				}
+			}
+		}
+		else = {
+			hidden_effect = {
+				random_list = {
+					90 = {
+						country_event = {
+							id = ENG_Abdication_Crisis.6
+							days = 7
+						}
+					}
+					10 = {
+						country_event = {
+							id = ENG_Abdication_Crisis.12
+							days = 5
+						}
+					}
+				}
+			}
+		}
+	}
+	# A Monargatic Marriage may Prove to be a Wise Compromise
+	option = {
+		name = ENG_Abdication_Crisis.14.B
+		ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 70
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.15
+				days = 5
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Bulldog's Bark
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.15
+	title = ENG_Abdication_Crisis.15.t
+	desc = ENG_Abdication_Crisis.15.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.15.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.16
+				days = 6
+			}
+		}
+	}
+}
+
+##################################################################
+#  Whipping the Commonwealth
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.16
+	title = ENG_Abdication_Crisis.16.t
+	desc = ENG_Abdication_Crisis.16.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.16.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.17
+				days = 6
+			}
+		}
+	}
+}
+
+##################################################################
+#  Straight to the People
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.17
+	title = ENG_Abdication_Crisis.17.t
+	desc = ENG_Abdication_Crisis.17.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.17.A
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = {
+						id = ENG_Abdication_Crisis.18
+						days = 6
+					}
+				}
+				50 = {
+					country_event = {
+						id = ENG_Abdication_Crisis.20
+						days = 6
+					}
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  A Stirring Speech
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.18
+	title = ENG_Abdication_Crisis.18.t
+	desc = ENG_Abdication_Crisis.18.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.18.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.19
+				days = 6
+			}
+		}
+	}
+}
+
+##################################################################
+#  Minor Inconveniences
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.19
+	title = ENG_Abdication_Crisis.19.t
+	desc = ENG_Abdication_Crisis.19.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.19.A
+		hidden_effect = {
+			news_event = {
+				id = ENG_Abdication_Crisis.22
+				days = 12
+			}
+		}
+	}
+}
+
+##################################################################
+#  A Flat Reception
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.20
+	title = ENG_Abdication_Crisis.20.t
+	desc = ENG_Abdication_Crisis.20.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.20.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Abdication_Crisis.21
+				days = 12
+			}
+		}
+	}
+}
+
+##################################################################
+#  A Less-Than-Smooth Ride
+##################################################################
+country_event = {
+	id = ENG_Abdication_Crisis.21
+	title = ENG_Abdication_Crisis.21.t
+	desc = ENG_Abdication_Crisis.21.d
+	picture = GFX_
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ENG_Abdication_Crisis.21.A
+		hidden_effect = {
+			news_event = {
+				id = ENG_Abdication_Crisis.22
+				days = 12
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Coronation of Edward VIII (Morganatic marriage)
+##################################################################
+news_event = {
+	id = ENG_Abdication_Crisis.22
+	title = ENG_Abdication_Crisis.22.t
+	desc = ENG_Abdication_Crisis.22.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	# Option for the UK
+	option = {
+		name = ENG_Abdication_Crisis.22.A
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	# Option for UK puppets (Not the raj)
+	option = {
+		name = ENG_Abdication_Crisis.22.B
+		trigger = {
+			is_subject_of = ENG
+			NOT = {
+				original_tag = RAJ
+			}
+		}
+	}
+	# Option for UK puppets (The raj)
+	option = {
+		name = ENG_Abdication_Crisis.22.C
+		trigger = {
+			is_subject_of = ENG
+			original_tag = RAJ
+		}
+	}
+	# Option for UK allies
+	option = {
+		name = ENG_Abdication_Crisis.22.D
+		trigger = {
+			is_in_faction_with = ENG
+			NOT = {
+				original_tag = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+	# Option for others
+	option = {
+		name = ENG_Abdication_Crisis.22.E
+		trigger = {
+			NOT = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+}
+
+######################################
+# The Status of Tibet
+######################################
+country_event = {
+	id = ENG_Sino_Japanese_War_Chinese_Defeat.1
+	title = ENG_Sino_Japanese_War_Chinese_Defeat.1.t
+	desc = ENG_Sino_Japanese_War_Chinese_Defeat.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # The gateway to India must be secured!
+		name = ENG_Sino_Japanese_War_Chinese_Defeat.1.A
+		give_guarantee = TIB
+	}
+}
+
+##################################################################
+#  The Fallen Bridge
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.1
+	title = ENG_Crumbling_Empire.1.t
+	desc = ENG_Crumbling_Empire.1.d
+	picture = GFX_
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		126 = {
+			is_controlled_by = GER
+		}
+	}
+	option = {
+		name = ENG_Crumbling_Empire.1.A
+		hidden_effect = {
+			country_event = {
+				id = ENG_Crumbling_Empire.2
+				days = 2
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Coats Mission
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.2
+	title = ENG_Crumbling_Empire.2.t
+	desc = ENG_Crumbling_Empire.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Crumbling_Empire.2.A
+	}
+}
+
+##################################################################
+#  Women, Children and Conservatives First
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.3
+	title = ENG_Crumbling_Empire.3.t
+	desc = ENG_Crumbling_Empire.3.d
+	picture = GFX_
+	trigger = {
+		original_tag = ENG
+		surrender_progress > 0.4
+		has_war_with = GER
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Crumbling_Empire.3.A
+	}
+}
+
+##################################################################
+#  Curtains
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.4
+	title = ENG_Crumbling_Empire.4.t
+	desc = ENG_Crumbling_Empire.4.d
+	picture = GFX_
+	trigger = {
+		original_tag = ENG
+		surrender_progress > 0.5
+		has_war_with = GER
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Crumbling_Empire.4.A
+	}
+}
+
+##################################################################
+#  Departure
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.5
+	title = ENG_Crumbling_Empire.5.t
+	desc = ENG_Crumbling_Empire.5.d
+	picture = GFX_
+	trigger = {
+		original_tag = ENG
+		surrender_progress > 0.6
+		has_war_with = GER
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Crumbling_Empire.5.A
+	}
+}
+
+##################################################################
+#  Et Tu, Hun?
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.6
+	title = ENG_Crumbling_Empire.6.t
+	desc = ENG_Crumbling_Empire.6.d
+	picture = GFX_
+	trigger = {
+		original_tag = ENG
+		surrender_progress > 0.8
+		has_war_with = GER
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Crumbling_Empire.6.A
+		kill_country_leader = yes
+	}
+}
+
+##################################################################
+#  Sunset
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.7
+	title = ENG_Crumbling_Empire.7.t
+	desc = ENG_Crumbling_Empire.7.d
+	picture = GFX_
+	trigger = {
+		original_tag = ENG
+		surrender_progress > 0.95
+		has_war_with = GER
+		any_core_state = {
+			controller = {
+				OR = {
+					is_in_faction_with = GER
+					is_puppet_of = GER
+					original_tag = GER
+				}
+			}
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Crumbling_Empire.7.A
+		CAN = {
+			change_tag_from = ENG
+			set_faction_leader = yes
+			annex_country = {
+				target = ENG
+				transfer_troops = yes
+			}
+			add_timed_idea = {
+				idea = CAN_Britannia_Vanquished
+				days = 365
+			}
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = CAN_British_Exile
+			add_state_core = 331
+			add_state_core = 332
+			add_state_claim = 120
+			add_state_claim = 121
+			add_state_claim = 122
+			add_state_claim = 123
+			add_state_claim = 125
+			add_state_claim = 126
+			add_state_claim = 127
+			add_state_claim = 128
+			add_state_claim = 129
+			add_state_claim = 130
+			add_state_claim = 131
+			add_state_claim = 132
+			add_state_claim = 133
+			add_state_claim = 136
+			add_state_claim = 338
+			add_state_claim = 859
+			add_state_claim = 1630
+			add_state_claim = 119
+			add_state_claim = 801
+			country_event = { 
+				id = ENG_Crumbling_Empire.8
+				days = 3
+			}
+		}
+		GER = {
+			transfer_state = 801
+			transfer_state = 1630
+			transfer_state = 123
+			transfer_state = 127
+			transfer_state = 125
+			transfer_state = 126
+			transfer_state = 129
+			transfer_state = 128
+			transfer_state = 122
+			transfer_state = 130
+			transfer_state = 132
+			transfer_state = 131
+			transfer_state = 338
+		}
+		IRE = { 
+			transfer_state = 119
+		}
+		SCO = {
+			transfer_state = 120
+			transfer_state = 121
+			transfer_state = 133
+			transfer_state = 136
+			transfer_state = 859
+		}
+		hidden_effect = {
+			GER = {
+				country_event = {
+					id = GER_Third_Versailles.1
+					hours = 48
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  Carving the Carcass
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.8
+	title = ENG_Crumbling_Empire.8.t
+	desc = ENG_Crumbling_Empire.8.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Crumbling_Empire.8.A
+		ARG = {
+			transfer_state = 299
+			transfer_state = 720
+		}
+		YEM = {
+			transfer_state = 659
+			transfer_state = 899
+			transfer_state = 1068
+		}
+		SAF = {
+			transfer_state = 542
+			transfer_state = 545
+			transfer_state = 707
+			transfer_state = 771
+			transfer_state = 796
+			transfer_state = 799
+			transfer_state = 800
+			transfer_state = 1051
+			transfer_state = 1064
+			transfer_state = 1065
+			transfer_state = 1066
+			transfer_state = 1215
+			transfer_state = 1241
+			transfer_state = 1242
+			transfer_state = 1243
+		}
+		AST = {
+			transfer_state = 634
+			transfer_state = 636
+			transfer_state = 639
+			transfer_state = 642
+			transfer_state = 643
+			transfer_state = 711
+			transfer_state = 712
+			transfer_state = 720
+			transfer_state = 727
+			transfer_state = 1322
+		}
+		MAL = {
+			transfer_state = 1005
+			transfer_state = 1006
+		}
+	}
+}
+
+##################################################################
+#  Götterdämmerung (Sealion)
+##################################################################
+country_event = {
+	id = ENG_Crumbling_Empire.9
+	title = ENG_Crumbling_Empire.9.t
+	desc = ENG_Crumbling_Empire.9.d
+	picture = GFX_report_GER_Unternehmen_Seelowe_3
+	trigger = {
+		original_tag = ENG
+		any_core_state = {
+			NOT = { state = 801 }
+			controller = {
+				tag = GER
+			}
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Crumbling_Empire.9.A
+		hidden_effect = {
+			country_event = { id = ENG_Crumbling_Empire.10 days = 2 }
+		}
+	}
+}
+
+##################################################################
+#  Concilii Consultum Ultimum - The Final Act
+##################################################################
+news_event = {
+	id = ENG_Crumbling_Empire.10
+	title = ENG_Crumbling_Empire.10.t
+	desc = ENG_Crumbling_Empire.10.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	option = {
+		name = ENG_Crumbling_Empire.10.A
+	}
+}
+
+##################################################################
+#  Baldwin's Evergrowing Responsibilities
+##################################################################
+country_event = {
+	id = ENG_Ramsay_Events.1
+	title = ENG_Ramsay_Events.1.t
+	desc = ENG_Ramsay_Events.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Ramsay_Events.1.A
+		add_political_power = 50
+		set_temp_variable = {
+			party_id = 4
+		}
+		set_temp_variable = {
+			support_to_add = 0.15
+		}
+		change_party_support = yes
+	}
+}
+
+##################################################################
+#  A Rogue Element
+##################################################################
+country_event = {
+	id = ENG_Ramsay_Events.2
+	title = ENG_Ramsay_Events.2.t
+	desc = ENG_Ramsay_Events.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Ramsay_Events.2.A
+		add_political_power = -30
+		add_stability = 0.05
+	}
+}
+
+##################################################################
+#  Preventing A Future Headache
+##################################################################
+country_event = {
+	id = ENG_Ramsay_Events.3
+	title = ENG_Ramsay_Events.3.t
+	desc = ENG_Ramsay_Events.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Ramsay_Events.3.A
+		add_political_power = -50
+		add_stability = -0.05
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.02
+		}
+	}
+}
+
+##################################################################
+#  A Dying Heartland
+##################################################################
+country_event = {
+	id = ENG_Ramsay_Events.4
+	title = ENG_Ramsay_Events.4.t
+	desc = ENG_Ramsay_Events.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Ramsay_Events.4.A
+		add_stability = 0.02
+	}
+}
+
+##################################################################
+#  A Reason for Hope
+##################################################################
+country_event = {
+	id = ENG_Ramsay_Events.5
+	title = ENG_Ramsay_Events.5.t
+	desc = ENG_Ramsay_Events.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Ramsay_Events.5.A
+		add_stability = 0.02
+	}
+}
+
+##################################################################
+#  The Need for a Conference
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.1
+	title = ENG_London_Economic_Conference_Events.1.t
+	desc = ENG_London_Economic_Conference_Events.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.1.A
+		FRA = { 
+			country_event = { id = ENG_London_Economic_Conference_Events.2 days = 20 }
+		}
+		GER = { 
+			country_event = { id = ENG_London_Economic_Conference_Events.2 days = 20 }
+		}
+		USA = { 
+			country_event = { id = ENG_London_Economic_Conference_Events.2 days = 20 }
+		}
+		ITA = { 
+			country_event = { id = ENG_London_Economic_Conference_Events.2 days = 20 }
+		}
+		POL = { 
+			country_event = { id = ENG_London_Economic_Conference_Events.2 days = 20 }
+		}
+		SOV = { 
+			country_event = { id = ENG_London_Economic_Conference_Events.2 days = 20 }
+		}
+		hidden_effect = {
+			ENG = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+			FRA = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+			GER = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+			USA = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+			ITA = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+			POL = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+			SOV = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.3 days = 65 }
+			}
+		}
+	}
+}
+
+##################################################################
+#  An Invitation to the Geological Museum
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.2
+	title = ENG_London_Economic_Conference_Events.2.t
+	desc = ENG_London_Economic_Conference_Events.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.2.A
+		
+	}
+}
+
+##################################################################
+#  The Beginning of the Conference
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.3
+	title = ENG_London_Economic_Conference_Events.3.t
+	desc = ENG_London_Economic_Conference_Events.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.3.A
+		if = {
+			limit = {
+				original_tag = ENG 
+			}
+			hidden_effect = { 
+				country_event = { id = ENG_London_Economic_Conference_Events.4 days = 5 }
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Issue of the Great War Debt
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.4
+	title = ENG_London_Economic_Conference_Events.4.t
+	desc = ENG_London_Economic_Conference_Events.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.4.A
+		USA = {
+			country_event = { id = ENG_London_Economic_Conference_Events.5 }
+		}
+	}
+}
+
+##################################################################
+#  The British Want Us to Forgive Their Debt
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.5
+	title = ENG_London_Economic_Conference_Events.5.t
+	desc = ENG_London_Economic_Conference_Events.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = { #Yes
+		name = ENG_London_Economic_Conference_Events.5.A
+		ENG = {
+			country_event = { id = ENG_London_Economic_Conference_Events.6 days = 2 }
+		}
+		
+	}
+	option = { #No
+		name = ENG_London_Economic_Conference_Events.5.B
+		ENG = {
+			country_event = { id = ENG_London_Economic_Conference_Events.7 days = 2}
+		}
+	}
+}
+
+##################################################################
+#  The Americans Forgive the Debt
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.6
+	title = ENG_London_Economic_Conference_Events.6.t
+	desc = ENG_London_Economic_Conference_Events.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.6.A
+		hidden_effect = {
+			country_event = { id = ENG_London_Economic_Conference_Events.8  days = 7 }
+			USA = {
+				country_event = { id = ENG_London_Economic_Conference_Events.8  days = 7 }
+			}
+			FRA = {
+				country_event = { id = ENG_London_Economic_Conference_Events.8  days = 7 }
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Americans Refuse to Forgive the Debt
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.7
+	title = ENG_London_Economic_Conference_Events.7.t
+	desc = ENG_London_Economic_Conference_Events.7.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.7.A
+		hidden_effect = {
+			country_event = { id = ENG_London_Economic_Conference_Events.8  days = 7 }
+			USA = {
+				country_event = { id = ENG_London_Economic_Conference_Events.8  days = 7 }
+			}
+			FRA = {
+				country_event = { id = ENG_London_Economic_Conference_Events.8  days = 7 }
+			}
+		}
+	}
+}
+
+##################################################################
+#  Currency Stabilisation Talks
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.8
+	title = ENG_London_Economic_Conference_Events.8.t
+	desc = ENG_London_Economic_Conference_Events.8.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.8.A
+		hidden_effect = {
+			if = {
+				limit = {
+					original_tag = ENG
+				}
+				random_list = {
+					60 = {
+						ENG = {
+							country_event = { id = ENG_London_Economic_Conference_Events.9 days = 5 }
+						}
+						FRA = {
+							country_event = { id = ENG_London_Economic_Conference_Events.9 days = 5 }
+						}
+						USA = {
+							country_event = { id = ENG_London_Economic_Conference_Events.10 days = 5 }
+						}
+					}
+					40 = { 
+						modifier = {
+							factor = 0
+							is_historical_focus_on = yes
+						}
+						ENG = {
+							country_event = { id = ENG_London_Economic_Conference_Events.13 days = 5 }
+						}
+						FRA = {
+							country_event = { id = ENG_London_Economic_Conference_Events.13 days = 5 }
+						}
+						USA = {
+							country_event = { id = ENG_London_Economic_Conference_Events.14 days = 5 }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Plans Are Leaked
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.9
+	title = ENG_London_Economic_Conference_Events.9.t
+	desc = ENG_London_Economic_Conference_Events.9.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.9.A
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			hidden_effect = {
+				country_event = { id = ENG_London_Economic_Conference_Events.11 days = 5 }
+				FRA = {
+					country_event = { id = ENG_London_Economic_Conference_Events.11 days = 5 }
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  Our Talks Have Been Revealed
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.10
+	title = ENG_London_Economic_Conference_Events.10.t
+	desc = ENG_London_Economic_Conference_Events.10.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.10.A
+		
+	}
+}
+
+##################################################################
+#  Roosevelt Backs Out
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.11
+	title = ENG_London_Economic_Conference_Events.11.t
+	desc = ENG_London_Economic_Conference_Events.11.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.11.A
+		hidden_effect = {
+			if = {
+				limit = {
+					original_tag = ENG
+				}
+				news_event = { id = ENG_London_Economic_Conference_Events.12 days = 7 }
+				ENG = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				FRA = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				GER = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				USA = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				ITA = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				POL = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				SOV = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  Roosevelt Condemns Currency Stabilisation
+##################################################################
+news_event = {
+	id = ENG_London_Economic_Conference_Events.12
+	title = ENG_London_Economic_Conference_Events.12.t
+	desc = ENG_London_Economic_Conference_Events.12.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.12.A
+		set_global_flag = ENG_Conference_Failed
+	}
+}
+
+##################################################################
+#  The Plan Has Been Drawn Up
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.13
+	title = ENG_London_Economic_Conference_Events.13.t
+	desc = ENG_London_Economic_Conference_Events.13.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.13.A
+		hidden_effect = {
+			if = {
+				limit = {
+					original_tag = ENG
+				}
+				country_event = { id = ENG_London_Economic_Conference_Events.15 days = 5 }
+				FRA = {
+					country_event = { id = ENG_London_Economic_Conference_Events.15 days = 5 }
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  An Acceptable Proposal
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.14
+	title = ENG_London_Economic_Conference_Events.14.t
+	desc = ENG_London_Economic_Conference_Events.14.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.14.A
+		
+	}
+}
+
+##################################################################
+#  Roosevelt Agrees to the Plan!
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.15
+	title = ENG_London_Economic_Conference_Events.15.t
+	desc = ENG_London_Economic_Conference_Events.15.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.15.A
+		hidden_effect = {
+			if = {
+				limit = {
+					original_tag = ENG
+				}
+				news_event = { id = ENG_London_Economic_Conference_Events.16 days = 7 }
+				ENG = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				FRA = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				GER = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				USA = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				ITA = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				POL = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+				SOV = { 
+					country_event = { id = ENG_London_Economic_Conference_Events.17 days = 12 }
+				}
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Announcement of Temporary Measures
+##################################################################
+news_event = {
+	id = ENG_London_Economic_Conference_Events.16
+	title = ENG_London_Economic_Conference_Events.16.t
+	desc = ENG_London_Economic_Conference_Events.16.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.16.A
+		set_global_flag = ENG_Conference_Success
+	}
+}
+
+##################################################################
+#  The Hugenberg Proposal
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.17
+	title = ENG_London_Economic_Conference_Events.17.t
+	desc = ENG_London_Economic_Conference_Events.17.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.17.A
+		hidden_effect = {
+			if = {
+				limit = {
+					original_tag = GER
+				}
+				country_event = { id = ENG_London_Economic_Conference_Events.18 days = 5 }
+			}
+		}
+	}
+}
+
+##################################################################
+#  Hugenberg's Fate
+##################################################################
+country_event = {
+	id = ENG_London_Economic_Conference_Events.18
+	title = ENG_London_Economic_Conference_Events.18.t
+	desc = ENG_London_Economic_Conference_Events.18.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Sack the idiot
+		name = ENG_London_Economic_Conference_Events.18.A
+		GER = {
+			add_ideas = {
+				GER_Kurt_Schmitt_AM
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = ENG_Conference_Failed
+			}
+			news_event = { id = ENG_London_Economic_Conference_Events.19 days = 5 }
+		}
+		else = {
+			news_event = { id = ENG_London_Economic_Conference_Events.20 days = 5 }
+		}
+	}
+	option = { #It doesn't really matter
+		name = ENG_London_Economic_Conference_Events.18.B
+		if = {
+			limit = {
+				has_global_flag = ENG_Conference_Failed
+			}
+			news_event = { id = ENG_London_Economic_Conference_Events.19 days = 7 }
+		}
+		else = {
+			news_event = { id = ENG_London_Economic_Conference_Events.20 days = 7 }
+		}
+	}
+}
+
+##################################################################
+#  An Unsuccessful Conference
+##################################################################
+news_event = {
+	id = ENG_London_Economic_Conference_Events.19
+	title = ENG_London_Economic_Conference_Events.19.t
+	desc = ENG_London_Economic_Conference_Events.19.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.19.A
+	}
+}
+
+##################################################################
+#  A Successful Conference
+##################################################################
+news_event = {
+	id = ENG_London_Economic_Conference_Events.20
+	title = ENG_London_Economic_Conference_Events.20.t
+	desc = ENG_London_Economic_Conference_Events.20.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = ENG_London_Economic_Conference_Events.20.A
+	}
+}
+
+##################################################################
+#  The Fall of Dover
+##################################################################
+# news_event = {
+# 	id = ENG_Crumbling_Empire.1
+# 	title = ENG_Crumbling_Empire.1.t
+# 	desc = ENG_Crumbling_Empire.1.d
+# 	picture = GFX_
+# 	major = yes
+# 	fire_only_once = yes
+# 	trigger = {
+# 		127 = {
+# 			is_owned_by = ENG
+# 			NOT = {
+# 				is_controlled_by = ENG
+# 			}
+# 			controller = {
+# 				has_war_with = ENG
+# 			}
+# 		}
+# 	}
+# 	# Option for the UK
+# 	option = {
+# 		name = ENG_Crumbling_Empire.1.A
+# 		trigger = {
+# 			tag = ENG
+# 		}
+# 	}
+# 	# Option for UK allies
+# 	option = {
+# 		name = ENG_Crumbling_Empire.1.B
+# 		trigger = {
+# 			NOT = {
+# 				tag = ENG
+# 			}
+# 			is_in_faction_with = ENG
+# 		}
+# 	}
+# 	# Option for the invader (Good job destroying Britain)
+# 	option = {
+# 		name = ENG_Crumbling_Empire.1.C
+# 		trigger = {
+# 			controls_state = 127
+# 		}
+# 	}
+# 	# Option for invader allies
+# 	option = {
+# 		name = ENG_Crumbling_Empire.1.D
+# 		trigger = {
+# 			127 = {
+# 				PREV = {
+# 					NOT = {
+# 						tag = PREV.controller
+# 					}
+# 					is_in_faction_with = PREV.controller
+# 				}
+# 			}
+# 		}
+# 	}
+# 	# Option for others
+# 	option = {
+# 		name = ENG_Crumbling_Empire.1.E
+# 		trigger = {
+# 			NOT = {
+# 				tag = ENG
+# 				is_in_faction_with = ENG
+# 				controls_state = 127
+# 				127 = {
+# 					PREV = {
+# 						is_in_faction_with = PREV.controller
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+##################################################################
+#  His Majesty's Most Loyal Enemy Aliens
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.1
+	title = ENG_Wartime_Tree.1.t
+	desc = ENG_Wartime_Tree.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Tree.1.a
+		add_manpower = 1500
+	}
+}
+
+##################################################################
+#  Our Darkest Hour
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.2
+	title = ENG_Wartime_Tree.2.t
+	desc = ENG_Wartime_Tree.2.d
+	picture = GFX_report_ENG_Churchill_Speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		# Commented because the sound fires for everyone, so it should be used only for global events
+		#hidden_effect = {
+		#	sound_effect = "ENG_We_Shall_Never_Surrender_Soundeffect"
+		#}
+	}
+	option = {
+		name = ENG_Wartime_Tree.2.a
+		set_variable = { ENG_Britannia_Defiant_WS_Weekly_Var = 0.001 }
+		set_variable = { ENG_Britannia_Defiant_SL_Var = 0.05 }
+		ENG = {
+			add_dynamic_modifier = {
+				modifier = ENG_Britannia_Defiant
+			}
+		}
+		force_update_dynamic_modifier = yes
+	}
+}
+
+##################################################################
+#  The Czechoslovakia Governemnt-in-Exile
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.3
+	title = ENG_Wartime_Tree.3.t
+	desc = ENG_Wartime_Tree.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Tree.3.a
+		GER = {
+			9 = {
+				set_state_owner_to = CZE
+			}
+		}
+		ENG = { add_to_faction = CZE }
+	}
+}
+
+##################################################################
+#  Tizard mission event for USA
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.4
+	title = ENG_Wartime_Tree.4.t
+	desc = ENG_Wartime_Tree.4.d
+	picture = GFX_report_event_physics_lab_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.4.a	#sounds good
+		ai_chance = { factor = 90 }
+		add_political_power = -10
+		ENG = {
+			country_event = { days = 1 id = ENG_Wartime_Tree.5 }
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = tizard_relations
+			}
+		}
+		add_tech_bonus = {
+			name = tizard_mission_focus
+			uses = 1
+			bonus = 1.0
+			category = light_fighter
+		}
+		add_tech_bonus = {
+			name = tizard_mission_focus
+			bonus = 1.0
+			uses = 2
+			category = radar_tech
+		}
+	}
+	
+	option = {
+		name = ENG_Wartime_Tree.4.b	#no way 
+		ai_chance = { factor = 10 }
+		#add_opinion_modifier = { target = ENG modifier = tizard_refused }
+		ENG = {
+			country_event = { days = 1 id = ENG_Wartime_Tree.6 }
+		}
+	}
+
+	option = {
+		name = ENG_Wartime_Tree.4.c	#tech_sharing
+		trigger = { has_dlc = "Together for Victory"}
+		ai_chance = { factor = 90 }
+		add_political_power = -10
+		ENG = {
+			country_event = { days = 1 id = ENG_Wartime_Tree.7 }
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = tizard_relations
+			}
+		}
+		add_to_tech_sharing_group = tizard_mission
+	}
+}
+
+##################################################################
+#  Tizard mission event (USA helps)
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.5
+	title = ENG_Wartime_Tree.5.t
+	desc = ENG_Wartime_Tree.5.d
+	picture = GFX_report_event_physics_lab_02
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.5.a
+		add_tech_bonus = {
+			name = tizard_mission_focus
+			bonus = 1.0
+			category = light_fighter
+		}
+		add_tech_bonus = {
+			name = tizard_mission_focus
+			bonus = 1.0
+			uses = 2
+			category = radar_tech
+		}
+		USA = {
+			add_opinion_modifier = { target = ENG modifier = tizard_relations }
+		}
+	}
+}
+
+##################################################################
+#  Tizard mission event (USA says no)
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.6
+	title = ENG_Wartime_Tree.6.t
+	desc = ENG_Wartime_Tree.6.d
+	picture = GFX_report_event_physics_lab_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.6.a
+		add_opinion_modifier = { target = USA modifier = tizard_refused }
+	}
+}
+
+##################################################################
+#  Tizard mission event (Tech Group)
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.7
+	title = ENG_Wartime_Tree.7.t
+	desc = ENG_Wartime_Tree.7.d
+	picture = GFX_report_event_physics_lab_02
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.7.a
+		add_to_tech_sharing_group = tizard_mission
+		USA = {
+			add_opinion_modifier = { target = ENG modifier = tizard_relations }
+		}
+	}
+}
+
+##################################################################
+#  The Atlantic Charter
+##################################################################
+news_event = {
+	id = ENG_Wartime_Tree.8
+	title = ENG_Wartime_Tree.8.t
+	desc = ENG_Wartime_Tree.8.d
+	picture = GFX_news_ENG_RMS_Queen_Mary
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.8.a
+		ENG = { add_political_power = 100 }
+		USA = { add_war_support = 0.05 }
+	}
+}
+
+##################################################################
+#  The Death of Appeasement
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.9
+	title = ENG_Wartime_Tree.9.t
+	desc = ENG_Wartime_Tree.9.d
+	picture = GFX_report_event_physics_lab_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.9.a
+		add_war_support = 0.05
+		custom_effect_tooltip = ENG_Wartime_Tree.9.a.tt
+	}
+}
+
+##################################################################
+#  Roaring Factories
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.10
+	title = ENG_Wartime_Tree.10.t
+	desc = ENG_Wartime_Tree.10.d
+	picture = GFX_report_event_physics_lab_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.10.a
+		121 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		122 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+##################################################################
+#  V is for Victory!
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.11
+	title = ENG_Wartime_Tree.11.t
+	desc = ENG_Wartime_Tree.11.d
+	picture = GFX_report_event_physics_lab_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.11.a
+		add_to_Variable = { ENG_Britannia_Defiant_SL_Var = 0.05 }
+	}
+}
+
+##################################################################
+#  After the End
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.12
+	title = ENG_Wartime_Tree.12.t
+	desc = ENG_Wartime_Tree.12.d
+	picture = GFX_report_event_physics_lab_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.12.a
+		add_stability = 0.15
+		remove_ideas = ENG_Food_Rations
+	}
+}
+
+##################################################################
+#  We'll Meet Again
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.13
+	title = ENG_Wartime_Tree.13.t
+	desc = ENG_Wartime_Tree.13.d
+	picture = GFX_report_event_physics_lab_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.13.a
+		add_to_variable = { ENG_Britannia_Defiant_ACGCGF_Var = 0.10 }
+		add_to_variable = { ENG_Britannia_Defiant_ACGCHF_Var = 0.10 }
+	}
+}
+
+##################################################################
+#  The Saint James' Palace Declaration
+##################################################################
+country_event = {
+	id = ENG_Wartime_Tree.14
+	title = ENG_Wartime_Tree.14.t
+	desc = ENG_Wartime_Tree.14.d
+	picture = GFX_report_event_physics_lab_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ENG_Wartime_Tree.14.a
+		every_country = {
+			limit = { is_in_faction_with = ENG }
+			add_war_support = 0.05
+		}
+	}
+}
+
+##################################################################
+#  The Nuuklear Option
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.1
+	title = ENG_Wartime_Decisions.1.t
+	desc = ENG_Wartime_Decisions.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Perhaps we'll own this land someday?
+		name = ENG_Wartime_Decisions.1.A
+		ENG = {
+			country_event = { id = ENG_Wartime_Decisions.2 days = 2 }
+		}
+	}
+	option = { #This is a clear violation of Danish sovereignty
+		name = ENG_Wartime_Decisions.1.B
+		ENG = {
+			country_event = { id = ENG_Wartime_Decisions.3 days = 2 }
+		}
+	}
+}
+
+##################################################################
+#  America Takes Control of the Danish Possessions
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.2
+	title = ENG_Wartime_Decisions.2.t
+	desc = ENG_Wartime_Decisions.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Decisions.2.A
+		USA = {
+			transfer_state = 100
+			transfer_state = 942
+			transfer_state = 841
+		}
+	}
+}
+
+##################################################################
+#  No Deal in Nuuk
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.3
+	title = ENG_Wartime_Decisions.3.t
+	desc = ENG_Wartime_Decisions.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Decisions.3.A
+		
+	}
+}
+
+##################################################################
+#  Destroyers for Bases
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.4
+	title = ENG_Wartime_Decisions.4.t
+	desc = ENG_Wartime_Decisions.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Decisions.4.A
+		ENG = {
+			country_event = { id = ENG_Wartime_Decisions.5 days = 2 }
+		}
+	}
+	option = {
+		name = ENG_Wartime_Decisions.4.B
+		ENG = {
+			country_event = { id = ENG_Wartime_Decisions.6 days = 2 }
+		}
+	}
+}
+
+##################################################################
+#  Get Name Leader Rejects
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.5
+	title = ENG_Wartime_Decisions.5.t
+	desc = ENG_Wartime_Decisions.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Decisions.5.A
+		
+	}
+}
+
+##################################################################
+#  Get Name Leader Accepts
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.6
+	title = ENG_Wartime_Decisions.6.t
+	desc = ENG_Wartime_Decisions.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Decisions.6.A
+		set_global_flag = Destroyers_for_Bases
+		ENG = {	load_oob = "ENG_Destroyers_for_Bases" }
+		CAN = { load_oob = "CAN_Destroyers_for_Bases" }
+		331 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		696 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		687 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		689 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		690 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		691 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		931 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+		933 = {
+			add_dynamic_modifier = {
+				modifier = USA_Naval_Outpost
+			}
+		}
+	}
+}
+
+##################################################################
+#  The Hamilton Handover
+##################################################################
+country_event = {
+	id = ENG_Wartime_Decisions.7
+	title = ENG_Wartime_Decisions.7.t
+	desc = ENG_Wartime_Decisions.7.d
+	picture = GFX_
+	trigger = {
+		tag = USA
+		has_global_flag = Destroyers_for_Bases
+		ENG = {
+			surrender_progress > 0.74
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = ENG_Wartime_Decisions.7.A
+		USA = {
+			transfer_state = 308
+			transfer_state = 311
+			transfer_state = 687
+			transfer_state = 689
+			transfer_state = 690
+			transfer_state = 691
+			transfer_state = 692
+			transfer_state = 693
+			transfer_state = 696
+			transfer_state = 929
+			transfer_state = 930
+			transfer_state = 931
+			transfer_state = 933
+			transfer_state = 934
+			transfer_state = 935
+			transfer_state = 937
+			transfer_state = 1147
+			transfer_state = 1148
+			transfer_state = 1149
+			transfer_state = 1151
+			transfer_state = 1550
+		}
+		set_country_flag = USA_Naval_Outposts_Annexed
+		hidden_effect = {
+			308 = {
+				add_compliance = 70
+			}
+			311 = {
+				add_compliance = 70
+			}
+			331 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+			}
+			687 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			689 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			690 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			691 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			692 = {
+				add_compliance = 70
+			}
+			693 = {
+				add_compliance = 70
+			}
+			696 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			929 = {
+				add_compliance = 70
+			}
+			930 = {
+				add_compliance = 70
+			}
+			931 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			933 = {
+				remove_dynamic_modifier = {
+					modifier = USA_Naval_Outpost
+				}
+				add_compliance = 70
+			}
+			934 = {
+				add_compliance = 70
+			}
+			935 = {
+				add_compliance = 70
+			}
+			937 = {
+				add_compliance = 70
+			}
+			1147 = {
+				add_compliance = 70
+			}
+			1148 = {
+				add_compliance = 70
+			}
+			1149 = {
+				add_compliance = 70
+			}
+			1151 = {
+				add_compliance = 70
+			}
+			1550 = {
+				add_compliance = 70
+			}
+		}
+	}
+}
+
+##################################################################
+#  Continuing the Anglo-German Naval Negotiations
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.1
+	title = ENG_Baldwin_Events.1.t
+	desc = ENG_Baldwin_Events.1.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.1.A
+		
+	}
+}
+
+##################################################################
+#  A New Governmental Mandate
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.2
+	title = ENG_Baldwin_Events.2.t
+	desc = ENG_Baldwin_Events.2.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.2.A
+		country_event = { id = ENG_Baldwin_Events.3 days = 5 }
+	}
+}
+##################################################################
+#  Chamberlain's Counsel
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.3
+	title = ENG_Baldwin_Events.3.t
+	desc = ENG_Baldwin_Events.3.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = { #We Must Promise No Great Armaments
+		name = ENG_Baldwin_Events.3.A
+		country_event = { id = ENG_Baldwin_Events.4 days = 5 }
+	}
+}
+##################################################################
+#  A Pacifistic Focus
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.4
+	title = ENG_Baldwin_Events.4.t
+	desc = ENG_Baldwin_Events.4.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.4.A
+		country_event = { id = ENG_Baldwin_Events.5 days = 15 }
+	}
+}
+##################################################################
+# A Large But Weakening Majority
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.5
+	title = ENG_Baldwin_Events.5.t
+	desc = ENG_Baldwin_Events.5.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.5.A
+		add_political_power = -25
+		#add_popularity = {
+		#	ideology = democratic
+		#	popularity = 0.02
+		#}
+		set_temp_variable = {
+			party_id = 8
+		}
+		set_temp_variable = {
+			support_to_add = -0.05
+		}
+		change_party_support = yes
+	}
+}
+
+##################################################################
+#  Taking Advantage
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.6
+	title = ENG_Baldwin_Events.6.t
+	desc = ENG_Baldwin_Events.6.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = { #More and More Homes
+		name = ENG_Baldwin_Events.6.A
+		set_temp_variable = {
+			money_to_gain = -100
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		set_temp_variable = {
+			unemployment_value = -0.01
+		}
+		add_unemployment_effect = yes
+		country_event = { id = ENG_Baldwin_Events.7 days = 150 }
+	}
+	option = { #Focus Efforts on Road and Highway Development
+		name = ENG_Baldwin_Events.6.B
+		set_temp_variable = {
+			money_to_gain = -200
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		set_temp_variable = {
+			unemployment_value = -0.01
+		}
+		add_unemployment_effect = yes
+		country_event = { id = ENG_Baldwin_Events.8 days = 250 }
+	}
+	option = { #Direct Focus to Industrial Strengthening
+		name = ENG_Baldwin_Events.6.C
+		set_temp_variable = {
+			money_to_gain = -400
+		}
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		set_temp_variable = {
+			unemployment_value = -0.01
+		}
+		add_unemployment_effect = yes
+		country_event = { id = ENG_Baldwin_Events.9 days = 365 }
+	}
+}
+##################################################################
+#  Continuing the Southern Housing Boom
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.7
+	title = ENG_Baldwin_Events.7.t
+	desc = ENG_Baldwin_Events.7.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.7.A
+		123 = {
+			add_extra_state_shared_building_slots = 2
+		}
+		126 = {
+			add_extra_state_shared_building_slots = 2
+		}
+		127 = {
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+}
+##################################################################
+#  For Miles and Miles
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.8
+	title = ENG_Baldwin_Events.8.t
+	desc = ENG_Baldwin_Events.8.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.8.A
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+##################################################################
+#  Honouring Our Industrial Legacy
+##################################################################
+country_event = {
+	id = ENG_Baldwin_Events.9
+	title = ENG_Baldwin_Events.9.t
+	desc = ENG_Baldwin_Events.9.d
+	picture = GFX_
+	is_triggered_only = yes
+	option = {
+		name = ENG_Baldwin_Events.9.A
+		random_core_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+###################################################################
+# The Newfoundland Debacle
+###################################################################
+country_event = {
+	id = ENG_End_of_Newfoundland.1
+	title = ENG_End_of_Newfoundland.1.t
+	desc = ENG_End_of_Newfoundland.1.d
+	picture = GFX_report_ENG_Anglo_Irish_Trade_Agreement
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = ENG
+		has_start_date < 1934.2.15
+		date > 1934.2.15
+	}
+	
+	option = {
+		name = ENG_End_of_Newfoundland.1.a
+		annex_country = {
+			target = NFL
+			transfer_troops = no
+		}
+		331 = {
+			add_compliance = 100
+		}
+		332 = {
+			add_compliance = 100
+		}
+	}
+}
+
+###################################################################
+# The Irish Constitution
+###################################################################
+country_event = {
+	id = ENG_Chamberlain_Events.1
+	title = ENG_Chamberlain_Events.1.t
+	desc = ENG_Chamberlain_Events.1.d
+	picture = GFX_
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = ENG
+		has_start_date < 1937.12.29
+		date > 1937.12.29
+		has_country_leader = {
+			ruling_only = yes
+			name = "Neville Chamberlain"
+		}
+	}
+	
+	option = {
+		name = ENG_Chamberlain_Events.1.A
+		end_puppet = IRE
+		IRE = {
+			leave_faction = yes
+		}
+		drop_cosmetic_tag = yes
+	}
+}
+
+###################################################################
+# Britannia at War
+###################################################################
+country_event = {
+	id = ENG_Chamberlain_Events.2
+	title = ENG_Chamberlain_Events.2.t
+	desc = ENG_Chamberlain_Events.2.d
+	picture = GFX_
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = ENG
+		has_war = yes
+		any_enemy_country = {
+			is_major = yes
+		}
+		has_country_leader = {
+			ruling_only = yes
+			name = "Neville Chamberlain"
+		}
+	}
+	
+	option = {
+		name = ENG_Chamberlain_Events.2.a
+		remove_ideas = ENG_Pax_Britannica
+		remove_ideas = generic_unemployment_idea
+	}
+}
+
+###################################################################
+# Unlock A clear conscience branch
+###################################################################
+country_event = {
+	id = ENG_Focus_Tree_Layout.1
+	title = ENG_Focus_Tree_Layout.1.t
+	desc = ENG_Focus_Tree_Layout.1.d
+	picture = GFX_
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		original_tag = ENG
+		OR = {
+			date > 1939.1.1
+			has_global_flag = end_of_czechoslovakia
+		}
+	}
+	immediate = {
+		mark_focus_tree_layout_dirty = yes
+	}
+}

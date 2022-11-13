@@ -1,0 +1,355 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+GRE_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_CAV_01 GRE_MOT_01 GRE_MEC_01 GRE_ARM_01 GRE_SOF_01 GRE_MTN_01 }
+
+	fallback_name = "%s Merarchía Pezikoú"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%s Merarchía Pezikoú «Smýrni»" }
+		2 = { "%s Merarchía Pezikoú «Elásson»" }
+		3 = { "%s Merarchía Pezikoú" }
+		4 = { "%s Merarchía Pezikoú" }
+		5 = { "%s Merarchía Pezikoú" }
+		6 = { "%s Merarchía Pezikoú" }
+		7 = { "%s Merarchía Pezikoú «Sarantaporos»" }
+		8 = { "%s Merarchía Pezikoú" }
+		9 = { "%s Merarchía Pezikoú «Adrianople»" }
+		10 = { "%s Merarchía Pezikoú" }
+		11 = { "%s Merarchía Pezikoú" }
+		12 = { "%s Merarchía Pezikoú «Evros»" }
+		13 = { "%s Merarchía Pezikoú" }
+		14 = { "%s Merarchía Pezikoú" }
+		15 = { "%s Merarchía Pezikoú" }
+		16 = { "%s Merarchía Pezikoú «Didymoteicho»" }
+		17 = { "%s Merarchía Pezikoú" }
+		18 = { "%s Merarchía Pezikoú" }
+		19 = { "%s Merarchía Pezikoú" }
+		20 = { "%s Merarchía Pezikoú «Macedonia»" }		
+		21 = { "%s Merarchía Pezikoú" }		
+		22 = { "%s Merarchía Pezikoú" }		
+		23 = { "%s Merarchía Pezikoú" }		
+		24 = { "%s Merarchía Pezikoú" }		
+		25 = { "%s Merarchía Pezikoú" }		
+		26 = { "%s Merarchía Pezikoú" }		
+		27 = { "%s Merarchía Pezikoú" }		
+		28 = { "%s Merarchía Pezikoú" }		
+		29 = { "%s Merarchía Pezikoú" }		
+		30 = { "%s Merarchía Pezikoú" }		
+	}
+}
+
+GRE_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_INF_01 GRE_MOT_01 GRE_MEC_01 GRE_ARM_01 GRE_SOF_01 GRE_MTN_01 }
+
+	fallback_name = "%s Merarchía Ippikoú"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%s Merarchía Ippikoú «Smýrni»" }
+		2 = { "%s Merarchía Ippikoú «Elásson»" }
+		3 = { "%s Merarchía Ippikoú" }
+		4 = { "%s Merarchía Ippikoú" }
+		5 = { "%s Merarchía Ippikoú" }
+		6 = { "%s Merarchía Ippikoú" }
+		7 = { "%s Merarchía Ippikoú «Sarantaporos»" }
+		8 = { "%s Merarchía Ippikoú" }
+		9 = { "%s Merarchía Ippikoú «Adrianople»" }
+		10 = { "%s Merarchía Ippikoú" }
+		11 = { "%s Merarchía Ippikoú" }
+		12 = { "%s Merarchía Ippikoú «Evros»" }
+		13 = { "%s Merarchía Ippikoú" }
+		14 = { "%s Merarchía Ippikoú" }
+		15 = { "%s Merarchía Ippikoú" }
+		16 = { "%s Merarchía Ippikoú «Didymoteicho»" }
+		17 = { "%s Merarchía Ippikoú" }
+		18 = { "%s Merarchía Ippikoú" }
+		19 = { "%s Merarchía Ippikoú" }
+		20 = { "%s Merarchía Ippikoú «Macedonia»" }		
+	}
+}
+
+GRE_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_INF_01 GRE_CAV_01 GRE_MEC_01 GRE_ARM_01 GRE_SOF_01 GRE_MTN_01 }
+
+	fallback_name = "%s Michanokíniti Merarchía Pezikoú"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		19 = { "%s Michanokíniti Merarchía Pezikoú" }
+		1 = { "%s Michanokíniti Merarchía Pezikoú «Smýrni»" }
+		2 = { "%s Michanokíniti Merarchía Pezikoú «Elásson»" }
+		3 = { "%s Michanokíniti Merarchía Pezikoú" }
+		4 = { "%s Michanokíniti Merarchía Pezikoú" }
+		5 = { "%s Michanokíniti Merarchía Pezikoú" }
+		6 = { "%s Michanokíniti Merarchía Pezikoú" }
+		7 = { "%s Michanokíniti Merarchía Pezikoú «Sarantaporos»" }
+		8 = { "%s Michanokíniti Merarchía Pezikoú" }
+		9 = { "%s Michanokíniti Merarchía Pezikoú «Adrianople»" }
+		10 = { "%s Michanokíniti Merarchía Pezikoú" }
+		11 = { "%s Michanokíniti Merarchía Pezikoú" }
+		12 = { "%s Michanokíniti Merarchía Pezikoú «Evros»" }
+		13 = { "%s Michanokíniti Merarchía Pezikoú" }
+		14 = { "%s Michanokíniti Merarchía Pezikoú" }
+		15 = { "%s Michanokíniti Merarchía Pezikoú" }
+		16 = { "%s Michanokíniti Merarchía Pezikoú «Didymoteicho»" }
+		17 = { "%s Michanokíniti Merarchía Pezikoú" }
+		18 = { "%s Michanokíniti Merarchía Pezikoú" }
+		20 = { "%s Michanokíniti Merarchía Pezikoú «Macedonia»" }		
+	}
+}
+
+GRE_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_INF_01 GRE_CAV_01 GRE_MOT_01 GRE_ARM_01 GRE_SOF_01 GRE_MTN_01 }
+
+	fallback_name = "%s Michanopoiiméni Merarchía Pezikoú"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		19 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		1 = { "%s Michanopoiiméni Merarchía Pezikoú «Smýrni»" }
+		2 = { "%s Michanopoiiméni Merarchía Pezikoú «Elásson»" }
+		3 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		4 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		5 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		6 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		7 = { "%s Michanopoiiméni Merarchía Pezikoú «Sarantaporos»" }
+		8 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		9 = { "%s Michanopoiiméni Merarchía Pezikoú «Adrianople»" }
+		10 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		11 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		12 = { "%s Michanopoiiméni Merarchía Pezikoú «Evros»" }
+		13 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		14 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		15 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		16 = { "%s Michanopoiiméni Merarchía Pezikoú «Didymoteicho»" }
+		17 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		18 = { "%s Michanopoiiméni Merarchía Pezikoú" }
+		20 = { "%s Michanopoiiméni Merarchía Pezikoú «Macedonia»" }		
+	}
+}
+
+GRE_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_INF_01 GRE_CAV_01 GRE_MOT_01 GRE_MEC_01 GRE_SOF_01 GRE_MTN_01 }
+
+	fallback_name = "%s Tethorakisméni Merarchía"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		20 = { "%s Tethorakisméni Merarchía «Macedonia»" }
+		1 = { "%s Tethorakisméni Merarchía «Smýrni»" }
+		2 = { "%s Tethorakisméni Merarchía «Elásson»" }
+		3 = { "%s Tethorakisméni Merarchía" }
+		4 = { "%s Tethorakisméni Merarchía" }
+		5 = { "%s Tethorakisméni Merarchía" }
+		6 = { "%s Tethorakisméni Merarchía" }
+		7 = { "%s Tethorakisméni Merarchía «Sarantaporos»" }
+		8 = { "%s Tethorakisméni Merarchía" }
+		9 = { "%s Tethorakisméni Merarchía «Adrianople»" }
+		10 = { "%s Tethorakisméni Merarchía" }
+		11 = { "%s Tethorakisméni Merarchía" }
+		12 = { "%s Tethorakisméni Merarchía «Evros»" }
+		13 = { "%s Tethorakisméni Merarchía" }
+		14 = { "%s Tethorakisméni Merarchía" }
+		15 = { "%s Tethorakisméni Merarchía" }
+		16 = { "%s Tethorakisméni Merarchía «Didymoteicho»" }
+		17 = { "%s Tethorakisméni Merarchía" }
+		18 = { "%s Tethorakisméni Merarchía" }
+		19 = { "%s Tethorakisméni Merarchía" }
+	}
+}
+
+GRE_SOF_01 = 
+{
+	name = "Special Forces Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_INF_01 GRE_CAV_01 GRE_MOT_01 GRE_MEC_01 GRE_ARM_01 GRE_MTN_01 }
+
+	fallback_name = "%s Merarchía Eidikón Dynámeon"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		3 = { "%s Merarchía Eidikón Dynámeon" }
+		1 = { "%s Merarchía Eidikón Dynámeon «Smýrni»" }
+		2 = { "%s Merarchía Eidikón Dynámeon «Elásson»" }
+		4 = { "%s Merarchía Eidikón Dynámeon" }
+		5 = { "%s Merarchía Eidikón Dynámeon" }
+		6 = { "%s Merarchía Eidikón Dynámeon" }
+		7 = { "%s Merarchía Eidikón Dynámeon «Sarantaporos»" }
+		8 = { "%s Merarchía Eidikón Dynámeon" }
+		9 = { "%s Merarchía Eidikón Dynámeon «Adrianople»" }
+		10 = { "%s Merarchía Eidikón Dynámeon" }
+		11 = { "%s Merarchía Eidikón Dynámeon" }
+		12 = { "%s Merarchía Eidikón Dynámeon «Evros»" }
+		13 = { "%s Merarchía Eidikón Dynámeon" }
+		14 = { "%s Merarchía Eidikón Dynámeon" }
+		15 = { "%s Merarchía Eidikón Dynámeon" }
+		16 = { "%s Merarchía Eidikón Dynámeon «Didymoteicho»" }
+		17 = { "%s Merarchía Eidikón Dynámeon" }
+		18 = { "%s Merarchía Eidikón Dynámeon" }
+		19 = { "%s Merarchía Eidikón Dynámeon" }
+		20 = { "%s Merarchía Eidikón Dynámeon «Macedonia»" }
+		21 = { "%s Merarchía Eidikón Dynámeon" }
+		22 = { "%s Merarchía Eidikón Dynámeon" }
+		23 = { "%s Merarchía Eidikón Dynámeon" }
+		24 = { "%s Merarchía Eidikón Dynámeon" }
+		25 = { "%s Merarchía Eidikón Dynámeon" }
+		26 = { "%s Merarchía Eidikón Dynámeon" }
+		27 = { "%s Merarchía Eidikón Dynámeon" }
+		28 = { "%s Merarchía Eidikón Dynámeon" }
+		29 = { "%s Merarchía Eidikón Dynámeon" }
+		30 = { "%s Merarchía Eidikón Dynámeon" }
+		}
+}
+
+GRE_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { GRE }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { GRE_INF_01 GRE_CAV_01 GRE_MOT_01 GRE_MEC_01 GRE_ARM_01 GRE_SOF_01 }
+
+	fallback_name = "%s Oreini Merarchía"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		10 = { "%s Oreini Merarchía" }
+		1 = { "%s Oreini Merarchía «Smýrni»" }
+		2 = { "%s Oreini Merarchía «Elásson»" }
+		3 = { "%s Oreini Merarchía" }
+		4 = { "%s Oreini Merarchía" }
+		5 = { "%s Oreini Merarchía" }
+		6 = { "%s Oreini Merarchía" }
+		7 = { "%s Oreini Merarchía «Sarantaporos»" }
+		8 = { "%s Oreini Merarchía" }
+		9 = { "%s Oreini Merarchía «Adrianople»" }
+		11 = { "%s Oreini Merarchía" }
+		12 = { "%s Oreini Merarchía «Evros»" }
+		13 = { "%s Oreini Merarchía" }
+		14 = { "%s Oreini Merarchía" }
+		15 = { "%s Oreini Merarchía" }
+		16 = { "%s Oreini Merarchía «Didymoteicho»" }
+		17 = { "%s Oreini Merarchía" }
+		18 = { "%s Oreini Merarchía" }
+		19 = { "%s Oreini Merarchía" }
+		20 = { "%s Oreini Merarchía «Macedonia»" }		
+		21 = { "%s Oreini Merarchía" }		
+		22 = { "%s Oreini Merarchía" }		
+		23 = { "%s Oreini Merarchía" }		
+		24 = { "%s Oreini Merarchía" }		
+		25 = { "%s Oreini Merarchía" }		
+		26 = { "%s Oreini Merarchía" }		
+		27 = { "%s Oreini Merarchía" }		
+		28 = { "%s Oreini Merarchía" }		
+		29 = { "%s Oreini Merarchía" }		
+		30 = { "%s Oreini Merarchía" }	
+	}
+}

@@ -1,0 +1,478 @@
+# focus_tree = {
+# 	id = SOV_Trotsky
+# 	country = {
+# 		factor = 0
+# 		modifier = {
+# 			add = 10
+# 			tag = SOV
+# 		}
+# 	}
+ 	shared_focus = {
+		id = SOV_Eighteenth_Party_Congress
+		icon = GFX_focus_generic_join_comintern
+		cost = 10.00
+		x = 7
+		y = 0
+		available = {
+			has_civil_war = no
+		}
+		completion_reward = {
+			add_stability = 0.20
+		}
+
+	}
+	shared_focus = {
+		id = SOV_March_on_the_Kremlin
+		icon = GFX_SOV_March_on_the_Kremlin
+		cost = 0.14
+		x = 20
+		y = 0
+		allow_branch = {
+			has_civil_war = yes
+		}
+		completion_reward = {
+			add_war_support = 0.1
+		}
+	}
+	shared_focus = {
+		id = SOV_Proletarian_Dictatorship
+		icon = GFX_SOV_Proletariat_Dictatorship
+		cost = 1.00
+		prerequisite = {
+			focus = SOV_Eighteenth_Party_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_Soviet_Democracy
+		}
+		x = 4
+		y = 1
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 100
+		}
+
+	}
+	shared_focus = {
+		id = SOV_Soviet_Democracy
+		icon = GFX_SOV_Soviet_Democracy
+		cost = 1.00
+		prerequisite = {
+			focus = SOV_Eighteenth_Party_Congress
+		}
+		mutually_exclusive = {
+			focus = SOV_Proletarian_Dictatorship
+		}
+		x = 10
+		y = 1
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = SOV_Soviet_Democracy
+			add_timed_idea = {
+				idea = SOV_Unstable_Democracy
+				days = 300
+			}
+		}
+
+	}
+	shared_focus = {
+		id = SOV_Premier_Trotsky
+		icon = GFX_SOV_Premier_Trotsky
+		cost = 1.00
+		prerequisite = {
+			focus = SOV_Proletarian_Dictatorship
+			focus = SOV_Soviet_Democracy
+		}
+		mutually_exclusive = {
+			focus = SOV_Premier_Bukharin
+		}
+		x = 4
+		y = 2
+		completion_reward = {
+			retire_country_leader = yes
+		}
+
+	}
+	shared_focus = {
+		id = SOV_Remove_NEP
+		icon = GFX_focus_rom_parties_end
+		cost = 1.00
+		prerequisite = {
+			focus = SOV_Premier_Trotsky
+		}
+		x = 2
+		y = 3
+		completion_reward = {
+			remove_ideas = SOV_New_Economic_Policy
+			add_political_power = -50
+		}
+
+	}
+	shared_focus = {
+		id = SOV_Permanent_Revolution
+		icon = GFX_focus_ger_great_red_menace
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Premier_Trotsky
+		}
+		x = 4
+		y = 3
+		completion_reward = {
+			add_country_leader_trait = permanent_revolutionary
+		}	
+	}
+	shared_focus = {
+		id = SOV_Premier_Bukharin
+		icon = GFX_SOV_Premier_Bukharin
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Soviet_Democracy
+		}
+		mutually_exclusive = {
+			focus = SOV_Premier_Trotsky
+		}
+		x = 10
+		y = 2
+		completion_reward = {
+			add_popularity = {
+			    ideology = socialist
+			    popularity = 0.5
+			}
+			set_politics = {
+				ruling_party = socialist
+			}			
+		}
+
+	}
+	shared_focus = {
+		id = SOV_Rewrite_the_Constitution
+		icon = GFX_focus_generic_treaty
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Premier_Trotsky
+			focus = SOV_Premier_Bukharin
+		}
+		x = 7
+		y = 3
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.1
+		}
+	}
+	shared_focus = {
+		id = SOV_Socialism_at_a_Snails_Pace
+		icon = GFX_SOV_Lenin_Cult
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Premier_Bukharin
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			add_country_leader_trait = socialism_at_a_snails_pace
+		}
+	}
+	shared_focus = {
+		id = SOV_Continue_NEP
+		icon = GFX_Generic_Stock
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Premier_Bukharin
+		}
+		x = 12
+		y = 3
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	shared_focus = {
+		id = SOV_Revive_NEP
+		icon = GFX_Generic_Stock
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_March_on_the_Kremlin
+		}
+		x = 16
+		y = 1
+		completion_reward = {
+			add_ideas = SOV_New_Economic_Policy
+		}
+
+	}
+	shared_focus = {
+		id = SOV_Chastise_NEPmen
+		icon = GFX_focus_rom_parties_end
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Revive_NEP
+		}
+		mutually_exclusive = {
+			focus = SOV_Criminalize_Subsistence_Farming
+		}
+		x = 15
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Criminalize_Subsistence_Farming
+		icon = GFX_Generic_Agriculture
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Revive_NEP
+		}
+		mutually_exclusive = {
+			focus = SOV_Chastise_NEPmen
+		}
+		x = 17
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Hold_the_Scissors_Closed
+		icon = GFX_focus_generic_concessions
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Chastise_NEPmen
+			focus = SOV_Criminalize_Subsistence_Farming
+		}
+		x = 16
+		y = 3
+
+	}
+	shared_focus = {
+		id = SOV_The_Red_Tsar_Dead
+		icon = GFX_SOV_Moscow_Trials
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_March_on_the_Kremlin
+		}
+		x = 20
+		y = 1
+
+	}
+	shared_focus = {
+		id = SOV_Publish_Lenins_Testament
+		icon = GFX_SOV_Lenin_Cult
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Red_Tsar_Dead
+		}
+		mutually_exclusive = {
+			focus = SOV_Release_Purge_Documents
+		}
+		x = 19
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Release_Purge_Documents
+		icon = GFX_SOV_Great_Purge
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Red_Tsar_Dead
+		}
+		mutually_exclusive = {
+			focus = SOV_Publish_Lenins_Testament
+		}
+		x = 21
+		y = 2
+
+	}
+	shared_focus = {
+		id = SOV_Request_LoN_Recognition
+		icon = GFX_goal_anschluss
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Publish_Lenins_Testament
+			focus = SOV_Release_Purge_Documents
+		}
+		x = 20
+		y = 3
+
+	}
+	shared_focus = {
+		id = SOV_RKKA_Reorganization
+		icon = GFX_SOV_Red_Army
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_March_on_the_Kremlin
+		}
+		x = 24
+		y = 1
+		completion_reward = {
+			army_experience = 10
+		}
+	}
+	shared_focus = {
+		id = SOV_Red_Guard_Militias
+		icon = GFX_SOV_Red_Guard
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_RKKA_Reorganization
+		}
+		mutually_exclusive = {
+			focus = SOV_Reinforce_Rifle_Divisions
+		}
+		x = 23
+		y = 2
+		completion_reward = {
+			load_oob = SOV_red_militia
+			add_manpower = 100000
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1918
+				amount = 1000
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Reinforce_Rifle_Divisions
+		icon = GFX_goal_generic_military_sphere
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_RKKA_Reorganization
+		}
+		mutually_exclusive = {
+			focus = SOV_Red_Guard_Militias
+		}
+		x = 25
+		y = 2
+		completion_reward = {
+			add_manpower = 80000
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1936
+				amount = 1000
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Lessons_from_the_Civil_War
+		icon = GFX_SOV_Human_Wave
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Red_Guard_Militias
+			focus = SOV_Reinforce_Rifle_Divisions
+		}
+		x = 24
+		y = 3
+		completion_reward = {
+			army_experience = 50
+			navy_experience = 15
+			air_experience = 15
+			add_tech_bonus = {
+				#name
+				uses = 1
+				bonus = 0.75
+				category = cat_mass_assault
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Reclaim_the_International
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Rewrite_the_Constitution
+		}
+		x = 7
+		y = 4
+		completion_reward = {}
+	}
+	shared_focus = {
+		id = SOV_Recollectivize
+		icon = GFX_focus_cze_german_puppet
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Remove_NEP
+		}
+		x = 3
+		y = 4
+		completion_reward = {
+			add_stability = -0.05
+			203 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Resume_Five_Year_Plans
+		icon = GFX_goal_generic_soviet_construction
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Remove_NEP
+		}
+		x = 1
+		y = 4
+		completion_reward = {}
+	}
+	shared_focus = {
+		id = SOV_Socialist_Libertarianism
+		icon = GFX_goal_support_democracy
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Continue_NEP
+		}
+		x = 11
+		y = 4
+		completion_reward = {
+			add_ideas = SOV_socialist_libertarianism
+		}
+	}
+	shared_focus = {
+		id = SOV_Cut_Down_on_Bureaucracy
+		icon = GFX_goal_demand_sudetenland
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Rewrite_the_Constitution
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			add_timed_idea = { idea = SOV_anti_bureaucratic_measures days = 730 }
+		}
+	}
+	shared_focus = {
+		id = SOV_Social_Tolerance
+		icon = GFX_focus_yug_pan_slavic_congress
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Rewrite_the_Constitution
+		}
+		x = 9
+		y = 4
+		completion_reward = {
+			add_political_power = -50
+			add_war_support = 0.05
+			if = {
+				limit = { has_government = communist }
+				add_popularity = {
+				    ideology = communist
+				    popularity = 0.05
+				}
+			}
+			if = {
+				limit = { has_government = socialist }
+				add_popularity = {
+				    ideology = socialist
+				    popularity = 0.05
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Peasents_Enrich_Yourselves
+		icon = GFX_focus_generic_concessions
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Continue_NEP
+		}
+		x = 13
+		y = 4
+		completion_reward = {
+			add_ideas = SOV_nep
+		}
+	}
+# }

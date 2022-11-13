@@ -1,0 +1,247 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+# contain
+# area_priority
+
+Build_Only_Civs_Custom = {
+	enable = {
+		OR = {
+			AND = {
+				date < 1936.1.1
+				OR = {
+					original_tag = SOV
+					original_tag = SPR
+					original_tag = ENG
+					original_tag = FRA
+					original_tag = POL
+					original_tag = JAP
+				}
+			}
+			AND = {
+				date < 1938.1.1
+				original_tag = USA
+			}
+			AND = {
+				date < 1935.1.1
+				original_tag = CHI
+			}
+			AND = {
+				date < 1937.6.1
+				original_tag = ITA
+			}
+			AND = {
+				date < 1937.1.1
+				original_tag = GER
+			}
+		}
+	}
+	abort = {
+		OR = {
+			AND = {
+				date > 1936.1.1
+				OR = {
+					original_tag = SOV
+					original_tag = SPR
+					original_tag = ENG
+					original_tag = FRA
+					original_tag = POL
+					original_tag = JAP
+				}
+			}
+			AND = {
+				date > 1938.1.1
+				original_tag = USA
+			}
+			AND = {
+				date > 1935.1.1
+				original_tag = CHI
+			}
+			AND = {
+				date > 1937.6.1
+				original_tag = ITA
+			}
+			AND = {
+				date > 1937.1.1
+				original_tag = GER
+			}
+		}
+	}
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 800
+	}
+	ai_strategy = {
+		type = building_target
+		id = infrastructure
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = coastal_bunker
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = naval_base
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = air_base
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = rail_way
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = supply_node
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = radar_station
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = anti_air_building
+		value = -500
+	}
+	ai_strategy = {
+		type = building_target
+		id = bunker
+		value = -500
+	}
+}
+Increase_Mils_Construction_Ratio_1936 = {
+	enable = {
+		date > 1936.1.1
+		OR = {
+			original_tag = SOV
+			original_tag = SPR
+			original_tag = ENG
+			original_tag = FRA
+		}
+	}
+	abort = {
+		date > 1939.6.1
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+}
+Build_Only_Mils_Custom = {
+	enable = {
+		OR = {
+			AND = {
+				date > 1938.1.1
+				original_tag = USA
+			}
+			AND = {
+				date > 1935.1.1
+				original_tag = CHI
+			}
+			AND = {
+				date > 1936.1.1
+				original_tag = POL
+			}
+			AND = {
+				date > 1937.6.1
+				original_tag = ITA
+			}
+			AND = {
+				date > 1937.1.1
+				original_tag = GER
+			}
+			AND = {
+				date > 1936.1.1
+				original_tag = JAP
+			}
+		}
+	}
+	abort = {
+		OR = {
+			date > 1942.1.1
+			AND = {
+				date > 1939.1.1
+				original_tag = JAP
+			}
+		}
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 800
+	}
+}
+Build_Less_of_These = {
+	enable = {
+		always = yes
+	}
+	ai_strategy = {
+		type = building_target
+		id = infrastructure
+		value = -100
+	}
+	ai_strategy = {
+		type = building_target
+		id = rail_way
+		value = -50
+	}
+	ai_strategy = {
+		type = building_target
+		id = supply_node
+		value = -50
+	}
+}
+Ally_Germany_if_Tripartite = {
+	enable = {
+		has_country_flag = GER_Tripartite_Pact
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = befriend
+		id = "GER"
+		value = 999
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = 999
+	}
+}
+Antagonize_if_not_Tripartite = {
+	enable = {
+		has_country_flag = GER_Tripartite_Pact_Denied
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = befriend
+		id = "GER"
+		value = -100
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = -999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "GER"
+		value = 100
+	}
+}

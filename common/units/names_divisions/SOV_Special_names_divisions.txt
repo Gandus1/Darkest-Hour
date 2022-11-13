@@ -1,0 +1,389 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+SOV_MIL_01 = 
+{
+	name = "Militia Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { always = no } # has_country_flag = SOV_Militia_deployed
+
+	division_types = { "militia" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 }
+	# Numbers are the infantry division numbers after these units were converted to the regular army.  NOT linked with the infantry lists so the names will still work properly.
+	fallback_name = "%d-ya Strelkovaya Diviziya Narodnogo Opolcheniya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+	#Leningrad
+		#1st round
+		99 = { "1-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Kirovskogo Rayona)" } #July 1941 # Remnants were added to the 56th Rifle Division which was primarly the 7th militia division
+		85 = { "2-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Moskovskogo Rayona)" } #July 1941
+		100 = { "3-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Frunzenskogo Rayona)" } #July 1941 #This unit was not converted to a regular division
+		86 = { "4-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Dzerzhinskogo Rayona)" } #July 1941 #Was actually intended to be a motorized division but no vehicles were available.
+		80 = { "1-ya Gvardeyskaya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Volodarskogo Rayona)" } #July 1941
+		101 = { "2-ya Gvardeyskaya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Sverdlovskogo Rayona)" } #July 1941 #This unit was not converted to a regular division
+		44 = { "3-ya Gvardeyskaya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Petrogradskogo Rayona)" } #July 1941
+		#2nd round
+		13 = { "5-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Kuybyshevskogo Rayona)" } # September 1941
+		189 = { "6-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Oktyabrskogo Rayona)" } # September 1941
+		56 = { "7-ya Leningradskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } # September 1941
+	#Moscow	
+		#1st round
+		60 = { "1-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Leninskogo Rayona)" } #July 1941
+		2 = { "2-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Stalinskogo Rayona)" } #July 1941
+		110 = { "4-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Kuybyshevskogo Rayona)" } #July 1941
+		113 = { "5-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Frunzenskogo Rayona)" } #July 1941
+		160 = { "6-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Dzerzhinskogo Rayona)" } #July 1941
+		29 = { "7-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Baumanskogo Rayona)" } #July 1941
+		8 = { "8-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Krasnopresnenskogo Rayona)" } #July 1941
+		139 = { "9-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Kirovskogo Rayona)" } #July 1941
+		291 = { "11-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Zheleznodorozhnogo Rayona)" } #July 1941
+		140 = { "13-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Rostokinskogo Rayona)" } #July 1941
+		17 = { "17-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Moskvoretskogo Rayona)" } #July 1941
+		18 = { "18-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Leningradskogo Rayona)" } #July 1941
+		173 = { "21-ya Moskovskaya Strelkovaya Diviziya Narodnogo Opolcheniya (Kiyevskogo Rayona)" } #July 1941
+		332 = { "Ivanovskaya imeni M. V. Frunze Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1941
+		#2nd round
+		129 = { "2-ya Moskovskaya Strelkovaya Diviziya" } #October 1941
+		130 = { "3-ya Moskovskaya Kommunisticheskaya Strelkovaya Diviziya" } #October 1941
+		155 = { "4-ya Moskovskaya Strelkovaya Diviziya" } #October 1941
+		158 = { "5-ya Moskovskaya Strelkovaya Diviziya" } #November 1941
+		49 = { "Ivanovskaya Rabochaya Diviziya imeni D. A. Furmanova" } #October 1941
+	#Arkhangelsk
+		37 = { "Petrozavodskaya Diviziya" } # July 1941
+		27 = { "Diviziya Rebolskogo Napravleniya" } # August 1941
+		186 = { "1-ya Polyarnaya Strelkovaya Diviziya Narodnogo Opolcheniya" } # September 1941
+	#Kharkov
+		383 = { "Donbasskaya Strelkovaya Diviziya Narodnoe Opolcheniye" } # July 1941
+		395 = { "Voroshilovgradskaya Strelkovaya Diviziya Narodnoe Opolcheniye" } # July 1941
+	#Kiev
+		297 = { "Kremenchugskaya Strelkovaya Diviziya Narodnoe Opolcheniye" } # July 1941
+	#North Caucasus
+		#116 = { "Rostovskaya Dobrovolnaya Donskaya Kazachya Kavaleriyskaya Diviziya Narodnogo Opolcheniya" } # July 1941 - CAVALRY
+		103 = { "Stalingradskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #July 1941 #This unit was not converted to a regular division
+		#10 = { "1-ya Kubanskaya Kazachya Kavaleriyskaya Diviziya Narodnogo Opolcheniya" } # November 1941 - CAVALRY
+		#12 = { "2-ya Kubanskaya Kazachya Kavaleriyskaya Diviziya Narodnogo Opolcheniya" } # November 1941 - CAVALRY
+		#13 = { "3-ya Kubanskaya Kazachya Kavaleriyskaya Diviziya Narodnogo Opolcheniya" } # November 1941 - CAVALRY
+		#115 = { "Kabardino-Balkarskaya Dobrovolnaya Kavaleriyskaya Diviziya Narodnogo Opolcheniya" } # November 1941 - CAVALRY
+		#15 = { "Stalingradskaya Donskaya Kazachya Kavaleriyskaya Diviziya Narodnogo Opolcheniya" } # December 1941 - CAVALRY
+		#104 = { "Stalingradskaya Dobrovolcheskaya Tankovaya Brigada" } # February 1942 - TANK #This unit was not converted to a regular division
+	#Odessa
+		320 = { "1-ya Krymskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1941
+		321 = { "2-ya Krymskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1941
+		172 = { "3-ya Krymskaya Motorizovannaya Diviziya Narodnogo Opolcheniya" } #August 1941 - MOTORIZED
+		184 = { "4-ya Krymskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1941
+		421 = { "Odesskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1941
+	#Orel
+		45 = { "Voronezhskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #July 1941 #Unit actually broken up to reinforce 3 army divisions
+	#Siberia - Also formed 4 brigades
+		150 = { "1-ya Stalinskaya Strelkovaya Diviziya Dobrovoltsev-Sibiryakov" } #July 1941
+	#Urals
+		#30 = { "Osobyy Uralskiy Dobrovolcheskiy Tankovyy Korpus imeni I. V. Stalina" } # February 1943 - TANK
+	#Transcaucasus
+		105 = { "1-ya Bakinskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1942 #This unit was not converted to a regular division
+		98 = { "2-ya Bakinskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1942 #This unit was not converted to a regular division
+		107 = { "3-ya Bakinskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #August 1942 #This unit was not converted to a regular division
+	#Volga
+		108 = { "Saratovskaya Strelkovaya Diviziya Narodnogo Opolcheniya" } #July 1941 #This unit was not converted to a regular division
+	}
+}
+
+SOV_NKVD_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { always = no } # has_country_flag = SOV_NKVD_deployed
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 } # Numbers are for the eventual Red Army infantry division number, but are not linked so this doesn't break anything.
+
+	fallback_name = "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		23 = { "2-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy" } # Prewar - Leningrad - became 23rd NKVD Division in Feb42
+		24 = { "3-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy" } # Prewar - Mogilev - became 24th NKVD Division in Feb42
+		22 = { "%d-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1941 June - Riga - became 4th MDON in Jan42 disbanded Aug42
+		25 = { "4-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy" } # Prewar - Kiev - became 25th NKVD Division in Feb42
+		26 = { "5-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy" } # Prewar - Kharkov - became 26th NKVD Division in Feb42
+		9 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy" } # Prewar - Vilnius - lost by 1942
+		10 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy" } # Prewar - Vladimir-Volynsk - lost by 1942
+		13 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # Prewar - Kiev - lost Jan42
+		15 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # Prewar - Kharkiv?
+		92 = { "20-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznodorozhnykh Sooruzheniy i Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # Prewar - Leningrad - became 92nd Infantry Aug42
+		109 = { "21-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1941 June - Leningrad - became 109th Infantry Aug42
+		1 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1941 August - Vaskelovo - became 46th Infantry in Aug42
+		184 = { "4-ya Krymskaya Strelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 August - Sevastapol - became 184 Infantry in Oct41
+		998 = { "2-ya Motostrelkovaya Diviziya Osobogo Naznacheniya Vnutrennikh Voysk NKVD SSSR" } # 1941 October - Moscow
+		#11 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1941 October - unknown location - lost in Jan42
+		5 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tikhvin
+		6 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Moscow
+		7 = { "%d-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tula
+		8 = { "%d-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Voronezh - became 63rd Infantry Jun42
+		31 = { "9-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Rostov-on-Don - became 31st Infantry Aug42
+		181 = { "10-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Saratov - became 181st Infantry Feb43
+		11 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Anapa - lost in Dec42
+		12 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - Saratov
+		17 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 Early - Sverdlovsk
+		19 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - North Caucasus
+		95 = { "13-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 May - Voronezh - became 95th Infantry Aug42
+		29 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Transbaikal
+		30 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Tiflis
+		33 = { "31-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Sukhumi
+		999 = { "Tbilisskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Tbilisi - became 3rd MDON in Mar44 in Alma-Ata
+		96 = { "Makhachkalinskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Makhachkala - disbanded Feb43
+		93 = { "Groznenskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Grozny - disbanded Aug43
+		4 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 September - Krasnodar
+		102 = { "Dalnevostochnaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Khabarovsk - became 102nd Infantry Feb43
+		106 = { "Zabaykalskaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Chita? - became 106th Infantry Feb43
+		140 = { "Sibirskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Novosibirsk - became 140th Infantry Feb43
+		162 = { "Sredneaziatskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Tashkent - became 162nd Infantry Feb43
+		175 = { "Uralskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Sverdlovsk - became 175th Infantry Feb43
+		97 = { "Ordzhonikidzevskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Ordzhonikidze - gets number 12 in Jun 43
+		41 = { "Sukhumskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Sukhumi - became 41st NKVD Feb44
+		14 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 March - unknown location
+		27 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1944 June - Belorussia
+		32 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 August - Western Ukraine
+		45 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		46 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		57 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		58 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		59 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - unknown location
+		61 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		62 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Lublin
+		63 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		64 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Poznan
+		65 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Budapest
+		66 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Romania
+		#243 = { "29-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Yaroslavl - formed as 243 Infantry
+		#244 = { "33-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Dmitrov - formed as 244 Infantry
+		#246 = { "30-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Rybinsk - formed as 246 Infantry
+		#247 = { "34-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Murom - formed as 247 Infantry
+		#248 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Vyazma - formed as 248 Infantry
+		#249 = { "32-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Zagorsk - formed as 249 Infantry
+		#250 = { "31-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Vladimir - formed as 250 Infantry
+		#251 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Tashkent? - formed as 251 Infantry
+		#252 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Moscow - formed as 252 Infantry
+		#253 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - ? - formed as 253 Infantry
+		#254 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Tula - formed as 254 Infantry
+		#256 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Sofrino - formed as 256 Infantry
+		#257 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Tula - formed as 257 Infantry
+		#259 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Serpukhov - formed as 259 Infantry
+		#262 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Vladimir - formed as 262 Infantry
+		#265 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Sofrino - formed as 265 Infantry
+		#268 = { "%d-ya Motostrelkovaya Diviziya Pogranichnykh Voysk NKVD SSSR" } # 1941 June - Zagorsk - formed as 268 Infantry
+	}
+}
+
+SOV_NKVD_42 = 
+{
+	name = "Garrison Divisions" # 1942.11.22
+
+	for_countries = { SOV }
+
+	can_use = { always = no } # has_country_flag = SOV_NKVD_deployed
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 } # Numbers are for the eventual Red Army infantry division number, but are not linked so this doesn't break anything.
+
+	fallback_name = "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		23 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Leningrad - became 23rd NKVD Division in Feb42
+		24 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Mogilev - became 24th NKVD Division in Feb42
+		25 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Kiev - became 25th NKVD Division in Feb42
+		26 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Kharkov - became 26th NKVD Division in Feb42
+		15 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # Prewar - Kharkiv?
+		998 = { "2-ya Motostrelkovaya Diviziya Osobogo Naznacheniya Vnutrennikh Voysk NKVD SSSR" } # 1941 October - Moscow
+		5 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tikhvin
+		6 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Moscow
+		7 = { "%d-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tula
+		181 = { "10-ya Strelkovaya Stalingradskaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Saratov - became 181st Infantry Feb43
+		11 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Anapa - lost in Dec42
+		12 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - Saratov
+		17 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 Early - Sverdlovsk
+		19 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - North Caucasus
+		29 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Transbaikal
+		30 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Tiflis
+		31 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Sukhumi
+		999 = { "Tbilisskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Tbilisi - became 3rd MDON in Mar44 in Alma-Ata
+		102 = { "Dalnevostochnaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Khabarovsk - became 102nd Infantry Feb43
+		106 = { "Zabaykalskaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Chita? - became 106th Infantry Feb43
+		140 = { "Sibirskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Novosibirsk - became 140th Infantry Feb43
+		162 = { "Sredneaziatskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Tashkent - became 162nd Infantry Feb43
+		175 = { "Uralskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 October - Sverdlovsk - became 175th Infantry Feb43
+		96 = { "Makhachkalinskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Makhachkala - disbanded Feb43
+		93 = { "Groznenskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Grozny - disbanded Aug43
+		97 = { "Ordzhonikidzevskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Ordzhonikidze - gets number 12 in Jun 43
+		41 = { "Sukhumskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Sukhumi - became 41st NKVD Feb44
+		4 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 September - Krasnodar
+		14 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 March - unknown location
+		27 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1944 June - Belorussia
+		32 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 August - Western Ukraine
+		45 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		46 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		57 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		58 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		59 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - unknown location
+		61 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		63 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		64 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Poznan
+		65 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Budapest
+		66 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Romania
+
+	}
+}
+SOV_NKVD_43 = 
+{
+	name = "Garrison Divisions" # 1943.7.26
+
+	for_countries = { SOV }
+
+	can_use = { always = no } # has_country_flag = SOV_NKVD_deployed
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 } # Numbers are for the eventual Red Army infantry division number, but are not linked so this doesn't break anything.
+
+	fallback_name = "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		23 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Leningrad - became 23rd NKVD Division in Feb42
+		24 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Mogilev - became 24th NKVD Division in Feb42
+		25 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Kiev - became 25th NKVD Division in Feb42
+		26 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Kharkov - became 26th NKVD Division in Feb42
+		15 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # Prewar - Kharkiv?
+		998 = { "2-ya Motostrelkovaya Diviziya Osobogo Naznacheniya Vnutrennikh Voysk NKVD SSSR" } # 1941 October - Moscow
+		5 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tikhvin
+		6 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Moscow
+		7 = { "%d-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tula
+		12 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - Saratov
+		17 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 Early - Sverdlovsk
+		19 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - North Caucasus
+		29 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Transbaikal
+		30 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Tiflis
+		31 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Sukhumi
+		999 = { "Tbilisskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Tbilisi - became 3rd MDON in Mar44 in Alma-Ata
+		93 = { "Groznenskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Grozny - disbanded Aug43
+		97 = { "12-ya Strelkovaya Ordzhonikidzevskaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Ordzhonikidze - gets number 12 in Jun43
+		41 = { "Sukhumskaya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Sukhumi - became 41st NKVD Feb44
+		4 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 September - Krasnodar
+		14 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 March - unknown location
+		27 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1944 June - Belorussia
+		32 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 August - Western Ukraine
+		45 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		46 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		57 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		58 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		59 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - unknown location
+		61 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		63 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		64 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Poznan
+		65 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Budapest
+		66 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Romania
+	}
+}
+
+SOV_NKVD_44 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { always = no } # has_country_flag = SOV_NKVD_deployed
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 } # Numbers are for the eventual Red Army infantry division number, but are not linked so this doesn't break anything.
+
+	fallback_name = "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		23 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Leningrad - became 23rd NKVD Division in Feb42
+		24 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Mogilev - became 24th NKVD Division in Feb42
+		25 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Kiev - became 25th NKVD Division in Feb42
+		26 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # Prewar - Kharkov - became 26th NKVD Division in Feb42
+		15 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # Prewar - Kharkiv?
+		998 = { "2-ya Motostrelkovaya Diviziya Osobogo Naznacheniya Vnutrennikh Voysk NKVD SSSR" } # 1941 October - Moscow
+		5 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tikhvin
+		6 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Moscow
+		7 = { "%d-ya Motostrelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1942 January - Tula
+		12 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - Saratov
+		17 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 Early - Sverdlovsk
+		19 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Osobo Vazhnykh Predpriyatiy Promyshlennosti" } # 1942 January - North Caucasus
+		29 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Transbaikal
+		30 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Tiflis
+		31 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1942 May - Sukhumi
+		999 = { "3-ya Motostrelkovaya Diviziya Osobogo Naznacheniya Vnutrennikh Voysk NKVD SSSR" } # 1942 August - Tbilisi - became 3rd MDON in Mar44 in Alma-Ata
+		97 = { "12-ya Strelkovaya Ordzhonikidzevskaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Ordzhonikidze - gets number 12 in Jun43
+		41 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 March - Sukhumi - became 41st NKVD Feb44
+		4 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1943 September - Krasnodar
+		14 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 March - unknown location
+		27 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1944 June - Belorussia
+		32 = { "%d-ya Diviziya Voysk NKVD SSSR po Okhrane Zheleznykh Dorog" } # 1944 August - Western Ukraine
+		45 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		46 = { "%d-ya Diviziya Konvoynykh Voysk NKVD SSSR" } # 1944 September - unknown location
+		57 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		58 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		59 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - unknown location
+		61 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Germany
+		63 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - East Prussia
+		64 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Poznan
+		65 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Budapest
+		66 = { "%d-ya Strelkovaya Diviziya Vnutrennikh Voysk NKVD SSSR" } # 1945 - Romania
+	}
+}

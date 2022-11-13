@@ -1,0 +1,182 @@
+Modify_Production_Quotas_idea = {
+    if = {
+        limit = {
+            has_idea = SOV_Production_Quotas
+        }
+        swap_ideas = {
+            remove_idea = SOV_Production_Quotas
+            add_idea = SOV_Production_Quotas_1
+        }
+    }
+    else_if = {
+        limit = {
+            has_idea = SOV_Production_Quotas_1
+        }
+        swap_ideas = {
+            remove_idea = SOV_Production_Quotas_1
+            add_idea = SOV_Production_Quotas_2
+        }
+    }
+    else_if = {
+        limit = {
+            has_idea = SOV_Production_Quotas_2
+        }
+        swap_ideas = {
+            remove_idea = SOV_Production_Quotas_2
+            add_idea = SOV_Production_Quotas_3
+        }
+    }
+}
+SOV_move_german_preparation_level_down = {
+	if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_0_flag
+			}
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+	else_if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_1_flag
+			}
+		}
+		GER = {
+			clr_country_flag = GER_Aufbau_Ost_1_flag
+			set_country_flag = GER_Aufbau_Ost_0_flag
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+	else_if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_2_flag
+			}
+		}
+		GER = {
+			clr_country_flag = GER_Aufbau_Ost_2_flag
+			set_country_flag = GER_Aufbau_Ost_1_flag
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+	else_if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_3_flag
+			}
+		}
+		GER = {
+			clr_country_flag = GER_Aufbau_Ost_3_flag
+			set_country_flag = GER_Aufbau_Ost_2_flag
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+	else_if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_4_flag
+			}
+		}
+		GER = {
+			clr_country_flag = GER_Aufbau_Ost_4_flag
+			set_country_flag = GER_Aufbau_Ost_3_flag
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+	else_if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_5_flag
+			}
+		}
+		GER = {
+			clr_country_flag = GER_Aufbau_Ost_5_flag
+			set_country_flag = GER_Aufbau_Ost_4_flag
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+	else_if = {
+		limit = {
+			GER = {
+				has_country_flag = GER_Aufbau_Ost_6_flag
+			}
+		}
+		GER = {
+			clr_country_flag = GER_Aufbau_Ost_6_flag
+			set_country_flag = GER_Aufbau_Ost_5_flag
+		}
+		custom_effect_tooltip = SOV_Lower_German_Prepartion_Level
+	}
+}
+SOV_move_readiness_level_up = {
+	if = {
+		limit = {
+			check_variable = {
+				var = SOV_operation_readiness
+				value = 0.7
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = SOV_operation_readiness
+				value = 0.85
+				compare = less_than
+			}
+			NOT = {
+				has_country_flag = SOV_Operation_Groza_Readiness_1
+			}
+		}
+		set_country_flag = SOV_Operation_Groza_Readiness_1
+		custom_effect_tooltip = SOV_Give_Idea_at_the_start_of_War
+		effect_tooltip = {
+			add_ideas = SOV_Operation_Groza_1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = SOV_operation_readiness
+				value = 0.85
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = SOV_operation_readiness
+				value = 1
+				compare = less_than
+			}
+			NOT = {
+				has_country_flag = SOV_Operation_Groza_Readiness_2
+			}
+		}
+		set_country_flag = SOV_Operation_Groza_Readiness_2
+		clr_country_flag = SOV_Operation_Groza_Readiness_1
+		custom_effect_tooltip = SOV_Give_Idea_at_the_start_of_War
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = SOV_Operation_Groza_1
+				add_idea = SOV_Operation_Groza_2
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = SOV_operation_readiness
+				value = 1
+				compare = greater_than_or_equals
+			}
+			NOT = {
+				has_country_flag = SOV_Operation_Groza_Readiness_3
+			}
+		}
+		set_country_flag = SOV_Operation_Groza_Readiness_3
+		clr_country_flag = SOV_Operation_Groza_Readiness_2
+		custom_effect_tooltip = SOV_Give_Idea_at_the_start_of_War
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = SOV_Operation_Groza_2
+				add_idea = SOV_Operation_Groza_3
+			}
+		}
+	}
+}

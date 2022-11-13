@@ -1,0 +1,183 @@
+###########################
+# Darkest Hour Events : Iraq
+###########################
+add_namespace = IRQ_Politics
+
+#########################################################################
+# Death of Faysal I
+#########################################################################
+country_event = {
+	id = IRQ_Politics.1
+	title = IRQ_Politics.1.t
+	desc = IRQ_Politics.1.d
+	picture = GFX_news_AST_John_Curtin_Funeral
+	fire_only_once = yes
+	trigger = {
+		original_tag = IRQ
+        date > 1933.9.8
+        has_start_date < 1933.9.8
+	}
+	# May his soul rest in peace
+	option = {
+		name = IRQ_Politics.1.A
+		# Autocracy
+        create_country_leader = {
+            name = "Ghazi I"
+            desc = "Ghazi_I_desc"
+            picture = GFX_P_A_Ghazi_I
+            expire = "1939.5.5"
+            ideology = monarchism
+            traits = { POSITION_King SUBIDEOLOGY_Monarchism }
+        }
+	}
+}
+#########################################################################
+# Death of Ghazi I
+#########################################################################
+country_event = {
+	id = IRQ_Politics.2
+	title = IRQ_Politics.2.t
+	desc = IRQ_Politics.2.d
+	picture = GFX_news_AST_John_Curtin_Funeral
+	fire_only_once = yes
+	trigger = {
+		original_tag = IRQ
+        date > 1939.4.4
+        has_start_date < 1939.4.4
+	}
+	# May his soul rest in peace
+	option = {
+		name = IRQ_Politics.2.A
+		# Autocracy
+        create_country_leader = {
+            name = "Regency"
+            picture = GFX_P_IRQ_Regency
+            expire = "1964.1.1"
+            ideology = monarchism
+            traits = { POSITION_King SUBIDEOLOGY_Monarchism }
+        }
+	}
+}
+#########################################################################
+# Nuri as-Said Appointed Prime Minister
+#########################################################################
+country_event = {
+	id = IRQ_Politics.3
+	title = IRQ_Politics.3.t
+	desc = IRQ_Politics.3.d
+	picture = GFX_news_AST_John_Curtin_Funeral
+	fire_only_once = yes
+	trigger = {
+		original_tag = IRQ
+        date > 1938.12.25
+        has_start_date < 1938.12.25
+	}
+	# 
+	option = {
+		name = IRQ_Politics.3.A
+		remove_ideas = IRQ_D_Naji_Shawkat
+        add_ideas = IRQ_D_Nuri_as_Said
+	}
+	
+}
+#########################################################################
+# The Golden Square Coup
+#########################################################################
+country_event = {
+	id = IRQ_Politics.4
+	title = IRQ_Politics.4.t
+	desc = IRQ_Politics.4.d
+	picture = GFX_news_AST_John_Curtin_Funeral
+	fire_only_once = yes
+	trigger = {
+		original_tag = IRQ
+        date > 1941.4.1
+        has_start_date < 1941.4.1
+	}
+	# 
+	option = {
+		name = IRQ_Politics.4.A
+        create_country_leader = {
+            name = "The Golden Square"
+            picture = GFX_P_IRQ_Regency
+            expire = "1964.1.1"
+            ideology = monarchism
+            traits = { POSITION_King SUBIDEOLOGY_Monarchism }
+        }
+		remove_ideas = IRQ_D_Nuri_as_Said
+        add_ideas = IRQ_D_Rashid_Ali_al_Gaylani
+        ENG = {
+            country_event = { id = IRQ_Politics.5 hours = 6 }
+        }
+        set_global_flag = IRQ_Golden_Square_Coup
+	}
+}
+#########################################################################
+# Coup in Iraq
+#########################################################################
+country_event = {
+	id = IRQ_Politics.5
+	title = IRQ_Politics.5.t
+	desc = IRQ_Politics.5.d
+	picture = GFX_news_AST_John_Curtin_Funeral
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = IRQ_Politics.5.A
+        create_wargoal = {
+            type = puppet_wargoal_focus
+            target = IRQ
+        }
+	}
+}
+#########################################################################
+# Capitulation of Iraq
+#########################################################################
+country_event = {
+	id = IRQ_Politics.6
+	title = IRQ_Politics.6.t
+	desc = IRQ_Politics.6.d
+	picture = GFX_news_AST_John_Curtin_Funeral
+	fire_only_once = yes
+	trigger = {
+        original_tag = ENG
+        has_global_flag = IRQ_Golden_Square_Coup
+        has_war_with = IRQ
+        IRQ = {
+            surrender_progress > 0.59
+        }
+    }
+	# 
+	option = {
+		name = IRQ_Politics.6.A
+        clr_global_flag = IRQ_Golden_Square_Coup
+        hidden_effect = {
+            white_peace = IRQ
+            set_autonomy = {
+                target = IRQ
+                autonomous_state = AUTONOMY_Dominion
+                freedom_level = 0.8
+            }
+            IRQ = {
+                add_popularity = {
+					ideology = authoritarian
+					popularity = 1
+				}
+				set_politics = {
+					ruling_party = authoritarian
+				}
+                create_country_leader = {
+                    name = "Regency"
+                    picture = GFX_P_IRQ_Regency
+                    expire = "1964.1.1"
+                    ideology = monarchism
+                    traits = { POSITION_King SUBIDEOLOGY_Monarchism }
+                }
+                remove_ideas = IRQ_D_Rashid_Ali_al_Gaylani
+                add_ideas = IRQ_D_Nuri_as_Said
+                set_cosmetic_tag = IRQ_IRAQ
+            }
+        }
+	}
+}

@@ -1,0 +1,145 @@
+####################################################
+## Finland
+#####################################################
+# air_factory_balance
+# alliance
+# antagonize
+# area_priority
+# befriend
+# build_army
+# build_building
+# build_ship
+# conquer
+# contain
+# equipment_production_factor
+# equipment_stockpile
+# garrison
+# ignore
+# influence
+# invade
+# pp_spend_priority
+# protect
+# research_tech
+# role_ratio
+# send_volunteers_desire
+# support
+# template_prio
+# template_xp_reserve 
+# unit_ratio
+# Finland stay neutral until faction joined
+Finland_stay_neutral = {
+	enable = {
+		original_tag = FIN
+	}
+	abort = {
+		OR = {
+			is_puppet = yes
+			is_in_faction = yes
+			has_country_flag = FIN_Lost_Winter_War
+		}
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ENG"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "FRA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ITA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "SOV"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "CHI"
+		value = -1000
+	}
+}
+FIN_Prepare_for_War_Against_Soviets = {
+	enable = {
+		original_tag = FIN
+		has_country_flag = FIN_Soviet_Keraila_Demands
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = prepare_for_war
+		id = "SOV"
+		value = 200
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "SOV"
+		value = 200
+	}
+}
+FIN_Befriend_Germans_After_War = {
+	enable = {
+		original_tag = FIN
+		has_country_flag = FIN_Lost_Winter_War
+		NOT = {
+			is_puppet = yes
+		}
+		NOT = {	GER = { has_non_aggression_pact_with = SOV } }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = antagonize
+		id = "SOV"
+		value = 200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ENG"
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = -200
+	}
+	ai_strategy = {
+		type = befriend
+		id = "GER"
+		value = 500
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = 1000
+	}
+}
+
+FIN_Antagonize_SOV = {
+	enable = {
+		tag = FIN
+		is_historical_focus_on = yes
+		SOV = { owns_state = 146 } #Karjala
+		NOT = { is_subject_of = SOV }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = SOV
+		value = 200
+	}
+}

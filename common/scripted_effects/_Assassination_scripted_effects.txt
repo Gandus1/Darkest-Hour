@@ -1,0 +1,128 @@
+select_target_of_assassination = {
+	custom_effect_tooltip = SELECT_TARGET_OF_ASSASSINATION
+	hidden_effect = {
+		set_country_flag = has_selected_a_target_of_assassination
+		clear_array = dh_assassination_methods_array
+		clear_array = dh_assassination_situations_array
+		set_variable = { assassination_target = assassination_target_other_context }
+		# Populate methods & situations arrays with available options
+		if = {
+			limit = {
+				check_variable = { assassination_target = 1 }
+			}
+			set_variable = { assassination_target_country = GER.id }
+			add_to_array = { dh_assassination_methods_array = 1 }
+			add_to_array = { dh_assassination_methods_array = 2 }
+			add_to_array = { dh_assassination_methods_array = 3 }
+			add_to_array = { dh_assassination_methods_array = 4 }
+			add_to_array = { dh_assassination_methods_array = 5 }
+			add_to_array = { dh_assassination_methods_array = 6 }
+			add_to_array = { dh_assassination_situations_array = 1 }
+			add_to_array = { dh_assassination_situations_array = 2 }
+			add_to_array = { dh_assassination_situations_array = 3 }
+			add_to_array = { dh_assassination_situations_array = 4 }
+		}
+	}
+}
+
+cancel_assassination = {
+	custom_effect_tooltip = CANCEL_ASSASSINATION
+	hidden_effect = {
+		# clear flags & variables for the decision category
+		clr_country_flag = has_selected_a_target_of_assassination
+		clear_array = dh_assassination_methods_array
+		clear_array = dh_assassination_situations_array
+		clear_variable = assassination_target
+		clear_variable = assassination_target_country
+		clear_variable = assassination_method
+		clear_variable = assassination_situation
+		clear_variable = assassination_success_chance
+		# clear stuff from planning etc.
+	}
+}
+
+set_base_success_chance_of_assassination = {
+	clear_variable = assassination_success_chance
+	if = {
+		limit = {
+			check_variable = { assassination_method = 1 }
+		}
+		if = {
+			limit = {
+				check_variable = { assassination_situation = 1 }
+			}
+			set_variable = { assassination_success_chance = 7.5 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { assassination_situation = 2 }
+			}
+			set_variable = { assassination_success_chance = 5 }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { assassination_method = 2 }
+		}
+		if = {
+			limit = {
+				check_variable = { assassination_situation = 1 }
+			}
+			set_variable = { assassination_success_chance = 15 }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { assassination_method = 3 }
+		}
+		if = {
+			limit = {
+				check_variable = { assassination_situation = 1 }
+			}
+			set_variable = { assassination_success_chance = 5 }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { assassination_method = 4 }
+		}
+		if = {
+			limit = {
+				OR = {
+					check_variable = { assassination_situation = 1 }
+					check_variable = { assassination_situation = 2 }
+					check_variable = { assassination_situation = 3 }
+				}
+			}
+			set_variable = { assassination_success_chance = 5 }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { assassination_method = 5 }
+		}
+		if = {
+			limit = {
+				check_variable = { assassination_situation = 1 }
+			}
+			set_variable = { assassination_success_chance = 7.5 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { assassination_situation = 2 }
+			}
+			set_variable = { assassination_success_chance = 2.5 }
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { assassination_method = 6 }
+		}
+		if = {
+			limit = {
+				check_variable = { assassination_situation = 1 }
+			}
+			set_variable = { assassination_success_chance = 5 }
+		}
+	}
+}

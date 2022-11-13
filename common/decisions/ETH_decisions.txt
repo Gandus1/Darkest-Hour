@@ -1,0 +1,267 @@
+#########################################################################
+#  British Decisions
+#########################################################################
+ETH_Second_Italo_Ethiopian_War = {
+	ETH_Holding_Adowa_Again = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+		}
+		available = {
+			original_tag = ETH
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			every_owned_state = {
+				limit = {
+					is_owned_by = ETH
+				}
+				add_province_modifier = {
+					static_modifiers = { defense_buff }
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+			hidden_effect = {
+				set_country_flag = eth_holding_adowa
+			}
+		}
+	}
+
+	ETH_Christmas_Offensive = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_holding_adowa
+			}
+		}
+		available = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_holding_adowa
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			add_timed_idea = { idea = ETH_Christmas_Offensive days = 180 }
+			550 = { add_core_of = ETH }
+			hidden_effect = {
+				set_country_flag = eth_christmas_offensive
+			}
+		}
+	}
+
+	ETH_Pushing_to_Asmara = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+			#KerenStateID = { is_controlled_by = ETH }
+			hidden_trigger = {
+				has_country_flag = eth_christmas_offensive
+			}
+		}
+		available = {
+			original_tag = ETH
+			#KerenStateID = { is_controlled_by = ETH }
+			hidden_trigger = {
+				has_country_flag = eth_christmas_offensive
+			}
+		}
+
+		complete_effect = {
+			#something
+		}
+	}
+
+	ETH_Fortifying_Ogaden = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+		}
+		available = {
+			original_tag = ETH
+		}
+
+		complete_effect = {
+			every_owned_state = {
+				limit = {
+					is_owned_by = ETH
+				}
+				add_province_modifier = {
+					static_modifiers = { fortifying_ogaden }
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+			hidden_effect = {
+				set_country_flag = eth_fortifying_ogaden
+			}
+		}
+	}
+
+	ETH_Counter_Attacking_Somaliland = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_fortifying_ogaden
+			}
+		}
+		available = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_fortifying_ogaden
+			}
+		}
+
+		complete_effect = {
+			add_timed_idea = { idea = ETH_Counter_Attacking_Somaliland days = 180 }
+			hidden_effect = {
+				set_country_flag = eth_counter_attack_somali
+			}
+		}
+	}
+
+	ETH_Dealing_with_the_Somali_Revolt = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_counter_attack_somali
+			}
+		}
+		available = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_counter_attack_somali
+			}
+		}
+
+		complete_effect = {
+			country_event = ETH.4
+		}
+	}
+}
+
+ETH_The_Dervish_Accord = {
+	ETH_Alliance_Against_the_Italians = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+		}
+		available = {
+			original_tag = ETH
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			country_event = ETH.5
+			hidden_effect = {
+				set_country_flag = eth_alliance_against_italians
+			}
+		}
+	}
+
+	ETH_Peace_with_Mogadishu = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_alliance_against_italians
+			}
+		}
+		available = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_alliance_against_italians
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			#stuff
+		}
+	}
+
+	ETH_Two_Birds_with_One_Stone = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+		}
+		available = {
+			original_tag = ETH
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			#Somaliland declares independence and attacks Ethiopa and Italy
+			hidden_effect = {
+				set_country_flag = eth_two_birds_one_stone
+			}
+		}
+	}
+
+	ETH_Crush_the_Dervish_Movement = {
+		icon = decision_generic_civil_support
+		fire_only_once = yes
+
+		visible = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_two_birds_one_stone
+			}
+		}
+		available = {
+			original_tag = ETH
+			hidden_trigger = {
+				has_country_flag = eth_two_birds_one_stone
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			#stuff
+		}
+	}
+}

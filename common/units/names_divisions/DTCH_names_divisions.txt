@@ -1,0 +1,823 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+DTCH_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Infanteriedivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Infanteriedivisie" }
+		2 = { "%de Infanteriedivisie" }
+		3 = { "%de Infanteriedivisie" }
+		4 = { "%de Infanteriedivisie" }
+		5 = { "%de Infanteriedivisie" }
+		6 = { "%de Infanteriedivisie" }
+		7 = { "%de Infanteriedivisie" }
+		8 = { "%de Infanteriedivisie" }
+		9 = { "%de Infanteriedivisie" }
+		10 = { "%de Infanteriedivisie" }
+		11 = { "%de Infanteriedivisie" }
+		12 = { "%de Infanteriedivisie" }
+		13 = { "%de Infanteriedivisie" }
+		14 = { "%de Infanteriedivisie" }
+		15 = { "%de Infanteriedivisie" }
+		16 = { "%de Infanteriedivisie" }
+		17 = { "%de Infanteriedivisie" }
+		18 = { "%de Infanteriedivisie" }
+		19 = { "%de Infanteriedivisie" }
+		20 = { "%de Infanteriedivisie" }
+	}
+}
+
+DTCH_INF_02 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Infanteriebrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Infanteriebrigade" }
+		2 = { "%de Infanteriebrigade" }
+		3 = { "%de Infanteriebrigade" }
+		4 = { "%de Infanteriebrigade" }
+		5 = { "%de Infanteriebrigade" }
+		6 = { "%de Infanteriebrigade" }
+		7 = { "%de Infanteriebrigade" }
+		8 = { "%de Infanteriebrigade" }
+		9 = { "%de Infanteriebrigade" }
+		10 = { "%de Infanteriebrigade" }
+		11 = { "%de Infanteriebrigade" }
+		12 = { "%de Infanteriebrigade" }
+		13 = { "%de Infanteriebrigade" }
+		14 = { "%de Infanteriebrigade" }
+		15 = { "%de Infanteriebrigade" }
+		16 = { "%de Infanteriebrigade" }
+		17 = { "%de Infanteriebrigade" }
+		18 = { "%de Infanteriebrigade" }
+		19 = { "%de Infanteriebrigade" }
+		20 = { "%de Infanteriebrigade" }
+	}
+}
+
+DTCH_BIK_01 = 
+{
+	name = "Light Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Lichte Divisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Lichte Divisie" }
+		2 = { "%de Lichte Divisie" }
+		3 = { "%de Lichte Divisie" }
+		4 = { "%de Lichte Divisie" }
+		5 = { "%de Lichte Divisie" }
+		6 = { "%de Lichte Divisie" }
+		7 = { "%de Lichte Divisie" }
+		8 = { "%de Lichte Divisie" }
+		9 = { "%de Lichte Divisie" }
+		10 = { "%de Lichte Divisie" }
+		11 = { "%de Lichte Divisie" }
+		12 = { "%de Lichte Divisie" }
+		13 = { "%de Lichte Divisie" }
+		14 = { "%de Lichte Divisie" }
+		15 = { "%de Lichte Divisie" }
+		16 = { "%de Lichte Divisie" }
+		17 = { "%de Lichte Divisie" }
+		18 = { "%de Lichte Divisie" }
+		19 = { "%de Lichte Divisie" }
+		20 = { "%de Lichte Divisie" }
+	}
+}
+
+DTCH_BIK_02 = 
+{
+	name = "Light Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "bicycle_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Lichte Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Lichte Brigade" }
+		2 = { "%de Lichte Brigade" }
+		3 = { "%de Lichte Brigade" }
+		4 = { "%de Lichte Brigade" }
+		5 = { "%de Lichte Brigade" }
+		6 = { "%de Lichte Brigade" }
+		7 = { "%de Lichte Brigade" }
+		8 = { "%de Lichte Brigade" }
+		9 = { "%de Lichte Brigade" }
+		10 = { "%de Lichte Brigade" }
+		11 = { "%de Lichte Brigade" }
+		12 = { "%de Lichte Brigade" }
+		13 = { "%de Lichte Brigade" }
+		14 = { "%de Lichte Brigade" }
+		15 = { "%de Lichte Brigade" }
+		16 = { "%de Lichte Brigade" }
+		17 = { "%de Lichte Brigade" }
+		18 = { "%de Lichte Brigade" }
+		19 = { "%de Lichte Brigade" }
+		20 = { "%de Lichte Brigade" }
+	}
+}
+
+DTCH_LGH_01 = 
+{
+	name = "Light Infantry Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "light_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Divisie Jager"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Divisie Jager" }
+		2 = { "%de Divisie Jager" }
+		3 = { "%de Divisie Jager" }
+		4 = { "%de Divisie Jager" }
+		5 = { "%de Divisie Jager" }
+		6 = { "%de Divisie Jager" }
+		7 = { "%de Divisie Jager" }
+		8 = { "%de Divisie Jager" }
+		9 = { "%de Divisie Jager" }
+		10 = { "%de Divisie Jager" }
+		11 = { "%de Divisie Jager" }
+		12 = { "%de Divisie Jager" }
+		13 = { "%de Divisie Jager" }
+		14 = { "%de Divisie Jager" }
+		15 = { "%de Divisie Jager" }
+		16 = { "%de Divisie Jager" }
+		17 = { "%de Divisie Jager" }
+		18 = { "%de Divisie Jager" }
+		19 = { "%de Divisie Jager" }
+		20 = { "%de Divisie Jager" }
+	}
+}
+
+DTCH_HVY_01 = 
+{
+	name = "Heavy Infantry Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "shock_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Divisie Grenadiers"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Divisie Grenadiers" }
+		2 = { "%de Divisie Grenadiers" }
+		3 = { "%de Divisie Grenadiers" }
+		4 = { "%de Divisie Grenadiers" }
+		5 = { "%de Divisie Grenadiers" }
+		6 = { "%de Divisie Grenadiers" }
+		7 = { "%de Divisie Grenadiers" }
+		8 = { "%de Divisie Grenadiers" }
+		9 = { "%de Divisie Grenadiers" }
+		10 = { "%de Divisie Grenadiers" }
+		11 = { "%de Divisie Grenadiers" }
+		12 = { "%de Divisie Grenadiers" }
+		13 = { "%de Divisie Grenadiers" }
+		14 = { "%de Divisie Grenadiers" }
+		15 = { "%de Divisie Grenadiers" }
+		16 = { "%de Divisie Grenadiers" }
+		17 = { "%de Divisie Grenadiers" }
+		18 = { "%de Divisie Grenadiers" }
+		19 = { "%de Divisie Grenadiers" }
+		20 = { "%de Divisie Grenadiers" }
+	}
+}
+
+DTCH_LGH_02 = 
+{
+	name = "Light Infantry Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "light_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Brigade Jager"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Brigade Jager" }
+		2 = { "%de Brigade Jager" }
+		3 = { "%de Brigade Jager" }
+		4 = { "%de Brigade Jager" }
+		5 = { "%de Brigade Jager" }
+		6 = { "%de Brigade Jager" }
+		7 = { "%de Brigade Jager" }
+		8 = { "%de Brigade Jager" }
+		9 = { "%de Brigade Jager" }
+		10 = { "%de Brigade Jager" }
+		11 = { "%de Brigade Jager" }
+		12 = { "%de Brigade Jager" }
+		13 = { "%de Brigade Jager" }
+		14 = { "%de Brigade Jager" }
+		15 = { "%de Brigade Jager" }
+		16 = { "%de Brigade Jager" }
+		17 = { "%de Brigade Jager" }
+		18 = { "%de Brigade Jager" }
+		19 = { "%de Brigade Jager" }
+		20 = { "%de Brigade Jager" }
+	}
+}
+
+DTCH_HVY_02 = 
+{
+	name = "Heavy Infantry Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "shock_infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Brigade Grenadiers"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Brigade Grenadiers" }
+		2 = { "%de Brigade Grenadiers" }
+		3 = { "%de Brigade Grenadiers" }
+		4 = { "%de Brigade Grenadiers" }
+		5 = { "%de Brigade Grenadiers" }
+		6 = { "%de Brigade Grenadiers" }
+		7 = { "%de Brigade Grenadiers" }
+		8 = { "%de Brigade Grenadiers" }
+		9 = { "%de Brigade Grenadiers" }
+		10 = { "%de Brigade Grenadiers" }
+		11 = { "%de Brigade Grenadiers" }
+		12 = { "%de Brigade Grenadiers" }
+		13 = { "%de Brigade Grenadiers" }
+		14 = { "%de Brigade Grenadiers" }
+		15 = { "%de Brigade Grenadiers" }
+		16 = { "%de Brigade Grenadiers" }
+		17 = { "%de Brigade Grenadiers" }
+		18 = { "%de Brigade Grenadiers" }
+		19 = { "%de Brigade Grenadiers" }
+		20 = { "%de Brigade Grenadiers" }
+	}
+}
+
+DTCH_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Gemotoriseerde Infanteriedivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Gemotoriseerde Infanteriedivisie" }
+		2 = { "%de Gemotoriseerde Infanteriedivisie" }
+		3 = { "%de Gemotoriseerde Infanteriedivisie" }
+		4 = { "%de Gemotoriseerde Infanteriedivisie" }
+		5 = { "%de Gemotoriseerde Infanteriedivisie" }
+		6 = { "%de Gemotoriseerde Infanteriedivisie" }
+		7 = { "%de Gemotoriseerde Infanteriedivisie" }
+		8 = { "%de Gemotoriseerde Infanteriedivisie" }
+		9 = { "%de Gemotoriseerde Infanteriedivisie" }
+		10 = { "%de Gemotoriseerde Infanteriedivisie" }
+	}
+}
+
+DTCH_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Gemechaniseerde Infanteriedivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Gemechaniseerde Infanteriedivisie" }
+		2 = { "%de Gemechaniseerde Infanteriedivisie" }
+		3 = { "%de Gemechaniseerde Infanteriedivisie" }
+		4 = { "%de Gemechaniseerde Infanteriedivisie" }
+		5 = { "%de Gemechaniseerde Infanteriedivisie" }
+		6 = { "%de Gemechaniseerde Infanteriedivisie" }
+		7 = { "%de Gemechaniseerde Infanteriedivisie" }
+		8 = { "%de Gemechaniseerde Infanteriedivisie" }
+		9 = { "%de Gemechaniseerde Infanteriedivisie" }
+		10 = { "%de Gemechaniseerde Infanteriedivisie" }
+	}
+}
+
+DTCH_MOT_02 = 
+{
+	name = "Motorized Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Gemotoriseerde Infanteriebrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Gemotoriseerde Infanteriebrigade" }
+		2 = { "%de Gemotoriseerde Infanteriebrigade" }
+		3 = { "%de Gemotoriseerde Infanteriebrigade" }
+		4 = { "%de Gemotoriseerde Infanteriebrigade" }
+		5 = { "%de Gemotoriseerde Infanteriebrigade" }
+		6 = { "%de Gemotoriseerde Infanteriebrigade" }
+		7 = { "%de Gemotoriseerde Infanteriebrigade" }
+		8 = { "%de Gemotoriseerde Infanteriebrigade" }
+		9 = { "%de Gemotoriseerde Infanteriebrigade" }
+		10 = { "%de Gemotoriseerde Infanteriebrigade" }
+	}
+}
+
+DTCH_MEC_02 = 
+{
+	name = "Mechanized Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Gemechaniseerde Infanteriebrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Gemechaniseerde Infanteriebrigade" }
+		2 = { "%de Gemechaniseerde Infanteriebrigade" }
+		3 = { "%de Gemechaniseerde Infanteriebrigade" }
+		4 = { "%de Gemechaniseerde Infanteriebrigade" }
+		5 = { "%de Gemechaniseerde Infanteriebrigade" }
+		6 = { "%de Gemechaniseerde Infanteriebrigade" }
+		7 = { "%de Gemechaniseerde Infanteriebrigade" }
+		8 = { "%de Gemechaniseerde Infanteriebrigade" }
+		9 = { "%de Gemechaniseerde Infanteriebrigade" }
+		10 = { "%de Gemechaniseerde Infanteriebrigade" }
+	}
+}
+
+DTCH_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Garnizoensdivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Garnizoensdivisie" }		
+		2 = { "%de Garnizoensdivisie" }		
+		3 = { "%de Garnizoensdivisie" }		
+		4 = { "%de Garnizoensdivisie" }	
+		5 = { "%de Garnizoensdivisie" }		
+		6 = { "%de Garnizoensdivisie" }		
+		7 = { "%de Garnizoensdivisie" }		
+		8 = { "%de Garnizoensdivisie" }		
+		9 = { "%de Garnizoensdivisie" }		
+		10 = { "%de Garnizoensdivisie" }
+		11 = { "%de Garnizoensdivisie" }
+		12 = { "%de Garnizoensdivisie" }
+		13 = { "%de Garnizoensdivisie" }
+		14 = { "%de Garnizoensdivisie" }
+	}
+}
+
+DTCH_GAR_02 = 
+{
+	name = "Garrison Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "garrison" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Garnizoensbrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Garnizoensbrigade" }		
+		2 = { "%de Garnizoensbrigade" }		
+		3 = { "%de Garnizoensbrigade" }		
+		4 = { "%de Garnizoensbrigade" }	
+		5 = { "%de Garnizoensbrigade" }		
+		6 = { "%de Garnizoensbrigade" }		
+		7 = { "%de Garnizoensbrigade" }		
+		8 = { "%de Garnizoensbrigade" }		
+		9 = { "%de Garnizoensbrigade" }		
+		10 = { "%de Garnizoensbrigade" }					
+		11 = { "%de Garnizoensbrigade" }		
+		12 = { "%de Garnizoensbrigade" }		
+		13 = { "%de Garnizoensbrigade" }		
+		14 = { "%de Garnizoensbrigade" }		
+	}
+}
+
+DTCH_CAV_01 = 
+{
+	name = "Cavalry and Armored Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" "light_armor" "medium_armor" "heavy_armor" } #Since neither the Netherlands nor Indonesia make any distinction between horse cavalry and armored cavalry in their names, their associated minors won't either.
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_CAV_02 }
+
+	fallback_name = "%de Divisie Huzaren"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Divisie Huzaren" }
+		2 = { "%de Divisie Huzaren" }
+		3 = { "%de Divisie Huzaren" }
+		4 = { "%de Divisie Huzaren" }
+		5 = { "%de Divisie Huzaren" }
+		6 = { "%de Divisie Huzaren" }
+		7 = { "%de Divisie Huzaren" }
+		8 = { "%de Divisie Huzaren" }
+		9 = { "%de Divisie Huzaren" }
+		10 = { "%de Divisie Huzaren" }
+	}
+}
+
+DTCH_CAV_02 = 
+{
+	name = "Cavalry and Armored Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" "light_armor" "medium_armor" "heavy_armor" } #Since neither the Netherlands nor Indonesia make any distinction between horse cavalry and armored cavalry in their names, their associated minors won't either.
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_CAV_01 }
+
+	fallback_name = "%de Brigade Huzaren"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Brigade Huzaren" }
+		2 = { "%de Brigade Huzaren" }
+		3 = { "%de Brigade Huzaren" }
+		4 = { "%de Brigade Huzaren" }
+		5 = { "%de Brigade Huzaren" }
+		6 = { "%de Brigade Huzaren" }
+		7 = { "%de Brigade Huzaren" }
+		8 = { "%de Brigade Huzaren" }
+		9 = { "%de Brigade Huzaren" }
+		10 = { "%de Brigade Huzaren" }
+	}
+}
+
+DTCH_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Parachutistendivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Parachutistendivisie" }
+		2 = { "%de Parachutistendivisie" }
+		3 = { "%de Parachutistendivisie" }
+		4 = { "%de Parachutistendivisie" }
+		5 = { "%de Parachutistendivisie" }
+		6 = { "%de Parachutistendivisie" }
+		7 = { "%de Parachutistendivisie" }
+		8 = { "%de Parachutistendivisie" }
+		9 = { "%de Parachutistendivisie" }
+		10 = { "%de Parachutistendivisie" }
+	}
+}
+
+DTCH_PAR_02 = 
+{
+	name = "Paratrooper Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 }
+
+	fallback_name = "%de Parachutistenbrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Parachutistenbrigade" }
+		2 = { "%de Parachutistenbrigade" }
+		3 = { "%de Parachutistenbrigade" }
+		4 = { "%de Parachutistenbrigade" }
+		5 = { "%de Parachutistenbrigade" }
+		6 = { "%de Parachutistenbrigade" }
+		7 = { "%de Parachutistenbrigade" }
+		8 = { "%de Parachutistenbrigade" }
+		9 = { "%de Parachutistenbrigade" }
+		10 = { "%de Parachutistenbrigade" }
+	}
+}
+
+DTCH_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_MAR_02 }
+
+	fallback_name = "%de Mariniersdivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Mariniersdivisie" }
+		2 = { "%de Mariniersdivisie" }
+		3 = { "%de Mariniersdivisie" }
+		4 = { "%de Mariniersdivisie" }
+		5 = { "%de Mariniersdivisie" }
+		6 = { "%de Mariniersdivisie" }
+		7 = { "%de Mariniersdivisie" }
+		8 = { "%de Mariniersdivisie" }
+		9 = { "%de Mariniersdivisie" }
+		10 = { "%de Mariniersdivisie" }
+	}
+}
+
+DTCH_MAR_02 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_MAR_01 }
+
+	fallback_name = "%de Mariniersbrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Mariniersbrigade" }
+		2 = { "%de Mariniersbrigade" }
+		3 = { "%de Mariniersbrigade" }
+		4 = { "%de Mariniersbrigade" }
+		5 = { "%de Mariniersbrigade" }
+		6 = { "%de Mariniersbrigade" }
+		7 = { "%de Mariniersbrigade" }
+		8 = { "%de Mariniersbrigade" }
+		9 = { "%de Mariniersbrigade" }
+		10 = { "%de Mariniersbrigade" }
+	}
+}
+
+DTCH_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_MTN_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Bergdivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Bergdivisie" }
+		2 = { "%de Bergdivisie" }
+		3 = { "%de Bergdivisie" }
+		4 = { "%de Bergdivisie" }
+		5 = { "%de Bergdivisie" }
+		6 = { "%de Bergdivisie" }
+		7 = { "%de Bergdivisie" }
+		8 = { "%de Bergdivisie" }
+		9 = { "%de Bergdivisie" }
+		10 = { "%de Bergdivisie" }
+	}
+}
+
+DTCH_MTN_02 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { ARU CRC FLA SEU SUR }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { DTCH_INF_01 DTCH_BIK_01 DTCH_LGH_01 DTCH_HVY_01 DTCH_MOT_01 DTCH_MEC_01 DTCH_GAR_01 DTCH_MTN_01 DTCH_PAR_01 DTCH_INF_02 DTCH_BIK_02 DTCH_LGH_02 DTCH_HVY_02 DTCH_MOT_02 DTCH_MEC_02 DTCH_GAR_02 DTCH_PAR_02 }
+
+	fallback_name = "%de Bergbrigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Bergbrigade" }
+		2 = { "%de Bergbrigade" }
+		3 = { "%de Bergbrigade" }
+		4 = { "%de Bergbrigade" }
+		5 = { "%de Bergbrigade" }
+		6 = { "%de Bergbrigade" }
+		7 = { "%de Bergbrigade" }
+		8 = { "%de Bergbrigade" }
+		9 = { "%de Bergbrigade" }
+		10 = { "%de Bergbrigade" }
+	}
+}

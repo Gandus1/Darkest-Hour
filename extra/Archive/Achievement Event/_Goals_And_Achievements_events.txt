@@ -1,0 +1,93 @@
+﻿add_namespace = dh_goals_and_achievements_events
+
+country_event = {
+	id = dh_goals_and_achievements_events.1
+	title = dh_goals_and_achievements_events.EVTNAME1
+	desc = dh_goals_and_achievements_events.EVTDESC1
+	
+	hidden = yes
+	
+	trigger = {
+		check_variable = { global.dh_all_goals_and_achievements_array^num > 0 }
+		any_of = {
+			array = global.dh_all_goals_and_achievements_array
+			value = v
+			set_temp_variable = { goal_or_achievement_id = v }
+			OR = {
+				AND = {
+					is_valid_goal_or_achievement = yes
+					NOT = { is_in_array = { dh_goals_and_achievements_array = goal_or_achievement_id } }
+				}
+				AND = {
+					NOT = { is_valid_goal_or_achievement = yes }
+					is_in_array = { dh_goals_and_achievements_array = goal_or_achievement_id }
+					NOT = { has_completed_goal_or_achievement = yes }
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 2 }
+	
+	immediate = {
+		hidden_effect = {
+			set_up_own_goals_and_achievements = yes
+		}
+	}
+	
+	option = {
+		name = dh_goals_and_achievements_events1.EVTOPT1
+		
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = dh_goals_and_achievements_events.2
+	title = dh_goals_and_achievements_events.EVTNAME2
+	desc = dh_goals_and_achievements_events.EVTDESC2
+	
+	hidden = yes
+	
+	trigger = {
+		check_variable = { dh_goals_and_achievements_array^num > 0 }
+		any_of = {
+			array = dh_goals_and_achievements_array
+			value = v
+			set_temp_variable = { goal_or_achievement_id = v }
+			can_complete_goal_or_achievement = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		hidden_effect = {
+			for_each_loop = {
+				array = dh_goals_and_achievements_array
+				value = v
+				set_temp_variable = { goal_or_achievement_id = v }
+				if = {
+					limit = {
+						can_complete_goal_or_achievement = yes
+					}
+					meta_effect = {
+						text = {
+							set_country_flag = completed_goal_or_achievement_[ID]
+						}
+						ID = "[?goal_or_achievement_id]"
+					}
+					add_to_array = { dh_focus_event_array = goal_or_achievement_id }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dh_goals_and_achievements_events2.EVTOPT1
+		
+		ai_chance = { factor = 100 }
+	}
+}

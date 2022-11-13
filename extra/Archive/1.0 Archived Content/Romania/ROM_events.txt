@@ -1,0 +1,508 @@
+﻿###########################
+# Darkest Hour Events: Romania
+###########################
+add_namespace = ROM_Politics
+
+#########################################################################
+# Event for On a New Path
+#########################################################################
+country_event = {
+	id = ROM_Politics.1
+	title = ROM_Politics.1.t
+	desc = ROM_Politics.1.d
+	picture = GFX_Generic_Elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	#Choose Prince Micheal
+	option = {
+		name = ROM_Politics.1.A
+		set_country_flag = ROM_prince_micheal_choosen
+	}
+
+	#Choose A New Constitution
+	option = {
+		name = ROM_Politics.1.B
+		set_country_flag = ROM_a_new_constitution_choosen
+	}
+}
+
+#########################################################################
+# Event about Green Shirt Marches in Bucharest
+#########################################################################
+country_event = {
+	id = ROM_Politics.2
+	title = ROM_Politics.2.t
+	desc = ROM_Politics.2.d
+	picture = GFX_Generic_Elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	#Green Shirts March
+	option = {
+		name = ROM_Politics.2.A
+	}
+}
+
+#########################################################################
+# Start of Event chain to get into Axis Antonescua
+#########################################################################
+country_event = {
+	id = ROM_Politics.3
+	title = ROM_Politics.3.t
+	desc = ROM_Politics.3.d
+	picture = GFX_Generic_Elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	#Ask Germany to join
+	option = {
+		name = ROM_Politics.3.A
+		GER = { country_event = ROM_Politics.4 }
+	}
+
+	#Let's not my dude
+	option = {
+		name = ROM_Politics.3.B
+	}
+}
+
+#########################################################################
+# Event Germany get's to say yes or not to Romania
+#########################################################################
+country_event = {
+	id = ROM_Politics.4
+	title = ROM_Politics.4.t
+	desc = ROM_Politics.4.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Let's bring them in
+	option = {
+		name = ROM_Politics.4.A
+		GER = {
+			add_to_faction = ROM
+		}
+		ROM = {	country_event = ROM_Politics.6 }
+	}
+
+	#They are Nerds don't do it
+	option = {
+		name = ROM_Politics.4.B
+		ROM = { country_event = ROM_Politics.5 }
+	}
+}
+
+#########################################################################
+# Germany Said Yes
+#########################################################################
+country_event = {
+	id = ROM_Politics.5
+	title = ROM_Politics.5.t
+	desc = ROM_Politics.5.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ROM_Politics.5.A
+	}
+}
+
+#########################################################################
+# Germany Said No
+#########################################################################
+country_event = {
+	id = ROM_Politics.6
+	title = ROM_Politics.6.t
+	desc = ROM_Politics.6.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ROM_Politics.6.A
+	}
+}
+
+#########################################################################
+# Start of Event chain to get into Axis Spectre
+#########################################################################
+country_event = {
+	id = ROM_Politics.7
+	title = ROM_Politics.7.t
+	desc = ROM_Politics.7.d
+	picture = GFX_Generic_Elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	#Ask Germany to join
+	option = {
+		name = ROM_Politics.7.A
+		GER = { country_event = ROM_Politics.8 }
+		complete_national_focus = ROM_Together_Against_the_Bolsheviks
+	}
+
+	#Let's not my dude
+	option = {
+		name = ROM_Politics.7.B
+		complete_national_focus = ROM_Spreading_the_Legionary_Word
+	}
+}
+
+#########################################################################
+# Event Germany get's to say yes or not to Romania
+#########################################################################
+country_event = {
+	id = ROM_Politics.8
+	title = ROM_Politics.8.t
+	desc = ROM_Politics.8.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Let's bring them in
+	option = {
+		name = ROM_Politics.8.A
+		GER = {
+			add_to_faction = ROM
+		}
+		ROM = {	country_event = ROM_Politics.10 }
+	}
+
+	#They are Nerds don't do it
+	option = {
+		name = ROM_Politics.8.B
+		ROM = { country_event = ROM_Politics.9 }
+	}
+}
+
+#########################################################################
+# Germany Said Yes
+#########################################################################
+country_event = {
+	id = ROM_Politics.9
+	title = ROM_Politics.9.t
+	desc = ROM_Politics.9.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ROM_Politics.9.A
+	}
+}
+
+#########################################################################
+# Germany Said No
+#########################################################################
+country_event = {
+	id = ROM_Politics.10
+	title = ROM_Politics.10.t
+	desc = ROM_Politics.10.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ROM_Politics.10.A
+	}
+}
+
+#########################################################################
+# Germany events to give Romania Tank designs or not
+#########################################################################
+country_event = {
+	id = ROM_Politics.11
+	title = ROM_Politics.11.t
+	desc = ROM_Politics.11.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Give them the designs
+	option = {
+		name = ROM_Politics.11.A
+		ROM = { country_event = ROM_Politics.12 }
+	}
+
+	#Don't do it
+	option = {
+		name = ROM_Politics.11.B
+		ROM = { country_event = ROM_Politics.13 }
+	}
+}
+
+#########################################################################
+# Germany gives tank designs
+#########################################################################
+country_event = {
+	id = ROM_Politics.12
+	title = ROM_Politics.12.t
+	desc = ROM_Politics.12.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Great
+	option = {
+		name = ROM_Politics.12.A
+		ROM = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = armor
+			}
+		}
+	}
+}
+
+#########################################################################
+# Germany Doesn't give tank designs
+#########################################################################
+country_event = {
+	id = ROM_Politics.13
+	title = ROM_Politics.13.t
+	desc = ROM_Politics.13.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#RIP
+	option = {
+		name = ROM_Politics.13.A
+	}
+}
+
+#########################################################################
+# Romania Sends Event to Hungary Demanding Transylvania Back
+#########################################################################
+country_event = {
+	id = ROM_Politics.14
+	title = ROM_Politics.14.t
+	desc = ROM_Politics.14.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Let's give it back
+	option = {
+		name = ROM_Politics.14.A
+	}
+
+	#No Go away
+	option = {
+		name = ROM_Politics.14.B
+	}
+}
+
+#########################################################################
+# Hungary Says Yes
+#########################################################################
+country_event = {
+	id = ROM_Politics.15
+	title = ROM_Politics.15.t
+	desc = ROM_Politics.15.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Hell Ya
+	option = {
+		name = ROM_Politics.15.A
+	}
+}
+
+#########################################################################
+# Hungary Says No
+#########################################################################
+country_event = {
+	id = ROM_Politics.16
+	title = ROM_Politics.16.t
+	desc = ROM_Politics.16.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Damn it
+	option = {
+		name = ROM_Politics.16.A
+	}
+}
+
+#########################################################################
+# Romania Asks Germany for License
+#########################################################################
+country_event = {
+	id = ROM_Politics.17
+	title = ROM_Politics.17.t
+	desc = ROM_Politics.17.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Give them the License
+	option = {
+		name = ROM_Politics.17.A
+		ai_chance = {
+			factor = 1
+		}
+		ROM = { country_event = ROM_Politics.18 }
+		if = {
+			limit = {
+				has_tech = Interdictor_1965
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Interdictor_equipment_1965
+				}
+				cost_factor = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_tech = Tactical_Bomber_1955
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1955
+				}
+				cost_factor = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_tech = Tactical_Bomber_1950
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1950
+				}
+				cost_factor = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_tech = Tactical_Bomber_1945
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1945
+				}
+				cost_factor = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_tech = Tactical_Bomber_1943
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_tech = Tactical_Bomber_1940
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1940
+				}
+				cost_factor = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_tech = Tactical_Bomber_1936
+			}
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1936
+				}
+				cost_factor = 0
+			}
+		}
+		else = {
+			create_production_license = {
+				target = ROM
+				equipment = {
+					type = Tactical_Bomber_equipment_1933
+				}
+				cost_factor = 0
+			}
+		}
+	}
+
+	#Don't give it to them
+	option = {
+		name = ROM_Politics.17.B
+		ai_chance = {
+			factor = 0
+		}
+		ROM = { country_event = ROM_Politics.19 }
+	}
+}
+
+#########################################################################
+# Hungary Says Yes
+#########################################################################
+country_event = {
+	id = ROM_Politics.18
+	title = ROM_Politics.18.t
+	desc = ROM_Politics.18.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Hell Ya
+	option = {
+		name = ROM_Politics.18.A
+	}
+}
+
+#########################################################################
+# Hungary Says No
+#########################################################################
+country_event = {
+	id = ROM_Politics.19
+	title = ROM_Politics.19.t
+	desc = ROM_Politics.19.d
+	picture = GFX_Generic_Elections
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Damn it
+	option = {
+		name = ROM_Politics.19.A
+	}
+}

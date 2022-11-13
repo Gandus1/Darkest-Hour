@@ -1,0 +1,5105 @@
+#########################################################################
+# Darkest Hour Events : Japan
+#########################################################################
+### Domestic Events
+add_namespace = JAP_Flavor #Miscellaneous/Flavor
+add_namespace = JAP_Preserve_NUC
+add_namespace = JAP_Foreign_Policy
+add_namespace = JAP_Aizawa_Incident
+add_namespace = JAP_Teijin_Incident
+add_namespace = JAP_Hirota_Cabinet #2-26 and Aftermath
+add_namespace = JAP_226_Events
+add_namespace = JAP_Hayashi_Cabinet #How I stopped worrying and decided to trust the military
+add_namespace = JAP_First_Konoe_Cabinet
+add_namespace = JAP_Hiranuma_Cabinet
+add_namespace = JAP_Abe_Cabinet
+add_namespace = JAP_Yonai_Cabinet
+add_namespace = JAP_Second_Konoe_Cabinet
+add_namespace = JAP_Third_Konoe_Cabinet
+add_namespace = JAP_Tojo_Cabinet
+add_namespace = JAP_Koiso_Cabinet
+add_namespace = JAP_Suzuki_Cabinet
+add_namespace = JAP_Wartime_Tree_Events
+add_namespace = JAP_Surrender
+### Foreign Events
+add_namespace = JAP_Nekka_Incident
+add_namespace = JAP_Tanggu_Truce
+add_namespace = JAP_The_Imperial_Assent
+add_namespace = JAP_The_Manchurian_Lifeline
+add_namespace = JAP_Pan_Asianism
+add_namespace = JAP_Trautmann
+add_namespace = JAP_Three_Principles_of_Hirota
+add_namespace = JAP_Indochina
+### Military Events
+add_namespace = JAP_4th_Fleet_Exercise
+add_namespace = JAP_Rivalries_of_War
+add_namespace = JAP_Northern_Expansion
+add_namespace = JAP_Southern_Expansion
+add_namespace = JAP_Panay_Incident
+add_namespace = JAP_Oil_Embargo
+add_namespace = JAP_Pearl_Harbor
+##############################
+##### Military Events
+##############################
+### 4th Fleet Incident
+country_event = {
+	id = JAP_4th_Fleet_Exercise.1
+	title = JAP_4th_Fleet_Exercise.1.t
+	desc = JAP_4th_Fleet_Exercise.1.d
+	picture = GFX_report_JAP_4th_Fleet_Incident
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_4th_Fleet_Exercise.1.A
+		add_political_power = -50
+		add_doctrine_cost_reduction = {
+			name = JAP_4th_Fleet_Exercise
+			uses = 2
+			cost_reduction = 0.5
+			category = cat_base_strike
+		}
+	}
+}
+##############################
+##### Domestic Events
+##############################
+##### JAP_Flavor
+### The Lytton Report
+country_event = {
+	id = JAP_Flavor.1
+	title = JAP_Flavor.1.t
+	desc = JAP_Flavor.1.d
+	picture = GFX_report_JAP_Lytton_Report
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Flavor.1.A
+		add_political_power = -25
+	}
+}
+### Our Withdrawal from the League
+news_event = {
+	id = JAP_Flavor.2
+	is_triggered_only = yes
+	picture = GFX_news_JAP_Japan_withdraw_from_LON
+	#Japan
+	title = {
+		text = JAP_Flavor.2.t
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	desc = {
+		text = JAP_Flavor.2.d
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	option = {
+		trigger = {
+			original_tag = JAP
+		}
+		name = JAP_Flavor.2.A
+		add_political_power = 25
+		add_war_support = 0.05
+	}
+	#Germany
+	title = {
+		text = JAP_Flavor.2.t.GER
+		trigger = {
+			original_tag = GER
+		}
+	}
+	desc = {
+		text = JAP_Flavor.2.d.GER
+		trigger = {
+			original_tag = GER
+		}
+	}
+	option = {
+		trigger = {
+			original_tag = GER
+		}
+		name = JAP_Flavor.2.A.GER
+	}
+	#Everyone Else
+	title = {
+		text = JAP_Flavor.2.t.ALL
+		trigger = {
+			NOT = {
+				original_tag = JAP
+				original_tag = GER
+			}
+		}
+	}
+	desc = {
+		text = JAP_Flavor.2.d.ALL
+		trigger = {
+			NOT = {
+				original_tag = JAP
+				original_tag = GER
+			}
+		}
+	}
+	option = {
+		trigger = {
+			NOT = {
+				original_tag = JAP
+				original_tag = GER
+			}
+		}
+		name = JAP_Flavor.2.A.ALL
+		add_political_power = -5
+	}
+}
+##### JAP_Preserve_NUC
+### Interpreting the NUC Mandate
+country_event = {
+	id = JAP_Preserve_NUC.1
+	title = JAP_Preserve_NUC.1.t
+	desc = JAP_Preserve_NUC.1.d
+	picture = GFX_report_JAP_NUC
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Screw other factions NUC FTW (its a stupid move and will guarantee a military takeover (either from Toseiha or Kodoha; dependent on influence)
+		name = JAP_Preserve_NUC.1.A
+		custom_effect_tooltip = NUC_Alone
+		set_country_flag = NUC_Alone
+	}
+	option = { #Taking Sides (allows more opportunities and easier)
+		name = JAP_Preserve_NUC.1.B
+		custom_effect_tooltip = Taking_Sides
+		set_country_flag = Taking_Sides
+	}
+}
+### The Utilization of Kokutai
+country_event = {
+	id = JAP_Preserve_NUC.2
+	title = JAP_Preserve_NUC.2.t
+	desc = JAP_Preserve_NUC.2.d
+	picture = GFX_report_JAP_The_Utilization_of_Kokutai
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # Only Communists
+		name = JAP_Preserve_NUC.2.A
+		custom_effect_tooltip = Communists_Alone
+		set_country_flag = Communists_Alone
+	}
+	option = { # Include Militarists
+		name = JAP_Preserve_NUC.2.B
+		custom_effect_tooltip = All_Dissent
+		set_country_flag = All_Dissent
+	}
+}
+### Support from the IJN
+country_event = {
+	id = JAP_Preserve_NUC.3
+	title = JAP_Preserve_NUC.3.t
+	desc = JAP_Preserve_NUC.3.d
+	picture = GFX_report_JAP_IJN_Admirals
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #adds up support by 10%, influence 5% of BOTH NAVY FACTIONS (Treaty/Fleet)
+		name = JAP_Preserve_NUC.3.A
+		set_country_flag = IJN_Support_NUC
+		JAP_Increase_Balance_Towards_Navy = yes
+	}
+}
+### A Deal For the Greater Good
+country_event = {
+	id = JAP_Preserve_NUC.4
+	title = JAP_Preserve_NUC.4.t
+	desc = JAP_Preserve_NUC.4.d
+	picture = GFX_report_JAP_A_Deal_For_the_Greater_Good
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Accept
+		name = JAP_Preserve_NUC.4.A
+		add_political_power = 50
+		set_country_flag = Toseiha_Support_NUC
+	}
+	option = { #Decline
+		name = JAP_Preserve_NUC.4.B
+	}
+}
+##### JAP_Foreign_Policy
+### A Common Goal With Different Methods
+country_event = {
+	id = JAP_Foreign_Policy.1
+	title = JAP_Foreign_Policy.1.t
+	desc = JAP_Foreign_Policy.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Foreign_Policy.1.A
+		country_event = { id = JAP_Foreign_Policy.2 days = 10 }
+	}
+}
+country_event = {
+	id = JAP_Foreign_Policy.2
+	title = JAP_Foreign_Policy.2.t
+	desc = JAP_Foreign_Policy.2.d
+	picture = GFX_report_JAP_Hirota
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Foreign_Policy.2.A
+		country_event = { id = JAP_Foreign_Policy.3 days = 15 }
+	}
+}
+country_event = {
+	id = JAP_Foreign_Policy.3
+	title = JAP_Foreign_Policy.3.t
+	desc = JAP_Foreign_Policy.3.d
+	picture = GFX_report_JAP_Hirota
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Foreign_Policy.3.A
+		country_event = { id = JAP_Foreign_Policy.4 days = 15 }
+	}
+}
+country_event = {
+	id = JAP_Foreign_Policy.4
+	title = JAP_Foreign_Policy.4.t
+	desc = JAP_Foreign_Policy.4.d
+	picture = GFX_report_JAP_Hirota
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Foreign_Policy.4.A
+		country_event = { id = JAP_Foreign_Policy.5 days = 10 }
+	}
+}
+country_event = {
+	id = JAP_Foreign_Policy.5
+	title = JAP_Foreign_Policy.5.t
+	desc = JAP_Foreign_Policy.5.d
+	picture = GFX_report_JAP_Hirota
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Hirota’s Three Principles
+		name = JAP_Foreign_Policy.5.A
+		set_country_flag = Hirota_Diplomacy
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = { #Shidehara’s Velvet Glove
+		name = JAP_Foreign_Policy.5.B
+		set_country_flag = Shidehara_Diplomacy
+		custom_effect_tooltip = DH_FOR_0.2
+	}
+	option = { #Matsuoka’s Iron Fist
+		name = JAP_Foreign_Policy.5.C
+		set_country_flag = Matsuoka_Diplomacy
+		custom_effect_tooltip = DH_FOR_0.2
+	}
+}
+##### JAP_Aizawa_Incident
+### Aizawa Incident
+## A Plot Unraveled
+country_event = {
+	id = JAP_Aizawa_Incident.1
+	title = JAP_Aizawa_Incident.1.t
+	desc = JAP_Aizawa_Incident.1.d
+	picture = GFX_report_JAP_NUC_Scandle
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Aizawa_Incident.1.A
+		set_temp_variable = { faction_id = 7 } # Kodoha
+		set_temp_variable = { influence_to_add = -10 } # Placeholder
+		change_faction_influence = yes
+		hidden_effect = {
+			country_event = { id = JAP_Aizawa_Incident.2 days = 224 } # 1935.07.01
+		}
+	}
+}
+## A Disgraced Genius
+country_event = {
+	id = JAP_Aizawa_Incident.2
+	title = JAP_Aizawa_Incident.2.t
+	desc = JAP_Aizawa_Incident.2.d
+	picture = GFX_report_JAP
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Masaki resigns, Kodoha influence drops sharply
+		name = JAP_Aizawa_Incident.2.A
+		set_temp_variable = { faction_id = 7 } # Kodoha
+		set_temp_variable = { influence_to_add = -10 } # Placeholder
+		change_faction_influence = yes
+		hidden_effect = {
+			country_event = { id = JAP_Aizawa_Incident.3 days = 31 } # 1935.08.01
+		}
+	}
+}
+## Restoration of Military Discipline
+country_event = {
+	id = JAP_Aizawa_Incident.3
+	title = JAP_Aizawa_Incident.3.t
+	desc = JAP_Aizawa_Incident.3.d
+	picture = GFX_report_JAP_Japanese_Korea
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Gives the player a sense of security.
+		name = JAP_Aizawa_Incident.3.A
+		add_stability = 0.02
+		set_temp_variable = { faction_id = 7 } # Kodoha
+		set_temp_variable = { influence_to_add = -5 } # Placeholder
+		change_faction_influence = yes
+		hidden_effect = {
+			country_event = { id = JAP_Aizawa_Incident.4 days = 4 }
+		}
+	}
+}
+## The Brave Man's Song
+country_event = {
+	id = JAP_Aizawa_Incident.4
+	title = JAP_Aizawa_Incident.4.t
+	desc = JAP_Aizawa_Incident.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Aizawa_Incident.4.A
+		change_faction_influence = yes
+		hidden_effect = {
+			country_event = { id = JAP_Aizawa_Incident.5 days = 1 }
+		}
+	}
+}
+## The Dark Genius
+country_event = {
+	id = JAP_Aizawa_Incident.5
+	title = JAP_Aizawa_Incident.5.t
+	desc = JAP_Aizawa_Incident.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Nation in shock.
+		name = JAP_Aizawa_Incident.5.A
+		add_stability = -0.05
+		set_temp_variable = { faction_id = 7 } # Kodoha
+		set_temp_variable = { influence_to_add = -10 } # Placeholder
+		change_faction_influence = yes
+		set_country_flag = Toseiha_Win
+	}
+}
+## One's Devotion, One Duty
+country_event = {
+	id = JAP_Aizawa_Incident.6
+	title = JAP_Aizawa_Incident.6.t
+	desc = JAP_Aizawa_Incident.6.d
+	picture = GFX_report_JAP
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Aizawa_Incident.6.A
+		hidden_effect = {
+			country_event = { id = JAP_Aizawa_Incident.1 days = 315 } # 1934.11.19
+		}
+	}
+	#option = {
+	#	name = JAP_Aizawa_Incident.6.B
+	#	set_country_flag = Kodoha_Win
+	#	custom_effect_tooltip = DH_FOR_0.2
+	#}
+}
+##### JAP_Teijin_Incident
+### Tsuji Incident
+## The Raging Bull of Taihoku
+country_event = {
+	id = JAP_Teijin_Incident.1
+	title = JAP_Teijin_Incident.1.t
+	desc = JAP_Teijin_Incident.1.d
+	picture = GFX_report_JAP_Raging_Bull
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+	trigger = {
+		original_tag = JAP
+		date > 1933.06.09
+		has_start_date < 1933.06.09
+	}
+	option = {
+		name = JAP_Teijin_Incident.1.A
+		hidden_effect = {
+			country_event = { id = JAP_Teijin_Incident.2 days = 220 } #January 15, 1934
+		}
+	}
+}
+## A Financial Conundrum
+country_event = {
+	id = JAP_Teijin_Incident.2
+	title = JAP_Teijin_Incident.2.t
+	desc = JAP_Teijin_Incident.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Teijin_Incident.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Teijin_Incident.3 days = 170 } #July 3, 1934
+		}
+	}
+}
+## A Disgraced Minister
+country_event = {
+	id = JAP_Teijin_Incident.3
+	title = JAP_Teijin_Incident.3.t
+	desc = JAP_Teijin_Incident.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #PM Saito Makoto to resign.
+		name = JAP_Teijin_Incident.3.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Teijin_Incident.4 days = 1 } #July 4, 1934
+		}
+	}
+}
+## The Admiral In Charge
+country_event = {
+	id = JAP_Teijin_Incident.4
+	title = JAP_Teijin_Incident.4.t
+	desc = JAP_Teijin_Incident.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Okada becomes PM
+		name = JAP_Teijin_Incident.4.A
+		add_country_leader_role = {
+			character = JAP_Okada_Keisuke
+			promote_leader = yes
+			country_leader  = {
+				ideology = authoritarian_democracy
+				expire = "2000.1.1"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Old_Admiral
+				}
+				id = -1
+			}
+		}
+	}
+}
+##### JAP_Hirota_Cabinet
+### Hirota Cabinet
+## 2.26 Incident
+country_event = {
+	id = JAP_Hirota_Cabinet.1
+	title = JAP_Hirota_Cabinet.1.t
+	desc = JAP_Hirota_Cabinet.1.d
+	picture = GFX_report_JAP
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+	trigger = {
+		original_tag = JAP
+		date > 1936.02.25
+		has_start_date < 1936.02.25
+	}
+	option = {
+		name = JAP_Hirota_Cabinet.1.A
+		set_country_flag = JAP_February_26
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Hirota_Cabinet.2 days = 3 } #February 29, 1936
+		}
+	}
+}
+## The Scattered Sakura
+country_event = {
+	id = JAP_Hirota_Cabinet.2
+	title = JAP_Hirota_Cabinet.2.t
+	desc = JAP_Hirota_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Okada resigns.
+		name = JAP_Hirota_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Hirota_Cabinet.3 days = 1 } #March 1, 1936
+		}
+	}
+}
+## Approaching the Prince
+country_event = {
+	id = JAP_Hirota_Cabinet.3
+	title = JAP_Hirota_Cabinet.3.t
+	desc = JAP_Hirota_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Decides to get Hirota
+		name = JAP_Hirota_Cabinet.3.A
+		hidden_effect = {
+			country_event = { id = JAP_Hirota_Cabinet.4 days = 8 } #March 9, 1936
+		}
+	}
+}
+## The Diplomat in Reserve
+country_event = {
+	id = JAP_Hirota_Cabinet.4
+	title = JAP_Hirota_Cabinet.4.t
+	desc = JAP_Hirota_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Hirota becomes PM
+		name = JAP_Hirota_Cabinet.4.A
+		add_country_leader_role = {
+			character = JAP_Hirota_Koki
+			promote_leader = yes
+			country_leader  = {
+				ideology = authoritarian_democracy
+				expire = "2000.1.1"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Experienced_Diplomat
+				}
+			}
+		}
+		add_ideas = JAP_Arita_Hachiro_FM
+		add_ideas = JAP_Baba_Eiichi_AM
+		add_ideas = JAP_Ushio_Shigenosuke_MoS
+		add_ideas = JAP_Terauchi_Hisaichi_AM
+		add_ideas = JAP_Nagano_Osami_CoNavy
+		hidden_effect = {
+			country_event = { id = JAP_Hirota_Cabinet.5 days = 14 } #March 23, 1936
+			country_event = { id = JAP_Hirota_Cabinet.8 days = 318 } #January 21, 1937
+		}
+	}
+}
+## The General Demands Arita
+country_event = {
+	id = JAP_Hirota_Cabinet.5
+	title = JAP_Hirota_Cabinet.5.t
+	desc = JAP_Hirota_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Army's intervention on cabinet making, like having Hachitou Arita instead of Shigeru Yoshida
+		name = JAP_Hirota_Cabinet.5.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05 
+		}
+	}
+}
+## The Cabinet Research Bureau
+country_event = {
+	id = JAP_Hirota_Cabinet.6
+	title = JAP_Hirota_Cabinet.6.t
+	desc = JAP_Hirota_Cabinet.6.d
+	picture = GFX_report_JAP
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	trigger = {
+		tag = JAP
+		date > 1936.04.01
+		date < 1936.04.30
+	}
+	option = { #Bureaucrats on the Cabinet Research Bureau making some reports
+		name = JAP_Hirota_Cabinet.6.A
+	}
+}
+## The National Defense State?
+country_event = {
+	id = JAP_Hirota_Cabinet.7
+	title = JAP_Hirota_Cabinet.7.t
+	desc = JAP_Hirota_Cabinet.7.d
+	picture = GFX_report_JAP
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	trigger = {
+		tag = JAP
+		date > 1936.05.01
+		date < 1936.05.31
+	}
+	option = { #Eiichi's Plan
+		name = JAP_Hirota_Cabinet.7.A
+	}
+}
+## The General and the Politician
+country_event = {
+	id = JAP_Hirota_Cabinet.8
+	title = JAP_Hirota_Cabinet.8.t
+	desc = JAP_Hirota_Cabinet.8.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Harakiri Incident - Increases party politician popularity
+		name = JAP_Hirota_Cabinet.8.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.03
+		}
+		set_temp_variable = {
+			faction_id = 25
+		}			## Party Politician
+		set_temp_variable = {
+			influence_to_add = 10
+		}
+		change_faction_influence = yes
+		hidden_effect = {
+			country_event = { id = JAP_Hirota_Cabinet.9 days = 14 } #January 23, 1937
+		}
+	}
+}
+## The Only Option
+country_event = {
+	id = JAP_Hirota_Cabinet.9
+	title = JAP_Hirota_Cabinet.9.t
+	desc = JAP_Hirota_Cabinet.9.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Hirota resigns, Start Hayashi Chain
+		name = JAP_Hirota_Cabinet.9.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Hayashi_Cabinet.1 days = 32 } #February 24, 1937
+		}
+	}
+}
+##### JAP_Hayashi_Cabinet
+### Hayashi Cabinet
+## Cleaning the Mess
+country_event = {
+	id = JAP_Hayashi_Cabinet.1
+	title = JAP_Hayashi_Cabinet.1.t
+	desc = JAP_Hayashi_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Konoe's Gambit (ATL)
+		name = JAP_Hayashi_Cabinet.1.A
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.2 days = 3 } #Election in 32 days
+		}
+	}
+	option = { #The Marshal of Korea (OTL)
+		name = JAP_Hayashi_Cabinet.1.B
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.3 days = 3 }#Election in 32 days
+		}
+	}
+}
+## Konoe's Gambit
+country_event = {
+	id = JAP_Hayashi_Cabinet.2
+	title = JAP_Hayashi_Cabinet.2.t
+	desc = JAP_Hayashi_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = JAP_Hayashi_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.6 days = 7 } #Election in 25 days
+		}
+	}
+}
+## The Marshal of Korea
+country_event = {
+	id = JAP_Hayashi_Cabinet.3
+	title = JAP_Hayashi_Cabinet.3.t
+	desc = JAP_Hayashi_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = JAP_Hayashi_Cabinet.3.A
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.4 days = 3 } #Election in 29 days
+		}
+	}
+}
+## Army Threatens the Ugaki Cabinet
+country_event = {
+	id = JAP_Hayashi_Cabinet.4
+	title = JAP_Hayashi_Cabinet.4.t
+	desc = JAP_Hayashi_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = JAP_Hayashi_Cabinet.4.A
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.5 days = 2 }
+			country_event = { id = JAP_Hayashi_Cabinet.6 days = 4 } #Election in 25 days
+		}
+	}
+}
+## Public Outcry over the Ugaki Debacle
+country_event = {
+	id = JAP_Hayashi_Cabinet.5
+	title = JAP_Hayashi_Cabinet.5.t
+	desc = JAP_Hayashi_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Toseiha popularity(influence?) decreased
+		name = JAP_Hayashi_Cabinet.5.A
+		set_temp_variable = { faction_id = 8 } #Toseiha
+		set_temp_variable = { influence_to_add = -5 } #Placeholder
+		change_faction_influence = yes
+	}
+}
+## The Devil's Patron
+country_event = {
+	id = JAP_Hayashi_Cabinet.6
+	title = JAP_Hayashi_Cabinet.6.t
+	desc = JAP_Hayashi_Cabinet.6.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Senjurou Hayashi becomes PM
+		name = JAP_Hayashi_Cabinet.6.A
+		add_country_leader_role = {
+			character = JAP_Hayashi_Senjuro
+			promote_leader = yes
+			country_leader  = {
+				ideology = authoritarian_democracy
+				expire = "1948.12.23"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Marshal_of_Korea
+				}
+			}
+		}
+		add_ideas = JAP_Sato_Naotake_FM
+		add_ideas = JAP_Kawarada_Kakichi_MoS
+		add_ideas = JAP_Yuki_Toyotaro_AM
+		add_ideas = JAP_Sugiyama_Hajime_CoArmy
+		add_ideas = JAP_Yonai_Mitsumasa_CoNavy
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.7 days = 10 }
+			country_event = { id = JAP_Hayashi_Cabinet.8 days = 14 } #Election in 18 days
+		}
+	}
+}
+## Tie-up Finance
+country_event = {
+	id = JAP_Hayashi_Cabinet.7
+	title = JAP_Hayashi_Cabinet.7.t
+	desc = JAP_Hayashi_Cabinet.7.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = JAP_Hayashi_Cabinet.7.A
+	}
+}
+## Businesses React Positively
+country_event = {
+	id = JAP_Hayashi_Cabinet.8
+	title = JAP_Hayashi_Cabinet.8.t
+	desc = JAP_Hayashi_Cabinet.8.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Toseiha influence increases
+		name = JAP_Hayashi_Cabinet.8.A
+		set_temp_variable = { faction_id = 8 } #Toseiha
+		set_temp_variable = { influence_to_add = 5 } #Placeholder
+		change_faction_influence = yes
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.9 days = 9 } #Election in 11 days
+		}
+	}
+}
+## The Diet's Quiet Fury
+country_event = {
+	id = JAP_Hayashi_Cabinet.9
+	title = JAP_Hayashi_Cabinet.9.t
+	desc = JAP_Hayashi_Cabinet.9.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = JAP_Hayashi_Cabinet.9.A
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.10 days = 2 } #March 31, 1937
+		}
+	}
+}
+## Hayashi Calls Elections!
+country_event = {
+	id = JAP_Hayashi_Cabinet.10
+	title = JAP_Hayashi_Cabinet.10.t
+	desc = JAP_Hayashi_Cabinet.10.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = JAP_Hayashi_Cabinet.10.A
+		hidden_effect = {
+			country_event = { id = JAP_Hayashi_Cabinet.11 days = 64 } #June 3, 1937
+		}
+	}
+}
+## Dashing in Shame
+country_event = {
+	id = JAP_Hayashi_Cabinet.11
+	title = JAP_Hayashi_Cabinet.11.t
+	desc = JAP_Hayashi_Cabinet.11.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Toseiha popularity and influence utterly lowered, Party and Party Bureaucrat influence and popularity boosted.
+		name = JAP_Hayashi_Cabinet.11.A
+		retire_country_leader = yes
+		set_temp_variable = { faction_id = 8 } #Toseiha
+		set_temp_variable = { influence_to_add = -50 } #Placeholder
+		change_faction_influence = yes
+		set_temp_variable = { faction_id = 25 } #Party Politician
+		set_temp_variable = { influence_to_add = 30 } #Placeholder
+		change_faction_influence = yes
+		set_temp_variable = { faction_id = 26 } #Party Bureaucrat
+		set_temp_variable = { influence_to_add = 30 } #Placeholder
+		change_faction_influence = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Hayashi_Cabinet.12 days = 1 } #June 4, 1937
+		}
+	}
+}
+## The Child of Fate
+country_event = {
+	id = JAP_Hayashi_Cabinet.12
+	title = JAP_Hayashi_Cabinet.12.t
+	desc = JAP_Hayashi_Cabinet.12.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # Konoe become PM
+		name = JAP_Hayashi_Cabinet.12.A
+		add_country_leader_role = {
+			character = JAP_Konoe_Fumimaro
+			promote_leader = yes
+			country_leader  = {
+				desc = "Fumimaro_Konoe_desc"
+				ideology = authoritarian_democracy
+				expire = "1945.12.16"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Political_Protege
+				}
+				id = -1
+			}
+		}
+		add_ideas = JAP_Hirota_Koki_FM
+		add_ideas = JAP_Baba_Eiichi_MoS
+		add_ideas = JAP_Okinori_Kaya_AM
+		add_ideas = JAP_Sugiyama_Hajime_CoArmy
+		add_ideas = JAP_Yonai_Mitsumasa_CoNavy
+	}
+}
+
+## The Ongoing Armistice
+country_event = {
+	id = JAP_First_Konoe_Cabinet.1
+	title = JAP_First_Konoe_Cabinet.1.t
+	desc = JAP_First_Konoe_Cabinet.1.d
+	picture = GFX_report_JAP
+	trigger = {
+		original_tag = JAP
+		has_country_leader = {
+			character = JAP_Konoe_Fumimaro
+			ruling_only = yes
+		}
+		has_global_flag = CHI_Sino_Japanese_War
+	}
+	fire_only_once = yes
+	option = { # Send more divisions
+		name = JAP_First_Konoe_Cabinet.1.A
+		hidden_effect = {
+			country_event = { id = JAP_First_Konoe_Cabinet.2 days = 20 }
+		}
+	}
+}
+## The Budget
+country_event = {
+	id = JAP_First_Konoe_Cabinet.2
+	title = JAP_First_Konoe_Cabinet.2.t
+	desc = JAP_First_Konoe_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_First_Konoe_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_First_Konoe_Cabinet.3 days = 270 }
+		}
+	}
+}
+## Government Control of Power Act and National Mobilisation Act
+country_event = {
+	id = JAP_First_Konoe_Cabinet.3
+	title = JAP_First_Konoe_Cabinet.3.t
+	desc = JAP_First_Konoe_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_First_Konoe_Cabinet.3.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.06
+		}
+		hidden_effect = {
+			country_event = { id = JAP_First_Konoe_Cabinet.4 days = 30 }
+		}
+	}
+}
+## The Cabinet Reshuffle
+country_event = {
+	id = JAP_First_Konoe_Cabinet.4
+	title = JAP_First_Konoe_Cabinet.4.t
+	desc = JAP_First_Konoe_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_First_Konoe_Cabinet.4.A
+		add_ideas = JAP_Ugaki_Kazushige_FM
+		add_ideas = JAP_Suetsugu_Nobumasa_MoS
+		add_ideas = JAP_Ikeda_Shigeaki_AM
+		add_ideas = JAP_Seishiro_Itagaki_CoArmy
+		hidden_effect = {
+			country_event = { id = JAP_Hiranuma_Cabinet.1 days = 260 }
+		}
+	}
+}
+## The Prince's Departure
+country_event = {
+	id = JAP_Hiranuma_Cabinet.1
+	title = JAP_Hiranuma_Cabinet.1.t
+	desc = JAP_Hiranuma_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Hiranuma_Cabinet.1.A
+		retire_country_leader = yes
+		add_country_leader_role = {
+			character = JAP_Hiranuma_Kiichiro
+			promote_leader = yes
+			country_leader  = {
+				ideology = authoritarian_democracy
+				expire = "1952.8.22"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Judge
+				}
+			}
+		}
+		add_ideas = JAP_Arita_Hachiro_FM
+		add_ideas = JAP_Sotaro_Ishiwata_AM
+		add_ideas = JAP_Kido_Koichi_MoS
+		add_ideas = JAP_Seishiro_Itagaki_CoArmy
+		add_ideas = JAP_Yonai_Mitsumasa_CoNavy
+	}
+}
+## A Shift in Europe
+country_event = {
+	id = JAP_Hiranuma_Cabinet.2
+	title = JAP_Hiranuma_Cabinet.2.t
+	desc = JAP_Hiranuma_Cabinet.2.d
+	picture = GFX_report_JAP
+	trigger = {
+		original_tag = JAP
+		has_country_leader = {
+			character = JAP_Hiranuma_Kiichiro
+			ruling_only = yes
+		}
+		OR = {
+			has_global_flag = Molotov_Ribbentrop_Signed
+			date > 1940.1.1
+		}
+	}
+	fire_only_once = yes
+	option = { 
+		name = JAP_Hiranuma_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Hiranuma_Cabinet.3 days = 1 }
+		}
+	}
+}
+## The Judge Powerless
+country_event = {
+	id = JAP_Hiranuma_Cabinet.3
+	title = JAP_Hiranuma_Cabinet.3.t
+	desc = JAP_Hiranuma_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Hiranuma_Cabinet.3.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Abe_Cabinet.1 days = 1 }
+		}
+	}
+}
+## The Army Offers Abe
+country_event = {
+	id = JAP_Abe_Cabinet.1
+	title = JAP_Abe_Cabinet.1.t
+	desc = JAP_Abe_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Abe_Cabinet.1.A
+		country_event = { id = JAP_Abe_Cabinet.2 days = 1 }
+	}
+}
+## A Fresh Face
+country_event = {
+	id = JAP_Abe_Cabinet.2
+	title = JAP_Abe_Cabinet.2.t
+	desc = JAP_Abe_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Abe_Cabinet.2.A
+		add_country_leader_role = {
+			character = JAP_Abe_Nobuyuki
+			promote_leader = yes
+			country_leader  = {
+				ideology = authoritarian_democracy
+				expire = "1952.8.22"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Happy_Amateur
+				}
+			}
+		}
+		add_ideas = JAP_Nomura_Kichisaburo_FM
+		add_ideas = JAP_Ohara_Naoshi_MoS
+		add_ideas = JAP_Shunroku_Hata_CoArmy
+		add_ideas = JAP_Zengo_Yoshida_CoNavy
+		hidden_effect = {
+			country_event = { id = JAP_Abe_Cabinet.3 days = 120 }
+		}
+	}
+}
+## Facing the War's Expenses
+country_event = {
+	id = JAP_Abe_Cabinet.3
+	title = JAP_Abe_Cabinet.3.t
+	desc = JAP_Abe_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Abe_Cabinet.3.A
+		hidden_effect = {
+			country_event = { id = JAP_Abe_Cabinet.4 days = 2 }
+		}
+	}
+}
+## The Foreign Ministry Opposes Us
+country_event = {
+	id = JAP_Abe_Cabinet.4
+	title = JAP_Abe_Cabinet.4.t
+	desc = JAP_Abe_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Abe_Cabinet.4.A
+		hidden_effect = {
+			country_event = { id = JAP_Abe_Cabinet.5 days = 2 }
+		}
+	}
+}
+## The Business World Abandons Us
+country_event = {
+	id = JAP_Abe_Cabinet.5
+	title = JAP_Abe_Cabinet.5.t
+	desc = JAP_Abe_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Abe_Cabinet.5.A
+		hidden_effect = {
+			country_event = { id = JAP_Abe_Cabinet.2 days = 2 }
+		}
+	}
+}
+## The Parties Call for Abe's Resignation
+country_event = {
+	id = JAP_Abe_Cabinet.6
+	title = JAP_Abe_Cabinet.6.t
+	desc = JAP_Abe_Cabinet.6.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Abe_Cabinet.6.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Yonai_Cabinet days = 1 }
+		}
+	}
+}
+## Yet Another Conundrum
+country_event = {
+	id = JAP_Yonai_Cabinet.1
+	title = JAP_Yonai_Cabinet.1.t
+	desc = JAP_Yonai_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Yonai_Cabinet.1.A
+		add_country_leader_role = {
+			character = JAP_Yonai_Mitsumasa
+			promote_leader = yes
+			country_leader  = {
+				ideology = authoritarian_democracy
+				expire = "1952.8.22"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+					L_Old_Admiral
+				}
+			}
+		}
+		add_ideas = JAP_Arita_Hachiro_FM
+		add_ideas = JAP_Kodama_Hideo_MoS
+		add_ideas = JAP_Yukio_Sakurauchi_AM
+		add_ideas = JAP_Shunroku_Hata_CoArmy
+		add_ideas = JAP_Zengo_Yoshida_CoNavy
+		hidden_effect = {
+			country_event = { id = JAP_Yonai_Cabinet.2 days = 90 }
+		}
+	}
+}
+## Illusion of a New Structure
+country_event = {
+	id = JAP_Yonai_Cabinet.2
+	title = JAP_Yonai_Cabinet.2.t
+	desc = JAP_Yonai_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Yonai_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Second_Konoe_Cabinet.0 days = 45 }
+			country_event = { id = JAP_Yonai_Cabinet.5 days = 90 }
+		}
+	}
+}
+## Hata Denounces Yonai
+country_event = {
+	id = JAP_Yonai_Cabinet.3
+	title = JAP_Yonai_Cabinet.3.t
+	desc = JAP_Yonai_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Yonai_Cabinet.3.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.02
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Yonai_Cabinet.4 days = 6 }
+		}
+	}
+}
+## Yonai Resigns
+country_event = {
+	id = JAP_Yonai_Cabinet.4
+	title = JAP_Yonai_Cabinet.4.t
+	desc = JAP_Yonai_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Yonai_Cabinet.4.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = authoritarian_democracy
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Authoritarian_Democracy
+				}
+			}
+			country_event = { id = JAP_Yonai_Cabinet.5 days = 1 }
+		}
+	}
+}
+## Mending the Nation
+country_event = {
+	id = JAP_Yonai_Cabinet.5
+	title = JAP_Yonai_Cabinet.5.t
+	desc = JAP_Yonai_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Yonai_Cabinet.5.A
+		add_country_leader_role = {
+			character = JAP_Konoe_Fumimaro
+			promote_leader = yes
+			country_leader  = {
+				desc = "Fumimaro_Konoe_desc"
+				ideology = ultranationalism
+				expire = "1945.12.16"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+					L_Destined_Prince
+				}
+				id = -1
+			}
+		}
+		add_ideas = JAP_Matsuoka_Yosuke_FM
+		add_ideas = JAP_Hiranuma_Kiichiro_MoS
+		add_ideas = JAP_Kazuo_Aoki_AM
+		add_ideas = JAP_Sugiyama_Hajime_CoStaff
+		add_ideas = JAP_Tojo_Hideki_CoArmy
+		add_ideas = JAP_Oikawa_Koshiro_CoNavy
+		hidden_effect = {
+			set_politics = {
+				ruling_party = fascist
+				elections_allowed = no
+			}
+			country_event = { id = JAP_Second_Konoe_Cabinet.1 days = 2 }
+		}
+	}
+}
+## A New Organization?
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.0
+	title = JAP_Second_Konoe_Cabinet.0.t
+	desc = JAP_Second_Konoe_Cabinet.0.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.0.A
+		
+	}
+}
+## Facing the World
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.1
+	title = JAP_Second_Konoe_Cabinet.1.t
+	desc = JAP_Second_Konoe_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.1.A
+		hidden_effect = {
+			country_event = { id = JAP_Second_Konoe_Cabinet.2 days = 4 }
+			country_event = { id = JAP_Second_Konoe_Cabinet.6 days = 7 }
+		}
+	}
+}
+## The Karuizawa Conference
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.2
+	title = JAP_Second_Konoe_Cabinet.2.t
+	desc = JAP_Second_Konoe_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.2.A
+		set_country_flag = JAP_Karuizawa_Conference_Held
+	}
+}
+## The Political Parties Merge
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.3
+	title = JAP_Second_Konoe_Cabinet.3.t
+	desc = JAP_Second_Konoe_Cabinet.3.d
+	picture = GFX_report_JAP
+	trigger = {
+		original_tag = JAP
+		focus_progress = {
+			focus = JAP_Imperial_Rule_Assistance_Association
+			progress > 0.3
+		}
+	}
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.3.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05 
+		}
+	}
+}
+## The Teikigaisou Proclamation
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.4
+	title = JAP_Second_Konoe_Cabinet.4.t
+	desc = JAP_Second_Konoe_Cabinet.4.d
+	picture = GFX_report_JAP
+	trigger = {
+		original_tag = JAP
+		focus_progress = {
+			focus = JAP_Imperial_Rule_Assistance_Association
+			progress > 0.6
+		}
+	}
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.4.A
+		
+	}
+}
+## A Mass Reshuffle
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.5
+	title = JAP_Second_Konoe_Cabinet.5.t
+	desc = JAP_Second_Konoe_Cabinet.5.d
+	picture = GFX_report_JAP
+	trigger = {
+		original_tag = JAP
+		focus_progress = {
+			focus = JAP_Imperial_Rule_Assistance_Association
+			progress > 0.9
+		}
+	}
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.5.A
+		
+	}
+}
+## The Ogikubo Conference
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.6
+	title = JAP_Second_Konoe_Cabinet.6.t
+	desc = JAP_Second_Konoe_Cabinet.6.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.6.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05 
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Second_Konoe_Cabinet.7 days = 260 }
+		}
+	}
+}
+## Regarding the Draft/The Liaison Conference
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.7
+	title = JAP_Second_Konoe_Cabinet.7.t
+	desc = JAP_Second_Konoe_Cabinet.7.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.7.A
+		hidden_effect = {
+			country_event = { id = JAP_Second_Konoe_Cabinet.8 days = 90 }
+		}
+	}
+}
+## Little Strokes Fell Great Oaks
+country_event = {
+	id = JAP_Second_Konoe_Cabinet.8
+	title = JAP_Second_Konoe_Cabinet.8.t
+	desc = JAP_Second_Konoe_Cabinet.8.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Second_Konoe_Cabinet.8.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = ultranationalism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+				}
+			}
+			country_event = { id = JAP_Third_Konoe_Cabinet.1 days = 1 }
+		}
+	}
+}
+## The Third Cabinet
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.1
+	title = JAP_Third_Konoe_Cabinet.1.t
+	desc = JAP_Third_Konoe_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.1.A
+		add_country_leader_role = {
+			character = JAP_Konoe_Fumimaro
+			promote_leader = yes
+			country_leader  = {
+				desc = "Fumimaro_Konoe_desc"
+				ideology = ultranationalism
+				expire = "1945.12.16"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+					L_Desperate_Prince
+				}
+				id = -1
+			}
+		}
+		add_ideas = JAP_Toyoda_Teijiro_FM
+		add_ideas = JAP_Ogura_Masatsune_AM
+		add_ideas = JAP_Tanabe_Harumichi_MoS
+		add_ideas = JAP_Shunroku_Hata_CoArmy
+		add_ideas = JAP_Zengo_Yoshida_CoNavy
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.2 days = 7 }
+		}
+	}
+}
+## Easing the Tensions
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.2
+	title = JAP_Third_Konoe_Cabinet.2.t
+	desc = JAP_Third_Konoe_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.3 days = 14 }
+		}
+	}
+}
+## A Meeting with Roosevelt?
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.3
+	title = JAP_Third_Konoe_Cabinet.3.t
+	desc = JAP_Third_Konoe_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.3.A
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.4 days = 30 }
+		}
+	}
+}
+## Convincing the Emperor
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.4
+	title = JAP_Third_Konoe_Cabinet.4.t
+	desc = JAP_Third_Konoe_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.4.A
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.5 days = 30 }
+		}
+	}
+}
+## The Liaison Conference
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.5
+	title = JAP_Third_Konoe_Cabinet.5.t
+	desc = JAP_Third_Konoe_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.5.A
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.6 days = 3 }
+		}
+	}
+}
+## Trying to Rein in Tojo
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.6
+	title = JAP_Third_Konoe_Cabinet.6.t
+	desc = JAP_Third_Konoe_Cabinet.6.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.6.A
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.7 days = 5 }
+		}
+	}
+}
+## The Tekigaiso Conference
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.7
+	title = JAP_Third_Konoe_Cabinet.7.t
+	desc = JAP_Third_Konoe_Cabinet.7.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.7.A
+		hidden_effect = {
+			country_event = { id = JAP_Third_Konoe_Cabinet.8 days = 2 }
+		}
+	}
+}
+## An Inescapable Fate
+country_event = {
+	id = JAP_Third_Konoe_Cabinet.8
+	title = JAP_Third_Konoe_Cabinet.8.t
+	desc = JAP_Third_Konoe_Cabinet.8.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Third_Konoe_Cabinet.8.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = ultranationalism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+				}
+			}
+			country_event = { id = JAP_Tojo_Cabinet.1 days = 4 }
+		}
+	}
+}
+## The Emperor's Will
+country_event = {
+	id = JAP_Tojo_Cabinet.1
+	title = JAP_Tojo_Cabinet.1.t
+	desc = JAP_Tojo_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Tojo_Cabinet.1.A
+		add_country_leader_role = {
+			character = JAP_Tojo_Hideki
+			promote_leader = yes
+			country_leader  = {
+				ideology = ultranationalism
+				expire = "1948.1.1"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+					L_Razor
+				}
+				id = -1
+			}
+		}
+		add_ideas = JAP_Togo_Shigenori_FM
+		add_ideas = JAP_Tojo_Hideki_MoS
+		add_ideas = JAP_Okinori_Kaya_AM
+		add_ideas = JAP_Tojo_Hideki_CoArmy
+		add_ideas = JAP_Shimada_Shigetaro_CoNavy
+		hidden_effect = {
+			country_event = { id = JAP_Tojo_Cabinet.2 days = 16 }
+		}
+	}
+}
+## Striking the Giant
+country_event = {
+	id = JAP_Tojo_Cabinet.2
+	title = JAP_Tojo_Cabinet.2.t
+	desc = JAP_Tojo_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Tojo_Cabinet.2.A
+		hidden_effect = {
+			country_event = { id = JAP_Tojo_Cabinet.2 days = 23 }
+		}
+	}
+}
+## The Hull Note
+country_event = {
+	id = JAP_Tojo_Cabinet.3
+	title = JAP_Tojo_Cabinet.3.t
+	desc = JAP_Tojo_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # Leads to Pearl Harbor
+		name = JAP_Tojo_Cabinet.3.A
+		set_country_flag = JAP_Hull_Note_Received
+	}
+}
+## Tojo's Fall
+country_event = {
+	id = JAP_Tojo_Cabinet.4
+	title = JAP_Tojo_Cabinet.4.t
+	desc = JAP_Tojo_Cabinet.4.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Tojo_Cabinet.4.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = ultranationalism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+				}
+			}
+			country_event= { id = JAP_Tojo_Cabinet.5 days = 1 }
+			complete_national_focus = JAP_Tojos_Gamble
+		}
+	}
+}
+## Convention of the Jushin
+country_event = {
+	id = JAP_Tojo_Cabinet.5
+	title = JAP_Tojo_Cabinet.5.t
+	desc = JAP_Tojo_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Tojo_Cabinet.5.A
+		hidden_effect = {
+			country_event= { id = JAP_Koiso_Cabinet.1 days = 1 }
+		}
+	}
+}
+## The Unlikely General
+country_event = {
+	id = JAP_Koiso_Cabinet.1
+	title = JAP_Koiso_Cabinet.1.t
+	desc = JAP_Koiso_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Koiso_Cabinet.1.A
+		add_country_leader_role = {
+			character = JAP_Koiso_Kuniaki
+			promote_leader = yes
+			country_leader  = {
+				ideology = ultranationalism
+				expire = "1948.1.1"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+					L_Local_Tyrant
+				}
+				id = -1
+			}
+		}
+		add_ideas = JAP_Shigemitsu_Mamoru_FM
+		add_ideas = JAP_Odachi_Shigeo_MoS
+		add_ideas = JAP_Sotaro_Ishiwata_AM
+		add_ideas = JAP_Sugiyama_Hajime_CoArmy
+		add_ideas = JAP_Yonai_Mitsumasa_CoNavy
+	}
+}
+## The Fallen General
+country_event = {
+	id = JAP_Koiso_Cabinet.2
+	title = JAP_Koiso_Cabinet.2.t
+	desc = JAP_Koiso_Cabinet.2.d
+	picture = GFX_report_JAP
+	trigger = {
+		original_tag = JAP
+		has_country_leader = {
+			character = JAP_Koiso_Kuniaki
+			ruling_only = yes
+		}
+		has_war_with = USA
+		OR = {
+			#date > 1945.04.07
+			naval_strength_ratio = {
+				tag = USA
+				ratio < 0.2
+			}
+			NOT = {
+				controls_state = 526
+				controls_state = 645
+			}
+		}
+	}
+	fire_only_once = yes
+	option = { 
+		name = JAP_Koiso_Cabinet.2.A
+		retire_country_leader = yes
+		hidden_effect = {
+			create_country_leader = {
+				name = "Vacancy"
+				picture = GFX_P_JAP_Vacant
+				ideology = ultranationalism
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+				}
+			}
+			country_event= { id = JAP_Suzuki_Cabinet.1 days = 1 }
+		}
+	}
+}
+## The Harsh Reality
+country_event = {
+	id = JAP_Suzuki_Cabinet.1
+	title = JAP_Suzuki_Cabinet.1.t
+	desc = JAP_Suzuki_Cabinet.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Suzuki_Cabinet.1.A
+		add_country_leader_role = {
+			character = JAP_Suzuki_Kantaro
+			promote_leader = yes
+			country_leader  = {
+				ideology = ultranationalism
+				expire = "1948.1.1"
+				traits = {
+					POSITION_Prime_Minister
+					SUBIDEOLOGY_Ultranationalism
+				}
+				id = -1
+			}
+		}
+		add_ideas = JAP_Suzuki_Kantaro_FM
+		add_ideas = JAP_Abe_Genki_MoS
+		add_ideas = JAP_Toyosaku_Hirose_AM
+		add_ideas = JAP_Anami_Korechika_CoArmy
+		add_ideas = JAP_Yonai_Mitsumasa_CoNavy
+	}
+}
+## Death Before Dishonour
+country_event = {
+	id = JAP_Suzuki_Cabinet.2
+	title = JAP_Suzuki_Cabinet.2.t
+	desc = JAP_Suzuki_Cabinet.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Suzuki_Cabinet.2.A
+		hidden_effect = {
+			country_event= { id = JAP_Suzuki_Cabinet.3 days = 2 }
+		}
+	}
+}
+## A Palace Under Siege
+country_event = {
+	id = JAP_Suzuki_Cabinet.3
+	title = JAP_Suzuki_Cabinet.3.t
+	desc = JAP_Suzuki_Cabinet.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Suzuki_Cabinet.3.A
+		hidden_effect = {
+			country_event= { id = JAP_Suzuki_Cabinet.4 hours = 2 }
+		}
+		
+	}
+}
+## Yokohama in Chaos
+country_event = {
+	id = JAP_Suzuki_Cabinet.4
+	title = JAP_Suzuki_Cabinet.4.t
+	desc = JAP_Suzuki_Cabinet.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Suzuki_Cabinet.4.A
+		hidden_effect = {
+			country_event= { id = JAP_Suzuki_Cabinet.5 hours = 2 }
+		}
+	}
+}
+## A Failed Plan
+country_event = {
+	id = JAP_Suzuki_Cabinet.5
+	title = JAP_Suzuki_Cabinet.5.t
+	desc = JAP_Suzuki_Cabinet.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Suzuki_Cabinet.5.A
+		hidden_effect = {
+			news_event= { id = JAP_Suzuki_Cabinet.6 hours = 2 }
+		}
+	}
+}
+## The Falling Leaves
+news_event = {
+	id = JAP_Suzuki_Cabinet.6
+	title = JAP_Suzuki_Cabinet.6.t
+	desc = JAP_Suzuki_Cabinet.6.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { 
+		name = JAP_Suzuki_Cabinet.6.A
+		USA = {
+			country_event = { id = JAP_Surrender.1 }
+		}
+	}
+}
+## The Terms of Surrender
+country_event = {
+	id = JAP_Surrender.1
+	title = JAP_Surrender.1.t
+	desc = JAP_Surrender.1.d
+	picture = GFX_report_JAP_Surrender_Signing
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.1.A
+		# Pacific Islands
+		USA = {
+			transfer_state = 633
+			transfer_state = 646
+			transfer_state = 647
+			transfer_state = 684
+			transfer_state = 1312
+			transfer_state = 1313
+		}
+		# Northern China and Shanghai
+		CHI = {
+			transfer_state = 609
+			transfer_state = 611
+			transfer_state = 612
+			transfer_state = 827
+			transfer_state = 868
+		}
+		# Manchuria
+		if = {
+			limit = {
+				SOV = {
+					has_war_with = JAP
+				}
+			}
+			SOV = {
+				transfer_state = 328
+				transfer_state = 610
+				transfer_state = 714
+				transfer_state = 715
+				transfer_state = 716
+				transfer_state = 717
+				transfer_state = 745
+				transfer_state = 761
+				transfer_state = 826
+				transfer_state = 915
+				transfer_state = 916
+				transfer_state = 919
+				transfer_state = 1020
+				transfer_state = 1665
+			}
+		}
+		else = {
+			CHI = {
+				transfer_state = 328
+				transfer_state = 714
+				transfer_state = 715
+				transfer_state = 716
+				transfer_state = 717
+				transfer_state = 745
+				transfer_state = 761
+				transfer_state = 915
+				transfer_state = 916
+				transfer_state = 919
+				transfer_state = 1020
+				transfer_state = 1665
+			}
+		}
+		# Korea
+		set_autonomy = {
+			target = KOR
+			autonomy_state = AUTONOMY_Integrated_Puppet
+			end_wars = yes
+			end_civil_wars = yes
+		}
+		hidden_effect = {
+			KOR = {
+				transfer_state = 525
+				transfer_state = 817
+				transfer_state = 984
+				transfer_state = 985
+				transfer_state = 986
+				transfer_state = 987
+				transfer_state = 988
+				set_cosmetic_tag = KOR_USA_Occupied
+				add_popularity = {
+					ideology = authoritarian
+					popularity = 0.5
+				}
+				set_politics = {
+					ruling_party = authoritarian
+					elections_allowed = no
+				}
+				create_country_leader = {
+					name = "John R. Hodge"
+					desc = ""
+					picture = GFX_P_USA_A_John_R_Hodge
+					expire = "1964.1.1"
+					ideology = military_dictatorship
+					traits = {
+						POSITION_Military_Governor
+						SUBIDEOLOGY_Military_Dictatorship
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_war_with = JAP
+				}
+			}
+			SOV = {
+				set_autonomy = {
+					target = PRK
+					autonomy_state = AUTONOMY_SSR
+					end_wars = yes
+					end_civil_wars = yes
+				}
+			}
+			hidden_effect = {
+				PRK = {
+					transfer_state = 527
+					transfer_state = 816
+					transfer_state = 979
+					transfer_state = 980
+					transfer_state = 981
+					transfer_state = 982
+					transfer_state = 983
+					set_cosmetic_tag = PRK_SOV_Occupied
+					create_country_leader = {
+						name = "Terenty Shtykov"
+						desc = ""
+						picture = GFX_P_C_Terenty_Shtykov
+						expire = "1964.1.1"
+						ideology = stalinism
+						traits = {
+							POSITION_Military_Governor
+							SUBIDEOLOGY_Stalinism
+						}
+					}
+				}
+			}
+		}
+		else = {
+			hidden_effect = {
+				KOR = {
+					transfer_state = 527
+					transfer_state = 816
+					transfer_state = 979
+					transfer_state = 980
+					transfer_state = 981
+					transfer_state = 982
+					transfer_state = 983
+				}
+			}
+		}
+		# Kuril Islands and Sakhalin
+		if = {
+			limit = {
+				SOV = {
+					has_war_with = JAP
+				}
+			}
+			SOV = {
+				transfer_state = 537
+				transfer_state = 555
+				transfer_state = 1358
+			}
+		}
+		else = {
+			SOV = {
+				transfer_state = 537
+			}
+		}
+		# Taiwan
+		if = {
+			limit = {
+				CHI = {
+					has_war_with = JAP
+				}
+			}
+			CHI = {
+				transfer_state = 524
+				transfer_state = 1524
+			}
+		}
+		else = {
+			USA = {
+				transfer_state = 524
+				transfer_state = 1524
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					ENG = { 
+						has_war_with = JAP 
+					}
+				}
+				ENG = { 
+					country_event = { id = JAP_Surrender.2 hours = 6 }
+				}
+			}
+			if = {
+				limit = {
+					FFL = { 
+						has_war_with = JAP 
+					}
+				}
+				FFL = { 
+					country_event = { id = JAP_Surrender.3 hours = 6 }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						country_exists = RNG
+						country_exists = MEN
+						country_exists = GWS
+						country_exists = EHB
+					}
+				}
+				CHI = { 
+					country_event = { id = JAP_Surrender.4 hours = 6 }
+				}
+			}
+			if = {
+				limit = {
+					SOV = {
+						has_war_with = JAP
+					}
+				}
+				SOV = { 
+					country_event = { id = JAP_Surrender.5 hours = 6 }
+				}
+			}
+			else = {
+				SOV = { 
+					country_event = { id = JAP_Surrender.6 hours = 6 }
+				}
+			}
+			if = {
+				limit = {
+					HOL = {
+						has_war_with = JAP
+					}
+					country_exists = INS
+				}
+				HOL = { 
+					country_event = { id = JAP_Surrender.7 hours = 6 }
+				}
+			}
+			news_event = { id = JAP_Surrender.8 days = 1 }	
+		}
+		# Peace
+		every_country = {
+			limit = {
+				has_war_with = JAP
+			}
+			white_peace = JAP
+		}
+		every_country = {
+			limit = {
+				is_subject_of = JAP
+				has_war_with = USA
+			}
+			every_country = {
+				limit = {
+					has_war_with = PREV
+				}
+				white_peace = PREV
+			}
+		}
+		if = {
+			limit = {
+				PHR = {
+					exists = yes
+				}
+			}
+			PHI = {
+				annex_country = {
+					target = PHR
+					transfer_troops = no
+				}
+			}
+		}
+		# Occupation of Home Islands
+		set_autonomy = {
+			target = JAP
+			autonomy_state = AUTONOMY_Integrated_Puppet
+			end_wars = yes
+			end_civil_wars = yes
+		}
+		JAP = {
+			set_cosmetic_tag = JAP_OCCUPIED
+			create_country_leader = {
+				name = "Douglas MacArthur"
+				desc = ""
+				picture = GFX_M_Douglas_MacArthur
+				expire = "1964.1.1"
+				ideology = military_dictatorship
+				traits = {
+					POSITION_Military_Governor
+				}
+			}
+		}
+		hidden_effect = {
+			JAP = {
+				add_popularity = {
+					ideology = authoritarian
+					popularity = 0.5
+				}
+				set_politics = {
+					ruling_party = authoritarian
+					elections_allowed = no
+				}
+			}
+		}
+	}
+}
+## A Return to the Old? (ENG)
+country_event = {
+	id = JAP_Surrender.2
+	title = JAP_Surrender.2.t
+	desc = JAP_Surrender.2.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.2.A
+		# Northern Borneo
+		ENG = {
+			transfer_state = 881
+			transfer_state = 882
+			transfer_state = 647
+			transfer_state = 684
+		}
+		# Burma
+		set_autonomy = {
+			target = BRM
+			autonomy_state = AUTONOMY_Colony
+			end_wars = yes
+			end_civil_wars = yes
+		}
+		BRM = {
+			set_cosmetic_tag = BRM_ENG
+		}
+		# Malaya
+		ENG = {
+			transfer_state = 1007
+			transfer_state = 1009
+			transfer_state = 1010
+			transfer_state = 1011
+			transfer_state = 1004
+			transfer_state = 1006
+		}
+	}
+}
+## A Different Indochina (FRA)
+country_event = {
+	id = JAP_Surrender.3
+	title = JAP_Surrender.3.t
+	desc = JAP_Surrender.3.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.3.A
+		# Cambodia & Laos
+		set_autonomy = {
+			target = VIN
+			autonomy_state = AUTONOMY_Colony
+			end_wars = yes
+			end_civil_wars = yes
+		}
+		VIN = {
+			set_cosmetic_tag = VIN_FRA
+			transfer_state = 1001
+			transfer_state = 994
+			transfer_state = 871
+			transfer_state = 993
+			transfer_state = 872
+			transfer_state = 286
+			transfer_state = 999
+			transfer_state = 1000
+			transfer_state = 998
+			transfer_state = 741
+			transfer_state = 873
+		}
+		# Vietnam
+		if = {
+			limit = {
+				CHI = {
+					owns_state = 524
+				}
+			}
+			CHI = {
+				transfer_state = 670
+				transfer_state = 870
+				transfer_state = 1003
+				transfer_state = 996
+				transfer_state = 997
+				transfer_state = 671
+				transfer_state = 995
+				transfer_state = 1002
+			}
+		}
+		else = {
+			VIN = {
+				transfer_state = 670
+				transfer_state = 870
+				transfer_state = 1003
+				transfer_state = 996
+				transfer_state = 997
+				transfer_state = 671
+				transfer_state = 995
+				transfer_state = 1002
+			}
+		}
+	}
+}
+## Reclaiming China (CHI)
+country_event = {
+	id = JAP_Surrender.4
+	title = JAP_Surrender.4.t
+	desc = JAP_Surrender.4.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.4.A
+		every_state = {
+			limit = {
+				is_core_of = CHI
+				OR = {
+					is_controlled_by = GWS
+					is_controlled_by = EHB
+					is_controlled_by = RNG
+					is_controlled_by = MEN
+					is_controlled_by = JAP
+				}
+			}
+		}
+		transfer_state = PREV
+	}
+}
+## Victory in the East (SOV)
+country_event = {
+	id = JAP_Surrender.5
+	title = JAP_Surrender.5.t
+	desc = JAP_Surrender.5.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.5.A
+		effect_tooltip = {
+			# Manchuria
+			SOV = {
+				transfer_state = 328
+				transfer_state = 610
+				transfer_state = 714
+				transfer_state = 715
+				transfer_state = 716
+				transfer_state = 717
+				transfer_state = 745
+				transfer_state = 761
+				transfer_state = 826
+				transfer_state = 915
+				transfer_state = 916
+				transfer_state = 919
+				transfer_state = 1020
+				transfer_state = 1665
+			}
+			# Korea
+			SOV = {
+				set_autonomy = {
+					target = PRK
+					autonomy_state = AUTONOMY_SSR
+					end_wars = yes
+					end_civil_wars = yes
+				}
+			}
+			# Kuril Islands and Sakhalin
+			SOV = {
+				transfer_state = 537
+				transfer_state = 555
+				transfer_state = 1358
+			}
+		}
+	}
+}
+## Taking What's Ours (SOV)
+country_event = {
+	id = JAP_Surrender.6
+	title = JAP_Surrender.6.t
+	desc = JAP_Surrender.6.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.6.A
+		effect_tooltip = {
+			# Sakhalin
+			SOV = {
+				transfer_state = 537
+			}
+		}
+	}
+}
+## Trouble in the East (HOL)
+country_event = {
+	id = JAP_Surrender.7
+	title = JAP_Surrender.7.t
+	desc = JAP_Surrender.7.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = JAP_Surrender.7.A
+		every_state = {
+			limit = {
+				is_core_of = DEI
+				is_controlled_by_ROOT_or_ally = yes
+				NOT = {
+					is_controlled_by = DEI
+				}
+			}
+			DEI = {
+				transfer_state = PREV
+			}
+		}
+	}
+}
+## Japan Surrenders
+news_event = {
+	id = JAP_Surrender.8
+	title = JAP_Surrender.8.t
+	desc = JAP_Surrender.8.d
+	picture = GFX_
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = JAP_Surrender.8.A
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	option = {
+		name = JAP_Surrender.8.B
+		trigger = {
+			NOT = {
+				original_tag = JAP
+			}
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	option = {
+		name = JAP_Surrender.8.C
+		trigger = {
+			OR = {
+				original_tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	option = {
+		name = JAP_Surrender.8.D
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = JAP
+					original_tag = USA
+					original_tag = SOV
+					is_in_faction_with = SOV
+					is_in_faction_with = USA
+				}
+			}
+		}
+	}
+}
+## Land projects in the Philippines
+country_event = {
+	id = JAP_226_Events.2
+	title = JAP_226_Events.2.t
+	desc = JAP_226_Events.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # A complete failure
+		name = JAP_226_Events.2.A
+		trigger = {
+			has_country_flag = JAP_Philipphines_Project_Failure
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = -10 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+	option = { # No particular change
+		name = JAP_226_Events.2.B
+		trigger = {
+			has_country_flag = JAP_Philipphines_Project_Partial_Success
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = 0 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+	option = { #
+		name = JAP_226_Events.2.C
+		trigger = {
+			has_country_flag = JAP_Philipphines_Project_Success
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = 10 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+}
+## Results of the Settlers in Australia
+country_event = {
+	id = JAP_226_Events.3
+	title = JAP_226_Events.3.t
+	desc = JAP_226_Events.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # 
+		name = JAP_226_Events.3.A
+		
+	}
+}
+## Reopen the Case
+country_event = {
+	id = JAP_226_Events.4
+	title = JAP_226_Events.4.t
+	desc = JAP_226_Events.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # Arrest Konstantin Rodzaevsky
+		name = JAP_226_Events.4.A
+		add_political_power = -30
+		MAN = {
+			add_stability = -0.1
+			add_ideas = JAP_Jewish_Settlers_Encouraged
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = 5 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+	option = { # Leave him alone
+		name = JAP_226_Events.4.B
+		919 = {
+			add_manpower = -6500
+		}
+		MAN = {
+			add_stability = 0.05
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = -5 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+}
+## The Greater East Asian "Film Sphere" 
+country_event = {
+	id = JAP_226_Events.5
+	title = JAP_226_Events.5.t
+	desc = JAP_226_Events.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # 
+		name = JAP_226_Events.5.A
+	}
+}
+## The Big 5
+country_event = {
+	id = JAP_226_Events.6
+	title = JAP_226_Events.6.t
+	desc = JAP_226_Events.6.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # Break them
+		name = JAP_226_Events.6.A
+		if = {
+			limit = {
+				HWI = { is_subject_of = JAP }
+			}
+			HWI = {
+				add_ideas = JAP_The_Big_5_have_been_Broken
+			}
+		}
+		else_if = {
+			limit = {
+				HWI = { exists = no }
+				629 = {
+					is_controlled_by_ROOT_or_ally = yes
+				}
+			}
+			set_temp_variable = { money_to_gain = 200 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = 5 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+	option = { # Let them continue
+		name = JAP_226_Events.6.B
+		if = {
+			limit = {
+				HWI = { is_subject_of = JAP }
+			}
+			HWI = {
+				add_ideas = JAP_The_Big_5_Continue_to_Exist
+			}
+		}
+		else_if = {
+			limit = {
+				HWI = { exists = no }
+				629 = {
+					is_controlled_by_ROOT_or_ally = yes
+				}
+			}
+			set_temp_variable = { money_to_gain = -50 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_political_power = 50
+			629 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		set_temp_variable = { hakko_ichiu_progress_to_add = -5 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+}
+## The Tokyo Conference
+country_event = {
+	id = JAP_226_Events.7
+	title = JAP_226_Events.7.t
+	desc = JAP_226_Events.7.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # 
+		name = JAP_226_Events.7.A
+	}
+}
+
+##############################
+##### Foreign Events
+##############################
+##### JAP_Nekka_Incident
+### All Preparations Complete
+country_event = {
+	id = JAP_Nekka_Incident.1
+	title = JAP_Nekka_Incident.1.t
+	desc = JAP_Nekka_Incident.1.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		date > 1933.1.3
+		has_start_date < 1933.1.3
+	}
+	option = {
+		name = JAP_Nekka_Incident.1.A
+		country_event = { id = JAP_Nekka_Incident.2 days = 1 }
+	}
+}
+
+### The Kanto-Gun's Latest Ultimatum
+country_event = {
+	id = JAP_Nekka_Incident.2
+	title = JAP_Nekka_Incident.2.t
+	desc = JAP_Nekka_Incident.2.d
+	picture = GFX_report_MAN_Kwantung_Army
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.2.A
+		CHI = {
+			country_event = { id = CHI_Operation_Nekka.1 days = 5 }
+		}
+	}
+}
+
+### The Northeastern Army Retreats! (Accept)
+country_event = {
+	id = JAP_Nekka_Incident.3
+	title = JAP_Nekka_Incident.3.t
+	desc = JAP_Nekka_Incident.3.d
+	picture = GFX_report_JAP_Zhang_Xueliang
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.3.A
+		add_political_power = 50
+		add_war_support = 0.05
+		hidden_effect = {
+			set_global_flag = Shanhaiguan_Victory
+			country_event = { id = JAP_Nekka_Incident.6 days = 5 }
+		}
+	}
+}
+
+### The Northeastern Army Stands Their Ground! (Refuse)
+country_event = {
+	id = JAP_Nekka_Incident.4
+	title = JAP_Nekka_Incident.4.t
+	desc = JAP_Nekka_Incident.4.d
+	picture = GFX_report_JAP_Zhang_Xueliang
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.4.A
+		custom_effect_tooltip = Nekka_Refusal_1
+		hidden_effect = {
+			#716 = { set_border_war = yes }
+			#609 = { set_border_war = yes }
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 716
+					num_provinces = 1
+					on_win = MAN_Nekka_Incident.1
+				}
+				defender = {
+					state = 609
+					num_provinces = 1
+					on_lose = NEA_Nekka_Incident.1
+				}
+			}
+			set_border_war_data = {
+				attacker = 716
+				defender = 609
+				attacker_modifier = 5.0
+				defender_modifier = -4.0
+			}
+		}
+	}
+}
+
+### A Report from Shanhai Pass
+country_event = {
+	id = JAP_Nekka_Incident.5
+	title = JAP_Nekka_Incident.5.t
+	desc = JAP_Nekka_Incident.5.d
+	picture = GFX_report_JAP_Operation_Nekka
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.5.A
+		716 = { set_border_war = no }
+		609 = { set_border_war = no }
+		hidden_effect = {
+			set_global_flag = Shanhaiguan_Victory
+			country_event = { id = JAP_Nekka_Incident.6 days = 5 }
+		}
+	}
+}
+
+### The Manchurian Rehe
+country_event = {
+	id = JAP_Nekka_Incident.6
+	title = JAP_Nekka_Incident.6.t
+	desc = JAP_Nekka_Incident.6.d
+	picture = GFX_report_JAP_Manchurian_Rehe
+	is_triggered_only = yes
+	fire_only_once = yes
+	# Invite the General, he may be useful to our cause, diplomatically
+	option = {
+		name = JAP_Nekka_Incident.6.A
+		country_event = { id = JAP_Nekka_Incident.7 days = 5 }
+		hidden_effect = {
+			CHI = {
+				country_event = { id = CHI_Operation_Nekka.3 days = 5 }
+			}
+		}
+	}
+	# Forgo the meeting, seize the border towns. Let us proceed with next steps.
+	option = {
+		name = JAP_Nekka_Incident.6.B
+		country_event = { id = JAP_Nekka_Incident.8 days = 5 }
+		hidden_effect = {
+			CHI = {
+				country_event = { id = CHI_Operation_Nekka.4 days = 5 }
+			}
+		}
+	}
+}
+
+### The Deal with Yulin
+country_event = {
+	id = JAP_Nekka_Incident.7
+	title = JAP_Nekka_Incident.7.t
+	desc = JAP_Nekka_Incident.7.d
+	picture = GFX_report_JAP_Tang_Yulin
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.7.A
+		add_political_power = -30
+		country_event = { id = JAP_Nekka_Incident.8 days = 5 }
+		hidden_effect = {
+			CHI = {
+				country_event = { id = CHI_Operation_Nekka.4 days = 5}
+			}
+		}
+	}
+}
+
+### The Kanto-Gun seeks...approval?
+country_event = {
+	id = JAP_Nekka_Incident.8
+	title = JAP_Nekka_Incident.8.t
+	desc = JAP_Nekka_Incident.8.d
+	picture = GFX_report_JAP_Operation_Nekka_2
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.8.A
+		custom_effect_tooltip = Nekka_Refusal_2
+		hidden_effect = {
+			#610 = { set_border_war = yes }
+			#715 = { set_border_war = yes }
+			start_border_war = {
+				change_state_after_war = yes
+				attacker = {
+					state = 715
+					num_provinces = 6
+					on_win = MAN_Nekka_Incident.2
+				}
+				defender = {
+					state = 610
+					num_provinces = 4
+					on_lose = NEA_Nekka_Incident.2
+				}
+			}
+			hidden_effect = {
+				set_border_war_data = {
+					attacker = 715
+					defender = 610
+					attacker_modifier = 5.0
+					defender_modifier = -4.0
+				}
+			}
+		}
+	}
+}
+
+### The Retreat from Rehe
+country_event = {
+	id = JAP_Nekka_Incident.9
+	title = JAP_Nekka_Incident.9.t
+	desc = JAP_Nekka_Incident.9.d
+	picture = GFX_report_JAP_Nekka_Incident_3
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.9.A
+		hidden_effect = {
+			#610 = { set_border_war = no }
+			#715 = { set_border_war = no }
+			#MAN = {
+			#	transfer_state = 610
+			#}
+			#CHI = {
+			#	transfer_state = 826
+			#	transfer_state = 612
+			#	transfer_state = 612
+			#	transfer_state = 611
+			#	transfer_state = 614
+			#	transfer_state = 608
+			#	transfer_state = 609
+			#}
+			#NEA = {
+			#	transfer_state = 904
+			#	transfer_state = 622
+			#	transfer_state = 756
+			#	transfer_state = 744
+			#}
+			set_global_flag = Jehol_Victory
+			country_event = { id = JAP_Nekka_Incident.10 days = 1}
+		}
+	}
+}
+
+### Kanto-Gun Overruns the Great Wall!
+news_event = {
+	id = JAP_Nekka_Incident.10
+	title = JAP_Nekka_Incident.10.t
+	desc = JAP_Nekka_Incident.10.d
+	picture = GFX_news_JAP_Operation_Nekka
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Nekka_Incident.10.A
+		add_political_power = 35
+		add_war_support = 0.04
+		custom_effect_tooltip = Backslash
+		set_temp_variable = { faction_id = 8 }
+		set_temp_variable = { influence_to_add = 5}
+		change_faction_influence = yes
+		set_temp_variable = { faction_id = 8 }
+		set_temp_variable = { loyalty_to_add = 12 }
+		change_faction_loyalty = yes
+		set_temp_variable = { faction_id = 10 }
+		set_temp_variable = { influence_to_add = -1}
+		change_faction_influence = yes
+		set_temp_variable = { faction_id = 10 }
+		set_temp_variable = { loyalty_to_add = -22 }
+		change_faction_loyalty = yes
+		custom_effect_tooltip = Backslash
+		JAP_Increase_Balance_Towards_Army = yes
+	}
+}
+
+##### JAP_Tanggu_Truce
+### A Meeting in Tianjin
+country_event = {
+	id = JAP_Tanggu_Truce.1
+	title = JAP_Tanggu_Truce.1.t
+	desc = JAP_Tanggu_Truce.1.d
+	picture = GFX_report_JAP_Tanggu_Truce
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Tanggu_Truce.1.A
+		country_event = { id = JAP_Tanggu_Truce.2 days = 5 }
+		CHI = {
+			country_event = { id = CHI_Tanggu_Truce.2 days = 5 }
+		}
+	}
+}
+
+### The Issue of Manchuria
+country_event = {
+	id = JAP_Tanggu_Truce.2
+	title = JAP_Tanggu_Truce.2.t
+	desc = JAP_Tanggu_Truce.2.d
+	picture = GFX_report_JAP_Manchurian_Rehe
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Tanggu_Truce.2.A
+		country_event = { id = JAP_Tanggu_Truce.3 days = 5 }
+		CHI = {
+			country_event = { id = CHI_Tanggu_Truce.3 days = 5 }
+		}
+	}
+}
+
+### The Issue of Militarization (DMZ)
+country_event = {
+	id = JAP_Tanggu_Truce.3
+	title = JAP_Tanggu_Truce.3.t
+	desc = JAP_Tanggu_Truce.3.d
+	picture = GFX_report_JAP_Tanggu_Militarization
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Tanggu_Truce.3.A
+		country_event = { id = JAP_Tanggu_Truce.4 days = 5 }
+		CHI = {
+			country_event = { id = CHI_Tanggu_Truce.4 days = 5 }
+		}
+	}
+}
+
+### The Issue of Anti-Japanese Volunteer Armies
+country_event = {
+	id = JAP_Tanggu_Truce.4
+	title = JAP_Tanggu_Truce.4.t
+	desc = JAP_Tanggu_Truce.4.d
+	picture = GFX_report_JAP_Manchukuo_Pacification
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Tanggu_Truce.4.A
+	}
+}
+
+### The Tanggu Truce
+news_event = {
+	id = JAP_Tanggu_Truce.5
+	title = JAP_Tanggu_Truce.5.t
+	desc = JAP_Tanggu_Truce.5.d
+	picture = GFX_news_JAP_Tanggu_Truce
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Tanggu_Truce.5.A
+		add_political_power = 100
+		add_war_support = 0.1
+		set_global_flag = Tanggu_Truce
+		hidden_effect = {
+			country_event = { id = JAP_CHI_Anti_Japanese_Army.1 days = 5 }
+		}
+	}
+}
+
+##### JAP_The_Imperial_Assent
+## The Letter from Manchuria // Explains Hirohito's decision to allow Puyi's coronation, and Puyi's gleeful response
+country_event = { 
+	id = JAP_The_Imperial_Assent.1
+	title = JAP_The_Imperial_Assent.1.t
+	desc = JAP_The_Imperial_Assent.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	option = {
+		name = JAP_The_Imperial_Assent.1.A
+	}
+}
+
+## The Dragon of China // Puyi's coronation event and the political ramifactions for Japan.
+country_event = {
+	id = JAP_The_Imperial_Assent.2
+	title = JAP_The_Imperial_Assent.2.t
+	desc = JAP_The_Imperial_Assent.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	option = {
+		name = JAP_The_Imperial_Assent.2.A
+	}
+}
+
+##### JAP_The_Manchurian_Lifeline
+### The Manchuria Lifeline
+## Directly Invest into Manchuria
+country_event ={
+	id = JAP_The_Manchurian_Lifeline.1
+	title = JAP_The_Manchurian_Lifeline.1.t
+	desc = JAP_The_Manchurian_Lifeline.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	option = { #Invest 100 moneys
+		name = JAP_The_Manchurian_Lifeline.1.A
+		set_temp_variable = { money_to_gain = -100 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_to_variable = { JAP.manchurian_budget = 100 }
+	}
+	option = { #Invest 200 moneys
+		name = JAP_The_Manchurian_Lifeline.1.B
+		set_temp_variable = { money_to_gain = -200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_to_variable = { JAP.manchurian_budget = 200 }
+	}
+	option = { #Invest 300 moneys
+		name = JAP_The_Manchurian_Lifeline.1.C
+		set_temp_variable = { money_to_gain = -300 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_to_variable = { JAP.manchurian_budget = 300 }
+	}
+}
+##### JAP_Pan_Asianism
+### Hakkō Ichiu (Eight Crowns Under One Roof)
+## Japan invite us to Hakkō Ichiu (Eight Crowns Under One Roof)
+country_event = {
+	id = JAP_Pan_Asianism.1
+	title = JAP_Pan_Asianism.1.t
+	desc = JAP_Pan_Asianism.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = JAP_Pan_Asianism.1.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.15
+		}
+	}
+}
+## Flavor event about Tōa Shin Chitsujo (New Order in East Asia)
+country_event = {
+	id = JAP_Pan_Asianism.5
+	title = JAP_Pan_Asianism.5.t
+	desc = JAP_Pan_Asianism.5.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Pan_Asianism.5.A
+	}
+}
+### Dai Tōa Kyōeiken (Greater East Asia Co-Prosperity Sphere)
+## The begin of Dai Tōa Kyōeiken (Greater East Asia Co-Prosperity Sphere)
+country_event = {
+	id = JAP_Pan_Asianism.10
+	title = JAP_Pan_Asianism.10.t
+	desc = JAP_Pan_Asianism.10.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Upgrade the idea, change the flag
+		name = JAP_Pan_Asianism.10.A
+		clr_country_flag = Japan_East_New_Order
+		set_country_flag = Japan_Co_Prosperity_Sphere
+	}
+}
+## Japan invite us to Dai Tōa Kyōeiken (Greater East Asia Co-Prosperity Sphere)
+country_event = {
+	id = JAP_Pan_Asianism.13
+	title = JAP_Pan_Asianism.13.t
+	desc = JAP_Pan_Asianism.13.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = JAP_Pan_Asianism.13.A
+		add_ideas = JAP_Co_Prosperity_Sphere
+	}
+}
+### JAP_Three_Principles_of_Hirota
+## Hirota in House of Representatives 
+news_event = {
+	id = JAP_Three_Principles_of_Hirota.1
+	title = JAP_Three_Principles_of_Hirota.1.t
+	desc = JAP_Three_Principles_of_Hirota.1.d
+	picture = GFX_news_CHI_Chinese_Soldiers
+	is_triggered_only = yes
+	fire_only_once = no
+	major = yes
+	option = {
+		name = JAP_Three_Principles_of_Hirota.1.A
+		trigger = {
+			OR = {
+				original_tag = CHI
+				original_tag = JAP
+			}
+		}
+		if = {
+			limit ={
+				original_tag = CHI
+			}
+			CHI = {
+				country_event = { id = JAP_Three_Principles_of_Hirota.2 days = 2 }
+			}
+		}
+		if = {
+			limit ={
+				original_tag = JAP
+			}
+			add_political_power = 50
+			set_temp_variable = { faction_id = 7 }
+			set_temp_variable = { force_change_faction_loyalty_tooltip = 1 }
+			set_temp_variable = { loyalty_to_add = -7 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 8 }
+			set_temp_variable = { force_change_faction_loyalty_tooltip = 1 }
+			set_temp_variable = { loyalty_to_add = -7 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 9 }
+			set_temp_variable = { force_change_faction_loyalty_tooltip = 1 }
+			set_temp_variable = { loyalty_to_add = -7 }
+			change_faction_loyalty = yes
+			set_temp_variable = { faction_id = 10 }
+			set_temp_variable = { force_change_faction_loyalty_tooltip = 1 }
+			set_temp_variable = { loyalty_to_add = -7 }
+			change_faction_loyalty = yes
+		}
+	}
+	option = {
+		name = JAP_Three_Principles_of_Hirota.1.B
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = CHI
+					original_tag = JAP
+				}
+			}
+		}
+	}
+}
+## China's Response 
+country_event = {
+	id = JAP_Three_Principles_of_Hirota.2
+	title = JAP_Three_Principles_of_Hirota.2.t
+	desc = JAP_Three_Principles_of_Hirota.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = JAP_Three_Principles_of_Hirota.2.A
+		JAP = {
+			country_event = { id = JAP_Three_Principles_of_Hirota.3 days = 2 }
+		}
+		ai_chance = {
+            base = 1
+        }
+	}
+	option = {
+		name = JAP_Three_Principles_of_Hirota.2.B
+		JAP = {
+			add_opinion_modifier = {
+				target = CHI
+				modifier = refused_help
+			}
+		}
+		custom_effect_tooltip = DH_FOR_0.2
+		ai_chance = {
+            base = 0
+        }
+	}
+}
+## China's Response (Japan)
+country_event = {
+	id = JAP_Three_Principles_of_Hirota.3
+	title = JAP_Three_Principles_of_Hirota.3.t
+	desc = JAP_Three_Principles_of_Hirota.3.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = JAP_Three_Principles_of_Hirota.3.A
+		add_opinion_modifier = {
+			target = CHI
+			modifier = sino_japanese_alliance_opinion
+		}
+		ai_chance = {
+            base = 1
+        }
+	}
+}
+
+##### JAP_Indochina
+### Invasion of French Indochina
+## Support from French Indochina
+country_event = {
+	id = JAP_Indochina.0
+	title = JAP_Indochina.0.t
+	desc = JAP_Indochina.0.d
+	picture = GFX_report_JAP
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # We can't do anything
+		name = JAP_Indochina.0.A
+		ai_chance = { base = 0 }
+	}
+	option = { # We need to cut off aid to China
+		name = JAP_Indochina.0.B
+		ai_chance = { base = 100 }
+		VIN = {
+			country_event = {
+				id = JAP_Indochina.1
+				days = 10
+			}
+		}
+	}
+}
+
+## Japan's Demands
+country_event = {
+	id = JAP_Indochina.1
+	title = JAP_Indochina.1.t
+	desc = JAP_Indochina.1.d
+	picture = GFX_report_JAP
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # Have no choice
+		name = JAP_Indochina.1.A
+		ai_chance = { base = 1 }
+		JAP = {
+			country_event = {
+				id = JAP_Indochina.2
+				days = 10
+			}
+		}
+	}
+}
+
+## Telegram from Indochina
+country_event = {
+	id = JAP_Indochina.2
+	title = JAP_Indochina.2.t
+	desc = JAP_Indochina.2.d
+	picture = GFX_report_JAP
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # Nice
+		name = JAP_Indochina.2.A
+		ai_chance = { base = 1 }
+		VIN = {
+			diplomatic_relation = {
+				country = FRA
+				relation = military_access
+				active = yes
+			}
+			diplomatic_relation = {
+				country = FRA
+				relation = docking_rights
+				active = yes
+			}
+			set_cosmetic_tag = VIN_JAP_fascist
+		}
+		JAP = {
+			set_autonomy = {
+				target = VIN
+				autonomy_state = AUTONOMY_Satellite
+			}
+		}
+		SIA = {
+			transfer_state = 1000
+			transfer_state = 871
+			transfer_state = 870
+		}
+	}
+}
+
+##### JAP_Trautmann
+### Trautmann Mediation
+## Germany Offers Mediation
+country_event = {
+	id = JAP_Trautmann.1
+	title = JAP_Trautmann.1.t
+	desc = JAP_Trautmann.1.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		### Accepts Mediation
+		name = JAP_Trautmann.1.A
+		ai_chance = { base = 1 }
+		CHI = { country_event = CHI_Trautmann.1 }
+	}
+	option = {
+		### Rejects Mediation
+		name = JAP_Trautmann.1.B
+	}
+}
+## China Defers Response
+country_event = {
+	id = JAP_Trautmann.2
+	title = JAP_Trautmann.2.t
+	desc = JAP_Trautmann.2.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Trautmann.2.A
+	}
+}
+## China Accepts Terms (1)
+news_event = {
+	id = JAP_Trautmann.3
+	title = JAP_Trautmann.3.t
+	desc = JAP_Trautmann.3.d
+	picture = GFX_news_CHI_Chinese_Soldiers
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		### Accept Terms, end the war
+		name = JAP_Trautmann.3.A
+		ai_chance = {
+			factor = 2
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		CHI = { news_event = CHI_Trautmann.4 }
+	}
+	option = {
+		### Push for Harsher Terms, Controls Shanghai
+		name = JAP_Trautmann.3.B
+		trigger = { JAP = { controls_state = 868 } }
+		CHI = { country_event = CHI_Trautmann.2 }
+	}
+	option = {
+		### Reject Peace
+		name = JAP_Trautmann.3.C
+		ai_chance = {
+			factor = 98
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		CHI = { news_event = CHI_Trautmann.3 }
+	}
+}
+## China Accepts Terms (2)
+country_event = {
+	id = JAP_Trautmann.4
+	title = JAP_Trautmann.4.t
+	desc = JAP_Trautmann.4.d
+	picture = GFX_report_JAP
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		### Accept Terms
+		name = JAP_Trautmann.4.A
+		ai_chance = {
+			factor = 2
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		CHI = { news_event = CHI_Trautmann.5 }
+	}
+	option = {
+		### Reject Terms, End Negotiation
+		name = JAP_Trautmann.4.A
+		ai_chance = {
+			factor = 98
+		}
+		CHI = { news_event = CHI_Trautmann.3 }
+	}
+}
+## China Rejects Peace
+news_event = {
+	id = JAP_Trautmann.5
+	title = JAP_Trautmann.5.t
+	desc = JAP_Trautmann.5.d
+	picture = GFX_news_CHI_Chinese_Soldiers
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP_Trautmann.5.A
+		CHI = { news_event = CHI_Trautmann.3 }
+	}
+}
+## Army Discontent
+country_event = {
+	id = JAP_Rivalries_of_War.1
+	title = JAP_Rivalries_of_War.1.t
+	desc = JAP_Rivalries_of_War.1.d
+	picture = GFX_report_JAP_General_Tang
+	trigger = {
+		original_tag = JAP
+		has_country_flag = JAP_IJN_Domination
+		NOT = { has_country_flag = JAP_IJN_Domination_Limit }
+		NOT = { has_country_flag = JAP_Discontent }
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	option = {
+		name = JAP_Rivalries_of_War.1.A
+		clr_country_flag = JAP_IJN_Domination
+		set_country_flag = JAP_Discontent
+		add_ideas = JAP_IJA_Outrage
+	}
+}
+## Navy Discontent
+country_event = {
+	id = JAP_Rivalries_of_War.2
+	title = JAP_Rivalries_of_War.2.t
+	desc = JAP_Rivalries_of_War.2.d
+	picture = GFX_report_JAP_IJN_Admirals
+	trigger = {
+		original_tag = JAP
+		has_country_flag = JAP_IJA_Domination
+		NOT = { has_country_flag = JAP_IJA_Domination_Limit }
+		NOT = { has_country_flag = JAP_Discontent }
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	option = {
+		name = JAP_Rivalries_of_War.2.A
+		clr_country_flag = JAP_IJA_Domination
+		set_country_flag = JAP_Discontent
+		add_ideas = JAP_IJN_Outrage
+	}
+}
+## Kwangtung Soldiers Mutiny!
+country_event = {
+	id = JAP_Rivalries_of_War.3
+	title = JAP_Rivalries_of_War.3.t
+	desc = JAP_Rivalries_of_War.3.d
+	picture = GFX_report_JAP_General_Tang
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.3.A
+		add_war_support = -0.05
+		add_manpower = -2500
+	}
+}
+## A Case of "Lost" Weapons
+country_event = {
+	id = JAP_Rivalries_of_War.4
+	title = JAP_Rivalries_of_War.4.t
+	desc = JAP_Rivalries_of_War.4.d
+	picture = GFX_report_JAP_General_Tang
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.4.A
+		add_war_support = -0.05
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+	}
+}
+## Interservice Fistfights
+country_event = {
+	id = JAP_Rivalries_of_War.5
+	title = JAP_Rivalries_of_War.5.t
+	desc = JAP_Rivalries_of_War.5.d
+	picture = GFX_report_JAP_General_Tang
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.5.A
+		add_war_support = -0.02
+		army_experience = -15
+		navy_experience = -15
+	}
+}
+## Lackluster Offensives
+country_event = {
+	id = JAP_Rivalries_of_War.6
+	title = JAP_Rivalries_of_War.6.t
+	desc = JAP_Rivalries_of_War.6.d
+	picture = GFX_report_JAP_General_Tang
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.6.A
+		add_war_support = -0.05
+		army_experience = -10
+	}
+}
+## Breakdown in Discipline
+country_event = {
+	id = JAP_Rivalries_of_War.7
+	title = JAP_Rivalries_of_War.7.t
+	desc = JAP_Rivalries_of_War.7.d
+	picture = GFX_report_JAP_General_Tang
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.7.A
+		random_unit_leader = {
+			limit = {
+				OR = {
+					has_id = 139000
+					has_id = 139001
+					has_id = 139002
+					has_id = 139003
+					has_id = 139004
+					has_id = 139005
+					has_id = 139006
+					has_id = 139007
+					has_id = 139008
+					has_id = 139009
+				}
+			}
+			random_list = {
+				25 = {
+					add_logistics = -1
+				}
+				25 = {
+					add_planning = -1
+				}
+				25 = {
+					add_defense = -1
+				}
+				25 = {
+					add_attack = -1
+				}
+			}
+		}
+	}
+}
+## Increased Shore Leave
+country_event = {
+	id = JAP_Rivalries_of_War.8
+	title = JAP_Rivalries_of_War.8.t
+	desc = JAP_Rivalries_of_War.8.d
+	picture = GFX_report_JAP_IJN_Admirals
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.8.A
+		add_war_support = -0.05
+		add_manpower = -2500
+	}
+}
+## Admirals Reporting Seasickness
+country_event = {
+	id = JAP_Rivalries_of_War.9
+	title = JAP_Rivalries_of_War.9.t
+	desc = JAP_Rivalries_of_War.9.d
+	picture = GFX_report_JAP_IJN_Admirals
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.9.A
+		random_unit_leader = {
+			limit = {
+				OR = {
+					has_id = 139050
+					has_id = 139051
+					has_id = 139052
+				}
+			}
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 90
+			}
+		}
+		random_unit_leader = {
+			limit = {
+				OR = {
+					has_id = 139053
+					has_id = 139054
+					has_id = 139055
+				}
+			}
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 90
+			}
+		}
+		random_unit_leader = {
+			limit = {
+				OR = {
+					has_id = 139056
+					has_id = 139057
+				}
+			}
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 90
+			}
+		}
+	}
+}
+## Subpar Naval Excersises
+country_event = {
+	id = JAP_Rivalries_of_War.10
+	title = JAP_Rivalries_of_War.10.t
+	desc = JAP_Rivalries_of_War.10.d
+	picture = GFX_report_JAP_IJN_Admirals
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.10.A
+		add_war_support = -0.05
+		navy_experience = -10
+	}
+}
+## Breakdown in Discipline
+country_event = {
+	id = JAP_Rivalries_of_War.11
+	title = JAP_Rivalries_of_War.11.t
+	desc = JAP_Rivalries_of_War.11.d
+	picture = GFX_report_JAP_IJN_Admirals
+	is_triggered_only = yes
+	option = {
+		name = JAP_Rivalries_of_War.11.A
+		random_unit_leader = {
+			limit = {
+				OR = {
+					has_id = 139050
+					has_id = 139051
+					has_id = 139052
+					has_id = 139053
+					has_id = 139054
+					has_id = 139055
+					has_id = 139056
+					has_id = 139057
+				}
+			}
+			random_list = {
+				25 = {
+					add_logistics = -1
+				}
+				25 = {
+					add_planning = -1
+				}
+				25 = {
+					add_defense = -1
+				}
+				25 = {
+					add_attack = -1
+				}
+			}
+		}
+	}
+}
+
+## Operation Transamur
+country_event = {
+	id = JAP_Northern_Expansion.1
+	title = JAP_Northern_Expansion.1.t
+	desc = JAP_Northern_Expansion.1.d
+	picture = GFX_report_JAP_Japanese_Mechanized_Infantry
+	is_triggered_only = yes
+	option = {
+		name = JAP_Northern_Expansion.1.A
+		custom_effect_tooltip = JAP_Preparation_for_War_with_USSR_tt
+		hidden_effect = {
+			country_event = { id = JAP_Northern_Expansion.2 days = 180 }
+		}
+	}
+}
+## Port Arthur Relived
+country_event = {
+	id = JAP_Northern_Expansion.2
+	title = JAP_Northern_Expansion.2.t
+	desc = JAP_Northern_Expansion.2.d
+	picture = GFX_report_JAP_Japanese_Mechanized_Infantry
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			JAP = {
+				has_war_with = SOV
+			}
+		}
+	}
+	option = {
+		name = JAP_Northern_Expansion.2.A
+		hidden_effect = {
+			SOV = {
+				country_event = { id = JAP_Northern_Expansion.3 }
+			}
+		}
+	}
+}
+## Intelligence from the East
+country_event = {
+	id = JAP_Northern_Expansion.3
+	title = JAP_Northern_Expansion.3.t
+	desc = JAP_Northern_Expansion.3.d
+	picture = GFX_report_SOV_Stalin_Report
+	is_triggered_only = yes
+	option = {
+		name = JAP_Northern_Expansion.3.A
+		add_manpower = -1
+		hidden_effect = {
+			country_event = { id = JAP_Northern_Expansion.4 hours = 2 }
+		}
+	}
+}
+## Deja vu in the Orient
+country_event = {
+	id = JAP_Northern_Expansion.4
+	title = JAP_Northern_Expansion.4.t
+	desc = JAP_Northern_Expansion.4.d
+	picture = GFX_report_JAP_Japanese_Mechanized_Infantry
+	is_triggered_only = yes
+	option = {
+		name = JAP_Northern_Expansion.4.A
+		JAP = {
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					MON = {
+						OR = {
+							is_puppet_of = SOV
+							is_in_faction_with = SOV
+						}
+					}
+				}
+				declare_war_on = {
+					target = MON
+					type = annex_everything
+				}
+			}
+			hidden_effect = {
+				country_event = { id = JAP_Northern_Expansion.5 }
+			}
+		}
+		effect_tooltip = {
+			JAP = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment
+					amount = -40
+				}
+				add_manpower = -100
+				destroy_ships = {
+					type = SS_equipment
+					count = 2
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = -150
+			}
+			destroy_ships = {
+				type = DD_equipment
+				count = 12
+			}
+			destroy_ships = {
+				type = SS_equipment
+				count = 4
+			}
+		}
+	}
+}
+## The Fruits of Victory
+country_event = {
+	id = JAP_Northern_Expansion.5
+	title = JAP_Northern_Expansion.5.t
+	desc = JAP_Northern_Expansion.5.d
+	picture = GFX_report_JAP_Japanese_Mechanized_Infantry
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = { id = JAP_Northern_Expansion.6 hours = 12 }
+		}
+	}
+	option = {
+		name = JAP_Northern_Expansion.5.A
+		add_equipment_to_stockpile = {
+			type = fighter_equipment
+			amount = -40
+		}
+		add_manpower = -100
+		destroy_ships = {
+			type = SS_equipment
+			count = 2
+		}
+		SOV = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = -150
+			}
+			destroy_ships = {
+				type = DD_equipment
+				count = 12
+			}
+			destroy_ships = {
+				type = SS_equipment
+				count = 4
+			}
+		}
+	}
+}
+## Japan Attacks the Soviet Union
+news_event = {
+	id = JAP_Northern_Expansion.6
+	title = JAP_Northern_Expansion.6.t
+	desc = JAP_Northern_Expansion.6.d
+	picture = GFX_news_event_japanese_army_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = JAP_Northern_Expansion.6.A
+		trigger = {
+			OR = {
+				original_tag = JAP
+				is_puppet_of = JAP
+				is_in_faction_with = JAP
+			}
+		}
+	}
+	option = {
+		name = JAP_Northern_Expansion.6.B
+		trigger = {
+			OR = {
+				original_tag = SOV
+				is_puppet_of = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	option = {
+		name = JAP_Northern_Expansion.6.C
+		trigger = {
+			NOT = {
+				original_tag = JAP
+				is_puppet_of = JAP
+				is_in_faction_with = JAP
+				original_tag = SOV
+				is_puppet_of = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+## The Port of Magadan
+country_event = {
+	id = JAP_Northern_Expansion.7
+	title = JAP_Northern_Expansion.7.t
+	desc = JAP_Northern_Expansion.7.d
+	picture = GFX_report_JAP_Kwantung_Army
+	is_triggered_only = yes
+	option = {
+		name = JAP_Northern_Expansion.7.A
+		JAP_Increase_Balance_Towards_Navy = yes
+		add_tech_bonus = {
+			bonus = 0.15
+			uses = 1
+			category = tp_tech
+		}
+	}
+}
+## Trouble on Lake Baikal
+country_event = {
+	id = JAP_Northern_Expansion.8
+	title = JAP_Northern_Expansion.8.t
+	desc = JAP_Northern_Expansion.8.d
+	picture = GFX_report_JAP_Kwantung_Army
+	is_triggered_only = yes
+	option = {
+		name = JAP_Northern_Expansion.8.A
+		575 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.75
+			}
+		}
+		574 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.75
+			}
+		}
+		566 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.75
+			}
+		}
+		562 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.75
+			}
+		}
+		564 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.75
+			}
+		}
+	}
+}
+## The Land of the Khan
+country_event = {
+	id = JAP_Northern_Expansion.9
+	title = JAP_Northern_Expansion.9.t
+	desc = JAP_Northern_Expansion.9.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		has_country_flag = JAP_Prepared_Plans_for_Mongolia
+		has_war_with = SOV
+		330 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		MON = {
+			has_capitulated = yes
+		}
+	}
+	option = {
+		name = JAP_Northern_Expansion.9.A
+		every_state = {
+			limit = {
+				is_core_of = MON
+			}
+			add_claim_by = MEN
+		}
+	}
+}
+## Capture of Vladivostok
+country_event = {
+	id = JAP_Northern_Expansion.10
+	title = JAP_Northern_Expansion.10.t
+	desc = JAP_Northern_Expansion.10.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		has_war_with = SOV
+		has_country_flag = JAP_Trained_White_Russians
+		408 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	option = {
+		name = JAP_Northern_Expansion.10.A
+		add_war_support = 0.05
+		add_stability = 0.05
+	}
+}
+## Storming the Fortress of Singapore
+country_event = {
+	id = JAP_Southern_Expansion.1
+	title = JAP_Southern_Expansion.1.t
+	desc = JAP_Southern_Expansion.1.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		has_war_with = ENG
+		336 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	# The Light of the South is ours!
+	option = {
+		name = JAP_Southern_Expansion.1.A
+		
+	}
+}
+## Victory in Indonesia
+country_event = {
+	id = JAP_Southern_Expansion.2
+	title = JAP_Southern_Expansion.2.t
+	desc = JAP_Southern_Expansion.2.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		INS = {
+			has_capitulated = yes
+		}
+		335 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	# Sukarno could make a valuable ally
+	option = {
+		name = JAP_Southern_Expansion.2.A
+		set_temp_variable = { faction_id = 7 }
+		set_temp_variable = { influence_to_add = 1 }
+		change_faction_influence = yes
+		set_temp_variable = { faction_id = 7 }
+		set_temp_variable = { loyalty_to_add = 1 }
+		change_faction_loyalty = yes
+		every_controlled_state = {
+			limit = {
+				is_core_of = INS
+			}
+			add_compliance = 15
+		}
+	}
+}
+## Capture of Rangoon
+country_event = {
+	id = JAP_Southern_Expansion.3
+	title = JAP_Southern_Expansion.3.t
+	desc = JAP_Southern_Expansion.3.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		has_war_with = RAJ
+		288 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	# Onwards, to India!
+	option = {
+		name = JAP_Southern_Expansion.3.A
+		every_controlled_state = {
+			limit = {
+				is_core_of = BRM
+			}
+			add_compliance = 10
+		}
+		if = {
+			limit = {
+				has_country_flag = JAP_Trained_Burmese_Indepence_Army
+			}
+			custom_effect_tooltip = JAP_BIA.tt
+			hidden_effect = {
+				load_oob = JAP_BIA
+			}
+		}
+		hidden_effect = {
+			news_event = { id = RAJ_Flavour.1 days = 100 }
+		}
+	}
+}
+## Manila - An Open City
+country_event = {
+	id = JAP_Southern_Expansion.4
+	title = JAP_Southern_Expansion.4.t
+	desc = JAP_Southern_Expansion.4.d
+	picture = GFX_report_JAP_Kwantung_Army
+	fire_only_once = yes
+	trigger = {
+		original_tag = JAP
+		has_war_with = PHI
+		327 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		has_start_date < 1942.1.1
+	}
+	# Another Western Puppet bites the Dust
+	option = {
+		name = JAP_Southern_Expansion.4.A
+		every_controlled_state = {
+			limit = {
+				is_core_of = PHI
+			}
+			add_compliance = 15
+		}
+	}
+}
+## The Panay Incident
+country_event = {
+	id = JAP_Panay_Incident.1
+	title = JAP_Panay_Incident.1.t
+	desc = JAP_Panay_Incident.1.d
+	picture = GFX_report_USA_
+	fire_only_once = yes
+	trigger = {
+		original_tag = USA
+		JAP = {
+			has_war_with = CHI
+		}
+		NOT = { has_war_with = JAP }
+		date > 1937.1.1
+		has_start_date < 1937.1.1
+		613 = {
+			OR = {
+				is_controlled_by = JAP
+				CONTROLLER = {
+					OR = {
+						is_subject_of = JAP
+						is_in_faction_with = JAP
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			news_event = { id = JAP_Panay_Incident.2 hours = 6 }
+		}
+	}
+	mean_time_to_happen = { days = 21 }
+	# This is an outrage. Remember the Panay!
+	option = {
+		name = JAP_Panay_Incident.1.A
+		ai_chance = {
+			base = 0
+		}
+		add_war_support = 0.05
+		add_to_war = { 
+			targeted_alliance = CHI
+			enemy = JAP
+		}
+		hidden_effect = {
+			news_event = { id = JAP_Panay_Incident.3 hours = 6 }
+			CHI = {
+				country_event = { id = JAP_Panay_Incident.4 days = 1 }
+			}
+			JAP = {
+				country_event = { id = JAP_Panay_Incident.5 days = 1 }
+			}
+		}
+	}
+	# This is an outrage, this demands compensation!
+	option = {
+		name = JAP_Panay_Incident.1.B
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = 0.02
+		JAP = {
+			country_event = { id = JAP_Panay_Incident.6 days = 1 }
+		}
+	}
+	# We can not risk escalation...
+	option = {
+		name = JAP_Panay_Incident.1.C
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = -25
+		add_stability = -0.02
+	}
+}
+## The Panay Incident
+news_event = {
+	id = JAP_Panay_Incident.2
+	title = JAP_Panay_Incident.2.t
+	desc = JAP_Panay_Incident.2.d
+	picture = GFX_news_USA_Pearl_Harbour_Attack
+	major = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Panay_Incident.2.A
+		
+	}
+}
+## Roosevelt Declares War on Japan
+news_event = {
+	id = JAP_Panay_Incident.3
+	title = JAP_Panay_Incident.3.t
+	desc = JAP_Panay_Incident.3.d
+	picture = GFX_news
+	major = yes
+	is_triggered_only = yes
+	# The Giant has Awoken.
+	option = {
+		name = JAP_Panay_Incident.3.A
+		
+	}
+}
+## The United States Joins us in Our Struggle!
+country_event = {
+	id = JAP_Panay_Incident.4
+	title = JAP_Panay_Incident.4.t
+	desc = JAP_Panay_Incident.4.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# The Dragon and the Eagle, Brothers in Arms.
+	option = {
+		name = JAP_Panay_Incident.4.A
+		
+	}
+}
+## The Giant Awakens
+country_event = {
+	id = JAP_Panay_Incident.5
+	title = JAP_Panay_Incident.5.t
+	desc = JAP_Panay_Incident.5.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Ocean Thousand, Mountain Thousand.
+	option = {
+		name = JAP_Panay_Incident.5.A
+		
+	}
+}
+## Ambassador Crew Demands an Apology!
+country_event = {
+	id = JAP_Panay_Incident.6
+	title = JAP_Panay_Incident.6.t
+	desc = JAP_Panay_Incident.6.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We will issue an Official Apology
+	option = {
+		name = JAP_Panay_Incident.6.A
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -25
+		USA = {
+			country_event = { id = JAP_Panay_Incident.7 hours = 6 }
+		}
+	}
+	# Japan? At Fault? Preposterous!
+	option = {
+		name = JAP_Panay_Incident.6.B
+		ai_chance = {
+			base = 0
+		}
+		USA = {
+			country_event = { id = JAP_Panay_Incident.8 hours = 6 }
+		}
+	}
+}
+## Ambassador Sugiyama Apologizes
+country_event = {
+	id = JAP_Panay_Incident.7
+	title = JAP_Panay_Incident.7.t
+	desc = JAP_Panay_Incident.7.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Then the Matter is settled
+	option = {
+		name = JAP_Panay_Incident.7.A
+		add_political_power = 25
+		add_opinion_modifier = {
+			target = JAP
+			modifier = small_decrease
+	    }
+	}
+}
+## Silence from Tokyo
+country_event = {
+	id = JAP_Panay_Incident.8
+	title = JAP_Panay_Incident.8.t
+	desc = JAP_Panay_Incident.8.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We'll get you eventually...
+	option = {
+		name = JAP_Panay_Incident.8.A
+		add_opinion_modifier = {
+			target = JAP
+			modifier = medium_decrease
+	    }
+	}
+}
+## Japanese Ambitions in Indochina
+country_event = {
+	id = JAP_Oil_Embargo.1
+	title = JAP_Oil_Embargo.1.t
+	desc = JAP_Oil_Embargo.1.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Freeze their Assets and place them under Embargo!
+	option = {
+		name = JAP_Oil_Embargo.1.A
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = 0.02
+		effect_tooltip = {
+			JAP = {
+				set_temp_variable = { money_to_gain = -50 }
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+			add_opinion_modifier = {
+				target = JAP
+				modifier = embargo
+			}
+		}
+		JAP = {
+			country_event = { id = JAP_Oil_Embargo.2 hours = 6 }
+		}
+	}
+	# This is concerning, but It's already fait accompli
+	option = {
+		name = JAP_Oil_Embargo.1.B
+		ai_chance = {
+			base = 0
+		}
+		add_stability = -0.05
+	}
+}
+## Japanese Ambitions in Indochina
+country_event = {
+	id = JAP_Oil_Embargo.2
+	title = JAP_Oil_Embargo.2.t
+	desc = JAP_Oil_Embargo.2.d
+	picture = GFX_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Freeze their Assets and place them under Embargo!
+	option = {
+		name = JAP_Oil_Embargo.2.A
+		set_temp_variable = { money_to_gain = -50 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		USA = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = embargo
+			}
+		}
+	}
+}
+## Slaying the Giant
+country_event = {
+	id = JAP_Pearl_Harbor.1
+	title = JAP_Pearl_Harbor.1.t
+	desc = JAP_Pearl_Harbor.1.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# If you do not enter the Tiger's cave, you will not catch it's cub.
+	option = {
+		name = JAP_Pearl_Harbor.1.A
+		set_variable = {
+			var = JAP_Pearl_Harbor_Risk
+			value = 0
+		}
+		custom_effect_tooltip = JAP_Pearl_Harbor_var_tt
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.2 days = 15 }
+		}
+	}
+}
+## An Illustrious Example
+country_event = {
+	id = JAP_Pearl_Harbor.2
+	title = JAP_Pearl_Harbor.2.t
+	desc = JAP_Pearl_Harbor.2.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# An interesting case study
+	option = {
+		name = JAP_Pearl_Harbor.2.A
+		add_to_variable = { JAP_Pearl_Harbor_Risk = 1 }
+		custom_effect_tooltip = JAP_Pearl_Harbor_var_increased_tt
+		add_tech_bonus = {
+			uses = 1
+			bonus = 0.1
+			category = naval_bomber
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.3 days = 15 }
+		}
+	}
+}
+## Undersea Spears
+country_event = {
+	id = JAP_Pearl_Harbor.3
+	title = JAP_Pearl_Harbor.3.t
+	desc = JAP_Pearl_Harbor.3.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# This would only help ruin the surprise
+	option = {
+		name = JAP_Pearl_Harbor.3.A
+		ai_chance = {
+			base = 0
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.4 days = 15 }
+		}
+	}
+	# Deploying Midget Submarines? How delightfully devilish Yamamoto!
+	option = {
+		name = JAP_Pearl_Harbor.3.B
+		ai_chance = {
+			base = 100
+		}
+		add_to_variable = { JAP_Pearl_Harbor_Risk = 1 }
+		custom_effect_tooltip = JAP_Pearl_Harbor_var_increased_tt
+		add_command_power = -5
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.4 days = 15 }
+		}
+	}
+}
+## Sunrise in Hokkaido
+country_event = {
+	id = JAP_Pearl_Harbor.4
+	title = JAP_Pearl_Harbor.4.t
+	desc = JAP_Pearl_Harbor.4.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# Having three waves would just invite an enemy reprisal
+	option = {
+		name = JAP_Pearl_Harbor.4.A
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.5 days = 15 }
+		}
+	}
+	# We will need three waves to ensure victory
+	option = {
+		name = JAP_Pearl_Harbor.4.B
+		ai_chance = {
+			base = 0
+		}
+		add_to_variable = { JAP_Pearl_Harbor_Risk = 1 }
+		custom_effect_tooltip = JAP_Pearl_Harbor_var_increased_tt
+		add_command_power = -5
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.5 days = 15 }
+		}
+	}
+}
+## Surf, Sun, and Intrigue
+country_event = {
+	id = JAP_Pearl_Harbor.5
+	title = JAP_Pearl_Harbor.5.t
+	desc = JAP_Pearl_Harbor.5.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# Purple will keep this under wraps.
+	option = {
+		name = JAP_Pearl_Harbor.5.A
+		add_to_variable = { JAP_Pearl_Harbor_Risk = 1 }
+		custom_effect_tooltip = JAP_Pearl_Harbor_var_increased_tt
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.6 days = 15 }
+		}
+	}
+}
+## Pearl's Table Scraps
+country_event = {
+	id = JAP_Pearl_Harbor.6
+	title = JAP_Pearl_Harbor.6.t
+	desc = JAP_Pearl_Harbor.6.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# No, this war won't last long enough for it to matter
+	option = {
+		name = JAP_Pearl_Harbor.6.A
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.7 days = 15 }
+		}
+	}
+	# Pearl itself must be put out of action
+	option = {
+		name = JAP_Pearl_Harbor.6.A
+		ai_chance = {
+			base = 0
+		}
+		add_to_variable = { JAP_Pearl_Harbor_Risk = 1 }
+		custom_effect_tooltip = JAP_Pearl_Harbor_var_increased_tt
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.7 days = 15 }
+		}
+	}
+}
+## The Planning is Completed
+country_event = {
+	id = JAP_Pearl_Harbor.7
+	title = JAP_Pearl_Harbor.7.t
+	desc = JAP_Pearl_Harbor.7.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# Save the Date. 20 days from now
+	option = {
+		name = JAP_Pearl_Harbor.7.A
+		custom_effect_tooltip = JAP_Pearl_Harbor.7.tt
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.8 days = 20 }
+		}
+	}
+}
+## On the Decks of Akagi
+country_event = {
+	id = JAP_Pearl_Harbor.8
+	title = JAP_Pearl_Harbor.8.t
+	desc = JAP_Pearl_Harbor.8.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# Tora, Tora, Tora!
+	option = {
+		name = JAP_Pearl_Harbor.8.A
+		custom_effect_tooltip = JAP_Tora_Tora_Tora_tt
+		hidden_effect = {
+			USA = {
+				country_event = { id = JAP_Pearl_Harbor.9 }
+			}
+		}
+	}
+}
+## Morning at Opana Radar
+country_event = {
+	id = JAP_Pearl_Harbor.9
+	title = JAP_Pearl_Harbor.9.t
+	desc = JAP_Pearl_Harbor.9.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# Whatever could that be?
+	option = {
+		name = JAP_Pearl_Harbor.9.A
+		hidden_effect = {
+			country_event = { id = JAP_Pearl_Harbor.10 }
+		}
+	}
+}
+## A Day of Infamy
+country_event = {
+	id = JAP_Pearl_Harbor.10
+	title = JAP_Pearl_Harbor.10.t
+	desc = JAP_Pearl_Harbor.10.d
+	picture = GFX_news
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				declare_war_on = {
+					target = USA
+					type = annex_everything
+				}
+			}
+		}
+	}
+
+	# Damn it, get me Washington on the Line!
+	option = {
+		name = JAP_Pearl_Harbor.10.A
+		effect_tooltip = {
+			if = {
+				limit = {
+					JAP = {
+						check_variable = {
+							var = JAP_Pearl_Harbor_Risk
+							value = 5
+							compare = equals
+						}
+					}
+				}
+				JAP = {
+					add_equipment_to_stockpile = {
+						type = fighter_equipment
+						amount = -100
+					}
+					destroy_ships = {
+						type = SS_equipment # Submarine
+						count = 5
+					}
+					destroy_ships = {
+						type = DD_equipment # Destroyer
+						count = 2
+					}
+					destroy_ships = {
+						type = CV_equipment # Carrier
+						count = 1
+					}
+					add_manpower = -700
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment
+					amount = -300
+				}
+				destroy_ships = {
+					type = DD_equipment # Destroyer
+					count = 9
+				}
+				destroy_ships = {
+					type = CL_equipment # Light Cruiser
+					count = 3
+				}
+				destroy_ships = {
+					type = CA_equipment # Heavy Cruiser
+					count = 1
+				}
+				destroy_ships = {
+					type = BB_equipment # Battleship
+					count = 4
+				}
+				add_manpower = -3000
+			}
+			else_if = {
+				limit = {
+					JAP = {
+						check_variable = {
+							var = JAP_Pearl_Harbor_Risk
+							value = 3
+							compare = greater_than_or_equals
+						}
+					}
+				}
+				JAP = {
+					add_equipment_to_stockpile = {
+						type = fighter_equipment
+						amount = -30
+					}
+					destroy_ships = {
+						type = SS_equipment
+						count = 5
+					}
+					add_manpower = -65
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment
+					amount = -200
+				}
+				destroy_ships = {
+					type = DD_equipment # Destroyer
+					count = 3
+				}
+				destroy_ships = {
+					type = CL_equipment # Light Cruiser
+					count = 3
+				}
+				destroy_ships = {
+					type = CA_equipment # Heavy Cruiser
+					count = 1
+				}
+				destroy_ships = {
+					type = BB_equipment # Battleship
+					count = 4
+				}
+				add_manpower = -2500
+			}
+			else = {
+				JAP = {
+					add_equipment_to_stockpile = {
+						type = fighter_equipment
+						amount = -10
+					}
+					add_manpower = -5
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment
+					amount = -50
+				}
+				destroy_ships = {
+					type = DD_equipment # Destroyer
+					count = 3
+				}
+				destroy_ships = {
+					type = CL_equipment # Light Cruiser
+					count = 1
+				}
+				destroy_ships = {
+					type = BB_equipment # Battleship
+					count = 1
+				}
+				add_manpower = -400
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					JAP = {
+						check_variable = {
+							var = JAP_Pearl_Harbor_Risk
+							value = 5
+							compare = equals
+						}
+					}
+				}
+				JAP = {
+					country_event = { id = JAP_Pearl_Harbor.13 hours = 1 }
+				}
+			}
+			else_if = {
+				limit = {
+					JAP = {
+						check_variable = {
+							var = JAP_Pearl_Harbor_Risk
+							value = 3
+							compare = greater_than_or_equals
+						}
+					}
+				}
+				JAP = {
+					country_event = { id = JAP_Pearl_Harbor.12 hours = 1 }
+				}
+			}
+			else = {
+				JAP = {
+					country_event = { id = JAP_Pearl_Harbor.11 hours = 1 }
+				}
+			}
+			news_event = { id = JAP_Pearl_Harbor.14 hours = 6 }
+			country_event = { id = JAP_Pearl_Harbor.15 days = 1 }
+		}
+	}
+}
+## No Cubs in the Cave
+country_event = {
+	id = JAP_Pearl_Harbor.11
+	title = JAP_Pearl_Harbor.11.t
+	desc = JAP_Pearl_Harbor.11.d
+	picture = GFX_news
+	is_triggered_only = yes
+
+	# This bodes ill...
+	option = {
+		name = JAP_Pearl_Harbor.11.A
+		add_equipment_to_stockpile = {
+			type = fighter_equipment
+			amount = -10
+		}
+		add_manpower = -5
+		USA = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = -50
+			}
+			destroy_ships = {
+				type = DD_equipment # Destroyer
+				count = 3
+			}
+			destroy_ships = {
+				type = CL_equipment # Light Cruiser
+				count = 1
+			}
+			destroy_ships = {
+				type = BB_equipment # Battleship
+				count = 1
+			}
+			add_manpower = -400
+		}
+		hidden_effect = {
+			complete_national_focus = JAP_Umi_Yukaba
+		}
+	}
+}
+## The Fruits of Victory
+country_event = {
+	id = JAP_Pearl_Harbor.12
+	title = JAP_Pearl_Harbor.12.t
+	desc = JAP_Pearl_Harbor.12.d
+	picture = GFX_news
+	is_triggered_only = yes
+
+	# The Die is Cast.
+	option = {
+		name = JAP_Pearl_Harbor.12.A
+		add_equipment_to_stockpile = {
+			type = fighter_equipment
+			amount = -30
+		}
+		destroy_ships = {
+			type = SS_equipment
+			count = 5
+		}
+		add_manpower = -65
+		USA = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = -200
+			}
+			destroy_ships = {
+				type = DD_equipment # Destroyer
+				count = 3
+			}
+			destroy_ships = {
+				type = CL_equipment # Light Cruiser
+				count = 3
+			}
+			destroy_ships = {
+				type = CA_equipment # Heavy Cruiser
+				count = 1
+			}
+			destroy_ships = {
+				type = BB_equipment # Battleship
+				count = 4
+			}
+			add_manpower = -2500
+		}
+		hidden_effect = {
+			complete_national_focus = JAP_Umi_Yukaba
+		}
+	}
+}
+## Flight of the Valkyries
+country_event = {
+	id = JAP_Pearl_Harbor.13
+	title = JAP_Pearl_Harbor.13.t
+	desc = JAP_Pearl_Harbor.13.d
+	picture = GFX_news
+	is_triggered_only = yes
+
+	# I fear that all we have done is to awaken a sleeping giant and fill him with a terrible resolve.
+	option = {
+		name = JAP_Pearl_Harbor.13.A
+		add_equipment_to_stockpile = {
+			type = fighter_equipment
+			amount = -100
+		}
+		destroy_ships = {
+			type = SS_equipment # Submarine
+			count = 5
+		}
+		destroy_ships = {
+			type = DD_equipment # Destroyer
+			count = 2
+		}
+		destroy_ships = {
+			type = CV_equipment # Carrier
+			count = 1
+		}
+		add_manpower = -700
+		USA = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = -300
+			}
+			destroy_ships = {
+				type = DD_equipment # Destroyer
+				count = 9
+			}
+			destroy_ships = {
+				type = CL_equipment # Light Cruiser
+				count = 3
+			}
+			destroy_ships = {
+				type = CA_equipment # Heavy Cruiser
+				count = 1
+			}
+			destroy_ships = {
+				type = BB_equipment # Battleship
+				count = 4
+			}
+			add_manpower = -3000
+		}
+		hidden_effect = {
+			complete_national_focus = JAP_Umi_Yukaba
+		}
+	}
+}
+## Japan Wars on US and Britain; Makes Sudden Attack on Hawaii
+news_event = {
+	id = JAP_Pearl_Harbor.14
+	title = JAP_Pearl_Harbor.14.t
+	desc = JAP_Pearl_Harbor.14.d
+	picture = GFX_news_JAP_Animated_Pearl_Harbor
+	major = yes
+	is_triggered_only = yes
+
+	# The Giant Wakes.
+	option = {
+		name = JAP_Pearl_Harbor.14.A
+		
+	}
+}
+## Roosevelt Speaks to Congress
+country_event = {
+	id = JAP_Pearl_Harbor.15
+	title = JAP_Pearl_Harbor.15.t
+	desc = JAP_Pearl_Harbor.15.d
+	picture = GFX_news
+	is_triggered_only = yes
+
+	# Remember Pearl Harbor!
+	option = {
+		name = JAP_Pearl_Harbor.15.A
+		add_war_support = 0.25
+		if = {
+			limit = {
+				ENG = {
+					is_faction_leader = yes
+					has_government = democratic
+				}
+			}
+			ENG = {
+				add_to_faction = USA
+				add_to_war = { 
+					targeted_alliance = USA
+					enemy = JAP
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_idea = USA_Neutrality_Act
+			}
+			remove_ideas = USA_Neutrality_Act
+		}
+		else_if = {
+			limit = {
+				has_idea = USA_Neutrality_Act_2
+			}
+			remove_ideas = USA_Neutrality_Act_2
+		}
+		else_if = {
+			limit = {
+				has_idea = USA_Neutrality_Act_3
+			}
+			remove_ideas = USA_Neutrality_Act_3
+		}
+	}
+}
+## Umi Yukaba
+country_event = {
+	id = JAP_Wartime_Tree_Events.1
+	title = JAP_Wartime_Tree_Events.1.t
+	desc = JAP_Wartime_Tree_Events.1.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Wartime_Tree_Events.1.A
+		add_war_support = 0.05
+		custom_effect_tooltip = JAP_Bushido.tt
+		set_variable = { JAP_Bushido_CF_Var = 0.01 }
+		add_dynamic_modifier = {
+			modifier = JAP_Bushido
+		}
+		force_update_dynamic_modifier = yes
+	}
+}
+## The Wartime Elections
+country_event = {
+	id = JAP_Wartime_Tree_Events.2
+	title = JAP_Wartime_Tree_Events.2.t
+	desc = JAP_Wartime_Tree_Events.2.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Wartime_Tree_Events.2.A
+		add_political_power = 100
+		set_popularities = {
+			democratic = 4
+			authoritarian = 13
+			fascist = 83
+		}
+	}
+}
+## Continue the Eikou 'Partnership'
+country_event = {
+	id = JAP_Wartime_Tree_Events.4
+	title = JAP_Wartime_Tree_Events.4.t
+	desc = JAP_Wartime_Tree_Events.4.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Wartime_Tree_Events.4.A
+		create_country_leader = {
+			name = "Hideki Tojo"
+			desc = "Hideki_Tojo_desc"
+			picture = GFX_P_F_Hideki_Tojo
+			ideology = fascism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Fascism
+				L_Old_General
+			}
+		}
+	}
+}
+## The Bells of Gion Shouja
+country_event = {
+	id = JAP_Wartime_Tree_Events.5
+	title = JAP_Wartime_Tree_Events.5.t
+	desc = JAP_Wartime_Tree_Events.5.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Wartime_Tree_Events.5.A
+		add_war_support = 0.1
+		custom_effect_tooltip = JAP_The_Bells_of_Gion_Shouja.tt
+		add_to_variable = { JAP_Bushido_SL_Var = 0.1 }
+		add_to_variable = { JAP_Bushido_ICF_Var = 0.05 }
+	}
+}
+## Tenno Heika Banzai
+country_event = {
+	id = JAP_Wartime_Tree_Events.6
+	title = JAP_Wartime_Tree_Events.6.t
+	desc = JAP_Wartime_Tree_Events.6.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# 
+	option = {
+		name = JAP_Wartime_Tree_Events.6.A
+		add_political_power = 100
+		custom_effect_tooltip = JAP_Tenno_Heika_Banzai.tt
+		add_to_variable = { JAP_Bushido_ACAF_Var = 0.1 }
+		add_to_variable = { JAP_Bushido_ACDF_Var = 0.1 }
+	}
+}
+## Greater East Asian Conference
+country_event = {
+	id = JAP_Wartime_Tree_Events.7
+	title = JAP_Wartime_Tree_Events.7.t
+	desc = JAP_Wartime_Tree_Events.7.d
+	picture = GFX_news
+	is_triggered_only = yes
+	# Cooperate more with them
+	option = {
+		name = JAP_Wartime_Tree_Events.7.A
+		set_temp_variable = { hakko_ichiu_progress_to_add = 20 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+	# They should serve us, not the opposite!
+	option = {
+		name = JAP_Wartime_Tree_Events.7.B
+		set_temp_variable = { hakko_ichiu_progress_to_add = -20 }
+		JAP_add_hakko_ichiu_progress = yes
+	}
+	# Maintain the status quo
+	option = {
+		name = JAP_Wartime_Tree_Events.7.C
+		add_political_power = 50
+	}
+}
+
+
+

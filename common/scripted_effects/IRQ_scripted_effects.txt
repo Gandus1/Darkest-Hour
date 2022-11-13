@@ -1,0 +1,108 @@
+add_eng_influence_with_tooltip_effect = {
+	if = {
+		limit = {
+			check_variable = { eng_power_in_iraq_to_gain < 0 }
+		}
+		add_to_temp_variable = { eng_power_in_iraq_positive = eng_power_in_iraq_to_gain }
+		multiply_temp_variable  = { eng_power_in_iraq_positive = -1 }
+		custom_effect_tooltip = LOSE_ENG_INFLUENCE_TT
+	}
+	else = {
+		custom_effect_tooltip = GAIN_ENG_INFLUENCE_TT
+	}
+	hidden_effect = {
+		ENG = {
+			add_to_variable = { eng_power_in_iraq = eng_power_in_iraq_to_gain }
+			clamp_variable = {
+				var = eng_power_in_iraq
+				min = 0
+				max = 50
+			}
+		}
+		IRQ = {
+			subtract_from_variable = { irq_power_in_iraq = eng_power_in_iraq_to_gain }
+			clamp_variable = {
+				var = irq_power_in_iraq
+				min = 0
+				max = 50
+			}
+		}
+	}
+}
+
+add_irq_influence_with_tooltip_effect = {
+	if = {
+		limit = {
+			check_variable = { irq_power_in_iraq_to_gain < 0 }
+		}
+		add_to_temp_variable = { irq_power_in_iraq_positive = irq_power_in_iraq_to_gain }
+		multiply_temp_variable  = { irq_power_in_iraq_positive = -1 }
+		custom_effect_tooltip = LOSE_IRQ_INFLUENCE_TT
+	}
+	else = {
+		custom_effect_tooltip = GAIN_IRQ_INFLUENCE_TT
+	}
+	hidden_effect = {
+		IRQ = {
+			add_to_variable = { irq_power_in_iraq = irq_power_in_iraq_to_gain }
+			clamp_variable = {
+				var = irq_power_in_iraq
+				min = 0
+				max = 50
+			}
+		}
+		ENG = {
+			subtract_from_variable = { eng_power_in_iraq = irq_power_in_iraq_to_gain }
+			clamp_variable = {
+				var = eng_power_in_iraq
+				min = 0
+				max = 50
+			}
+		}
+	}
+}
+
+#WIP
+
+#########################################################################
+#  Position Christianity Effects
+#########################################################################
+###########################
+# Irreligious Pop
+###########################
+# example usage:
+## set_temp_variable = { GER_Irreligious_Population_gain = 0.5 }
+## add_unemployment_effect = yes
+IRQ_add_irreligious_population_effect = {
+	clamp_temp_variable = {
+		var = IRQ_Irreligious_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { IRQ_Irreligious_Population = IRQ_Irreligious_Population_gain }
+	custom_effect_tooltip = GER_Irreligious_Population_gain_tt
+}
+###########################
+# Irreligious Pop
+###########################
+add_Sunni_effect = {
+	clamp_temp_variable = {
+		var = IRQ_Sunni_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { IRQ_Sunni_Population = IRQ_Sunni_Population_gain }
+	custom_effect_tooltip = GER_Positive_Christian_Population_gain_tt
+}
+###########################
+# Irreligious Pop
+###########################
+add_Shia_effect = {
+	clamp_temp_variable = {
+		var = IRQ_Shia_Population_gain
+		min = -1
+		max = 1
+	}
+	add_to_variable = { GER_Shia_Population = GER_Shia_Population_gain }
+	custom_effect_tooltip = GER_Protestant_Population_gain_tt
+}

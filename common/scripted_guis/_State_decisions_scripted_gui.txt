@@ -1,0 +1,243 @@
+scripted_gui = {
+	open_state_decisions_window = {
+		context_type = selected_state_context
+
+		window_name = "open_state_decisions_window"
+		parent_window_token = selected_state_view
+
+		visible = {
+			ROOT = {
+				is_ai = no
+			}
+		}
+
+		effects = {
+			open_button_click = {
+				ROOT = {
+					clr_country_flag = hide_state_decisions_window
+				}
+			}
+			close_button_click = {
+				ROOT = {
+					set_country_flag = hide_state_decisions_window
+				}
+			}
+		}
+
+		triggers = {
+			open_button_visible = {
+				ROOT = {
+					has_country_flag = hide_state_decisions_window
+				}
+			}
+			close_button_visible = {
+				ROOT = {
+					NOT = { has_country_flag = hide_state_decisions_window }
+				}
+			}
+		}
+	}
+
+	state_decisions_window = {
+		context_type = selected_state_context
+
+		window_name = "state_decisions_window"
+		parent_window_token = selected_state_view
+
+		visible = {
+			ROOT = {
+				OR = {
+					is_ai = yes
+					NOT = { has_country_flag = hide_state_decisions_window }
+				}
+			}
+		}
+
+		effects = {
+			close_button_click = {
+				ROOT = {
+					set_country_flag = hide_state_decisions_window
+				}
+				clear_variable = show_state_decision_cede_state_list_window
+				clear_array = new_possible_owners_array
+				clear_variable = selected_new_owner
+			}
+			entry_button_click = {
+				state_decision_enact_effect = yes
+			}
+		}
+
+		triggers = {
+			entry_background_not_available_visible = {
+				NOT = { state_decision_completed_condition = yes }
+				NOT = { state_decision_enact_condition = yes }
+			}
+			entry_background_available_visible = {
+				NOT = { state_decision_completed_condition = yes }
+				state_decision_enact_condition = yes
+			}
+			entry_background_completed_visible = {
+				state_decision_completed_condition = yes
+			}
+			entry_button_visible = {
+				NOT = { state_decision_completed_condition = yes }
+			}
+			entry_button_click_enabled = {
+				state_decision_enact_condition = yes
+			}
+			entry_button_completed_icon_visible = {
+				state_decision_completed_condition = yes
+			}
+		}
+
+		properties = {
+			entry_background = {
+				frame = decision_background_frame
+			}
+		}
+
+		dynamic_lists = {
+			state_decisions_gridbox = {
+				array = global.state_decisions_array
+				entry_container = state_decisions_entry
+			}
+		}
+	}
+
+	state_decision_cede_state_list_panel_window = {
+		context_type = selected_state_context
+
+		window_name = "state_decision_cede_state_list_panel_window"
+		parent_window_name = "state_decisions_window_instance"
+
+		visible = {
+			always = yes
+		}
+	}
+
+	state_decision_cede_state_list_window = {
+		context_type = selected_state_context
+
+		window_name = "state_decision_cede_state_list_window"
+		parent_window_name = "state_decision_cede_state_list_panel_window_instance"
+
+		visible = {
+			is_owned_by = ROOT
+			check_variable = { show_state_decision_cede_state_list_window > 0 }
+		}
+
+		effects = {
+			cancel_button_click = {
+				clear_variable = show_state_decision_cede_state_list_window
+				clear_array = new_possible_owners_array
+				clear_variable = selected_new_owner
+			}
+			ok_button_click = {
+				if = {
+					limit = {
+						has_variable = selected_new_owner
+					}
+					var:selected_new_owner = {
+						transfer_state = PREV
+					}
+					if = {
+						limit = {
+							is_claimed_by = ROOT
+						}
+						remove_claim_by = ROOT
+					}
+					if = {
+						limit = {
+							is_core_of = ROOT
+						}
+						remove_core_of = ROOT
+					}
+				}
+				clear_variable = show_state_decision_cede_state_list_window
+				clear_array = new_possible_owners_array
+				clear_variable = selected_new_owner
+			}
+			select_entry_button_click = {
+				FROM = {
+					set_variable = { selected_new_owner = PREV.id }
+				}
+			}
+			deselect_entry_button_click = {
+				FROM = {
+					clear_variable = selected_new_owner
+				}
+			}
+		}
+
+		triggers = {
+			ok_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = STATE_DECISIONS_HAS_SELECTED_A_NEW_STATE_OWNER
+					has_variable = selected_new_owner
+				}
+				ROOT = {
+					has_war = no
+				}
+				is_owned_and_controlled_by = ROOT
+				is_capital = no
+				if = {
+					limit = {
+						has_variable = selected_new_owner
+					}
+					if = {
+						limit = {
+							check_variable = { show_state_decision_cede_state_list_window = 1 }
+						}
+						var:selected_new_owner = {
+							has_war = no
+							PREV = { is_core_of = PREV }
+						}
+					}
+					else = {
+						var:selected_new_owner = {
+							has_war = no
+							PREV = { is_claimed_by = PREV }
+						}
+					}
+				}
+			}
+			select_entry_button_visible = {
+				FROM = {
+					NOT = { check_variable = { selected_new_owner = PREV.id } }
+				}
+			}
+			select_entry_button_click_enabled = {
+				has_war = no
+				ROOT = {
+					has_war = no
+				}
+				FROM = {
+					is_owned_and_controlled_by = ROOT
+					is_capital = no
+					if = {
+						limit = {
+							check_variable = { show_state_decision_cede_state_list_window = 1 }
+						}
+						is_core_of = PREV
+					}
+					else = {
+						is_claimed_by = PREV
+					}
+				}
+			}
+			deselect_entry_button_visible = {
+				FROM = {
+					check_variable = { selected_new_owner = PREV.id }
+				}
+			}
+		}
+
+		dynamic_lists = {
+			state_decision_cede_state_list_gridbox = {
+				array = new_possible_owners_array
+				entry_container = state_decision_cede_state_list_entry
+				change_scope = yes
+			}
+		}
+	}
+}

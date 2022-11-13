@@ -1,0 +1,755 @@
+﻿#########################################################################
+# Darkest Hour Political Events
+#########################################################################
+
+add_namespace = Political
+
+# Class Conflicts Divide [Root.GetName]
+country_event = {
+	id = Political.1
+	title = Political.1.t
+	desc = Political.1.d
+	picture = GFX_report_event_gathering_protest
+	
+	trigger = {
+		has_idea_with_trait = C_drift
+		NOT = { has_government = communist }
+		communist > 0.2
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = communist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.1.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+		add_stability = -0.05
+	}
+}
+
+# Soldiers Desert to Communist Partisans
+country_event = {
+	id = Political.2
+	title = Political.2.t
+	desc = Political.2.d
+	picture = GFX_report_event_desertion_poster
+	
+	trigger = {
+		has_idea_with_trait = C_drift
+		NOT = { has_government = communist }
+		communist > 0.3
+		NOT = { has_idea = communist_partisans_recruiting }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = communist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.4.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+		add_ideas = communist_partisans_recruiting
+	}
+}
+
+country_event = {
+	id = Political.3
+	title = Political.3.t
+	desc = Political.3.d
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.3.A
+		trigger = {
+			#Special case CHI PRC
+			OR = {
+				NOT = { tag = CHI }
+				AND = {
+					NOT = { country_exists = PRC }
+					tag = CHI
+				}			
+			}
+		}
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+		}
+		add_stability = -0.05
+	}
+}
+
+# Class Conflicts Divide [Root.GetName]
+country_event = {
+	id = Political.4
+	title = Political.4.t
+	desc = Political.4.d
+	picture = GFX_report_event_gathering_protest
+	
+	trigger = {
+		has_idea_with_trait = C_drift
+		NOT = { has_government = communist }
+		communist > 0.2
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = communist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.4.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+		add_stability = -0.05
+	}
+}
+
+# Soldiers Desert to Communist Partisans
+country_event = {
+	id = Political.5
+	title = Political.5.t
+	desc = Political.5.d
+	picture = GFX_report_event_desertion_poster
+	
+	trigger = {
+		has_idea_with_trait = C_drift
+		NOT = { has_government = communist }
+		communist > 0.3
+		NOT = { has_idea = communist_partisans_recruiting }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = communist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.5.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+		add_ideas = communist_partisans_recruiting
+	}
+}
+
+country_event = {
+	id = Political.6
+	title = Political.6.t
+	desc = Political.6.d
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.6.A
+		trigger = {
+			#Special case CHI PRC
+			OR = {
+				NOT = { tag = CHI }
+				AND = {
+					NOT = { country_exists = PRC }
+					tag = CHI
+				}			
+			}
+		}
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+		}
+		add_stability = -0.05
+	}
+}
+
+# Class Conflicts Divide [Root.GetName]
+country_event = {
+	id = Political.7
+	title = Political.7.t
+	desc = Political.7.d
+	picture = GFX_report_event_gathering_protest
+	
+	trigger = {
+		has_idea_with_trait = S_drift
+		NOT = { has_government = socialist }
+		socialist > 0.2
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = socialist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.7.A
+		add_popularity = {
+			ideology = socialist
+			popularity = 0.05
+		}
+		add_stability = -0.05
+	}
+}
+
+# Soldiers Desert to Communist Partisans
+country_event = {
+	id = Political.8
+	title = Political.8.t
+	desc = Political.8.d
+	picture = GFX_report_event_desertion_poster
+	
+	trigger = {
+		has_idea_with_trait = S_drift
+		NOT = { has_government = socialist }
+		socialist > 0.3
+		NOT = { has_idea = socialist_partisans_recruiting }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = socialist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.8.A
+		add_popularity = {
+			ideology = socialist
+			popularity = 0.05
+		}
+		add_ideas = socialist_partisans_recruiting
+	}
+}
+
+country_event = {
+	id = Political.9
+	title = Political.9.t
+	desc = Political.9.d
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.9.A
+		trigger = {
+			#Special case CHI PRC
+			OR = {
+				NOT = { tag = CHI }
+				AND = {
+					NOT = { country_exists = PRC }
+					tag = CHI
+				}			
+			}
+		}
+		set_politics = {
+			ruling_party = socialist
+			elections_allowed = no
+		}
+		add_stability = -0.05
+	}
+}
+
+# Fascist Assault Divisions Form
+country_event = {
+	id = Political.10
+	title = Political.10.t
+	desc = Political.10.d
+	picture = GFX_report_event_fascist_militia
+	
+	trigger = {
+		has_idea_with_trait = F_drift
+		NOT = { has_government = fascist }
+		fascist > 0.3
+		NOT = { has_idea = fascist_assault_divisions }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = fascist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.10.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+		add_ideas = fascist_assault_divisions
+	}
+}
+
+# The Threat of Communism
+country_event = {
+	id = Political.11
+	title = Political.11.t
+	desc = Political.11.d
+	picture = GFX_report_event_worker_protests
+	
+	trigger = {
+		has_idea_with_trait = F_drift
+		NOT = { has_government = fascist }
+		fascist > 0.25
+		any_neighbor_country = {
+			has_government = communist
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = fascist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.11.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.1
+		}
+	}
+}
+
+country_event = {
+	id = Political.12
+	title = Political.12.t
+	desc = Political.12.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.12.A
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_stability = -0.05
+	}
+}
+
+# National Socialist Assault Divisions Form
+country_event = {
+	id = Political.13
+	title = Political.13.t
+	desc = Political.13.d
+	picture = GFX_report_event_fascist_militia
+	
+	trigger = {
+		has_idea_with_trait = F_drift
+		NOT = { has_government = fascist }
+		fascist > 0.3
+		NOT = { has_idea = fascist_assault_divisions }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = fascist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.13.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+		add_ideas = fascist_assault_divisions
+	}
+}
+
+# The Threat of Communism
+country_event = {
+	id = Political.14
+	title = Political.14.t
+	desc = Political.14.d
+	picture = GFX_report_event_worker_protests
+	
+	trigger = {
+		has_idea_with_trait = F_drift
+		NOT = { has_government = fascist }
+		fascist > 0.25
+		any_neighbor_country = {
+			has_government = communist
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = fascist_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.14.A
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.1
+		}
+	}
+}
+
+country_event = {
+	id = Political.15
+	title = Political.15.t
+	desc = Political.15.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.15.A
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_stability = -0.05
+	}
+}
+
+# authoritarian Assault Divisions Form
+country_event = {
+	id = Political.16
+	title = Political.16.t
+	desc = Political.16.d
+	picture = GFX_report_event_fascist_militia
+	
+	trigger = {
+		has_idea_with_trait = A_drift
+		NOT = { has_government = authoritarian }
+		authoritarian > 0.3
+		NOT = { has_idea = authoritarian_assault_divisions }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = authoritarian_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.16.A
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.05
+		}
+		add_ideas = authoritarian_assault_divisions
+	}
+}
+
+# The Threat of Communism
+country_event = {
+	id = Political.17
+	title = Political.17.t
+	desc = Political.17.d
+	picture = GFX_report_event_worker_protests
+	
+	trigger = {
+		has_idea_with_trait = A_drift
+		NOT = { has_government = authoritarian }
+		authoritarian > 0.25
+		any_neighbor_country = {
+			has_government = communist
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = authoritarian_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.17.A
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.1
+		}
+	}
+}
+
+country_event = {
+	id = Political.18
+	title = Political.18.t
+	desc = Political.18.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.18.A
+		set_politics = {
+			ruling_party = authoritarian
+			elections_allowed = no
+		}
+		add_stability = -0.05
+	}
+}
+
+# democratic Opposition Forming
+country_event = {
+	id = Political.19
+	title = Political.19.t
+	desc = Political.19.d
+	picture = GFX_report_event_journalists_speech
+	
+	trigger = {
+		has_idea_with_trait = C_drift
+		NOT = { has_government = democratic }
+		NOT = { has_country_flag = democratic_opposition_formed }
+		is_puppet = no
+	}
+	
+	mean_time_to_happen = {
+		days = 300
+		modifier = {
+			factor = 0.5
+			has_country_flag = democracy_popular_movement
+		}
+	}
+	
+	option = {
+		name = Political.19.A
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_stability = -0.05
+		set_country_flag = democratic_opposition_formed
+	}
+}
+
+# Public Call for Elections
+country_event = {
+	id = Political.20
+	title = Political.20.t
+	desc = Political.20.d
+	picture = GFX_report_event_election_vote
+	
+	trigger = {
+		has_idea_with_trait = C_drift
+		NOT = { has_government = democratic }
+		has_country_flag = democratic_opposition_formed
+		NOT = { has_idea = democratic_opposition_voicing_protests }
+	}
+	
+	mean_time_to_happen = {
+		days = 150
+	}
+	
+	option = {
+		name = Political.20.A
+	}
+
+	option = {
+		name = Political.20.B
+		add_political_power = -20
+		add_ideas = democratic_opposition_voicing_protests
+	}
+}
+
+country_event = {
+	id = Political.21
+	title = Political.21.t
+	desc = Political.21.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = Political.21.A
+		if = {
+			limit = { has_government = fascist }
+			add_timed_idea = { idea = fascism_defeated days = 730 }
+		}
+		if = {
+			limit = { has_government = communist }
+			add_timed_idea = { idea = communism_defeated days = 730 }
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+		add_stability = -0.05
+	}
+}
+
+# Country has same ideology as revolter
+country_event = {
+	id = Political.29
+	title = Political.29.t
+	desc = Political.29.d
+
+	picture = GFX_report_event_journalists_speech
+
+	trigger = {
+		any_other_country = {
+			NOT = { tag = ROOT }
+			original_tag = ROOT
+			has_government = ROOT
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = Political.29.A
+		random_other_country = {
+			limit = {
+				original_tag = ROOT
+				NOT = { tag = ROOT }
+			}
+			ROOT = { annex_country = { target = PREV transfer_troops = yes } }
+		}
+	}
+}

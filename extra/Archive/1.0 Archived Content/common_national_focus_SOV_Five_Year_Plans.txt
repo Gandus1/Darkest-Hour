@@ -1,0 +1,1109 @@
+# focus_tree = {
+# 	id = SOV_Five_Year_Plans
+# 	country = {
+# 		factor = 0
+# 		modifier = {
+# 			add = 10
+# 			tag = SOV
+# 		}
+# 	}
+#	default = no
+	shared_focus = {
+		id = SOV_The_Second_Five_Year_Plan
+		icon = GFX_SOV_Five_Year_Plan
+		cost = 10.00
+		x = 7
+		y = 0
+		offset = {
+			x = 8
+			y = 0
+			trigger = {
+				has_focus_tree = SOV_Stalin
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+	}
+	shared_focus = {
+		id = SOV_The_Third_Five_Year_Plan
+		icon = GFX_SOV_Five_Year_Plan
+		cost = 10.00
+		mutually_exclusive = {
+			focus = SOV_Halt_The_Third_Five_Year_Plan
+		}
+		x = 7
+		y = 4
+		offset = {
+			x = 8
+			y = 0
+			trigger = {
+				has_focus_tree = SOV_Stalin
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+	}
+	shared_focus = {
+		id = SOV_Halt_The_Third_Five_Year_Plan
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 10.00
+		mutually_exclusive = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = 2
+		y = 0
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_war_support = 0.05
+			add_stability = -0.05
+			add_political_power = -75
+		}
+	}
+	shared_focus = {
+		id = SOV_Consolidate_Consumer_Production
+		icon = GFX_goal_generic_consumer_goods
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			Modify_Production_Quotas_idea = yes
+		}
+	}
+	shared_focus = {
+		id = SOV_Promote_Kolkoz_Farms
+		icon = GFX_SOV_Sovkhoz_Farms
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		mutually_exclusive = {
+			focus = SOV_Focalize_on_Sovkhov_Farms
+		}
+		x = -1
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			remove_ideas = SOV_Collectivization_Process
+			add_ideas = SOV_Promote_Kolkoz_farms_1
+		}
+	}
+	shared_focus = {
+		id = SOV_Focalize_on_Sovkhov_Farms
+		icon = GFX_SOV_Kolkhoz_Farms
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		mutually_exclusive = {
+			focus = SOV_Promote_Kolkoz_Farms
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+			remove_ideas = SOV_Collectivization_Process
+			add_ideas = SOV_Focalize_on_Sovkhoz_Farms_1
+		}
+	}
+	shared_focus = {
+		id = SOV_Pragmatic_Command_Economy
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Promote_Kolkoz_Farms
+			focus = SOV_Focalize_on_Sovkhov_Farms
+		}
+		x = 0
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			swap_ideas = {
+				remove_idea = SOV_Centerally_Planned_Economy
+				add_idea = SOV_Pragmatic_Command_Economy_idea
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Establish_Central_Asian_Estates
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Focalize_on_Sovkhov_Farms
+		}
+		x = 2
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = -0.05
+			586 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			402 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			swap_ideas = {
+				remove_idea = SOV_Focalize_on_Sovkhoz_Farms_1
+				add_idea = SOV_Focalize_on_Sovkhoz_Farms_2
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Innovate_Agricultural_Methods
+		icon = GFX_GENERIC_Support_for_Agriculture
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Pragmatic_Command_Economy
+		}
+		prerequisite = {
+			focus = SOV_Establish_Central_Asian_Estates
+		}
+		x = 1
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.50
+				category = industry
+			}
+			swap_ideas = {
+				remove_idea = SOV_Focalize_on_Sovkhoz_Farms_2
+				add_idea = SOV_Focalize_on_Sovkhoz_Farms_3
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Renew_Military_Production
+		icon = GFX_GENERIC_Military_Production
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = 3
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = industry
+			}
+			219 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Renew_Anti_Capitalist_Sentiment
+		icon = GFX_focus_eng_crush_the_dream
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		x = 5
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+		}
+	}
+	shared_focus = {
+		id = SOV_Liquidate_The_Church
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Renew_Anti_Capitalist_Sentiment
+		}
+		x = 4
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_ideas = SOV_Liquidate_The_Church_idea
+		}
+	}
+	shared_focus = {
+		id = SOV_Design_Contemporary_Equipment_Standards
+		icon = GFX_GENERIC_Design_Contemporary_Equipment_Standards
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Renew_Military_Production
+		}
+		x = 4
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			custom_effect_tooltip = SOV_Design_Contemporary_Equipment_Standards_tt
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = SOV_Pragmatic_Command_Economy_idea
+					add_idea = SOV_Design_Contemporary_Equipment_Standards_idea
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Envision_New_Military_Complexes
+		icon = GFX_GENERIC_Military_Industrial_Complexes
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Design_Contemporary_Equipment_Standards
+		}
+		x = 4
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			219 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			#unlock decisions to construct military complexes
+		}
+	}
+	shared_focus = {
+		id = SOV_Introduce_Childcare
+		icon = GFX_focus_generic_concessions
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Renew_Anti_Capitalist_Sentiment
+		}
+		x = 1
+		y = 1
+		relative_position_id = SOV_Renew_Anti_Capitalist_Sentiment
+		completion_reward = {
+			add_political_power = -100
+			add_ideas = SOV_Introduce_Childcare_idea
+		}
+	}
+	shared_focus = {
+		id = SOV_Invigorate_the_Working_Class
+		icon = GFX_focus_YUG_pan_slavic_congress
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Liquidate_The_Church
+		}
+		prerequisite = {
+			focus = SOV_Introduce_Childcare
+		}
+		x = 5
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			Modify_Production_Quotas_idea = yes
+		}
+	}
+	shared_focus = {
+		id = SOV_Construct_Heavy_Industrial_Complexes
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Second_Five_Year_Plan
+		}
+		x = -5
+		y = 1
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			219 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			#unlock the industrial complex decisions
+		}
+	}
+	shared_focus = {
+		id = SOV_Propagate_an_Industrial_Ethos
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Construct_Heavy_Industrial_Complexes
+		}
+		x = -6
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = SOV_Propagate_an_Industrial_Ethos_idea
+		}
+	}
+	shared_focus = {
+		id = SOV_Continue_Tight_Work_Discipline
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Construct_Heavy_Industrial_Complexes
+		}
+		x = -4
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			Modify_Production_Quotas_idea = yes
+		}
+	}
+	shared_focus = {
+		id = SOV_Propel_Steel_Production
+		icon = GFX_focus_generic_steel
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Continue_Tight_Work_Discipline
+		}
+		prerequisite = {
+			focus = SOV_Propagate_an_Industrial_Ethos
+		}
+		x = -5
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -80
+			401 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = steel
+					amount = 30
+				}
+			}
+			222 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = steel
+					amount = 30
+				}
+			}
+			250 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = steel
+					amount = 30
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Support_Zveno_and_Brigadir_Structrures
+		icon = GFX_SOV_Support_Zveno_and_Brigadir_Structrures
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Promote_Kolkoz_Farms
+		}
+		x = -2
+		y = 2
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_Promote_Kolkoz_farms_1
+				add_idea = SOV_Promote_Kolkoz_farms_2
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Gigatomaniac_Agrotowns
+		icon = GFX_SOV_Gigatomaniac_Agrotowns
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Pragmatic_Command_Economy
+		}
+		prerequisite = {
+			focus = SOV_Support_Zveno_and_Brigadir_Structrures
+		}
+		x = -1
+		y = 3
+		relative_position_id = SOV_The_Second_Five_Year_Plan
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 75
+			200 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			259 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			225 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Stamp_down_Tolkachi_on_Industries
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Consolidate_Consumer_Production
+		}
+		x = 0
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -75
+			swap_ideas = {
+				remove_idea = SOV_Patronage_Networks
+				add_idea = SOV_Stamp_down_Tolkachi_on_Industries_idea
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Develop_Caucasus_Infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_The_Third_Five_Year_Plan
+		}
+		x = -4
+		y = 1
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 25
+			218 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			229 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			234 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 1
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Solidify_SSFR_Administrations
+		icon = GFX_focus_generic_soviet_politics
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Develop_Caucasus_Infrastructure
+		}
+		x = -3
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SOV_Ethnic_Nationalism
+				add_idea = SOV_Ethnic_Nationalism_1
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Explore_Oil_Expansion_in_the_Caucasus
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Develop_Caucasus_Infrastructure
+		}
+		x = -5
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = synth_resources
+			}
+			229 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = oil
+					amount = 25
+				}
+			}
+			232 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_resource = {
+					type = oil
+					amount = 25
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Foment_Oil_Security_from_Baku
+		icon = GFX_goal_generic_construct_military
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Explore_Oil_Expansion_in_the_Caucasus
+		}
+		x = -5
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			229 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 7661
+					instant_build = yes
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Reverse_Korenizatsiya
+		icon = GFX_SOV_Reverse_Korenizatsiya
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Solidify_SSFR_Administrations
+		}
+		prerequisite = {
+			focus = SOV_Stamp_down_Tolkachi_on_Industries
+		}
+		x = -2
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = -50
+			remove_ideas = SOV_Ethnic_Nationalism_1
+			add_timed_idea = { idea = SOV_Reverse_Korenizatsiya_idea days = 200 }
+		}
+	}
+	shared_focus = {
+		id = SOV_Formalize_Southern_Industries
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Renew_Military_Production
+		}
+		x = 2
+		y = 2
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			217 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			232 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			234 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			265 = {
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						is_owned_and_controlled_by = ROOT
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			#Unlock southern industrial companies
+		}
+	}
+	shared_focus = {
+		id = SOV_Amplify_Agricultural_Export
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Stamp_down_Tolkachi_on_Industries
+		}
+		prerequisite = {
+			focus = SOV_Formalize_Southern_Industries
+		}
+		x = 1
+		y = 3
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_stability = 0.05
+			240 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			254 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			260 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			258 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	shared_focus = {
+		id = SOV_Stalinist_Mega_Monuments
+		icon = GFX_SOV_Palace_of_the_Soviets
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Reverse_Korenizatsiya
+		}
+		x = -2
+		y = 4
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.05
+			#event "Palace of the soviet union"
+		}
+	}
+	shared_focus = {
+		id = SOV_Adopt_New_Russification_Policies
+		icon = GFX_SOV_Russification_Policies
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Reverse_Korenizatsiya
+		}
+		x = -4
+		y = 4
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_ideas = SOV_Adopt_New_Russificaion_Policies_idea
+		}
+	}
+	shared_focus = {
+		id = SOV_Portray_a_Global_Soviet_Image
+		icon = GFX_SOV_Portray_A_Global_Soviet_Image
+		cost = 10.00
+		prerequisite = {
+			focus = SOV_Reverse_Korenizatsiya
+		}
+		x = 0
+		y = 4
+		relative_position_id = SOV_The_Third_Five_Year_Plan
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = 0.05
+			#Enable New Foreign policy decisions
+		}
+	}
+# }

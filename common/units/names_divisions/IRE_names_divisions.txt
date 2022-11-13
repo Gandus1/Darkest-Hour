@@ -1,0 +1,875 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+IRE_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_MOT_01 IRE_MEC_01 IRE_MTN_01 }
+
+	fallback_name = "%d Irish Infantry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Irish Infantry Division" }
+		2 = { "%dnd (Spearhead) Irish Infantry Division" }
+		3 = { "%drd Irish Infantry Division" }
+		4 = { "%dth Irish Infantry Division" }
+		5 = { "%dth Irish Infantry Division" }
+		6 = { "%dth Irish Infantry Division" }
+		7 = { "%dth Irish Infantry Division" }
+		8 = { "%dth Irish Infantry Division" }
+		9 = { "%dth Irish Infantry Division" }
+		10 = { "%dth Irish Infantry Division" }
+		11 = { "%dth Irish Infantry Division" }
+		12 = { "%dth Irish Infantry Division" }
+		13 = { "%dth Irish Infantry Division" }
+		14 = { "%dth Irish Infantry Division" }
+		15 = { "%dth Irish Infantry Division" }
+		16 = { "%dth Irish Infantry Division" }
+		17 = { "%dth Irish Infantry Division" }
+		18 = { "%dth Irish Infantry Division" }
+		19 = { "%dth Irish Infantry Division" }
+		20 = { "%dth Irish Infantry Division" }		
+		21 = { "%dst Irish Infantry Division" }		
+		22 = { "%dnd Irish Infantry Division" }		
+	}
+}
+
+IRE_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { IRE_INF_01 }
+
+	fallback_name = "%d Irish Cavalry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Parnell) Irish Cavalry Division" }
+		2 = { "%dnd Irish Cavalry Division" }
+		3 = { "%drd Irish Cavalry Division" }
+		4 = { "%dth Irish Cavalry Division" }
+		5 = { "%dth Irish Cavalry Division" }
+		6 = { "%dth Irish Cavalry Division" }
+		7 = { "%dth Irish Cavalry Division" }
+		8 = { "%dth Irish Cavalry Division" }
+		9 = { "%dth Irish Cavalry Division" }
+		10 = { "%dth Irish Cavalry Division" }
+	}
+}
+
+IRE_MOT_01 = 
+{
+	name = "Motor Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_01 IRE_MEC_01 IRE_MTN_01 }
+
+	fallback_name = "%d Irish Motor Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Irish Motor Division" }
+		2 = { "%dnd (Spearhead) Irish Motor Division" }
+		3 = { "%drd Irish Motor Division" }
+		4 = { "%dth Irish Motor Division" }
+		5 = { "%dth Irish Motor Division" }
+		6 = { "%dth Irish Motor Division" }
+		7 = { "%dth Irish Motor Division" }
+		8 = { "%dth Irish Motor Division" }
+		9 = { "%dth Irish Motor Division" }
+		10 = { "%dth Irish Motor Division" }
+		11 = { "%dth Irish Motor Division" }
+		12 = { "%dth Irish Motor Division" }
+		13 = { "%dth Irish Motor Division" }
+		14 = { "%dth Irish Motor Division" }
+		15 = { "%dth Irish Motor Division" }
+		16 = { "%dth Irish Motor Division" }
+		17 = { "%dth Irish Motor Division" }
+		18 = { "%dth Irish Motor Division" }
+		19 = { "%dth Irish Motor Division" }
+		20 = { "%dth Irish Motor Division" }		
+		21 = { "%dst Irish Motor Division" }		
+		22 = { "%dnd Irish Motor Division" }		
+	}
+}
+
+IRE_MEC_01 = 
+{
+	name = "Mechanised Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_01 IRE_MOT_01 IRE_MTN_01 }
+
+	fallback_name = "%d Irish Mechanised Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Irish Mechanised Division" }
+		2 = { "%dnd (Spearhead) Irish Mechanised Division" }
+		3 = { "%drd Irish Mechanised Division" }
+		4 = { "%dth Irish Mechanised Division" }
+		5 = { "%dth Irish Mechanised Division" }
+		6 = { "%dth Irish Mechanised Division" }
+		7 = { "%dth Irish Mechanised Division" }
+		8 = { "%dth Irish Mechanised Division" }
+		9 = { "%dth Irish Mechanised Division" }
+		10 = { "%dth Irish Mechanised Division" }
+		11 = { "%dth Irish Mechanised Division" }
+		12 = { "%dth Irish Mechanised Division" }
+		13 = { "%dth Irish Mechanised Division" }
+		14 = { "%dth Irish Mechanised Division" }
+		15 = { "%dth Irish Mechanised Division" }
+		16 = { "%dth Irish Mechanised Division" }
+		17 = { "%dth Irish Mechanised Division" }
+		18 = { "%dth Irish Mechanised Division" }
+		19 = { "%dth Irish Mechanised Division" }
+		20 = { "%dth Irish Mechanised Division" }		
+		21 = { "%dst Irish Mechanised Division" }		
+		22 = { "%dnd Irish Mechanised Division" }		
+	}
+}
+
+IRE_ARM_01 = 
+{
+	name = "Armoured Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { IRE_INF_01 }
+
+	fallback_name = "%d Irish Armoured Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Irish Armoured Division" }
+		2 = { "%dnd Irish Armoured Division" }
+		3 = { "%drd Irish Armoured Division" }
+		4 = { "%dth Irish Armoured Division" }
+		5 = { "%dth Irish Armoured Division" }
+		6 = { "%dth Irish Armoured Division" }
+		7 = { "%dth Irish Armoured Division" }
+		8 = { "%dth Irish Armoured Division" }
+		9 = { "%dth Irish Armoured Division" }
+		10 = { "%dth Irish Armoured Division" }
+	}
+}
+
+IRE_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { IRE_INF_01 }
+
+	fallback_name = "%d Irish Airborne Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Irish Airborne Division" }
+		2 = { "%dnd Irish Airborne Division" }
+		3 = { "%drd Irish Airborne Division" }
+		4 = { "%dth Irish Airborne Division" }
+		5 = { "%dth Irish Airborne Division" }
+		6 = { "%dth Irish Airborne Division" }
+		7 = { "%dth Irish Airborne Division" }
+		8 = { "%dth Irish Airborne Division" }
+		9 = { "%dth Irish Airborne Division" }
+		10 = { "%dth Irish Airborne Division" }
+	}
+}
+
+IRE_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { IRE_INF_01 }
+
+	fallback_name = "%d Irish Marines Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Irish Marines Division" }
+		2 = { "%dnd Irish Marines Division" }
+		3 = { "%drd Irish Marines Division" }
+		4 = { "%dth Irish Marines Division" }
+		5 = { "%dth Irish Marines Division" }
+		6 = { "%dth Irish Marines Division" }
+		7 = { "%dth Irish Marines Division" }
+		8 = { "%dth Irish Marines Division" }
+		9 = { "%dth Irish Marines Division" }
+		10 = { "%dth Irish Marines Division" }
+	}
+}
+
+IRE_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { is_subject_of = ENG }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_01 IRE_MOT_01 IRE_MEC_01 }
+
+	fallback_name = "%d Irish Mountain Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Irish Mountain Division" }
+		2 = { "%dnd (Spearhead) Irish Mountain Division" }
+		3 = { "%drd Irish Mountain Division" }
+		4 = { "%dth Irish Mountain Division" }
+		5 = { "%dth Irish Mountain Division" }
+		6 = { "%dth Irish Mountain Division" }
+		7 = { "%dth Irish Mountain Division" }
+		8 = { "%dth Irish Mountain Division" }
+		9 = { "%dth Irish Mountain Division" }
+		10 = { "%dth Irish Mountain Division" }
+		11 = { "%dth Irish Mountain Division" }
+		12 = { "%dth Irish Mountain Division" }
+		13 = { "%dth Irish Mountain Division" }
+		14 = { "%dth Irish Mountain Division" }
+		15 = { "%dth Irish Mountain Division" }
+		16 = { "%dth Irish Mountain Division" }
+		17 = { "%dth Irish Mountain Division" }
+		18 = { "%dth Irish Mountain Division" }
+		19 = { "%dth Irish Mountain Division" }
+		20 = { "%dth Irish Mountain Division" }		
+		21 = { "%dst Irish Mountain Division" }		
+		22 = { "%dnd Irish Mountain Division" }		
+	}
+}
+
+IRE_INF_02 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_MEC_02 IRE_MTN_02 IRE_INF_03 IRE_MEC_03 IRE_MTN_03 }
+
+	fallback_name = "%d Infantry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Infantry Division" }
+		2 = { "%dnd (Spearhead) Infantry Division" }
+		3 = { "%drd Infantry Division" }
+		4 = { "%dth Infantry Division" }
+		5 = { "%dth Infantry Division" }
+		6 = { "%dth Infantry Division" }
+		7 = { "%dth Infantry Division" }
+		8 = { "%dth Infantry Division" }
+		9 = { "%dth Infantry Division" }
+		10 = { "%dth Infantry Division" }
+		11 = { "%dth Infantry Division" }
+		12 = { "%dth Infantry Division" }
+		13 = { "%dth Infantry Division" }
+		14 = { "%dth Infantry Division" }
+		15 = { "%dth Infantry Division" }
+		16 = { "%dth Infantry Division" }
+		17 = { "%dth Infantry Division" }
+		18 = { "%dth Infantry Division" }
+		19 = { "%dth Infantry Division" }
+		20 = { "%dth Infantry Division" }		
+		21 = { "%dst Infantry Division" }		
+		22 = { "%dnd Infantry Division" }		
+	}
+}
+
+IRE_CAV_02 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "cavalry" "armored_car_battalion" "motorized" } # Ireland decided in 1934 that both horsed units and wheeled units would be considered cavalry and that continues today.
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_CAV_03 }
+
+	fallback_name = "%d Cavalry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Parnell) Cavalry Division" }
+		2 = { "%dnd Cavalry Division" }
+		3 = { "%drd Cavalry Division" }
+		4 = { "%dth Cavalry Division" }
+		5 = { "%dth Cavalry Division" }
+		6 = { "%dth Cavalry Division" }
+		7 = { "%dth Cavalry Division" }
+		8 = { "%dth Cavalry Division" }
+		9 = { "%dth Cavalry Division" }
+		10 = { "%dth Cavalry Division" }
+		11 = { "%dth Cavalry Division" }
+		12 = { "%dth Cavalry Division" }
+		13 = { "%dth Cavalry Division" }
+		14 = { "%dth Cavalry Division" }
+		15 = { "%dth Cavalry Division" }
+		16 = { "%dth Cavalry Division" }
+		17 = { "%dth Cavalry Division" }
+		18 = { "%dth Cavalry Division" }
+		19 = { "%dth Cavalry Division" }
+		20 = { "%dth Cavalry Division" }
+	}
+}
+
+IRE_MEC_02 = 
+{
+	name = "Armoured Cavalry Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "mechanized" "heavy_mechanized" } # The Irish Cavalry Corps makes a distinction between Cavalry Squadrons and Armoured Cavalry squadrons
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_02 IRE_MTN_02 IRE_INF_03 IRE_MEC_03 IRE_MTN_03 }
+
+	fallback_name = "%d Armoured Cavalry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Armoured Cavalry Division" }
+		2 = { "%dnd (Spearhead) Armoured Cavalry Division" }
+		3 = { "%drd Armoured Cavalry Division" }
+		4 = { "%dth Armoured Cavalry Division" }
+		5 = { "%dth Armoured Cavalry Division" }
+		6 = { "%dth Armoured Cavalry Division" }
+		7 = { "%dth Armoured Cavalry Division" }
+		8 = { "%dth Armoured Cavalry Division" }
+		9 = { "%dth Armoured Cavalry Division" }
+		10 = { "%dth Armoured Cavalry Division" }
+		11 = { "%dth Armoured Cavalry Division" }
+		12 = { "%dth Armoured Cavalry Division" }
+		13 = { "%dth Armoured Cavalry Division" }
+		14 = { "%dth Armoured Cavalry Division" }
+		15 = { "%dth Armoured Cavalry Division" }
+		16 = { "%dth Armoured Cavalry Division" }
+		17 = { "%dth Armoured Cavalry Division" }
+		18 = { "%dth Armoured Cavalry Division" }
+		19 = { "%dth Armoured Cavalry Division" }
+		20 = { "%dth Armoured Cavalry Division" }		
+		21 = { "%dst Armoured Cavalry Division" }		
+		22 = { "%dnd Armoured Cavalry Division" }		
+	}
+}
+
+IRE_ARM_02 = 
+{
+	name = "Armoured Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_ARM_03 }
+
+	fallback_name = "%d Armoured Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Armoured Division" }
+		2 = { "%dnd Armoured Division" }
+		3 = { "%drd Armoured Division" }
+		4 = { "%dth Armoured Division" }
+		5 = { "%dth Armoured Division" }
+		6 = { "%dth Armoured Division" }
+		7 = { "%dth Armoured Division" }
+		8 = { "%dth Armoured Division" }
+		9 = { "%dth Armoured Division" }
+		10 = { "%dth Armoured Division" }
+	}
+}
+
+IRE_PAR_02 = 
+{
+	name = "Paratrooper Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_PAR_03 }
+
+	fallback_name = "%d Airborne Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Airborne Division" }
+		2 = { "%dnd Airborne Division" }
+		3 = { "%drd Airborne Division" }
+		4 = { "%dth Airborne Division" }
+		5 = { "%dth Airborne Division" }
+		6 = { "%dth Airborne Division" }
+		7 = { "%dth Airborne Division" }
+		8 = { "%dth Airborne Division" }
+		9 = { "%dth Airborne Division" }
+		10 = { "%dth Airborne Division" }
+	}
+}
+
+IRE_MAR_02 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_MAR_03 }
+
+	fallback_name = "%d Marines Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Marines Division" }
+		2 = { "%dnd Marines Division" }
+		3 = { "%drd Marines Division" }
+		4 = { "%dth Marines Division" }
+		5 = { "%dth Marines Division" }
+		6 = { "%dth Marines Division" }
+		7 = { "%dth Marines Division" }
+		8 = { "%dth Marines Division" }
+		9 = { "%dth Marines Division" }
+		10 = { "%dth Marines Division" }
+	}
+}
+
+IRE_MTN_02 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_02 IRE_MEC_02 IRE_INF_03 IRE_MEC_03 IRE_MTN_03 }
+
+	fallback_name = "%d Mountain Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Thunderbolt) Mountain Division" }
+		2 = { "%dnd (Spearhead) Mountain Division" }
+		3 = { "%drd Mountain Division" }
+		4 = { "%dth Mountain Division" }
+		5 = { "%dth Mountain Division" }
+		6 = { "%dth Mountain Division" }
+		7 = { "%dth Mountain Division" }
+		8 = { "%dth Mountain Division" }
+		9 = { "%dth Mountain Division" }
+		10 = { "%dth Mountain Division" }
+		11 = { "%dth Mountain Division" }
+		12 = { "%dth Mountain Division" }
+		13 = { "%dth Mountain Division" }
+		14 = { "%dth Mountain Division" }
+		15 = { "%dth Mountain Division" }
+		16 = { "%dth Mountain Division" }
+		17 = { "%dth Mountain Division" }
+		18 = { "%dth Mountain Division" }
+		19 = { "%dth Mountain Division" }
+		20 = { "%dth Mountain Division" }		
+		21 = { "%dst Mountain Division" }		
+		22 = { "%dnd Mountain Division" }		
+	}
+}
+
+IRE_INF_03 = 
+{
+	name = "Infantry Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_02 IRE_MEC_02 IRE_MTN_02 IRE_MEC_03 IRE_MTN_03 }
+
+	fallback_name = "%dú Rannán Coisithe"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Coisithe \"Toirneach\"" }
+		2 = { "%dú Rannán Coisithe \"Sleárinn\"" }
+		3 = { "%dú Rannán Coisithe" }
+		4 = { "%dú Rannán Coisithe" }
+		5 = { "%dú Rannán Coisithe" }
+		6 = { "%dú Rannán Coisithe" }
+		7 = { "%dú Rannán Coisithe" }
+		8 = { "%dú Rannán Coisithe" }
+		9 = { "%dú Rannán Coisithe" }
+		10 = { "%dú Rannán Coisithe" }
+		11 = { "%dú Rannán Coisithe" }
+		12 = { "%dú Rannán Coisithe" }
+		13 = { "%dú Rannán Coisithe" }
+		14 = { "%dú Rannán Coisithe" }
+		15 = { "%dú Rannán Coisithe" }
+		16 = { "%dú Rannán Coisithe" }
+		17 = { "%dú Rannán Coisithe" }
+		18 = { "%dú Rannán Coisithe" }
+		19 = { "%dú Rannán Coisithe" }
+		20 = { "%dú Rannán Coisithe" }		
+		21 = { "%dú Rannán Coisithe" }		
+		22 = { "%dú Rannán Coisithe" }		
+	}
+}
+
+IRE_CAV_03 = 
+{
+	name = "Cavalry Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "cavalry" "armored_car_battalion" "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_CAV_02 }
+
+	fallback_name = "%dú Rannán Marcra"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Marcra \"Parnell\"" }
+		2 = { "%dú Rannán Marcra" }
+		3 = { "%dú Rannán Marcra" }
+		4 = { "%dú Rannán Marcra" }
+		5 = { "%dú Rannán Marcra" }
+		6 = { "%dú Rannán Marcra" }
+		7 = { "%dú Rannán Marcra" }
+		8 = { "%dú Rannán Marcra" }
+		9 = { "%dú Rannán Marcra" }
+		10 = { "%dú Rannán Marcra" }
+		11 = { "%dú Rannán Marcra" }
+		12 = { "%dú Rannán Marcra" }
+		13 = { "%dú Rannán Marcra" }
+		14 = { "%dú Rannán Marcra" }
+		15 = { "%dú Rannán Marcra" }
+		16 = { "%dú Rannán Marcra" }
+		17 = { "%dú Rannán Marcra" }
+		18 = { "%dú Rannán Marcra" }
+		19 = { "%dú Rannán Marcra" }
+		20 = { "%dú Rannán Marcra" }
+	}
+}
+
+IRE_MEC_03 = 
+{
+	name = "Armoured Cavalry Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_02 IRE_MEC_02 IRE_MTN_02 IRE_INF_03 IRE_MTN_03 }
+
+	fallback_name = "%dú Rannán Marcra Armúrtha"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Marcra Armúrtha \"Toirneach\"" }
+		2 = { "%dú Rannán Marcra Armúrtha \"Sleárinn\"" }
+		3 = { "%dú Rannán Marcra Armúrtha" }
+		4 = { "%dú Rannán Marcra Armúrtha" }
+		5 = { "%dú Rannán Marcra Armúrtha" }
+		6 = { "%dú Rannán Marcra Armúrtha" }
+		7 = { "%dú Rannán Marcra Armúrtha" }
+		8 = { "%dú Rannán Marcra Armúrtha" }
+		9 = { "%dú Rannán Marcra Armúrtha" }
+		10 = { "%dú Rannán Marcra Armúrtha" }
+		11 = { "%dú Rannán Marcra Armúrtha" }
+		12 = { "%dú Rannán Marcra Armúrtha" }
+		13 = { "%dú Rannán Marcra Armúrtha" }
+		14 = { "%dú Rannán Marcra Armúrtha" }
+		15 = { "%dú Rannán Marcra Armúrtha" }
+		16 = { "%dú Rannán Marcra Armúrtha" }
+		17 = { "%dú Rannán Marcra Armúrtha" }
+		18 = { "%dú Rannán Marcra Armúrtha" }
+		19 = { "%dú Rannán Marcra Armúrtha" }
+		20 = { "%dú Rannán Marcra Armúrtha" }		
+		21 = { "%dú Rannán Marcra Armúrtha" }		
+		22 = { "%dú Rannán Marcra Armúrtha" }		
+	}
+}
+
+IRE_ARM_03 = 
+{
+	name = "Armoured Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_ARM_02 }
+
+	fallback_name = "%dú Rannán Armúrtha"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Armúrtha" }
+		2 = { "%dú Rannán Armúrtha" }
+		3 = { "%dú Rannán Armúrtha" }
+		4 = { "%dú Rannán Armúrtha" }
+		5 = { "%dú Rannán Armúrtha" }
+		6 = { "%dú Rannán Armúrtha" }
+		7 = { "%dú Rannán Armúrtha" }
+		8 = { "%dú Rannán Armúrtha" }
+		9 = { "%dú Rannán Armúrtha" }
+		10 = { "%dú Rannán Armúrtha" }
+	}
+}
+
+IRE_PAR_03 = 
+{
+	name = "Paratrooper Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_PAR_02 }
+
+	fallback_name = "%dú Rannán Aerbheirthe"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Aerbheirthe" }
+		2 = { "%dú Rannán Aerbheirthe" }
+		3 = { "%dú Rannán Aerbheirthe" }
+		4 = { "%dú Rannán Aerbheirthe" }
+		5 = { "%dú Rannán Aerbheirthe" }
+		6 = { "%dú Rannán Aerbheirthe" }
+		7 = { "%dú Rannán Aerbheirthe" }
+		8 = { "%dú Rannán Aerbheirthe" }
+		9 = { "%dú Rannán Aerbheirthe" }
+		10 = { "%dú Rannán Aerbheirthe" }
+	}
+}
+
+IRE_MAR_03 = 
+{
+	name = "Marine Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_MAR_02 }
+
+	fallback_name = "%dú Rannán Muiríne"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Muiríne" }
+		2 = { "%dú Rannán Muiríne" }
+		3 = { "%dú Rannán Muiríne" }
+		4 = { "%dú Rannán Muiríne" }
+		5 = { "%dú Rannán Muiríne" }
+		6 = { "%dú Rannán Muiríne" }
+		7 = { "%dú Rannán Muiríne" }
+		8 = { "%dú Rannán Muiríne" }
+		9 = { "%dú Rannán Muiríne" }
+		10 = { "%dú Rannán Muiríne" }
+	}
+}
+
+IRE_MTN_03 = 
+{
+	name = "Mountain Divisions (Irish)"
+
+	for_countries = { IRE }
+
+	can_use = { NOT = { is_subject_of = ENG } }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { IRE_INF_02 IRE_MEC_02 IRE_MTN_02 IRE_INF_03 IRE_MEC_03 }
+
+	fallback_name = "%dú Rannán Sléibhe"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dú Rannán Sléibhe \"Toirneach\"" }
+		2 = { "%dú Rannán Sléibhe \"Sleárinn\"" }
+		3 = { "%dú Rannán Sléibhe" }
+		4 = { "%dú Rannán Sléibhe" }
+		5 = { "%dú Rannán Sléibhe" }
+		6 = { "%dú Rannán Sléibhe" }
+		7 = { "%dú Rannán Sléibhe" }
+		8 = { "%dú Rannán Sléibhe" }
+		9 = { "%dú Rannán Sléibhe" }
+		10 = { "%dú Rannán Sléibhe" }
+		11 = { "%dú Rannán Sléibhe" }
+		12 = { "%dú Rannán Sléibhe" }
+		13 = { "%dú Rannán Sléibhe" }
+		14 = { "%dú Rannán Sléibhe" }
+		15 = { "%dú Rannán Sléibhe" }
+		16 = { "%dú Rannán Sléibhe" }
+		17 = { "%dú Rannán Sléibhe" }
+		18 = { "%dú Rannán Sléibhe" }
+		19 = { "%dú Rannán Sléibhe" }
+		20 = { "%dú Rannán Sléibhe" }		
+		21 = { "%dú Rannán Sléibhe" }		
+		22 = { "%dú Rannán Sléibhe" }		
+	}
+}

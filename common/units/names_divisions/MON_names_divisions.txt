@@ -1,0 +1,322 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+MON_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { MON_MOT_01 MON_MEC_01 MON_MTN_01 MON_PAR_01 }
+
+	fallback_name = "%d-r Yavgan Tsergiin Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Yavgan Tsergiin Diviz" }
+		2 = { "%d-r Yavgan Tsergiin Diviz" }
+		3 = { "%d-r Yavgan Tsergiin Diviz" }
+		4 = { "%d-r Yavgan Tsergiin Diviz" }
+		5 = { "%d-r Yavgan Tsergiin Diviz" }
+		6 = { "%d-r Yavgan Tsergiin Diviz" }
+		7 = { "%d-r Yavgan Tsergiin Diviz" }
+		8 = { "%d-r Yavgan Tsergiin Diviz" }
+		9 = { "%d-r Yavgan Tsergiin Diviz" }
+		10 = { "%d-r Yavgan Tsergiin Diviz" }
+	}
+}
+
+MON_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { MON }
+
+	can_use = { has_start_date < 1940.12.31 }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { MON_INF_01 }
+
+	fallback_name = "%d-p Morit Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Morit Diviz" }
+		2 = { "%d-r Morit Diviz" }
+		3 = { "%d-r Morit Diviz" }
+		4 = { "%d-r Morit Diviz" }
+		5 = { "%d-r Morit Diviz" }
+		6 = { "%d-r Morit Diviz" }
+		7 = { "%d-r Morit Diviz" }
+		8 = { "%d-r Morit Diviz" }
+		9 = { "%d-r Morit Diviz" }
+		10 = { "%d-r Morit Diviz" }
+	}
+}
+
+MON_CAV_40 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { MON }
+
+	can_use = { has_start_date > 1940.12.31 }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { MON_INF_01 }
+
+	fallback_name = "%d-p Morit Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Morit Diviz" }
+		2 = { "%d-r Morit Diviz" }
+		3 = { "%d-r Morit Diviz" }
+		4 = { "%d-r Morit Diviz" }
+		5 = { "%d-r Morit Diviz" }
+		6 = { "%d-r Morit Ulaan Tugiin Diviz" }
+		7 = { "%d-r Morit Diviz" }
+		8 = { "%d-r Morit Ulaan Tugiin Diviz" }
+		9 = { "%d-r Morit Diviz" }
+		10 = { "%d-r Morit Diviz" }
+	}
+}
+# I'm not 100% sure that the Mongolians added the Red Banner name to the division title but this is definitely how it would be written.  These two divisions received the award for their performance at Khalkin Gol.
+MON_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { MON_INF_01 MON_MEC_01 MON_MTN_01 MON_PAR_01 }
+
+	fallback_name = "%d-r Motobuudlagyn Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Motobuudlagyn Diviz" }
+		2 = { "%d-r Motobuudlagyn Diviz" }
+		3 = { "%d-r Motobuudlagyn Diviz" }
+		4 = { "%d-r Motobuudlagyn Diviz" }
+		5 = { "%d-r Motobuudlagyn Diviz" }
+		6 = { "%d-r Motobuudlagyn Diviz" }
+		7 = { "%d-r Motobuudlagyn Diviz" }
+		8 = { "%d-r Motobuudlagyn Diviz" }
+		9 = { "%d-r Motobuudlagyn Diviz" }
+		10 = { "%d-r Motobuudlagyn Diviz" }
+	}
+}
+
+MON_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { MON_INF_01 }
+
+	fallback_name = "%d-p Tankiin Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Tankiin Diviz" }
+		2 = { "%d-r Tankiin Diviz" }
+		3 = { "%d-r Tankiin Diviz" }
+		4 = { "%d-r Tankiin Diviz" }
+		5 = { "%d-r Tankiin Diviz" }
+		6 = { "%d-r Tankiin Diviz" }
+		7 = { "%d-r Tankiin Diviz" }
+		8 = { "%d-r Tankiin Diviz" }
+		9 = { "%d-r Tankiin Diviz" }
+		10 = { "%d-r Tankiin Diviz" }
+
+	}
+}
+
+MON_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { MON_INF_01 MON_MOT_01 MON_MTN_01 MON_PAR_01 }
+
+	fallback_name = "%d-r Myekhanikjuulsan Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Myekhanikjuulsan Diviz" }
+		2 = { "%d-r Myekhanikjuulsan Diviz" }
+		3 = { "%d-r Myekhanikjuulsan Diviz" }
+		4 = { "%d-r Myekhanikjuulsan Diviz" }
+		5 = { "%d-r Myekhanikjuulsan Diviz" }
+		6 = { "%d-r Myekhanikjuulsan Diviz" }
+		7 = { "%d-r Myekhanikjuulsan Diviz" }
+		8 = { "%d-r Myekhanikjuulsan Diviz" }
+		9 = { "%d-r Myekhanikjuulsan Diviz" }
+		10 = { "%d-r Myekhanikjuulsan Diviz" }
+	}
+}
+
+MON_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { MON_INF_01 }
+
+	fallback_name = "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		2 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		3 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		4 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		5 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		6 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		7 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		8 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		9 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+		10 = { "%d-r Tengisiin Tsergiin Yavgan Tsereg Diviz" }
+
+	}
+}
+
+MON_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { MON_INF_01 MON_MOT_01 MON_MEC_01 MON_PAR_01 }
+
+	fallback_name = "%d-r Uulyn Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Uulyn Diviz" }
+		2 = { "%d-r Uulyn Diviz" }
+		3 = { "%d-r Uulyn Diviz" }
+		4 = { "%d-r Uulyn Diviz" }
+		5 = { "%d-r Uulyn Diviz" }
+		6 = { "%d-r Uulyn Diviz" }
+		7 = { "%d-r Uulyn Diviz" }
+		8 = { "%d-r Uulyn Diviz" }
+		9 = { "%d-r Uulyn Diviz" }
+		10 = { "%d-r Uulyn Diviz" }
+	}
+}
+
+MON_PAR_01 = 
+{
+	name = "Airborne Divisions"
+
+	for_countries = { MON }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { MON_INF_01 MON_MOT_01 MON_MEC_01 MON_MTN_01 }
+
+	fallback_name = "%d-r Agaaryn Dyesantyn Diviz"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		2 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		3 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		4 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		5 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		6 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		7 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		8 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		9 = { "%d-r Agaaryn Dyesantyn Diviz" }
+		10 = { "%d-r Agaaryn Dyesantyn Diviz" }
+	}
+}

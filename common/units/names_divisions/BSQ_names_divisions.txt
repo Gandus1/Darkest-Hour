@@ -1,0 +1,704 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+BSQ_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INFB_01 BSQ_MOT_01 BSQ_MEC_01 BSQ_MOTB_01 BSQ_MECB_01 BSQ_MTN_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Infanteria Dibisioa"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Infanteria Dibisioa" }
+		2 = { "%d. Infanteria Dibisioa" }
+		3 = { "%d. Infanteria Dibisioa" }
+		4 = { "%d. Infanteria Dibisioa" }
+		5 = { "%d. Infanteria Dibisioa" }
+		6 = { "%d. Infanteria Dibisioa" }
+		7 = { "%d. Infanteria Dibisioa" }
+		8 = { "%d. Infanteria Dibisioa" }
+		9 = { "%d. Infanteria Dibisioa" }
+		10 = { "%d. Infanteria Dibisioa" }
+		11 = { "%d. Infanteria Dibisioa" }
+		12 = { "%d. Infanteria Dibisioa" }
+		13 = { "%d. Infanteria Dibisioa" }
+		14 = { "%d. Infanteria Dibisioa" }
+		15 = { "%d. Infanteria Dibisioa" }
+		16 = { "%d. Infanteria Dibisioa" }
+		17 = { "%d. Infanteria Dibisioa" }
+		18 = { "%d. Infanteria Dibisioa" }
+		19 = { "%d. Infanteria Dibisioa" }
+		20 = { "%d. Infanteria Dibisioa" }		
+	}
+}
+
+BSQ_INFB_01 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "light_infantry" "shock_infantry" "bicycle_battalion" "garrison" "militia" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_MOT_01 BSQ_MEC_01 BSQ_MOTB_01 BSQ_MECB_01 BSQ_MTN_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Infanteria Brigada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Infanteria Brigada" }
+		2 = { "%d. Infanteria Brigada" }
+		3 = { "%d. Infanteria Brigada" }
+		4 = { "%d. Infanteria Brigada" }
+		5 = { "%d. Infanteria Brigada" }
+		6 = { "%d. Infanteria Brigada" }
+		7 = { "%d. Infanteria Brigada" }
+		8 = { "%d. Infanteria Brigada" }
+		9 = { "%d. Infanteria Brigada" }
+		10 = { "%d. Infanteria Brigada" }
+		11 = { "%d. Infanteria Brigada" }
+		12 = { "%d. Infanteria Brigada" }
+		13 = { "%d. Infanteria Brigada" }
+		14 = { "%d. Infanteria Brigada" }
+		15 = { "%d. Infanteria Brigada" }
+		16 = { "%d. Infanteria Brigada" }
+		17 = { "%d. Infanteria Brigada" }
+		18 = { "%d. Infanteria Brigada" }
+		19 = { "%d. Infanteria Brigada" }
+		20 = { "%d. Infanteria Brigada" }		
+	}
+}
+
+BSQ_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_CAVB_01 }
+
+	fallback_name = "%d. Zalditeria Dibisioa"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Zalditeria Dibisioa" }
+		2 = { "%d. Zalditeria Dibisioa" }
+		3 = { "%d. Zalditeria Dibisioa" }
+		4 = { "%d. Zalditeria Dibisioa" }
+		5 = { "%d. Zalditeria Dibisioa" }
+		6 = { "%d. Zalditeria Dibisioa" }
+		7 = { "%d. Zalditeria Dibisioa" }
+		8 = { "%d. Zalditeria Dibisioa" }
+		9 = { "%d. Zalditeria Dibisioa" }
+		10 = { "%d. Zalditeria Dibisioa" }
+		11 = { "%d. Zalditeria Dibisioa" }
+		12 = { "%d. Zalditeria Dibisioa" }
+		13 = { "%d. Zalditeria Dibisioa" }
+		14 = { "%d. Zalditeria Dibisioa" }
+		15 = { "%d. Zalditeria Dibisioa" }
+		16 = { "%d. Zalditeria Dibisioa" }
+		17 = { "%d. Zalditeria Dibisioa" }
+		18 = { "%d. Zalditeria Dibisioa" }
+		19 = { "%d. Zalditeria Dibisioa" }
+		20 = { "%d. Zalditeria Dibisioa" }
+	}
+}
+
+BSQ_CAVB_01 = 
+{
+	name = "Cavalry Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" "armored_car_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_CAV_01 }
+
+	fallback_name = "%d. Zalditeria Brigada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Zalditeria Brigada" }
+		2 = { "%d. Zalditeria Brigada" }
+		3 = { "%d. Zalditeria Brigada" }
+		4 = { "%d. Zalditeria Brigada" }
+		5 = { "%d. Zalditeria Brigada" }
+		6 = { "%d. Zalditeria Brigada" }
+		7 = { "%d. Zalditeria Brigada" }
+		8 = { "%d. Zalditeria Brigada" }
+		9 = { "%d. Zalditeria Brigada" }
+		10 = { "%d. Zalditeria Brigada" }
+		11 = { "%d. Zalditeria Brigada" }
+		12 = { "%d. Zalditeria Brigada" }
+		13 = { "%d. Zalditeria Brigada" }
+		14 = { "%d. Zalditeria Brigada" }
+		15 = { "%d. Zalditeria Brigada" }
+		16 = { "%d. Zalditeria Brigada" }
+		17 = { "%d. Zalditeria Brigada" }
+		18 = { "%d. Zalditeria Brigada" }
+		19 = { "%d. Zalditeria Brigada" }
+		20 = { "%d. Zalditeria Brigada" }
+	}
+}
+
+BSQ_MOT_01 = 
+{
+	name = "Motorized Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_INFB_01 BSQ_MEC_01 BSQ_MOTB_01 BSQ_MECB_01 BSQ_MTN_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Dibisioa Motorizatua"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Dibisioa Motorizatua" }
+		2 = { "%d. Dibisioa Motorizatua" }
+		3 = { "%d. Dibisioa Motorizatua" }
+		4 = { "%d. Dibisioa Motorizatua" }
+		5 = { "%d. Dibisioa Motorizatua" }
+		6 = { "%d. Dibisioa Motorizatua" }
+		7 = { "%d. Dibisioa Motorizatua" }
+		8 = { "%d. Dibisioa Motorizatua" }
+		9 = { "%d. Dibisioa Motorizatua" }
+		10 = { "%d. Dibisioa Motorizatua" }
+		11 = { "%d. Dibisioa Motorizatua" }
+		12 = { "%d. Dibisioa Motorizatua" }
+		13 = { "%d. Dibisioa Motorizatua" }
+		14 = { "%d. Dibisioa Motorizatua" }
+		15 = { "%d. Dibisioa Motorizatua" }
+		16 = { "%d. Dibisioa Motorizatua" }
+		17 = { "%d. Dibisioa Motorizatua" }
+		18 = { "%d. Dibisioa Motorizatua" }
+		19 = { "%d. Dibisioa Motorizatua" }
+		20 = { "%d. Dibisioa Motorizatua" }
+	}
+}
+
+BSQ_MOTB_01 = 
+{
+	name = "Motorized Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_INFB_01 BSQ_MEC_01 BSQ_MOT_01 BSQ_MECB_01 BSQ_MTN_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Brigada Motorizatua"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Brigada Motorizatua" }
+		2 = { "%d. Brigada Motorizatua" }
+		3 = { "%d. Brigada Motorizatua" }
+		4 = { "%d. Brigada Motorizatua" }
+		5 = { "%d. Brigada Motorizatua" }
+		6 = { "%d. Brigada Motorizatua" }
+		7 = { "%d. Brigada Motorizatua" }
+		8 = { "%d. Brigada Motorizatua" }
+		9 = { "%d. Brigada Motorizatua" }
+		10 = { "%d. Brigada Motorizatua" }
+		11 = { "%d. Brigada Motorizatua" }
+		12 = { "%d. Brigada Motorizatua" }
+		13 = { "%d. Brigada Motorizatua" }
+		14 = { "%d. Brigada Motorizatua" }
+		15 = { "%d. Brigada Motorizatua" }
+		16 = { "%d. Brigada Motorizatua" }
+		17 = { "%d. Brigada Motorizatua" }
+		18 = { "%d. Brigada Motorizatua" }
+		19 = { "%d. Brigada Motorizatua" }
+		20 = { "%d. Brigada Motorizatua" }
+	}
+}
+
+BSQ_MEC_01 = 
+{
+	name = "Mechanized Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_INFB_01 BSQ_MOT_01 BSQ_MOTB_01 BSQ_MECB_01 BSQ_MTN_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Dibisioa Mekanizatua"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Dibisioa Mekanizatua" }
+		2 = { "%d. Dibisioa Mekanizatua" }
+		3 = { "%d. Dibisioa Mekanizatua" }
+		4 = { "%d. Dibisioa Mekanizatua" }
+		5 = { "%d. Dibisioa Mekanizatua" }
+		6 = { "%d. Dibisioa Mekanizatua" }
+		7 = { "%d. Dibisioa Mekanizatua" }
+		8 = { "%d. Dibisioa Mekanizatua" }
+		9 = { "%d. Dibisioa Mekanizatua" }
+		10 = { "%d. Dibisioa Mekanizatua" }
+		11 = { "%d. Dibisioa Mekanizatua" }
+		12 = { "%d. Dibisioa Mekanizatua" }
+		13 = { "%d. Dibisioa Mekanizatua" }
+		14 = { "%d. Dibisioa Mekanizatua" }
+		15 = { "%d. Dibisioa Mekanizatua" }
+		16 = { "%d. Dibisioa Mekanizatua" }
+		17 = { "%d. Dibisioa Mekanizatua" }
+		18 = { "%d. Dibisioa Mekanizatua" }
+		19 = { "%d. Dibisioa Mekanizatua" }
+		20 = { "%d. Dibisioa Mekanizatua" }
+	}
+}
+
+BSQ_MECB_01 = 
+{
+	name = "Mechanized Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "heavy_mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_INFB_01 BSQ_MOT_01 BSQ_MOTB_01 BSQ_MEC_01 BSQ_MTN_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Brigada Mekanizatua"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Brigada Mekanizatua" }
+		2 = { "%d. Brigada Mekanizatua" }
+		3 = { "%d. Brigada Mekanizatua" }
+		4 = { "%d. Brigada Mekanizatua" }
+		5 = { "%d. Brigada Mekanizatua" }
+		6 = { "%d. Brigada Mekanizatua" }
+		7 = { "%d. Brigada Mekanizatua" }
+		8 = { "%d. Brigada Mekanizatua" }
+		9 = { "%d. Brigada Mekanizatua" }
+		10 = { "%d. Brigada Mekanizatua" }
+		11 = { "%d. Brigada Mekanizatua" }
+		12 = { "%d. Brigada Mekanizatua" }
+		13 = { "%d. Brigada Mekanizatua" }
+		14 = { "%d. Brigada Mekanizatua" }
+		15 = { "%d. Brigada Mekanizatua" }
+		16 = { "%d. Brigada Mekanizatua" }
+		17 = { "%d. Brigada Mekanizatua" }
+		18 = { "%d. Brigada Mekanizatua" }
+		19 = { "%d. Brigada Mekanizatua" }
+		20 = { "%d. Brigada Mekanizatua" }
+	}
+}
+
+BSQ_ARM_01 = 
+{
+	name = "Armored Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_ARMB_01 }
+
+	fallback_name = "%d. Dibisioa Blindatua"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Dibisioa Blindatua" }
+		2 = { "%d. Dibisioa Blindatua" }
+		3 = { "%d. Dibisioa Blindatua" }
+		4 = { "%d. Dibisioa Blindatua" }
+		5 = { "%d. Dibisioa Blindatua" }
+		6 = { "%d. Dibisioa Blindatua" }
+		7 = { "%d. Dibisioa Blindatua" }
+		8 = { "%d. Dibisioa Blindatua" }
+		9 = { "%d. Dibisioa Blindatua" }
+		10 = { "%d. Dibisioa Blindatua" }
+		11 = { "%d. Dibisioa Blindatua" }
+		12 = { "%d. Dibisioa Blindatua" }
+		13 = { "%d. Dibisioa Blindatua" }
+		14 = { "%d. Dibisioa Blindatua" }
+		15 = { "%d. Dibisioa Blindatua" }
+		16 = { "%d. Dibisioa Blindatua" }
+		17 = { "%d. Dibisioa Blindatua" }
+		18 = { "%d. Dibisioa Blindatua" }
+		19 = { "%d. Dibisioa Blindatua" }
+		20 = { "%d. Dibisioa Blindatua" }
+	}
+}
+
+BSQ_ARMB_01 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_ARM_01 }
+
+	fallback_name = "%d. Brigada Blindatua"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Brigada Blindatua" }
+		2 = { "%d. Brigada Blindatua" }
+		3 = { "%d. Brigada Blindatua" }
+		4 = { "%d. Brigada Blindatua" }
+		5 = { "%d. Brigada Blindatua" }
+		6 = { "%d. Brigada Blindatua" }
+		7 = { "%d. Brigada Blindatua" }
+		8 = { "%d. Brigada Blindatua" }
+		9 = { "%d. Brigada Blindatua" }
+		10 = { "%d. Brigada Blindatua" }
+		11 = { "%d. Brigada Blindatua" }
+		12 = { "%d. Brigada Blindatua" }
+		13 = { "%d. Brigada Blindatua" }
+		14 = { "%d. Brigada Blindatua" }
+		15 = { "%d. Brigada Blindatua" }
+		16 = { "%d. Brigada Blindatua" }
+		17 = { "%d. Brigada Blindatua" }
+		18 = { "%d. Brigada Blindatua" }
+		19 = { "%d. Brigada Blindatua" }
+		20 = { "%d. Brigada Blindatua" }
+	}
+}
+
+BSQ_PAR_01 = 
+{
+	name = "Parachute Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_PARB_01 }
+
+	fallback_name = "%d. Paraxutisten Dibisioa"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Paraxutisten Dibisioa" }
+		2 = { "%d. Paraxutisten Dibisioa" }
+		3 = { "%d. Paraxutisten Dibisioa" }
+		4 = { "%d. Paraxutisten Dibisioa" }
+		5 = { "%d. Paraxutisten Dibisioa" }
+		6 = { "%d. Paraxutisten Dibisioa" }
+		7 = { "%d. Paraxutisten Dibisioa" }
+		8 = { "%d. Paraxutisten Dibisioa" }
+		9 = { "%d. Paraxutisten Dibisioa" }
+		10 = { "%d. Paraxutisten Dibisioa" }
+		11 = { "%d. Paraxutisten Dibisioa" }
+		12 = { "%d. Paraxutisten Dibisioa" }
+		13 = { "%d. Paraxutisten Dibisioa" }
+		14 = { "%d. Paraxutisten Dibisioa" }
+		15 = { "%d. Paraxutisten Dibisioa" }
+		16 = { "%d. Paraxutisten Dibisioa" }
+		17 = { "%d. Paraxutisten Dibisioa" }
+		18 = { "%d. Paraxutisten Dibisioa" }
+		19 = { "%d. Paraxutisten Dibisioa" }
+		20 = { "%d. Paraxutisten Dibisioa" }
+	}
+}
+
+BSQ_PARB_01 = 
+{
+	name = "Parachute Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_PAR_01 }
+
+	fallback_name = "%d. Paraxutisten Brigada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Paraxutisten Brigada" }
+		2 = { "%d. Paraxutisten Brigada" }
+		3 = { "%d. Paraxutisten Brigada" }
+		4 = { "%d. Paraxutisten Brigada" }
+		5 = { "%d. Paraxutisten Brigada" }
+		6 = { "%d. Paraxutisten Brigada" }
+		7 = { "%d. Paraxutisten Brigada" }
+		8 = { "%d. Paraxutisten Brigada" }
+		9 = { "%d. Paraxutisten Brigada" }
+		10 = { "%d. Paraxutisten Brigada" }
+		11 = { "%d. Paraxutisten Brigada" }
+		12 = { "%d. Paraxutisten Brigada" }
+		13 = { "%d. Paraxutisten Brigada" }
+		14 = { "%d. Paraxutisten Brigada" }
+		15 = { "%d. Paraxutisten Brigada" }
+		16 = { "%d. Paraxutisten Brigada" }
+		17 = { "%d. Paraxutisten Brigada" }
+		18 = { "%d. Paraxutisten Brigada" }
+		19 = { "%d. Paraxutisten Brigada" }
+		20 = { "%d. Paraxutisten Brigada" }
+	}
+}
+
+BSQ_MAR_01 = 
+{
+	name = "Marine Infantry Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_MARB_01 }
+
+	fallback_name = "%d. Itsas Infanteria Dibisioa"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Itsas Infanteria Dibisioa" }
+		2 = { "%d. Itsas Infanteria Dibisioa" }
+		3 = { "%d. Itsas Infanteria Dibisioa" }
+		4 = { "%d. Itsas Infanteria Dibisioa" }
+		5 = { "%d. Itsas Infanteria Dibisioa" }
+		6 = { "%d. Itsas Infanteria Dibisioa" }
+		7 = { "%d. Itsas Infanteria Dibisioa" }
+		8 = { "%d. Itsas Infanteria Dibisioa" }
+		9 = { "%d. Itsas Infanteria Dibisioa" }
+		10 = { "%d. Itsas Infanteria Dibisioa" }
+		11 = { "%d. Itsas Infanteria Dibisioa" }
+		12 = { "%d. Itsas Infanteria Dibisioa" }
+		13 = { "%d. Itsas Infanteria Dibisioa" }
+		14 = { "%d. Itsas Infanteria Dibisioa" }
+		15 = { "%d. Itsas Infanteria Dibisioa" }
+		16 = { "%d. Itsas Infanteria Dibisioa" }
+		17 = { "%d. Itsas Infanteria Dibisioa" }
+		18 = { "%d. Itsas Infanteria Dibisioa" }
+		19 = { "%d. Itsas Infanteria Dibisioa" }
+		20 = { "%d. Itsas Infanteria Dibisioa" }
+	}
+}
+
+BSQ_MARB_01 = 
+{
+	name = "Marine Infantry Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_MAR_01 }
+
+	fallback_name = "%d. Itsas Infanteria Brigada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Itsas Infanteria Brigada" }
+		2 = { "%d. Itsas Infanteria Brigada" }
+		3 = { "%d. Itsas Infanteria Brigada" }
+		4 = { "%d. Itsas Infanteria Brigada" }
+		5 = { "%d. Itsas Infanteria Brigada" }
+		6 = { "%d. Itsas Infanteria Brigada" }
+		7 = { "%d. Itsas Infanteria Brigada" }
+		8 = { "%d. Itsas Infanteria Brigada" }
+		9 = { "%d. Itsas Infanteria Brigada" }
+		10 = { "%d. Itsas Infanteria Brigada" }
+		11 = { "%d. Itsas Infanteria Brigada" }
+		12 = { "%d. Itsas Infanteria Brigada" }
+		13 = { "%d. Itsas Infanteria Brigada" }
+		14 = { "%d. Itsas Infanteria Brigada" }
+		15 = { "%d. Itsas Infanteria Brigada" }
+		16 = { "%d. Itsas Infanteria Brigada" }
+		17 = { "%d. Itsas Infanteria Brigada" }
+		18 = { "%d. Itsas Infanteria Brigada" }
+		19 = { "%d. Itsas Infanteria Brigada" }
+		20 = { "%d. Itsas Infanteria Brigada" }
+	}
+}
+
+BSQ_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_INFB_01 BSQ_MOT_01 BSQ_MEC_01 BSQ_MOTB_01 BSQ_MECB_01 BSQ_MTNB_01 }
+
+	fallback_name = "%d. Mendi Dibisioa"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Mendi Dibisioa" }
+		2 = { "%d. Mendi Dibisioa" }
+		3 = { "%d. Mendi Dibisioa" }
+		4 = { "%d. Mendi Dibisioa" }
+		5 = { "%d. Mendi Dibisioa" }
+		6 = { "%d. Mendi Dibisioa" }
+		7 = { "%d. Mendi Dibisioa" }
+		8 = { "%d. Mendi Dibisioa" }
+		9 = { "%d. Mendi Dibisioa" }
+		10 = { "%d. Mendi Dibisioa" }
+		11 = { "%d. Mendi Dibisioa" }
+		12 = { "%d. Mendi Dibisioa" }
+		13 = { "%d. Mendi Dibisioa" }
+		14 = { "%d. Mendi Dibisioa" }
+		15 = { "%d. Mendi Dibisioa" }
+		16 = { "%d. Mendi Dibisioa" }
+		17 = { "%d. Mendi Dibisioa" }
+		18 = { "%d. Mendi Dibisioa" }
+		19 = { "%d. Mendi Dibisioa" }
+		20 = { "%d. Mendi Dibisioa" }
+	}
+}
+
+BSQ_MTNB_01 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { BSQ }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { BSQ_INF_01 BSQ_INFB_01 BSQ_MOT_01 BSQ_MEC_01 BSQ_MOTB_01 BSQ_MECB_01 BSQ_MTN_01 }
+
+	fallback_name = "%d. Mendi Brigada"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Mendi Brigada" }
+		2 = { "%d. Mendi Brigada" }
+		3 = { "%d. Mendi Brigada" }
+		4 = { "%d. Mendi Brigada" }
+		5 = { "%d. Mendi Brigada" }
+		6 = { "%d. Mendi Brigada" }
+		7 = { "%d. Mendi Brigada" }
+		8 = { "%d. Mendi Brigada" }
+		9 = { "%d. Mendi Brigada" }
+		10 = { "%d. Mendi Brigada" }
+		11 = { "%d. Mendi Brigada" }
+		12 = { "%d. Mendi Brigada" }
+		13 = { "%d. Mendi Brigada" }
+		14 = { "%d. Mendi Brigada" }
+		15 = { "%d. Mendi Brigada" }
+		16 = { "%d. Mendi Brigada" }
+		17 = { "%d. Mendi Brigada" }
+		18 = { "%d. Mendi Brigada" }
+		19 = { "%d. Mendi Brigada" }
+		20 = { "%d. Mendi Brigada" }
+	}
+}

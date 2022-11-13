@@ -1,0 +1,5605 @@
+###########################
+# Darkest Hour Events : Italy
+###########################
+add_namespace = Italy
+add_namespace = ITA_Ethiopian_War
+add_namespace = ITA_Colonial
+add_namespace = ITA_IG_Farben_Negotation
+add_namespace = ITA_Economic_Tree
+add_namespace = ITA_Political_Tree
+add_namespace = ITA_Rome_Protocols
+add_namespace = ITA_Stresa_Front
+add_namespace = ITA_Pact_with_Albion
+add_namespace = ITA_Cooperation_with_Gaul
+add_namespace = ITA_Align_with_Germany
+add_namespace = ITA_Flavour_Events
+add_namespace = ITA_Libyan_Concessions
+add_namespace = ITA_Conquest_Events
+add_namespace = ITA_Fall_of_Fascism
+###########################
+# Allies in Rome
+###########################
+news_event = {
+	id = ITA_Rome_Protocols.1
+	title = ITA_Rome_Protocols.1.t
+	desc = ITA_Rome_Protocols.1.d
+	picture = GFX_news_ITA_Rome_Protocols
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = ITA_Rome_Protocols.1.A
+		trigger = {
+			OR = {
+				original_tag = ITA
+				original_tag = AUS
+				original_tag = HUN
+			}
+		}
+	}
+	option = {
+		name = ITA_Rome_Protocols.1.B
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = ITA
+					original_tag = AUS
+					original_tag = HUN
+				}
+			}
+		}
+	}
+}
+###########################
+# Ethiopian war event's
+###########################
+news_event = { #mussolini become the minister of war
+	id = ITA_Ethiopian_War.50
+	title = ITA_Ethiopian_War.50.t
+	desc = ITA_Ethiopian_War.50.d
+	picture = GFX_news_ITA_Mussolini_Saluting
+	fire_only_once = yes
+	trigger = {
+		date > 1933.07.21
+		has_start_date < 1933.07.21
+		original_tag = ITA
+	}
+	option = {
+		name = ITA_Ethiopian_War.50.A
+	}
+}
+country_event = { #Fate of colonial expansion in abyssinia
+	id = ITA_Ethiopian_War.1
+	title = ITA_Ethiopian_War.1.t
+	desc = ITA_Ethiopian_War.1.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Mussolini_with_Generals
+	trigger = {
+		original_tag = ITA
+		date > 1934.06.01
+		has_start_date < 1934.06.01
+	}
+	option = {
+		name = ITA_Ethiopian_War.1.A
+		add_political_power = 35
+		add_war_support = -0.025
+	}
+	option = {
+		name = ITA_Ethiopian_War.1.B
+		add_war_support = 0.025
+		add_political_power = -25
+	}
+}
+news_event = { #NAP joint statement 
+	id = ITA_Ethiopian_War.2
+	title = ITA_Ethiopian_War.2.t
+	desc = ITA_Ethiopian_War.2.d
+	fire_only_once = yes
+	picture = GFX_news_ITA_Mussolini_and_Ethiopians
+	trigger = {
+		date > 1934.09.28
+		has_start_date < 1934.09.28
+		country_exists = ETH
+		OR = {
+			original_tag = ITA
+			original_tag = ETH
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.2.A
+		if = {
+			limit = {
+				tag = ITA
+			}
+			diplomatic_relation = {
+				country = ETH
+				relation = non_aggression_pact
+				active = yes
+			}
+		}
+		else = {
+			diplomatic_relation = {
+				country = ITA
+				relation = non_aggression_pact
+				active = yes
+			}
+		}
+	}
+}
+country_event = { #tensions over walwal
+	id = ITA_Ethiopian_War.3
+	title = ITA_Ethiopian_War.3.t
+	desc = ITA_Ethiopian_War.3.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Wal_Wal_Incident
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.3.A
+		ai_chance = {
+			factor = 100
+		}
+		ITA = {
+			news_event = {
+				id = ITA_Ethiopian_War.4
+			}
+		}
+		ETH = {
+			news_event = {
+				id = ITA_Ethiopian_War.5
+			}
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.3.B
+		ai_chance = {
+			factor = 0
+		}
+		add_war_support = 0.02
+		add_political_power = -150
+	}
+}
+news_event = { #italian version - Ethiopian troop foray at walwal
+	id = ITA_Ethiopian_War.4
+	title = ITA_Ethiopian_War.4.t
+	desc = ITA_Ethiopian_War.4.d
+	fire_only_once = yes
+	picture = GFX_news_ETH_Wal_Wal_Incident
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.4.A
+		ITA = {
+			country_event = {
+				id = ITA_Ethiopian_War.6
+				days = 7
+			}
+		}
+	}
+}
+news_event = { #ethiopian version - the reclamantion of walwal
+	id = ITA_Ethiopian_War.5
+	title = ITA_Ethiopian_War.5.t
+	desc = ITA_Ethiopian_War.5.d
+	fire_only_once = yes
+	picture = GFX_news_ETH_Wal_Wal_Incident
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.5.A
+		ETH = {
+			country_event = {
+				id = ITA_Ethiopian_War.7
+				days = 7
+			}
+		}
+	}
+}
+country_event = { #italian version - skrimish at walwal
+	id = ITA_Ethiopian_War.6
+	title = ITA_Ethiopian_War.6.t
+	desc = ITA_Ethiopian_War.6.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Wal_Wal_Incident
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.6.A
+		add_war_support = 0.05
+		news_event = {
+			id = ITA_Ethiopian_War.8
+			days = 2
+		}
+	}
+}
+country_event = { #Ethiopian version - skrimish at walwal
+	id = ITA_Ethiopian_War.7
+	title = ITA_Ethiopian_War.7.t
+	desc = ITA_Ethiopian_War.7.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Wal_Wal_Incident
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.7.A
+		add_war_support = 0.05
+		complete_national_focus = ETH_Wal_Wal_Incident
+	}
+}
+news_event = { #Selassie Denounces Italy's actions at League of Nations
+	id = ITA_Ethiopian_War.8
+	title = ITA_Ethiopian_War.8.t
+	desc = ITA_Ethiopian_War.8.d
+	picture = GFX_news_ETH_Selassie_Appeal_in_LoN
+	major = yes
+	is_triggered_only = yes
+	option = {	
+		name = ITA_Ethiopian_War.8.A
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	option = {	
+		name = ITA_Ethiopian_War.8.B
+		trigger = {
+			original_tag = FRA
+		}
+	}
+	option = {	
+		name = ITA_Ethiopian_War.8.D
+		trigger = {
+			original_tag = ETH
+		}
+	}
+	option = {	
+		name = ITA_Ethiopian_War.8.E
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = FRA
+					original_tag = ENG
+					original_tag = ITA
+					original_tag = ETH
+				}
+			}
+		}
+	}
+	option = {	
+		name = ITA_Ethiopian_War.8.C
+		trigger = {
+			original_tag = ITA
+		}
+		unlock_decision_category_tooltip = ITA_ETH_war
+		set_country_flag = ITA_ETH_first_decisions
+		if = {
+			limit = {
+				has_completed_focus = ITA_The_Stresa_Front
+			}
+			FRA = {
+				country_event = { id = ITA_Stresa_Front.1 days = 1 }
+			}
+		}
+	}
+}
+country_event = { #Ethiopians choose to respond or abstain
+	id = ITA_Ethiopian_War.9
+	title = ITA_Ethiopian_War.9.t
+	desc = ITA_Ethiopian_War.9.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.9.A
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 50
+		ITA = {
+			country_event = {
+				id = ITA_Ethiopian_War.11
+				days = 7
+			}
+			set_country_flag = ITA_ETH_respond_provoke
+		}
+	}
+	option = {
+		trigger = {
+		    has_political_power > 125
+		}
+		name = ITA_Ethiopian_War.9.B
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -125
+		ITA = {
+			country_event = {
+				id = ITA_Ethiopian_War.10
+			}
+		}
+	}
+}
+country_event = { #Ethiopian chose to abstain
+	id = ITA_Ethiopian_War.10
+	title = ITA_Ethiopian_War.10.t
+	desc = ITA_Ethiopian_War.10.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.10.A
+		add_political_power = 100
+	}
+}
+country_event = { #Ethiopian chose to respond
+	id = ITA_Ethiopian_War.11
+	title = ITA_Ethiopian_War.11.t
+	desc = ITA_Ethiopian_War.11.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.11.A
+		add_political_power = -50
+		unlock_decision_tooltip = ITA_Prepare_Invasion_Infrastructure
+		unlock_decision_tooltip = ITA_Draw_up_Supply_Lines
+		unlock_decision_tooltip = ITA_Probe_Ethiopian_Lines
+		unlock_decision_tooltip = ITA_Commence_Border_Skirmishes
+		set_country_flag = ITA_Ethiopianwar_Decisions_Two
+		add_ai_strategy = { 
+			type = prepare_for_war
+			id = "ETH"			
+			value = 200
+		}
+	}
+}
+country_event = { #won first border conflict ita
+	id = ITA_Ethiopian_War.12
+	title = ITA_Ethiopian_War.12.t
+	desc = ITA_Ethiopian_War.12.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.12.A
+		ai_chance = {
+			factor = 25
+		}
+		add_political_power = 10
+		army_experience = 10
+	}
+}
+country_event = { #lost first border conflict ita
+	id = ITA_Ethiopian_War.13
+	title = ITA_Ethiopian_War.13.t
+	desc = ITA_Ethiopian_War.13.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.13.A
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+country_event = { #won first border conflict eth
+	id = ITA_Ethiopian_War.14
+	title = ITA_Ethiopian_War.14.t
+	desc = ITA_Ethiopian_War.14.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.14
+		ai_chance = {
+			factor = 25
+		}
+		add_political_power = 10
+		army_experience = 10
+	}
+}
+country_event = { #lost first border conflict eth
+	id = ITA_Ethiopian_War.15
+	title = ITA_Ethiopian_War.15.t
+	desc = ITA_Ethiopian_War.15.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.15.A
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+country_event = { #won second border conflict ita
+	id = ITA_Ethiopian_War.16
+	title = ITA_Ethiopian_War.16.t
+	desc = ITA_Ethiopian_War.16.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.16.A
+		ai_chance = {
+			factor = 25
+		}
+		add_political_power = 15
+		army_experience = 15
+	}
+}
+country_event = { #lost second border conflict ita
+	id = ITA_Ethiopian_War.17
+	title = ITA_Ethiopian_War.17.t
+	desc = ITA_Ethiopian_War.17.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.17.A
+		ai_chance = {
+			factor = 25
+		}
+		add_war_support = -0.05
+	}
+}
+country_event = { #won second border conflict eth
+	id = ITA_Ethiopian_War.18
+	title = ITA_Ethiopian_War.18.t
+	desc = ITA_Ethiopian_War.18.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.18.A
+		ai_chance = {
+			factor = 25
+		}
+		add_political_power = 15
+		army_experience = 15
+	}
+}
+country_event = { #lost second border conflict eth
+	id = ITA_Ethiopian_War.19
+	title = ITA_Ethiopian_War.19.t
+	desc = ITA_Ethiopian_War.19.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.19.A
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+country_event = { #draw border conflict
+	id = ITA_Ethiopian_War.20
+	title = ITA_Ethiopian_War.20.t
+	desc = ITA_Ethiopian_War.20.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.20.A
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+country_event = { #Ger - supply ETH guns
+	id = ITA_Ethiopian_War.21
+	title = ITA_Ethiopian_War.21.t
+	desc = ITA_Ethiopian_War.21.d
+ 	fire_only_once = yes
+	picture = GFX_report_ETH_Ethiopian_Supplies
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.21.A
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 300
+				is_historical_focus_on = yes
+			}
+		}
+		send_equipment = {
+    		equipment = infantry_equipment
+    		amount = 2000
+    		target = ETH
+		}		
+	}
+	option = {
+		name = ITA_Ethiopian_War.21.B
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+news_event = { #Invades ETH
+	id = ITA_Ethiopian_War.22
+	title = ITA_Ethiopian_War.22.t
+	desc = ITA_Ethiopian_War.22.d
+	picture = GFX_news_ITA_Animated_Ethiopian_War
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = ITA_Ethiopian_War.22.A
+		trigger = {
+			original_tag = ITA
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.22.B
+		trigger = {
+			original_tag = ETH
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.22.C
+		trigger = {
+			NOT = {
+				original_tag = ITA
+				original_tag = ETH
+			}
+		}
+	}
+}
+news_event = { #march of the iron will - normal
+	id = ITA_Ethiopian_War.23
+	title =ITA_Ethiopian_War.23.t
+	desc = ITA_Ethiopian_War.23.d
+ 	fire_only_once = yes
+	picture = GFX_news_ITA_March_of_the_Iron_Will
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.23.A
+		ai_chance = {
+			factor = 25
+		}
+		clr_country_flag = ITA_ETH_first_decisions
+	}
+}
+news_event = { #march of the iron will - 180 days
+	id = ITA_Ethiopian_War.24
+	title = ITA_Ethiopian_War.24.t
+	desc = ITA_Ethiopian_War.24.d
+ 	fire_only_once = yes
+	picture = GFX_news_ITA_March_of_the_Iron_Will
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.24.A
+		ai_chance = {
+			factor = 25
+		}
+		add_war_support = 0.05
+		add_stability = 0.05
+		clr_country_flag = ITA_ETH_first_decisions
+	}
+}
+news_event = { #LoN lambasts italian actions
+	id = ITA_Ethiopian_War.25
+	picture = GFX_news_ITA_LoN_Embargo
+	title = ITA_Ethiopian_War.25.t
+	desc = ITA_Ethiopian_War.25.d
+	is_triggered_only = yes
+ 	fire_only_once = yes
+	option = {
+		name = ITA_Ethiopian_War.25.A
+		ai_chance = {
+			factor = 25
+		}
+		FRA = {
+			country_event = {
+    			id = ITA_Ethiopian_War.26
+    			days = 2
+			}
+		}
+		ENG = {
+			country_event = {
+    			id = ITA_Ethiopian_War.28
+    			days = 2
+			}
+		}
+	}
+}
+country_event = { #france - close an eye?
+	id = ITA_Ethiopian_War.26
+	title = ITA_Ethiopian_War.26.t
+	desc = ITA_Ethiopian_War.26.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.26.A
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.26.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		ITA = {
+			country_event = {
+				id = ITA_Ethiopian_War.27
+				days = 3
+			}
+		}
+	}
+}
+country_event = { #ITA gaul stabs us in the back
+	id = ITA_Ethiopian_War.27
+	title = ITA_Ethiopian_War.27.t
+	desc = ITA_Ethiopian_War.27.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_LoN_Caricature
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.27.A
+		ai_chance = {
+			factor = 50	
+		}
+		FRA = {
+			add_opinion_modifier = {
+    			target = ITA
+    			modifier = ITA_heavy_Embargo_trade
+			}	
+		}
+		add_opinion_modifier = {
+    		target = FRA
+    		modifier = ITA_heavy_Embargo_opinion
+		}
+		if = {
+			limit = {
+				has_idea = ITA_heavy_Embargo_cost_uk
+			}
+			swap_ideas = {
+				remove_idea = ITA_heavy_Embargo_cost_uk
+				add_idea = ITA_most_heavy_Embargo_cost
+			}
+			else = {
+				add_ideas = ITA_heavy_Embargo_cost_fra
+			}
+		}
+	}
+}
+country_event = { #UK - ppl mad
+	id = ITA_Ethiopian_War.28
+	title = ITA_Ethiopian_War.28.t
+	desc = ITA_Ethiopian_War.28.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	is_triggered_only = yes
+	option = { #Silent Go Ahead
+		name = ITA_Ethiopian_War.28.A 
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		ITA = {
+			country_event = {
+    			id = ITA_Ethiopian_War.29
+    			days = 2
+			}
+		}
+	}
+	option = { #Both are responsible
+		name = ITA_Ethiopian_War.28.B
+		ai_chance = {
+			factor = 70
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		ITA = {
+			country_event = {
+				id = ITA_Ethiopian_War.30
+				days = 2
+			}
+		}
+		ETH = {
+			country_event = {
+				id = ITA_Ethiopian_War.31
+				days = 2
+			}
+		}
+	}
+	option = { #Italy is fully blamed
+		name = ITA_Ethiopian_War.28.C
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		ITA = {
+			country_event = {
+				id = ITA_Ethiopian_War.32
+				days = 2
+			}
+		}
+	}
+}
+country_event = { #uk silent go-ahead
+	id = ITA_Ethiopian_War.29
+	title = ITA_Ethiopian_War.29.t
+	desc = ITA_Ethiopian_War.29.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_LoN_Caricature
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.29.A
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+country_event = { #uk blame both - ita
+	id = ITA_Ethiopian_War.30
+	title = ITA_Ethiopian_War.30.t
+	desc = ITA_Ethiopian_War.30.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_LoN_Caricature
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.30.A
+		ai_chance = {
+			factor = 1
+		}
+		ENG = {
+			add_opinion_modifier = {
+    			target = ITA
+    			modifier = ITA_heavy_Embargo_trade
+			}	
+		}
+		add_opinion_modifier = {
+    		target = ENG
+    		modifier = ITA_heavy_Embargo_opinion
+		}
+		if = {
+			limit = {
+				has_idea = ITA_heavy_Embargo_cost_fra
+			}
+			swap_ideas = {
+				remove_idea = ITA_heavy_Embargo_cost_fra
+				add_idea = ITA_most_heavy_Embargo_cost
+			}
+			else = {
+				add_ideas = ITA_heavy_Embargo_cost_uk
+			}
+		}
+	}
+}
+country_event = { #uk blame both - ETH
+	id = ITA_Ethiopian_War.31
+	title = ITA_Ethiopian_War.31.t
+	desc = ITA_Ethiopian_War.31.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_LoN_Caricature
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.31.A
+		ai_chance = {
+			factor = 1
+		}
+		ENG = {
+			add_opinion_modifier = {
+    			target = ETH
+    			modifier = ITA_heavy_Embargo_trade
+			}	
+		}
+		add_opinion_modifier = {
+    		target = ENG
+    		modifier = ITA_heavy_Embargo_opinion
+		}
+		add_ideas = ITA_heavy_Embargo_cost_uk		
+	}
+}
+country_event = { #uk blame ITA the fascist demon
+	id = ITA_Ethiopian_War.32
+	title = ITA_Ethiopian_War.32.t
+	desc = ITA_Ethiopian_War.32.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_LoN_Caricature
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.32.A
+		ai_chance = {
+			factor = 1
+		}
+		ENG = {
+			add_opinion_modifier = {
+    			target = ITA
+    			modifier = ITA_heavy_Embargo_trade
+			}	
+		}
+		add_opinion_modifier = {
+    		target = ENG
+    		modifier = ITA_heavy_Embargo_opinion
+		}
+		if = {
+			limit = {
+				has_idea = ITA_heavy_Embargo_cost_fra
+			}
+			swap_ideas = {
+				remove_idea = ITA_heavy_Embargo_cost_fra
+				add_idea = ITA_most_heavy_Embargo_cost
+			}
+			else = {
+				add_ideas = ITA_heavy_Embargo_cost_uk
+			}
+		}
+	}
+}
+country_event = { #american event
+	id = Italy.37
+	title = Italy.37.t
+	desc = Italy.37.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Wal_Wal_Incident
+	trigger = {
+		has_idea = ITA_heavy_Embargo_cost_uk
+		has_idea = ITA_heavy_Embargo_cost_fra
+	}
+	option = {
+		name = Italy.37.A #yes
+		ai_chance = {
+			factor = 80
+		}
+		swap_ideas = {
+   			remove_idea = ITA_most_heavy_Embargo_cost
+    		add_idea = american_treaty_ITA_ETH_ITA
+		}
+		add_opinion_modifier = {
+    		target = USA
+   		 	modifier = ITA_usa_anti_embargo_trade
+		}
+		add_opinion_modifier = {
+    		target = USA
+   		 	modifier = ITA_usa_anti_embargo_opinion
+		}
+		USA = {
+			add_ideas = american_treaty_ITA_ETH_USA
+			add_opinion_modifier = {
+    			target = ITA
+   		 		modifier = ITA_usa_anti_embargo_trade
+			}
+			add_opinion_modifier = {
+    			target = ITA
+   		 		modifier = ITA_usa_anti_embargo_opinion
+			}
+		}
+	}
+	option = {
+		name = Italy.37.B #nope
+		ai_chance = {
+			factor = 20
+		}
+		add_opinion_modifier = {
+    		target = USA
+   		 	modifier = ITA_usa_said_rip_treaty_opinion
+		}
+	}
+}
+country_event = { #somali unrest
+	id = ITA_Ethiopian_War.33
+	title = ITA_Ethiopian_War.33.t
+	desc = ITA_Ethiopian_War.33.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Wal_Wal_Incident
+	trigger = {
+		has_country_flag = ITA_Lost_ETH_war
+	}
+	option = {
+		name = ITA_Ethiopian_War.33.A
+		ai_chance = {
+			factor = 1
+		}
+		add_war_support = -0.1
+		add_stability = -0.1
+	}
+}
+country_event = { #eth the dervish accord
+	id = ITA_Ethiopian_War.37
+	title = ITA_Ethiopian_War.37.t
+	desc = ITA_Ethiopian_War.37.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.37.A
+		ai_chance = {
+			factor = 70
+		}
+		SOM = {
+			country_event = {
+				id = ITA_Ethiopian_War.38
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.37.B
+		ai_chance = {
+			factor = 30
+		}
+		if = {
+			limit = {
+				country_exists = SOM
+			}
+			declare_war_on = {
+				target = SOM
+				type = annex_everything
+			}
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.37.C
+		ai_chance = {
+			factor = 25
+		}
+		add_war_support = -0.05
+	}
+}
+country_event = { #SOM the dervish accord
+	id = ITA_Ethiopian_War.38
+	title = ITA_Ethiopian_War.38.t
+	desc = ITA_Ethiopian_War.38.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.38.A
+		ai_chance = {
+			factor = 80
+		}
+		ETH = {
+			create_faction = FACTION_Dervish_Accord
+			add_to_faction = SOM
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.38.B
+		ai_chance = {
+			factor = 20
+		}
+	}
+}
+#country_event = { #SOM the dervish accord - later (eth attack)
+#	id = ITA_Ethiopian_War.39
+#	title = ITA_Ethiopian_War.39.t
+#	desc = ITA_Ethiopian_War.39.d
+# 	fire_only_once = yes
+#	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+#	trigger = {
+#		SOM = { NOT = { has_war_with = ITA }}
+#		ETH = { 
+#			NOT = {
+#				has_war_with = ITA
+#			}
+#		}
+#		has_start_date < 1937.01.01
+#		original_tag = ETH
+#	}
+#	option = {
+#		name = ITA_Ethiopian_War.39.A
+#		ai_chance = {
+#			factor = 70
+#		}
+#		dismantle_faction = yes
+#		declare_war_on = {
+#    		target = SOM
+#    		type = annex_everything
+#		}
+#	}
+#	option = {
+#		name = ITA_Ethiopian_War.39.B
+#		ai_chance = {
+#			factor = 30
+#		}
+#	}
+#}
+country_event = { #italy horn of africa
+	id = ITA_Ethiopian_War.34
+	title = ITA_Ethiopian_War.34.t
+	desc = ITA_Ethiopian_War.34.d
+ 	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.34.A
+		ai_chance = {
+			factor = 25
+		}
+		add_stability = -0.05
+		add_war_support = 0.05
+		ETH = {
+			country_event = {
+				id = ITA_Ethiopian_War.37
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.34.B
+		ai_chance = {
+			factor = 25
+		}
+		add_stability = -0.025
+		add_war_support = 0.02
+		ETH = {
+			country_event = {
+				id = ITA_Ethiopian_War.36
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.34.C
+		ai_chance = {
+			factor = 25
+		}
+		add_stability = 0.5
+		add_war_support = -0.05
+		ETH = {
+			country_event = {
+				id = ITA_Ethiopian_War.36
+				days = 3
+			}
+		}
+		SOM = {
+			country_event = {
+				id = ITA_Ethiopian_War.35
+				days = 3
+			}
+		}
+	}
+}
+country_event = { #SOM wp italy
+	id = ITA_Ethiopian_War.35
+	title = ITA_Ethiopian_War.35.t
+	desc = ITA_Ethiopian_War.35.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.35.A
+		ai_chance = {
+			factor = 100
+		}
+		add_stability = 0.025
+		SOM = {
+			white_peace = ITA
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.35.B
+		ai_chance = {
+			factor = 0
+		}
+		add_stability = -0.05
+	}
+}
+country_event = { #ETH wp italy
+	id = ITA_Ethiopian_War.36
+	title = ITA_Ethiopian_War.36.t
+	desc = ITA_Ethiopian_War.36.d
+	fire_only_once = yes
+	picture = GFX_report_ITA_Somali_Ascari_in_Ethiopia
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.36.A
+		ai_chance = {
+			factor = 100
+		}
+		add_stability = 0.025
+		ETH = {
+			white_peace = ITA
+		}
+	}
+	option = {
+		name = ITA_Ethiopian_War.36.B
+		ai_chance = {
+			factor = 0
+		}
+		add_stability = -0.05
+	}
+}
+country_event = { #Capitulation of Ethiopia
+	id = ITA_Ethiopian_War.40
+	title = ITA_Ethiopian_War.40.t
+	desc = ITA_Ethiopian_War.40.d
+	picture = GFX_report_ITA_March_of_the_Iron_Will
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = ITA_Ethiopian_War.40.A
+		unlock_decision_category_tooltip = ITA_Pacify_Abyssinia_category
+		delete_unit_template_and_units = {
+			division_template = "Divisione Fanteria Coloniale"
+			disband = yes #will refund equipment and manpower
+		}
+		set_variable = {
+			var = ITA_Ethiopian_Unrest_partisan
+			value = 0.5
+		}
+		set_variable = {
+			var = ITA_Ethiopian_Unrest_damage
+			value = 0.5
+		}
+		clamp_variable = {
+			var = ITA_Ethiopian_Unrest_partisan
+			min = 0
+			max = 1
+		}
+		clamp_variable = {
+			var = ITA_Ethiopian_Unrest_damage
+			min = 0
+			max = 1
+		}
+		hidden_effect = {
+			add_dynamic_modifier = {
+				modifier = ITA_Ethiopian_Unrest
+			}
+		}
+	}
+}
+country_event = { # ITA AI declare war on Ethiopia
+	id = ITA_Ethiopian_War.41
+	title = ITA_Ethiopian_War.41.t
+	desc = ITA_Ethiopian_War.41.d
+	picture = GFX_report_ITA_declares_war_on_ethiopia
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		country_exists = ETH
+		ETH = {
+			is_puppet = no
+		}
+		ITA = {
+			is_ai = yes
+		}
+		date > 1935.10.3
+		has_start_date < 1935.10.3
+	}
+	option = {
+		name = ITA_Ethiopian_War.41.A
+		declare_war_on = { type = annex_everything target = ETH }
+		news_event = { id = ITA_Ethiopian_War.22 hours = 6 }
+	}
+}
+country_event = { # Appointing a Governor
+	id = ITA_Colonial.1
+	title = ITA_Colonial.1.t
+	desc = ITA_Colonial.1.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Italo Balbo
+		name = ITA_Colonial.1.A
+		trigger = {
+			NOT = { has_country_flag = Italo_Balbo_unavailable }
+		}
+		set_country_flag = ITA_Italo_Balbo_Appointed_Governor
+		add_ideas = ITA_Italo_Balbo_M
+	}
+	option = { # Rodolfo Graziani
+		name = ITA_Colonial.1.B
+		set_country_flag = ITA_Rodolfo_Graziani_Appointed_Governor
+		add_ideas = ITA_Rodolfo_Graziani_M
+	}
+}
+country_event = { #Inauguration of the Litoranea Libica
+	id = ITA_Colonial.2
+	title = ITA_Colonial.2.t
+	desc = ITA_Colonial.2.d
+	picture = GFX_report_ITA_Litoranea_Libica
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = ITA_Colonial.2.A
+		448 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		1226 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		662 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		450 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		451 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		449 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ITA_Colonial.3 days = 14 }	
+		}
+	}
+}
+country_event = { #Mussolini Recieves Sword of Islam
+	id = ITA_Colonial.3
+	title = ITA_Colonial.3.t
+	desc = ITA_Colonial.3.d
+	picture = GFX_report_ITA_Mussolini_Sword_of_Islam
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = ITA_Colonial.3.A
+		add_country_leader_trait = L_Sword_of_Islam
+	}
+}
+country_event = { #Restore Libyan Rights
+	id = ITA_Colonial.4
+	title = ITA_Colonial.4.t
+	desc = ITA_Colonial.4.d
+	picture = GFX_report_event_generic_sign_treaty2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = ITA_Colonial.4.A
+		every_owned_state = {
+			limit = {
+				is_core_of = LBA
+			}
+			add_compliance = 10
+		}
+		add_stability = -0.05
+		add_political_power = -20
+	}
+}
+country_event = { #Establishment of Africa Orientale Italiana
+	id = ITA_Colonial.5
+	title = ITA_Colonial.5.t
+	desc = ITA_Colonial.5.d
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = ITA_Colonial.5.A
+		set_country_flag = ITA_Giuseppe_Bottai_Appointed_Vicere
+		add_ideas = ITA_M_Giuseppe_Bottai
+	}
+}
+country_event = { #Victor Emannuel crowned Emperor of Ethiopia
+	id = ITA_Colonial.6
+	title = ITA_Colonial.6.t
+	desc = ITA_Colonial.6.d
+	picture = GFX_report_ITA_Victor_Emmanuel
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = ITA_Colonial.6.A
+		add_stability = 0.05
+	}
+}
+country_event = { #Approach IG Farben (ITA)
+	id = ITA_IG_Farben_Negotation.1
+	title = ITA_IG_Farben_Negotation.1.t
+	desc = ITA_IG_Farben_Negotation.1.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #
+		name = ITA_IG_Farben_Negotation.1.A
+		GER = {
+			country_event = { id = ITA_IG_Farben_Negotation.2 days = 2 }
+		}
+	}
+}
+country_event = { #Italy Proposes Negotiations to IG Farben (GER)
+	id = ITA_IG_Farben_Negotation.2
+	title = ITA_IG_Farben_Negotation.2.t
+	desc = ITA_IG_Farben_Negotation.2.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Ask for 100% Increase
+		name = ITA_IG_Farben_Negotation.2.A
+		custom_effect_tooltip = GER_Request_for_100_Increase_tt
+		ai_chance = {
+			factor = 50
+		}
+		hidden_effect = {
+			ITA = {
+				country_event = { id = ITA_IG_Farben_Negotation.5 days = 2 }
+			}
+		}
+	}
+	option = { # Agree with starting proposal
+		name = ITA_IG_Farben_Negotation.2.B
+		custom_effect_tooltip = GER_Agree_Starting_Proposal_tt
+		ai_chance = {
+			factor = 50
+		}
+		hidden_effect = {
+			ITA = {
+				country_event = { id = ITA_IG_Farben_Negotation.3 days = 2 }
+			}
+		}
+	}
+}
+country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+	id = ITA_IG_Farben_Negotation.3
+	title = ITA_IG_Farben_Negotation.3.t
+	desc = ITA_IG_Farben_Negotation.3.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.3.A
+		GER = {
+			hidden_effect = {
+				country_event = { id = ITA_IG_Farben_Negotation.4 days = 2 }
+			}
+		}
+		set_temp_variable = { money_to_gain = -100 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_opinion_modifier = {
+			target = GER
+			modifier = ITA_Negotiations_with_IG_Farben
+		}
+		add_tech_bonus = {
+			name = synth_tech_bonus
+			bonus = 1
+			uses = 1
+			category = synth_resources
+		}
+		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
+	}
+}
+country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (GER)
+	id = ITA_IG_Farben_Negotation.4
+	title = ITA_IG_Farben_Negotation.4.t
+	desc = ITA_IG_Farben_Negotation.4.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.4.A
+		set_temp_variable = { money_to_gain = 100 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_opinion_modifier = {
+			target = ITA
+			modifier = ITA_Negotiations_with_IG_Farben
+		}
+	}
+}
+country_event = { #IG Farben asks to Increase Price (ITA)
+	id = ITA_IG_Farben_Negotation.5
+	title = ITA_IG_Farben_Negotation.5.t
+	desc = ITA_IG_Farben_Negotation.5.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Agree with German Price
+		name = ITA_IG_Farben_Negotation.5.A
+		ai_chance = {
+			factor = 40
+		}
+		hidden_effect = {
+			country_event = { id = ITA_IG_Farben_Negotation.6 days = 2 }
+		}
+	}
+	option = { # Ask for 50% Reduction
+		name = ITA_IG_Farben_Negotation.5.B
+		ai_chance = {
+			factor = 60
+		}
+		hidden_effect = {
+			GER = {
+				country_event = { id = ITA_IG_Farben_Negotation.8 days = 2 }
+			}
+		}
+	}
+}
+country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+	id = ITA_IG_Farben_Negotation.6
+	title = ITA_IG_Farben_Negotation.6.t
+	desc = ITA_IG_Farben_Negotation.6.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.6.A
+		GER = {
+			country_event = { id = ITA_IG_Farben_Negotation.7 days = 2 }
+		}
+		set_temp_variable = { money_to_gain = -200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_opinion_modifier = {
+			target = GER
+			modifier = ITA_Negotiations_with_IG_Farben_2
+		}
+		add_tech_bonus = {
+			name = synth_tech_bonus
+			bonus = 1
+			uses = 1
+			category = synth_resources
+		}
+		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
+	}
+}
+country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (GER)
+	id = ITA_IG_Farben_Negotation.7
+	title = ITA_IG_Farben_Negotation.7.t
+	desc = ITA_IG_Farben_Negotation.7.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.7.A
+		set_temp_variable = { money_to_gain = 200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_opinion_modifier = {
+			target = ITA
+			modifier = ITA_Negotiations_with_IG_Farben_2
+		}
+	}
+}
+country_event = { # Spaghetti-Eaters Ask for Price Reduction (GER)
+	id = ITA_IG_Farben_Negotation.8
+	title = ITA_IG_Farben_Negotation.8.t
+	desc = ITA_IG_Farben_Negotation.8.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Agree to 50% Reduction
+		name = ITA_IG_Farben_Negotation.8.A
+		ai_chance = {
+			factor = 50
+		}
+		hidden_effect = {
+			ITA = {
+				country_event = { id = ITA_IG_Farben_Negotation.9 days = 2 }
+			}
+		}
+	}
+	option = { # Insist on our Proposal
+		name = ITA_IG_Farben_Negotation.8.B
+		ai_chance = {
+			factor = 50
+		}
+		hidden_effect = {
+			ITA = {
+				country_event = { id = ITA_IG_Farben_Negotation.12 days = 2 }
+			}
+		}
+	}
+}
+country_event = { # IG Farben Agreed to Reduce Price (ITA)
+	id = ITA_IG_Farben_Negotation.9
+	title = ITA_IG_Farben_Negotation.9.t
+	desc = ITA_IG_Farben_Negotation.9.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.9.A
+		country_event = { id = ITA_IG_Farben_Negotation.10 days = 2 }
+	}
+}
+country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+	id = ITA_IG_Farben_Negotation.10
+	title = ITA_IG_Farben_Negotation.10.t
+	desc = ITA_IG_Farben_Negotation.10.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.10.A
+		GER = {
+			country_event = { id = ITA_IG_Farben_Negotation.11 days = 2 }
+		}
+		set_temp_variable = { money_to_gain = -150 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_opinion_modifier = {
+			target = GER
+			modifier = ITA_Negotiations_with_IG_Farben_3
+		}
+		add_tech_bonus = {
+			name = synth_tech_bonus
+			bonus = 1
+			uses = 1
+			category = synth_resources
+		}
+		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
+	}
+}
+country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (GER)
+	id = ITA_IG_Farben_Negotation.11
+	title = ITA_IG_Farben_Negotation.11.t
+	desc = ITA_IG_Farben_Negotation.11.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.11.A
+		set_temp_variable = { money_to_gain = 150 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_opinion_modifier = {
+			target = ITA
+			modifier = ITA_Negotiations_with_IG_Farben_3
+		}
+	}
+}
+country_event = { # IG Farben Folds to Our Demands (ITA)
+	id = ITA_IG_Farben_Negotation.12
+	title = ITA_IG_Farben_Negotation.12.t
+	desc = ITA_IG_Farben_Negotation.12.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.12.A
+		country_event = { id = ITA_IG_Farben_Negotation.13 days = 2 }
+	}
+}
+country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+	id = ITA_IG_Farben_Negotation.13
+	title = ITA_IG_Farben_Negotation.13.t
+	desc = ITA_IG_Farben_Negotation.13.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.13.A
+		GER = {
+			country_event = { id = ITA_IG_Farben_Negotation.14 days = 2 }
+		}
+		set_temp_variable = { money_to_gain = -200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_tech_bonus = {
+			name = synth_tech_bonus
+			bonus = 1
+			uses = 1
+			category = synth_resources
+		}
+		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
+	}
+}
+country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+	id = ITA_IG_Farben_Negotation.14
+	title = ITA_IG_Farben_Negotation.14.t
+	desc = ITA_IG_Farben_Negotation.14.d
+	picture = GFX_report_GER_IG_Farben
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_IG_Farben_Negotation.14.A
+		set_temp_variable = { money_to_gain = 200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+	}
+}
+country_event = { # General Confederation of Italian Industry
+	id = ITA_Economic_Tree.1
+	title = ITA_Economic_Tree.1.t
+	desc = ITA_Economic_Tree.1.d
+	picture = GFX_report_event_generic_factory
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Economic_Tree.1.A
+		set_temp_variable = { money_to_gain = 200 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_stability = -0.01
+	}
+}
+news_event = { # Duce Addresses the Chamber of Deputies
+	id = ITA_Economic_Tree.2
+	title = ITA_Economic_Tree.2.t
+	desc = ITA_Economic_Tree.2.d
+	picture = GFX_news_ITA_Duce_Addresses_the_Chamber_of_Deputies
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Economic_Tree.2.A
+	}
+}
+country_event = { # Italian Workers in Germany
+	id = ITA_Economic_Tree.3
+	title = ITA_Economic_Tree.3.t
+	desc = ITA_Economic_Tree.3.d
+	picture = GFX_report_event_generic_factory
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Economic_Tree.3.A
+		GER = {
+			add_timed_idea = {
+				idea = ITA_Italian_Workers_in_Germany
+				days = 365
+			}
+			add_opinion_modifier = {
+				target = ITA
+				modifier = medium_increase 
+			}
+		}
+		add_opinion_modifier = {
+			target = GER
+			modifier = medium_increase 
+		}
+	}
+}
+country_event = { # New Cities in Agro Pontino
+	id = ITA_Economic_Tree.4
+	title = ITA_Economic_Tree.4.t
+	desc = ITA_Economic_Tree.4.d
+	picture = GFX_report_event_mussolini_hotel
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Economic_Tree.4.A
+	}
+}
+country_event = { # The ONC put at the Head of Draining Projects
+	id = ITA_Economic_Tree.5
+	title = ITA_Economic_Tree.5.t
+	desc = ITA_Economic_Tree.5.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Economic_Tree.5.A
+	}
+}
+country_event = { # Formation of the Corporations
+	id = ITA_Political_Tree.1
+	title = ITA_Political_Tree.1.t
+	desc = ITA_Political_Tree.1.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Political_Tree.1.A
+		add_ideas = corporatism
+	}
+}
+country_event = { # No more Pacts with the Plutocrats
+	id = ITA_Political_Tree.2
+	title = ITA_Political_Tree.2.t
+	desc = ITA_Political_Tree.2.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # 
+		name = ITA_Political_Tree.2.A
+	}
+}
+country_event = { # Italy Demands Territory (YUG)
+	id = ITA_Political_Tree.3
+	title = ITA_Political_Tree.3.t
+	desc = ITA_Political_Tree.3.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # Accept
+		name = ITA_Political_Tree.3.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 40
+				is_historical_focus_on = no
+			}
+		}
+		ITA = {
+			transfer_state = 103
+			transfer_state = 1085
+			transfer_state = 1091
+			country_event = { id = ITA_Political_Tree.6 }
+		}
+	}
+	option = { # Refuse
+		name = ITA_Political_Tree.3.B
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 60
+				is_historical_focus_on = no
+			}
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.7 }
+		}
+	}
+}
+country_event = { # Issue Ultimatum to Bulgaria
+	id = ITA_Political_Tree.4
+	title = ITA_Political_Tree.4.t
+	desc = ITA_Political_Tree.4.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # We have no choice...
+		name = ITA_Political_Tree.4.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 40
+				is_historical_focus_on = no
+			}
+		}
+		ITA = {
+			puppet = BUL
+			country_event = { id = ITA_Political_Tree.6 }
+		}
+	}
+	option = { # We'd like to see them try!
+		name = ITA_Political_Tree.4.B
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 60
+				is_historical_focus_on = no
+			}
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.7 }
+		}
+	}
+}
+country_event = { # Italians ask for surrender of our isles!
+	id = ITA_Political_Tree.5
+	title = ITA_Political_Tree.5.t
+	desc = ITA_Political_Tree.5.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { # We are no match for their navy
+		name = ITA_Political_Tree.5.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 40
+				is_historical_focus_on = no
+			}
+		}
+		ITA = {
+			transfer_state = 182
+			transfer_state = 187
+			transfer_state = 1113
+			transfer_state = 1116
+			transfer_state = 1117
+			transfer_state = 1118
+			transfer_state = 1119
+			country_event = { id = ITA_Political_Tree.6 }
+		}
+	}
+	option = { # Never again shall be oppressed by a foreign power!
+		name = ITA_Political_Tree.5.B
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 60
+				is_historical_focus_on = no
+			}
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.7 }
+		}
+	}
+}
+###########################
+# FROM has Accepted our Ultimatum
+###########################
+country_event = {
+	id = ITA_Political_Tree.6
+	title = ITA_Political_Tree.6.t
+	desc = ITA_Political_Tree.6.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Excellent
+	option = {
+		name = ITA_Political_Tree.6.A
+	}
+}
+###########################
+# FROM has Refused our Ultimatum
+###########################
+country_event = {
+	id = ITA_Political_Tree.7
+	title = ITA_Political_Tree.7.t
+	desc = ITA_Political_Tree.7.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Political_Tree.7.A
+		declare_war_on = {
+			target = FROM
+			type = puppet_wargoal_focus
+		}
+	}
+}
+###########################
+# FROM has Accepted our Faction Invitation
+###########################
+country_event = {
+	id = ITA_Political_Tree.8
+	title = ITA_Political_Tree.8.t
+	desc = ITA_Political_Tree.8.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Excellent
+	option = {
+		name = ITA_Political_Tree.8.A
+		add_to_faction = FROM
+	}
+}
+###########################
+# FROM has Refused our Faction Invitation
+###########################
+country_event = {
+	id = ITA_Political_Tree.9
+	title = ITA_Political_Tree.9.t
+	desc = ITA_Political_Tree.9.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Political_Tree.9.A
+	}
+}
+###########################
+# Italy asks Us to Join the Latin Axis
+###########################
+country_event = {
+	id = ITA_Political_Tree.10
+	title = ITA_Political_Tree.10.t
+	desc = ITA_Political_Tree.10.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = ITA_Political_Tree.10.A
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = 1
+				factor = 75
+				ITA = {
+					has_country_flag = ITA_Spain_Joined_Faction
+				}
+				original_tag = POR
+			}
+			modifier = {
+				factor = 30
+				NOT = {
+					ITA = {
+						has_country_flag = ITA_Spain_Joined_Faction
+					}
+				}
+				original_tag = POR
+			}
+			modifier = {
+				factor = 100
+				ITA = {
+					has_country_flag = ITA_Friendlier_Spain
+				}
+				original_tag = SPA
+			}
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.8 days = 1 }
+		}
+	}
+	# Refuse
+	option = {
+		name = ITA_Political_Tree.10.B
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 15
+				ITA = {
+					has_country_flag = ITA_Spain_Joined_Faction
+				}
+				original_tag = POR
+			}
+			modifier = {
+				add = 1
+				factor = 70
+				NOT = {
+					ITA = {
+						has_country_flag = ITA_Spain_Joined_Faction
+					}
+				}
+				original_tag = POR
+			}
+			modifier = {
+				add = 1
+				factor = 100
+				NOT = {
+					ITA = {
+						has_country_flag = ITA_Friendlier_Spain
+					}
+				}
+				original_tag = SPA
+			}
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.9 days = 1 }
+		}
+	}
+}
+###########################
+# The Reclamation of War Time Debt
+###########################
+country_event = {
+	id = ITA_Political_Tree.11
+	title = ITA_Political_Tree.11.t
+	desc = ITA_Political_Tree.11.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		country_exists = SPA
+		OR = {
+			has_country_flag = ITA_Led_Offensives_in_Spain
+			has_country_flag = ITA_Allowed_Accumulation_of_Spanish_War_Debt
+		}
+		NOT = {
+			SPA = {
+				has_war_with = SPR
+			}
+		}
+	}
+	# We will need them paid in full
+	option = {
+		name = ITA_Political_Tree.11.A
+		add_timed_idea = { 
+			idea = ITA_Debt_Paid_Fully_by_Spain
+			days = 2920
+		}
+		SPA = {
+			add_opinion_modifier = {
+				target = ITA
+				modifier = medium_decrease
+		   }
+		}
+	}
+	# We can partially forgive some of it
+	option = {
+		name = ITA_Political_Tree.11.B
+		add_timed_idea = { 
+			idea = ITA_Debt_Paid_Partially_by_Spain
+			days = 2190
+		}
+		SPA = {
+			add_opinion_modifier = {
+				target = ITA
+				modifier = medium_increase
+		   }
+		}
+		custom_effect_tooltip = ITA_More_Friendly_Spain
+		set_country_flag = ITA_Friendlier_Spain
+	}
+}
+###########################
+# Italy Asks us to Submit (Albania)
+###########################
+country_event = {
+	id = ITA_Political_Tree.12
+	title = ITA_Political_Tree.12.t
+	desc = ITA_Political_Tree.12.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Submit
+	option = {
+		name = ITA_Political_Tree.12.A
+		ai_chance = {
+			factor = 100
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.13 }
+			annex_country = {
+				target = ALB
+				transfer_troops = yes
+			}
+		}
+		set_global_flag = ITA_Annexed_Albania
+	}
+	# Refuse
+	option = {
+		name = ITA_Political_Tree.12.B
+		ai_chance = {
+			factor = 0
+		}
+		ITA = {
+			country_event = { id = ITA_Political_Tree.14 }
+		}
+	}
+}
+###########################
+# Albania Submits to Us
+###########################
+country_event = {
+	id = ITA_Political_Tree.13
+	title = ITA_Political_Tree.13.t
+	desc = ITA_Political_Tree.13.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Political_Tree.13.A
+	}
+}
+###########################
+# Albania Refuses to Submit
+###########################
+country_event = {
+	id = ITA_Political_Tree.14
+	title = ITA_Political_Tree.14.t
+	desc = ITA_Political_Tree.14.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Accept the Refusal
+	option = {
+		name = ITA_Political_Tree.14.A
+		add_war_support = -0.1
+		# Mussolinists
+		set_temp_variable = { faction_id = 32 }
+		set_temp_variable = { influence_to_add = -10 }
+		change_faction_influence = yes
+	}
+	# Declare War
+	option = {
+		name = ITA_Political_Tree.14.A
+		declare_war_on = {
+			target = ALB
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Italy, Centre of European Stability
+###########################
+news_event = {
+	id = ITA_Political_Tree.15
+	title = ITA_Political_Tree.15.t
+	desc = ITA_Political_Tree.15.d
+	picture = GFX_news_ITA_Stresa_Front
+	is_triggered_only = yes
+	major = yes
+	# 
+	option = {
+		name = ITA_Political_Tree.15.A
+		trigger = {
+			OR = {
+				original_tag = ITA
+				original_tag = ENG
+				original_tag = FRA
+			}
+		}
+	}
+	option = {
+		name = ITA_Political_Tree.15.B
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = ITA
+					original_tag = ENG
+					original_tag = FRA
+				}
+			}
+		}
+	}
+}
+###########################
+# No more Pacts with the Plutocrats
+###########################
+country_event = {
+	id = ITA_Political_Tree.16
+	title = ITA_Political_Tree.16.t
+	desc = ITA_Political_Tree.16.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Political_Tree.16.A
+	}
+}
+###########################
+# Italy plans preemptive assault on Greece
+###########################
+country_event = {
+	id = ITA_Political_Tree.17
+	title = ITA_Political_Tree.17.t
+	desc = ITA_Political_Tree.17.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# It is a necessary move to halt the enemy's advances
+	option = {
+		name = ITA_Political_Tree.17.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				threat > 0.3
+			}
+			modifier = {
+				add = 50
+				threat < 0.3
+				threat > 0.25
+			}
+			modifier = {
+				add = 0
+				threat < 0.25
+			}
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Support_Invasion_of_Greece
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Support_Invasion_of_Greece
+		}
+	}
+	# Protest the choice, but go no further
+	option = {
+		name = ITA_Political_Tree.17.B
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 50
+				threat < 0.3
+				threat > 0.25
+			}
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Against_Invasion_of_Greece
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Against_Invasion_of_Greece
+		}
+	}
+}
+###########################
+# Our Decision has been Criticized (Greece)
+###########################
+country_event = {
+	id = ITA_Political_Tree.18
+	title = ITA_Political_Tree.18.t
+	desc = ITA_Political_Tree.18.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		OR = {
+			AND = {
+				ENG = {
+					has_country_flag = ENG_Support_Invasion_of_Greece
+				}
+				FRA = {
+					has_country_flag = FRA_Against_Invasion_of_Greece
+				}
+			}
+			AND = {
+				ENG = {
+					has_country_flag = ENG_Against_Invasion_of_Greece
+				}
+				FRA = {
+					has_country_flag = FRA_Support_Invasion_of_Greece
+				}
+			}
+		}	
+	}
+	# Oh no! Anyways...
+	option = {
+		name = ITA_Political_Tree.18.A
+		add_political_power = -30
+		declare_war_on = {
+			target = GRE
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Green light from our allies (Greece)
+###########################
+country_event = {
+	id = ITA_Political_Tree.19
+	title = ITA_Political_Tree.19.t
+	desc = ITA_Political_Tree.19.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		ENG = {
+			has_country_flag = ENG_Support_Invasion_of_Greece
+		}
+		FRA = {
+			has_country_flag = FRA_Support_Invasion_of_Greece
+		}
+	}
+	# We do it for your own good, we swear!
+	option = {
+		name = ITA_Political_Tree.19.A
+		declare_war_on = {
+			target = GRE
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Our proposal has been rejected! (Greece)
+###########################
+country_event = {
+	id = ITA_Political_Tree.20
+	title = ITA_Political_Tree.20.t
+	desc = ITA_Political_Tree.20.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		ENG = {
+			has_country_flag = ENG_Against_Invasion_of_Greece
+		}
+		FRA = {
+			has_country_flag = FRA_Against_Invasion_of_Greece
+		}
+	}
+	# Damn them...
+	option = {
+		name = ITA_Political_Tree.20.A
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50
+		# Mussolinists
+		set_temp_variable = { faction_id = 32 }
+		set_temp_variable = { influence_to_add = -2 }
+		change_faction_influence = yes
+	}
+	# We won't listen to them!
+	option = {
+		name = ITA_Political_Tree.20.B
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -50
+		# Mussolinists
+		set_temp_variable = { faction_id = 32 }
+		set_temp_variable = { influence_to_add = -2 }
+		change_faction_influence = yes
+		set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+		subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+		custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+		clamp_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			min = 0
+			max = 4
+		}
+		ITA_change_cohesion_values = yes
+		declare_war_on = {
+			target = GRE
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Italy plans preemptive assault on Turkey
+###########################
+country_event = {
+	id = ITA_Political_Tree.21
+	title = ITA_Political_Tree.21.t
+	desc = ITA_Political_Tree.21.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# It is a necessary move to halt the enemy's advances
+	option = {
+		name = ITA_Political_Tree.21.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				threat > 0.4
+			}
+			modifier = {
+				add = 50
+				threat < 0.4
+				threat > 0.3
+			}
+			modifier = {
+				add = 0
+				threat < 0.3
+			}
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Support_Invasion_of_Turkey
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Support_Invasion_of_Turkey
+		}
+	}
+	# Protest the choice, but go no further
+	option = {
+		name = ITA_Political_Tree.21.B
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 50
+				threat < 0.4
+				threat > 0.3
+			}
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Against_Invasion_of_Turkey
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Against_Invasion_of_Turkey
+		}
+	}
+}
+###########################
+# Our Decision has been Criticized (Turkey)
+###########################
+country_event = {
+	id = ITA_Political_Tree.22
+	title = ITA_Political_Tree.22.t
+	desc = ITA_Political_Tree.22.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		OR = {
+			AND = {
+				ENG = {
+					has_country_flag = ENG_Support_Invasion_of_Turkey
+				}
+				FRA = {
+					has_country_flag = FRA_Against_Invasion_of_Turkey
+				}
+			}
+			AND = {
+				ENG = {
+					has_country_flag = ENG_Against_Invasion_of_Turkey
+				}
+				FRA = {
+					has_country_flag = FRA_Support_Invasion_of_Turkey
+				}
+			}
+		}	
+	}
+	# Oh no! Anyways...
+	option = {
+		name = ITA_Political_Tree.22.A
+		add_political_power = -30
+		declare_war_on = {
+			target = TUR
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Green light from our allies (Turkey)
+###########################
+country_event = {
+	id = ITA_Political_Tree.23
+	title = ITA_Political_Tree.23.t
+	desc = ITA_Political_Tree.23.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		ENG = {
+			has_country_flag = ENG_Support_Invasion_of_Turkey
+		}
+		FRA = {
+			has_country_flag = FRA_Support_Invasion_of_Turkey
+		}
+	}
+	# We do it for your own good, we swear!
+	option = {
+		name = ITA_Political_Tree.23.A
+		declare_war_on = {
+			target = TUR
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Our proposal has been rejected! (Turkey)
+###########################
+country_event = {
+	id = ITA_Political_Tree.24
+	title = ITA_Political_Tree.24.t
+	desc = ITA_Political_Tree.24.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		ENG = {
+			has_country_flag = ENG_Against_Invasion_of_Turkey
+		}
+		FRA = {
+			has_country_flag = FRA_Against_Invasion_of_Turkey
+		}
+	}
+	# Damn them...
+	option = {
+		name = ITA_Political_Tree.24.A
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = -50
+		# Mussolinists
+		set_temp_variable = { faction_id = 32 }
+		set_temp_variable = { influence_to_add = -2 }
+		change_faction_influence = yes
+	}
+	# We won't listen to them!
+	option = {
+		name = ITA_Political_Tree.24.B
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -50
+		# Mussolinists
+		set_temp_variable = { faction_id = 32 }
+		set_temp_variable = { influence_to_add = -2 }
+		change_faction_influence = yes
+		set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+		subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+		custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+		clamp_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			min = 0
+			max = 4
+		}
+		ITA_change_cohesion_values = yes
+		declare_war_on = {
+			target = TUR
+			type = annex_everything
+		}
+	}
+}
+###########################
+# French Diplomatic Reaction (France)
+###########################
+country_event = {
+	id = ITA_Stresa_Front.1
+	title = ITA_Stresa_Front.1.t
+	desc = ITA_Stresa_Front.1.d
+	picture = GFX_report_ITA_French_Reaction
+	is_triggered_only = yes
+	# Green light italian intervention
+	option = {
+		name = ITA_Stresa_Front.1.A
+		ai_chance = {
+			factor = 25
+		}
+		add_political_power = -25
+		ENG = {
+			country_event = { id = ITA_Stresa_Front.2 days = 1 }
+		}
+		set_country_flag = FRA_Approved_Italian_Invasion
+	}
+	# This goes against the tenants of the League! Stop that mad man!
+	option = {
+		name = ITA_Stresa_Front.1.B
+		ai_chance = {
+			factor = 5
+		}
+		add_political_power = 25
+		ENG = {
+			country_event = { id = ITA_Stresa_Front.2 days = 1 }
+		}
+		set_country_flag = FRA_Stopped_Italian_Invasion
+	}
+	# Present the Italians with the Hoare-Laval proposition
+	option = {
+		name = ITA_Stresa_Front.1.C
+		ai_chance = {
+			factor = 25
+		}
+		add_political_power = -40
+		ENG = {
+			country_event = { id = ITA_Stresa_Front.2 days = 1 }
+		}
+		set_country_flag = FRA_Hoare_Laval_Proposition
+	}
+}
+###########################
+# British Diplomatic Reaction (UK)
+###########################
+country_event = {
+	id = ITA_Stresa_Front.2
+	title = ITA_Stresa_Front.2.t
+	desc = ITA_Stresa_Front.2.d
+	picture = GFX_report_ITA_British_Reaction
+	is_triggered_only = yes
+	# Who are we to tell them not to have an empire?
+	option = {
+		name = ITA_Stresa_Front.2.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 100
+				FRA = {
+					has_country_flag = FRA_Approved_Italian_Invasion
+				}
+			}
+		}
+		set_country_flag = ENG_Approved_Italian_Invasion
+		add_political_power = -30
+		hidden_effect = {
+			if = {
+				limit = {
+					FRA = {
+						NOT = { has_country_flag = FRA_Approved_Italian_Invasion }
+					}
+				}
+				country_event = { id = ITA_Stresa_Front.6 days = 1 }
+			}
+		}
+	}
+	# The Italians are getting too big for their boots
+	option = {
+		name = ITA_Stresa_Front.2.B
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 100
+				FRA = {
+					has_country_flag = FRA_Stopped_Italian_Invasion
+				}
+			}
+		}
+		set_country_flag = ENG_Stopped_Italian_Invasion
+		add_political_power = -25
+		hidden_effect = {
+			if = {
+				limit = {
+					FRA = {
+						NOT = { has_country_flag = FRA_Stopped_Italian_Invasion }
+					}
+				}
+				country_event = { id = ITA_Stresa_Front.6 days = 1 }
+			}
+		}
+	}
+	# Go forth with the Hoare-Laval pact
+	option = {
+		name = ITA_Stresa_Front.2.C
+		trigger = {
+			FRA = {
+				has_country_flag = FRA_Hoare_Laval_Proposition
+			}
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 100
+				FRA = {
+					has_country_flag = FRA_Hoare_Laval_Proposition
+				}
+			}
+		}
+		set_country_flag = ENG_Hoare_Laval_Proposition
+		add_political_power = -40
+	}
+}
+###########################
+# The front agrees with our decision!
+###########################
+country_event = {
+	id = ITA_Stresa_Front.3
+	title = ITA_Stresa_Front.3.t
+	desc = ITA_Stresa_Front.3.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		FRA = {
+			has_country_flag = FRA_Approved_Italian_Invasion
+		}
+		ENG = {
+			has_country_flag = ENG_Approved_Italian_Invasion
+		}
+	}
+	# Great!
+	option = {
+		name = ITA_Stresa_Front.3.A
+		set_country_flag = ITA_Continue_Escalation
+		set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+		add_to_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+		custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Increase_tt
+		clamp_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			min = 0
+			max = 4
+		}
+		ITA_change_cohesion_values = yes
+	}
+}
+###########################
+# The Front Vetoes our Intervention!
+###########################
+country_event = {
+	id = ITA_Stresa_Front.4
+	title = ITA_Stresa_Front.4.t
+	desc = ITA_Stresa_Front.4.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		FRA = {
+			has_country_flag = FRA_Stopped_Italian_Invasion
+		}
+		ENG = {
+			has_country_flag = ENG_Stopped_Italian_Invasion
+		}
+	}
+	# We should've never trusted the plutocrats
+	option = {
+		name = ITA_Stresa_Front.4.A
+		ai_chance = {
+			factor = 35
+		}
+		add_political_power = -100
+		set_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			value = 0
+		}
+		custom_effect_tooltip = ITA_Stresa_Front_will_Collapse
+	}
+	# We'll pull back, for the sake of peace
+	option = {
+		name = ITA_Stresa_Front.4.B
+		ai_chance = {
+			factor = 65
+		}
+		set_country_flag = ITA_War_with_Ethiopia_Avoided
+		add_stability = -0.05
+		add_political_power = -100
+		set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+		subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+		custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+		clamp_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			min = 0
+			max = 4
+		}
+		ITA_change_cohesion_values = yes
+	}
+}
+###########################
+# A Proposal From the Front.
+###########################
+country_event = {
+	id = ITA_Stresa_Front.5
+	title = ITA_Stresa_Front.5.t
+	desc = ITA_Stresa_Front.5.d
+	picture = GFX_report_ITA_Proposal
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		FRA = {
+			has_country_flag = FRA_Hoare_Laval_Proposition
+		}
+		ENG = {
+			has_country_flag = ENG_Hoare_Laval_Proposition
+		}
+	}
+	# We only stand to benefit!
+	option = {
+		name = ITA_Stresa_Front.5.A
+		ai_chance = {
+			factor = 80
+		}
+		set_country_flag = ITA_Normal_HL_Exchange
+		custom_effect_tooltip = ITA_Normal_HL_Exchange_tt
+		ETH = {
+			country_event = { id = ITA_Stresa_Front.8 days = 1 }
+		}
+	}
+	# The ethiopians don't deserve italian land!
+	option = {
+		name = ITA_Stresa_Front.5.B
+		ai_chance = {
+			factor = 10
+		}
+		custom_effect_tooltip = ITA_Harsh_HL_Exchange_tt
+		set_country_flag = ITA_Harsh_HL_Exchange
+		ETH = {
+			country_event = { id = ITA_Stresa_Front.8 days = 1 }
+		}
+		add_political_power = -100
+	}
+	# No deal!
+	option = {
+		name = ITA_Stresa_Front.5.C
+		ai_chance = {
+			factor = 10
+		}
+		add_political_power = -150
+		set_country_flag = ITA_Continue_Escalation
+		set_country_flag = ITA_Unapproved_Ethiopian_Invasion
+	}
+}
+###########################
+# Deadlock in the front!
+###########################
+country_event = {
+	id = ITA_Stresa_Front.6
+	title = ITA_Stresa_Front.6.t
+	desc = ITA_Stresa_Front.6.d
+	picture = GFX_report_ITA_Deadlock
+	fire_only_once = yes
+	is_triggered_only = yes
+	# The British have the Right Idea
+	option = {
+		name = ITA_Stresa_Front.6.A
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				ENG = {
+					has_country_flag = ENG_Approved_Italian_Invasion
+				}
+			}
+			set_country_flag = ITA_Continue_Escalation
+			custom_effect_tooltip = ITA_We_Will_Continue_War_with_Ethiopia_tt
+		}
+		else_if = {
+			limit = {
+				ENG = {
+					has_country_flag = ENG_Stopped_Italian_Invasion
+				}
+			}
+			set_country_flag = ITA_War_with_Ethiopia_Avoided
+			custom_effect_tooltip = ITA_We_Will_Avoid_War_with_Ethiopia_tt
+			add_stability = -0.05
+			add_political_power = -100
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+		if = {
+			limit = {
+				ENG = {
+					NOT = {
+						has_country_flag = ENG_Stopped_Italian_Invasion
+					}
+				}
+			}
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+	}
+	# The French know best
+	option = {
+		name = ITA_Stresa_Front.6.B
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_country_flag = FRA_Approved_Italian_Invasion
+				}
+			}
+			set_country_flag = ITA_Continue_Escalation
+			custom_effect_tooltip = ITA_We_Will_Continue_War_with_Ethiopia_tt
+		}
+		else_if = {
+			limit = {
+				FRA = {
+					has_country_flag = FRA_Stopped_Italian_Invasion
+				}
+			}
+			set_country_flag = ITA_War_with_Ethiopia_Avoided
+			custom_effect_tooltip = ITA_We_Will_Avoid_War_with_Ethiopia_tt
+			add_stability = -0.05
+			add_political_power = -100
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+		else_if = {
+			limit = {
+				FRA = {
+					has_country_flag = FRA_Hoare_Laval_Proposition
+				}
+			}
+			transfer_state = 1432
+			transfer_state = 880
+			ETH = {
+				transfer_state = 1050
+				add_timed_idea = {
+					idea = ETH_Access_to_World_Economy
+					days = 1095
+				}
+			}
+			set_country_flag = ITA_War_with_Ethiopia_Avoided
+			custom_effect_tooltip = ITA_We_Will_Procced_with_Hoare_Laval_tt
+			ETH = {
+				give_resource_rights = { receiver = ITA state = 1063 }
+			}
+		}
+		if = {
+			limit = {
+				FRA = {
+					NOT = {
+						has_country_flag = FRA_Stopped_Italian_Invasion
+					}
+				}
+			}
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 1 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+	}
+}
+###########################
+# The Stresa Front has Collapsed
+###########################
+country_event = {
+	id = ITA_Stresa_Front.7
+	title = ITA_Stresa_Front.7.t
+	desc = ITA_Stresa_Front.7.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		has_completed_focus = ITA_The_Stresa_Front
+		check_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			value = 0
+			compare = equals
+		}
+	}
+	# 
+	option = {
+		name = ITA_Stresa_Front.7.A
+		set_country_flag = ITA_Stresa_Front_Broke_Apart
+	}
+}
+###########################
+# The demands of the Western Powers
+###########################
+country_event = {
+	id = ITA_Stresa_Front.8
+	title = ITA_Stresa_Front.8.t
+	desc = ITA_Stresa_Front.8.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# I suppose we have no choice
+	option = {
+		name = ITA_Stresa_Front.8.A
+		ai_chance = {
+			factor = 50
+		}
+		add_political_power = -50
+		if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Normal_HL_Exchange
+				}
+			}
+			ITA = {
+				transfer_state = 1432
+				transfer_state = 880
+			}
+			transfer_state = 1050
+			add_timed_idea = {
+				idea = ETH_Access_to_World_Economy
+				days = 1095
+			}
+			give_resource_rights = { receiver = ITA state = 1063 }
+		}
+		else_if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Harsh_HL_Exchange
+				}
+			}
+			ITA = {
+				transfer_state = 1432
+				transfer_state = 880
+			}
+			give_resource_rights = { receiver = ITA state = 1063 }
+		}
+		ITA = {
+			country_event = { id = ITA_Stresa_Front.9 }
+			set_country_flag = ITA_War_with_Ethiopia_Avoided
+		}
+	}
+	# To hell with the western powers!
+	option = {
+		name = ITA_Stresa_Front.8.B
+		ai_chance = {
+			factor = 50
+		}
+		ITA = {
+			country_event = { id = ITA_Stresa_Front.10 }
+			set_country_flag = ITA_Continue_Escalation
+		}
+	}
+}
+###########################
+# Ethiopia has Accepted our Proposal
+###########################
+country_event = {
+	id = ITA_Stresa_Front.9
+	title = ITA_Stresa_Front.9.t
+	desc = ITA_Stresa_Front.9.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Stresa_Front.9.A
+	}
+}
+###########################
+# Ethiopia has Refused our Proposal
+###########################
+country_event = {
+	id = ITA_Stresa_Front.10
+	title = ITA_Stresa_Front.10.t
+	desc = ITA_Stresa_Front.10.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Stresa_Front.10.A
+	}
+}
+###########################
+# Where shall we suggest to do our training?
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.1
+	title = ITA_Pact_with_Albion.1.t
+	desc = ITA_Pact_with_Albion.1.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# The Atlantic
+	option = {
+		name = ITA_Pact_with_Albion.1.A
+		ai_chance = {
+			factor = 0
+		}
+		set_country_flag = ITA_Pact_with_Albion_Atlantic
+		ENG = {
+			country_event = { id = ITA_Pact_with_Albion.2 days = 1 }
+		}
+	}
+	# Our home, the Mediterranean
+	option = {
+		name = ITA_Pact_with_Albion.1.B
+		ai_chance = {
+			factor = 100
+		}
+		set_country_flag = ITA_Pact_with_Albion_Mediterranean
+		ENG = {
+			country_event = { id = ITA_Pact_with_Albion.2 days = 1 }
+		}
+	}
+	# The North Sea
+	option = {
+		name = ITA_Pact_with_Albion.1.C
+		ai_chance = {
+			factor = 0
+		}
+		set_country_flag = ITA_Pact_with_Albion_North_Sea
+		ENG = {
+			country_event = { id = ITA_Pact_with_Albion.2 days = 1 }
+		}
+	}
+}
+###########################
+# Naval Exercise proposed by Italy
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.2
+	title = ITA_Pact_with_Albion.2.t
+	desc = ITA_Pact_with_Albion.2.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Always good to set sails with a friend!
+	option = {
+		name = ITA_Pact_with_Albion.2.A
+		ai_chance = {
+			factor = 70
+		}
+		add_fuel = -10000
+		if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Pact_with_Albion_Atlantic
+				}
+			}
+			ITA = {
+				country_event = { id = ITA_Pact_with_Albion.3 days = 1 }
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = bb_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cv_tech
+			}
+		}
+		else_if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Pact_with_Albion_Mediterranean
+				}
+			}
+			ITA = {
+				country_event = { id = ITA_Pact_with_Albion.3 days = 1 }
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cl_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = ca_tech
+			}
+		}
+		else_if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Pact_with_Albion_North_Sea
+				}
+			}
+			ITA = {
+				country_event = { id = ITA_Pact_with_Albion.3 days = 1 }
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = ss_tech
+			}
+		}
+	}
+	# We're busy, tell them to call back later
+	option = {
+		name = ITA_Pact_with_Albion.2.B
+		ai_chance = {
+			factor = 30
+		}
+		hidden_effect = {
+			ITA = {
+				country_event = { id = ITA_Pact_with_Albion.4 days = 1 }
+			}
+		}
+	}
+}
+###########################
+# The Royal Navy agrees!
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.3
+	title = ITA_Pact_with_Albion.3.t
+	desc = ITA_Pact_with_Albion.3.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Great!
+	option = {
+		name = ITA_Pact_with_Albion.3.A
+		ai_chance = {
+			factor = 70
+		}
+		add_fuel = -10000
+		if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_Atlantic
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = bb_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cv_tech
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_Mediterranean
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cl_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = ca_tech
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_North_Sea
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = ss_tech
+			}
+		}
+	}
+}
+###########################
+# The Royal Navy won't participate
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.4
+	title = ITA_Pact_with_Albion.4.t
+	desc = ITA_Pact_with_Albion.4.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Shame
+	option = {
+		name = ITA_Pact_with_Albion.4.A
+		if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_Request_Refused
+			}
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+		set_country_flag = ITA_Pact_with_Albion_Request_Refused
+	}
+}
+###########################
+# Italy requires naval landings and operation veterans
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.5
+	title = ITA_Pact_with_Albion.5.t
+	desc = ITA_Pact_with_Albion.5.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Our old boys shall show a thing or two to those Sun dwellers
+	option = {
+		name = ITA_Pact_with_Albion.5.A
+		ai_chance = {
+			factor = 80
+		}
+		ITA = {
+			country_event = { id = ITA_Pact_with_Albion.6 days = 1 }
+		}
+	}
+	# We don't want to lose our best in a precocious accident, no thanks
+	option = {
+		name = ITA_Pact_with_Albion.5.B
+		ai_chance = {
+			factor = 20
+		}
+		hidden_effect = {
+			ITA = {
+				country_event = { id = ITA_Pact_with_Albion.7 days = 1 }
+			}
+		}
+	}
+}
+###########################
+# Royal Marines arrive on Italian shores!
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.6
+	title = ITA_Pact_with_Albion.6.t
+	desc = ITA_Pact_with_Albion.6.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Excellent
+	option = {
+		name = ITA_Pact_with_Albion.6.A
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = tp_tech
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = marine_tech
+		}
+	}
+}
+###########################
+# Britain Refuses to Provide Support
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.7
+	title = ITA_Pact_with_Albion.7.t
+	desc = ITA_Pact_with_Albion.7.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.7.A
+		if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_Request_Refused
+			}
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+		set_country_flag = ITA_Pact_with_Albion_Request_Refused
+	}
+}
+###########################
+# Italian magnate Fiat puts forward joint aircraft development proposal!
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.8
+	title = ITA_Pact_with_Albion.8.t
+	desc = ITA_Pact_with_Albion.8.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# It would be like a air Alvis-Alpha Romeo! 
+	option = {
+		name = ITA_Pact_with_Albion.8.A
+		ai_chance = {
+			factor = 50
+		}
+		set_temp_variable = { money_to_gain = -150 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		add_tech_bonus = {
+			bonus = 0.75
+			uses = 1
+			category = cas_bomber
+			category = light_fighter
+		}
+		ITA = {
+			country_event = { id = ITA_Pact_with_Albion.10 days = 1 }
+		}
+	}
+	# We hold more knowledge than they do, and it doesn't come cheap
+	option = {
+		name = ITA_Pact_with_Albion.8.B
+		ai_chance = {
+			factor = 25
+		}
+		ITA = {
+			country_event = { id = ITA_Pact_with_Albion.9 days = 1 }
+		}
+	}
+	# Our aircraft design knowledge is strategic information, we can't afford sharing something like that right now.
+	option = {
+		name = ITA_Pact_with_Albion.8.C
+		ai_chance = {
+			factor = 25
+		}
+		ITA = {
+			country_event = { id = ITA_Pact_with_Albion.7 days = 1 }
+		}
+	}
+}
+###########################
+# The British ask for a price
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.9
+	title = ITA_Pact_with_Albion.9.t
+	desc = ITA_Pact_with_Albion.9.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# It will be worth it
+	option = {
+		name = ITA_Pact_with_Albion.9.A
+		ai_chance = {
+			factor = 50
+		}
+		set_temp_variable = { money_to_gain = -250 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		set_country_flag = ITA_Pact_with_Albion_Increased_Price
+		hidden_effect = {
+			country_event = { id = ITA_Pact_with_Albion.10 days = 1 }
+		}
+	}
+	# They asked for, HOW much?!
+	option = {
+		name = ITA_Pact_with_Albion.9.B
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_Request_Refused
+			}
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+		set_country_flag = ITA_Pact_with_Albion_Request_Refused
+	}
+}
+###########################
+# Our British allies agree to develop an aircraft with us!
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.10
+	title = ITA_Pact_with_Albion.10.t
+	desc = ITA_Pact_with_Albion.10.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.10.A
+		if = {
+			limit = {
+				has_country_flag = ITA_Pact_with_Albion_Increased_Price
+			}
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = cas_bomber
+				category = light_fighter
+			}
+		}
+		else = {
+			set_temp_variable = { money_to_gain = -150 }
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = cas_bomber
+				category = light_fighter
+			}
+		}
+	}
+}
+###########################
+# The request of our territories
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.11
+	title = ITA_Pact_with_Albion.11.t
+	desc = ITA_Pact_with_Albion.11.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# We should ask for the Treaty of London territories
+	option = {
+		name = ITA_Pact_with_Albion.11.A
+		ENG = {
+			country_event = { id = ITA_Pact_with_Albion.12 days = 2 }
+		}
+		FRA = {
+			country_event = { id = ITA_Pact_with_Albion.12 days = 2 }
+		}
+		set_country_flag = ITA_Asked_for_1915_Territories
+		custom_effect_tooltip = ITA_Asking_for_1915_Territories
+	}
+	# We should ask for our territories and a small compensation
+	option = {
+		name = ITA_Pact_with_Albion.11.B
+		ENG = {
+			country_event = { id = ITA_Pact_with_Albion.13 days = 2 }
+		}
+		FRA = {
+			country_event = { id = ITA_Pact_with_Albion.13 days = 2 }
+		}
+		set_country_flag = ITA_Asked_for_Entire_Coast
+		custom_effect_tooltip = ITA_Asking_for_Dalmatian_Coast
+	}
+	# We should ask for all of our rightful land!
+	option = {
+		name = ITA_Pact_with_Albion.11.C
+		ENG = {
+			country_event = { id = ITA_Pact_with_Albion.15 days = 2 }
+		}
+		FRA = {
+			country_event = { id = ITA_Pact_with_Albion.15 days = 2 }
+		}
+		set_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+		custom_effect_tooltip = ITA_Asking_for_Dalmatian_Coast_and_inland_Dalmatia
+	}
+}
+###########################
+# Italy asks for the Treaty of London territories
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.12
+	title = ITA_Pact_with_Albion.12.t
+	desc = ITA_Pact_with_Albion.12.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Seems fair
+	option = {
+		name = ITA_Pact_with_Albion.12.A
+		ai_chance = {
+			factor = 100
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Accepted_Territory_Proposal
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Accepted_Territory_Proposal
+		}
+		ITA = {
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.25 }
+			add_to_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Increase_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+	}
+	# No
+	option = {
+		name = ITA_Pact_with_Albion.12.B
+		ai_chance = {
+			factor = 0
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Refused_Territory_Proposal
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Refused_Territory_Proposal
+		}
+		ITA = {
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.25 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+	}
+}
+###########################
+# Italy asks for the Adriatic coast
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.13
+	title = ITA_Pact_with_Albion.13.t
+	desc = ITA_Pact_with_Albion.13.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# A compensation is due
+	option = {
+		name = ITA_Pact_with_Albion.13.A
+		ai_chance = {
+			factor = 65
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Accepted_Territory_Proposal
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Accepted_Territory_Proposal
+		}
+	}
+	# Perhaps keep it to the 1915 territories?
+	option = {
+		name = ITA_Pact_with_Albion.13.B
+		ai_chance = {
+			factor = 25
+		}
+		ITA = {
+			country_event = { id = ITA_Pact_with_Albion.14 days = 1 }
+		}
+	}
+	# The coast belongs to Yugoslavia
+	option = {
+		name = ITA_Pact_with_Albion.13.C
+		ai_chance = {
+			factor = 10
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Refused_Territory_Proposal
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Refused_Territory_Proposal
+		}
+	}
+}
+###########################
+# The front reproposes our partition
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.14
+	title = ITA_Pact_with_Albion.14.t
+	desc = ITA_Pact_with_Albion.14.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		ENG = {
+			clr_country_flag = ENG_Accepted_Territory_Proposal
+			clr_country_flag = ENG_Refused_Territory_Proposal
+		}
+		FRA = {
+			clr_country_flag = FRA_Accepted_Territory_Proposal
+			clr_country_flag = FRA_Refused_Territory_Proposal
+		}
+	}
+	# Accept the redraw
+	option = {
+		name = ITA_Pact_with_Albion.14.A
+		ai_chance = {
+			factor = 100
+		}
+		ENG = {
+			set_country_flag = ENG_Accepted_Territory_Proposal
+		}
+		FRA = {
+			set_country_flag = FRA_Accepted_Territory_Proposal
+		}
+		set_country_flag = ITA_Asked_for_1915_Territories
+		clr_country_flag = ITA_Asked_for_Entire_Coast
+		hidden_effect = {
+			ENG = {
+				country_event = { id = ITA_Pact_with_Albion.140 }
+			}
+			FRA = {
+				country_event = { id = ITA_Pact_with_Albion.140 }
+			}
+		}
+	}
+	# Refuse it
+	option = {
+		name = ITA_Pact_with_Albion.14.B
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -30
+		hidden_effect = {
+			ENG = {
+				country_event = { id = ITA_Pact_with_Albion.141 }
+			}
+			FRA = {
+				country_event = { id = ITA_Pact_with_Albion.141 }
+			}
+		}
+	}
+}
+###########################
+# Italy has accepted our Offer
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.140
+	title = ITA_Pact_with_Albion.140.t
+	desc = ITA_Pact_with_Albion.140.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.140.A
+	}
+}
+###########################
+# Italy has refused our Offer
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.141
+	title = ITA_Pact_with_Albion.141.t
+	desc = ITA_Pact_with_Albion.141.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Their loss
+	option = {
+		name = ITA_Pact_with_Albion.141.A
+	}
+}
+###########################
+# Italy Asks for Adriatic Yugoslavia 
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.15
+	title = ITA_Pact_with_Albion.15.t
+	desc = ITA_Pact_with_Albion.15.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# They fought and bled with us 20 years ago, it's the least that we could do
+	option = {
+		name = ITA_Pact_with_Albion.15.A
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Accepted_Territory_Proposal
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Accepted_Territory_Proposal
+		}
+		ITA = {
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+			add_to_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Increase_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+	}
+	# The territorial integrity of Yugoslavia is instrumental!
+	option = {
+		name = ITA_Pact_with_Albion.15.B
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			set_country_flag = ENG_Refused_Territory_Proposal
+		}
+		else_if = {
+			limit = {
+				original_tag = FRA
+			}
+			set_country_flag = FRA_Refused_Territory_Proposal
+		}
+		ITA = {
+			set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.25 }
+			subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+			custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+			clamp_variable = {
+				var = ITA_Stresa_Front_Cohesion
+				min = 0
+				max = 4
+			}
+			ITA_change_cohesion_values = yes
+		}
+	}
+}
+###########################
+# Our Proposal has been Accepted
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.16
+	title = ITA_Pact_with_Albion.16.t
+	desc = ITA_Pact_with_Albion.16.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		ENG = {
+			has_country_flag = ENG_Accepted_Territory_Proposal
+		}
+		FRA = {
+			has_country_flag = FRA_Accepted_Territory_Proposal
+		}
+		ITA = {
+			OR = {
+				has_country_flag = ITA_Asked_for_1915_Territories
+				has_country_flag = ITA_Asked_for_Entire_Coast
+				has_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+			}
+		}
+	}
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.16.A
+		YUG = {
+			country_event = { id = ITA_Pact_with_Albion.19 days = 1 }
+		}
+		add_political_power = -50
+	}
+}
+###########################
+# Our Proposal has been Protested
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.17
+	title = ITA_Pact_with_Albion.17.t
+	desc = ITA_Pact_with_Albion.17.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		OR = {
+			AND = {
+				ENG = {
+					has_country_flag = ENG_Accepted_Territory_Proposal
+				}
+				FRA = {
+					has_country_flag = FRA_Refused_Territory_Proposal
+				}
+			}
+			AND = {
+				ENG = {
+					has_country_flag = ENG_Refused_Territory_Proposal
+				}
+				FRA = {
+					has_country_flag = FRA_Accepted_Territory_Proposal
+				}
+			}
+		}
+		ITA = {
+			OR = {
+				has_country_flag = ITA_Asked_for_1915_Territories
+				has_country_flag = ITA_Asked_for_Entire_Coast
+				has_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+			}
+		}
+	}
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.17.A
+		YUG = {
+			country_event = { id = ITA_Pact_with_Albion.19 days = 1 }
+		}
+		set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.25 }
+		subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+		custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+		clamp_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			min = 0
+			max = 4
+		}
+		ITA_change_cohesion_values = yes
+	}
+}
+###########################
+# Our Proposal has been Refused
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.18
+	title = ITA_Pact_with_Albion.18.t
+	desc = ITA_Pact_with_Albion.18.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		ENG = {
+			has_country_flag = ENG_Refused_Territory_Proposal
+		}
+		FRA = {
+			has_country_flag = FRA_Refused_Territory_Proposal
+		}
+		ITA = {
+			OR = {
+				has_country_flag = ITA_Asked_for_1915_Territories
+				has_country_flag = ITA_Asked_for_Entire_Coast
+				has_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+			}
+		}
+	}
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.18.A
+		set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+		subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+		custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+		clamp_variable = {
+			var = ITA_Stresa_Front_Cohesion
+			min = 0
+			max = 4
+		}
+		ITA_change_cohesion_values = yes
+	}
+}
+###########################
+# Pressure from the Stresa Front
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.19
+	title = ITA_Pact_with_Albion.19.t
+	desc = ITA_Pact_with_Albion.19.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# A small price to pay for peace
+	option = {
+		name = ITA_Pact_with_Albion.19.A
+		ai_chance = {
+			modifier = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_1915_Territories
+				}
+				factor = 60
+			}
+			modifier = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_Entire_Coast
+				}
+				factor = 35
+			}
+			modifier = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+				}
+				factor = 10
+			}
+		}
+		if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_1915_Territories
+				}
+			}
+			ITA = {
+				transfer_state = 105
+				transfer_state = 1085
+				transfer_state = 1404
+			}
+		}
+		else_if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_Entire_Coast
+				}
+			}
+			ITA = {
+				transfer_state = 103
+				transfer_state = 105
+				transfer_state = 1085
+				transfer_state = 1091
+				transfer_state = 1404
+			}
+		}
+		else_if = {
+			limit = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+				}
+			}
+			ITA = {
+				transfer_state = 102
+				transfer_state = 103
+				transfer_state = 105
+				transfer_state = 765
+				transfer_state = 1085
+				transfer_state = 1087
+				transfer_state = 1091
+				transfer_state = 1404
+			}
+		}
+		diplomatic_relation = {
+			country = ITA
+			relation = non_aggression_pact
+			active = yes
+		}
+		country_event = { id = ITA_Pact_with_Albion.21 }
+	}# They can come and take it!
+	option = {
+		name = ITA_Pact_with_Albion.19.B
+		ai_chance = {
+			modifier = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_1915_Territories
+				}
+				factor = 40
+			}
+			modifier = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_Entire_Coast
+				}
+				factor = 65
+			}
+			modifier = {
+				ITA = {
+					has_country_flag = ITA_Asked_for_Entire_Coast_and_Inner_Territory
+				}
+				factor = 90
+			}
+		}
+		ITA = {
+			country_event = { id = ITA_Pact_with_Albion.20 days = 1 }
+		}
+	}
+}
+###########################
+# Yugoslavia refuses our demands!
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.20
+	title = ITA_Pact_with_Albion.20.t
+	desc = ITA_Pact_with_Albion.20.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# It is not wise to attack them now
+	option = {
+		name = ITA_Pact_with_Albion.20.A
+		add_war_support = -0.05
+		# Mussolinists
+		set_temp_variable = { faction_id = 32 }
+		set_temp_variable = { influence_to_add = -5 }
+		change_faction_influence = yes
+		# Militarists
+		set_temp_variable = { faction_id = 35 }
+		set_temp_variable = { influence_to_add = -5 }
+		change_faction_influence = yes
+	}
+	# Me ne frego!
+	option = {
+		name = ITA_Pact_with_Albion.20.B
+		declare_war_on = {
+			target = YUG
+			type = annex_everything
+		}
+	}
+}
+###########################
+# Yugoslavia submits to our demands!
+###########################
+country_event = {
+	id = ITA_Pact_with_Albion.21
+	title = ITA_Pact_with_Albion.21.t
+	desc = ITA_Pact_with_Albion.21.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.21.A
+		diplomatic_relation = {
+			country = YUG
+			relation = non_aggression_pact
+			active = yes
+		}
+	}
+}
+###########################
+# Italy Joins the Allies
+###########################
+news_event = {
+	id = ITA_Pact_with_Albion.22
+	title = ITA_Pact_with_Albion.22.t
+	desc = ITA_Pact_with_Albion.22.d
+	picture = GFX_news_ITA_Mussolini_Saluting
+	is_triggered_only = yes
+	major = yes
+	# 
+	option = {
+		name = ITA_Pact_with_Albion.22.A
+	}
+}
+###########################
+# Italy proposes an army conference.
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.1
+	title = ITA_Cooperation_with_Gaul.1.t
+	desc = ITA_Cooperation_with_Gaul.1.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# No, thank you.
+	option = {
+		name = ITA_Cooperation_with_Gaul.1.A
+		ai_chance = {
+			factor = 50
+		}
+		add_political_power = 20
+		add_command_power = 25
+		ITA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.2 days = 1 }
+		}
+		set_country_flag = FRA_Refused_Army_Conference
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = FRA_Refused_Joint_Training
+					has_country_flag = FRA_Refused_Economic_Cooperation
+				}
+			}
+			ITA = {
+				set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+				subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+				custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+				clamp_variable = {
+					var = ITA_Stresa_Front_Cohesion
+					min = 0
+					max = 4
+				}
+				ITA_change_cohesion_values = yes
+			}
+		}
+	}
+	# Pack your bags, Generals!
+	option = {
+		name = ITA_Cooperation_with_Gaul.1.B
+		ai_chance = {
+			factor = 50
+		}
+		army_experience = 10
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = land_doctrine
+		}
+		ITA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.3 days = 1 }
+		}
+	}
+}
+###########################
+# The French refuse!
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.2
+	title = ITA_Cooperation_with_Gaul.2.t
+	desc = ITA_Cooperation_with_Gaul.2.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Cooperation_with_Gaul.2.A
+	}
+}
+###########################
+# The French accept!
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.3
+	title = ITA_Cooperation_with_Gaul.3.t
+	desc = ITA_Cooperation_with_Gaul.3.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Cooperation_with_Gaul.3.A
+		army_experience = 10
+		add_tech_bonus = {
+			bonus = 1
+			uses = 1
+			category = land_doctrine
+		}
+	}
+}
+###########################
+# The Italians propose joint training exercises.
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.4
+	title = ITA_Cooperation_with_Gaul.4.t
+	desc = ITA_Cooperation_with_Gaul.4.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# We don't think that would be wise.
+	option = {
+		name = ITA_Cooperation_with_Gaul.4.A
+		add_political_power = 40
+		add_command_power = 25
+		ITA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.2 days = 1 }
+		}
+		set_country_flag = FRA_Refused_Joint_Training
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = FRA_Refused_Army_Conference
+					has_country_flag = FRA_Refused_Economic_Cooperation
+				}
+			}
+			ITA = {
+				set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+				subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+				custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+				clamp_variable = {
+					var = ITA_Stresa_Front_Cohesion
+					min = 0
+					max = 4
+				}
+				ITA_change_cohesion_values = yes
+			}
+		}
+	}
+	# What a great idea!
+	option = {
+		name = ITA_Cooperation_with_Gaul.4.B
+		army_experience = 10
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = infantry_weapons
+		}
+		ITA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.5 days = 1 }
+		}
+	}
+}
+###########################
+# France accepts!
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.5
+	title = ITA_Cooperation_with_Gaul.5.t
+	desc = ITA_Cooperation_with_Gaul.5.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Excellent.
+	option = {
+		name = ITA_Cooperation_with_Gaul.5.A
+		army_experience = 10
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = infantry_weapons
+		}
+	}
+}
+###########################
+# The Italians propose increased economic cooperation.
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.6
+	title = ITA_Cooperation_with_Gaul.6.t
+	desc = ITA_Cooperation_with_Gaul.6.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Such a thing would only be a detriment to France.
+	option = {
+		name = ITA_Cooperation_with_Gaul.6.A
+		ai_chance = {
+			factor = 30
+		}
+		add_political_power = 50
+		ITA = {
+			country_event = {id = ITA_Cooperation_with_Gaul.2 days = 1 }
+		}
+		set_country_flag = FRA_Refused_Economic_Cooperation
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = FRA_Refused_Army_Conference
+					has_country_flag = FRA_Refused_Joint_Training
+				}
+			}
+			ITA = {
+				set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+				subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+				custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+				clamp_variable = {
+					var = ITA_Stresa_Front_Cohesion
+					min = 0
+					max = 4
+				}
+				ITA_change_cohesion_values = yes
+			}
+		}
+	}
+	# A sign of our two Nations friendship!
+	option = {
+		name = ITA_Cooperation_with_Gaul.6.B
+		ai_chance = {
+			factor = 70
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = FRA
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = industry
+		}
+	}
+}
+###########################
+# The French agree!
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.7
+	title = ITA_Cooperation_with_Gaul.7.t
+	desc = ITA_Cooperation_with_Gaul.7.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# A win for Italia.
+	option = {
+		name = ITA_Cooperation_with_Gaul.7.A
+		ai_chance = {
+			factor = 50
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ITA
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = industry
+		}
+	}
+	# Let's see if we can get some more out of them...
+	option = {
+		name = ITA_Cooperation_with_Gaul.7.B
+		ai_chance = {
+			factor = 50 
+		}
+		add_political_power = -30
+		FRA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.8 days = 1 }
+		}
+	}
+}
+###########################
+# Mussolini seeks to expand the scheme!
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.8
+	title = ITA_Cooperation_with_Gaul.8.t
+	desc = ITA_Cooperation_with_Gaul.8.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Are they kidding?! No!
+	option = {
+		name = ITA_Cooperation_with_Gaul.8.A
+		ai_chance = {
+			factor = 50
+		}
+		add_political_power = 50
+		ITA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.2 days = 1 }
+		}
+		set_country_flag = FRA_Refused_Economic_Cooperation
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = FRA_Refused_Army_Conference
+					has_country_flag = FRA_Refused_Joint_Training
+				}
+			}
+			ITA = {
+				set_temp_variable = { ITA_Stresa_Front_Cohesion_gain = 0.5 }
+				subtract_from_variable = { ITA_Stresa_Front_Cohesion = ITA_Stresa_Front_Cohesion_gain }
+				custom_effect_tooltip = ITA_Stresa_Front_Cohesion_Decrease_tt
+				clamp_variable = {
+					var = ITA_Stresa_Front_Cohesion
+					min = 0
+					max = 4
+				}
+				ITA_change_cohesion_values = yes
+			}
+		}
+	}
+	# It does seem profitable...
+	option = {
+		name = ITA_Cooperation_with_Gaul.8.B
+		ai_chance = {
+			factor = 50
+		}
+		add_political_power = -30
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ITA
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			bonus = 0.75
+			uses = 1
+			category = industry
+		}
+		ITA = {
+			country_event = { id = ITA_Cooperation_with_Gaul.9 days = 1 }
+		}
+	}
+}
+###########################
+# The French agree!
+###########################
+country_event = {
+	id = ITA_Cooperation_with_Gaul.9
+	title = ITA_Cooperation_with_Gaul.9.t
+	desc = ITA_Cooperation_with_Gaul.9.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Lucky us!
+	option = {
+		name = ITA_Cooperation_with_Gaul.9.A
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ITA
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			bonus = 0.75
+			uses = 1
+			category = industry
+		}
+	}
+}
+###########################
+# Mussolini wants to visit Germany
+###########################
+country_event = {
+	id = ITA_Align_with_Germany.1
+	title = ITA_Align_with_Germany.1.t
+	desc = ITA_Align_with_Germany.1.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Yes
+	option = {
+		name = ITA_Align_with_Germany.1.A
+		ai_chance = {
+			factor = 100
+		}
+		if = {
+			limit = {
+				country_exists = AUS
+			}
+			ITA = {
+				country_event = { id = ITA_Align_with_Germany.4 days = 10 }
+			}
+		}
+		else = {
+			hidden_effect = {
+				news_event = { id = ITA_Align_with_Germany.3 days = 5 }
+				news_event = { id = ITA_Align_with_Germany.5 days = 330 }
+			}
+		}
+	}
+	# No
+	option = {
+		name = ITA_Align_with_Germany.1.B
+		ai_chance = {
+			factor = 0
+		}
+		ITA = {
+			country_event = { id = ITA_Align_with_Germany.2 days = 2 }
+		}
+	}
+}
+###########################
+# Germany Refuses our State Visit
+###########################
+country_event = {
+	id = ITA_Align_with_Germany.2
+	title = ITA_Align_with_Germany.2.t
+	desc = ITA_Align_with_Germany.2.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Align_with_Germany.2.A
+		set_country_flag = ITA_Germany_Refused_State_Visit
+	}
+}
+###########################
+# Mussolini's State Visit to Germany
+###########################
+news_event = {
+	id = ITA_Align_with_Germany.3
+	title = ITA_Align_with_Germany.3.t
+	desc = { 
+		text = ITA_Align_with_Germany.3.d 
+		trigger = { 
+			NOT = {
+				has_country_flag = ITA_Refused_German_Offer
+			}
+		}
+	}
+	desc = { 
+		text = ITA_Align_with_Germany.3.d2
+		trigger = { 
+			has_country_flag = ITA_Refused_German_Offer
+		}
+	}
+	picture = GFX_news_ITA_Mussolinis_State_Visit_to_Germany
+	major = yes
+	is_triggered_only = yes
+	# 
+	option = {
+		name = ITA_Align_with_Germany.3.GER
+		trigger = {
+			original_tag = GER
+			NOT = {
+				has_country_flag = ITA_Refused_German_Offer
+			}
+		}
+	}
+	option = {
+		name = ITA_Align_with_Germany.3.GER2
+		trigger = {
+			has_country_flag = ITA_Refused_German_Offer
+			original_tag = GER
+		}
+	}
+	# 
+	option = {
+		name = ITA_Align_with_Germany.3.ITA
+		trigger = {
+			original_tag = ITA
+			NOT = {
+				has_country_flag = ITA_Refused_German_Offer
+			}
+		}
+	}
+	option = {
+		name = ITA_Align_with_Germany.3.ITA2
+		trigger = {
+			original_tag = ITA
+			has_country_flag = ITA_Refused_German_Offer
+		}
+	}
+	# 
+	option = {
+		name = ITA_Align_with_Germany.3.W
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = ITA
+					original_tag = GER
+				}
+				has_country_flag = ITA_Refused_German_Offer
+			}
+		}
+	}
+	# 
+	option = {
+		name = ITA_Align_with_Germany.3.W2
+		trigger = {
+			has_country_flag = ITA_Refused_German_Offer
+			NOT = {
+				OR = {
+					original_tag = ITA
+					original_tag = GER
+				}
+			}
+		}
+	}
+}
+###########################
+# Hitler Inquires about Austria
+###########################
+country_event = {
+	id = ITA_Align_with_Germany.4
+	title = ITA_Align_with_Germany.4.t
+	desc = ITA_Align_with_Germany.4.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	# Austrians are German after all...
+	option = {
+		name = ITA_Align_with_Germany.4.A
+		ai_chance = {
+			factor = 100
+		}
+		39 = {
+			remove_claim_by = GER
+		}
+		hidden_effect = {
+			news_event = { id = ITA_Align_with_Germany.3 days = 5 }
+			news_event = { id = ITA_Align_with_Germany.5 days = 330 }
+		}
+	}
+	# No
+	option = {
+		name = ITA_Align_with_Germany.4.B
+		ai_chance = {
+			factor = 0
+		}
+		set_country_flag = ITA_Refused_German_Offer
+		hidden_effect = {
+			news_event = { id = ITA_Align_with_Germany.3 days = 5 }
+		}
+	}
+}
+###########################
+# Hitler's State Visit to Rome
+###########################
+news_event = {
+	id = ITA_Align_with_Germany.5
+	title = ITA_Align_with_Germany.5.t
+	desc = ITA_Align_with_Germany.5.d
+	picture = GFX_news_GER_Hitlers_State_Visit_to_Rome
+	major = yes
+	is_triggered_only = yes
+	# ITA
+	option = {
+		name = ITA_Align_with_Germany.5.A
+		trigger = {
+			original_tag = ITA
+		}
+	}
+	# GER
+	option = {
+		name = ITA_Align_with_Germany.5.B
+		trigger = {
+			original_tag = GER
+		}
+	}
+	# World
+	option = {
+		name = ITA_Align_with_Germany.5.C
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = ITA
+					original_tag = GER
+				}
+			}
+		}
+	}
+}
+###########################
+# The Anglo-Egyptian Condominium Cedes the Sarra Triangle
+###########################
+country_event = {
+	id = ITA_Libyan_Concessions.1
+	title = ITA_Libyan_Concessions.1.t
+	desc = ITA_Libyan_Concessions.1.d
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		date > 1934.7.19
+		has_start_date < 1934.7.19
+		ENG  = { 
+			owns_state = 853
+		}
+	}
+	option = {
+		name = ITA_Libyan_Concessions.1.A
+		transfer_state = 853
+		853 = {
+			add_core_of = LBA
+			remove_core_of = SUD
+		}
+	}
+}
+###########################
+# Mussolini-Laval Accord
+###########################
+country_event = {
+	id = ITA_Libyan_Concessions.2
+	title = ITA_Libyan_Concessions.2.t
+	desc = ITA_Libyan_Concessions.2.d
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		date > 1935.1.6
+		has_start_date < 1935.1.6
+		FRA  = { 
+			owns_state = 854 
+		}
+	}
+	option = {
+		name = ITA_Libyan_Concessions.2.A
+		transfer_state = 854
+		854 = {
+			add_core_of = LBA
+		}
+	}
+}
+###########################
+# Inauguration of the Via Balbia
+###########################
+country_event = {
+	id = ITA_Flavour_Events.1
+	title = ITA_Flavour_Events.1.t
+	desc = ITA_Flavour_Events.1.d
+	picture = GFX_report_event_generic_read_write
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		has_war_with = ENG
+		has_country_flag = ITA_Italo_Balbo_Appointed_Governor
+		has_country_flag = ITA_Renaming_to_Balbia
+		date > 1940.6.18
+		has_start_date < 1940.6.18
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	# 
+	option = {
+		name = ITA_Flavour_Events.1.A
+		set_country_flag = Italo_Balbo_unavailable
+	}
+}
+###########################
+# Fall of Fascism
+###########################
+country_event = { #Fall of Libya
+	id = ITA_Conquest_Events.1 
+	title = ITA_Conquest_Events.1.t
+	desc = ITA_Conquest_Events.1.d
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		has_war = yes
+		is_fascist = yes
+		NOT = {
+			OR = {
+				owns_state = 451
+				owns_state = 450
+				owns_state = 449
+				owns_state = 448
+				owns_state = 1226
+			}
+		}
+	}
+	option = {
+		name = ITA_Conquest_Events.1.A
+		add_war_support = -0.1
+	}
+}
+#Fall of Africa Orientale
+country_event = { 
+	id = ITA_Conquest_Events.2
+	title = ITA_Conquest_Events.2.t
+	desc = ITA_Conquest_Events.2.d
+	picture = GFX_report_ITA_Italian_Soldiers_in_Ethiopia
+	fire_only_once = yes
+	trigger = {
+		original_tag = ITA
+		has_war = yes
+		is_fascist = yes
+		NOT = {
+			OR = {
+				owns_state = 550
+				owns_state = 1050
+				owns_state = 559
+				owns_state = 271
+			}
+		}
+	}
+	option = {
+		name = ITA_Conquest_Events.2.A
+		add_war_support = -0.1
+	}
+}
+#Fall of Fascism
+country_event = { #Mozione Grandi
+	id = ITA_Fall_of_Fascism.1
+	title = ITA_Fall_of_Fascism.1.t
+	desc = ITA_Fall_of_Fascism.1.d
+	picture = TBI
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = ITA_Fall_of_Fascism.1.A
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.05
+		}
+		hidden_effect = {
+			country_event = {id = ITA_Fall_of_Fascism.2 days = 1}
+		}
+	}
+}
+
+news_event = { #Mussolini Arrested
+	id = ITA_Fall_of_Fascism.2
+	title = ITA_Fall_of_Fascism.2.t
+	desc = ITA_Fall_of_Fascism.2.d
+	picture = TBI
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = ITA_Fall_of_Fascism.2.A #Mama Mia
+
+		trigger = {
+			original_tag = ITA
+		}
+
+		add_popularity = {
+			ideology = authoritarian
+			popularity = 0.25
+		}
+		set_politics = {
+			ruling_party = authoritarian
+		}
+		set_party_name = {
+			ideology = authoritarian
+			long_name = ITA_authoritarian_party_MilitaryJunta_long
+			name = ITA_authoritarian_party_MilitaryJunta
+		}
+		add_country_leader_role = {
+			Character = ITA_Pietro_Badoglio
+			promote_leader = yes
+			country_leader = {
+				ideology = military_dictatorship
+				traits = {
+					POSITION_Prime_Minister
+					L_Old_General
+				}
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					is_in_faction_with = GER
+					has_war_with = ENG
+				}	
+			}
+			news_event = {id = ITA_Fall_of_Fascism.3 days = 20}
+			leave_faction = yes
+			set_rule = {
+				can_join_factions = no
+				can_not_declare_war = yes
+			}
+		}
+	}
+
+	option = {
+		name = ITA_Fall_of_Fascism.2.B #The rule of the Duce have ended
+		trigger = {
+			NOT = {
+				original_tag = ITA
+			}
+		}
+	}
+}
+
+news_event = { #Cassibile Armistice
+	id = ITA_Fall_of_Fascism.3
+	title = ITA_Fall_of_Fascism.3.t
+	desc = ITA_Fall_of_Fascism.3.d
+	picture = TBI
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	
+	immediate = {
+		hidden_effect = {
+			ITA = {
+				set_rule = {
+					can_join_factions = yes
+					can_not_declare_war = no
+				}
+			}
+			#Peace with the Allies
+			ENG = {
+				white_peace = ITA
+				add_to_faction = ITA
+			}
+			every_state = {
+				limit = {
+					is_controlled_by = ITA
+					is_on_continent = africa
+				}
+				transfer_state_to = ENG
+			}
+		}
+	}
+	option = {
+		name = ITA_Fall_of_Fascism.3.A
+		trigger = {
+			NOT = {
+				original_tag = ITA
+			}
+		}
+	}
+	option = {
+		name = ITA_Fall_of_Fascism.3.B
+		trigger = {
+			original_tag = GER
+		}
+	}
+	option = {
+		name = ITA_Fall_of_Fascism.3.C
+		trigger = {
+			original_tag = ITA
+		}
+		country_event = ITA_Fall_of_Fascism.4
+	}
+}
+
+country_event = { #Civil War
+	id = ITA_Fall_of_Fascism.4
+	title = ITA_Fall_of_Fascism.4.t
+	desc = ITA_Fall_of_Fascism.4.d
+	picture = TBI
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		#RSI set up
+		every_state = {
+			limit = {
+				is_core_of = ITA
+			}
+			add_core_of = RSI
+		}
+		every_state = {
+			limit = {
+				is_controlled_by = ITA
+				OR = {
+					state = 162
+					state = 2
+					state = 1425
+					state = 957
+					state = 161
+					state = 857
+					state = 159
+					state = 158
+					state = 1248
+					state = 856
+					state = 1320
+					state = 160
+					state = 157
+				}
+			}
+			transfer_state_to = RSI
+		}
+		GER = {
+			puppet = RSI
+		}
+		every_possible_country = {
+			limit = { has_character = ITA_Benito_Mussolini }
+			random_character = {
+				limit = { is_character = ITA_Benito_Mussolini }
+				set_nationality = RSI
+			}
+		}
+		RSI = {
+			inherit_technology = ITA
+			add_country_leader_role = {
+				Character = ITA_Benito_Mussolini
+				Promote_leader = yes
+				Country_leader = {
+					ideology = ultranationalism
+					traits = {
+						POSITION_ITA_Duce
+						L_Barking_Buffoon
+					}
+				}
+			}
+			set_politics = {
+				ruling_party = fascist
+				elections_allowed = no
+				long_name = "ITA_fascist_party_long"
+				name = "ITA_fascist_party"
+			}
+		}
+		transfer_units_fraction = {
+			target = RSI
+			size = 0.5
+			stockpile_ratio = 0.5
+			army_ratio = 0.5
+			navy_ratio = 0.1
+			air_ratio = 0.5
+			keep_unit_leaders_trigger = {
+				always = no
+			}
+		}
+		#Germany rule over Italy
+		every_state = {
+			limit = {
+				OR = {
+					state = 1506
+					state = 736
+					state = 814
+					state = 813
+					state = 815
+					state = 39
+					state = 769
+					state = 811
+				}
+			}
+			transfer_state_to = GER
+		}
+		every_state = {
+			limit = {
+				AND = {
+					is_core_of = YUG
+					is_controlled_by = ITA
+				}
+			}
+			transfer_state_to = GER
+		}
+		every_state = {
+			limit = {
+				AND = {
+					is_core_of = FRA
+					is_controlled_by = ITA
+				}
+			}
+			transfer_state_to = GER
+		}
+	}
+	option = {
+		name = ITA_Fall_of_Fascism.4.A
+		hidden_effect = {
+			declare_war_on = {
+				target = RSI
+				type = civil_war 
+			}
+			add_civil_war_target = RSI
+			load_oob = "ITA_civilwar"
+			RSI = {
+				load_oob = "RSI_civilwar"
+			}
+		}
+	}
+	option = {
+		name = ITA_Fall_of_Fascism.4.B
+		RSI = { change_tag_from = ITA } 
+		hidden_effect = {
+			ITA = {
+				declare_war_on = {
+					target = RSI
+					type = civil_war 
+				}
+				add_civil_war_target = RSI
+				load_oob = "ITA_civilwar"
+				RSI = {
+					load_oob = "RSI_civilwar"
+				}
+			}
+		}
+	}
+}
+
+###########################
+# Italian Events
+###########################
+add_namespace = italy
+# Albania Yields
+country_event = {
+	id = italy.1
+	title = italy.1.t
+	desc = italy.1.d
+	picture = GFX_report_event_royal_parade
+	is_triggered_only = yes
+	option = {
+		name = italy.1.A
+		annex_country = { target = ALB }
+		add_named_threat = { threat = 2 name = ITA_albania_war_goal }
+		hidden_effect = {
+			news_event = { days = 1 id = news.22 }
+		}
+	}
+}
+# Zog Rejects Ultimatum
+country_event = {
+	id = italy.2
+	title = italy.2.t
+	desc = italy.2.d
+	picture = GFX_report_event_albanian_partisans
+	is_triggered_only = yes
+	option = {
+		name = italy.2.A
+		create_wargoal = {
+			type = take_state_focus
+			target = ALB
+			generator = { 44 }
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = news.23 }
+		}
+	}
+}
+# Albania Receives Ultimatum
+country_event = {
+	id = italy.3
+	title = italy.3.t
+	desc = italy.3.d
+	picture = GFX_report_event_albanian_king_zog
+	is_triggered_only = yes
+	option = { # Yield
+		name = italy.3.A
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0				
+				any_other_country = {
+					OR = {
+						is_major = yes
+						tag = YUG
+					}
+					NOT = { tag = ITA }
+					OR = {
+						has_guaranteed = ALB
+						is_in_faction_with = ALB
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_government = communist
+					has_government = fascist #glorious Albania will never yield!
+				}
+			}
+		}
+		ITA = {
+			country_event = { days = 1 id = italy.1 }
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+	}
+	option = { # Resist
+		name = italy.3.B
+		ai_chance = {
+			factor = 20 
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						is_in_faction_with = ITA
+						ITA = { is_faction_leader = yes }
+					}
+					is_historical_focus_on = yes
+					AND = {
+						is_in_faction = no 
+						NOT = {
+							any_other_country = {
+								NOT = { tag = ITA }
+								has_guaranteed = ALB
+							} 
+						}
+					}
+				}
+			}
+		}
+		ITA = {
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state_focus
+					target = ALB
+					generator = { 44 }
+				}
+			}
+			country_event = { days = 1 id = italy.2 }
+		}
+	}
+}
+# Extension of the Vallo Alpino
+country_event = {
+	id = italy.4
+	title = italy.4.t
+	desc = italy.4.d
+	picture = GFX_report_event_bunker_01
+	is_triggered_only = yes
+	option = {
+		name = italy.4.A
+		158 = {
+			add_building_construction = {
+				type = bunker
+				province = 11891
+				level = 3
+			}
+			add_building_construction = {
+				type = bunker
+				province = 11721
+				level = 3
+			}
+			add_building_construction = {
+				type = bunker
+				province = 9738
+				level = 3
+			}
+		}
+		160 = {
+			add_building_construction = {
+				type = bunker
+				province = 3657
+				level = 3
+			}
+			add_building_construction = {
+				type = bunker
+				province = 9613
+				level = 3
+			}
+			add_building_construction = {
+				type = bunker
+				province = 11595
+				level = 3
+			}
+		}
+	}
+}
+# Italian-German Treaty (Germans)
+country_event = {
+	id = italy.5
+	title = italy.5.t
+	desc = italy.5.d
+	picture = GFX_report_event_german_italian_pact
+	is_triggered_only = yes
+	option = {
+		name = italy.5.A	#sounds good
+		ITA = {
+			country_event = { days = 1 id = italy.6 }
+		}
+		# REVISIT Balance research bonus, also in event below
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			technology = tech_mountaineers2
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+	}
+	option = {
+		name = italy.5.B	#no way 
+		ai_chance = { factor = 0 }
+		add_political_power = -10
+		ITA = {
+			country_event = { days = 1 id = italy.7 }
+		}
+	}
+}
+# Germans Accept Italian-German Treaty
+country_event = {
+	id = italy.6
+	title = italy.6.t
+	desc = italy.6.d
+	picture = GFX_report_event_physics_lab_01
+	is_triggered_only = yes
+	option = {
+		name = italy.6.A
+		# REVISIT Balance research bonus
+		add_tech_bonus = {
+			name = synth_bonus
+			bonus = 0.5
+			uses = 1
+			category = synth_resources
+		}
+		add_tech_bonus = {
+			name = armor_bonus
+			bonus = 0.5
+			uses = 2
+			category = armor
+		}
+		ITA = {
+			add_opinion_modifier = { target = GER modifier = ger_ita_tech_treaty }
+		}
+	}
+}
+# Germans Reject Italian-German Treaty
+country_event = {
+	id = italy.7
+	title = italy.7.t
+	desc = italy.7.d
+	picture = GFX_report_event_physics_lab_01
+	is_triggered_only = yes
+	option = {
+		name = italy.7.A
+		ITA = {
+			add_opinion_modifier = { target = GER modifier = ger_ita_tech_treaty_rejected }
+		}
+	}
+}
+# French national focus - French asks Italy to join french faction
+country_event = {
+	id = italy.8
+	title = italy.8.t
+	desc = italy.8.d
+	picture = GFX_report_event_german_parade_paris
+	is_triggered_only = yes
+	option = {
+		name = italy.8.A
+		FRA = {
+			if = {
+				limit = { is_in_faction = no }
+				set_rule = { can_create_factions = yes }
+				create_faction = "domination_francaise"
+			}
+		}
+		FRA = {	add_to_faction = ITA }
+		ITA = {
+			add_ai_strategy = {
+				type = alliance
+				id = "FRA"
+				value = 200
+			}
+		}
+		FRA = {
+			add_ai_strategy = {
+				type = alliance
+				id = "ITA"
+				value = 200
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.181 }
+		}
+	}
+	option = {
+		name = italy.8.B
+		ai_chance = { factor = 0 }
+		FRA = {
+			add_opinion_modifier = { target = ITA modifier = ITA_FRA_woo_italy_reject }
+		}	
+		hidden_effect = {
+			news_event = { hours = 6 id = news.183 }
+		}
+	}
+}
+# Request Balearic Islands from Spain
+country_event = {
+	id = italy.9
+	title = italy.9.t
+	desc = italy.9.d
+	picture = GFX_report_event_merchant_ship_01
+	is_triggered_only = yes
+	option = {
+		name = italy.9.A
+		country_event = { id = italy.10 }
+		effect_tooltip = {
+			ITA = { transfer_state = 177 }
+			remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
+		}
+		hidden_effect = {
+			news_event = { id = news.190 }
+		}
+	}
+	option = {
+		name = italy.9.B
+		ai_chance = { factor = 0 }
+		country_event = { id = italy.11 }
+		effect_tooltip = {
+			ITA = { add_state_claim = 177 }
+		}
+	}
+}
+# Spain Gives Up Balearic Islands
+country_event = {
+	id = italy.10
+	title = italy.10.t
+	desc = italy.10.d
+	picture = GFX_report_event_merchant_ship_01
+	is_triggered_only = yes
+	option = {
+		name = italy.10.A
+		ITA = { transfer_state = 177 }
+		remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
+	}
+}
+# Spain Refuses to Give Up Islands
+country_event = {
+	id = italy.11
+	title = italy.11.t
+	desc = italy.11.d
+	picture = GFX_report_event_merchant_ship_01
+	is_triggered_only = yes
+	option = {
+		name = italy.11.A
+		ITA = { add_state_claim = 177 }
+	}
+}
+# Germany want to claim Slovenia from Yugoslavia
+country_event = {
+	id = italy.12
+	title = italy.12.t
+	desc = italy.12.d
+	picture = GFX_report_event_hitler_croatia_handshake
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 33
+			modifier = {
+				factor = 3
+				has_army_size = { size > 75 }
+			}
+		}
+		name = italy.12.A
+		ITA = {
+			add_political_power = -100
+			if = { limit = { is_faction_leader = yes }
+				add_to_faction = YUG
+				YUG = {
+					add_ai_strategy = {
+						type = alliance
+						id = "ITA"
+						value = 200
+					}
+				}
+			}
+			if = {
+				limit = { 
+					OR = {
+						AND = {
+							is_faction_leader = no
+							is_in_faction = yes
+						}
+						is_in_faction = no
+					}
+				}
+				create_faction = italy_empire_faction
+				add_to_faction = YUG
+				YUG = {
+					add_ai_strategy = {
+						type = alliance
+						id = "ITA"
+						value = 200
+					}
+				}
+			}			
+		}
+		GER = { country_event = { id = germany.96 hours = 6 } }
+		YUG = { country_event = { id = yugoslavia.6 hours = 6 } }
+	}	
+	option = {
+		ai_chance = {
+			factor = 100
+		}	
+		name = italy.12.B
+		YUG = {
+			add_opinion_modifier = { target = ITA modifier = western_betrayal }
+			country_event = { id = yugoslavia.5 hours = 6 }
+		}
+	}
+}
+# Italy (First Ljubljana Award) from german focus
+country_event = {
+	id = italy.13
+	title = italy.13.t
+	desc = { 
+		text = italy.13.d_dalmatia_montenegro
+		trigger = {
+			owns_state = 44
+		}
+	}
+	desc = { 
+		text = italy.13.d_dalmatia
+		trigger = {
+			NOT = { owns_state = 44 }
+		}
+	}
+	desc = { 
+		text = italy.13.d_montenegro
+		trigger = {
+			owns_state = 44
+		}
+	}
+	picture = GFX_report_event_vienna_award_negotiations
+	is_triggered_only = yes
+	option = {
+		name = italy.13.A
+		if = {
+			limit = { owns_state = 44 }
+			ITA = { transfer_state = 105 }
+		}		
+	}
+}
+# Italy Germany rejects demands for Vichy territory
+country_event = {
+	id = italy.14
+	title = italy.14.t
+	desc = italy.14.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		ai_chance = { factor = 25 }
+		name = italy.14.A
+		GER = { 
+			remove_from_faction = ITA 
+			country_event = germany.105
+		}
+	}
+	option = {
+		ai_chance = { factor = 75 }
+		name = italy.14.B
+	}
+}
+# Italy Germany accepts demands for Vichy territory
+country_event = {
+	id = italy.15
+	title = italy.15.t
+	desc = { 
+		text = italy.15.d
+		trigger = {
+			has_global_flag = ITA_claims_on_france_735
+			has_global_flag = ITA_claims_on_france_1
+		}
+	}
+	desc = { 
+		text = italy.15.d_Corsica
+		trigger = {
+			NOT = { has_global_flag = ITA_claims_on_france_735 }
+			has_global_flag = ITA_claims_on_france_1
+		}
+	}
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = italy.15.A
+		if = {
+			limit = { has_global_flag = ITA_claims_on_france_735 }
+			ITA = { transfer_state = 735 }
+		}
+		if = {
+			limit = { has_global_flag = ITA_claims_on_france_1 }
+			ITA = { transfer_state = 1 }
+		}		
+	}
+}
+# Italy Germany accepts some of demands for Vichy territory
+country_event = {
+	id = italy.16
+	title = italy.16.t
+	desc = italy.16.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = italy.16.A
+		transfer_state = 735
+	}
+}

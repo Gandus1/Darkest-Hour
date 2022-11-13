@@ -1,0 +1,627 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+SOV_ART_01 = 
+{
+	name = "Artillery Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date < 1941.12.31
+	} 
+
+	division_types = { "artillery_battalion" "artillery_battalion_light" "motorized_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01_42 SOV_ART_01_43 SOV_ART_01_44 SOV_ART_01_45 SOV_ART_01_46 SOV_ART_02 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Diviziya" }
+		2 = { "%d-ya Artilleriyskaya Diviziya" }
+		3 = { "%d-ya Artilleriyskaya Diviziya" }
+		4 = { "%d-ya Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Artilleriyskaya Diviziya" }
+	}
+}
+SOV_ART_01_42 = 
+{
+	name = "Artillery Divisions"  # 1942.11.22
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1941.12.31
+		has_start_date < 1942.12.31
+	} 
+
+	division_types = { "artillery_battalion" "artillery_battalion_light" "motorized_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_43 SOV_ART_01_44 SOV_ART_01_45 SOV_ART_01_46 SOV_ART_02 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Diviziya" } # Formed October 1942
+		2 = { "%d-ya Artilleriyskaya Diviziya" }
+		3 = { "%d-ya Artilleriyskaya Diviziya" }
+		4 = { "%d-ya Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Artilleriyskaya Diviziya" }
+	}
+}
+SOV_ART_01_43 = 
+{
+	name = "Artillery Divisions" # 1943.7.26
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1942.12.31
+		has_start_date < 1943.12.31
+	} 
+
+	division_types = { "artillery_battalion" "artillery_battalion_light" "motorized_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_42 SOV_ART_01_44 SOV_ART_01_45 SOV_ART_01_46 SOV_ART_02 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Diviziya" } # To 1st Guards March 1943
+		2 = { "%d-ya Artilleriyskaya Diviziya" }
+		3 = { "%d-ya Artilleriyskaya Diviziya" } # To Breakthrough early July 1943
+		4 = { "%d-ya Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Artilleriyskaya Diviziya" }
+	}
+}
+SOV_ART_01_44 = 
+{
+	name = "Artillery Divisions" # 1944.6.20
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1943.12.31
+		has_start_date < 1944.12.31
+	} 
+
+	division_types = { "artillery_battalion" "artillery_battalion_light" "motorized_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_42 SOV_ART_01_43 SOV_ART_01_45 SOV_ART_01_46 SOV_ART_02 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Diviziya" } # To Breakthrough Spring 1944
+		2 = { "%d-ya Artilleriyskaya Diviziya" } # To Breakthrough March 1944
+		3 = { "%d-ya Artilleriyskaya Diviziya" } # Breakthrough division
+		4 = { "%d-ya Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Artilleriyskaya Diviziya" }
+	}
+}
+SOV_ART_01_45 = 
+{
+	name = "Artillery Divisions"  # 1945.1.1
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1944.12.31
+		has_start_date < 1945.12.31
+	} 
+
+	division_types = { "artillery_battalion" "artillery_battalion_light" "motorized_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_42 SOV_ART_01_43 SOV_ART_01_44 SOV_ART_01_46 SOV_ART_02 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Diviziya" } # Breakthrough division
+		2 = { "%d-ya Artilleriyskaya Ostrovskaya Krasnoznamonnyy Diviziya" } # Breakthrough division
+		3 = { "%d-ya Artilleriyskaya Diviziya" } # Breakthrough division
+		4 = { "%d-ya Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Artilleriyskaya Diviziya" }
+	}
+}
+SOV_ART_01_46 = 
+{
+	name = "Artillery Divisions" # Postwar
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_start_date > 1945.12.31
+	} 
+
+	division_types = { "artillery_battalion" "artillery_battalion_light" "motorized_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_42 SOV_ART_01_43 SOV_ART_01_44 SOV_ART_01_45 SOV_ART_02 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Pomeranskaya Diviziya" } # Breakthrough division
+		2 = { "%d-ya Artilleriyskaya Ostrovskaya Krasnoznamonnyy Diviziya" } # Breakthrough division
+		3 = { "%d-ya Artilleriyskaya Diviziya" } # Breakthrough division
+		4 = { "%d-ya Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Artilleriyskaya Diviziya" }
+	}
+}
+
+SOV_ART_02 = 
+{
+	name = "Breakthrough Artillery Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { always = yes } 
+
+	division_types = { "artillery_battalion" "artillery_battalion_heavy" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_42 SOV_ART_01_43 SOV_ART_01_44 SOV_ART_01_45 SOV_ART_01_46 SOV_ART_04 }
+
+	fallback_name = "%d-ya Artilleriyskaya Diviziya Proryva"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		2 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		3 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		4 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		5 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		6 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		7 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		8 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		9 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		10 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		11 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		12 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		13 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		14 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		15 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		16 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		17 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		18 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		19 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		20 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		21 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		22 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		23 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		24 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		25 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		26 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		27 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		28 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		29 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		30 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+		31 = { "%d-ya Artilleriyskaya Diviziya Proryva" }
+	}
+}
+
+SOV_ART_04 = 
+{
+	name = "Self-Propelled Artillery Divisions"
+# No full sized divisions of self propelled artillery but this is here just in case.
+	for_countries = { SOV }
+
+	can_use = { always = yes } 
+
+	division_types = { "medium_sp_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_ART_01 SOV_ART_01_42 SOV_ART_01_43 SOV_ART_01_44 SOV_ART_01_45 SOV_ART_01_46 SOV_ART_02 }
+
+	fallback_name = "%d-ya Samokhodno-Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		2 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		3 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		4 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Samokhodno-Artilleriyskaya Diviziya" }
+	}
+}
+
+SOV_ATD_01 = 
+{
+	name = "Anti-Tank Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { always = yes } 
+
+	division_types = { "anti_tank_battalion" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SOV_INF_01 }
+
+	fallback_name = "%d-ya Istrebitelnaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Istrebitelnaya Diviziya" }
+		2 = { "%d-ya Istrebitelnaya Diviziya" }
+		3 = { "%d-ya Istrebitelnaya Diviziya" }
+		4 = { "%d-ya Istrebitelnaya Diviziya" }
+		5 = { "%d-ya Istrebitelnaya Diviziya" }
+	}
+}
+
+SOV_AAA_01 = 
+{
+	name = "Anti-Air Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { always = yes } 
+
+	division_types = { "anti_air_battalion" "motorized_anti_air_battalion" }
+
+	# Number reservation system will tie to another group.
+	# link_numbering_with = { SOV_ART_02 }
+
+	fallback_name = "%d-ya Zenitno-Artilleriyskaya Diviziya"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		2 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		3 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		4 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		5 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		6 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		7 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		8 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		9 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		10 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		11 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		12 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		13 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		14 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		15 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		16 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		17 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		18 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		19 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		20 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		21 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		22 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		23 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		24 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		25 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		26 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		27 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		28 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		29 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		30 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		31 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		32 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		33 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		34 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		35 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		36 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		37 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		38 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		39 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		40 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		41 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		42 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		43 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		44 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		45 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		46 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		47 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		48 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		49 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		64 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		65 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		66 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		67 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		68 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		69 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		71 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		73 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		74 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		76 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		50 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" } # Units from here never saw combat.  Added for number continuity.  Good luck getting this far anyway.
+		51 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		52 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		53 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		54 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		55 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		56 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		57 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		58 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		59 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		60 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		61 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		62 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		63 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		70 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		72 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+		75 = { "%d-ya Zenitno-Artilleriyskaya Diviziya" }
+	}
+}
+
+SOV_RKT_01 = 
+{
+	name = "Rocket Artillery Divisions"
+
+	for_countries = { SOV }
+
+	can_use = { 
+		has_tech = Rocket_Artillery_1940
+		NOT = { has_completed_focus = SOV_Guard_Units }
+	}
+
+	division_types = { "rocket_artillery_battalion" "motorized_rocket_artillery_battalion" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { SOV_GRKT_01 }
+
+	fallback_name = "%d-ya Osobaya Minomotnaya Diviziya"
+# This list is entirely fictional just to have a namelist for the rocket artillery before Guards divisions become a thing.  Called Special Mortars to preserve the secrecy aspect of the unit names but also keep them distinct from conventional mortars.
+# Will change names to Guards Mortar as soon as the focus is complete.
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+		2 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+		3 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+		4 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+		5 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+		6 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+		7 = { "%d-ya Osobaya Minomotnaya Diviziya" }
+	}
+}
+
+#Left off at 3rd Artillery Division.  Will need to copy Artillery Division year lists to Breakthrough and Self-Propelled.
+#Need to do Anti-Air

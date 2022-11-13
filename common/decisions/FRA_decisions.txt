@@ -1,0 +1,3725 @@
+#######################################################################
+# The French Economy
+#######################################################################
+economy_decisions = {
+	FRA_Budget_Austerity = {
+		icon = putIcon
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		days_re_enable = 28
+		available = {
+			has_completed_focus = FRA_Continue_Herriot_Deflation
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_temp_variable = {
+				modifier_value = -0.05
+			}
+			change_unemployment_value_modifier = yes
+			set_temp_variable = { inflation_to_gain = -0.01 }
+			add_inflation_with_tooltip_effect = yes
+			if = {
+				limit = { 
+					set_temp_variable = { total_support_to_check = 0.5 }
+					has_less_parliament_total_support = yes
+				}
+				random_list = {
+					#Nothing
+					25 = {
+					}
+					#Opposition
+					75 = {
+						country_event = {
+							id = FRA_Parliament.1
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						set_temp_variable = { total_support_to_check = 0.7 }
+						has_less_parliament_total_support = yes
+					}
+					random_list = {
+						#Nothing
+						50 = {
+						}
+						#Opposition
+						50 = {
+							country_event = {
+								id = FRA_Parliament.1
+							}
+						}
+					}
+					else_if = {
+						limit = { 
+							set_temp_variable = { total_support_to_check = 0.9 }
+							has_less_parliament_total_support = yes
+						}
+						random_list = {
+							#Nothing
+							75 = {
+							}
+							#Opposition
+							25 = {
+								country_event = {
+									id = FRA_Parliament.1
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Franc_Devaluation = {
+		icon = GFX_decision_gre_paying_ifc_debt
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_Franc_Devaluation
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 100
+		remove_effect = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				modifier_value = -0.1
+			}
+			change_unemployment_value_modifier = yes
+			set_temp_variable = { inflation_to_gain = 0.005 }
+			add_inflation_with_tooltip_effect = yes
+			add_stability = -0.025
+			if = {
+				limit = { 
+					set_temp_variable = { total_support_to_check = 0.5 }
+					has_less_parliament_total_support = yes
+				}
+				random_list = {
+					#Nothing
+					25 = {
+					}
+					#Opposition
+					75 = {
+						country_event = {
+							id = FRA_Parliament.1
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						set_temp_variable = { total_support_to_check = 0.7 }
+						has_less_parliament_total_support = yes
+					}
+					random_list = {
+						#Nothing
+						50 = {
+						}
+						#Opposition
+						50 = {
+							country_event = {
+								id = FRA_Parliament.1
+							}
+						}
+					}
+					else_if = {
+						limit = { 
+							set_temp_variable = { total_support_to_check = 0.9 }
+							has_less_parliament_total_support = yes
+						}
+						random_list = {
+							#Nothing
+							75 = {
+							}
+							#Opposition
+							25 = {
+								country_event = {
+									id = FRA_Parliament.1
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Stabilize_the_Economy = {
+		icon = putIcon
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			custom_trigger_tooltip = {
+                tooltip = FRA_Stabilize_the_Economy_tt
+                check_variable = { unemployment_value_modifier < 0.75 }
+            }
+		}
+		activation = {
+			has_completed_focus = FRA_Fix_the_Current_Situation
+		}
+		days_mission_timeout = 180
+		fire_only_once = yes
+		is_good = no
+		complete_effect = {
+			add_stability = 0.1
+			add_political_power = 200
+			clr_country_flag = FRA_Fixing_the_Current_Situation
+		}
+		timeout_effect = {
+			add_political_power = -25
+		}
+	}
+	FRA_Continue_construction_of_Autoroutes = { #Plan Frost
+		icon = GFX_decision_CHI_Build_a_Highway_Through_Xianjian
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			has_completed_focus = FRA_Grand_Travaux_Policy
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			1027 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			29 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1022 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			762 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1505 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+		}
+	}
+}
+
+
+#######################################################################
+# The Eastern Pact
+#######################################################################
+#FRA_Eastern_Pact_category = {	}
+#######################################################################
+# Colonial Empire
+#######################################################################
+FRA_Colonial_Empire_category = {
+	FRA_Anti_Atlas_Campaign = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_End_the_Pacification_of_Morocco
+			divisions_in_state = {
+				type = infantry
+				size > 4
+				state = 1139
+			}
+			divisions_in_state = {
+				type = infantry
+				size > 4
+				state = 1141
+			}
+		}
+		days_remove = 360
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			army_experience = 10
+			add_political_power = 50
+			add_stability = 0.05
+			461 = {
+				remove_dynamic_modifier = {
+					modifier = FRA_Insurrectionary_Centers
+				}
+			}
+			462 = {
+				remove_dynamic_modifier = {
+					modifier = FRA_Insurrectionary_Centers
+				}
+			}
+			1139 = {
+				remove_dynamic_modifier = {
+					modifier = FRA_Insurrectionary_Centers
+				}
+			}
+			1141 = {
+				remove_dynamic_modifier = {
+					modifier = FRA_Insurrectionary_Centers
+				}
+			}
+			1142 = {
+				remove_dynamic_modifier = {
+					modifier = FRA_Insurrectionary_Centers
+				}
+			}
+		}
+	}
+	FRA_Blum_Violette_Project = {
+		icon = putIcon
+		fire_only_once = yes
+		fixed_random_seed = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			has_completed_focus = FRA_Application_of_the_Blum_Violette_Act
+		}
+		available = {
+			set_temp_variable = { total_support_to_check = 0.75 }
+			has_at_least_parliament_total_support = yes
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			country_event = FRA_Front_Populaire_1936.8
+		}
+	}
+	FRA_Start_prospecting_for_Oil = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = FRA_Create_the_Bureau
+			set_temp_variable = {
+				amount_of_money_to_check = 500
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			ROOT = {
+				controls_state = 514
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -500
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			country_event = {
+				id = FRA_Colonies.2
+			}
+		}
+	}
+}
+
+#######################################################################
+# State Reform
+#######################################################################
+FRA_Reform_of_the_State_category = {
+	FRA_The_Calm_after_the_Storm = {
+		icon = ger_mefo_bills
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			OR = {
+				has_completed_focus = FRA_The_Wise_of_Tournefeuille
+				has_completed_focus = FRA_Hold_General_Election
+			}
+		}
+		activation = {
+			has_completed_focus = FRA_National_Union_Government
+		}
+		is_good = no
+		fire_only_once = yes
+		days_mission_timeout = 150
+		selectable_mission = no
+		complete_effect = {
+
+		}
+		timeout_effect = {
+			set_temp_variable = { reform_support_to_add = -60 }
+			FRA_add_reform_of_the_state_support = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+#######################################################################
+# Parliament Interaction
+#######################################################################
+parliament_decision_category = {
+	FRA_Discipline_the_Majority = {
+		icon = GFX_decision_generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 56
+		complete_effect = {
+			set_temp_variable = {party_id = parliament_ruling_party}
+			set_temp_variable = {support_to_add = 0.1}
+			change_party_support = yes
+		}
+		remove_effect = {
+		}
+	}
+	FRA_Defende_our_Government = {
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 0.5
+		}
+		days_remove = 56
+		complete_effect = {
+			set_temp_variable = {party_id = 4}
+			set_temp_variable = {support_to_add = 0.05}		#FR
+			change_party_support = yes
+			set_temp_variable = {party_id = 5}
+			set_temp_variable = {support_to_add = 0.05}		#AD
+			change_party_support = yes
+			set_temp_variable = {party_id = 6}				#RAD
+			set_temp_variable = {support_to_add = 0.05}
+			change_party_support = yes
+			set_temp_variable = {party_id = 8}
+			set_temp_variable = {support_to_add = 0.05}		#SFIO
+			change_party_support = yes
+		}
+		remove_effect = {
+		}
+	}
+	FRA_Appease_the_PCF = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			check_variable = {
+				var = 9		#PCF
+				value = parliament_ruling_party
+				compare = not_equals
+			}
+		}
+		available = {
+			OR = {
+				has_completed_focus = FRA_Apply_Huygen_Books
+				has_completed_focus = FRA_Victory_of_the_Popular_Front
+			}
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 0
+		}
+		days_remove = 28
+		complete_effect = {
+			set_temp_variable = {party_id = 9}
+			set_temp_variable = {support_to_add = 0.1}		#PCF
+			change_party_support = yes
+			set_temp_variable = {party_id = 4}
+			set_temp_variable = {support_to_add = -0.025}	#FR
+			change_party_support = yes
+			set_temp_variable = {party_id = 5}
+			set_temp_variable = {support_to_add = -0.025}	#AD
+			change_party_support = yes
+		}
+		remove_effect = {
+		}
+	}
+	FRA_Concessions_to_the_SFIO = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			check_variable = {
+				var = 8				#SFIO
+				value = parliament_ruling_party
+				compare = not_equals
+			}
+		}
+		available = {
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 0
+		}
+		days_remove = 28
+		complete_effect = {
+			set_temp_variable = {party_id = 8}
+			set_temp_variable = {support_to_add = 0.1}			#SFIO
+			change_party_support = yes
+			set_temp_variable = {party_id = 4}
+			set_temp_variable = {support_to_add = -0.025}		#FR
+			change_party_support = yes
+			
+		}
+		remove_effect = {
+		}
+	}
+	FRA_Concessions_to_the_RAD = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			check_variable = {
+				var = 6				#RAD
+				value = parliament_ruling_party
+				compare = not_equals
+			}
+		}
+		available = {
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 0
+		}
+		days_remove = 28
+		complete_effect = {
+			set_temp_variable = {party_id = 6}			#RAD
+			set_temp_variable = {support_to_add = 0.1}
+			change_party_support = yes
+			set_temp_variable = {party_id = 4}			#FR
+			set_temp_variable = {support_to_add = -0.025}
+			change_party_support = yes
+		}
+		remove_effect = {
+		}
+	}
+	FRA_Concessions_to_the_AD = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			check_variable = {
+				var = 5				#AD
+				value = parliament_ruling_party
+				compare = not_equals
+			}
+		}
+		available = {
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 0
+		}
+		days_remove = 28
+		complete_effect = {
+			set_temp_variable = {party_id = 5}			#AD
+			set_temp_variable = {support_to_add = 0.1}
+			change_party_support = yes
+			set_temp_variable = {party_id = 8}			#SFIO
+			set_temp_variable = {support_to_add = -0.025}
+			change_party_support = yes
+		}
+		remove_effect = {
+		}
+	}
+	FRA_Concessions_to_the_FR = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			check_variable = {
+				var = 4				#FR
+				value = parliament_ruling_party
+				compare = not_equals
+			}
+		}
+		available = {
+		}
+		cost = 25
+		ai_will_do = {
+			factor = 0
+		}
+		days_remove = 28
+		complete_effect = {
+			set_temp_variable = {party_id = 4}
+			set_temp_variable = {support_to_add = 0.1}			#FR
+			change_party_support = yes
+			set_temp_variable = {party_id = 8}
+			set_temp_variable = {support_to_add = -0.025}			#SFIO
+			change_party_support = yes
+		}
+		remove_effect = {
+		}
+	}
+	#FRA_Bribe_the_Opposition = {
+	#	icon = putIcon
+	#	fire_only_once = yes
+	#	fixed_random_seed = no
+	#	allowed = {
+	#		original_tag = FRA
+	#	}
+	#	visible = {
+	#	}
+	#	available = {
+	#		set_temp_variable = {
+	#			amount_of_money_to_check = 40
+	#		}
+	#		has_specific_amount_of_money_with_inflation_included = yes
+	#	}
+	#	cost = 25
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	complete_effect = {
+	#		set_temp_variable = {
+	#			money_to_gain = -40
+	#		}
+	#		add_money_with_inflation_included_with_tooltip_effect = yes
+	#		custom_effect_tooltip = FRA_Bribe_the_Opposition_tt
+	#		for_each_loop = {
+	#			array = parliament_array
+	#			set_temp_variable = {
+	#				party_id = v
+	#			}
+	#			if = {
+	#				limit = {
+	#					NOT = {
+	#						check_variable = {
+	#							parliament_ruling_party = party_id
+	#						}
+	#					}
+	#				}
+	#				set_temp_variable = {
+	#					support_to_add = 0.1
+	#				}
+	#				change_party_support = yes
+	#			}
+	#		}
+	#		set_variable = {
+	#			var = FRA_Scandal_Party
+	#			value = parliament_ruling_party
+	#		}
+	#		hidden_effect = {
+	#			random_list = {
+	#				#No Corruption Scandal
+	#				90 = {
+	#				}
+	#				#Corruption Scandal
+	#				10 = {
+	#					country_event = {
+	#						id = FRA_Events.37
+	#						days = 90
+	#					}
+	#				}
+	#			}
+	#		}
+	#	}
+	#}
+}
+
+#######################################################################
+# Plan Marquet
+#######################################################################
+FRA_Plan_Marquet_category = {
+	FRA_Electrifying_the_Paris_Man_line = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 100
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					money_to_gain = -200
+				}
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+		}
+		remove_effect = {
+			16 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			30 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	FRA_Connect_Le_Man_to_Le_Havre = {
+		icon = GFX_decision_CHI_Build_a_Highway_Through_Xianjian
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 100
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					money_to_gain = -200
+				}
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+		}
+		remove_effect = {
+			15 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			1026 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	FRA_Modernize_the_Orleans_line = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 100
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					money_to_gain = -100
+				}
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+		}
+		remove_effect = {
+			24 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	FRA_Modernize_Aquitaine_infrastructure = {
+		icon = GFX_decision_CHI_Build_a_Highway_Through_Xianjian
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 100
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					money_to_gain = -250
+				}
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+		}
+		remove_effect = {
+			19 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	FRA_Modernize_Nante_infrastructure = {
+		icon = GFX_decision_CHI_Build_a_Highway_Through_Xianjian
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 100
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					money_to_gain = -250
+				}
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+		}
+		remove_effect = {
+			1028 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	FRA_Develop_Bordeau = {
+		icon = GFX_decision_generic_construction
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 300
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = GER_Reichsautobahn_cost
+		cost = 50
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 365
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					money_to_gain = -300
+				}
+				add_money_with_inflation_included_with_tooltip_effect = yes
+			}
+		}
+		remove_effect = {
+			19 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			country_event = { id = FRA_Reform_of_the_State.11 hours = 6 }
+		}
+	}
+}
+
+#######################################################################
+# Electrifier la France
+#######################################################################
+FRA_Electrify_France_category = {
+	FRA_Electrify_the_North = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 762
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 300
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			762 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			29 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			1022 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1023 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	FRA_Electrify_Alsace_Lorraine = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 763
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			28 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			763 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			847 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1169 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	FRA_Electrify_Normandie = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 15
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			1026 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			15 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Electrify_Bretagne_and_Loire = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 14
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			14 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1028 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			30 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	FRA_Electrify_the_Centre = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 24
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			33 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			24 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Electrify_Bourgogne_Franche_Comte = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 27
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			27 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			17 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			18 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	FRA_Electrify_Aquitaine_and_Occitania = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 22
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 600
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 400
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -600
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+			22 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			31 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			23 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			25 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	FRA_Electrify_Rhone_Alpes = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 32
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 300
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			735 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			32 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			764 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1021 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1025 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1029 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	FRA_Electrify_Provence = {
+		icon = GFX_decision_ITA_Import_Energy
+		fire_only_once = yes
+		on_map_mode = map_only
+		highlight_states = {
+			highlight_state_targets = {
+				state = 21
+			}
+		}
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 300
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			21 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			1030 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			846 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+}
+
+FRA_Motorisation_de_Armee_category = {
+	FRA_Intensify_Vehicle_Production = {
+		icon = GFX_decision_generic_trucks
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 50
+		modifier = {
+			civilian_factory_use = 5
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = FRA_Production_Step_Up
+				days = 100
+			}
+		}
+	}
+	FRA_Form_1e_Division_Cuirassee = {
+		icon = GFX_decision_generic_tank
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_equipment = {
+				Heavy_Tank_equipment_1936 > 79
+			}
+			has_equipment = {
+				Light_Tank_equipment_1939 > 119
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = Heavy_Tank_equipment_1936
+				amount = -80
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = Light_Tank_equipment_1939
+				amount = -120
+				producer = FRA
+			}
+			hidden_effect = {
+				load_oob = FRA_Cuirassee_1
+			}
+			set_country_flag = FRA_Formed_1e_Division_Cuirassee
+			custom_effect_tooltip = FRA_1e_Division_Cuirassee_Formed
+		}
+	}
+	FRA_Form_2e_Division_Cuirassee = {
+		icon = GFX_decision_generic_tank
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_equipment = {
+				Heavy_Tank_equipment_1936 > 79
+			}
+			has_equipment = {
+				Light_Tank_equipment_1939 > 119
+			}
+			has_country_flag = FRA_Formed_1e_Division_Cuirassee
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = Heavy_Tank_equipment_1936
+				amount = -80
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = Light_Tank_equipment_1939
+				amount = -120
+				producer = FRA
+			}
+			hidden_effect = {
+				load_oob = FRA_Cuirassee_2
+			}
+			set_country_flag = FRA_Formed_2e_Division_Cuirassee
+			custom_effect_tooltip = FRA_2e_Division_Cuirassee_Formed
+		}
+	}
+	FRA_Form_3e_Division_Cuirassee = {
+		icon = GFX_decision_generic_tank
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_equipment = {
+				Heavy_Tank_equipment_1936 > 79
+			}
+			has_equipment = {
+				Light_Tank_equipment_1939 > 119
+			}
+			has_country_flag = FRA_Formed_2e_Division_Cuirassee
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = Heavy_Tank_equipment_1936
+				amount = -80
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = Light_Tank_equipment_1939
+				amount = -120
+				producer = FRA
+			}
+			hidden_effect = {
+				load_oob = FRA_Cuirassee_3
+			}
+			set_country_flag = FRA_Formed_3e_Division_Cuirassee
+			custom_effect_tooltip = FRA_3e_Division_Cuirassee_Formed
+		}
+	}
+	FRA_Form_4e_Division_Cuirassee = {
+		icon = GFX_decision_generic_tank
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			has_equipment = {
+				Heavy_Tank_equipment_1936 > 79
+			}
+			has_equipment = {
+				Light_Tank_equipment_1939 > 119
+			}
+			has_country_flag = FRA_Formed_3e_Division_Cuirassee
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = Heavy_Tank_equipment_1936
+				amount = -80
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = Light_Tank_equipment_1939
+				amount = -120
+				producer = FRA
+			}
+			hidden_effect = {
+				load_oob = FRA_Cuirassee_4
+			}
+			custom_effect_tooltip = FRA_4e_Division_Cuirassee_Formed
+		}
+	}
+}
+#######################################################################
+# The Maginot Line
+#######################################################################
+FRA_Finish_the_Maginot_Line_category = {
+	FRA_Fortification_Efforts_at_the_Belgian_Border = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			if = {
+				limit = {
+					762 = {
+						any_province_building_level = {
+							province = {
+								id = 11606
+								limit_to_border = no
+							}
+							building = bunker
+							level < 6
+						}
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 762
+			}
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 700
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 10
+		days_remove = 60
+		ai_will_do = {
+			base = 500
+			modifier = {
+				factor = 0
+				762 = {
+					any_province_building_level = {
+						province = {
+							id = 11606
+							limit_to_border = no
+						}
+						building = bunker
+						level > 2
+					}
+				}
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -700
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_BEL_maginot
+			763 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9472
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						763 = {
+							anti_air_building < 5
+						}
+					}
+					763 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			1023 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 13011
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3447
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						1023 = {
+							anti_air_building < 5
+						}
+					}
+					1023 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			762 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 11606
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						762 = {
+							anti_air_building < 5
+						}
+					}
+					762 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			1505 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 11483
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 575
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						1505 = {
+							anti_air_building < 5
+						}
+					}
+					1505 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Fortification_Efforts_at_the_Swiss_Border = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			if = {
+				limit = {
+					17 = {
+						any_province_building_level = {
+							province = {
+								id = 3666
+								limit_to_border = no
+							}
+							building = bunker
+							level < 7
+						}
+					}
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_end_maginot
+			}
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 700
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 17
+			}
+		}
+		cost = 10
+		days_remove = 60
+		ai_will_do = {
+			base = 500
+			modifier = {
+				factor = 0
+				762 = {
+					any_province_building_level = {
+						province = {
+							id = 11606
+							limit_to_border = no
+						}
+						building = bunker
+						level > 2
+					}
+				}
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -700
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_SWI_maginot
+			17 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 698
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3666
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3646
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						17 = {
+							anti_air_building < 5
+						}
+					}
+					17 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			1024 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 6668
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						1024 = {
+							anti_air_building < 5
+						}
+					}
+					1024 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Fortification_Efforts_at_the_Metz_Sector = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1169
+			}
+		}
+		cost = 10
+		days_remove = 120
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_Metz_maginot
+			1169 = {
+				set_building_level = {
+					type = bunker
+					level = 10
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			847 = {
+				set_building_level = {
+					type = bunker
+					level = 10
+					province = 5291
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Fortification_Efforts_at_the_Lauter_Sector = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 28
+			}
+		}
+		cost = 10
+		days_remove = 100
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_Lauter_maginot
+			28 = {
+				set_building_level = {
+					type = bunker
+					level = 10
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Fortification_Efforts_at_the_Alpine_Sector = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 700
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 735
+			}
+		}
+		cost = 10
+		days_remove = 120
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -700
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_Alpine_maginot
+			764 = {
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			735 = {
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			32 = {
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			846 = {
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Fortification_Efforts_Corsica = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 300
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1
+			}
+		}
+		cost = 10
+		days_remove = 60
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_Corsica_maginot
+			1 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Fortification_Efforts_at_the_Pyrenees_Sector = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = no
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			if = {
+				limit = {
+					31 = {
+						any_province_building_level = {
+							province = {
+								id = 9853
+								limit_to_border = no
+							}
+							building = bunker
+							level < 5
+						}
+					}
+				}
+			}
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 700
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+			OR = {
+				SPA = {
+					NOT = {
+						has_government = democratic
+					}
+				}
+				SPR = {
+					NOT = {
+						has_government = democratic
+					}
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 31
+			}
+		}
+		cost = 10
+		days_remove = 210
+		ai_will_do = {
+			base = 0
+			modifier = {
+				is_historical_focus_on = no
+				add = 1
+				factor = 500
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				money_to_gain = -700
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			set_country_flag = FRA_Pyrenees_maginot
+			31 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9853
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 6915
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 6931
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3915
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9822
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9884
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 11697
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						31 = {
+							anti_air_building < 5
+						}
+					}
+					31 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			19 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 743
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						19 = {
+							anti_air_building < 5
+						}
+					}
+					19 = {
+						add_building_construction = {
+							type = anti_air_building
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Finish_Maginot_Masterwork = {
+		icon = GFX_decision_FRA_Abandon_Maginot
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			AND = {
+				has_country_flag = FRA_Metz_maginot
+				has_country_flag = FRA_Lauter_maginot
+				has_country_flag = FRA_Pyrenees_maginot
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = no
+				factor = 1
+			}
+		}
+		complete_effect = {
+			add_political_power = 100
+			add_war_support = -0.05
+			add_stability = 0.05
+			set_country_flag = FRA_Maginot_Finished
+		}
+	}
+}
+
+#######################################################################
+#L'Armée de l'Air
+#######################################################################
+FRA_La_Armee_delAir_category = {
+	FRA_Urgent_Equipment_Growth_Plan = {
+		icon = GFX_decision_generic_merge_plant_aircraft
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_timed_idea = {
+				idea = FRA_idea_Urgent_Equipment_growth_plan
+				days = 365
+			}
+		}
+	}
+	FRA_Funded_Davids_Project = {
+		icon = GFX_decision_generic_research
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = radar_tech
+			}
+			18 = {
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+			1030 = {
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+#######################################################################
+# Containment of Fascism
+#######################################################################
+FRA_Containment_of_Fascism = {
+	FRA_Tougher_Laws_on_Defamation = {
+		icon = GFX_decision_GENERIC_Anti_Fascist_Raid
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+		}
+		cost = 125
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = authoritarian
+				popularity = -0.15
+			}
+		}
+	}
+	FRA_The_Shield_Against_Fascism = {
+		icon = GFX_decision_GENERIC_Anti_Fascist_Raid
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			set_rule = {
+				can_send_volunteers = yes
+			}
+		}
+	}
+	FRA_Recognize_Manchuria_as_Chinese = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			country_exists = CHI
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 1499
+			}
+			has_equipment = {
+				fighter_equipment > 24
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 1500
+				target = CHI
+			}
+			send_equipment = {
+				equipment = fighter_equipment
+				amount = 25
+				target = CHI
+			}
+			CHI = {
+				add_opinion_modifier = {
+					target = FRA
+					modifier = FRA_Recognized_Manchuria_as_Chinese
+				}
+			}
+			JAP = {
+				add_opinion_modifier = {
+					target = FRA
+					modifier = FRA_Recognized_Manchuria_as_Chinese_2
+				}
+			}
+			MAN = {
+				add_opinion_modifier = {
+					target = FRA
+					modifier = FRA_Recognized_Manchuria_as_Chinese_3
+				}
+			}
+		}
+	}
+	FRA_Support_Spanish_Republicans = {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			country_exists = SPA
+			country_exists = SPR
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 1999
+			}
+			has_equipment = {
+				fighter_equipment > 99
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 2000
+				target = SPR
+			}
+			send_equipment = {
+				equipment = fighter_equipment
+				amount = 100
+				target = SPR
+			}
+		}
+	}
+	FRA_Franco_Soviet_Non_Aggression_Pact = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			NOT = {
+				has_country_flag = FRA_Fading_of_Relations_with_SOV
+			}
+			always = no
+		}
+		available = {
+			NOT = {
+				has_country_flag = FRA_Fading_of_Relations_with_SOV
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			# Add effect for ON party
+			set_temp_variable = {
+				party_id = 9
+			}
+			set_temp_variable = {
+				support_to_add = 0.25
+			}
+			change_party_support = yes
+			news_event = {
+				id = FRA_Front_Populaire_1936.5
+				days = 1
+			}
+			SOV = {
+				news_event = {
+					id = FRA_Front_Populaire_1936.5
+					days = 1
+				}
+			}
+		}
+	}
+}
+#######################################################################
+# Progamme des 12 milliards
+#######################################################################
+FRA_Programme_des_12_Milliards_category = {
+#	FRA_Protect_our_Sky = {
+#		icon = putIcon
+#		fire_only_once = yes
+#		allowed = {
+#			original_tag = FRA
+#		}
+#		visible = {
+#		}
+#		modifier = {
+#		}
+#		cost = 75
+#		days_remove = 100
+#		ai_will_do = {
+#			factor = 1
+#		}
+#		complete_effect = {
+#			custom_effect_tooltip = FRA_Increase_Rearmament_Level
+#			move_rearmament_level_up_one = yes
+#		}
+#		remove_effect = {
+#		}
+#	}
+#	FRA_Produce_more_Somua = {
+#		icon = putIcon
+#		fire_only_once = yes
+#		allowed = {
+#			original_tag = FRA
+#		}
+#		visible = {
+#		}
+#		modifier = {
+#		}
+#		cost = 75
+#		days_remove = 100
+#		ai_will_do = {
+#			factor = 1
+#		}
+#		complete_effect = {
+#			custom_effect_tooltip = FRA_Increase_Rearmament_Level
+#			move_rearmament_level_up_one = yes
+#		}
+#		remove_effect = {
+#		}
+#	}
+#	FRA_Relaunching_the_Arms_Race = {
+#		icon = putIcon
+#		fire_only_once = yes
+#		allowed = {
+#			original_tag = FRA
+#		}
+#		visible = {
+#		}
+#		modifier = {
+#		}
+#		cost = 100
+#		days_remove = 100
+#		ai_will_do = {
+#			factor = 1
+#		}
+#		modifier = {
+#			industrial_capacity_factory = 0.1
+#		}
+#		complete_effect = {
+#			add_stability = -0.05
+#			custom_effect_tooltip = FRA_Increase_Rearmament_Level
+#			move_rearmament_level_up_one = yes
+#		}
+#		remove_effect = {
+#		}
+#	}
+#	FRA_Catching_up_on_our_Backlog_in_Aeronautics = {
+#		icon = putIcon
+#		fire_only_once = yes
+#		allowed = {
+#			original_tag = FRA
+#		}
+#		visible = {
+#		}
+#		modifier = {
+#		}
+#		cost = 75
+#		days_remove = 100
+#		ai_will_do = {
+#			factor = 1
+#		}
+#		modifier = {
+#		}
+#		complete_effect = {
+#			custom_effect_tooltip = FRA_Increase_Rearmament_Level
+#			move_rearmament_level_up_one = yes
+#		}
+#		remove_effect = {
+#		}
+#	}
+}
+#######################################################################
+# Le Front Populaire
+#######################################################################
+FRA_Le_Front_Populaire_category = {
+	FRA_Le_Front_Populaire = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			set_temp_variable = {
+				unemployment_value = 0.05
+			}
+			has_less_than_unemployment_value = yes
+		}
+		activation = {
+			has_completed_focus = FRA_Victory_of_the_Popular_Front
+		}
+		days_mission_timeout = 730
+		is_good = no
+		complete_effect = {
+			add_political_power = 150
+			add_stability = 0.10
+		}
+		timeout_effect = {
+			country_event = {
+				id = FRA_Front_Populaire_1936.10
+				days = 1
+			}
+		}
+	}
+	FRA_Ask_Full_Financial_Power = {
+		icon = GFX_decision_generic_fundraising
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+		}
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = FRA_Ask_Full_Financial_Power_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						set_temp_variable = { total_support_to_check = 0.7 }
+						has_at_least_parliament_total_support = yes
+					}
+					set_temp_variable = {
+						modifier_value = -0.1
+					}
+					change_unemployment_value_modifier = yes
+				}
+				else = {
+					if = {
+						limit = {
+							has_country_leader = {
+								name = "Camille Chautemps"
+								ruling_only = yes
+							}
+						}
+						country_event = {
+							id = FRA_Front_Populaire_1936.12
+							days = 1
+						}
+					}
+					else_if = {
+						limit = {
+							has_country_leader = {
+								name = "Léon Blum"
+								ruling_only = yes
+							}
+						}
+						country_event = {
+							id = FRA_Front_Populaire_1936.11
+							days = 1
+						}
+					}
+				}
+			}
+		}
+	}
+	FRA_Applied_the_Programe_of_the_Front = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+		}
+		cost = 150
+		complete_effect = {
+			add_stability = 0.15
+			set_temp_variable = {
+				unemployment_value = 0.02
+			}
+			add_unemployment_effect = yes
+			add_days_mission_timeout = {
+				mission = FRA_Le_Front_Populaire
+				days = 62
+			}
+		}
+	}
+	FRA_Jean_Zays_Reforms = {
+		icon = putIcon
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+		}
+		cost = 150
+		complete_effect = {
+			increase_slider_research_spending = yes
+			add_days_mission_timeout = {
+				mission = FRA_Le_Front_Populaire
+				days = 31
+			}
+			add_stability = 0.1
+		}
+	}
+}
+war_measures = {
+	FRA_Mobilisation_General = {
+		icon = GFX_decision_generic_military
+		fire_only_once = yes
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			OR = {
+				has_war = yes
+				GER = {
+					has_war_with = POL
+				}
+			}
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 5
+		cost = 25
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = FRA_Rearmament_Program_1
+				}
+				remove_ideas = FRA_Rearmament_Program_1
+			}
+			else_if = {
+				limit = {
+					has_idea = FRA_Rearmament_Program_2
+				}
+				remove_ideas = FRA_Rearmament_Program_2
+			}
+			else_if = {
+				limit = {
+					has_idea = FRA_Rearmament_Program_3
+				}
+				remove_ideas = FRA_Rearmament_Program_3
+			}
+			else_if = {
+				limit = {
+					has_idea = FRA_Rearmament_Program_4
+				}
+				remove_ideas = FRA_Rearmament_Program_4
+			}
+			add_ideas = three_year_service
+
+			complete_national_focus = FRA_General_Mobilization
+
+			news_event = { id = FRA_Wartime_Tree.0 }
+		}
+	}
+}
+
+FRA_Grand_Quartier_General_category = {
+	FRA_Centralize_the_GQG = {
+		icon = GFX_decision_generic_army_support
+		fire_only_once = yes
+		available = {
+		}
+		custom_cost_trigger = {
+			has_army_experience > 99
+		}
+		custom_cost_text = decision_cost_AE_100
+		complete_effect = {
+			hidden_effect = {
+				army_experience = -100
+			}
+			swap_ideas = {
+				remove_idea = FRA_The_GQG
+				add_idea = FRA_The_GQG_2
+			}
+		}
+	}
+	FRA_Launch_Saar_Offensive = {
+		icon = GFX_decision_generic_operation
+		fire_only_once = yes
+		available = {
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		remove_effect = {
+			country_event = { id = FRA_Saar_Offensive.1 }
+		}
+	}
+	FRA_The_Saar_Offensive = {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		allowed = {
+			always = no
+		}
+		available = {
+			controls_state = 42
+			controls_state = 51
+			controls_state = 806
+			controls_state = 1498
+		}
+		days_mission_timeout = 40
+		complete_effect = {
+			country_event = { id = FRA_Saar_Offensive.3 }
+		}
+		timeout_effect = {
+			country_event = { id = FRA_Saar_Offensive.4 }
+		}
+	}
+	FRA_Prepare_the_Plan_Dyle_Breda = {
+		icon = GFX_decision_generic_operation
+		fire_only_once = yes
+		available = {
+		}
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = decision_cost_CP_30
+		days_remove = 50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		remove_effect = {
+			set_country_flag = FRA_Prepared_Dyle_Breda
+			unlock_decision_tooltip = FRA_Execute_Plan_Dyle
+			unlock_decision_tooltip = FRA_Execute_Plan_Breda
+		}
+	}
+	FRA_Execute_Plan_Dyle = {
+		icon = GFX_decision_generic_operation
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FRA_Prepared_Dyle_Breda
+		}
+		available = {
+			BEL = {
+				has_war_with = GER
+				is_in_faction_with = FRA
+			}
+		}
+		days_remove = 40
+		modifier = {
+			army_speed_factor = 0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = FRA_Execute_Plan_Dyle_tt
+			if = {
+				limit = {
+					964 = {
+						is_controlled_by_ROOT_or_ally = yes
+					}
+					34 = {
+						is_controlled_by_ROOT_or_ally = yes
+					}
+				}
+				set_country_flag = FRA_Plan_Dyle_Executed
+				unlock_decision_tooltip = FRA_Build_Fortifications_in_Belgium
+				add_war_support = 0.05
+				add_political_power = 50
+				army_experience = 25
+			}
+			else = {
+				add_war_support = -0.05
+			}
+		}
+	}
+	FRA_Build_Fortifications_in_Belgium = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FRA_Plan_Dyle_Executed
+		}
+		available = {
+		}
+		cost = 25
+		days_remove = 100
+		cancel_trigger = {
+			NOT = {
+				BEL = {
+					controls_state = 964
+					controls_state = 34
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			34 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 13081
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 3516
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 11519
+					instant_build = yes
+				}
+			}
+			964 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 13068
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 9574
+					instant_build = yes
+				}
+			}
+		}
+	}
+	FRA_Execute_Plan_Breda = {
+		icon = GFX_decision_generic_operation
+		fire_only_once = yes
+		visible = {
+			has_country_flag = FRA_Prepared_Dyle_Breda
+		}
+		available = {
+			HOL = {
+				has_war_with = GER
+				is_in_faction_with = FRA
+			}
+		}
+		days_remove = 40
+		modifier = {
+			army_speed_factor = 0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = FRA_Execute_Plan_Breda_tt
+			if = {
+				limit = {
+					35 = {
+						is_controlled_by_ROOT_or_ally = yes
+					}
+					1128 = {
+						is_controlled_by_ROOT_or_ally = yes
+					}
+				}
+				set_country_flag = FRA_Plan_Breda_Executed
+				unlock_decision_tooltip = FRA_Build_Fortifications_in_the_Netherlands
+				add_war_support = 0.05
+				add_political_power = 50
+				army_experience = 25
+			}
+			else = {
+				add_war_support = -0.05
+			}
+		}
+	}
+	FRA_Build_Fortifications_in_the_Netherlands = {
+		icon = GFX_decision_FRA_Maginot_line
+		fire_only_once = yes
+		visible= {
+			has_country_flag = FRA_Plan_Breda_Executed
+		}
+		available = {
+		}
+		cost = 25
+		days_remove = 100
+		cancel_trigger = {
+			NOT = {
+				HOL = {
+					controls_state = 35
+					controls_state = 1128
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			35 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 6496
+					instant_build = yes
+				}
+			}
+			1128 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 6500
+					instant_build = yes
+				}
+			}
+		}
+	}
+#	FRA_Operation_Bourrasque = {
+#		icon = GFX_
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_idea = FRA_The_Phoney_War
+#			}
+#			surrender_progress < 0.01
+#		}
+#		custom_cost_trigger = {
+#			command_power > 24
+#		}
+#		custom_cost_text = decision_cost_CP_25
+#		days_remove = 120
+#		complete_effect = {
+#			hidden_effect = {
+#				add_command_power = -25
+#			}
+#		}
+#		modifier = {
+#			river_crossing_factor = -0.05
+#		}
+#		remove_effect = {
+#			if = {
+#				limit = {
+#					42 = {
+#						is_controlled_by_ROOT_or_ally = yes
+#					}
+#					51 = {
+#						is_controlled_by_ROOT_or_ally = yes
+#					}
+#					806 = {
+#						is_controlled_by_ROOT_or_ally = yes
+#					}
+#					1498 = {
+#						is_controlled_by_ROOT_or_ally = yes
+#					}
+#				}
+#				add_war_support = 0.05
+#				add_stability = 0.025
+#			}
+#			else = {
+#				add_war_support = -0.1
+#				add_political_power = -60
+#			}
+#		}
+#	}
+#	FRA_Operation_Bosquet = {
+#		icon = GFX_
+#		fire_only_once = yes
+#		available = {
+#			GER = {
+#				surrender_progress > 0.25
+#			}
+#		}
+#		custom_cost_trigger = {
+#			command_power > 24
+#		}
+#		custom_cost_text = decision_cost_CP_25
+#		days_remove = 120
+#		complete_effect = {
+#			hidden_effect = {
+#				add_command_power = -25
+#			}
+#		}
+#		remove_effect = {
+#			if = {
+#				limit = {
+#					controls_state = 52
+#					controls_state = 53
+#				}
+#				add_war_support = 0.05
+#				add_stability = 0.025
+#			}
+#			else = {
+#				add_war_support = -0.05
+#				add_political_power = -60
+#			}
+#		}
+#	}
+#	FRA_Operation_Gambetta = {
+#		icon = GFX_
+#		fire_only_once = yes
+#		available = {
+#			GER = {
+#				surrender_progress > 0.3
+#			}
+#		}
+#		custom_cost_trigger = {
+#			command_power > 24
+#		}
+#		custom_cost_text = decision_cost_CP_25
+#		days_remove = 120
+#		complete_effect = {
+#			hidden_effect = {
+#				add_command_power = -25
+#			}
+#		}
+#		remove_effect = {
+#			if = {
+#				limit = {
+#					controls_state = 1057
+#				}
+#				add_war_support = 0.05
+#				add_stability = 0.025
+#			}
+#			else = {
+#				add_war_support = -0.05
+#				add_political_power = -60
+#			}
+#		}
+#	}
+}
+
+FRA_Battle_of_France_category = {
+	FRA_Plan_Jaune = {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		allowed = {
+			always = no
+		}
+		available = {
+			NOT = {
+				controls_province = 3560
+				controls_province = 11420
+				controls_province = 11506
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 30
+		complete_effect = {
+			add_war_support = -0.2
+			remove_ideas = FRA_The_Phoney_War
+			remove_ideas = FRA_On_ne_Passe_Pas
+			add_ideas = FRA_La_Debacle
+			if = {
+				limit = {
+					has_idea = FRA_Maurice_Gamelin_CoStaff
+				}
+				country_event = { id = FRA_Wartime_Tree.17 }
+			}
+			complete_national_focus = FRA_Frances_Darkest_Hour
+		}
+		timeout_effect = {
+			add_war_support = 0.1
+			add_stability = 0.05
+			army_experience = 25
+			air_experience = 25
+		}
+	}
+	FRA_The_Defense_of_France = {
+		icon = GFX_decision_generic_prepare_civil_war
+		activation = {
+			has_completed_focus = FRA_La_Patrie_en_Danger
+		}
+		visible = {
+			check_variable = {
+				var = FRA_The_Defense_of_France_var
+				value = 6
+				compare = less_than
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 28
+		timeout_effect = {
+			add_to_variable = {
+				var = FRA_The_Defense_of_France_var
+				value = 1
+			}
+			add_war_support = 0.05
+			add_stability = 0.01
+		}
+	}
+	FRA_Declare_Paris_an_Open_City= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		available = {
+			GER = {
+				controls_state = 1022
+				controls_state = 1023
+				controls_state = 762
+			}
+		}
+		complete_effect = {
+			add_war_support = -0.05
+			add_stability = -0.05
+			if = {
+				limit = {
+					controls_state = 19	
+				}
+				country_event = { id = FRA_Wartime_Tree.18 }
+			}
+		}
+	}
+	FRA_The_Retreat= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		available = {
+			has_completed_focus = FRA_The_Mediterranean_Retreat
+		}
+		modifier = {
+			army_defence_factor  = 0.1
+			army_attack_factor = -0.5
+			army_speed_factor = 0.15
+		}
+		days_remove = 90
+		remove_effect = {
+			add_state_core = 459
+			set_capital = { state = 459 }
+		}
+	}
+	FRA_Seine_Defense_Line= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = FRA_Behind_Every_River
+		}
+		cancel_trigger = {
+			NOT = {
+				controls_state = 15
+				controls_state = 16
+				controls_state = 27
+			}
+		}
+		days_remove = 60
+		modifier = {
+			civilian_factory_use = 15
+		}
+		remove_effect = {
+			15 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 6599
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9578
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 3549
+				}
+			}
+			16 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9523
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9725
+				}
+			}
+			27 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 3506
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9490
+				}
+			}
+		}
+	}
+	FRA_Loire_Defense_Line= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = FRA_Behind_Every_River
+		}
+		cancel_trigger = {
+			NOT = {
+				controls_state = 1028
+				controls_state = 30
+				controls_state = 23
+				controls_state = 24
+				controls_state = 27
+			}
+		}
+		days_remove = 60
+		modifier = {
+			civilian_factory_use = 15
+		}
+		remove_effect = {
+			1028 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11616
+				}
+			}
+			30 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9867
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11613
+				}
+			}
+			23 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 3659
+				}
+			}
+			24 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 3671
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11631
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 3493
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 6688
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11611
+				}
+			}
+			27 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9609
+				}
+			}
+		}
+	}
+	FRA_Rhone_Defense_Line= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = FRA_Behind_Every_River
+		}
+		cancel_trigger = {
+			NOT = {
+				controls_state = 1029
+				controls_state = 20
+				controls_state = 22
+			}
+		}
+		days_remove = 60
+		modifier = {
+			civilian_factory_use = 15
+		}
+		remove_effect = {
+			1029 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11794
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 6613
+				}
+			}
+			20 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 6786
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11716
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 9728
+				}
+			}
+			22 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 11877
+				}
+			}
+		}
+	}
+	FRA_The_Reduit_Breton= {
+		icon = GFX_decision_generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = FRA_The_Reduit_Breton
+		}
+		cancel_trigger = {
+			NOT = {
+				controls_state = 14
+			}
+		}
+		days_remove = 60
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			14 = {
+				add_building_construction = {
+					type = bunker
+					level = 5
+					instant_build = yes
+					province = 11508
+				}
+				add_building_construction = {
+					type = bunker
+					level = 5
+					instant_build = yes
+					province = 9495
+				}
+			}
+			1028 = {
+				add_building_construction = {
+					type = bunker
+					level = 5
+					instant_build = yes
+					province = 11465
+				}
+				add_building_construction = {
+					type = bunker
+					level = 5
+					instant_build = yes
+					province = 15216
+				}
+			}
+		}
+	}
+}
+FRA_Case_Anton_category = {
+	FRA_Scuttle_the_Fleet = {
+		icon = GFX_decision_generic_naval
+
+		available = {
+			NOT = {
+				GER = { divisions_in_state = { state = 21 size > 0 } }
+			}
+			has_country_flag = {
+				flag = case_anton
+				days > 2
+			}
+		}
+		visible = {
+			has_country_flag = case_anton
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		complete_effect = {
+			set_country_flag = scuttled_fleet
+			destroy_ships = {
+				type = DD_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = CL_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = CA_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = BC_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = BB_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = CV_equipment 
+				count = all
+			}
+			destroy_ships = {
+				type = CVE_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = CVL_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = SS_equipment
+				count = all
+			}
+			destroy_ships = {
+				type = heavy_submarine
+				count = all
+			}   
+		}
+	}
+
+	FRA_Case_Anton_Mission = {
+		icon = generic_tank
+
+		available = {
+			is_subject = no
+			has_war_with = GER
+		}
+
+		days_mission_timeout = 7
+		fire_only_once = yes
+
+		activation = {
+			tag = FRA
+			OR = {
+				is_subject_of = GER
+				has_global_flag = VIC_Vichy_Established
+			}
+			has_country_flag = case_anton
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = FRA_Case_Anton_Mission_tt
+		}
+
+		is_good = no
+
+		timeout_effect = {
+			transfer_navy = { target = GER }
+			if = {
+				limit = {
+					ITA = {
+						is_in_faction_with = GER
+					}
+				}
+				ITA = {
+					transfer_state = 1
+					transfer_state = 21
+					transfer_state = 32
+					transfer_state = 735
+					transfer_state = 735
+					transfer_state = 846
+					transfer_state = 1021
+				}
+			}
+			GER = { annex_country = { target = FRA } }
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+	}
+}

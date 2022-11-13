@@ -1,0 +1,541 @@
+#########################################################################
+#  Economic Decision Categories
+#########################################################################
+Unemployment_category = {
+	icon = generic_economy
+	priority = 0
+	visible = {
+		set_temp_variable = {
+			unemployment_value = 0.001
+		}
+		has_at_least_unemployment_value = yes
+	}
+	visible_when_empty = yes
+}
+USA_New_Deal_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		OR = {
+			has_country_flag = USA_100_Days_Mission
+			has_country_flag = USA_First_100_Days_Failed
+			has_country_flag = USA_First_100_Days_Completed
+		}
+	}
+}
+USA_Wartime_Economic_Recovery_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_the_Giant_Wakes
+	}
+}
+USA_Landon_Private_Investments_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Encourage_Private_Investment
+	}
+}
+USA_Reciprocal_Deals_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Road_Goes_Both_Ways
+	}
+}
+USA_Military_Rearmament_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_country_flag = USA_Military_Quotas_Completed
+	}
+}
+USA_Military_Rearmament_1940_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Rearm_The_Military
+	}
+}
+USA_The_War_Production_Board_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_War_Production_Board
+	}
+}
+USA_The_Reserve_Companies_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Reserve_Companies
+	}
+}
+USA_Occupied_Economic_Stabilisation_Category = {
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		has_completed_focus = USA_Stabilize_the_Occupied_Economy
+	}
+	scripted_gui = usa_economic_stabilisation_decision_gui
+}
+CHI_Economic_Reform_Actions = {
+	icon = generic_economy
+	priority = 8
+	on_map_area = {
+		state = 1
+		name = CHI_Economic_Actions
+		zoom = 250
+	}
+	allowed = {
+		tag = CHI
+		always = no
+	}
+	visible = {
+		has_completed_focus = CHI_Path_to_Economic_Recovery
+	}
+}
+CHI_Rural_Reconstruction_Actions = {
+	icon = generic_industry
+	priority = 7
+	on_map_area = {
+		state = 1
+		name = CHI_Rural_Reconstruction
+		zoom = 250
+	}
+	visibility_type = map_only
+	allowed = {
+		tag = CHI
+		always = no
+	}
+	visible = {
+		has_completed_focus = CHI_Support_Rural_Reconstruction
+	}
+}
+GER_Reichswerke_category = {
+	icon = generic_industry
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_Reichswerke_Hermann_Goering
+	}
+}
+GER_Plunder_Conquered_Territories_category = {
+	icon = military_operation
+	visible = {
+		has_war = yes
+		has_completed_focus = GER_Plunder_Conquered_Territories
+	}
+}
+GER_Reichsautobahn_category = {
+	icon = generic_industry
+	on_map_area = {
+		state = 64
+		name = GER_Reichsautobahn_category_zoom
+		zoom = 250
+	}
+	allowed = {
+		original_tag = GER
+	}
+}
+GER_MEFO_Bills_category = {
+	icon = ger_mefo_bills
+	allowed = {
+		original_tag = GER
+	}
+}
+ENG_Getting_Out_of_the_Slump = {
+	icon = placeholder
+	visible = {
+		has_completed_focus = ENG_Urgent_Unemployment_Relief
+	}
+	allowed = {
+		original_tag = ENG
+	}
+}
+ENG_Economic_Warfare_Category = {
+	icon = placeholder
+	visible = {
+		has_completed_focus = ENG_Western_Trade_Treaties
+	}
+	allowed = {
+		original_tag = ENG
+	}
+}
+ENG_Shadow_Scheme_Category = {
+	icon = placeholder
+	visible = {
+		has_completed_focus = ENG_In_the_Shadows
+		NOT = {
+			has_country_flag = ENG_Shadow_Scheme_Factories_Opened
+		}
+	}
+	allowed = {
+		original_tag = ENG
+	}
+	scripted_gui = eng_shadow_scheme_gui
+}
+ENG_African_Sun_Category = {
+	icon = placeholder
+	visible = {
+		has_completed_focus = ENG_African_Sun
+	}
+	allowed = {
+		original_tag = ENG
+	}
+}
+ENG_Churchill_Rearmament_Category = {
+	icon = placeholder
+	picture = placeholder
+	visible = {
+		always = no
+		#has_completed_focus = ENG_Churchills_Rearmament
+	}
+	allowed = {
+		original_tag = ENG
+	}
+}
+fortification_projects = {
+	icon = border_war
+	visible = {
+	}
+}
+GER_Westwall_category = {
+	icon = border_war
+	allowed = {
+		original_tag = GER
+	}
+}
+GER_Atlantikwall_category = {
+	icon = border_war
+	allowed = {
+		original_tag = GER
+	}
+}
+FRA_Economical_Reform_category = {
+	icon = generic_economy
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_Sanitize_Finances
+	}
+}
+FRA_Reform_of_the_State_category = {
+	icon = political_actions
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_National_Union_Government
+		NOT = {
+			has_completed_focus = FRA_The_Wise_of_Tournefeuille
+		}
+	}
+	visible_when_empty = yes
+	scripted_gui = fra_reform_of_the_state_decision_gui
+}
+FRA_Pacifism_category = {
+	icon = generic_economy
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		original_tag = FRA
+		has_country_flag = FRA_Pacifism_Unlock
+	}
+}
+FRA_Electrify_France_category = {
+	icon = generic_economy
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_Continue_Electrification_France
+	}
+}
+FRA_Plan_Marquet_category = {
+	icon = generic_economy
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_The_Plan_Marquet
+	}
+}
+ITA_Settle_the_Libyan_Coast = {
+	icon = generic_political_actions
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		has_completed_focus = ITA_Annex_la_Quarta_Sponda
+	}
+}
+ITA_Pacify_Abyssinia_category = {
+	icon = GFX_decision_category_ITA_Pacify_Abyssinia
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		OR = {
+			ETH = {
+				exists = no
+			}
+			ETH = {
+				has_capitulated = yes
+			}
+		}
+		NOT = {
+			AND = {
+				check_variable = {
+					ITA_Ethiopian_Unrest_partisan = 0
+				}
+				check_variable = {
+					ITA_Ethiopian_Unrest_damage = 0
+				}
+			}
+		}
+	}
+	visible_when_empty = yes
+}
+FRA_LIndochine_category = {
+	allowed = {
+		original_tag = VIN
+	}
+	visible = {
+		has_completed_focus = FRA_LIndochine
+	}
+}
+ITA_Negotiations_with_IG_Farben = {
+	icon = GFX_decision_category_ITA_IG_Farben
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		has_completed_focus = ITA_Establish_ANIC
+	}
+}
+ITA_Istituto_per_la_Ricostruzione_Industriale_category = {
+	icon = GFX_decision_category_ITA_IRI_logo
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		has_completed_focus = ITA_Rescue_Italic_Businesses
+	}
+}
+ITA_Drain_the_Swamp_category = {
+	icon = placeholder
+	allowed = {
+		original_tag = ITA
+	}
+	visible = {
+		has_completed_focus = ITA_Drain_the_Swamp
+		NOT = {
+			has_country_flag = ITA_All_Swamps_Drained
+		}
+	}
+	visible_when_empty = yes
+	scripted_gui = ita_drain_swamps_gui
+}
+POL_Issuing_Currency = {
+	icon = placeholder
+	picture = placeholder
+	allowed = {
+		original_tag = POL
+	}
+	visible = {
+		has_completed_focus = POL_Issue_New_Banknote_Denominations
+	}
+}
+POL_Power_to_the_People = {
+	icon = generic_economy
+	visible = {
+		has_completed_focus = POL_Rural_Eletrification_Drive
+	}
+}
+SPR_liberal_welfare_decisions_category = {
+	icon = placeholder
+	picture = placeholder
+	allowed = {
+		original_tag = SPR
+	}
+}
+SPR_attracting_investors_decisions_category = {
+	icon = placeholder
+	picture = placeholder
+	allowed = {
+		original_tag = SPR
+	}
+}
+SOV_Second_Five_Year_Plan_category = {
+	icon = gre_paying_ifc_debt
+	picture = placeholder
+	allowed = {
+		original_tag = SOV
+	}
+	visible = {
+		has_completed_focus = SOV_The_Second_Five_Year_Plan
+	}
+}
+SOV_Battle_for_Harvest_category = {
+	icon = placeholder
+	picture = placeholder
+	allowed = {
+		is_ai = no
+		original_tag = SOV
+	}
+	visible = {
+		original_tag = SOV
+		NOT = {
+			has_country_flag = SOV_Already_Selected_Harvest
+		}
+		NOT = {
+			has_idea = SOV_Soviet_Famine_check_idea
+		}
+		OR = {
+			AND = {
+				date > 1933.2.1
+				date < 1933.5.6
+			}
+			AND = {
+				date > 1934.2.1
+				date < 1934.5.6
+			}
+			AND = {
+				date > 1935.2.1
+				date < 1935.5.6
+			}
+			AND = {
+				date > 1936.2.1
+				date < 1936.5.6
+			}
+			AND = {
+				date > 1937.2.1
+				date < 1937.5.6
+			}
+		}
+	}
+}
+SOV_Harvest_category = {
+	icon = placeholder
+	picture = placeholder
+	allowed = {
+		is_ai = no
+		original_tag = SOV
+	}
+	visible = {
+		original_tag = SOV
+		NOT = {
+			has_idea = SOV_Soviet_Famine_idea
+		}
+		NOT = {
+			has_country_flag = SOV_Selected_Export
+		}
+		OR = {
+			AND = {
+				date > 1933.10.1
+				date < 1933.10.21
+			}
+			AND = {
+				date > 1934.10.1
+				date < 1934.10.21
+			}
+			AND = {
+				date > 1935.10.1
+				date < 1935.10.21
+			}
+			AND = {
+				date > 1936.10.1
+				date < 1936.10.21
+			}
+			AND = {
+				date > 1937.10.1
+				date < 1937.10.21
+			}
+		}
+	}
+}
+SOV_Evacuation_of_Industry_category = {
+	icon = SOV_Evacuation_of_Industry
+	allowed = {
+		original_tag = SOV
+	}
+	visible = {
+		has_completed_focus = SOV_Shadow_Factories
+	}
+	visible_when_empty = yes
+}
+SOV_Trasformation_of_Nature_category = {
+	icon = placeholder
+	allowed = {
+		original_tag = SOV
+	}
+	visible = {
+		has_completed_focus = SOV_Transformation_of_Nature
+	}
+}
+SOV_Soviet_Public_Loans_category = {
+	icon = GFX_decision_category_SOV_Soviet_Public_Loans
+	allowed = {
+		original_tag = SOV
+		is_ai = no
+	}
+	visible = {
+		has_completed_focus = SOV_Issue_Compulsory_Government_Loan
+		NOT = {
+			any_country = {
+				has_war_with = SOV
+				is_major = yes
+			}
+		}
+		is_ai = no
+	}
+	visible_when_empty = yes
+	scripted_gui = sov_public_loans_decision_gui
+}
+TUR_first_five_year_plan_category = {
+	allowed = {
+		original_tag = TUR
+	}
+	visible = {
+		#has_completed_focus = TUR_Five_Year_Plan
+		always = no
+	}
+}
+economy_decisions = {
+	icon = generic_economy
+}
+Inflation_category = {
+	icon = decision_category_ger_mefo_bills
+	visible = {
+		always = yes
+	}
+}
+prestigious_projects = {
+	icon = generic_political_actions
+}
+State_decisions_GUI_category = {
+	icon = decision_category_ger_mefo_bills
+	visible = {
+		always = yes
+	}
+}
+prospect_for_resources = {
+	icon = generic_prospect_for_resources
+}
+special_projects = {
+	icon = generic_prospect_for_resources
+}

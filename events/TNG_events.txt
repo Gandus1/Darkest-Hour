@@ -1,0 +1,179 @@
+﻿#########################################################################
+# Darkest Hour Events : Tunganistan
+#########################################################################
+add_namespace = TNG_Politics
+#########################################################################
+#  Tunganistan / 36th Division Advances South
+#########################################################################
+country_event = {
+	id = TNG_Politics.1
+	title = TNG_Politics.1.t
+	desc = TNG_Politics.1.d
+	fire_only_once = yes
+	trigger = {
+		date > 1933.1.1
+		tag = TNG
+		TNG = { num_divisions <  4 }
+	}
+	mean_time_to_happen = { days = 2 }
+	#Offer armstice
+	option = {
+		name = TNG_Politics.1.A
+		hidden_effect = {
+			SIK = { country_event = { days = 1 id = TNG_Politics.6 } }
+			TNG = { country_event = { days = 8 id = TNG_Politics.5 } }
+		}
+	}
+	#Advance South
+	option = {
+		name = TNG_Politics.1.B
+		ai_chance = {
+			factor = 60
+		}
+		drop_cosmetic_tag = yes
+		white_peace = SIK
+		hidden_effect = {
+			TNG = { country_event = { days = 8 id = TNG_Politics.5 } }
+			TNG = {
+				transfer_state = 831
+				add_state_core = 831
+				remove_state_core = 829
+			}
+			SIK = {
+				transfer_state = 829
+			}
+		}
+	}
+}
+#Tunganistan requests weapons
+country_event = {
+	id = TNG_Politics.2
+	title = TNG_Politics.2.t
+	desc = TNG_Politics.2.d
+	is_triggered_only = yes
+	option = {
+		name = TNG_Politics.2.A
+		ai_chance = {
+			factor = 60
+		}
+		send_equipment = {
+			type = infantry_equipment
+			amount = 100
+			target = TNG
+		}
+		TNG = {
+			country_event = {
+				id =  TNG_Politics.3
+				days = 0
+			}
+		}
+	}
+	option = {
+		name = TNG_Politics.2.B
+		ai_chance = {
+			factor = 40
+		}
+		CHI = {
+			add_opinion_modifier = {
+				target = TNG
+				modifier = TNG_anti_china
+			}
+		}
+		TNG = {
+			country_event = {
+				id =  TNG_Politics.4
+				days = 0
+			}
+		}
+	}
+}
+#Accept
+country_event = {
+	id = TNG_Politics.3
+	title = TNG_Politics.3.t
+	desc = TNG_Politics.3.d
+	is_triggered_only = yes
+	option = {
+		name = TNG_Politics.3.A
+	}
+}
+#Deny
+country_event = {
+	id = TNG_Politics.4
+	title = TNG_Politics.4.t
+	desc = TNG_Politics.4.d
+	is_triggered_only = yes
+	option = {
+		name = TNG_Politics.4.A
+	}
+}
+#MA is missing
+country_event = {
+	id = TNG_Politics.5
+	title = TNG_Politics.5.t
+	desc = TNG_Politics.5.d
+	is_triggered_only = yes
+	option = {
+		name = TNG_Politics.5.A
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Ma Hushan"
+			desc = ""
+			picture = GFX_P_A_Ma_Hushan
+			ideology = military_dictatorship
+			traits = {
+				POSITION_Commander
+				SUBIDEOLOGY_Military_Dictatorship
+				L_Local_Tyrant
+			}
+		}
+	}
+	option = {
+		name = TNG_Politics.5.B
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Ma Zhancang"
+			desc = ""
+			picture = GFX_P_A_Ma_Zhancang
+			ideology = military_dictatorship
+			traits = {
+				POSITION_Commander
+				SUBIDEOLOGY_Military_Dictatorship
+			}
+		}
+	}
+}
+#Tunganistan asks for ceasefire
+country_event = {
+	id = TNG_Politics.6
+	title = TNG_Politics.6.t
+	desc = TNG_Politics.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	#Yes
+	option = {
+		name = TNG_Politics.6.A
+		ai_chance = {
+			factor = 60
+		}
+		every_state = {
+			limit={
+				is_core_of = SIK
+				is_controlled_by = TNG
+			}
+			TNG = {
+				transfer_state = PREV
+				add_state_core = PREV
+			}
+		}
+		XSM = {
+			transfer_state = 860
+			add_state_core = 860
+		}
+		white_peace = TNG
+	}
+	#No
+	option = {
+		name = TNG_Politics.6.B
+	}
+}

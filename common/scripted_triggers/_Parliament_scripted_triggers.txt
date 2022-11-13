@@ -1,0 +1,159 @@
+# example usage:
+## country_has_parliament = yes
+country_has_parliament = {
+	check_variable = { parliament_array^num > 0 }
+}
+
+# example usage:
+##	set_temp_variable = { amount_of_parties = 1 }
+##	has_num_of_parliament_parties = yes
+has_num_of_parliament_parties = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NUM_OF_PARLIAMENT_PARTIES_TT
+		NOT = { is_in_array = { parliament_array^num < amount_of_parties } }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { amount_of_parties = 1 }
+##	has_less_num_of_active_factions = yes
+has_less_num_of_parliament_parties = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_NUM_OF_PARLIAMENT_PARTIES_TT
+		is_in_array = { parliament_array^num < amount_of_parties }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	has_party_in_parliament = yes
+has_party_in_parliament = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_PARTY_IN_PARLIAMENT_TT
+		is_in_array = { parliament_array = party_id }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	has_not_party_in_parliament = yes
+has_not_party_in_parliament = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NOT_PARTY_IN_PARLIAMENT_TT
+		is_in_array = { parliament_array = party_id }
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	set_temp_variable = { influence_to_check = 0.1 }
+##	has_at_least_parliament_party_influence = yes
+has_at_least_parliament_party_influence = {
+	if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_AT_LEAST_PARLIAMENT_PARTY_INFLUENCE_TT
+			meta_trigger = {
+				text = {
+					NOT = { check_variable = { party_influence_[FACTION] < influence_to_check } }
+				}
+				FACTION = "[?party_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	set_temp_variable = { influence_to_check = 0.1 }
+##	has_less_parliament_party_influence = yes
+has_less_parliament_party_influence = {
+	if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_LESS_PARLIAMENT_PARTY_INFLUENCE_TT
+			meta_trigger = {
+				text = {
+					check_variable = { party_influence_[FACTION] < influence_to_check }
+				}
+				FACTION = "[?party_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	set_temp_variable = { support_to_check = 0.1 }
+##	has_at_least_parliament_party_support = yes
+has_at_least_parliament_party_support = {
+	if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_AT_LEAST_PARLIAMENT_PARTY_SUPPORT_TT
+			meta_trigger = {
+				text = {
+					NOT = { check_variable = { party_support_[FACTION] < support_to_check } }
+				}
+				FACTION = "[?party_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { party_id = 1 }
+##	set_temp_variable = { support_to_check = 0.1 }
+##	has_less_parliament_party_support = yes
+has_less_parliament_party_support = {
+	if = {
+		limit = {
+			is_in_array = { parliament_array = party_id }
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_LESS_PARLIAMENT_PARTY_SUPPORT_TT
+			meta_trigger = {
+				text = {
+					check_variable = { party_support_[FACTION] < support_to_check }
+				}
+				FACTION = "[?party_id]"
+			}
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { total_support_to_check = 0.5 }
+##	has_at_least_parliament_total_support = yes
+has_at_least_parliament_total_support = {
+	if = {
+		limit = {
+			country_has_parliament = yes
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_AT_LEAST_PARLIAMENT_TOTAL_SUPPORT_TT
+			NOT = { check_variable = { total_parliament_support < total_support_to_check } }
+		}
+	}
+}
+
+# example usage:
+##	set_temp_variable = { total_support_to_check = 0.5 }
+##	has_less_parliament_total_support = yes
+has_less_parliament_total_support = {
+	if = {
+		limit = {
+			country_has_parliament = yes
+		}
+		custom_trigger_tooltip = {
+			tooltip = HAS_LESS_PARLIAMENT_TOTAL_SUPPORT_TT
+			check_variable = { total_parliament_support < total_support_to_check }
+		}
+	}
+}

@@ -1,0 +1,1867 @@
+﻿######################
+# Generic events
+#######################
+add_namespace = GENERIC_Focus_Tree
+#tank competition - initial choice for FROM(Generic nation)
+country_event = {
+	id = GENERIC_Focus_Tree.1
+	title = GENERIC_Focus_Tree.1.t
+	desc = GENERIC_Focus_Tree.1.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# light tank
+		name = GENERIC_Focus_Tree.1.A
+		trigger = {
+			OR = {
+				GER = {
+					is_available_light_tank_generic = yes
+				}
+				FRA = {
+					is_available_light_tank_generic = yes
+				}
+				ITA = {
+					is_available_light_tank_generic = yes
+				}
+				ENG = {
+					is_available_light_tank_generic = yes
+				}
+				USA = {
+					is_available_light_tank_generic = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Light_Tank_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = Light_Tank_1939
+				add = -10
+			}
+			modifier = {
+				has_tech = Light_Tank_1943
+				factor = 0
+			}
+		}
+		country_event = GENERIC_Focus_Tree.2
+	}
+	option = {# heavy tank
+		name = GENERIC_Focus_Tree.1.B
+		trigger = {
+			OR = {
+				GER = {
+					is_available_heavy_tank_generic = yes
+				}
+				FRA = {
+					is_available_heavy_tank_generic = yes
+				}
+				ITA = {
+					is_available_heavy_tank_generic = yes
+				}
+				ENG = {
+					is_available_heavy_tank_generic = yes
+				}
+				USA = {
+					is_available_heavy_tank_generic = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Heavy_Tank_1939
+				add = -10
+			}
+			modifier = {
+				has_tech = Heavy_Tank_1941
+				add = -10
+			}
+			modifier = {
+				has_tech = Heavy_Tank_1943
+				factor = 0
+			}
+		}
+		country_event = GENERIC_Focus_Tree.3
+	}
+}
+#tank competition - ROOT(Generic Nation) is looking for a light tank
+country_event = {
+	id = GENERIC_Focus_Tree.2
+	title = GENERIC_Focus_Tree.2.t
+	desc = {
+		text = GENERIC_Focus_Tree.2.desc_light_tank
+		trigger = {
+			NOT = {
+				has_country_flag = GER_light_tank_refused
+				has_country_flag = ENG_light_tank_refused
+				has_country_flag = USA_light_tank_refused
+				has_country_flag = FRA_light_tank_refused
+				has_country_flag = ITA_light_tank_refused
+			}
+		}
+	}
+	desc = {
+		text = GENERIC_Focus_Tree.2.desc_light_tank_refused
+		trigger = {
+			OR = {
+				has_country_flag = GER_light_tank_refused
+				has_country_flag = ENG_light_tank_refused
+				has_country_flag = USA_light_tank_refused
+				has_country_flag = FRA_light_tank_refused
+				has_country_flag = ITA_light_tank_refused
+			}
+		}
+	}
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Select German Plane
+		name = GENERIC_Focus_Tree.2.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Light_Tank_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Light_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Light_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Light_Tank_1936}
+					ROOT = { NOT = { has_tech = Light_Tank_1936 } }
+				}
+				AND = {
+					GER = { has_tech = Light_Tank_1939}
+					ROOT = { NOT = { has_tech = Light_Tank_1939 } }
+				}
+				AND = {
+					GER = { has_tech = Light_Tank_1943}
+					ROOT = { NOT = { has_tech = Light_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_light_tank_refused }
+		}
+		GER = { country_event = GENERIC_Focus_Tree.4 }
+	}
+	option = {# select italian plane
+		name = GENERIC_Focus_Tree.2.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Light_Tank_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Light_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Light_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Light_Tank_1936}
+					ROOT = { NOT = { has_tech = Light_Tank_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = Light_Tank_1939}
+					ROOT = { NOT = { has_tech = Light_Tank_1939 } }
+				}
+				AND = {
+					ITA = { has_tech = Light_Tank_1943}
+					ROOT = { NOT = { has_tech = Light_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_light_tank_refused }
+		}
+		ITA = { country_event = GENERIC_Focus_Tree.4 }
+	}
+	option = {# select french plane
+		name = GENERIC_Focus_Tree.2.C
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Light_Tank_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Light_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Light_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Light_Tank_1936}
+					ROOT = { NOT = { has_tech = Light_Tank_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = Light_Tank_1939}
+					ROOT = { NOT = { has_tech = Light_Tank_1939 } }
+				}
+				AND = {
+					FRA = { has_tech = Light_Tank_1943}
+					ROOT = { NOT = { has_tech = Light_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_light_tank_refused }
+		}
+		FRA = { country_event = GENERIC_Focus_Tree.4 }
+	}
+	option = {# select british plane
+		name = GENERIC_Focus_Tree.2.D
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Light_Tank_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Light_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Light_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Light_Tank_1936}
+					ROOT = { NOT = { has_tech = Light_Tank_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = Light_Tank_1939}
+					ROOT = { NOT = { has_tech = Light_Tank_1939 } }
+				}
+				AND = {
+					ENG = { has_tech = Light_Tank_1943}
+					ROOT = { NOT = { has_tech = Light_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_light_tank_refused }
+		}
+		ENG = { country_event = GENERIC_Focus_Tree.4 }
+	}
+	option = {# select USAch plane
+		name = GENERIC_Focus_Tree.2.E
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = Light_Tank_1936
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Light_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Light_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = Light_Tank_1936}
+					ROOT = { NOT = { has_tech = Light_Tank_1936 } }
+				}
+				AND = {
+					USA = { has_tech = Light_Tank_1939}
+					ROOT = { NOT = { has_tech = Light_Tank_1939 } }
+				}
+				AND = {
+					USA = { has_tech = Light_Tank_1943}
+					ROOT = { NOT = { has_tech = Light_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_light_tank_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_light_tank_generic = yes
+					}
+					FRA = {
+						is_available_light_tank_generic = yes
+					}
+					ITA = {
+						is_available_light_tank_generic = yes
+					}
+					ENG = {
+						is_available_light_tank_generic = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = GENERIC_Focus_Tree.4 }
+	}
+	option = {# failsafe
+		name = GENERIC_Focus_Tree.2.F
+		trigger = {
+			OR = {
+				has_country_flag = GER_light_tank_refused
+				has_country_flag = ITA_light_tank_refused
+				has_country_flag = ENG_light_tank_refused
+				has_country_flag = FRA_light_tank_refused
+				has_country_flag = USA_light_tank_refused
+			}
+		}
+		army_experience = 50
+	}
+}
+#tank competition - ROOT(Generic Nation) is looking for a heavy tank
+country_event = {
+	id = GENERIC_Focus_Tree.3
+	title = GENERIC_Focus_Tree.3.t
+	desc = {
+		text = GENERIC_Focus_Tree.3.desc_heavy_tank
+		trigger = {
+			NOT = {
+				has_country_flag = GER_heavy_tank_refused
+				has_country_flag = ENG_heavy_tank_refused
+				has_country_flag = USA_heavy_tank_refused
+				has_country_flag = FRA_heavy_tank_refused
+				has_country_flag = ITA_heavy_tank_refused
+			}
+		}
+	}
+	desc = {
+		text = GENERIC_Focus_Tree.3.desc_heavy_tank_refused
+		trigger = {
+			OR = {
+				has_country_flag = GER_heavy_tank_refused
+				has_country_flag = ENG_heavy_tank_refused
+				has_country_flag = USA_heavy_tank_refused
+				has_country_flag = FRA_heavy_tank_refused
+				has_country_flag = ITA_heavy_tank_refused
+			}
+		}
+	}
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Select German Plane
+		name = GENERIC_Focus_Tree.2.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Tank_1941
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Heavy_Tank_1939}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1939 } }
+				}
+				AND = {
+					GER = { has_tech = Heavy_Tank_1941}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1941 } }
+				}
+				AND = {
+					GER = { has_tech = Heavy_Tank_1943}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_heavy_tank_refused }
+		}
+		GER = { country_event = GENERIC_Focus_Tree.5 }
+	}
+	option = {# select italian plane
+		name = GENERIC_Focus_Tree.2.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Tank_1941
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Heavy_Tank_1939}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1939 } }
+				}
+				AND = {
+					ITA = { has_tech = Heavy_Tank_1941}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1941 } }
+				}
+				AND = {
+					ITA = { has_tech = Heavy_Tank_1943}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_heavy_tank_refused }
+		}
+		ITA = { country_event = GENERIC_Focus_Tree.5 }
+	}
+	option = {# select french plane
+		name = GENERIC_Focus_Tree.2.C
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Tank_1941
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Heavy_Tank_1939}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1939 } }
+				}
+				AND = {
+					FRA = { has_tech = Heavy_Tank_1941}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1941 } }
+				}
+				AND = {
+					FRA = { has_tech = Heavy_Tank_1943}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_heavy_tank_refused }
+		}
+		FRA = { country_event = GENERIC_Focus_Tree.5 }
+	}
+	option = {# select british plane
+		name = GENERIC_Focus_Tree.2.D
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Tank_1941
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Heavy_Tank_1939}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1939 } }
+				}
+				AND = {
+					ENG = { has_tech = Heavy_Tank_1941}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1941 } }
+				}
+				AND = {
+					ENG = { has_tech = Heavy_Tank_1943}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_heavy_tank_refused }
+		}
+		ENG = { country_event = GENERIC_Focus_Tree.5 }
+	}
+	option = {# select USAch plane
+		name = GENERIC_Focus_Tree.2.E
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = Heavy_Tank_1939
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Heavy_Tank_1941
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Heavy_Tank_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = Heavy_Tank_1939}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1939 } }
+				}
+				AND = {
+					USA = { has_tech = Heavy_Tank_1941}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1941 } }
+				}
+				AND = {
+					USA = { has_tech = Heavy_Tank_1943}
+					ROOT = { NOT = { has_tech = Heavy_Tank_1943 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_heavy_tank_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_heavy_tank_generic = yes
+					}
+					FRA = {
+						is_available_heavy_tank_generic = yes
+					}
+					ITA = {
+						is_available_heavy_tank_generic = yes
+					}
+					ENG = {
+						is_available_heavy_tank_generic = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = GENERIC_Focus_Tree.5 }
+	}
+	option = {# failsafe
+		name = GENERIC_Focus_Tree.2.F
+		trigger = {
+			OR = {
+				has_country_flag = GER_heavy_tank_refused
+				has_country_flag = ITA_heavy_tank_refused
+				has_country_flag = ENG_heavy_tank_refused
+				has_country_flag = FRA_heavy_tank_refused
+				has_country_flag = USA_heavy_tank_refused
+			}
+		}
+		army_experience = 50
+	}
+}
+#tank competition - light tank competition winner gets a choice whether to permit license production
+country_event = {
+	id = GENERIC_Focus_Tree.4
+	title = GENERIC_Focus_Tree.4.t
+	desc = GENERIC_Focus_Tree.4.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# certainly
+		name = GENERIC_Focus_Tree.4.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.6 }
+		army_experience = 20
+		if = {
+			limit = {
+				has_tech = Light_Tank_1936
+				NOT = { has_tech = Light_Tank_1939 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = Light_Tank_equipment_1936
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Light_Tank_1939
+				NOT = { has_tech = Light_Tank_1943 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = Light_Tank_equipment_1939
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Light_Tank_1943
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = Light_Tank_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+	}
+	option = {# no
+		name = GENERIC_Focus_Tree.4.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = FROM
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			FROM = { set_country_flag = GER_light_tank_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			FROM = { set_country_flag = ITA_light_tank_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			FROM = { set_country_flag = FRA_light_tank_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			FROM = { set_country_flag = ENG_light_tank_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			FROM = { set_country_flag = USA_light_tank_refused }
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.2 }
+		reverse_add_opinion_modifier = { target = FROM modifier = refused_help }
+	}
+}
+#tank competition - heavy tank competition winner gets a choice whether to permit license production
+country_event = {
+	id = GENERIC_Focus_Tree.5
+	title = GENERIC_Focus_Tree.4.t
+	desc = GENERIC_Focus_Tree.5.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# certainly
+		name = GENERIC_Focus_Tree.4.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.6 }
+		army_experience = 20
+		if = {
+			limit = {
+				has_tech = Heavy_Tank_1939
+				NOT = { has_tech = Heavy_Tank_1941 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = Heavy_Tank_equipment_1939
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Heavy_Tank_1941
+				NOT = { has_tech = Heavy_Tank_1943 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = Heavy_Tank_equipment_1941
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Heavy_Tank_1943
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = Heavy_Tank_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+	}
+	option = {# no
+		name = GENERIC_Focus_Tree.4.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = FROM
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			FROM = { set_country_flag = GER_heavy_tank_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			FROM = { set_country_flag = ITA_heavy_tank_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			FROM = { set_country_flag = FRA_heavy_tank_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			FROM = { set_country_flag = ENG_heavy_tank_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			FROM = { set_country_flag = USA_heavy_tank_refused }
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.3 }
+		reverse_add_opinion_modifier = { target = FROM modifier = refused_help }
+	}
+}
+#tank competition - license production approved
+country_event = {
+	id = GENERIC_Focus_Tree.6
+	title = GENERIC_Focus_Tree.6.t
+	desc = GENERIC_Focus_Tree.6.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# neat
+		name = GENERIC_Focus_Tree.6.A
+	}
+}
+#Ship competition - initial choice for FROM(Generic nation)
+country_event = {
+	id = GENERIC_Focus_Tree.7
+	title = GENERIC_Focus_Tree.7.t
+	desc = GENERIC_Focus_Tree.7.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Battlecruiser
+		name = GENERIC_Focus_Tree.7.A
+		trigger = {
+			OR = {
+				GER = {
+					is_available_bc_generic = yes
+				}
+				FRA = {
+					is_available_bc_generic = yes
+				}
+				ITA = {
+					is_available_bc_generic = yes
+				}
+				ENG = {
+					is_available_bc_generic = yes
+				}
+				USA = {
+					is_available_bc_generic = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = BC_1933
+				add = -10
+			}
+			modifier = {
+				has_tech = BC_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = BC_1950
+				factor = 0
+			}
+		}
+		country_event = GENERIC_Focus_Tree.8
+	}
+	option = {# Battleship
+		name = GENERIC_Focus_Tree.7.B
+		trigger = {
+			OR = {
+				GER = {
+					is_available_bb_generic = yes
+				}
+				FRA = {
+					is_available_bb_generic = yes
+				}
+				ITA = {
+					is_available_bb_generic = yes
+				}
+				ENG = {
+					is_available_bb_generic = yes
+				}
+				USA = {
+					is_available_bb_generic = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = BB_1933
+				add = -10
+			}
+			modifier = {
+				has_tech = BB_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = BB_1950
+				factor = 0
+			}
+		}
+		country_event = GENERIC_Focus_Tree.9
+	}
+}
+#Ship competition - ROOT(Generic Nation) is looking for a Battlecruiser
+country_event = {
+	id = GENERIC_Focus_Tree.8
+	title = GENERIC_Focus_Tree.8.t
+	desc = {
+		text = GENERIC_Focus_Tree.8.desc_battlecruiser
+		trigger = {
+			NOT = {
+				has_country_flag = GER_battlecruiser_refused
+				has_country_flag = ENG_battlecruiser_refused
+				has_country_flag = USA_battlecruiser_refused
+				has_country_flag = FRA_battlecruiser_refused
+				has_country_flag = ITA_battlecruiser_refused
+			}
+		}
+	}
+	desc = {
+		text = GENERIC_Focus_Tree.8.desc_battlecruiser_refused
+		trigger = {
+			OR = {
+				has_country_flag = GER_battlecruiser_refused
+				has_country_flag = ENG_battlecruiser_refused
+				has_country_flag = USA_battlecruiser_refused
+				has_country_flag = FRA_battlecruiser_refused
+				has_country_flag = ITA_battlecruiser_refused
+			}
+		}
+	}
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Select German Plane
+		name = GENERIC_Focus_Tree.8.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = BC_1933
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = BC_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = BC_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = BC_1933}
+					ROOT = { NOT = { has_tech = BC_1933 } }
+				}
+				AND = {
+					GER = { has_tech = BC_1940}
+					ROOT = { NOT = { has_tech = BC_1940 } }
+				}
+				AND = {
+					GER = { has_tech = BC_1950}
+					ROOT = { NOT = { has_tech = BC_1950 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_battlecruiser_refused }
+		}
+		GER = { country_event = GENERIC_Focus_Tree.10 }
+	}
+	option = {# select italian plane
+		name = GENERIC_Focus_Tree.8.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = BC_1933
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = BC_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = BC_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = BC_1933}
+					ROOT = { NOT = { has_tech = BC_1933 } }
+				}
+				AND = {
+					ITA = { has_tech = BC_1940}
+					ROOT = { NOT = { has_tech = BC_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = BC_1950}
+					ROOT = { NOT = { has_tech = BC_1950 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_battlecruiser_refused }
+		}
+		ITA = { country_event = GENERIC_Focus_Tree.10 }
+	}
+	option = {# select french plane
+		name = GENERIC_Focus_Tree.8.C
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = BC_1933
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = BC_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = BC_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = BC_1933}
+					ROOT = { NOT = { has_tech = BC_1933 } }
+				}
+				AND = {
+					FRA = { has_tech = BC_1940}
+					ROOT = { NOT = { has_tech = BC_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = BC_1950}
+					ROOT = { NOT = { has_tech = BC_1950 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_battlecruiser_refused }
+		}
+		FRA = { country_event = GENERIC_Focus_Tree.10 }
+	}
+	option = {# select british plane
+		name = GENERIC_Focus_Tree.8.D
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = BC_1933
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = BC_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = BC_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = BC_1933}
+					ROOT = { NOT = { has_tech = BC_1933 } }
+				}
+				AND = {
+					ENG = { has_tech = BC_1940}
+					ROOT = { NOT = { has_tech = BC_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = BC_1950}
+					ROOT = { NOT = { has_tech = BC_1950 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_battlecruiser_refused }
+		}
+		ENG = { country_event = GENERIC_Focus_Tree.10 }
+	}
+	option = {# select USAch plane
+		name = GENERIC_Focus_Tree.8.E
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = BC_1933
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = BC_1940
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = BC_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = BC_1933}
+					ROOT = { NOT = { has_tech = BC_1933 } }
+				}
+				AND = {
+					USA = { has_tech = BC_1940}
+					ROOT = { NOT = { has_tech = BC_1940 } }
+				}
+				AND = {
+					USA = { has_tech = BC_1950}
+					ROOT = { NOT = { has_tech = BC_1950 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_battlecruiser_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_bc_generic = yes
+					}
+					FRA = {
+						is_available_bc_generic = yes
+					}
+					ITA = {
+						is_available_bc_generic = yes
+					}
+					ENG = {
+						is_available_bc_generic = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = GENERIC_Focus_Tree.10 }
+	}
+	option = {# failsafe
+		name = GENERIC_Focus_Tree.8.F
+		trigger = {
+			OR = {
+				has_country_flag = GER_battlecruiser_refused
+				has_country_flag = ITA_battlecruiser_refused
+				has_country_flag = ENG_battlecruiser_refused
+				has_country_flag = FRA_battlecruiser_refused
+				has_country_flag = USA_battlecruiser_refused
+			}
+		}
+		navy_experience = 50
+	}
+}
+#Ship competition - ROOT(Generic Nation) is looking for a Battleship
+country_event = {
+	id = GENERIC_Focus_Tree.9
+	title = GENERIC_Focus_Tree.9.t
+	desc = {
+		text = GENERIC_Focus_Tree.9.desc_battleship
+		trigger = {
+			NOT = {
+				has_country_flag = GER_battleship_refused
+				has_country_flag = ENG_battleship_refused
+				has_country_flag = USA_battleship_refused
+				has_country_flag = FRA_battleship_refused
+				has_country_flag = ITA_battleship_refused
+			}
+		}
+	}
+	desc = {
+		text = GENERIC_Focus_Tree.9.desc_battleship_refused
+		trigger = {
+			OR = {
+				has_country_flag = GER_battleship_refused
+				has_country_flag = ENG_battleship_refused
+				has_country_flag = USA_battleship_refused
+				has_country_flag = FRA_battleship_refused
+				has_country_flag = ITA_battleship_refused
+			}
+		}
+	}
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# Select German Plane
+		name = GENERIC_Focus_Tree.8.A
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = BB_1933
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = BB_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = BB_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = BB_1933}
+					ROOT = { NOT = { has_tech = BB_1933 } }
+				}
+				AND = {
+					GER = { has_tech = BB_1940}
+					ROOT = { NOT = { has_tech = BB_1940 } }
+				}
+				AND = {
+					GER = { has_tech = BB_1950}
+					ROOT = { NOT = { has_tech = BB_1950 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_battleship_refused }
+		}
+		GER = { country_event = GENERIC_Focus_Tree.11 }
+	}
+	option = {# select italian plane
+		name = GENERIC_Focus_Tree.8.B
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = BB_1933
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = BB_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = BB_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = BB_1933}
+					ROOT = { NOT = { has_tech = BB_1933 } }
+				}
+				AND = {
+					ITA = { has_tech = BB_1940}
+					ROOT = { NOT = { has_tech = BB_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = BB_1950}
+					ROOT = { NOT = { has_tech = BB_1950 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_battleship_refused }
+		}
+		ITA = { country_event = GENERIC_Focus_Tree.11 }
+	}
+	option = {# select french plane
+		name = GENERIC_Focus_Tree.8.C
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = BB_1933
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = BB_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = BB_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = BB_1933}
+					ROOT = { NOT = { has_tech = BB_1933 } }
+				}
+				AND = {
+					FRA = { has_tech = BB_1940}
+					ROOT = { NOT = { has_tech = BB_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = BB_1950}
+					ROOT = { NOT = { has_tech = BB_1950 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_battleship_refused }
+		}
+		FRA = { country_event = GENERIC_Focus_Tree.11 }
+	}
+	option = {# select british plane
+		name = GENERIC_Focus_Tree.8.D
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = BB_1933
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = BB_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = BB_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = BB_1933}
+					ROOT = { NOT = { has_tech = BB_1933 } }
+				}
+				AND = {
+					ENG = { has_tech = BB_1940}
+					ROOT = { NOT = { has_tech = BB_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = BB_1950}
+					ROOT = { NOT = { has_tech = BB_1950 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_battleship_refused }
+		}
+		ENG = { country_event = GENERIC_Focus_Tree.11 }
+	}
+	option = {# select USAch plane
+		name = GENERIC_Focus_Tree.8.E
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = BB_1933
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = BB_1940
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = BB_1950
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = BB_1933}
+					ROOT = { NOT = { has_tech = BB_1933 } }
+				}
+				AND = {
+					USA = { has_tech = BB_1940}
+					ROOT = { NOT = { has_tech = BB_1940 } }
+				}
+				AND = {
+					USA = { has_tech = BB_1950}
+					ROOT = { NOT = { has_tech = BB_1950 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_battleship_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_bb_generic = yes
+					}
+					FRA = {
+						is_available_bb_generic = yes
+					}
+					ITA = {
+						is_available_bb_generic = yes
+					}
+					ENG = {
+						is_available_bb_generic = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = GENERIC_Focus_Tree.11 }
+	}
+	option = {# failsafe
+		name = GENERIC_Focus_Tree.8.F
+		trigger = {
+			OR = {
+				has_country_flag = GER_battleship_refused
+				has_country_flag = ITA_battleship_refused
+				has_country_flag = ENG_battleship_refused
+				has_country_flag = FRA_battleship_refused
+				has_country_flag = USA_battleship_refused
+			}
+		}
+		navy_experience = 50
+	}
+}
+#Ship competition - Battlecruiser competition winner gets a choice whether to permit license production
+country_event = {
+	id = GENERIC_Focus_Tree.10
+	title = GENERIC_Focus_Tree.10.t
+	desc = GENERIC_Focus_Tree.10.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# certainly
+		name = GENERIC_Focus_Tree.10.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.12 }
+		navy_experience = 20
+		if = {
+			limit = {
+				has_tech = BC_1933
+				NOT = { has_tech = BC_1940 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = BC_equipment_1933
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = BC_1940
+				NOT = { has_tech = BC_1950 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = BC_equipment_1940
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = BC_1950
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = BC_equipment_1950
+				}
+				cost_factor = 0
+			}
+		}
+	}
+	option = {# no
+		name = GENERIC_Focus_Tree.10.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = FROM
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			FROM = { set_country_flag = GER_battlecruiser_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			FROM = { set_country_flag = ITA_battlecruiser_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			FROM = { set_country_flag = FRA_battlecruiser_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			FROM = { set_country_flag = ENG_battlecruiser_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			FROM = { set_country_flag = USA_battlecruiser_refused }
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.8 }
+		reverse_add_opinion_modifier = { target = FROM modifier = refused_help }
+	}
+}
+#Ship competition - Battleship competition winner gets a choice whether to permit license production
+country_event = {
+	id = GENERIC_Focus_Tree.11
+	title = GENERIC_Focus_Tree.10.t
+	desc = GENERIC_Focus_Tree.11.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# certainly
+		name = GENERIC_Focus_Tree.10.A
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.12 }
+		navy_experience = 20
+		if = {
+			limit = {
+				has_tech = BB_1933
+				NOT = { has_tech = BB_1940 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = BB_equipment_1933
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = BB_1940
+				NOT = { has_tech = BB_1950 }
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = BB_equipment_1940
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = BB_1950
+			}
+			create_production_license = {
+				target = FROM
+				equipment = {
+					type = BB_equipment_1950
+				}
+				cost_factor = 0
+			}
+		}
+	}
+	option = {# no
+		name = GENERIC_Focus_Tree.10.B
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = FROM
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			FROM = { set_country_flag = GER_battleship_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			FROM = { set_country_flag = ITA_battleship_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			FROM = { set_country_flag = FRA_battleship_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			FROM = { set_country_flag = ENG_battleship_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			FROM = { set_country_flag = USA_battleship_refused }
+		}
+		FROM = { country_event = GENERIC_Focus_Tree.9 }
+		reverse_add_opinion_modifier = { target = FROM modifier = refused_help }
+	}
+}
+#Ship competition - license production approved
+country_event = {
+	id = GENERIC_Focus_Tree.12
+	title = GENERIC_Focus_Tree.12.t
+	desc = GENERIC_Focus_Tree.12.desc
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {# neat
+		name = GENERIC_Focus_Tree.12.A
+	}
+}
+#Public Works
+country_event = {
+	id = GENERIC_Focus_Tree.13
+	title = GENERIC_Focus_Tree.13.t
+	desc = GENERIC_Focus_Tree.13.d
+	picture = GFX_report_event_fighters
+	is_triggered_only = yes
+	option = {
+		name = GENERIC_Focus_Tree.13.A
+		set_temp_variable = { money_to_gain = -100 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	option = {
+		name = GENERIC_Focus_Tree.13.B
+		set_temp_variable = { money_to_gain = -70 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	option = {
+		name = GENERIC_Focus_Tree.13.C
+		set_temp_variable = { money_to_gain = -60 }
+		add_money_with_inflation_included_with_tooltip_effect = yes
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}

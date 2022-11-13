@@ -1,0 +1,1978 @@
+#!gfx:interface\replace\_Technologies_Air.gfx
+technologies = {
+	@torpedo_bomber_line = 20
+	@cas_line = 16
+	@interceptor_line = 12
+	@cv_fighter_line = 8
+	@fighter_line = 4
+	@heavy_fighter_line = 0
+	@utility_heli_line = 16
+	#Years
+	@1910 = 2
+	@1914 = 4
+	@1916 = 6
+	@1918 = 8
+	@1924 = 10
+	@1933 = 12
+	@1936 = 14
+	@1940 = 16
+	@1943 = 18
+	@1945 = 20
+	@1950 = 22
+	############################################################################################################
+	## Fighters
+	############################################################################################################
+	################################
+	# 1910 Unarmed Recon
+	################################
+	Unarmed_Recon_1910 = {
+		enable_equipments = {
+			Unarmed_Recon_equipment_1910
+		}
+		dependencies = {
+			Industrial_Management = 1
+		}
+		path = {
+			leads_to_tech = Fighter_1914
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1910
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1910
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1914 Fighter
+	################################
+	Fighter_1914 = {
+		enable_equipments = {
+			Fighter_equipment_1914
+		}
+		path = {
+			leads_to_tech = Fighter_1916
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1916
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1914
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1914
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1916 Fighter
+	################################
+	Fighter_1916 = {
+		enable_equipments = {
+			Fighter_equipment_1916
+		}
+		path = {
+			leads_to_tech = Fighter_1918
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1916
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1916
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1918 Fighter
+	################################
+	Fighter_1918 = {
+		enable_equipments = {
+			Fighter_equipment_1918
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1918
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Fighter_1924
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1918
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1918
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1918
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1918 Carrier Fighter
+	################################
+	cv_Fighter_1918 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1918
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1918
+		path = {
+			leads_to_tech = cv_Fighter_1924
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1918
+			}
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = cv_Fighter_1924
+					has_tech = cv_Fighter_1933
+					has_tech = Fighter_1924
+					has_tech = Fighter_1933
+					has_tech = Fighter_Bomber_1924
+					has_tech = Fighter_Bomber_1933
+				}
+			}
+		}
+	}
+	################################
+	# 1924 Fighter
+	################################
+	Fighter_1924 = {
+		enable_equipments = {
+			Fighter_equipment_1924
+		}
+		path = {
+			leads_to_tech = Fighter_1933
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1924
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1924
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1924
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1924 Carrier Fighter
+	################################
+	cv_Fighter_1924 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1924
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1924
+		path = {
+			leads_to_tech = cv_Fighter_1933
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1924
+			}
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_tech = cv_Fighter_1933
+					has_tech = Fighter_1933
+					has_tech = Fighter_Bomber_1933
+				}
+			}
+		}
+	}
+	################################
+	# 1933 Fighter
+	################################
+	Fighter_1933 = {
+		enable_equipments = {
+			Fighter_equipment_1933
+		}
+		path = {
+			leads_to_tech = Fighter_1936
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1933
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1933
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1933 Carrier Fighter
+	################################
+	cv_Fighter_1933 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1933
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1933
+		path = {
+			leads_to_tech = cv_Fighter_1936
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1933
+			}
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+		}
+	}
+	################################
+	# 1936 Fighter
+	################################
+	Fighter_1936 = {
+		enable_equipments = {
+			Fighter_equipment_1936
+		}
+		path = {
+			leads_to_tech = Heavy_Fighter_1936
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Fighter_1940
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1936
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	cv_Fighter_1936 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1936
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1936
+		path = {
+			leads_to_tech = cv_Fighter_1940
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1936
+			}
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	################################
+	# 1940 Fighter
+	################################
+	Fighter_1940 = {
+		enable_equipments = {
+			Fighter_equipment_1940
+		}
+		path = {
+			leads_to_tech = Fighter_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1940
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	cv_Fighter_1940 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1940
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1940
+		path = {
+			leads_to_tech = cv_Fighter_1943
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1940
+			}
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	################################
+	# 1943 Fighter
+	################################
+	Fighter_1943 = {
+		enable_equipments = {
+			Fighter_equipment_1943
+		}
+		path = {
+			leads_to_tech = Fighter_1945
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1943
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	cv_Fighter_1943 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1943
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1943
+		path = {
+			leads_to_tech = cv_Fighter_1945
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1943
+			}
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	################################
+	# 1945 Jet Fighter
+	################################
+	Fighter_1945 = {
+		enable_equipments = {
+			Fighter_equipment_1945
+		}
+		path = {
+			leads_to_tech = Fighter_1950
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Interceptor_1950
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			rocketry_jet_2 = 1
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1945
+			}
+		}
+		categories = {
+			light_air
+			jet_technology
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 250
+				is_major = yes
+			}
+			modifier = {
+				factor = 150
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+	}
+	cv_Fighter_1945 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1945
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1945
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1945
+			}
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1950
+			research_cost_coeff = 1
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = USA
+					tag = JAP
+					tag = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+	}
+	################################
+	# 1950 Jet Fighter
+	################################
+	Fighter_1950 = {
+		enable_equipments = {
+			Fighter_equipment_1950
+		}
+		path = {
+			leads_to_tech = Fighter_1955
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1950
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @fighter_line
+				y = @1950
+			}
+		}
+		categories = {
+			light_air
+			jet_technology
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	cv_Fighter_1950 = {
+		enable_equipments = {
+			cv_Fighter_equipment_1950
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1950
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cv_fighter_line
+				y = @1950
+			}
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1955
+			research_cost_coeff = 1
+		}
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			modifier = {
+				factor = 2
+				tag = JAP
+			}
+		}
+	}
+	############################################################################################################
+	## Interceptors
+	############################################################################################################
+	################################
+	# 1916 Fighter-Bomber
+	################################
+	Fighter_Bomber_1916 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1916
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1918
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1916
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1916
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1918 Fighter-Bomber
+	################################
+	Fighter_Bomber_1918 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1918
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1924
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1918
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1918
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1918
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1924 Fighter-Bomber
+	################################
+	Fighter_Bomber_1924 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1924
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1933
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1924
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1924
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1924
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1933 Fighter-Bomber
+	################################
+	Fighter_Bomber_1933 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1933
+		}
+		path = {
+			leads_to_tech = Attacker_1933
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1936
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = cv_Fighter_1933
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1933
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	################################
+	# 1936 Fighter-Bomber
+	################################
+	Fighter_Bomber_1936 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1936
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1940
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1936
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	################################
+	# 1940 Fighter-Bomber
+	################################
+	Fighter_Bomber_1940 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1940
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1940
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	################################
+	# 1943 Fighter-Bomber
+	################################
+	Fighter_Bomber_1943 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1943
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1945
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1943
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	################################
+	# 1945 Jet Fighter-Bomber
+	################################
+	Fighter_Bomber_1945 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1945
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1950
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Attacker_1945
+			research_cost_coeff = 1
+		}
+		dependencies = {
+			rocketry_jet_2 = 1
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1945
+			}
+		}
+		categories = {
+			light_air
+			jet_technology
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+	}
+	################################
+	# 1950 Jet Fighter-Bomber
+	################################
+	Fighter_Bomber_1950 = {
+		enable_equipments = {
+			Fighter_Bomber_equipment_1950
+		}
+		path = {
+			leads_to_tech = Fighter_Bomber_1955
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1950
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @interceptor_line
+				y = @1950
+			}
+		}
+		categories = {
+			light_air
+			jet_technology
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+		}
+	}
+	############################################################################################################
+	## Close Air Support
+	############################################################################################################
+	################################
+	# 1933 Attacker
+	################################
+	Attacker_1933 = {
+		enable_equipments = {
+			Attacker_equipment_1933
+		}
+		path = {
+			leads_to_tech = Attacker_1936
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Torpedo_bomber_1936
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1933
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cas_line
+				y = @1933
+			}
+		}
+		sub_technologies = {
+			cv_Attacker_1933
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+		}
+	}
+	cv_Attacker_1933 = {
+		enable_equipments = {
+			cv_Attacker_equipment_1933
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1933
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	################################
+	# 1936 Attacker
+	################################
+	Attacker_1936 = {
+		enable_equipments = {
+			Attacker_equipment_1936
+		}
+		path = {
+			leads_to_tech = Attacker_1940
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cas_line
+				y = @1936
+			}
+		}
+		sub_technologies = {
+			cv_Attacker_1936
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	cv_Attacker_1936 = {
+		enable_equipments = {
+			cv_Attacker_equipment_1936
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1936
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	################################
+	# 1940 Attacker
+	################################
+	Attacker_1940 = {
+		enable_equipments = {
+			Attacker_equipment_1940
+		}
+		path = {
+			leads_to_tech = Attacker_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cas_line
+				y = @1940
+			}
+		}
+		sub_technologies = {
+			cv_Attacker_1940
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	cv_Attacker_1940 = {
+		enable_equipments = {
+			cv_Attacker_equipment_1940
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1940
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	################################
+	# 1943 Attacker
+	################################
+	Attacker_1943 = {
+		enable_equipments = {
+			Attacker_equipment_1943
+		}
+		path = {
+			leads_to_tech = Attacker_1945
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cas_line
+				y = @1943
+			}
+		}
+		sub_technologies = {
+			cv_Attacker_1943
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	cv_Attacker_1943 = {
+		enable_equipments = {
+			cv_Attacker_equipment_1943
+		}
+		research_cost = 1		#Carrier Variant
+		start_year = 1943
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	################################
+	# 1945 Attacker
+	################################
+	Attacker_1945 = {
+		enable_equipments = {
+			Attacker_equipment_1945
+		}
+		path = {
+			leads_to_tech = Attacker_1955
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @cas_line
+				y = @1945
+			}
+		}
+		sub_technologies = {
+			cv_Attacker_1945
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+	}
+	cv_Attacker_1945 = {
+		enable_equipments = {
+			cv_Attacker_equipment_1945
+		}
+		research_cost = 1
+		start_year = 1945
+		categories = {
+			naval_air
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+	}
+	############################################################################################################
+	## Heavy Fighters
+	############################################################################################################
+	#  Heavy Fighter '36
+	Heavy_Fighter_1936 = {
+		enable_equipments = {
+			Heavy_Fighter_equipment_1936
+		}
+		path = {
+			leads_to_tech = Heavy_Fighter_1940
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @heavy_fighter_line
+				y = @1936
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	#  Heavy Fighter '40
+	Heavy_Fighter_1940 = {
+		enable_equipments = {
+			Heavy_Fighter_equipment_1940
+		}
+		path = {
+			leads_to_tech = Heavy_Fighter_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @heavy_fighter_line
+				y = @1940
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	#  Heavy Fighter '43
+	Heavy_Fighter_1943 = {
+		enable_equipments = {
+			Heavy_Fighter_equipment_1943
+		}
+		path = {
+			leads_to_tech = Heavy_Fighter_1945
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1943
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @heavy_fighter_line
+				y = @1943
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	#  Heavy Fighter '45
+	Heavy_Fighter_1945 = {
+		enable_equipments = {
+			Heavy_Fighter_equipment_1945
+		}
+		path = {
+			leads_to_tech = Interceptor_1950
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @heavy_fighter_line
+				y = @1945
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1944.6.1"
+			}
+		}
+	}
+	#  Jet Interceptor '50
+	Interceptor_1950 = {
+		enable_equipments = {
+			Interceptor_equipment_1950
+		}
+		path = {
+			leads_to_tech = Interceptor_1955
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1950
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @heavy_fighter_line
+				y = @1950
+			}
+		}
+		categories = {
+			medium_air
+			air_equipment
+			cat_heavy_fighter
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+		}
+	}
+	############################################################################################################
+	## Torpedo Bombers
+	############################################################################################################
+	# Torpedo Bomber '36
+	Torpedo_bomber_1936 = {
+		enable_equipments = {
+			cv_Naval_Bomber_equipment_1936
+		}
+		path = {
+			leads_to_tech = Torpedo_bomber_1940
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1936
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @torpedo_bomber_line
+				y = @1936
+			}
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1935.6.1"
+			}
+		}
+	}
+	# Torpedo Bomber '40
+	Torpedo_bomber_1940 = {
+		enable_equipments = {
+			cv_Naval_Bomber_equipment_1940
+		}
+		path = {
+			leads_to_tech = Torpedo_bomber_1943
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1940
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @torpedo_bomber_line
+				y = @1940
+			}
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1939.6.1"
+			}
+		}
+	}
+	#  Torpedo Bomber 43'
+	Torpedo_bomber_1943 = {
+		enable_equipments = {
+			cv_Naval_Bomber_equipment_1943
+		}
+		research_cost = 2
+		start_year = 1943
+		path = {
+			leads_to_tech = Attacker_1945
+			research_cost_coeff = 1
+		}
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @torpedo_bomber_line
+				y = @1943
+			}
+		}
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 175
+				is_major = yes
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					tag = GER
+					tag = SOV
+				}
+			}
+			modifier = {
+				factor = 75
+				is_major = no
+			}
+			modifier = {
+				factor = 0
+				date < "1942.6.1"
+			}
+		}
+	}
+	############################################################################################################
+	## Special
+	############################################################################################################
+	suicide_craft = {
+		enable_equipments = {
+			rocket_suicide_equipment_1
+		}
+		research_cost = 1.5		#Carrier Variant
+		start_year = 1944
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		################
+	}
+	############################################################################################################
+	## Utility Helos
+	############################################################################################################
+	################################
+	# 1950 Utility Heli
+	################################
+	Utility_Heli_1950 = {
+		enable_subunits = {
+			air_assault
+		}
+		enable_equipments = {
+			Utility_Heli_equipment_1950
+		}
+		path = {
+			leads_to_tech = Utility_Heli_1955
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1950
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @utility_heli_line
+				y = @1950
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1949.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+	}
+	################################
+	# 1955 Utility Heli
+	################################
+	Utility_Heli_1955 = {
+		enable_equipments = {
+			Utility_Heli_equipment_1955
+		}
+		research_cost = 2
+		start_year = 1955
+		folder = {
+			name = air_light_techs_folder
+			position = {
+				x = @torpedo_bomber_line
+				y = @1950
+			}
+		}
+		categories = {
+			light_air
+			light_fighter
+			air_equipment
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < "1954.6.1"
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+		}
+	}
+}

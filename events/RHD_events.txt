@@ -1,0 +1,71 @@
+#########################################################################
+# Darkest Hour Events : Rhodesia
+#########################################################################
+add_namespace = RHD_Politics
+add_namespace = RHD_Election
+######################################
+# Resignation of Howard Unwin Moffat
+######################################
+country_event = {
+	id = RHD_Politics.1
+	title = RHD_Politics.1.t
+	desc = RHD_Politics.1.d
+	fire_only_once = yes
+	trigger = {
+		original_tag = RHD
+		has_country_leader = {
+			name = "Howard Unwin Moffat"
+			ruling_only = yes
+		}
+		date > 1933.7.5
+		has_start_date < 1933.7.5
+	}
+	option = {
+		name = RHD_Politics.1.A
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "George Mitchell"
+			desc = ""
+			picture = GFX_P_D_George_Mitchell
+			ideology = classical_liberalism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Classical_Liberalism
+			}
+		}
+	}
+}
+
+#########################################################################
+# 1933 Southern Rhodesian General Election
+#########################################################################
+country_event = {
+	id = RHD_Election.1
+	title = RHD_Election.1.t
+	desc = RHD_Election.1.d
+	picture = GFX_Generic_Elections
+	is_triggered_only = yes
+	trigger = {
+		tag = RHD
+		democratic_largest_ideology = yes
+		date < 1934.1.1
+	}
+	option = {
+		name = RHD_Election.1.A
+		set_party_name = {
+			ideology = democratic
+			long_name = RHD_democratic_party_URP_long
+			name = RHD_democratic_party_URP
+		}
+		create_country_leader = {
+			name = "Godfrey Huggins"
+			desc = ""
+			picture = GFX_P_D_Godfrey_Huggins
+			ideology = social_liberalism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Social_Liberalism
+			}
+		}
+	}
+}

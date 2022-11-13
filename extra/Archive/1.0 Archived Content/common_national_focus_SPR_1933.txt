@@ -1,0 +1,418 @@
+focus_tree = {
+	id = SPR_1933
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SPR
+		}
+	}
+	default = no
+	focus = {
+		id = SPR_1933_CEDA_Victory
+		icon = GFX_SPR_CEDA_Victory
+		cost = 0.00
+		x = 5
+		y = 0
+		available = {
+			always = no
+		}
+		completion_reward = {
+			add_political_power = 50
+			unlock_decision_category_tooltip = SPR_politics_of_the_right_category
+		}
+		
+	}
+	focus = {
+		id = SPR_Unite_Spanish_Conservatives
+		icon = GFX_SPR_Unite_the_Conservatives
+		cost = 20.00
+		prerequisite = {
+			focus = SPR_1933_CEDA_Victory
+		}
+		x = 1
+		y = 1
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Issue_of_Land_Reform
+		icon = GFX_GENERIC_New_Constitution
+		cost = 20.00
+		prerequisite = {
+			focus = SPR_1933_CEDA_Victory
+		}
+		x = 3
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+			unlock_decision_tooltip = SPR_issue_of_land_reform_decision
+		}
+		
+	}
+	focus = {
+		id = SPR_Form_Rural_Organizations
+		icon = GFX_goal_generic_propaganda
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Unite_Spanish_Conservatives
+		}
+		prerequisite = {
+			focus = SPR_Issue_of_Land_Reform
+		}
+		x = 2
+		y = 3
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_The_Church_and_the_Republic
+		icon = GFX_GENERIC_Separate_Church_from_State
+		cost = 20.00
+		prerequisite = {
+			focus = SPR_1933_CEDA_Victory
+		}
+		x = 5
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+			unlock_decision_tooltip = SPR_church_and_the_republic_decision
+		}
+		
+	}
+	focus = {
+		id = SPR_The_Eight_Hour_Work_Day
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 20.00
+		prerequisite = {
+			focus = SPR_1933_CEDA_Victory
+		}
+		x = 7
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+			unlock_decision_tooltip = SPR_eight_hour_workday_decision
+		}
+		
+	}
+	focus = {
+		id = SPR_The_Popular_Front
+		icon = GFX_SPR_The_Popular_Front_Forms
+		cost = 0.00
+		prerequisite = {
+			focus = SPR_Issue_of_Land_Reform
+		}
+		prerequisite = {
+			focus = SPR_The_Church_and_the_Republic
+		}
+		prerequisite = {
+			focus = SPR_The_Eight_Hour_Work_Day
+		}
+		mutually_exclusive = {
+			focus = SPR_The_Republican_Deal
+		}
+		x = 4
+		y = 2
+		available = {
+			has_country_flag = SPR_popular_front_formed
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_stability = 0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Embrace_Radical_Politicians
+		icon = GFX_focus_eng_liberate_the_home_of_marx
+		cost = 2.00
+		prerequisite = {
+			focus = SPR_The_Popular_Front
+		}
+		x = 4
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			add_war_support = 0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Cooperate_with_the_Army
+		icon = GFX_SPR_Spanish_Republican_Army
+		cost = 2.00
+		prerequisite = {
+			focus = SPR_Embrace_Radical_Politicians
+		}
+		prerequisite = {
+			focus = SPR_Form_Rural_Organizations
+		}
+		x = 4
+		y = 4
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			remove_ideas = SPR_upstart_army
+		}
+		
+	}
+	focus = {
+		id = SPR_Popular_Front_Victory
+		icon = GFX_SPR_The_Popular_Front_Forms
+		cost = 0.00
+		prerequisite = {
+			focus = SPR_Cooperate_with_the_Army
+		}
+		mutually_exclusive = {
+			focus = SPR_CEDA_Reelected
+		}
+		x = 2
+		y = 5
+		available = {
+			always = no
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.05
+			add_stability = -0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Reverse_CEDA_Legislation
+		icon = GFX_focus_renounce_the_treaty_of_triannon
+		cost = 5.00
+		prerequisite = {
+			focus = SPR_Popular_Front_Victory
+		}
+		x = 1
+		y = 6
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Appease_the_Catalans
+		icon = GFX_SPR_Appease_the_Catalans
+		cost = 5.00
+		prerequisite = {
+			focus = SPR_Popular_Front_Victory
+		}
+		x = 3
+		y = 6
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_The_Republican_Deal
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SPR_The_Eight_Hour_Work_Day
+		}
+		prerequisite = {
+			focus = SPR_The_Church_and_the_Republic
+		}
+		prerequisite = {
+			focus = SPR_Issue_of_Land_Reform
+		}
+		mutually_exclusive = {
+			focus = SPR_The_Popular_Front
+		}
+		x = 6
+		y = 2
+		available = {
+			has_country_flag = SPR_republican_deal
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_stability = -0.1
+		}
+		
+	}
+	focus = {
+		id = SPR_An_Economic_Compromise
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_The_Republican_Deal
+		}
+		x = 6
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			add_stability = -0.1
+			add_ideas = SPR_Economic_Compromise
+		}
+		
+	}
+	focus = {
+		id = SPR_Support_Privatization
+		icon = GFX_focus_mex_privatisation
+		cost = 20.00
+		prerequisite = {
+			focus = SPR_1933_CEDA_Victory
+		}
+		x = 9
+		y = 1
+		completion_reward = {
+			add_political_power = 25
+			171 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+	}
+	focus = {
+		id = SPR_Enforce_Labor_Regulations
+		icon = GFX_GENERIC_New_Constitution
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_Support_Privatization
+		}
+		prerequisite = {
+			focus = SPR_The_Eight_Hour_Work_Day
+		}
+		x = 8
+		y = 3
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Isolate_Radical_Leftists
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 10.00
+		prerequisite = {
+			focus = SPR_An_Economic_Compromise
+		}
+		prerequisite = {
+			focus = SPR_Enforce_Labor_Regulations
+		}
+		x = 6
+		y = 4
+		completion_reward = {
+			add_political_power = -100
+			add_stability = 0.1
+		}
+		
+	}
+	focus = {
+		id = SPR_CEDA_Reelected
+		icon = GFX_SPR_CEDA_Victory
+		cost = 0.00
+		prerequisite = {
+			focus = SPR_Cooperate_with_the_Army
+			focus = SPR_Isolate_Radical_Leftists
+		}
+		mutually_exclusive = {
+			focus = SPR_Popular_Front_Victory
+			focus = SPR_A_New_CEDA_Is_Elected
+		}
+		x = 5
+		y = 5
+		available = {
+			always = no
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_A_New_CEDA_Is_Elected
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = SPR_Isolate_Radical_Leftists
+		}
+		mutually_exclusive = {
+			focus = SPR_CEDA_Reelected
+		}
+		x = 7
+		y = 5
+		available = {
+			always = no
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+	}
+	focus = {
+		id = SPR_Hit_back_on_Barcelona
+		icon = GFX_SPR_Hit_Back_on_Barcelona
+		cost = 5.00
+		prerequisite = {
+			focus = SPR_CEDA_Reelected
+		}
+		x = 5
+		y = 6
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = -0.1
+		}
+		
+	}
+	focus = {
+		id = SPR_Find_Extreme_Allies
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 5.00
+		prerequisite = {
+			focus = SPR_Hit_back_on_Barcelona
+		}
+		x = 5
+		y = 7
+		completion_reward = {
+			add_political_power = -100
+			add_war_support = 0.1
+		}
+		
+	}
+	focus = {
+		id = SPR_Draw_the_Front_Closer
+		icon = GFX_goal_generic_national_unity
+		cost = 5.00
+		prerequisite = {
+			focus = SPR_Appease_the_Catalans
+		}
+		prerequisite = {
+			focus = SPR_Reverse_CEDA_Legislation
+		}
+		x = 2
+		y = 7
+		completion_reward = {
+			add_political_power = -100
+			add_war_support = 0.1
+		}
+		
+	}
+}

@@ -1,0 +1,368 @@
+focus_tree = {
+	id = SPR_CW
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SPR
+			has_war_with = SPA
+		}
+	}   
+	default = no
+	focus = {
+		id = SPR_No_Parasan
+		icon = GFX_SPR_No_Pasaran
+		cost = 10
+		x = 7
+		y = 0
+		completion_reward = {
+			add_political_power = 100
+			unlock_decision_category_tooltip = SPR_defense_of_madrid
+		}
+	}
+	focus = {
+		id = SPR_Fight_Against_Fascism
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		cost = 10
+		prerequisite = {
+			focus = SPR_No_Parasan
+		}
+		x = 2
+		y = 1
+		completion_reward = {
+			add_ideas = SPR_No_Pasaran
+		}
+	}
+	focus = {
+		id = SPR_An_Ideological_Dream
+		icon = GFX_SPA_The_Crusade_Begins
+		cost = 10
+		prerequisite = {
+			focus = SPR_Fight_Against_Fascism
+		}
+		x = 2
+		y = 2
+		completion_reward = {
+			add_war_support = -0.1
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.05
+			}
+			add_equipment_to_stockpile = {
+				type = Small_Arms_equipment_1916
+				amount = 1000
+				producer = SPR
+			}
+		}
+	}
+	focus = {
+		id = SPR_Smash_The_Church
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		cost = 10
+		prerequisite = {
+			focus = SPR_An_Ideological_Dream
+		}
+		x = 2
+		y = 3
+		cancel_if_invalid = yes
+		completion_reward = {
+			add_political_power = 200
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = SPR_Maintain_Solidarity
+		icon = GFX_goal_generic_national_unity
+		cost = 10
+		prerequisite = {
+			focus = SPR_No_Parasan
+		}
+		x = 7
+		y = 1
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = SPR_Decentralize
+		icon = GFX_goal_support_communism
+		cost = 10
+		prerequisite = {
+			focus = SPR_Maintain_Solidarity
+		}
+		mutually_exclusive = {
+			focus = SPR_Stick_to_Republic
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_ideas = SPR_Empowered_Union_1
+		}
+	}
+	focus = {
+		id = SPR_Power_to_the_Unions
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10
+		prerequisite = {
+			focus = SPR_Decentralize
+		}
+		x = 5
+		y = 3
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = SPR_Empowered_Union_2
+		}
+	}
+	focus = {
+		id = SPR_Failure_in_Barcelona
+		icon = GFX_SPR_Hit_Back_on_Barcelona
+		cost = 10
+		prerequisite = {
+			focus = SPR_Power_to_the_Unions
+		}
+		mutually_exclusive = {
+			focus = SPR_Crush_Anarchists
+		}
+		x = 4
+		y = 4
+		available = {
+			always = no
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = SPR_Crush_Anarchists
+		icon = GFX_GENERIC_Crackdown_on_the_Strikers
+		cost = 10
+		prerequisite = {
+			focus = SPR_Power_to_the_Unions
+		}
+		mutually_exclusive = {
+			focus = SPR_Failure_in_Barcelona
+		}
+		x = 6
+		y = 4
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = socialist
+				popularity = -0.1
+			}
+		}
+	}
+	focus = {
+		id = SPR_Stick_to_Republic
+		icon = GFX_goal_support_democracy
+		cost = 10
+		prerequisite = {
+			focus = SPR_Maintain_Solidarity
+		}
+		mutually_exclusive = {
+			focus = SPR_Decentralize
+		}
+		x = 9
+		y = 2
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = communist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = -0.05
+			}
+			add_political_power = -75
+		}
+	}
+	focus = {
+		id = SPR_Crush_the_Communes
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 10
+		prerequisite = {
+			focus = SPR_Stick_to_Republic
+		}
+		x = 9
+		y = 3
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = SPR_Deradicalize_Front
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		prerequisite = {
+			focus = SPR_Crush_the_Communes
+		}
+		x = 9
+		y = 4
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = SPR_A_Popular_War
+		icon = GFX_SPR_Spanish_Republican_Army
+		cost = 10
+		prerequisite = {
+			focus = SPR_No_Parasan
+		}
+		x = 12
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SPR_Armed_Masses_1
+				add_idea = SPR_Armed_Masses_2
+			}
+		}
+	}
+	focus = {
+		id = SPR_Regulate_Militias
+		icon = GFX_goal_generic_military_sphere
+		cost = 10
+		prerequisite = {
+			focus = SPR_A_Popular_War
+		}
+		mutually_exclusive = {
+			focus = SPR_Arm_The_Workers
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			add_political_power = -100
+			swap_ideas = {
+				remove_idea = SPR_Armed_Masses_2
+				add_idea = SPR_Armed_Masses_3
+			}
+		}
+	}
+	focus = {
+		id = SPR_Organized_Force
+		icon = GFX_GENERIC_Army
+		cost = 10
+		prerequisite = {
+			focus = SPR_Regulate_Militias
+		}
+		x = 11
+		y = 3
+		completion_reward = {
+			add_political_power = -100
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = SPR_Surmount_other_Unions
+		icon = GFX_SPR_CNT_FAI_Take_Over
+		cost = 10
+		prerequisite = {
+			focus = SPR_Failure_in_Barcelona
+		}
+		x = 4
+		y = 5
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = SPR_CNT_FAI
+		}
+	}
+	focus = {
+		id = SPR_Communist_Control
+		icon = GFX_SPR_PCE_Take_Over
+		cost = 10
+		prerequisite = {
+			focus = SPR_Crush_Anarchists
+		}
+		x = 6
+		y = 5
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.1
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = SPR_Liberal_Republic
+		icon = GFX_SPR_Liberal_Republic
+		cost = 10
+		prerequisite = {
+			focus = SPR_Deradicalize_Front
+		}
+		x = 9
+		y = 5
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = SPR_Arm_The_Workers
+		icon = GFX_GENERIC_Drafted_Army
+		cost = 10
+		prerequisite = {
+			focus = SPR_A_Popular_War
+		}
+		mutually_exclusive = {
+			focus = SPR_Regulate_Militias
+		}
+		x = 13
+		y = 2
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = socialist
+				popularity = 0.05
+			}
+			swap_ideas = {
+				remove_idea = SPR_Armed_Masses_2
+				add_idea = SPR_Armed_Masses_4
+			}
+		}
+	}
+	focus = {
+		id = SPR_Mobilized_Workplaces
+		icon = GFX_focus_yug_pan_slavic_congress
+		cost = 10
+		prerequisite = {
+			focus = SPR_Arm_The_Workers
+		}
+		x = 13
+		y = 3
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = SPR_Armed_Masses_4
+				add_idea = SPR_Armed_Masses_5
+			}
+		}
+	}
+}

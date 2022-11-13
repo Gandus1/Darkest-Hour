@@ -1,0 +1,936 @@
+	shared_focus = {
+		id = GER_Reorganize_the_Heer
+		icon = GFX_GER_Gott_Mit_Uns
+		cost = 10.00
+		x = 6
+		y = 0
+		offset = {
+			x = 12
+			y = 0
+			trigger = {
+				has_focus_tree = GER_Kaiserreich_Wilhelm_III
+			}
+		}
+		offset = {
+			x = 15
+			y = 0
+			trigger = {
+				has_focus_tree = GER_Kaiserreich_Wilhelm_II
+			}
+		}
+		completion_reward = {
+			army_experience = 10
+		}
+	}
+	shared_focus = {
+		id = GER_Rebuilding_the_Kaiserliche_Marine
+		icon = GFX_GER_Kaiserliche_Marine
+		cost = 10.00
+		x = 23
+		y = 0
+		offset = {
+			x = 12
+			y = 0
+			trigger = {
+				has_focus_tree = GER_Kaiserreich_Wilhelm_III
+			}
+		}
+		offset = {
+			x = 15
+			y = 0
+			trigger = {
+				has_focus_tree = GER_Kaiserreich_Wilhelm_II
+			}
+		}
+		completion_reward = {
+			navy_experience = 20
+		}
+	}
+	shared_focus = {
+		id = GER_The_Second_Tirpitz_Plan
+		icon = GFX_GENERIC_Navy
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Rebuilding_the_Kaiserliche_Marine
+		}
+		x = 0
+		y = 1
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			navy_experience = 20
+			add_ideas = GER_Kaiserreich_The_Second_Tirpitz_Plan
+		}
+	}
+	shared_focus = {
+		id = GER_Reacquire_Weltkrieg_Era_Vessels
+		icon = GFX_GENERIC_Battleship
+		cost = 10.00
+		prerequisite = {
+			focus = GER_The_Second_Tirpitz_Plan
+		}
+		x = 0
+		y = 2
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+
+	}
+	shared_focus = {
+		id = GER_Return_to_Prussian_Roots
+		icon = GFX_goal_generic_cavalry
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Reorganize_the_Heer
+		}
+		mutually_exclusive = {
+			focus = GER_Lessons_of_the_Weltkrieg
+		}
+		x = 3
+		y = 1
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_mobile_warfare
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 1
+				technology = Medium_Tank_1939
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Motorization_of_the_Heer
+		icon = GFX_goal_generic_army_motorized
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		x = 1
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				technology = APC_1941
+				technology = APC_1943
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Panzer_Dragoner
+		icon = GFX_GER_Mechanized_Infantry
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Motorization_of_the_Heer
+		}
+		x = 1
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+
+	}
+	shared_focus = {
+		id = GER_Rekindle_Imperial_Naval_Tradition
+		icon = GFX_GENERIC_Naval_School
+		cost = 10.00
+		prerequisite = {
+			focus = GER_The_Second_Tirpitz_Plan
+		}
+		x = 2
+		y = 2
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			navy_experience = 30
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.4
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Expand_the_Dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10.00
+		prerequisite = {
+			focus = GER_The_Second_Tirpitz_Plan
+		}
+		x = -2
+		y = 2
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			59 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			5 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			61 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			62 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			63 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			58 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			56 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Schlachtflotte
+		icon = GFX_GENERIC_Large_Navy
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Expand_the_Dockyards
+		}
+		prerequisite = {
+			focus = GER_Rekindle_Imperial_Naval_Tradition
+		}
+		mutually_exclusive = {
+			focus = GER_Aufkalrungsflotte
+		}
+		x = 2
+		y = 3
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 1
+				category = bb_tech
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Flugzeugtrager_Entwicklung
+		icon = GFX_GENERIC_Carrier
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Schlachtflotte
+		}
+		x = 1
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = cv_tech
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Schnell_Kavallerie
+		icon = GFX_goal_generic_army_tanks
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		x = 3
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = Light_Tank_1939
+				technology = Medium_Tank_1941
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Schwere_Kavallerie
+		icon = GFX_GER_Schwerer_Panzer
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Schnell_Kavallerie
+		}
+		mutually_exclusive = {
+			focus = GER_Mobile_Artillerie
+		}
+		x = 3
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.4
+				technology = Heavy_Tank_1941
+				technology = Medium_Tank_1943
+				technology = Heavy_Tank_1943
+				technology = Medium_Tank_1945
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Deutsche_Luftstreitkrafte
+		icon = GFX_GER_Deutsche_Luftstreitkrafte
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Reorganize_the_Heer
+		}
+		x = 8
+		y = 1
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			air_experience = 20
+		}
+	}
+	shared_focus = {
+		id = GER_Kommunikation_und_Koordination
+		icon = GFX_GER_Frontline_Flight
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		mutually_exclusive = {
+			focus = GER_Bomber_Development
+		}
+		x = 5
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = paratroopers
+				technology = paratroopers2
+				technology = paratroopers3
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Mobile_Artillerie
+		icon = GFX_GER_Mobile_Artillery
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Kommunikation_und_Koordination
+		}
+		prerequisite = {
+			focus = GER_Schnell_Kavallerie
+		}
+		mutually_exclusive = {
+			focus = GER_Schwere_Kavallerie
+		}
+		x = 5
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.4
+				category = mobile_artillery
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Gott_Mit_Uns
+		icon = GFX_GER_Gott_Mit_Uns
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Panzer_Dragoner
+		}
+		prerequisite = {
+			focus = GER_Schwere_Kavallerie
+		}
+		prerequisite = {
+			focus = GER_Mobile_Artillerie
+		}
+		x = 3
+		y = 4
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cat_mobile_warfare
+			}
+			add_ideas = GER_Kaiserreich_Gott_Mit_Uns
+		}
+	}
+	shared_focus = {
+		id = GER_Bomber_Development
+		icon = GFX_GER_Strategic_Flight
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		mutually_exclusive = {
+			focus = GER_Kommunikation_und_Koordination
+		}
+		x = 7
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				technology = Strategic_Bomber_1936
+				technology = Tactical_Bomber_1940
+				technology = Strategic_Bomber_1940
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Jager_Programm
+		icon = GFX_goal_generic_air_fighter
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		x = 9
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				technology = heavy_Fighter_1936
+				technology = Fighter_1936
+				technology = Fighter_1940
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Dusenflugzeuge
+		icon = GFX_GER_Dusenprojekt
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Bomber_Development
+			focus = GER_Kommunikation_und_Koordination
+		}
+		prerequisite = {
+			focus = GER_Jager_Programm
+		}
+		x = 8
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = jet_technology
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = air_doctrine
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Call_Back_Exiled_Scientists
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Deutsche_Luftstreitkrafte
+		}
+		available = {
+			has_war = no
+		}
+		x = 11
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Call_Back_Exiled_Scientists_Returned
+			add_ideas = GER_Kaiserreich_Call_Back_Exiled_Scientists_Apologetic
+		}
+	}
+	shared_focus = {
+		id = GER_Raketen_Entwicklung
+		icon = GFX_GER_Vergeltungswaffen
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Call_Back_Exiled_Scientists
+		}
+		x = 10
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 3
+				bonus = 0.5
+				category = rocketry
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Revive_the_Uranprojekt
+		icon = GFX_GENERIC_ABomb
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Call_Back_Exiled_Scientists
+		}
+		x = 12
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = nuclear_fuel
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				technology = nuclear_reactor
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Superwaffen_des_Kaiserreich
+		icon = GFX_GER_Wunderwaffe
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Revive_the_Uranprojekt
+		}
+		prerequisite = {
+			focus = GER_Raketen_Entwicklung
+		}
+		prerequisite = {
+			focus = GER_Dusenflugzeuge
+		}
+		x = 10
+		y = 4
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_ideas = GER_Kaiserreich_Superwaffen_Des_Kasierreich
+		}
+	}
+	shared_focus = {
+		id = GER_Aufkalrungsflotte
+		icon = GFX_GENERIC_Small_Navy
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Expand_the_Dockyards
+		}
+		prerequisite = {
+			focus = GER_Rekindle_Imperial_Naval_Tradition
+		}
+		mutually_exclusive = {
+			focus = GER_Schlachtflotte
+		}
+		x = -2
+		y = 3
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.4
+				category = cl_tech
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				ahead_reduction = 1
+				category = cl_tech
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Uboot_Programm
+		icon = GFX_GENERIC_Submarine
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Aufkalrungsflotte
+		}
+		x = -1
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.4
+				category = ss_tech
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Complete_the_Plan
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Uboot_Programm
+			focus = GER_Flugzeugtrager_Entwicklung
+			focus = GER_Kaiser_Schlachtschiff_H
+			focus = GER_Kustenfliegergruppe
+		}
+		x = 0
+		y = 5
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			navy_experience = 100
+			remove_ideas = GER_Kaiserreich_The_Second_Tirpitz_Plan
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = cat_fleet_in_being
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Lessons_of_the_Weltkrieg
+		icon = GFX_GENERIC_Lessons_from_the_War_German
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Reorganize_the_Heer
+		}
+		mutually_exclusive = {
+			focus = GER_Return_to_Prussian_Roots
+		}
+		x = -3
+		y = 1
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				ahead_reduction = 1
+				technology = Small_Arms_1939
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Infantry_Attacks
+		icon = GFX_goal_generic_small_arms
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Lessons_of_the_Weltkrieg
+		}
+		x = -2
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.3
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.45
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Artillery_Modernization
+		icon = GFX_goal_generic_army_artillery2
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Lessons_of_the_Weltkrieg
+		}
+		x = -4
+		y = 2
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.5
+				category = artillery
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.45
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Panzerabwehr
+		icon = GFX_GER_Panzerjager
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Infantry_Attacks
+			focus = GER_Artillery_Modernization
+		}
+		x = -3
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = cat_anti_tank
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = tank_destroyers
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Flugabwehr
+		icon = GFX_GER_Flakabwehr
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Artillery_Modernization
+			focus = GER_Infantry_Attacks
+		}
+		x = -5
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = anti_air
+			}
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = tank_anti_air
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Raketenartillerie
+		icon = GFX_goal_generic_occupy_start_war
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Infantry_Attacks
+			focus = GER_Artillery_Modernization
+		}
+		x = -1
+		y = 3
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = rocketry
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = mot_rockets
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Blut_und_Eisen
+		icon = GFX_focus_generic_strike_at_democracy1
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Flugabwehr
+		}
+		prerequisite = {
+			focus = GER_Panzerabwehr
+		}
+		prerequisite = {
+			focus = GER_Raketenartillerie
+		}
+		x = -3
+		y = 4
+		relative_position_id = GER_Reorganize_the_Heer
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.5
+				category = cat_grand_battle_plan
+			}
+			add_ideas = GER_Kaiserreich_Blut_und_Eisen
+		}
+	}
+	shared_focus = {
+		id = GER_Kustenfliegergruppe
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Aufkalrungsflotte
+		}
+		x = -3
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.35
+				technology = Torpedo_bomber_1936
+				technology = Torpedo_bomber_1940
+				technology = Torpedo_bomber_1943
+			}
+		}
+	}
+	shared_focus = {
+		id = GER_Kaiser_Schlachtschiff_H
+		icon = GFX_GENERIC_Battleship
+		cost = 10.00
+		prerequisite = {
+			focus = GER_Schlachtflotte
+		}
+		x = 3
+		y = 4
+		relative_position_id = GER_Rebuilding_the_Kaiserliche_Marine
+		completion_reward = {
+			add_tech_bonus = {
+				uses = 2
+				bonus = 0.3
+				category = shbb_tech
+			}
+		}
+	}
+

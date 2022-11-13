@@ -1,0 +1,229 @@
+
+battlecruiser_early = {
+	category = naval
+	roles = { naval_capital_bc }
+	priority = {
+		base = 1
+	}
+	blocked_for = {
+			USA 
+			JAP
+			GER
+			ITA
+	}
+    WW_BATTLECRUISER_1 = {
+		role_icon_index = 1
+		priority = {
+			base = 0
+		}
+
+		target_variant = {
+			type = BC_equipment_1912
+			match_value = 100
+		}
+	}
+	WW_BATTLECRUISER_2 = {
+		role_icon_index = 1
+		priority = {
+			base = -1
+			modifier = { add = 100 has_tech = BC_1916 }
+			modifier = { add = -99  has_tech = BC_1933 }
+		}
+
+		target_variant = {
+			type = BC_equipment_1916
+			match_value = 260
+
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_fire_control_system_slot = { any_of = { ship_fire_control_system_3 ship_fire_control_system_2 ship_fire_control_system_1 ship_fire_control_system_0 } }
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = heavy_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries
+				fixed_ship_armor_slot = { any_of = { ship_armor_bc_2 ship_armor_bc_1 } }
+				front_1_custom_slot = ship_anti_air
+				mid_1_custom_slot = ship_secondaries
+				mid_2_custom_slot = ship_secondaries
+				rear_1_custom_slot = ship_heavy_battery
+			}
+		}
+	}
+	
+	EARLY_BATTLECRUISER_1 = { 
+		role_icon_index = 1
+		priority = {
+			base = 0
+		}
+
+		target_variant = {
+			type = BC_equipment_1933
+			match_value = 200
+		}
+	}
+	EARLY_BATTLECRUISER_2 = {
+		role_icon_index = 1
+		priority = {
+			base = -1
+			modifier = { add = 100 has_tech = BC_1933 }
+			modifier = { add = -99  has_tech = BC_1940 }
+		}
+
+		target_variant = {
+			type = BC_equipment_1933
+			match_value = 350
+
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_fire_control_system_slot = { any_of = { ship_fire_control_system_3 ship_fire_control_system_2 ship_fire_control_system_1 ship_fire_control_system_0 } }
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot > heavy_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries
+				fixed_ship_armor_slot = { any_of = { ship_armor_bc_3 ship_armor_bc_2 ship_armor_bc_1 } }
+				front_1_custom_slot = ship_heavy_battery
+				mid_1_custom_slot = ship_secondaries
+				mid_2_custom_slot = ship_secondaries
+				rear_1_custom_slot = ship_heavy_battery
+			}
+		}
+	}
+	FRA_BC = {
+		role_icon_index = 1
+		priority = {
+			base = 1
+		}
+		enable = { original_tag = FRA }
+
+		target_variant = {
+			type = BC_equipment_1940
+			match_value = 1000
+
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = heavy_ship_engine_2
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				fixed_ship_armor_slot = ship_armor_bc_2
+				front_1_custom_slot = ship_heavy_battery_1
+				mid_1_custom_slot = ship_secondaries_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = ship_heavy_battery_1
+			}
+		}
+	}
+	ENG_BC = {
+		role_icon_index = 1
+		priority = {
+			base = 200
+			modifier = { add = 900 date < 1936.3.1 }
+		}
+
+		enable = { 
+            original_tag = ENG
+        }
+
+		target_variant = {
+			type = BC_equipment_1940
+			match_value = 1600
+
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = heavy_ship_engine_2
+				fixed_ship_secondaries_slot = ship_secondaries_2
+				fixed_ship_armor_slot = ship_armor_bc_2
+				front_1_custom_slot = ship_heavy_battery_1
+				mid_1_custom_slot = ship_anti_air_2
+				mid_2_custom_slot = ship_secondaries_2
+				rear_1_custom_slot = ship_heavy_battery_1
+			}
+		}
+		requirements = {
+			module = ship_armor_bc_2
+		}
+	}
+}
+
+battlecruiser = {
+	category = naval
+	roles = { naval_capital_bc }
+	priority = {
+		base = 100
+	}
+	
+	blocked_for = {
+			USA 
+			JAP
+			GER
+			ITA
+	}
+	
+	BASIC_BATTLECRUISER_0 = {
+		role_icon_index = 1
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = BC_1940 }
+			modifier = { add = -900 has_tech = BC_1950 }
+		}
+		
+		#enable = { 
+        #   has_naval_treaty_trigger = yes
+        #}
+
+		target_variant = {
+			type = BC_equipment_1940
+			match_value = 1500
+
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_fire_control_system_slot = { any_of = { ship_fire_control_system_3 ship_fire_control_system_2 ship_fire_control_system_1 ship_fire_control_system_0 } }
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot > heavy_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries
+				fixed_ship_armor_slot = { any_of = { ship_armor_bc_3 ship_armor_bc_2 ship_armor_bc_1 } }
+				front_1_custom_slot = ship_anti_air
+				mid_1_custom_slot = ship_secondaries
+				mid_2_custom_slot = ship_secondaries
+				rear_1_custom_slot = ship_heavy_battery
+			}
+		}
+	}
+
+	BASIC_BATTLECRUISER_1 = {
+		role_icon_index = 1
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = BC_1940 }
+			modifier = { add = -900 has_tech = BC_1950 }
+		}
+		
+		#enable = { 
+        #    NOT = { has_naval_treaty_trigger = yes }
+        #}
+
+		target_variant = {
+			type = BC_equipment_1940
+			match_value = 2000
+
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery
+				fixed_ship_anti_air_slot = ship_anti_air
+				fixed_ship_fire_control_system_slot = { any_of = { ship_fire_control_system_3 ship_fire_control_system_2 ship_fire_control_system_1 ship_fire_control_system_0 } }
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot > heavy_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries
+				fixed_ship_armor_slot = { any_of = { ship_armor_bc_3 ship_armor_bc_2 ship_armor_bc_1 } }
+				front_1_custom_slot = ship_heavy_battery
+				mid_1_custom_slot = ship_secondaries
+				mid_2_custom_slot = ship_secondaries
+				rear_1_custom_slot = ship_heavy_battery
+			}
+		}
+	}
+}

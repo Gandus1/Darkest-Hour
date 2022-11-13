@@ -1,0 +1,294 @@
+﻿###########################
+# Saudi Events
+###########################
+add_namespace = SAU_YEM_War
+#########################################################################
+#  Idrisid Emirate Breaks their treaty with Ibn Saud
+#########################################################################
+country_event = {
+	id = SAU_YEM_War.1
+	title = SAU_YEM_War.1.t
+	desc = SAU_YEM_War.1.d
+	picture = GFX_report_SAU_Saudi_Yemeni_War_1934
+	fire_only_once = yes
+	trigger = {
+		original_tag = YEM
+		date > 1933.11.26
+		has_start_date < 1933.11.26
+	}
+	### March towards Najran!
+	option = {
+		name = SAU_YEM_War.1.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		YEM = {
+			transfer_state = 1073
+			transfer_state = 1074
+		}
+		1073 = {
+			set_demilitarized_zone = no
+		}
+		1074 = {
+			set_demilitarized_zone = no
+		}
+		SAU = {
+			country_event = {
+				id = SAU_YEM_War.3
+				days = 2
+			}
+		}
+	}
+	### The Risk of a War is too high to ignore
+	option = {
+		name = SAU_YEM_War.1.B
+		SAU = {
+			country_event = {
+				id = SAU_YEM_War.2
+				days = 2
+			}
+		}
+	}
+}
+#########################################################################
+#  Idrisid Emirate Breaks their treaty with us
+#########################################################################
+country_event = {
+	id = SAU_YEM_War.2
+	title = SAU_YEM_War.2.t
+	desc = SAU_YEM_War.2.d
+	picture = GFX_report_SAU_Saudi_Yemeni_War_1934
+	fire_only_once = yes
+	is_triggered_only = yes
+	### March towards Najran!
+	option = {
+		name = SAU_YEM_War.2.A
+		1073 = {
+			set_demilitarized_zone = no
+		}
+		1074 = {
+			set_demilitarized_zone = no
+		}
+	}
+}
+#########################################################################
+#  Yemeni Forces Advance on Najran
+#########################################################################
+country_event = {
+	id = SAU_YEM_War.3
+	title = SAU_YEM_War.3.t
+	desc = SAU_YEM_War.3.d
+	picture = GFX_report_YEM_Yemeni_Forces_in_Sanaa
+	fire_only_once = yes
+	is_triggered_only = yes
+	### Send a Delegation to Negociate
+	option = {
+		name = SAU_YEM_War.3.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		YEM = {
+			country_event = {
+				id = SAU_YEM_War.4
+				days = 12
+			}
+		}
+	}
+	### We shouldn't risk a war
+	option = {
+		name = SAU_YEM_War.3.B
+		custom_effect_tooltip = SAU_YEM_War.3.B.tt
+	}
+}
+#########################################################################
+#  Saudi Delegation Arrives in Sana'a
+#########################################################################
+country_event = {
+	id = SAU_YEM_War.4
+	title = SAU_YEM_War.4.t
+	desc = SAU_YEM_War.4.d
+	picture = GFX_report_YEM_Yemeni_Forces_in_Sanaa
+	fire_only_once = yes
+	is_triggered_only = yes
+	### Who is this bedouin coming to challenge my family's 900 year rule?
+	option = {
+		name = SAU_YEM_War.4.A
+		custom_effect_tooltip = SAU_YEM_War.4.A.tt
+		add_opinion_modifier = {
+			target = SAU
+			modifier = protest_action
+		}
+		SAU = {
+			country_event = {
+				id = SAU_YEM_War.5
+				days = 5
+			}
+		}
+	}
+}
+#########################################################################
+#  Our Peace Delegation has been Jailed!
+#########################################################################
+country_event = {
+	id = SAU_YEM_War.5
+	title = SAU_YEM_War.5.t
+	desc = SAU_YEM_War.5.d
+	picture = GFX_report_YEM_Yemeni_Forces_in_Sanaa
+	fire_only_once = yes
+	is_triggered_only = yes
+	### Diplomatic Means have failed us
+	option = {
+		name = SAU_YEM_War.5.A
+		add_opinion_modifier = {
+			target = YEM
+			modifier = protest_action
+		}
+		custom_effect_tooltip = SAU_YEM_War.5.A.tt
+		unlock_decision_tooltip = SAU_Reclaim_the_Highlands_of_Tehama
+		set_country_flag = SAU_Reclaim_the_Highlands_of_Tehama
+	}
+}
+#########################################################################
+#  A Desert Napoleon Marches on Yemen
+#########################################################################
+news_event = {
+	id = SAU_YEM_War.6
+	title = SAU_YEM_War.6.t
+	desc = SAU_YEM_War.6.d
+	picture = GFX_news_SAU_Saudi_Yemeni_War_1934
+	major = yes
+	is_triggered_only = yes
+	### Worrisome
+	option = {
+		name = SAU_YEM_War.6.A
+	}
+}
+#########################################################################
+#  Arabian Conquest of Hodeida
+#########################################################################
+news_event = {
+	id = SAU_YEM_War.7
+	title = SAU_YEM_War.7.t
+	desc = SAU_YEM_War.7.d
+	picture = GFX_news_SAU_Saudi_Forces_alHudaida
+	fire_for_sender = yes
+	major = yes
+	trigger = {
+		original_tag = SAU
+		OR = {
+			controls_state = 1069
+			YEM = {
+				surrender_progress > 0.3
+			}
+		}
+		NOT = {
+			has_country_flag = SAU_Victory_in_Yemen
+		}
+	}
+	### Worrisome
+	option = {
+		name = SAU_YEM_War.7.A
+		trigger = {
+			NOT = { original_tag = SAU }
+		}
+	}
+	### Seek for Peace
+	option = {
+		name = SAU_YEM_War.7.B
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		trigger = {
+			original_tag = SAU
+		}
+		YEM = {
+			country_event = {
+				id = SAU_YEM_War.8
+				hours = 6
+			}
+		}
+		set_country_flag = SAU_Victory_in_Yemen
+	}
+	### Force an abdication of the Imam
+	option = {
+		name = SAU_YEM_War.7.C
+		trigger = {
+			original_tag = SAU
+		}
+		set_country_flag = SAU_Victory_in_Yemen
+	}
+}
+#########################################################################
+#  Ibn Saud Demands a truce
+#########################################################################
+country_event = {
+	id = SAU_YEM_War.8
+	title = SAU_YEM_War.8.t
+	desc = SAU_YEM_War.8.d
+	picture = GFX_report_SAU_Ibn_Saud
+	fire_only_once = yes
+	is_triggered_only = yes
+	### Peace is a favorable term
+	option = {
+		name = SAU_YEM_War.8.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		news_event = {
+			id = SAU_YEM_War.9
+			hours = 6
+		}
+	}
+	### We won't falter until Riyadh falls!
+	option = {
+		name = SAU_YEM_War.8.B
+	}
+}
+#########################################################################
+#  Treaty of Taif Signed, End of the War in the Near East
+#########################################################################
+news_event = {
+	id = SAU_YEM_War.9
+	title = SAU_YEM_War.9.t
+	desc = SAU_YEM_War.9.d
+	picture = GFX_news_SAU_Saudi_Forces_alHudaida
+	fire_for_sender = yes
+	major = yes
+	is_triggered_only = yes
+	### Another Kingdom falls to Ibn Saud's Crack Army
+	option = {
+		name = SAU_YEM_War.9.A
+		trigger = {
+			NOT = { original_tag = SAU }
+		}
+	}
+	### Another Victory for Arabia
+	option = {
+		name = SAU_YEM_War.9.B
+		trigger = {
+			original_tag = SAU
+		}
+		white_peace = {
+			tag = YEM
+			message = SAU_YEM_War.9.B.tt
+		}
+		transfer_state = 1073
+		transfer_state = 1074
+	}
+}

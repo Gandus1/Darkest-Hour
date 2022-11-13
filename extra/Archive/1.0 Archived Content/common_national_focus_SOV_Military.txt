@@ -1,0 +1,1070 @@
+# focus_tree = {
+	# 	id = SOV_Military
+	# 	country = {
+		# 		factor = 0
+		# 		modifier = {
+			# 			add = 10
+			# 			tag = SOV
+			# 		}
+			# 	}
+			# default = no
+			shared_focus = {
+				id = SOV_Red_Army_Airforce
+				icon = GFX_SOV_Red_Airforce
+				cost = 10.00
+				x = 9
+				y = 0
+				offset = {
+					x = 16
+					y = 0
+					trigger = {
+						always = yes
+					}
+				}		
+				allow_branch = {
+					NOT = {
+						has_civil_war = yes
+					}
+				}
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 2
+						bonus = 0.50
+						category = air_doctrine
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Red_Army
+				icon = GFX_SOV_Red_Army
+				cost = 1.00
+				x = 17
+				y = 0
+				offset = {
+					x = 16
+					y = 0
+					trigger = {
+						always = yes
+					}
+				}		
+				allow_branch = {
+					NOT = {
+						has_civil_war = yes
+					}
+				}
+				completion_reward = {
+					army_experience = 50
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Red_Fleet
+				icon = GFX_SOV_Red_Fleet
+				cost = 10.00
+				x = 29
+				y = 0
+				offset = {
+					x = 16
+					y = 0
+					trigger = {
+						always = yes
+					}
+				}		
+				allow_branch = {
+					NOT = {
+						has_civil_war = yes
+					}
+				}
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.3
+						category = ss_tech
+					}
+					country_event = DH_soviet.8
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Aviation_Cult
+				icon = GFX_focus_yug_ikarus
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Army_Airforce
+				}
+				x = 0
+				y = 1
+				relative_position_id = SOV_Red_Army_Airforce
+				
+			}
+			shared_focus = {
+				id = SOV_Introduce_Ranks
+				icon = GFX_focus_chi_army_reform
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Army
+				}
+				x = -1
+				y = 1
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Mechanised_Corps
+				icon = GFX_goal_generic_army_tanks
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Army
+				}
+				x = 1
+				y = 1
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Create_a_Unified_Military_Doctrine
+				icon = GFX_focus_generic_military_academy
+				cost = 15.00
+				prerequisite = {
+					focus = SOV_Introduce_Ranks
+				}
+				prerequisite = {
+					focus = SOV_Mechanised_Corps
+				}
+				x = 0
+				y = 2
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					army_experience = 20
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.5
+						category = land_doctrine
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Northern_Fleet
+				icon = GFX_GENERIC_Submarine
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Fleet
+				}
+				mutually_exclusive = {
+					focus = SOV_Baltic_Fleet
+					focus = SOV_Pacific_Fleet
+				}
+				x = 1
+				y = 1
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.3
+						category = ss_tech
+						category = dd_tech
+					}
+					custom_effect_tooltip = SOV_Northern_Fleet_tt
+					hidden_effect = {
+						137 = {
+							if = {
+								limit = {
+									free_building_slots = {
+										building = dockyard
+										size > 1
+										include_locked = yes
+									}
+									free_building_slots = {
+										building = naval_base
+										size > 1
+									}
+								}
+								add_extra_state_shared_building_slots = 2
+								add_building_construction = {
+									type = dockyard
+									level = 2
+									instant_build = yes
+								}
+								add_building_construction = {
+									type = naval_base
+									level = 2
+									province = 3686
+									instant_build = yes
+								}
+								set_state_flag = northern_fleet_focus
+							}
+						}
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Baltic_Fleet
+				icon = GFX_GENERIC_Battleship
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Fleet
+				}
+				mutually_exclusive = {
+					focus = SOV_Northern_Fleet
+					focus = SOV_Pacific_Fleet
+				}
+				x = -1
+				y = 1
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.3
+						category = bb_tech
+						category = bc_tech
+					}
+					custom_effect_tooltip = SOV_Baltic_Fleet_tt
+					hidden_effect = {
+						195 = {
+							if = {
+								limit = {
+									free_building_slots = {
+										building = dockyard
+										size > 1
+										include_locked = yes
+									}
+									free_building_slots = {
+										building = naval_base
+										size > 1
+									}
+								}
+								add_extra_state_shared_building_slots = 2
+								add_building_construction = {
+									type = dockyard
+									level = 2
+									instant_build = yes
+								}
+								add_building_construction = {
+									type = naval_base
+									level = 2
+									province = 3151
+									instant_build = yes
+								}
+								set_state_flag = baltic_fleet_focus
+							}
+						}
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Pacific_Fleet
+				icon = GFX_GENERIC_Destroyer
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Fleet
+				}
+				mutually_exclusive = {
+					focus = SOV_Baltic_Fleet
+					focus = SOV_Northern_Fleet
+				}
+				x = 3
+				y = 1
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.3
+						category = cv_tech
+					}
+					custom_effect_tooltip = SOV_Pacific_Fleet_tt
+					hidden_effect = {
+						408 = {
+							if = {
+								limit = {
+									free_building_slots = {
+										building = dockyard
+										size > 1
+										include_locked = yes
+									}
+									free_building_slots = {
+										building = naval_base
+										size > 1
+									}
+								}
+								add_extra_state_shared_building_slots = 2
+								add_building_construction = {
+									type = dockyard
+									level = 2
+									instant_build = yes
+								}
+								add_building_construction = {
+									type = naval_base
+									level = 2
+									province = 957
+									instant_build = yes
+								}
+								set_state_flag = far_east_fleet_focus
+							}
+						}
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Naval_Infantry
+				icon = GFX_SOV_Red_Marines
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Baltic_Fleet
+					focus = SOV_Northern_Fleet
+					focus = SOV_Pacific_Fleet
+				}
+				x = 1
+				y = 2
+				relative_position_id = SOV_Red_Fleet
+				Completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.5
+						category = marine_tech
+					}
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.25
+						category = tp_tech
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Svechins_War_of_Attrition
+				icon = GFX_GENERIC_Drafted_Army
+				cost = 20.00
+				prerequisite = {
+					focus = SOV_Create_a_Unified_Military_Doctrine
+				}
+				mutually_exclusive = {
+					focus = SOV_Tukhachevskys_Deep_Battle
+				}
+				x = 2
+				y = 3
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 2
+						bonus = 0.5
+						category = cat_mass_assault
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Multi_Defense_Layers
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Svechins_War_of_Attrition
+				}
+				x = 1
+				y = 4
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Tupovlev_SB
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Army_Airforce
+				}
+				x = 2
+				y = 1
+				relative_position_id = SOV_Red_Army_Airforce
+				
+			}
+			shared_focus = {
+				id = SOV_Transpolar_Flight
+				icon = GFX_SOV_Transpolar_Flight
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Tupovlev_SB
+				}
+				x = 2
+				y = 2
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					custom_effect_tooltip = SOV_Transpolar_Flight_tt
+					hidden_effect = {
+						country_event = DH_soviet.12
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Pacific_Military_School
+				icon = GFX_GENERIC_Naval_School
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Pacific_Fleet
+					focus = SOV_Northern_Fleet
+					focus = SOV_Baltic_Fleet
+				}
+				x = 3
+				y = 2
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					navy_experience = 50
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Mass_Mobilization
+				icon = GFX_GENERIC_Mass_Assault
+				cost = 15.00
+				prerequisite = {
+					focus = SOV_Svechins_War_of_Attrition
+				}
+				x = 3
+				y = 4
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Peoples_Army
+				icon = GFX_GENERIC_Drafted_Army
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Multi_Defense_Layers
+				}
+				prerequisite = {
+					focus = SOV_Mass_Mobilization
+				}
+				x = 2
+				y = 5
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Stalins_Sledgehammer
+				icon = GFX_SOV_B4
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Peoples_Army
+				}
+				x = 4
+				y = 6
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.75
+						ahead_reduction = 0.75
+						category = artillery
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_NKVD
+				icon = GFX_SOV_NKVD
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Create_a_Unified_Military_Doctrine
+				}
+				x = 6
+				y = 3
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_ideas = nkvd
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Gulag_Based_Economic_Programs
+				icon = GFX_focus_cze_german_puppet
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_NKVD
+				}
+				x = 6
+				y = 4
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_NKVD_Internal_Troops
+				icon = GFX_goal_generic_axis_build_infantry
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Gulag_Based_Economic_Programs
+				}
+				x = 5
+				y = 5
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					custom_effect_tooltip = SOV_nkvd_upgrade_tooltip
+					swap_ideas = {
+						remove_idea = nkvd
+						add_idea = nkvd_2
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_SMERSH
+				icon = GFX_goal_generic_defence
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Gulag_Based_Economic_Programs
+				}
+				x = 7
+				y = 5
+				relative_position_id = SOV_Red_Army
+				available = {
+					any_country = {
+						has_war_with = SOV
+						is_major = yes
+					}
+				}
+				completion_reward = {
+					remove_ideas = trotskyite_plot_purged
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Closed_Cities
+				icon = GFX_goal_continuous_research
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_OKB
+				}
+				x = 0
+				y = 4
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					add_research_slot = 1
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.50
+						category = nuclear
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_A_Bomb
+				icon = GFX_GENERIC_ABomb
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Closed_Cities
+				}
+				x = -1
+				y = 5
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.5
+						category = nuclear
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Red_Rockets
+				icon = GFX_SOV_Red_Rockets
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Closed_Cities
+				}
+				x = 1
+				y = 5
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.5
+						category = rocketry
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Develop_Aeroflot
+				icon = GFX_SOV_Aeroflot
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Army_Airforce
+				}
+				x = -2
+				y = 1
+				relative_position_id = SOV_Red_Army_Airforce
+				available = {
+					219 = {
+						is_owned_and_Controlled_by = SOV
+					}
+				}
+				completion_reward = {
+					custom_effect_tooltip = SOV_Develop_Aeroflot_tt
+					hidden_effect = {
+						load_oob = "SOV_aeroflot"
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_VDV
+				icon = GFX_SOV_VDV
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Develop_Aeroflot
+				}
+				x = -2
+				y = 2
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.4
+						technology = paratroopers
+						technology = paratroopers2
+						technology = paratroopers3
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_OKB
+				icon = GFX_SOV_OKBs
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Transpolar_Flight
+				}
+				prerequisite = {
+					focus = SOV_VDV
+				}
+				x = 0
+				y = 3
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					custom_effect_tooltip = available_political_advisor
+					show_ideas_tooltip = SOV_AM_Sergey_Korolev
+					custom_effect_tooltip = SOV_OKB_tt
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Frontline_Aviation
+				icon = GFX_SOV_Sturmovik
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_OKB
+				}
+				x = 2
+				y = 4
+				relative_position_id = SOV_Red_Army_Airforce
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 3
+						ahead_reduction = 0.4
+						technology = CAS_1940
+						technology = CAS_1943
+						technology = CAS_1945
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Tukhachevskys_Deep_Battle
+				icon = GFX_focus_generic_provoke_border_clashes
+				cost = 20.00
+				prerequisite = {
+					focus = SOV_Create_a_Unified_Military_Doctrine
+				}
+				mutually_exclusive = {
+					focus = SOV_Svechins_War_of_Attrition
+				}
+				x = -2
+				y = 3
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					if = {
+						limit = {
+							any_army_leader = {
+								has_id = 401
+							}
+						}
+						add_tech_bonus = {
+							uses = 3
+							bonus = 0.5
+							category = land_doctrine
+						}
+						else = {
+							add_tech_bonus = {
+								uses = 2
+								bonus = 0.5
+								category = land_doctrine
+							}
+						}
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Guards
+				icon = GFX_SOV_Red_Guard
+				cost = 15.00
+				prerequisite = {
+					focus = SOV_Deep_Operations
+					focus = SOV_Peoples_Army
+				}
+				x = 0
+				y = 6
+				relative_position_id = SOV_Red_Army
+				available = {
+					has_war = yes
+				}
+				completion_reward = {
+					army_experience = 50
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Stalins_Organ
+				icon = GFX_SOV_BM13
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Deep_Operations
+				}
+				x = -4
+				y = 6
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.50
+						ahead_reduction = 0.75
+						technology = Rocket_Artillery_1940
+						technology = Rocket_Artillery_1942
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Campaign_for_Mass_Mechanization
+				icon = GFX_goal_generic_army_motorized
+				cost = 15.00
+				prerequisite = {
+					focus = SOV_Tukhachevskys_Deep_Battle
+				}
+				x = -3
+				y = 4
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.3
+						category = cat_mechanized_equipment
+					}
+					add_timed_idea = {
+						idea = SOV_mass_mechanization
+						days = 365
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Tankovyy_Korpus
+				icon = GFX_focus_generic_tank_production
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Deep_Operations
+				}
+				x = -2
+				y = 6
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					country_event = DH_soviet.16
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Mechanized_Wave
+				icon = GFX_SOV_Mechanized_Wave
+				cost = 20.00
+				prerequisite = {
+					focus = SOV_Guards
+				}
+				prerequisite = {
+					focus = SOV_Tankovyy_Korpus
+				}
+				prerequisite = {
+					focus = SOV_Stalins_Organ
+				}
+				x = -2
+				y = 7
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.75
+						technology = mechanized_wave
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_STAVKA
+				icon = GFX_focus_generic_military_mission
+				cost = 20.00
+				prerequisite = {
+					focus = SOV_Large_Front_Operations
+					focus = SOV_Multi_Defense_Layers
+				}
+				x = 0
+				y = 5
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 2
+						bonus = 0.5
+						category = land_doctrine
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Human_Wave
+				icon = GFX_SOV_Human_Wave
+				cost = 20.00
+				prerequisite = {
+					focus = SOV_Stalins_Sledgehammer
+				}
+				prerequisite = {
+					focus = SOV_Massive_Partisan_Armament
+				}
+				prerequisite = {
+					focus = SOV_Guards
+				}
+				x = 2
+				y = 7
+				relative_position_id = SOV_Red_Army
+				completion_reward = {
+					
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Black_Fleet
+				icon = GFX_GENERIC_Cruiser
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Red_Fleet
+				}
+				x = -3
+				y = 1
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.4
+						category = cl_tech
+					}
+					custom_effect_tooltip = SOV_Black_Fleet_tt
+					hidden_effect = {
+						137 = {
+							if = {
+								limit = {
+									free_building_slots = {
+										building = dockyard
+										size > 1
+										include_locked = yes
+									}
+									free_building_slots = {
+										building = naval_base
+										size > 1
+									}
+								}
+								add_extra_state_shared_building_slots = 2
+								add_building_construction = {
+									type = dockyard
+									level = 2
+									instant_build = yes
+								}
+								add_building_construction = {
+									type = naval_base
+									level = 2
+									province = 3686
+									instant_build = yes
+								}
+								set_state_flag = black_fleet_focus
+							}
+						}
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Sevastopol_Krepost
+				icon = GFX_goal_generic_construct_military
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Black_Fleet
+				}
+				x = -3
+				y = 2
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					custom_effect_tooltip = SOV_Sevastopol_Krepost_tt
+					hidden_effect = {
+						137 = {
+							if = {
+								limit = {
+									free_building_slots = {
+										building = bunker
+										size > 2
+									}
+									free_building_slots = {
+										building = coastal_bunker
+										size > 2
+									}
+								}
+								add_building_construction = {
+									type = bunker
+									level = 3
+									province = 3686
+									instant_build = yes
+								}
+								add_building_construction = {
+									type = coastal_bunker
+									level = 3
+									province = 3686
+									instant_build = yes
+								}
+							}
+						}
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Naval_Bombers
+				icon = GFX_goal_generic_air_naval_bomber
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Baltic_Fleet
+					focus = SOV_Northern_Fleet
+					focus = SOV_Pacific_Fleet
+				}
+				x = -1
+				y = 2
+				relative_position_id = SOV_Red_Fleet
+				completion_reward = {
+					add_tech_bonus = {
+						uses = 1
+						bonus = 0.5
+						category = cas_bomber
+						category = naval_bomber
+					}
+				}
+				
+			}
+			shared_focus = {
+				id = SOV_Women_in_Aviation
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Aviation_Cult
+				}
+				x = 0
+				y = 2
+				relative_position_id = SOV_Red_Army_Airforce
+				
+			}
+			shared_focus = {
+				id = SOV_Large_Front_Operations
+				icon = GFX_GENERIC_Draw_Borders
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Tukhachevskys_Deep_Battle
+				}
+				x = -1
+				y = 4
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Deep_Operations
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Large_Front_Operations
+				}
+				prerequisite = {
+					focus = SOV_Campaign_for_Mass_Mechanization
+				}
+				x = -2
+				y = 5
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Massive_Partisan_Armament
+				icon = GFX_focus_prc_infiltration
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Peoples_Army
+				}
+				x = 2
+				y = 6
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Shock_Troops
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Guards
+				}
+				x = 0
+				y = 7
+				relative_position_id = SOV_Red_Army
+				
+			}
+			shared_focus = {
+				id = SOV_Long_Range_Aviation
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_OKB
+				}
+				x = -2
+				y = 4
+				relative_position_id = SOV_Red_Army_Airforce
+				
+			}
+			shared_focus = {
+				id = SOV_Guerrilla_Warfare
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Human_Wave
+				}
+				x = 2
+				y = 8
+				relative_position_id = SOV_Red_Army
+			}
+			shared_focus = {
+				id = SOV_Continuous_Offensives
+				icon = GFX_goal_unknown
+				cost = 10.00
+				prerequisite = {
+					focus = SOV_Mechanized_Wave
+				}
+				x = -2
+				y = 8
+				relative_position_id = SOV_Red_Army
+				
+			}
+			# }
+			

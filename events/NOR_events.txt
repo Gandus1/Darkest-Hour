@@ -1,0 +1,102 @@
+###########################
+# Darkest Hour Events : Norway
+###########################
+add_namespace = NOR_Eastern_Greenland_Case
+#########################################################################
+#  Randomization Event
+#########################################################################
+country_event = {
+	id = NOR_Eastern_Greenland_Case.1
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		date > 1933.4.5
+		has_start_date < 1933.4.5
+		1628 = {
+			is_owned_by = NOR
+			is_claimed_by = DEN
+		}
+		841 = { is_owned_by = DEN }
+	}
+	immediate = {
+		if = {
+			limit = {
+				is_historical_focus_on = yes
+			}
+			news_event = NOR_Eastern_Greenland_Case.3
+			else = {
+				random_list = {
+					30 = { news_event = NOR_Eastern_Greenland_Case.2 }
+					70 = { news_event = NOR_Eastern_Greenland_Case.3 }
+				}
+			}
+		}
+	}
+}
+#########################################################################
+#  Eastern Greenland awarded to Norway
+#########################################################################
+news_event = {
+	id = NOR_Eastern_Greenland_Case.2
+	title = NOR_Eastern_Greenland_Case.2.t
+	desc = NOR_Eastern_Greenland_Case.2.d
+	picture = GFX_news_NOR_Polar_Explorers
+	is_triggered_only = yes
+	major = yes
+	option = { #Generic
+		name = NOR_Eastern_Greenland_Case.2.A
+		trigger = {
+			NOT = {
+				OR = {
+					tag = NOR
+					tag = DEN
+				}
+			}
+		}
+	}
+	option = { #Norway
+		name = NOR_Eastern_Greenland_Case.2.B
+		trigger = { tag = NOR }
+		add_political_power = 20
+	}
+	option = { #Denmark
+		name = NOR_Eastern_Greenland_Case.2.C
+		trigger = { tag = DEN }
+		add_political_power = -20
+		remove_state_claim = 1628
+	}
+}
+#########################################################################
+#  Eastern Greenland awarded to Denmark
+#########################################################################
+news_event = {
+	id = NOR_Eastern_Greenland_Case.3
+	title = NOR_Eastern_Greenland_Case.3.t
+	desc = NOR_Eastern_Greenland_Case.3.d
+	picture = GFX_news_NOR_Polar_Explorers
+	is_triggered_only = yes
+	major = yes
+	option = { #Generic
+		name = NOR_Eastern_Greenland_Case.3.A
+		trigger = {
+			NOT = {
+				OR = {
+					tag = NOR
+					tag = DEN
+				}
+			}
+		}
+	}
+	option = { #Denmark
+		name = NOR_Eastern_Greenland_Case.2.B
+		trigger = { tag = DEN }
+		transfer_state = 1628
+		remove_state_claim = 1628
+		add_political_power = 20
+	}
+	option = { #Norway
+		name = NOR_Eastern_Greenland_Case.2.C
+		trigger = { tag = NOR }
+		add_political_power = -20
+	}
+}

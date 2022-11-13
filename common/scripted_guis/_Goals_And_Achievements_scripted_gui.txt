@@ -1,0 +1,110 @@
+scripted_gui = {
+	open_dh_goals_and_achievements_gui = {
+		context_type = player_context
+
+		window_name = "open_dh_goals_and_achievements_gui"
+		parent_window_token = top_bar
+		
+		visible = {
+			is_ai = no
+			always = no
+			check_variable = { dh_goals_and_achievements_array^num > 0 }
+		}
+		
+		effects = {
+			open_button_click = {
+				if = {
+					limit = {
+						has_variable = show_dh_goals_and_achievements_gui
+					}
+					clear_variable = show_dh_goals_and_achievements_gui
+				}
+				else = {
+					set_variable = { show_dh_goals_and_achievements_gui = 1 }
+					if = {
+						limit = {
+							NOT = { has_country_flag = set_up_own_goals_and_achievements }
+						}
+						set_up_own_goals_and_achievements = yes
+					}
+				}
+			}
+		}
+	}
+	
+	dh_goals_and_achievements_gui = {
+		context_type = player_context
+
+		window_name = "dh_goals_and_achievements_gui"
+		
+		visible = {
+			is_ai = no
+			check_variable = { show_dh_goals_and_achievements_gui > 0 }
+		}
+		
+		effects = {
+			close_button_click = {
+				clear_variable = show_dh_goals_and_achievements_gui
+				clear_variable = show_dh_goals_and_achievements_alert_popup_gui
+			}
+			entry_button_click = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				effect_tooltip = {
+					complete_goal_or_achievement = yes
+				}
+			}
+		}
+		
+		triggers = {
+			entry_icon_visible = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				has_completed_goal_or_achievement = yes
+			}
+			entry_button_visible = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				NOT = { has_completed_goal_or_achievement = yes }
+			}
+			entry_button_click_enabled = {
+				hidden_trigger = {
+					set_temp_variable = { goal_or_achievement_id = v }
+				}
+				can_complete_goal_or_achievement = yes
+				hidden_trigger = {
+					always = no # is not clickable, just used for tooltips and grey image
+				}
+			}
+			entry_checkmark_icon_visible = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				has_completed_goal_or_achievement = yes
+			}
+			entry_checkmark_background_visible = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				NOT = { has_completed_goal_or_achievement = yes }
+			}
+			entry_checkmark_completed_background_visible = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				has_completed_goal_or_achievement = yes
+			}
+			entry_checkmark_icon_visible = {
+				set_temp_variable = { goal_or_achievement_id = v }
+				has_completed_goal_or_achievement = yes
+			}
+		}
+		
+		properties = {
+			entry_icon = {
+				image = "[This.GetGoalOrAchievementIcon]"
+			}
+			entry_button = {
+				image = "[This.GetGoalOrAchievementIcon]"
+			}
+		}
+		
+		dynamic_lists = {
+			dh_goals_and_achievements_gridbox = {
+				array = dh_goals_and_achievements_array
+				entry_container = dh_goals_and_achievements_entry
+			}
+		}
+	}
+}

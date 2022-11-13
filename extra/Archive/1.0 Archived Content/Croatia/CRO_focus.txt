@@ -1,0 +1,794 @@
+focus_tree = {
+	id = CRO_ustashe
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			original_tag = CRO
+			has_government = fascist
+			has_start_date < 1946.1.1
+		}
+	}
+	default = no
+	focus = {
+		id = CRO_Hrvatska_Rise_Up
+		icon = GFX_CRO_Hrvatska_Rise_Up
+		cost = 10
+		x = 7
+		y = 0
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = CRO_The_Ustase_Within_Our_State
+		icon = GFX_CRO_The_Ustase_Within_Our_State
+		cost = 10
+		x = 13
+		y = 0
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = The_Ustase_Within_Our_State
+		}
+	}
+	focus = {
+		id = CRO_Croatian_Home_Guard
+		icon = GFX_CRO_Croatian_Home_Guard
+		cost = 10
+		x = 15
+		y = 0
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = CRO_Air_Force_of_the_Independent_State_of_Croatia
+		icon = GFX_CRO_Croatian_Airforce
+		cost = 10
+		x = 19
+		y = 0
+		completion_reward = {
+			air_experience = 20
+		}
+	}
+	focus = {
+		id = CRO_Navy_of_the_Independent_State_of_Croatia
+		icon = GFX_CRO_Croatian_Navy
+		cost = 10
+		x = 24
+		y = 0
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		completion_reward = {
+			navy_experience = 10
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Zivio_Ante_Pavelic
+		icon = GFX_CRO_Zivio_Ante_Pavelic
+		cost = 10
+		prerequisite = {
+			focus = CRO_Hrvatska_Rise_Up
+		}
+		x = 7
+		y = 1
+		completion_reward = {
+			remove_ideas = Exiled_Leader
+		}
+	}
+	focus = {
+		id = CRO_National_Catholicism
+		icon = GFX_GENERIC_Ideology_Clerical_Fascism
+		cost = 10
+		prerequisite = {
+			focus = CRO_Zivio_Ante_Pavelic
+		}
+		x = 5
+		y = 2
+		completion_reward = {
+			add_ideas = National_Catholicism
+			add_opinion_modifier = {
+				target = SPR
+				modifier = CRO_friendly
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = CRO_friendly
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = CRO_Begin_Integration_of_Occupied_Territories
+		icon = GFX_focus_generic_strike_at_democracy1
+		cost = 10
+		prerequisite = {
+			focus = CRO_National_Catholicism
+		}
+		x = 5
+		y = 3
+		completion_reward = {
+			unlock_decision_category_tooltip = CRO_Integrate_Occupied_Territories
+			unlock_decision_tooltip = CRO_Hadziefendic_Legion
+			unlock_decision_tooltip = CRO_Muslim_Areas
+		}
+	}
+	focus = {
+		id = CRO_The_Direction_of_Croatian_Culture
+		icon = GFX_goal_generic_national_unity
+		cost = 10
+		prerequisite = {
+			focus = CRO_Begin_Integration_of_Occupied_Territories
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			add_timed_idea = {
+				idea = Croatian_Culture
+				days = 200
+			}
+		}
+	}
+	focus = {
+		id = CRO_The_Illyrian_Nation
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CRO_The_Direction_of_Croatian_Culture
+		}
+		mutually_exclusive = {
+			focus = CRO_The_Gothic_Theory
+		}
+		x = 4
+		y = 5
+		completion_reward = {
+			unlock_decision_category_tooltip = CRO_Yugoslavian_Instability
+			unlock_decision_tooltip = CRO_Request_Montenegro
+			unlock_decision_tooltip = CRO_Slovenian_refugees
+		}
+	}
+	focus = {
+		id = CRO_The_Gothic_Theory
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = CRO_The_Direction_of_Croatian_Culture
+		}
+		mutually_exclusive = {
+			focus = CRO_The_Illyrian_Nation
+		}
+		x = 6
+		y = 5
+		completion_reward = {
+			unlock_decision_category_tooltip = CRO_The_Gothic_Theory
+			unlock_decision_tooltip = CRO_Demand_Vojvodina
+			unlock_decision_tooltip = CRO_Request_German_Banat
+		}
+	}
+	focus = {
+		id = CRO_Crown_of_Zvonimir
+		icon = GFX_focus_YUG_banovina_of_croatia
+		cost = 10
+		prerequisite = {
+			focus = CRO_Zivio_Ante_Pavelic
+		}
+		available = {
+			is_in_faction_with = ITA
+		}
+		x = 7
+		y = 2
+		completion_reward = {
+			add_ideas = CRO_HoS_Tomislav_II
+		}
+	}
+	focus = {
+		id = CRO_Establish_the_Croatian_Parliament
+		icon = GFX_GENERIC_Curtail_the_Military
+		cost = 10
+		prerequisite = {
+			focus = CRO_Crown_of_Zvonimir
+		}
+		x = 7
+		y = 3
+		completion_reward = {
+			add_timed_idea = {
+				idea = Croatian_Parliament
+				days = 400
+			}
+			add_opinion_modifier = {
+				target = ITA
+				modifier = CRO_friendly
+			}
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = CRO_Croatian_Socialism
+		icon = GFX_focus_generic_industry_3
+		cost = 10
+		prerequisite = {
+			focus = CRO_Zivio_Ante_Pavelic
+		}
+		x = 10
+		y = 2
+		completion_reward = {
+			add_ideas = Croatian_Socialism
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = CRO_Anti_Poverty_Campaign
+		icon = GFX_GENERIC_Anti_Poverty_Campaign
+		cost = 10
+		prerequisite = {
+			focus = CRO_Croatian_Socialism
+		}
+		x = 9
+		y = 3
+		completion_reward = {
+			add_political_power = 10
+			if = {
+				limit = {
+					has_idea = Croatian_Socialism
+				}
+				swap_ideas = {
+					remove_idea = Croatian_Socialism
+					add_idea = Croatian_Socialism1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = Croatian_Socialism2
+				}
+				swap_ideas = {
+					remove_idea = Croatian_Socialism2
+					add_idea = Croatian_Socialism3
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Nationalise_Big_Businesses
+		icon = GFX_GENERIC_Nationalize_Industry
+		cost = 10
+		prerequisite = {
+			focus = CRO_Anti_Poverty_Campaign
+		}
+		x = 8
+		y = 4
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = Nationalisation12
+					}
+				}
+				add_ideas = Nationalisation1
+			}
+			if = {
+				limit = {
+					has_idea = Nationalisation12
+				}
+				swap_ideas = {
+					remove_idea = Nationalisation12
+					add_idea = Nationalisation2
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Pavelic_Neighbourhoods
+		icon = GFX_GENERIC_Housing_Campaign
+		cost = 10
+		prerequisite = {
+			focus = CRO_Croatian_Socialism
+		}
+		x = 11
+		y = 3
+		completion_reward = {
+			add_political_power = 10
+			if = {
+				limit = {
+					has_idea = Croatian_Socialism
+				}
+				swap_ideas = {
+					remove_idea = Croatian_Socialism
+					add_idea = Croatian_Socialism2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = Croatian_Socialism1
+				}
+				swap_ideas = {
+					remove_idea = Croatian_Socialism1
+					add_idea = Croatian_Socialism3
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Confiscate_Serbian_Property
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 10
+		prerequisite = {
+			focus = CRO_Anti_Poverty_Campaign
+		}
+		prerequisite = {
+			focus = CRO_Pavelic_Neighbourhoods
+		}
+		x = 10
+		y = 4
+		completion_reward = {
+			109 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Main_Alliance_of_Syndicates
+		icon = GFX_GENERIC_Modern_Elitism
+		cost = 10
+		prerequisite = {
+			focus = CRO_Pavelic_Neighbourhoods
+		}
+		x = 12
+		y = 4
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = Nationalisation1
+					}
+				}
+				add_ideas = Nationalisation12
+			}
+			if = {
+				limit = {
+					has_idea = Nationalisation1
+				}
+				swap_ideas = {
+					remove_idea = Nationalisation1
+					add_idea = Nationalisation2
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Compulsory_Work
+		icon = GFX_goal_generic_construction
+		cost = 10
+		prerequisite = {
+			focus = CRO_Nationalise_Big_Businesses
+		}
+		prerequisite = {
+			focus = CRO_Confiscate_Serbian_Property
+		}
+		prerequisite = {
+			focus = CRO_Main_Alliance_of_Syndicates
+		}
+		x = 10
+		y = 5
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Nationalisation2
+				add_idea = Nationalisation3
+			}
+		}
+	}
+	focus = {
+		id = CRO_The_Black_Legion
+		icon = GFX_CRO_The_Black_Legion
+		cost = 10
+		prerequisite = {
+			focus = CRO_The_Ustase_Within_Our_State
+		}
+		x = 13
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = CRO_BlackLegion_tt
+			hidden_effect = {
+				set_country_flag = CRO_BlackLegion_deployed
+				set_technology = {
+					CRO_BlackLegion = 1
+					popup = no
+				}
+				load_oob = CRO_BlackLegion
+			}
+		}
+	}
+	focus = {
+		id = CRO_Reign_in_the_Dinaric_Alps
+		icon = GFX_GENERIC_Mountain_Warfare
+		cost = 10
+		prerequisite = {
+			focus = CRO_Croatian_Home_Guard
+		}
+		x = 15
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = mountaineers_tech
+			}
+		}
+	}
+	focus = {
+		id = CRO_Motorised_Infantry
+		icon = GFX_HUN_The_Botond
+		cost = 10
+		prerequisite = {
+			focus = CRO_The_Black_Legion
+		}
+		prerequisite = {
+			focus = CRO_Reign_in_the_Dinaric_Alps
+		}
+		x = 14
+		y = 2
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+	focus = {
+		id = CRO_Croatian_Armed_Forces
+		icon = GFX_CRO_Croatian_Armed_Forces
+		cost = 10
+		prerequisite = {
+			focus = CRO_Motorised_Infantry
+		}
+		x = 14
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Seperated_Armies
+				add_idea = Establishing_the_HOS
+			}
+		}
+	}
+	focus = {
+		id = CRO_Rehabilitate_Croat_Pilots
+		icon = GFX_focus_generic_military_academy
+		cost = 10
+		prerequisite = {
+			focus = CRO_Air_Force_of_the_Independent_State_of_Croatia
+		}
+		x = 19
+		y = 1
+		completion_reward = {
+			add_manpower = 30000
+			add_ideas = Rehabilitate_Croat_Pilots
+		}
+	}
+	focus = {
+		id = CRO_Invest_in_Anti_Air
+		icon = GFX_GER_Flakabwehr
+		cost = 10
+		prerequisite = {
+			focus = CRO_Rehabilitate_Croat_Pilots
+		}
+		x = 17
+		y = 2
+		completion_reward = {
+			if = {
+				limit = {
+					CRO = {
+						owns_state = 104
+					}
+				}
+				104 = {
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			103 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			109 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Early_Warning_System
+		icon = GFX_goal_generic_radar
+		cost = 10
+		prerequisite = {
+			focus = CRO_Invest_in_Anti_Air
+		}
+		x = 17
+		y = 3
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = radar_tech
+			}
+		}
+	}
+	focus = {
+		id = CRO_Destroy_The_Partisans_From_Above
+		icon = GFX_goal_generic_air_fighter2
+		cost = 10
+		prerequisite = {
+			focus = CRO_Rehabilitate_Croat_Pilots
+		}
+		x = 19
+		y = 2
+		completion_reward = {
+			add_ideas = Destroy_The_Partisans_From_Above
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = tactical_bomber
+			}
+		}
+	}
+	focus = {
+		id = CRO_Request_German_Supplies
+		icon = GFX_focus_chi_mission_to_germany
+		cost = 10
+		prerequisite = {
+			focus = CRO_Destroy_The_Partisans_From_Above
+		}
+		x = 19
+		y = 3
+		completion_reward = {
+			GER = {
+				country_event = {
+					days = 3
+					id = CRO.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Operations_Aboard
+		icon = GFX_focus_prc_infiltration
+		cost = 10
+		prerequisite = {
+			focus = CRO_Rehabilitate_Croat_Pilots
+		}
+		x = 21
+		y = 2
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+			}
+			109 = {
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Croatian_Air_Force_Legion
+		icon = GFX_CRO_Croatian_Airforce
+		cost = 10
+		prerequisite = {
+			focus = CRO_Operations_Aboard
+		}
+		x = 21
+		y = 3
+		completion_reward = {
+			add_ideas = Croatian_Air_Force_Legion
+			air_experience = 20
+		}
+	}
+	focus = {
+		id = CRO_The_Gust_of_Wind
+		icon = GFX_GER_Strategic_Flight
+		cost = 10
+		prerequisite = {
+			focus = CRO_Request_German_Supplies
+		}
+		prerequisite = {
+			focus = CRO_Early_Warning_System
+		}
+		prerequisite = {
+			focus = CRO_Croatian_Air_Force_Legion
+		}
+		x = 19
+		y = 4
+		completion_reward = {
+			ITA = {
+				country_event = {
+					days = 3
+					id = CRO.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = CRO_Mine_Laying_in_the_Adriatic
+		icon = GFX_GENERIC_Attack_Sub
+		cost = 10
+		prerequisite = {
+			focus = CRO_Navy_of_the_Independent_State_of_Croatia
+		}
+		x = 24
+		y = 1
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+	focus = {
+		id = CRO_Croatian_Naval_Legion
+		icon = GFX_GENERIC_Navy
+		cost = 10
+		prerequisite = {
+			focus = CRO_Mine_Laying_in_the_Adriatic
+		}
+		x = 23
+		y = 2
+		completion_reward = {
+			navy_experience = 20
+		}
+	}
+	focus = {
+		id = CRO_Expansion_of_the_Navy
+		icon = GFX_GENERIC_Cruiser
+		cost = 10
+		prerequisite = {
+			focus = CRO_Mine_Laying_in_the_Adriatic
+		}
+		x = 25
+		y = 2
+		available = {
+			ITA = {
+				has_civil_war = yes
+			}
+		}
+		completion_reward = {
+			remove_ideas = Naval_Restrictions
+		}
+	}
+	focus = {
+		id = CRO_Convert_Fishing_Boats
+		icon = GFX_GENERIC_Destroyer
+		cost = 10
+		prerequisite = {
+			focus = CRO_Croatian_Naval_Legion
+		}
+		prerequisite = {
+			focus = CRO_Expansion_of_the_Navy
+		}
+		x = 23
+		y = 3
+		completion_reward = {
+			add_timed_idea = {
+				idea = Convert_Fishing_Boats
+				days = 120
+			}
+		}
+	}
+	focus = {
+		id = CRO_A_Balanced_Budget
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 10
+		prerequisite = {
+			focus = CRO_Compulsory_Work
+		}
+		mutually_exclusive = {
+			focus = CRO_Finance_the_Welfare_State
+		}
+		x = 9
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Nationalisation3
+				add_idea = Nationalisation4
+			}
+		}
+	}
+	focus = {
+		id = CRO_Finance_the_Welfare_State
+		icon = GFX_goal_generic_consumer_goods
+		cost = 10
+		prerequisite = {
+			focus = CRO_Compulsory_Work
+		}
+		mutually_exclusive = {
+			focus = CRO_A_Balanced_Budget
+		}
+		x = 11
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Nationalisation3
+				add_idea = Nationalisation5
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.08
+			}
+		}
+	}
+	focus = {
+		id = CRO_Anti_Submarine_Activities
+		icon = GFX_GENERIC_ASW_Tactics
+		cost = 10
+		prerequisite = {
+			focus = CRO_Expansion_of_the_Navy
+		}
+		prerequisite = {
+			focus = CRO_Croatian_Naval_Legion
+		}
+		x = 25
+		y = 3
+		completion_reward = {
+			add_ideas = Anti_Submarine_Activities
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = dd_tech
+			}
+		}
+	}
+}

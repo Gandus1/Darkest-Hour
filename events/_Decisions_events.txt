@@ -1,0 +1,863 @@
+﻿add_namespace = decisions
+
+# Recruit general for civil war event
+country_event = {
+	id = decisions.1
+	title = decisions.1.t
+	desc = decisions.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_army_leader = {
+						average_stats < 2
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						average_stats < 2
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 4 }
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 4 }
+						is_field_marshal = no
+						NOT = { has_unit_leader_flag = hidden_sympathies }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies
+				}	
+			}
+		}
+	}
+	
+	# Recruit weak leader
+	option = {
+		name = decisions.1.A
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -1
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+
+	# Recruit below mediocre leader
+	option = {
+		name = decisions.1.B
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -2
+		add_political_power = -10
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+
+	# Recruit above mediocre leader
+	option = {
+		name = decisions.1.C
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -3
+		add_political_power = -20
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+
+	# Recruit great leader
+	option = {
+		name = decisions.1.d
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = no
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies
+			}
+		}
+		add_command_power = -4
+		add_political_power = -30
+		random_army_leader = {
+			limit = {
+				is_field_marshal = no
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies
+				}
+				clr_unit_leader_flag = hidden_sympathies
+			}
+		}
+	}
+}
+
+# Recruit field marshal for civil war event
+country_event = {
+	id = decisions.2
+	title = decisions.2.t
+	desc = decisions.2.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_army_leader = {
+						average_stats < 2
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						average_stats < 2
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 2 }
+						average_stats < 3
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 3 }
+						average_stats < 4
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+			if = {
+				limit = {
+					any_army_leader = {
+						NOT = { average_stats < 4 }
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+				}
+				random_army_leader = {
+					limit = {
+						NOT = { average_stats < 4 }
+						is_field_marshal = yes
+						NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
+						NOT = { has_trait = hidden_sympathies }
+					}
+					set_unit_leader_flag = hidden_sympathies_marshal
+				}	
+			}
+		}
+	}
+	
+	# Recruit weak leader
+	option = {
+		name = decisions.1.A
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -1
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				average_stats < 2
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+
+	# Recruit below mediocre leader
+	option = {
+		name = decisions.1.B
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -2
+		add_political_power = -10
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				NOT = { average_stats < 2 }
+				average_stats < 3
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+
+	# Recruit above mediocre leader
+	option = {
+		name = decisions.1.C
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -3
+		add_political_power = -20
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				NOT = { average_stats < 3 }
+				average_stats < 4
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+
+	# Recruit great leader
+	option = {
+		name = decisions.1.d
+		trigger = {
+			any_army_leader = {
+				is_field_marshal = yes
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+		add_command_power = -4
+		add_political_power = -30
+		random_army_leader = {
+			limit = {
+				is_field_marshal = yes
+				NOT = { average_stats < 4 }
+				has_unit_leader_flag = hidden_sympathies_marshal
+			}
+			add_unit_leader_trait = hidden_sympathies
+		}
+		hidden_effect = {
+			every_army_leader = {
+				limit = {
+					has_unit_leader_flag = hidden_sympathies_marshal
+				}
+				clr_unit_leader_flag = hidden_sympathies_marshal
+			}
+		}
+	}
+}
+# Canals - Suez Canal Blown
+news_event = {
+	id = decisions.3
+	title = decisions.3.t
+	desc = {
+		text = decisions.3.desc_eng
+		trigger = {
+			FROM = {
+				has_country_flag = blew_up_suez
+				owns_state = 446
+				owns_state = 453
+			}
+		}
+	}
+	desc = {
+		text = decisions.3.desc_not_eng
+		trigger = {
+			FROM = {
+				OR = {
+					NOT = {	has_country_flag = blew_up_suez }
+					NOT = {
+						owns_state = 446
+						owns_state = 453
+					}
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_020
+
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = decisions.3.a
+		trigger = {
+			NOT = { has_country_flag = blew_up_suez }
+			owns_state = 446
+			owns_state = 453
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+	}
+	option = {
+		name = decisions.3.b
+		trigger = {
+			has_country_flag = blew_up_suez
+			owns_state = 446
+			owns_state = 453
+		}
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+		clr_country_flag = blew_up_suez
+	}
+	option = {
+		name = decisions.3.c
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 446
+				owns_state = 453
+				has_country_flag = blew_up_suez
+			}
+		}
+	}
+	option = {
+		name = decisions.3.d
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 446
+				owns_state = 453
+			}
+			has_country_flag = blew_up_suez
+		}
+		clr_country_flag = blew_up_suez
+	}
+	option = {
+		name = decisions.3.e
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 446
+				owns_state = 453
+				NOT = { has_country_flag = blew_up_suez }
+			}
+			any_other_country = {
+				has_war_together_with = ROOT
+				has_country_flag = blew_up_suez
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+	option = {
+		name = decisions.3.f
+		trigger = {
+			any_other_country = {
+				has_war_together_with = ROOT
+				owns_state = 446
+				owns_state = 453
+				has_country_flag = blew_up_suez
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+	option = {
+		name = decisions.3.g
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				has_country_flag = blew_up_suez
+			}
+			any_other_country = {
+				has_war_together_with = ROOT
+				owns_state = 446
+				owns_state = 453
+				NOT = { has_country_flag = blew_up_suez }
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+	option = {
+		name = decisions.3.h
+		trigger = {
+			NOT = {
+				any_country = {
+					has_war_with = ROOT
+					has_country_flag = blew_up_suez
+				}
+			}
+			NOT = {
+				any_other_country = {
+					has_war_together_with = ROOT
+					owns_state = 446
+					owns_state = 453
+					has_country_flag = blew_up_suez
+				}
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+}
+
+# Canals - Panama Canal Blown
+news_event = {
+	id = decisions.4
+	title = decisions.4.t
+	desc = {
+		text = decisions.4.desc_usa
+		trigger = {
+			FROM = {
+				has_country_flag = blew_up_panama
+				owns_state = 685
+			}
+		}
+	}
+	desc = {
+		text = decisions.4.desc_not_usa
+		trigger = {
+			FROM = {
+				OR = {
+					NOT = {	has_country_flag = blew_up_panama }
+					NOT = { owns_state = 685 }
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_020
+
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = decisions.4.a
+		trigger = {
+			NOT = { has_country_flag = blew_up_panama }
+			owns_state = 685
+		}
+		if = {
+			limit = {
+				original_tag = USA
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+	}
+	option = {
+		name = decisions.4.b
+		trigger = {
+			has_country_flag = blew_up_panama
+			owns_state = 685
+		}
+		if = {
+			limit = {
+				original_tag = USA
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+		clr_country_flag = blew_up_panama
+	}
+	option = {
+		name = decisions.4.c
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 685
+				has_country_flag = blew_up_panama
+			}
+		}
+	}
+	option = {
+		name = decisions.4.d
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 685
+			}
+			has_country_flag = blew_up_panama
+		}
+		clr_country_flag = blew_up_panama
+	}
+	option = {
+		name = decisions.4.e
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 685
+				NOT = { has_country_flag = blew_up_panama }
+			}
+			any_other_country = {
+				has_war_together_with = ROOT
+				has_country_flag = blew_up_panama
+			}
+			NOT = { has_country_flag = blew_up_panama }
+		}
+	}
+	option = {
+		name = decisions.4.f
+		trigger = {
+			any_other_country = {
+				has_war_together_with = ROOT
+				owns_state = 685
+				has_country_flag = blew_up_panama
+			}
+			NOT = { has_country_flag = blew_up_panama }
+		}
+	}
+	option = {
+		name = decisions.4.g
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				has_country_flag = blew_up_panama
+			}
+			any_other_country = {
+				has_war_together_with = ROOT
+				owns_state = 685
+				NOT = { has_country_flag = blew_up_panama }
+			}
+			NOT = { has_country_flag = blew_up_panama }
+		}
+	}
+	option = {
+		name = decisions.4.h
+		trigger = {
+			NOT = {
+				any_country = {
+					has_war_with = ROOT
+					has_country_flag = blew_up_panama
+				}
+			}
+			NOT = {
+				any_other_country = {
+					has_war_together_with = ROOT
+					owns_state = 685
+					has_country_flag = blew_up_panama
+				}
+			}
+			NOT = { has_country_flag = blew_up_panama }
+		}
+	}
+}
+
+# Canals - Suez Canal Rebuilt
+news_event = {
+	id = decisions.5
+	title = decisions.5.t
+	desc = decisions.5.desc
+	picture = GFX_news_event_020
+
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = decisions.5.a
+		trigger = {
+			original_tag = ENG
+			has_country_flag = rebuilt_suez
+		}
+		clr_country_flag = rebuilt_suez
+	}
+	option = {
+		name = decisions.5.b
+		trigger = {
+			NOT = { original_tag = ENG }
+			has_country_flag = rebuilt_suez
+		}
+		clr_country_flag = rebuilt_suez
+	}
+	option = {
+		name = decisions.5.c
+		trigger = {
+			any_other_country = {
+				has_war_together_with = ROOT
+				has_country_flag = rebuilt_suez
+			}
+			NOT = { has_country_flag = rebuilt_suez }
+		}
+	}
+	option = {
+		name = decisions.5.d
+		trigger = {
+			any_other_country = {
+				has_war_with = ROOT
+				has_country_flag = rebuilt_suez
+			}
+			NOT = { has_country_flag = rebuilt_suez }
+		}
+	}
+	option = {
+		name = decisions.5.e
+		trigger = {
+			NOT = { has_country_flag = rebuilt_suez }
+			NOT = {
+				any_other_country = {
+					has_war_together_with = ROOT
+					has_country_flag = rebuilt_suez
+				}
+			}
+			NOT = {
+				any_other_country = {
+					has_war_with = ROOT
+					has_country_flag = rebuilt_suez
+				}
+			}
+		}
+	}
+}
+
+# Canals - Panama Canal Rebuilt
+news_event = {
+	id = decisions.6
+	title = decisions.6.t
+	desc = decisions.6.desc
+	picture = GFX_news_event_020
+
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = decisions.6.a
+		trigger = {
+			original_tag = USA
+			has_country_flag = rebuilt_panama
+		}
+		clr_country_flag = rebuilt_panama
+	}
+	option = {
+		name = decisions.6.b
+		trigger = {
+			NOT = { original_tag = USA }
+			has_country_flag = rebuilt_panama
+		}
+		clr_country_flag = rebuilt_panama
+	}
+	option = {
+		name = decisions.6.c
+		trigger = {
+			any_other_country = {
+				has_war_together_with = ROOT
+				has_country_flag = rebuilt_panama
+			}
+			NOT = { has_country_flag = rebuilt_panama }
+		}
+	}
+	option = {
+		name = decisions.6.d
+		trigger = {
+			any_other_country = {
+				has_war_with = ROOT
+				has_country_flag = rebuilt_panama
+			}
+			NOT = { has_country_flag = rebuilt_panama }
+		}
+	}
+	option = {
+		name = decisions.6.e
+		trigger = {
+			NOT = { has_country_flag = rebuilt_panama }
+			NOT = {
+				any_other_country = {
+					has_war_together_with = ROOT
+					has_country_flag = rebuilt_panama
+				}
+			}
+			NOT = {
+				any_other_country = {
+					has_war_with = ROOT
+					has_country_flag = rebuilt_panama
+				}
+			}
+		}
+	}
+}

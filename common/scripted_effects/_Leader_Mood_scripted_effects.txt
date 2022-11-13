@@ -1,0 +1,32 @@
+calculate_leader_mood = {
+	if = {
+		limit = {
+			check_variable = { TNG_Ma_Zhongying_Mood < -30 }
+		}
+		set_variable = { TNG_Ma_Zhongying_Mood = -30 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { TNG_Ma_Zhongying_Mood > 30 }
+		}
+		set_variable = { TNG_Ma_Zhongying_Mood = 30 }
+	}
+	
+	if = {
+		limit = {
+			check_variable = { TNG_Ma_Zhongying_Mood < 0 }
+		}
+		set_variable = { leader_mood_bar_green_position = -177 }
+		set_variable = { leader_mood_bar_red_position = TNG_Ma_Zhongying_Mood }
+		multiply_variable = { leader_mood_bar_red_position = 5.9 }
+		add_to_variable = { leader_mood_bar_red_position = 177 }
+		round_variable = leader_mood_bar_red_position
+	}
+	else = {
+		set_variable = { leader_mood_bar_red_position = 177 }
+		set_variable = { leader_mood_bar_green_position = TNG_Ma_Zhongying_Mood }
+		multiply_variable = { leader_mood_bar_green_position = 5.9 }
+		subtract_from_variable = { leader_mood_bar_green_position = 177 }
+		round_variable = leader_mood_bar_green_position
+	}
+}

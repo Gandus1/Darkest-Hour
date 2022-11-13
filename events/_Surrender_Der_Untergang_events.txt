@@ -1,0 +1,528 @@
+﻿###########################
+# Darkest Hour Surrender Events : Der Untergang
+###########################
+
+add_namespace = Surrender_ROM
+add_namespace = Surrender_HUN
+add_namespace = Surrender_BUL
+add_namespace = Surrender_FIN
+add_namespace = Surrender_SOV_Response
+
+#########################################################################
+# Surrender to the Soviets? (Romania)
+#########################################################################
+country_event = {
+	id = Surrender_ROM.1
+	title = Surrender_ROM.1.t
+	desc = Surrender_ROM.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = ROM
+		SOV = { has_war_with = ROM }
+		SOV = { has_war_with = GER }
+		is_in_faction_with = GER 
+		any_other_country = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			controls_state = 79
+			controls_state = 78
+		}
+	}
+
+	option = { #Surrender to the Soviets
+		name = Surrender_ROM.1.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		leave_faction = yes
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Constantin Sanatescu"
+			picture = GFX_M_Constantin_Sanatescu
+			expire = "1947.1.1"
+			ideology = stalinism
+			traits = {
+				POSITION_Prime_Minister
+				SUBIDEOLOGY_Stalinism
+			}
+		}
+		remove_ideas = ROM_D_Carol_II
+		add_ideas = ROM_D_Mihai_I
+		SOV = {
+			country_event = { id = Surrender_ROM.2 }
+		}
+	}
+
+	option = { #We Won't surrender
+		name = Surrender_ROM.1.B
+	}
+}
+
+#########################################################################
+# Soviet answer to Romanian surrender
+#########################################################################
+country_event = {
+	id = Surrender_ROM.2
+	title = Surrender_ROM.2.t
+	desc = Surrender_ROM.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#Puppet Romania
+	option = { 
+		name = Surrender_ROM.2.A
+		ai_chance = {
+			base = 100
+		}
+		ROM = { white_peace = SOV }
+
+		hidden_effect = {
+			FROM = {
+				every_enemy_country = {
+					limit = {
+						NOT = {
+							has_war_with = SOV
+						}
+						has_war_with = GER
+					}
+					white_peace = FROM
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Together for Victory"
+						has_dlc = "Death or Dishonor"
+					}
+				}
+				set_autonomy = {
+					target = ROM
+					autonomous_state = AUTONOMY_Satellite
+				}
+			}
+			else = {
+				puppet = ROM
+			}
+			SOV = { #In case the Soviets hadn't recieved Bessarabia beforehand
+				transfer_state = 78
+				transfer_state = 80
+				transfer_state = 835
+				transfer_state = 836
+				transfer_state = 1145
+				transfer_state = 1143
+			}
+			ROM = {
+				add_to_war = {
+					targeted_alliance = SOV
+					enemy = GER
+				}
+				hidden_effect = {
+					country_event = { id = Surrender_SOV_Response.1 }
+				}
+			}
+		}
+	}
+
+	#No compromise with the fascists - keep fighting
+	option = { 
+		name = Surrender_ROM.2.B
+		hidden_effect = {
+			country_event = { id = Surrender_SOV_Response.2 }
+		}
+	}
+}
+
+#########################################################################
+# Surrender to the Soviets? (Hungary)
+#########################################################################
+country_event = {
+	id = Surrender_HUN.1
+	title = Surrender_HUN.1.t
+	desc = Surrender_HUN.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = HUN
+		SOV = { has_war_with = HUN }
+		SOV = { has_war_with = GER }
+		is_in_faction_with = GER 
+		any_other_country = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			controls_state = 43
+		}
+	}
+
+	#Surrender to the Soviets
+	option = { 
+		name = Surrender_HUN.1.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		leave_faction = yes
+		SOV = {
+			country_event = { id = Surrender_HUN.2 }
+		}
+	}
+
+	#We Won't surrender
+	option = { 
+		name = Surrender_HUN.1.B
+	}
+}
+
+#########################################################################
+# Soviet answer to Hungarian surrender
+#########################################################################
+country_event = {
+	id = Surrender_HUN.2
+	title = Surrender_HUN.2.t
+	desc = Surrender_HUN.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#Puppet Hungary
+	option = { 
+		name = Surrender_HUN.2.A
+		ai_chance = {
+			base = 100
+		}
+		HUN = { white_peace = SOV }
+
+		hidden_effect = {
+			FROM = {
+				every_enemy_country = {
+					limit = {
+						NOT = {
+							has_war_with = SOV
+						}
+						has_war_with = GER
+					}
+					white_peace = FROM
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Together for Victory"
+						has_dlc = "Death or Dishonor"
+					}
+				}
+				set_autonomy = {
+					target = HUN
+					autonomous_state = AUTONOMY_Satellite
+				}
+			}
+			else = {
+				puppet = HUN
+			}
+			SOV = {
+				transfer_state = 73 # Transfer of Ruthenian Carpathia
+			}
+			HUN = {
+				add_to_war = {
+					targeted_alliance = SOV
+					enemy = GER
+				}
+				hidden_effect = {
+					country_event = { id = Surrender_SOV_Response.1 }
+				}
+			}
+		}
+	}	
+
+	#No compromise with the fascists - keep fighting
+	option = { 
+		name = Surrender_HUN.2.B
+		hidden_effect = {
+			country_event = { id = Surrender_SOV_Response.2 }
+		}
+	}
+}
+
+#########################################################################
+# Surrender to the Soviets? (Bulgaria)
+#########################################################################
+country_event = {
+	id = Surrender_BUL.1
+	title = Surrender_BUL.1.t
+	desc = Surrender_BUL.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = BUL
+		SOV = { has_war_with = BUL }
+		SOV = { has_war_with = GER }
+		is_in_faction_with = GER 
+		any_other_country = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			controls_state = 1097
+			controls_state = 211
+		}
+	}
+
+	#Surrender to the Soviets
+	option = { 
+		name = Surrender_BUL.1.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		leave_faction = yes
+		create_country_leader = {
+			name = "Kimon Georgiev"
+			desc = ""
+			picture = GFX_P_C_Kimon_Georgiev
+			expire = "1965.1.1"
+			ideology = stalinism
+			traits = { POSITION_General_Secretary SUBIDEOLOGY_Stalinism L_Ruthless_Powermonger }
+		}
+		SOV = {
+			country_event = { id = Surrender_BUL.2 }
+		}
+	}
+
+	#We Won't surrender
+	option = { 
+		name = Surrender_BUL.1.B
+	}
+}
+
+#########################################################################
+# Soviet answer to Bulgarian surrender
+#########################################################################
+country_event = {
+	id = Surrender_BUL.2
+	title = Surrender_BUL.2.t
+	desc = Surrender_BUL.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#Puppet Bulgaria
+	option = { 
+		name = Surrender_BUL.2.A
+		ai_chance = {
+			base = 100
+		}
+		BUL = { white_peace = SOV }
+
+		hidden_effect = {
+			FROM = {
+				every_enemy_country = {
+					limit = {
+						NOT = {
+							has_war_with = SOV
+						}
+						has_war_with = GER
+					}
+					white_peace = FROM
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Together for Victory"
+						has_dlc = "Death or Dishonor"
+					}
+				}
+				set_autonomy = {
+					target = BUL
+					autonomous_state = AUTONOMY_Satellite
+				}
+			}
+			else = {
+				puppet = BUL
+			}
+			BUL = {
+				add_to_war = {
+					targeted_alliance = SOV
+					enemy = GER
+				}
+				hidden_effect = {
+					country_event = { id = Surrender_SOV_Response.1 }
+				}
+			}
+		}
+	}	
+
+	#No compromise with the fascists - keep fighting
+	option = { 
+		name = Surrender_BUL.2.B
+		hidden_effect = {
+			country_event = { id = Surrender_SOV_Response.2 }
+		}
+	}
+}
+
+#########################################################################
+# Surrender to the Soviets? (Finland)
+#########################################################################
+country_event = {
+	id = Surrender_FIN.1
+	title = Surrender_FIN.1.t
+	desc = Surrender_FIN.1.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = FIN
+		SOV = { has_war_with = FIN }
+		SOV = { has_war_with = GER }
+		is_in_faction_with = GER 
+		any_other_country = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			controls_state = 1137
+		}
+	}
+
+	#Surrender to the Soviets
+	option = { 
+		name = Surrender_FIN.1.A
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+		}
+		leave_faction = yes
+		SOV = {
+			country_event = { id = Surrender_BUL.2 }
+		}
+	}
+
+	#We Won't surrender
+	option = { 
+		name = Surrender_BUL.1.B
+	}
+}
+
+#########################################################################
+# Soviet answer to Finnish surrender
+#########################################################################
+country_event = {
+	id = Surrender_FIN.2
+	title = Surrender_FIN.2.t
+	desc = Surrender_FIN.2.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#Peace with Finland
+	option = { 
+		name = Surrender_FIN.2.A
+		ai_chance = {
+			base = 100
+		}
+		FIN = { white_peace = SOV }
+
+		hidden_effect = {
+			FROM = {
+				every_enemy_country = {
+					limit = {
+						NOT = {
+							has_war_with = SOV
+						}
+						has_war_with = GER
+					}
+					white_peace = FROM
+				}
+			}
+			SOV = { #In case the Soviets hadn't received Karelia beforehand
+				transfer_state = 1130
+				transfer_state = 146
+				transfer_state = 147
+				transfer_state = 722
+			}
+			FIN = {
+				create_country_leader = {
+					name = "Juho Paasikivi"
+					desc = ""
+					picture = GFX_P_D_Juho_Kusti_Paasikivi
+					expire = "1965.1.1"
+					ideology = social_conservatism
+					traits = { POSITION_Prime_Minister SUBIDEOLOGY_Social_Conservatism L_Pacifist }
+				}
+				add_to_war = {
+					targeted_alliance = SOV
+					enemy = GER
+				}
+				hidden_effect = {
+					country_event = { id = Surrender_SOV_Response.1 }
+				}
+			}
+		}
+	}	
+
+	#No compromise with the fascists - keep fighting
+	option = { 
+		name = Surrender_FIN.2.B
+		hidden_effect = {
+			country_event = { id = Surrender_SOV_Response.2 }
+		}
+	}
+}
+
+#########################################################################
+# Soviets accept surrender
+#########################################################################
+country_event = {
+	id = Surrender_SOV_Response.1
+	title = Surrender_SOV_Response.1.t
+	desc = Surrender_SOV_Response.1.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+
+	option = { 
+		name = Surrender_SOV_Response.1.A
+		
+	}	
+}
+
+#########################################################################
+# Soviets refuse surrender
+#########################################################################
+country_event = {
+	id = Surrender_SOV_Response.2
+	title = Surrender_SOV_Response.2.t
+	desc = Surrender_SOV_Response.2.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes
+
+	option = { 
+		name = Surrender_SOV_Response.2.A
+		
+	}	
+}

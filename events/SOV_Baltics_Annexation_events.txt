@@ -1,0 +1,603 @@
+﻿###########################
+# Darkest Hour Events : Baltics
+###########################
+#########################################################################
+#  Estonia
+#########################################################################
+add_namespace = EST_Soviet_Annexation
+add_namespace = LAT_Soviet_Annexation
+add_namespace = LIT_Soviet_Annexation
+add_namespace = Baltic
+# Soviet Basing Rights (Estonia)
+country_event = {
+	id = EST_Soviet_Annexation.1
+	title = EST_Soviet_Annexation.1.t
+	desc = EST_Soviet_Annexation.1.d
+	picture = GFX_report_SOV_Soviet_Basing_Rights
+	is_triggered_only = yes
+	option = { # Accept demands
+		name = EST_Soviet_Annexation.1.A
+		ai_chance = {
+			factor = 90
+		}
+		give_military_access = SOV
+		country_event = {
+			id = EST_Soviet_Annexation.2
+		}
+		SOV = { country_event = { id = EST_Soviet_Annexation.2 }}
+	}
+	option = { # Refuse
+		name = EST_Soviet_Annexation.1.B
+		ai_chance = {
+			factor = 10
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = EST
+			}
+		}
+	}
+}
+# Soviet–Estonian Mutual Assistance Treaty
+country_event = {
+	id = EST_Soviet_Annexation.2
+	title = EST_Soviet_Annexation.2.t
+	desc = EST_Soviet_Annexation.2.d
+	picture = GFX_report_SOV_Stalin_and_Molotov_Signing
+	is_triggered_only = yes
+	option = {
+		name = EST_Soviet_Annexation.2.A
+	}
+}
+# Soviet Union Demands a New Government!
+country_event = {
+	id = EST_Soviet_Annexation.3
+	title = EST_Soviet_Annexation.3.t
+	desc = EST_Soviet_Annexation.3.d
+	picture = GFX_report_SOV_Stalin_and_Molotov_Signing
+	is_triggered_only = yes
+	option = {
+		name = EST_Soviet_Annexation.3.A
+		ai_chance = {
+			factor = 100
+		}
+		SOV = {
+			news_event = {
+				id = EST_Soviet_Annexation.4
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = EST_Soviet_Annexation.3.B
+		ai_chance = {
+			factor = 0
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = EST
+			}
+		}
+	}
+}
+# Estonia Occupied
+news_event = {
+	id = EST_Soviet_Annexation.4
+	title = EST_Soviet_Annexation.4.t
+	desc = EST_Soviet_Annexation.4.d
+	picture = GFX_news_SOV_Occupation_Estonia
+	is_triggered_only = yes
+	trigger = {
+		original_tag = SOV
+	}
+	option = {
+		name = EST_Soviet_Annexation.4.A
+		hidden_effect = {
+			country_event = {
+				id = EST_Soviet_Annexation.5
+				days = 1
+			}
+			EST = { country_event = { id = EST_Soviet_Annexation.5 days = 1 }}
+		}
+	}
+}
+# Formation of the People's Governmnet
+country_event = {
+	id = EST_Soviet_Annexation.5
+	title = EST_Soviet_Annexation.5.t
+	desc = EST_Soviet_Annexation.5.d
+	picture = GFX_report_SOV_Estonian_Communist_Leaders
+	is_triggered_only = yes
+	option = {
+		name = EST_Soviet_Annexation.5.A
+		SOV = {
+			set_autonomy = {
+				target = EST
+				autonomy_state = AUTONOMY_SSR
+			}
+		}
+		EST = {
+			hidden_effect = {
+				set_cosmetic_tag = EST_democratic
+				add_ideas = {
+					# Cabinet
+					EST_Andrei_Zhdanov_HoG
+					EST_Nigol_Andresen_FM
+					EST_Juhan_Narma_AM
+					EST_Maksim_Unt_MoS
+					EST_Neeme_Ruus_M
+					EST_Hans_Kruus_M
+				}
+				news_event = { id = EST_Soviet_Annexation.6 days = 30 }
+			}
+			set_party_name = { ideology = communist long_name = "Estonian Working People's Union" name = "EWPU" }
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Johannes Vares"
+				desc = "Johannes_Vares_desc"
+				picture = GFX_P_SOV_Johannes_Vares
+				ideology = stalinism
+				traits = { POSITION_Prime_Minister SUBIDEOLOGY_Stalinism }
+			}
+		}
+	}
+}
+# Elections for People's Riigikogu
+news_event = {
+	id = EST_Soviet_Annexation.6
+	title = EST_Soviet_Annexation.6.t
+	desc = EST_Soviet_Annexation.6.d
+	picture = GFX_news_SOV_Estonian_Puppet_Parliament
+	is_triggered_only = yes
+	option = {
+		name = EST_Soviet_Annexation.6.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.2
+		}
+		add_stability = -0.05
+		add_war_support = -0.15
+		hidden_effect = {
+			country_event = {
+				id = EST_Soviet_Annexation.7
+				days = 7
+			}
+			SOV = { country_event = { id = EST_Soviet_Annexation.7 days = 7 }}
+		}
+	}
+}
+# Establishment of Estonian SSR
+country_event = {
+	id = EST_Soviet_Annexation.7
+	title = EST_Soviet_Annexation.7.t
+	desc = EST_Soviet_Annexation.7.d
+	picture = GFX_report_SOV_Estonian_SSR
+	is_triggered_only = yes
+	option = {
+		name = EST_Soviet_Annexation.7.A
+		EST = {
+			drop_cosmetic_tag = yes
+			set_party_name = { ideology = communist long_name = "Communist Party of Estonia (bolsheviks)" name = "EK(b)P" }
+		}
+		SOV = {
+			set_autonomy = {
+				target = EST
+				autonomy_state = AUTONOMY_SSR
+			}
+			country_event = { id = EST_Soviet_Annexation.8 days = 21 }
+		}
+	}
+}
+# Estonian SSR requests to join the Union
+country_event = {
+	id = EST_Soviet_Annexation.8
+	title = EST_Soviet_Annexation.8.t
+	desc = EST_Soviet_Annexation.8.d
+	picture = GFX_report_SOV_Estonian_SSR
+	is_triggered_only = yes
+	option = {
+		name = EST_Soviet_Annexation.8.A
+		annex_country = {
+			target = EST
+			transfer_troops = no
+		}
+	}
+}
+#########################################################################
+#  Latvia
+#########################################################################
+# Soviet Basing Rights (Latvia)
+country_event = {
+	id = LAT_Soviet_Annexation.1
+	title = LAT_Soviet_Annexation.1.t
+	desc = LAT_Soviet_Annexation.1.d
+	picture = GFX_report_SOV_Soviet_Basing_Rights
+	is_triggered_only = yes
+	option = { # Accept demands
+		name = LAT_Soviet_Annexation.1.A
+		ai_chance = {
+			factor = 100
+		}
+		give_military_access = SOV
+		country_event = {
+			id = LAT_Soviet_Annexation.2
+		}
+		SOV = { country_event = { id = LAT_Soviet_Annexation.2 }}
+	}
+	option = { # Refuse
+		name = LAT_Soviet_Annexation.1.B
+		ai_chance = {
+			factor = 0
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = LAT
+			}
+		}
+	}
+}
+# Soviet–Latvian Mutual Assistance Treaty
+country_event = {
+	id = LAT_Soviet_Annexation.2
+	title = LAT_Soviet_Annexation.2.t
+	desc = LAT_Soviet_Annexation.2.d
+	picture = GFX_report_SOV_Stalin_and_Molotov_Signing
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.2.A
+	}
+}
+# Soviet Union Demands a New Government!
+country_event = {
+	id = LAT_Soviet_Annexation.3
+	title = LAT_Soviet_Annexation.3.t
+	desc = LAT_Soviet_Annexation.3.d
+	picture = GFX_report_SOV_Stalin_and_Molotov_Signing
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.3.A
+		ai_chance = {
+			factor = 90
+		}
+		SOV = {
+			news_event = { id = LAT_Soviet_Annexation.4 days = 1 }
+		}
+	}
+	option = {
+		name = LAT_Soviet_Annexation.3.B
+		ai_chance = {
+			factor = 10
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = LAT
+			}
+		}
+	}
+}
+# Latvia Occupied
+news_event = {
+	id = LAT_Soviet_Annexation.4
+	title = LAT_Soviet_Annexation.4.t
+	desc = LAT_Soviet_Annexation.4.d
+	picture = GFX_news_SOV_Occupation_Latvia
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.4.A
+		hidden_effect = {
+			country_event = {
+				id = LAT_Soviet_Annexation.5
+				days = 1
+			}
+			LAT = { country_event = { id = LAT_Soviet_Annexation.5 days = 1 }}
+		}
+	}
+}
+# Formation of Pro-soviet Governmnet
+country_event = {
+	id = LAT_Soviet_Annexation.5
+	title = LAT_Soviet_Annexation.5.t
+	desc = LAT_Soviet_Annexation.5.d
+	picture = GFX_report_SOV_Latvian_March
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.5.A
+		SOV = {
+			set_autonomy = {
+				target = LAT
+				autonomy_state = AUTONOMY_SSR
+			}
+		}
+		LAT = {
+			hidden_effect = {
+				set_cosmetic_tag = LAT_democratic
+				add_ideas = {
+					# Cabinet
+					LAT_Andrey_Vyshinsky_HoG
+					LAT_Augusts_Kirhensteins_FM
+					LAT_Julijs_Lacis_AM
+					LAT_Vilis_Lacis_MoS
+					LAT_Juris_Paberzs_M
+					LAT_Peteris_Blaus_M
+					LAT_Roberts_Klavins_CoArmy
+				}
+				news_event = { id = LAT_Soviet_Annexation.6 days = 30 }
+			}
+			set_party_name = { ideology = communist long_name = "Working People's Bloc" name = "WPB" }
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Augusts Kirhenšteins"
+				desc = "Augusts_Kirhensteins_desc"
+				picture = GFX_P_SOV_Augusts_Kirhensteins
+				ideology = stalinism
+				traits = { POSITION_Prime_Minister SUBIDEOLOGY_Stalinism }
+			}
+		}
+	}
+}
+# Elections for People's Seimas
+news_event = {
+	id = LAT_Soviet_Annexation.6
+	title = LAT_Soviet_Annexation.6.t
+	desc = LAT_Soviet_Annexation.6.d
+	picture = GFX_news_SOV_Estonian_Puppet_Parliament
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.6.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.2
+		}
+		add_stability = -0.05
+		add_war_support = -0.15
+		hidden_effect = {
+			SOV = { country_event = { id = LAT_Soviet_Annexation.7 days = 7 }}
+			country_event = {
+				id = LAT_Soviet_Annexation.7
+				days = 7
+			}
+		}
+	}
+}
+# Establishment of Latvian SSR
+country_event = {
+	id = LAT_Soviet_Annexation.7
+	title = LAT_Soviet_Annexation.7.t
+	desc = LAT_Soviet_Annexation.7.d
+	picture = GFX_report_SOV_Latvian_SSR
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.7.A
+		LAT = {
+			drop_cosmetic_tag = yes
+			set_party_name = { ideology = communist long_name = "Communist Party of Latvia (bolshevik)" name = "LK(b)P" }
+		}
+		SOV = {
+			set_autonomy = {
+				target = LAT
+				autonomy_state = AUTONOMY_SSR
+			}
+			country_event = { id = LAT_Soviet_Annexation.8 days = 21 }
+		}
+	}
+}
+# Latvian SSR requests to join the Union
+country_event = {
+	id = LAT_Soviet_Annexation.8
+	title = LAT_Soviet_Annexation.8.t
+	desc = LAT_Soviet_Annexation.8.d
+	picture = GFX_report_SOV_Latvian_SSR
+	is_triggered_only = yes
+	option = {
+		name = LAT_Soviet_Annexation.8.A
+		annex_country = {
+			target = LAT
+			transfer_troops = no
+		}
+	}
+}
+#########################################################################
+#  Lithuania
+#########################################################################
+# Soviet Basing Rights (Lithuania)
+country_event = {
+	id = LIT_Soviet_Annexation.1
+	title = LIT_Soviet_Annexation.1.t
+	desc = LIT_Soviet_Annexation.1.d
+	picture = GFX_report_event_soviet_soldiers
+	is_triggered_only = yes
+	option = { # Accept demands
+		name = LIT_Soviet_Annexation.1.A
+		ai_chance = {
+			factor = 100
+		}
+		give_military_access = SOV
+		country_event = {
+			id = LIT_Soviet_Annexation.2
+		}
+		SOV = { country_event = { id = LIT_Soviet_Annexation.2 }}
+		if = {
+			limit = {
+				SOV = {
+					controls_state = 805
+				}
+			}
+			transfer_state = 805
+		}
+	}
+	option = { # Refuse
+		name = LIT_Soviet_Annexation.1.B
+		ai_chance = {
+			factor = 0
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = LIT
+			}
+		}
+	}
+}
+# Soviet–Lithuanian Mutual Assistance Treaty
+country_event = {
+	id = LIT_Soviet_Annexation.2
+	title = LIT_Soviet_Annexation.2.t
+	desc = LIT_Soviet_Annexation.2.d
+	picture = GFX_report_SOV_Stalin_and_Molotov_Signing
+	is_triggered_only = yes
+	option = {
+		name = LIT_Soviet_Annexation.2.A
+	}
+}
+# Soviet Union Demands a New Government!
+country_event = {
+	id = LIT_Soviet_Annexation.3
+	title = LIT_Soviet_Annexation.3.t
+	desc = LIT_Soviet_Annexation.3.d
+	picture = GFX_news_SOV_Soldiers_March
+	is_triggered_only = yes
+	option = { #We Have to Accept
+		name = LIT_Soviet_Annexation.3.A
+		ai_chance = {
+			factor = 90
+		}
+		news_event = {
+			id = LIT_Soviet_Annexation.4
+		}
+		SOV = { news_event = { id = LIT_Soviet_Annexation.4 days = 1 }}
+	}
+	option = { # We Refuse!
+		name = LIT_Soviet_Annexation.3.B
+		ai_chance = {
+			factor = 10
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = LIT
+			}
+		}
+	}
+}
+# Smetona flees, Merkys complies with the ultimatum
+news_event = {
+	id = LIT_Soviet_Annexation.4
+	title = LIT_Soviet_Annexation.4.t
+	desc = LIT_Soviet_Annexation.4.d
+	picture = GFX_news_SOV_Occupation_Lithuania
+	is_triggered_only = yes
+	option = {
+		name = LIT_Soviet_Annexation.4.A
+		country_event = {
+			id = LIT_Soviet_Annexation.5
+			days = 2
+		}
+		SOV = { country_event = { id = LIT_Soviet_Annexation.5 days = 1 }}
+	}
+}
+# Formation of the People's Governmnet
+country_event = {
+	id = LIT_Soviet_Annexation.5
+	title = LIT_Soviet_Annexation.5.t
+	desc = LIT_Soviet_Annexation.5.d
+	picture = GFX_report_event_soviet_soldiers
+	is_triggered_only = yes
+	option = {
+		name = LIT_Soviet_Annexation.5.A
+		SOV = {
+			set_autonomy = {
+				target = LIT
+				autonomy_state = AUTONOMY_SSR
+			}
+		}
+		LIT = {
+			hidden_effect = {
+				set_cosmetic_tag = LIT_democratic
+				add_ideas = {
+					# Cabinet
+					LIT_Vladimir_Dekanozov_HoG
+					LIT_Vincas_Kreve_Mickevicius_FM
+					LIT_Matas_Mickis_AM
+					LIT_Mecislovas_Gedvilas_MoS
+					LIT_Vincas_Vitkauskas_M
+					LIT_Antanas_Venclova_M
+					LIT_Feliksas_Baltusis_Zemaitis_CoArmy
+				}
+				news_event = { id = LIT_Soviet_Annexation.6 days = 30 }
+			}
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Justas Paleckis"
+				desc = "Justas_Paleckis_desc"
+				picture = GFX_P_SOV_Justas_Paleckis
+				ideology = stalinism
+				traits = { POSITION_President SUBIDEOLOGY_Stalinism }
+			}
+		}
+	}
+}
+# Elections for People's Seimas
+news_event = {
+	id = LIT_Soviet_Annexation.6
+	title = LIT_Soviet_Annexation.6.t
+	desc = LIT_Soviet_Annexation.6.d
+	picture = GFX_news_SOV_Estonian_Puppet_Parliament
+	is_triggered_only = yes
+	option = {
+		name = LIT_Soviet_Annexation.6.A
+		add_popularity = {
+			ideology = communist
+			popularity = 0.2
+		}
+		add_stability = -0.05
+		add_war_support = -0.15
+		hidden_effect = {
+			country_event = {
+				id = LIT_Soviet_Annexation.7
+				days = 7
+			}
+			SOV = { country_event = { id = LIT_Soviet_Annexation.7 days = 7 }}
+		}
+	}
+}
+# Establishment of Lithuanian SSR
+country_event = {
+	id = LIT_Soviet_Annexation.7
+	title = LIT_Soviet_Annexation.7.t
+	desc = LIT_Soviet_Annexation.7.d
+	picture = GFX_report_SOV_Lithuanian_SSR
+	is_triggered_only = yes
+	option = {
+		name = LIT_Soviet_Annexation.7.A
+		LIT = {
+			drop_cosmetic_tag = yes
+			set_party_name = { ideology = communist long_name = "Communist Party of Lithuania (bolshevik)" name = "LK(b)P" }
+		}
+		SOV = {
+			set_autonomy = {
+				target = LIT
+				autonomy_state = AUTONOMY_SSR
+			}
+			country_event = { id = LIT_Soviet_Annexation.8 days = 21 }
+		}
+	}
+}
+# Lithuanian SSR requests to join the Union
+country_event = {
+	id = LIT_Soviet_Annexation.8
+	title = LIT_Soviet_Annexation.8.t
+	desc = LIT_Soviet_Annexation.8.d
+	picture = GFX_report_SOV_Lithuanian_SSR
+	is_triggered_only = yes
+	option = {
+		name = LIT_Soviet_Annexation.8.A
+		annex_country = {
+			target = LIT
+			transfer_troops = no
+		}
+	}
+}

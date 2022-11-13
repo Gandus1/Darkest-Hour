@@ -1,0 +1,4444 @@
+political_actions = {
+	###########################
+	# Ramsay's Term
+	###########################
+	ENG_Ramsays_Term = {
+		allowed = {
+			tag = ENG
+		}
+		available = {
+			always = no
+		}
+		activation = {
+			tag = ENG
+			has_country_leader = {
+				name = "Ramsay MacDonald"
+				ruling_only = yes
+			}
+		}
+		fire_only_once = yes
+		days_mission_timeout = 820
+		timeout_effect = {
+			country_event = {
+				id = ENG_Politics.3
+			}
+		}
+		complete_effect = {
+		}
+	}
+	###########################
+	# Baldwin's Term
+	###########################
+	ENG_Baldwins_Term = {
+		allowed = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		activation = {
+			tag = ENG
+			has_country_leader = {
+				name = "Stanley Baldwin"
+				ruling_only = yes
+			}
+		}
+		fire_only_once = yes
+		days_mission_timeout = 820
+		timeout_effect = {
+		}
+		complete_effect = {
+			news_event = {
+				id = ENG_Politics.1
+			}
+		}
+	}
+	# ###########################
+	# # Baldwin's Term
+	# ###########################
+	# ENG_Broadcast_Anti_German_Speeches = {
+	# 	icon = generic_political_discourse
+	# 	allowed = {
+	# 		tag = ENG
+	# 	}
+	# 	available = {
+	# 		has_government = democratic
+	# 		has_completed_focus = ENG_Anti_German_Speeches
+	# 	}
+	# 	cost = 50
+	# 	visible = {
+	# 		tag = ENG
+	# 		has_government = democratic
+	# 		has_war_support < 0.8
+	# 		NOT = { has_country_flag = ENG_anti_german_speeches_flag }
+	# 		has_completed_focus = ENG_Anti_German_Speeches
+	# 	}
+	# 	modifier = {
+	# 		war_support_weekly = 0.002
+	#    }
+	# 	days_remove = 50
+	#     remove_effect = {
+	# 		set_country_flag = { flag = ENG_anti_german_speeches_flag days = 50 }
+	#     }
+	# }
+	###########################
+	# 'Blood Toil and Tears' Speech
+	###########################
+	hold_blood_toil_tears_sweat_speech = {
+		icon = generic_political_discourse
+		allowed = {
+			tag = ENG
+		}
+		available = {
+			has_government = democratic
+			has_country_leader = {
+				ruling_only = yes
+				name = "Winston Churchill"
+			}
+			has_war_with = GER
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+			has_country_leader = {
+				ruling_only = yes
+				name = "Winston Churchill"
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			USA = {
+				set_country_flag = blood_toil_tears_sweat_speech
+			}
+			set_country_flag = blood_toil_tears_sweat_speech
+		}
+		ai_will_do = {
+			base = 200			#Gotta allow the Americans to help
+		}
+	}
+	###########################
+	# 'Fight on the Beaches' Speech
+	###########################
+	hold_fight_on_the_beaches_speech = {
+		icon = generic_political_discourse
+		allowed = {
+			tag = ENG
+		}
+		available = {
+			has_government = democratic
+			has_country_leader = {
+				ruling_only = yes
+				name = "Winston Churchill"
+			}
+			has_war_with = GER
+			is_in_faction_with = FRA
+			FRA = {
+				surrender_progress > 0.2
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+			has_country_flag = blood_toil_tears_sweat_speech
+			has_country_leader = {
+				ruling_only = yes
+				name = "Winston Churchill"
+			}
+		}
+		complete_effect = {
+			add_war_support = 0.05
+			USA = {
+				set_country_flag = fight_on_the_beaches_speech
+			}
+			set_country_flag = fight_on_the_beaches_speech
+		}
+		ai_will_do = {
+			base = 200			#Gotta allow the Americans to help
+		}
+	}
+	###########################
+	# Their Finest Hour
+	###########################
+	hold_this_was_their_finest_hour_speech = {
+		icon = generic_political_discourse
+		allowed = {
+			tag = ENG
+		}
+		available = {
+			has_government = democratic
+			has_country_leader = {
+				ruling_only = yes
+				name = "Winston Churchill"
+			}
+			has_war_with = GER
+			is_in_faction_with = FRA
+			FRA = {
+				has_capitulated = yes
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			tag = ENG
+			has_government = democratic
+			has_war_with = GER
+			has_country_flag = fight_on_the_beaches_speech
+			has_country_leader = {
+				ruling_only = yes
+				name = "Winston Churchill"
+			}
+		}
+		complete_effect = {
+			add_war_support = 0.05
+			USA = {
+				set_country_flag = this_was_their_finest_hour_speech
+			}
+			set_country_flag = this_was_their_finest_hour_speech
+		}
+		ai_will_do = {
+			base = 200			#Gotta allow the Americans to help
+		}
+	}
+}
+operations = {
+	###########################
+	# Activate Plan R-4
+	###########################	
+	ENG_Activate_Plan_R4 = {
+		icon = GFX_decision_generic_operation
+		fire_only_once = yes
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 99
+		}
+		custom_cost_text = decision_cost_CP_25_pp_100
+		days_remove = 60
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_war_with = GER
+			NOT = {
+				is_ally_with = NOR
+			}
+			NOR = {
+				NOT = {
+					is_ally_with = GER
+				}
+			}
+			date > 1940.5.1
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_command_power = -25
+			add_political_power = -100
+		}
+		remove_effect = {
+			declare_war_on = {
+				target = NOR
+				type = annex_everything
+			}
+			add_war_support = -0.05
+			add_timed_idea = {
+				idea = ENG_Plan_R4
+				days = 60
+			}
+		}
+	}
+	###########################
+	# Seize the Danish Possessions
+	###########################
+	ENG_Seize_the_Danish_Possessions = {
+		icon = GFX_decision_generic_operation
+		allowed = {
+			tag = ENG
+		}
+		visible = {
+			has_government = democratic
+			is_in_faction_with = DEN
+			DEN = {
+				has_capitulated = yes
+				has_war_with = GER
+				controls_state = 337
+			}
+			ICE = {
+				exists = yes
+			}
+		}
+		available = {
+			divisions_in_state = {
+				size > 0
+				state = 337
+			}
+			divisions_in_state = {
+				size > 0
+				state = 100
+			}
+		}
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+			transfer_state = 337
+			transfer_state = 100
+			transfer_state = 942
+			transfer_state = 841
+		}
+	}
+	###########################
+	# Transfer Iceland and Greenland to the US
+	###########################	
+	ENG_Transfer_Iceland_and_Greenland_to_the_US = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			owns_state = 100
+			owns_state = 942
+			owns_state = 841
+			NOT = {
+				has_war_with = USA
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+			USA = {
+				country_event = { id = ENG_Wartime_Decisions.1 days = 1 }
+			}
+		}
+	}
+	###########################
+	# Secure American Destroyers
+	###########################	
+	ENG_Secure_American_Destroyers = {
+		icon = GFX_decision_generic_naval
+		fire_only_once = yes
+		cost = 50
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			NOT = {
+				has_war_with = USA
+			}
+			has_war_with = GER
+			has_global_flag = fall_of_france
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ENG
+					value > 49
+				}
+			}
+		}
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+			USA = {
+				country_event = { id = ENG_Wartime_Decisions.4 days = 2 }
+			}
+		}
+	}
+	###########################
+	# Operation Catapult
+	###########################	
+	ENG_Operation_Catapult = {
+		icon = generic_naval
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_war_with = GER
+			has_global_flag = vichy_established
+			FRA = {
+				NOT = {
+					has_war_with = ENG
+				}
+			}
+			842 = {
+				is_owned_and_controlled_by = FRA
+			}
+		}
+		available = {
+		}
+		cost = 25
+		days_remove = 14
+		ai_will_do = {
+			base = 500
+		}
+		complete_effect = {
+			FRA = {
+				country_event = {
+					id = ENG_Raid_On_Mers_El_Kebir.1
+				}
+			}
+		}
+	}
+	###########################
+	# The Cherchell Conference
+	###########################	
+	ENG_The_Cherchell_Conference = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 50
+		allowed = {
+			OR = {
+				original_tag = ENG
+				original_tag = USA
+			}
+		}
+		visible = {
+			is_faction_leader = yes
+			has_war_with = GER
+			FRA = {
+				has_cosmetic_tag = FRA_VICHY
+				NOT = {
+					is_in_faction_with = ROOT
+					has_war_with = ROOT
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 500
+				date > 1942.10.11
+			}
+		}
+		complete_effect = {
+			country_event = { id = Operation_Torch.1 }
+		}
+	}
+	###########################
+	# Operation Torch
+	###########################	
+	ENG_Operation_Torch = {
+		icon = generic_operation
+		fire_only_once = yes
+		days_remove = 30
+		custom_cost_trigger = {
+			command_power > 74
+		}
+		custom_cost_text = decision_cost_CP_75
+		allowed = {
+			OR = {
+				original_tag = ENG
+				original_tag = USA
+			}
+		}
+		visible = {
+			is_faction_leader = yes
+			has_war_with = GER
+			FRA = {
+				has_cosmetic_tag = FRA_VICHY
+				NOT = {
+					is_in_faction_with = ROOT
+					has_war_with = ROOT
+				}
+			}
+		}
+		available = {
+			has_global_flag = Allies_Cherchell_Ended
+		}
+		cancel_trigger = {
+			has_global_flag = Allies_Torch_Success
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 500
+				date > 1942.11.1
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -75
+			}
+			declare_war_on = {
+				target = FRA
+				type = annex_everything
+			}
+			FRA = {
+				country_event = { id = Operation_Torch.2 }
+			}
+		}
+		targeted_modifier = {
+			tag = FRA
+			attack_bonus_against = 0.1
+		}
+		targeted_modifier = {
+			tag = MOR
+			attack_bonus_against = 0.1
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FRA = {
+						has_full_control_of_state = 1213
+						has_full_control_of_state = 842
+						has_full_control_of_state = 1207
+						has_full_control_of_state = 1211
+						has_full_control_of_state = 1209
+						has_full_control_of_state = 459
+						has_full_control_of_state = 1210
+						has_full_control_of_state = 1208
+						has_full_control_of_state = 460
+						has_full_control_of_state = 1212
+					}
+					TUN = {
+						has_full_control_of_state = 665
+						has_full_control_of_state = 458
+						has_full_control_of_state = 1047
+						has_full_control_of_state = 1048
+					}
+					MOR = {
+						has_full_control_of_state = 1139
+						has_full_control_of_state = 1140
+						has_full_control_of_state = 1141
+						has_full_control_of_state = 1142
+						has_full_control_of_state = 461
+						has_full_control_of_state = 462
+					}
+				}
+				news_event = { id = Operation_Torch.3 }
+			}
+			else = {
+				news_event = { id = Operation_Torch.4 }
+			}
+		}
+	}
+	###########################
+	# Operation Downfall
+	###########################	
+	ENG_Operation_Downfall = {
+		icon = generic_operation
+		fire_only_once = yes
+		days_remove = 30
+		custom_cost_trigger = {
+			command_power > 74
+		}
+		custom_cost_text = decision_cost_CP_75
+		allowed = {
+			OR = {
+				tag = ENG
+				tag = USA
+				tag = FRA
+			}
+		}
+		visible = {
+			is_faction_leader = yes
+			has_war_with = JAP
+		}
+		available = {
+			526 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			645 = {
+				is_controlled_by_ROOT_or_ally =yes
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 500
+				date > 1945.11.1
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -75
+			}
+			declare_war_on = {
+				target = JAP
+				type = annex_everything
+			}
+			add_ideas = ENG_Operation_Downfall
+		}
+	}
+}
+foreign_politics = {
+}
+###########################
+# Getting Out of the Slump 
+###########################
+ENG_Getting_Out_of_the_Slump = {
+	ENG_Set_Up_the_Unemployed_Assistance_Board = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 50
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Urgent_Unemployment_Relief
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+	}
+	ENG_Relief_to_the_Special_Areas = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Urgent_Unemployment_Relief
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	ENG_Finance_the_Growing_Motor_Industry = {
+		icon = GFX_decision_generic_factory
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Urgent_Unemployment_Relief
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 50
+			}
+		}
+	}
+	ENG_Subsidise_Textile_Companies = {
+		icon = GFX_decision_generic_factory
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Keep_Textiles_Afloat
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.002
+			}
+			add_unemployment_effect = yes
+			random_owned_state = {
+				limit = {
+					is_core_of = ENG
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	ENG_Support_Manchester_and_Lancashire-Based_Textile_Production = {
+		icon = GFX_decision_generic_factory
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Keep_Textiles_Afloat
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 50
+			}
+		}
+	}
+	ENG_Encourage_Modernised_Steel_Manufacturing_Processes = {
+		icon = GFX_decision_steel
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Relief_for_Coal_and_Steel
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.002
+			}
+			add_unemployment_effect = yes
+			130 = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+			131 = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+		}
+	}
+	ENG_Subsidise_Steward_and_Lloyds_Expansion = {
+		icon = GFX_decision_steel
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Relief_for_Coal_and_Steel
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			129 = {
+				add_resource = {
+					type = steel
+					amount = 12
+				}
+			}
+		}
+	}
+	ENG_Prop_Up_the_Coal_Companies = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Relief_for_Coal_and_Steel
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	ENG_Facilitate_Mining_Productivity = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Relief_for_Coal_and_Steel
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.002
+			}
+			add_unemployment_effect = yes
+			add_timed_idea = {
+				idea = ENG_Increased_Mining_Productivity
+				days = 180
+			}
+		}
+	}
+	ENG_Loans_to_the_North-Eastern_Shipyards = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_British_Shipbuilding_Loans
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.002
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	ENG_Keep_the_Glaswegian_Shipyards_Open = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_British_Shipbuilding_Loans
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.002
+			}
+			add_unemployment_effect = yes
+			121 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	ENG_Enable_the_Purchase_of_Land = {
+		icon = GFX_decision_hol_attract_foreign_investors
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Capitalise_On_the_Housing_Boom
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			random_owned_state = {
+				limit = {
+					is_core_of = ENG
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ENG
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ENG
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	ENG_Subsidise_Kier's_Concrete_Engineering = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Capitalise_On_the_Housing_Boom
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			add_tech_bonus = {
+				name = ENG_Subsidise_Kier's_Concrete_Engineering
+				bonus = 0.25
+				uses = 1
+				category = construction_tech
+			}
+		}
+	}
+	ENG_Provide_Council_House_Alternatives = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Capitalise_On_the_Housing_Boom
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+		}
+	}
+	ENG_Refine_the_Mass_Production_of_Consumer_Electronics = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Foster_the_Electrical_Industry
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			random_owned_state = {
+				limit = {
+					is_core_of = ENG
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	ENG_Finance_the_General_Electric_Company's_Research = {
+		icon = GFX_decision_generic_research
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Foster_the_Electrical_Industry
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			add_tech_bonus = {
+				name = ENG_Finance_the_General_Electric_Company's_Research
+				bonus = 0.25
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+	ENG_Begin_the_New_Works_Programme = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Invest_in_Greater_London
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.01
+			}
+			add_unemployment_effect = yes
+			126 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	ENG_A_Localised_Housing_Boom = {
+		icon = generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Invest_in_Greater_London
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			126 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	ENG_Expand_Londons_Light_Industries = {
+		icon = GFX_decision_generic_factory
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Invest_in_Greater_London
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 40
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				unemployment_value = -0.005
+			}
+			add_unemployment_effect = yes
+			126 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+ENG_Economic_Warfare_Category = {
+	ENG_Economic_Pressure_Netherlands = {
+		icon = generic_construction
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Western_Trade_Treaties
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		days_re_enable = 5
+		complete_effect = {
+			add_opinion_modifier = {
+				target = HOL
+				modifier = ENG_a_trade_agreement
+			}
+			add_opinion_modifier = {
+				target = DEI
+				modifier = ENG_a_trade_agreement
+			}
+			HOL = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ENG_a_trade_agreement_against_GER
+				}
+			}
+			DEI = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ENG_a_trade_agreement_against_GER
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	ENG_Economic_Pressure_Sweden = {
+		icon = generic_construction
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Western_Trade_Treaties
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		days_re_enable = 5
+		complete_effect = {
+			add_opinion_modifier = {
+				target = SWE
+				modifier = ENG_a_trade_agreement
+			}
+			SWE = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ENG_a_trade_agreement_against_GER
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	ENG_Economic_Pressure_Portugal = {
+		icon = generic_construction
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Western_Trade_Treaties
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		days_re_enable = 5
+		complete_effect = {
+			add_opinion_modifier = {
+				target = POR
+				modifier = ENG_a_trade_agreement
+			}
+			POR = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ENG_a_trade_agreement_against_GER
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	ENG_Economic_Pressure_Turkey = {
+		icon = generic_construction
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Western_Trade_Treaties
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		days_re_enable = 5
+		complete_effect = {
+			add_opinion_modifier = {
+				target = TUR
+				modifier = ENG_a_trade_agreement
+			}
+			TUR = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ENG_a_trade_agreement_against_GER
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	ENG_Economic_Pressure_Yugoslavia = {
+		icon = generic_construction
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Western_Trade_Treaties
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		days_re_enable = 5
+		complete_effect = {
+			add_opinion_modifier = {
+				target = YUG
+				modifier = ENG_a_trade_agreement
+			}
+			YUG = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = ENG_a_trade_agreement_against_GER
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+}
+ENG_Shadow_Scheme_Category = {
+	ENG_Begin_Work_on_a_New_Shadow_Factory = {
+		icon = generic_construction
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_In_the_Shadows
+			check_variable = {
+				infantry_rearmament < 2
+			}
+		}
+		available = {
+			NOT = {
+				has_war = yes
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money = yes
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 45
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_to_variable = {
+				in_planning = 1
+			}
+			custom_effect_tooltip = ENG_add_in_planning_tt
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				in_planning = 1
+			}
+			custom_effect_tooltip = ENG_remove_in_planning_tt
+			add_to_variable = {
+				in_construction = 1
+			}
+			custom_effect_tooltip = ENG_add_in_construction_tt
+		}
+	}
+	ENG_Approach_Automobile_Manufacturers = {
+		icon = GFX_decision_generic_factory
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_In_the_Shadows
+			check_variable = {
+				approach_automobile_manufacturers < 2
+			}
+		}
+		available = {
+			NOT = {
+				has_war = yes
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money = yes
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 37
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_to_variable = {
+				in_planning = 1
+			}
+			custom_effect_tooltip = ENG_add_in_planning_tt
+			add_to_variable = {
+				approach_automobile_manufacturers = 1
+			}
+		}
+		remove_effect = {
+			subtract_from_variable = {
+				in_planning = 1
+			}
+			custom_effect_tooltip = ENG_remove_in_planning_tt
+			add_to_variable = {
+				in_construction = 1
+			}
+			custom_effect_tooltip = ENG_add_in_construction_tt
+		}
+	}
+	ENG_Expand_Existing_Industrial_Facilities = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		cost = 25
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_In_the_Shadows
+			check_variable = {
+				expand_existing_industrial_facilities < 2
+			}
+		}
+		available = {
+			NOT = {
+				has_war = yes
+			}
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money = yes
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			add_to_variable = {
+				expand_existing_industrial_facilities = 1
+			}
+		}
+		remove_effect = {
+			add_to_variable = {
+				in_construction = 1
+			}
+			custom_effect_tooltip = ENG_add_in_construction_tt
+		}
+	}
+	ENG_Open_the_Factories = {
+		icon = GFX_decision_generic_industry
+		cost = 0
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_In_the_Shadows
+		}
+		available = {
+			has_war = yes
+		}
+		ai_will_do = {
+			base = 500
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_offsite_building = { type = arms_factory level = var:ready_to_open }
+			set_country_flag = ENG_Shadow_Scheme_Factories_Opened
+		}
+	}
+	ENG_Construction_of_the_Shadow_Factories = {
+		activation = {
+			check_variable = {
+				in_construction > 0
+			}
+			has_war = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_Construction_of_the_Shadow_Factories_tt
+				check_variable = {
+					in_construction < 1
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ENG_Construction_of_the_Shadow_Factories_tt_2
+				set_temp_variable = {
+					amount_of_money_to_check = 250
+				}
+				has_specific_amount_of_money = no
+			}
+		}
+		cancel_trigger = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_Construction_of_the_Shadow_Factories_tt_2
+				set_temp_variable = {
+					amount_of_money_to_check = 250
+				}
+				has_specific_amount_of_money = no
+			}
+		}
+		icon = GFX_decision_generic_construction
+		is_good = yes
+		days_mission_timeout = 60
+		selectable_mission = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			subtract_from_variable = {
+				in_construction = 1
+			}
+			custom_effect_tooltip = ENG_remove_in_construction_tt
+			add_to_variable = {
+				ready_to_open = 1
+			}
+			custom_effect_tooltip = ENG_add_ready_to_open_tt
+		}
+	}
+}
+# ENG_Churchill_Rearmament_Category = {
+# 	ENG_Churchill_Focus_on_Rearming_the_Infantry = {
+# 		icon = generic_construction
+# 		cost = 80
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { infantry_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Infantry_Rearmament
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Infantry_Rearmament
+# 			add_to_variable = { infantry_rearmament = 1 } 
+# 			clr_country_flag = ENG_rearmament_in_progress
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Producing_Heavy_Guns = {
+# 		icon = generic_construction
+# 		cost = 80
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { heavy_gun_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Heavy_Gun_Production
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Heavy_Gun_Production
+# 			add_to_variable = { heavy_gun_rearmament = 1 }
+# 			clr_country_flag = ENG_rearmament_in_progress
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Manufactoring_Armoured_Vehicles = {
+# 		icon = generic_construction
+# 		cost = 105
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { armoured_vehicles_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Production_of_Heavy_Vehicles
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Production_of_Heavy_Vehicles
+# 			add_to_variable = { armoured_vehicles_rearmament = 1 } 
+# 			clr_country_flag = ENG_rearmament_in_progress
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Motorising_and_Mechanising_the_Army = {
+# 		icon = generic_construction
+# 		cost = 95
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { mechanization_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Motorisation_and_Mechanization_of_the_Army
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Motorisation_and_Mechanization_of_the_Army
+# 			add_to_variable = { mechanization_rearmament = 1 } 
+# 			clr_country_flag = ENG_rearmament_in_progress
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Mass_Producing_Fighters = {
+# 		icon = generic_construction
+# 		cost = 105
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { figher_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Fighter_Mass_Production
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Fighter_Mass_Production
+# 			add_to_variable = { figher_rearmament = 1 }
+# 			clr_country_flag = ENG_rearmament_in_progress			
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Assembling_Support_Planes = {
+# 		icon = generic_construction
+# 		cost = 80
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { cas_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Assembling_Support_Planes
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Assembling_Support_Planes
+# 			add_to_variable = { cas_rearmament = 1 }
+# 			clr_country_flag = ENG_rearmament_in_progress			
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Constructing_Bombers = {
+# 		icon = generic_construction
+# 		cost = 95
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { bomber_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Bomber_Construction
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Bomber_Construction
+# 			add_to_variable = { bomber_rearmament = 1 } 
+# 			clr_country_flag = ENG_rearmament_in_progress
+#         }
+# 	}
+# 	ENG_Churchill_Focus_on_Assembling_Naval_Aircraft = {
+# 		icon = generic_construction
+# 		cost = 105
+# 		allowed = {
+# 			original_tag = ENG
+# 		}
+# 		visible = {
+# 			has_completed_focus = ENG_Churchills_Rearmament
+# 			check_variable = { naval_aircraft_rearmament < 2 }
+# 		}
+# 		available = {
+# 			NOT = { has_country_flag = ENG_rearmament_in_progress }
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		days_remove = 100
+# 		complete_effect = {
+# 			add_ideas = ENG_Assembling_Naval_Aircraft
+# 			set_country_flag = ENG_rearmament_in_progress
+# 		}
+# 		remove_effect = {
+# 			remove_ideas = ENG_Assembling_Naval_Aircraft
+# 			add_to_variable = { naval_aircraft_rearmament = 1 } 
+# 			clr_country_flag = ENG_rearmament_in_progress
+#         }
+# 	}
+# }
+economy_decisions = {
+	ENG_Pay_Off_the_Debt = {
+		icon = GFX_decision_hol_attract_foreign_investors
+		cost = 10
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_The_London_Economic_Conference
+			OR = {
+				has_idea = ENG_World_War_One_Reparations
+				has_idea = ENG_World_War_One_Reparations_2
+				has_idea = ENG_World_War_One_Reparations_3
+				has_idea = ENG_World_War_One_Reparations_4
+				has_idea = ENG_World_War_One_Reparations_5
+			}
+		}
+		available = {
+			set_temp_variable = {
+				amount_of_money_to_check = 350
+			}
+			has_specific_amount_of_money = yes
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 70
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -350
+			}
+			add_money_with_tooltip_effect = yes
+			if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations
+					add_idea = ENG_World_War_One_Reparations_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations
+					add_idea = ENG_World_War_One_Reparations_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations_2
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations_2
+					add_idea = ENG_World_War_One_Reparations_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations_3
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations_3
+					add_idea = ENG_World_War_One_Reparations_4
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ENG_World_War_One_Reparations_4
+				}
+				swap_ideas = {
+					remove_idea = ENG_World_War_One_Reparations_4
+					add_idea = ENG_World_War_One_Reparations_5
+				}
+			}
+			else = {
+				remove_ideas = ENG_World_War_One_Reparations_5
+			}
+		}
+		remove_effect = {
+		}
+	}
+}
+foreign_politics = {
+	#ENG_Hoare_Laval_Pact = {
+	#	icon = generic_construction
+	#	cost = 10
+	#	allowed = {
+	#		original_tag = ENG
+	#	}
+	#	visible = {
+	#		ITA = {
+	#			has_war_with = ETH
+	#		}
+	#	}
+	#	available = {
+	#	}
+	#	ai_will_do = {
+	#		base = 200
+	#	}
+	#	days_remove = 55
+	#	remove_effect = {
+	#		every_country = {
+	#			limit = {
+	#				is_in_faction_with = ROOT
+	#			}
+	#			add_opinion_modifier = {
+	#				target = ITA
+	#				modifier = ENG_hoare_laval_pact_modifier
+	#			}
+	#		}
+	#	}
+	#}
+	ENG_Non_Intervention_Agreement = {
+		icon = generic_construction
+		cost = 10
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			civilwar_target = SPA
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = -1
+		modifier = {
+			stability_factor = 0.05
+			send_volunteers_tension = 0.05
+		}
+	}
+	ENG_Withdraw_from_the_Treaty_Ports = {
+		icon = generic_construction
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			country_exists = IRE
+			has_start_date < 1938.7.11
+			owns_state = 1281
+			owns_state = 1282
+			owns_state = 1283
+		}
+		available = {
+			has_war = no
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				factor = 100
+				date > 1938.7.11
+			}
+		}
+		days_remove = 70
+		complete_effect = {
+			IRE = {
+				transfer_state = 1281
+				transfer_state = 1282
+				transfer_state = 1283
+				add_opinion_modifier = {
+					target = ENG
+					modifier = border_conflict_reconciled
+				}
+			}
+		}
+	}
+	ENG_Separation_of_Burma = {
+		allowed = {
+			tag = ENG
+		}
+		available = {
+			always = no
+		}
+		activation = {
+			has_country_flag = burma_countdown
+		}
+		days_mission_timeout = 608
+		timeout_effect = {
+			RAJ = {
+				every_owned_state = {
+					limit = {
+						is_core_of = BRM
+					}
+					ROOT = {
+						transfer_state = PREV
+					}
+				}
+			}
+			clr_country_flag = burma_countdown
+		}
+	}
+}
+ENG_Defence_of_the_Isles = {
+	ENG_Raise_the_Home_Guard = {
+		icon = GFX_decision_generic_military
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		fire_only_once = yes
+		days_remove = 90
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -25
+		}
+		remove_effect = {
+			add_to_variable = { ENG_Britannia_Defiant_ACAF_Var = 0.1 }
+			add_to_variable = { ENG_Britannia_Defiant_ACDF_Var = 0.1 }
+			force_update_dynamic_modifier = yes
+			add_manpower = 100000
+			custom_effect_tooltip = ENG_Raise_the_Home_Guard_tt
+			hidden_effect = {
+				load_oob = "ENG_HG_militia"
+			}
+		}
+	}
+	ENG_Build_the_GHQ_Line = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		fire_only_once = yes
+		days_remove = 30
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -25
+		}
+		modifier = {
+			civilian_factory_use = 6
+		}
+		remove_effect = {
+			123 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 3369
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11471
+				}
+			}
+			127 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 6103
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 507
+				}
+			}
+			126 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 13729
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11333
+				}
+			}
+			125 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11374
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11253
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 3287
+				}
+			}
+		}
+	}
+	ENG_Build_the_Taunton_Line = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = decision_cost_CP_15
+		fire_only_once = yes
+		days_remove = 30
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -15
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			123 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 3369
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 9484
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 3422
+				}
+			}
+		}
+	}
+	ENG_Makeshift_Bombers = {
+		icon = GFX_decision_generic_air
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = decision_cost_CP_15
+		fire_only_once = yes
+		days_remove = 60
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -15
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = tac_bomber_equipment
+				amount = 50
+				producer = ENG
+			}
+		}
+	}
+	ENG_Destroy_the_Ports = {
+		icon = GFX_decision_generic_wreckers
+		custom_cost_trigger = {
+			command_power > 9
+		}
+		custom_cost_text = decision_cost_CP_10
+		fire_only_once = yes
+		days_remove = 7
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -10
+		}
+		remove_effect = {
+			123 = {
+				damage_building = {
+					type = naval_base
+					damage = 5
+				}
+			}
+			125 = {
+				damage_building = {
+					type = naval_base
+					damage = 5
+				}
+			}
+		}
+	}
+	ENG_Flood_the_Romney_Marsh = {
+		icon = GFX_decision_hol_inundate_water_lines
+		custom_cost_trigger = {
+			command_power > 9
+		}
+		custom_cost_text = decision_cost_CP_10
+		fire_only_once = yes
+		days_remove = 7
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -10
+		}
+		remove_effect = {
+			127 = {
+				add_dynamic_modifier = {
+					modifier = ENG_Flood_the_Romney_Marsh_Modifier
+					days = 120
+				}
+			}
+		}
+	}
+	ENG_Plan_Daedalus = {
+		icon = GFX_decision_generic_factory
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		fire_only_once = yes
+		days_remove = 100
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_command_power = -50
+			add_timed_idea = {
+				idea = ENG_Daedalus_Plan
+				days = 100
+			}
+		}
+		remove_effect = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+	ENG_Build_Fortress_on_123 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 123
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			123 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_127 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 127
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			127 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_126 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 126
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			126 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_125 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 125
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			125 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_129 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 129
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			129 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_130 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 130
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			130 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_131 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 131
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			131 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+	ENG_Build_Fortress_on_121 = {
+		icon = GFX_decision_FRA_Maginot_line
+		custom_cost_trigger = {
+			num_of_civilian_factories > 2
+		}
+		custom_cost_text = decision_cost_CF_3
+		fire_only_once = yes
+		days_remove = 45
+		ai_will_do = {
+			base = 200
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 121
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			121 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_victory_point = yes
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						limit_to_coastal = yes
+						limit_to_victory_point = yes
+					}
+				}
+			}
+		}
+	}
+}
+ENG_Defence_Pacts_Category = {
+	ENG_Anglo_Polish_Defence_Pact = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 50
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { POL }
+		days_remove = 7
+		remove_effect = {
+			give_guarantee = POL
+			POL = {
+				give_guarantee = ENG
+			}
+		}
+	}
+	ENG_Pledge_to_Protect_Greek_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { GRE }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = GRE
+		}
+	}
+	ENG_Pledge_to_Protect_Romanian_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { ROM }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = ROM
+		}
+	}
+	ENG_Pledge_to_Protect_Yugoslavian_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { YUG }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = YUG
+		}
+	}
+	ENG_Pledge_to_Protect_Belgian_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { BEL }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = BEL
+		}
+	}
+	ENG_Pledge_to_Protect_Dutch_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { HOL }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = HOL
+		}
+	}
+	ENG_Pledge_to_Protect_Swedish_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { SWE }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = SWE
+		}
+	}
+	ENG_Pledge_to_Protect_Norwegian_Sovereignty = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Discuss_Interlocking_Defence_Pacts
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		targets = { NOR }
+		days_remove = 10
+		remove_effect = {
+			give_guarantee = NOR
+		}
+	}
+}
+ENG_African_Sun_Category = {
+	ENG_Entice_Protectorate_Leaders = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 24
+			set_temp_variable = {
+				amount_of_money_to_check = 50
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_25_money_50
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_African_Sun
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				money_to_gain = -50
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+				}
+				add_compliance = 15
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+				}
+				add_compliance = 15
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+				}
+				add_compliance = 15
+			}
+		}
+	}
+	ENG_Clear_Usable_Land = {
+		icon = GFX_decision_generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 24
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_25_money_100
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_African_Sun
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	ENG_Build_Heavy_Industry_Centres = {
+		icon = GFX_decision_generic_construction
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 24
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_25_money_100
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Manufacturing_Extension
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}	
+			}
+		}
+	}
+	ENG_Attract_Anglo_American_Companies = {
+		icon = GFX_decision_gre_investment_decisions
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 24
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_25_money_100
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Manufacturing_Extension
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 500
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					is_on_continent = africa
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}	
+			}
+		}
+	}
+	ENG_Bolster_Rubber_Plantations = {
+		icon = GFX_decision_rubber
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 24
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_25_money_200
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Fuel_for_the_Imperial_Machine
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			547 = {
+				add_resource = {
+					type = rubber
+					amount = 12
+				}	
+			}
+		}
+	}
+	ENG_Prospect_for_Bauxite_Deposits = {
+		icon = GFX_decision_aluminium
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 24
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_25_money_200
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Fuel_for_the_Imperial_Machine
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			771 = {
+				add_resource = {
+					type = aluminium
+					amount = 12
+				}	
+			}
+		}
+	}
+	ENG_Empower_Resource_Commissions = {
+		icon = GFX_decision_eng_trade_unions_support
+		fire_only_once = yes
+		cost = 0
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Mines_Mills_and_Plantations
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = ENG_Colonial_Resource_Commissions
+				days = 730
+			}
+		}
+	}
+	ENG_Rumours_of_Black_Gold = {
+		icon = GFX_decision_oil
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 49
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_50_money_250
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Mines_Mills_and_Plantations
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -50
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			558 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}	
+			}
+		}
+	}
+	ENG_Support_the_South_Africa_Company = {
+		icon = GFX_decision_generic_factory
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 100
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = ENG_Getting_Out_of_the_Slump_cost
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Finance_South_African_Development
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -100
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			SAF = {
+				add_ideas = SAF_British_South_Africa_Company
+			}
+		}
+	}
+	ENG_Invest_in_South_African_Industries = {
+		icon = GFX_decision_generic_factory
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_political_power > 49
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_pp_50_money_200
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Finance_South_African_Development
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 30
+		complete_effect = {
+			add_political_power = -50
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			SAF = {
+				random_core_state = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_core_state = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}
+ENG_British_Indian_Army_Category = {
+	ENG_Introduce_Armour_to_the_Indian_Army = {
+		icon = GFX_decision_generic_tank
+		fire_only_once = yes
+		cost = 0
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Develop_the_British_Indian_Army
+		}
+		available = {
+			has_equipment = {
+				light_armor_equipment > 99
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			send_equipment = {
+				equipment = light_armor_equipment
+				amount = 100
+				target = RAJ
+			}
+			army_experience = 15
+		}
+	}
+	ENG_Send_Auchinleck_to_India = {
+		icon = GFX_decision_generic_military
+		fire_only_once = yes
+		cost = 0
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Develop_the_British_Indian_Army
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			every_possible_country = {
+				limit = { has_character = ENG_Claude_Auchinleck }
+				random_character = {
+					limit = { is_character = ENG_Claude_Auchinleck }
+					set_nationality = RAJ
+				}
+			}
+		}
+	}
+	ENG_Aid_the_Indian_Modernisation_Programmes = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		cost = 0
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Develop_the_British_Indian_Army
+		}
+		available = {
+			has_equipment = {
+				infantry_equipment > 999
+			}
+			has_equipment = {
+				support_equipment_1 > 249
+			}
+			has_equipment = {
+				artillery_equipment > 249
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 1000
+				target = RAJ
+			}
+			send_equipment = {
+				equipment = support_equipment_1
+				amount = 250
+				target = RAJ
+			}
+			send_equipment = {
+				equipment = artillery_equipment
+				amount = 250
+				target = RAJ
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.25
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				uses = 1
+				bonus = 0.25
+				category = support_tech
+			}
+		}
+	}
+}
+ENG_Imperial_Defence_Shakeup_Category = {
+	ENG_Establish_Maltese_Defences = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 350
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Imperial_Defence_Shakeup
+		}
+		available = {
+			has_completed_focus = ENG_Mediterranean_Bastion
+			116 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -350
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Established_Maltese_Defences
+			116 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 12003
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 12003
+				}
+			}
+		}
+
+	}
+	ENG_An_Unsinkable_Aircraft_Carrier = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Imperial_Defence_Shakeup
+		}
+		available = {
+			has_country_flag = ENG_Established_Maltese_Defences
+			116 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			116 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 5
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 12003
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 12003
+				}
+			}
+		}
+	}
+	ENG_Fortify_El_Alamein = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Imperial_Defence_Shakeup
+		}
+		available = {
+			has_completed_focus = ENG_El_Alamein_Strategy
+			OR = {
+				452 = {
+					is_controlled_by = ENG
+				}
+				452 = {
+					is_controlled_by = EGY
+				}
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			452 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 4
+					instant_build = yes
+					province = 1071
+				}
+			}
+		}
+	}
+	ENG_Reinforce_the_Imperial_Lifeline = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 400
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Imperial_Defence_Shakeup
+		}
+		available = {
+			has_completed_focus = ENG_Fortify_the_Suez_Canal
+			773 = {
+				is_controlled_by = ENG
+			}
+			959 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -400
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			773 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 4073
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 4
+					instant_build = yes
+					province = 4073
+				}
+			}
+			959 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 1155
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 4
+					instant_build = yes
+					province = 1155
+				}
+			}
+		}
+	}
+	ENG_Solidify_the_Rocks_Fortifications = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Locking_Down_the_Med
+		}
+		available = {
+			has_completed_focus = ENG_Fortify_the_Rock
+			118 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Solidified_the_Rock
+			118 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 4135
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+					province = 4135
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+					province = 4135
+				}
+			}
+		}
+	}
+	ENG_Establish_Further_Gibraltarian_Defences = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Locking_Down_the_Med
+		}
+		available = {
+			has_country_flag = ENG_Solidified_the_Rock
+			118 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Established_Further_Gibraltarian_Defences
+			118 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 4135
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 4135
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 4135
+				}
+			}
+		}
+	}
+	ENG_Create_An_Impenetrable_Fortress = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 300
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Locking_Down_the_Med
+		}
+		available = {
+			has_country_flag = ENG_Established_Further_Gibraltarian_Defences
+			118 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -300
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			118 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 4135
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 4135
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					instant_build = yes
+					province = 4135
+				}
+			}
+		}
+	}
+	ENG_Form_Alexandrian_Outposts = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Locking_Down_the_Med
+		}
+		available = {
+			has_completed_focus = ENG_Invest_in_Alexandria
+			447 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect ={
+			set_country_flag = ENG_Formed_Alexandrian_Outposts
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 4145
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 992
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = 4076
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+					province = 4076
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 11964
+				}
+			}
+		}
+	}
+	ENG_Construct_Alexandrian_Coastal_Defences = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_Locking_Down_the_Med
+		}
+		available = {
+			has_country_flag = ENG_Formed_Alexandrian_Outposts
+			447 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 4076
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 11964
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 4145
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 7091
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 10005
+				}
+			}
+		}
+	}
+	ENG_Expand_Trincomalee = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Watchful_Eye_Eastwards
+		}
+		available = {
+			has_completed_focus = ENG_Expand_Trincomalee_Harbour
+			1244 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Expanded_Trincomalee
+			1244 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+					province = 14064
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					instant_build = yes
+					province = 14064
+				}
+			}
+		}
+	}
+	ENG_Ceylon_Wide_Defensive_Fortifications = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Watchful_Eye_Eastwards
+		}
+		available = {
+			has_country_flag = ENG_Expanded_Trincomalee
+			1244 = {
+				is_controlled_by = ENG
+			}
+			422 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			1244 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 14064
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 14064
+				}
+			}
+			422 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 7260
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 7260
+				}
+			}
+		}
+	}
+	ENG_Invest_in_the_Singapore_Strategy = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Watchful_Eye_Eastwards
+		}
+		available = {
+			has_completed_focus = ENG_Commit_to_the_Singapore_Strategy
+			336 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Invested_in_Singapore_Strategy
+			336 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 12299
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+					province = 12299
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+					province = 12299
+				}
+			}
+		}
+	}
+	ENG_Construct_Further_Air_and_Coastal_Fortifications = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 150
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Watchful_Eye_Eastwards
+		}
+		available = {
+			has_country_flag = ENG_Invested_in_Singapore_Strategy
+			336 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -150
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Constructed_Further_Fortifications
+			336 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 12299
+				}
+			}
+		}
+	}
+	ENG_Rectify_the_Northern_Weakness = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 200
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Watchful_Eye_Eastwards
+		}
+		available = {
+			has_country_flag = ENG_Constructed_Further_Fortifications
+			336 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 150
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -200
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			set_country_flag = ENG_Rectified_Northern_Weakness
+			336 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 12299
+				}
+			}
+		}
+	}
+	ENG_A_True_Gibraltar_of_the_East = {
+		icon = GFX_decision_ger_military_buildup
+		fire_only_once = yes
+		custom_cost_trigger = {
+			set_temp_variable = {
+				amount_of_money_to_check = 250
+			}
+			has_specific_amount_of_money_with_inflation_included = yes
+		}
+		custom_cost_text = decision_cost_money
+		allowed = {
+			original_tag = ENG
+		}
+		visible = {
+			has_completed_focus = ENG_A_Watchful_Eye_Eastwards
+		}
+		available = {
+			has_country_flag = ENG_Rectified_Northern_Weakness
+			336 = {
+				is_controlled_by = ENG
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		days_remove = 200
+		complete_effect = {
+			set_temp_variable = {
+				money_to_gain = -250
+			}
+			add_money_with_inflation_included_with_tooltip_effect = yes
+		}
+		remove_effect = {
+			336 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 12299
+				}
+			}
+		}
+	}
+}

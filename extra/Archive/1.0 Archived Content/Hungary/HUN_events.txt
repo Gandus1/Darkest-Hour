@@ -1,0 +1,3131 @@
+﻿###########################
+# Darkest Hour Events : Hungary
+###########################
+
+add_namespace = DH_Hungary
+
+#########################################################################
+#  Prime Minister Gyula Gombos is dead!
+#########################################################################
+country_event = { 
+	id = DH_Hungary.1
+	title = DH_Hungary.1.t
+	desc = DH_Hungary.1.d
+	picture = GFX_
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = HUN
+		date > 1936.10.6
+		has_start_date < 1936.10.6
+	}
+	# Bring in Daranyi
+	option = { 
+		name = DH_Hungary.1.A
+		set_country_flag = Gyula_Gombos_de_Jakfa_unavailable
+		add_ideas = HUN_HoG_K_Daranyi_de_Pusztaszentgyorgyi
+
+	}
+}
+
+#########################################################################
+#  Germany Invests in Hungary?
+#########################################################################
+country_event = { 
+	id = DH_Hungary.2
+	title = DH_Hungary.2.t
+	desc = DH_Hungary.2.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+	
+	#Yes
+	option = { 
+		name = DH_Hungary.2.a
+		ai_chance = { factor = 200 }
+		add_political_power = -60
+		add_opinion_modifier = { target = HUN modifier = medium_increase }
+		HUN = { country_event = { days = 1 id = DH_Hungary.3 } }
+		GER = { 
+			add_timed_idea = {
+				idea = HUN_idea_Hungarian_Investment
+				days = 200
+			}
+		}
+		
+	}
+	#No
+	option = { 
+		name = DH_Hungary.2.b
+		ai_chance = { factor = 0 }
+		add_political_power = 80
+		add_opinion_modifier = { target = HUN modifier = medium_decrease }
+		HUN = { country_event = { days = 1 id = DH_Hungary.4 } }
+	}
+}
+
+
+#########################################################################
+# Capital Reassured
+#########################################################################
+country_event = { 
+	id = DH_Hungary.3
+	title = DH_Hungary.3.t
+	desc = DH_Hungary.3.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+	
+	#Civilian
+	option = { 
+		name = DH_Hungary.3.a
+		HUN = {
+			add_timed_idea = {
+				idea = HUN_idea_Civilian_Sector
+				days = 180
+			}
+		}	
+	}
+	#Military
+	option = { 
+		name = DH_Hungary.3.b
+		HUN = {
+			add_timed_idea = {
+				idea = HUN_idea_Military_Sector
+				days = 180
+			}
+		}	
+	}
+}
+
+#Germany says NO!
+country_event = { 
+	id = DH_Hungary.4
+	title = DH_Hungary.4.t
+	desc = DH_Hungary.4.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+	
+	option = { 
+		name = DH_Hungary.4.a	
+	}
+}
+
+#############################################
+# Hungary Offers Non-Aggression Pact
+#############################################
+#France Gets Event 
+country_event = { 
+	id = DH_Hungary.5
+	title = DH_Hungary.5.t
+	desc = DH_Hungary.5.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+	
+	#Say Yes
+	option = { 
+		name = DH_Hungary.5.a
+		ai_chance = { factor = 0.5 }
+		HUN = { country_event = { days = 1 id = DH_Hungary.6 } }
+		diplomatic_relation = {
+			country = HUN
+			relation = non_aggression_pact
+			active = yes
+		}
+	}
+	
+	#Say No
+	option = { 
+		name = DH_Hungary.5.b	
+		ai_chance = { factor = 0.5 }
+		
+	}
+}
+
+#They says yes
+country_event = { 
+	id = DH_Hungary.6
+	title = DH_Hungary.6.t
+	desc = DH_Hungary.6.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = { 
+		name = DH_Hungary.6.a
+	}
+}
+
+#They says no
+country_event = { 
+	id = DH_Hungary.7
+	title = DH_Hungary.7.t
+	desc = DH_Hungary.7.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = { 
+		name = DH_Hungary.7.a
+	}
+}
+
+##############################
+# Return of Otto
+##############################
+country_event = { 
+	id = DH_Hungary.8
+	title = DH_Hungary.8.t
+	desc = DH_Hungary.8.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.8.a
+		create_country_leader = {
+			name = "Otto I"
+			desc = ""
+			picture = "Hungary_PA_Otto_I.tga"
+			expire = "1965.1.1"
+			ideology = monarchism
+			traits = {}
+		}
+	}
+}
+
+########################################
+# Hungary requests unification
+########################################
+country_event = {
+	id = DH_Hungary.9
+	title = DH_Hungary.9.t
+	desc = DH_Hungary.9.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes 
+	
+	#Yes
+	option = {
+		name = DH_Hungary.9.a
+		ai_chance = { factor = 200 }
+		trigger = {
+			AUS = { has_global_flag = Austrian_Autonomy_Supported }
+			AUS = { authoritarian > 0.4 }
+		}
+		custom_effect_tooltip = aus_hun_annex_tt
+		hidden_effect = {
+			HUN = { country_event = { days = 1 id = DH_Hungary.10 } }
+		}
+	}
+	
+	#No
+	option = { 
+		name = DH_Hungary.9.b
+		HUN = { country_event = { days = 1 id = DH_Hungary.13 } }
+	}
+}
+
+# Austria says yeah
+country_event = { 
+	id = DH_Hungary.10
+	title = DH_Hungary.10.t
+	desc = DH_Hungary.10.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	immediate = {
+		annex_country = {
+			target = AUS
+			transfer_troops = yes
+		}
+	}
+
+	option = {
+		name = DH_Hungary.10.a
+	}
+}
+
+# Austria says NO!
+country_event = { 
+	id = DH_Hungary.13
+	title = DH_Hungary.13.t
+	desc = DH_Hungary.13.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	immediate = {
+		HUN = {
+			create_wargoal = {
+				type = annex_everything
+				target = AUS
+			}
+		}
+	}
+
+	option = {
+		name = DH_Hungary.13.a
+	}
+}
+
+######################################
+# Greater Hungary
+#################################################
+country_event = {
+	id = DH_Hungary.11
+	title = DH_Hungary.11.t
+	desc = DH_Hungary.11.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	immediate = {
+		HUN = { set_cosmetic_tag = HUN_GREATER }
+	}
+	
+	option = {
+		name = DH_Hungary.11.a
+	}
+}
+
+########################################
+# Austria Hungary
+#################################################
+country_event = { 
+	id = DH_Hungary.12
+	title = DH_Hungary.12.t
+	desc = DH_Hungary.12.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.12.a
+		HUN = { set_cosmetic_tag = HUN_EMPIRE }
+	}
+}
+
+#################################################
+# Hungary asks Great Powers for Austria
+#################################################
+country_event = {
+	id = DH_Hungary.14
+	title = DH_Hungary.14.t
+	desc = DH_Hungary.14.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	
+	is_triggered_only = yes 
+	
+	#France says Yes
+	option = {
+		name = DH_Hungary.14.a
+		ai_chance = { factor = 200 }
+		trigger = {
+			tag = FRA 
+			has_opinion = {
+				target = HUN
+				value = 75
+			}
+		}
+		set_global_flag = France_Says_Yes_To_Hungary
+	}
+	
+	#France says No
+	option = { 
+		name = DH_Hungary.14.b
+		ai_chance = { factor = 20 }
+		trigger = {
+			tag = FRA
+			NOT = {
+				has_opinion = {
+					target = HUN
+					value = 75
+				}	
+			}	
+		}
+		set_global_flag = France_Says_No_To_Hungary
+	}
+	
+	#Britain says Yes
+	option = {
+		name = DH_Hungary.14.c
+		ai_chance = { factor = 200 }
+		trigger = {
+			tag = ENG
+			has_opinion = {
+				target = HUN
+				value = 75
+			}
+		}
+		set_global_flag = Britain_Says_Yes_To_Hungary
+	}
+	
+	#Britain says No
+	option = {
+		name = DH_Hungary.14.d
+		ai_chance = { factor = 20 }
+		trigger = {
+			tag = ENG
+			NOT = {
+				has_opinion = {
+					target = HUN
+					value = 75
+				}	
+			}	
+		}
+		set_global_flag = Britain_Says_No_To_Hungary
+	}
+}
+
+#They Say YES
+country_event = { 
+	id = DH_Hungary.15
+	title = DH_Hungary.15.t
+	desc = DH_Hungary.15.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	
+	trigger = {
+		tag = HUN
+		has_global_flag = France_Says_Yes_To_Hungary
+		has_global_flag = Britain_Says_Yes_To_Hungary
+	}
+	
+	option = {
+		name = DH_Hungary.15.a
+		annex_country = {
+			target = AUS
+			transfer_troops = yes
+		}
+	}
+}
+
+#They Say NO
+country_event = { 
+	id = DH_Hungary.16
+	title = DH_Hungary.16.t
+	desc = DH_Hungary.16.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	
+	trigger = {
+		tag = HUN
+		OR = {
+			has_global_flag = France_Says_No_To_Hungary
+			has_global_flag = Britain_Says_No_To_Hungary
+		}
+	}
+	
+	option = {
+		name = DH_Hungary.16.a
+	}
+}
+#################################################
+# England Receives Hungary wanting to flip sides
+#################################################
+country_event = { 
+	id = DH_Hungary.17
+	title = DH_Hungary.17.t
+	desc = DH_Hungary.17.d
+	picture = GFX_news_event_002
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	#Sure
+	option = {
+		name = DH_Hungary.17.a
+		every_other_country = {
+			limit = {
+				is_in_faction_with = ENG
+				has_war_with = HUN
+			}
+			HUN = {
+				white_peace = PREV
+			}
+		}
+			
+		HUN = {	
+			leave_faction = yes
+			add_to_faction = Allies
+			add_opinion_modifier = {
+				target = GER
+				modifier = faction_traitor
+			}
+		}
+		HUN = { country_event = { days = 1 id = DH_Hungary.18 } }
+	}
+	
+	#Haha no
+	option = {
+		name = DH_Hungary.17.b
+		HUN = { country_event = { days = 0 id = DH_Hungary.19 } }
+	}
+}
+
+#Britain says yes
+country_event = {
+	id = DH_Hungary.18
+	title = DH_Hungary.18.t
+	desc = DH_Hungary.18.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.18.a
+	}
+}
+
+#Britain says no
+country_event = { 
+	id = DH_Hungary.19
+	title = DH_Hungary.19.t
+	desc = DH_Hungary.19.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.19.a
+	}
+}
+
+#Hungary has betrayed us!
+country_event = { 
+	id = DH_Hungary.20
+	title = DH_Hungary.20.t
+	desc = DH_Hungary.20.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.20.a
+		GER = { 
+			declare_war_on = {
+				target = HUN
+				type = annex_everything
+			}
+		}
+	}
+}
+
+########################################
+# Hungary demands Transylvania events
+########################################
+country_event = { 
+	id = DH_Hungary.21
+	title = DH_Hungary.21.t
+	desc = DH_Hungary.21.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	#Demand Land
+	option = {
+		name = DH_Hungary.21.a
+		ai_chance = {
+			factor = 0
+		}
+		ROM = { country_event = { days = 1 id = DH_Hungary.22 } }
+	}
+
+	#Plebiscite 
+	option = {
+		name = DH_Hungary.21.b
+		ai_chance = {
+			factor = 100
+		}
+		#ROM = { country_event = { days = 1 id = DH_Hungary.25 } }
+	}
+}
+
+#Hungary demands Transylvania from Romania
+country_event = {
+	id = DH_Hungary.22
+	title = DH_Hungary.22.t
+	desc = DH_Hungary.22.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.22.a
+		HUN = { country_event = { days = 1 id = DH_Hungary.23 } }
+		HUN = {
+			transfer_state = 839
+			transfer_state = 76
+			transfer_state = 838
+			transfer_state = 84
+			transfer_state = 83
+			transfer_state = 82
+		}
+	}
+
+	option = {
+		name = DH_Hungary.22.b
+		HUN = { country_event = { days = 1 id = DH_Hungary.24 } }
+	}
+}
+#Ye
+country_event = {
+	id = DH_Hungary.23
+	title = DH_Hungary.23.t
+	desc = DH_Hungary.23.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.23.a
+	}
+}
+#Na
+country_event = {
+	id = DH_Hungary.24
+	title = DH_Hungary.24.t
+	desc = DH_Hungary.24.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.24.a
+		declare_war_on = {
+			target = ROM
+			type = annex_everything
+		}
+	}
+}
+
+#Czech gets event question
+country_event = {
+	id = DH_Hungary.25
+	title = DH_Hungary.25.t
+	desc = DH_Hungary.25.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.25.a
+		HUN = { country_event = { days = 1 id = DH_Hungary.27 } }
+	}
+
+	option = {
+		name = DH_Hungary.25.b
+		HUN = { country_event = { days = 1 id = DH_Hungary.26 } }
+		HUN = {
+			annex_country = {
+				target = CZE
+				transfer_troops = yes
+			}		
+		}
+	}
+	option = {
+		name = DH_Hungary.25.c
+		HUN = { country_event = { days = 1 id = DH_Hungary.26 } }
+		HUN = {
+			puppet = CZE
+		}
+	}	
+}
+#Submits
+country_event = {
+	id = DH_Hungary.26
+	title = DH_Hungary.26.t
+	desc = DH_Hungary.26.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.26.a
+	}
+}
+#Does not submit
+country_event = {
+	id = DH_Hungary.27
+	title = DH_Hungary.27.t
+	desc = DH_Hungary.27.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.27.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CZE
+		}
+	}
+}
+####################################
+#Czechoslovakia 
+country_event = {
+	id = DH_Hungary.28
+	title = DH_Hungary.28.t
+	desc = DH_Hungary.28.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.28.a
+		HUN = { country_event = { days = 1 id = DH_Hungary.29 } }
+	}
+	option = {
+		name = DH_Hungary.28.b
+		HUN = { country_event = { days = 1 id = DH_Hungary.30 } }
+		HUN = { 
+			transfer_state = 772
+			transfer_state = 45
+			transfer_state = 819
+			transfer_state = 109
+			transfer_state = 770
+			transfer_state = 102
+			transfer_state = 765
+			transfer_state = 815
+			transfer_state = 103
+		}
+	}
+}
+
+country_event = {
+	id = DH_Hungary.29
+	title = DH_Hungary.29.t
+	desc = DH_Hungary.29.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.29.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = YUG
+		}		
+	}
+}
+
+country_event = {
+	id = DH_Hungary.30
+	title = DH_Hungary.30.t
+	desc = DH_Hungary.30.d
+	picture = GFX_news_event_002
+	is_triggered_only = yes 
+
+	option = {
+		name = DH_Hungary.30.a		
+	}
+}
+
+###########################
+# Hungarian Events
+###########################
+
+add_namespace = DOD_hungary
+
+#Bled Agreement - Hungary asks for rearmament - France or Romania asked first
+country_event = {
+	id = DOD_hungary.140
+	title = DOD_hungary.140.t
+	desc = DOD_hungary.140.desc 
+	picture = GFX_report_event_hungary_parliament
+	
+	is_triggered_only = yes
+
+	option = {# allow
+		name = DOD_hungary.140.a
+		ai_chance = {
+			factor = 75
+			modifier = {
+				threat < 0.5
+				factor = 2 #what's the worst that could happen
+			}
+			modifier = {
+				has_war = yes
+				factor = 0.25
+			}
+			modifier = {
+				HUN = {
+					is_democratic = yes
+				}
+				factor = 3
+			}
+		}
+		if = { 
+			limit = { tag = FRA }
+			set_global_flag = HUN_FRA_engaged
+			ROM = { country_event = { id = DOD_hungary.141 days = 4 } }
+			YUG = { country_event = { id = DOD_hungary.141 days = 4 } }
+			CZE = { country_event = { id = DOD_hungary.141 days = 4 } }
+		}
+		if = { 
+			limit = { tag = ROM }
+			YUG = { country_event = { id = DOD_hungary.141 days = 4 } }
+			CZE = { country_event = { id = DOD_hungary.141 days = 4 } }
+		}
+		HUN = {
+			country_event = { id = DOD_hungary.142 days = 3 }
+		}
+	}
+
+	option = {# refuse
+		name = DOD_hungary.140.b
+		ai_chance = {
+			factor = 25
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		HUN = { country_event = { id = DOD_hungary.144 days = 3 } }
+	}
+}
+
+#Bled Agreement - ROM/FRA has agreed, minors get to issue a response
+country_event = {
+	id = DOD_hungary.141
+	title = DOD_hungary.141.t
+	desc = DOD_hungary.141.desc 
+	picture = GFX_report_event_journalists_speech
+	
+	is_triggered_only = yes
+
+	option = {# intervene
+		name = DOD_hungary.141.a
+		trigger = {
+			HUN = {
+				OR = {
+					has_government = fascist
+					has_added_tension_amount > 0.05 #hungary has been bad
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = HUN
+		}
+		add_political_power = -200
+		add_stability = -0.15
+		add_war_support = -0.1
+		add_threat = 5
+	}
+	option = {# issue a protest
+		name = DOD_hungary.141.b
+		ai_chance = {
+			factor = 45
+		}
+		add_opinion_modifier = { target = HUN modifier = protest_action }
+		HUN = { country_event = DOD_hungary.143 }
+	}
+
+	option = {# accept it
+		name = DOD_hungary.141.c
+		ai_chance = {
+			factor = 45
+		}
+	}
+}
+
+#Bled Agreement - HUN permitted to rearm
+country_event = {
+	id = DOD_hungary.142
+	title = DOD_hungary.142.t
+	desc = DOD_hungary.142.desc 
+	picture = GFX_report_event_generic_military_parade
+	
+	is_triggered_only = yes
+
+	option = {# 
+		name = DOD_hungary.142.a
+		if = {
+			limit = { has_idea = HUN_treaty_of_triannon }
+			swap_ideas = {
+				remove_idea = HUN_treaty_of_triannon
+				add_idea = HUN_treaty_of_triannon_3
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_treaty_of_triannon_2 }
+			swap_ideas = {
+				remove_idea = HUN_treaty_of_triannon_2
+				add_idea = HUN_treaty_of_triannon_3
+			}
+		}
+	}
+	
+}
+
+#Bled Agreement - Neighbours issue a protest
+country_event = {
+	id = DOD_hungary.143
+	title = DOD_hungary.143.t
+	desc = DOD_hungary.143.desc 
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {# good for them
+		name = DOD_hungary.143.a
+	}
+	
+}
+
+#Bled Agreement - Hungary denied rearmament
+country_event = {
+	id = DOD_hungary.144
+	title = DOD_hungary.144.t
+	desc = DOD_hungary.144.desc 
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {# accept
+		name = DOD_hungary.144.a
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = -0.1
+	}
+
+	option = {# appeal
+		name = DOD_hungary.144.b
+		ai_chance = {
+			factor = 90
+		}
+		HUN = { country_event = DOD_hungary.145 }
+	}
+
+}
+
+#Bled Agreement - Hungary appeals
+country_event = {
+	id = DOD_hungary.145
+	title = DOD_hungary.145.t
+	desc = DOD_hungary.145.desc 
+	picture = GFX_report_event_hungary_refused
+	
+	is_triggered_only = yes
+
+	option = {# appeal to Germany
+		name = DOD_hungary.145.a
+		ai_chance = {
+			factor = 35
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+		}
+		trigger = {
+			NOT = {
+				has_war_with = GER
+			}
+			NOT = { has_government = fascist }
+		}
+		GER = { country_event = DOD_hungary.146 }
+	}
+
+	option = {# appeal to France
+		name = DOD_hungary.145.b
+		ai_chance = {
+			factor = 35
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+		}
+		trigger = {
+		 	NOT = { 
+		 		has_global_flag = HUN_FRA_engaged 
+		 		has_war_with = FRA
+		 	}
+		}
+		FRA = { country_event = DOD_hungary.146 }
+	}
+	option = {# appeal to Soviet Union
+		name = DOD_hungary.145.c
+		trigger = {
+			has_government = fascist
+			SOV = { has_government = fascist }
+		}
+		ai_chance = {
+			factor = 35
+			modifier = {
+				is_in_faction_with = SOV
+				factor = 10
+			}
+		}
+
+		SOV = { country_event = DOD_hungary.146 }
+	}
+	option = {# appeal to Italy
+		name = DOD_hungary.145.d
+		ai_chance = {
+			factor = 35
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+		}
+		trigger = {
+			ITA = {
+				NOT = { is_in_faction_with = GER }
+			}
+			NOT = {
+				has_war_with = ITA
+			}
+		}
+		ITA = { country_event = DOD_hungary.146 }
+	}
+	option = {# appeal to Britain
+		name = DOD_hungary.145.e
+		ai_chance = {
+			factor = 35
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+		}
+		trigger = {
+			NOT = {
+				has_war_with = ENG
+			}
+		}
+		ENG = { country_event = DOD_hungary.146 }
+	}
+
+}
+
+#Bled Agreement - Hungary appeals to a major
+country_event = {
+	id = DOD_hungary.146
+	title = DOD_hungary.146.t
+	desc = DOD_hungary.146.desc 
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+
+	option = {# put pressure on the minors
+		name = DOD_hungary.146.a
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 10
+			}
+		}
+		if = { limit = { has_global_flag = HUN_FRA_engaged} 
+			FRA = { country_event = { id = DOD_hungary.147 days = 1} }
+		}
+		if = { limit = { NOT = { has_global_flag = HUN_FRA_engaged } }
+			ROM = { country_event = { id = DOD_hungary.147 days = 1} }
+		}
+
+		add_threat = 1
+	}
+
+	option = {# Hungary has to fend for themselves
+		name = DOD_hungary.146.b
+		ai_chance = {
+			factor = 30
+		}
+		HUN = { country_event = { id = DOD_hungary.148 days = 2 } }
+	}
+
+}
+
+#Bled Agreement - Someone applies pressure to minors to let Hungary rearm
+country_event = {
+	id = DOD_hungary.147
+	title = DOD_hungary.147.t
+	desc = DOD_hungary.147.desc 
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {# yield
+		name = DOD_hungary.147.a
+		ai_chance = {
+			factor = 80
+		}
+		HUN = { country_event = DOD_hungary.142 }
+		HUN = { add_opinion_modifier = { target = FROM modifier = offered_support } }
+		if = { 
+			limit = { tag = FRA }
+			set_global_flag = HUN_FRA_engaged
+			ROM = { country_event = DOD_hungary.141 }
+			YUG = { country_event = DOD_hungary.141 }
+			CZE = { country_event = DOD_hungary.141 }
+		}
+		if = { 
+			limit = { tag = ROM }
+			YUG = { country_event = DOD_hungary.141 }
+			CZE = { country_event = DOD_hungary.141 }
+		}
+	}
+
+	option = {# be firm
+		name = DOD_hungary.147.b
+		ai_chance = {
+			factor = 20
+		}
+		HUN = { country_event = DOD_hungary.148 }
+		FROM = { add_opinion_modifier = { target = PREV modifier = HUN_stubborn_fools } }
+		HUN = { add_opinion_modifier = { target = FROM modifier = offered_support } }
+	}
+
+}
+
+#Bled Agreement - Hungary denied rearmament
+country_event = {
+	id = DOD_hungary.148
+	title = DOD_hungary.148.t
+	desc = DOD_hungary.148.desc 
+	picture = GFX_report_event_hungary_refused
+	
+	is_triggered_only = yes
+
+	option = {# yield
+		name = DOD_hungary.148.a
+		ai_chance = {
+			factor = 20
+			modifier = {
+				has_government = fascist
+				factor = 0
+			}
+		}
+	}
+
+	option = {# rearm anyway
+		name = DOD_hungary.148.b
+		ai_chance = {
+			factor = 80
+		}
+		add_threat = 5
+		remove_ideas = HUN_treaty_of_triannon
+	}
+}
+
+#fighter competition - initial choice for Hungary
+country_event = {
+	id = DOD_hungary.150
+	title = DOD_hungary.150.t
+	desc = DOD_hungary.150.desc 
+	picture = GFX_report_event_fighters 
+	
+	is_triggered_only = yes
+
+	option = {# light fighter
+		name = DOD_hungary.150.a
+		trigger = {
+			OR = {
+				GER = {
+					is_available_fighter_HUN = yes
+				}
+				FRA = {
+					is_available_fighter_HUN = yes
+				}
+				ITA = {
+					is_available_fighter_HUN = yes
+				}
+				ENG = {
+					is_available_fighter_HUN = yes
+				}
+				USA = {
+					is_available_fighter_HUN = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Fighter_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = Fighter_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = Fighter_1943
+				factor = 0
+			}
+		}
+		country_event = DOD_hungary.151 
+		
+	}
+
+	option = {# heavy fighter
+		name = DOD_hungary.150.b
+		trigger = {
+			OR = {
+				GER = {
+					is_available_heavy_fighter_HUN = yes
+				}
+				FRA = {
+					is_available_heavy_fighter_HUN = yes
+				}
+				ITA = {
+					is_available_heavy_fighter_HUN = yes
+				}
+				ENG = {
+					is_available_heavy_fighter_HUN = yes
+				}
+				USA = {
+					is_available_heavy_fighter_HUN = yes
+				}
+			}
+		}
+		country_event = DOD_hungary.152
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Heavy_Fighter_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = Heavy_Fighter_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = Heavy_Fighter_1943
+				factor = 0
+			}
+		}
+	}
+}
+
+#Fighter competition - Hungary is looking for a light fighter
+country_event = {
+	id = DOD_hungary.151
+	title = DOD_hungary.151.t
+	desc = {
+		text = DOD_hungary.151.desc_light_fighter
+		trigger = {
+			NOT = { 
+				has_country_flag = GER_fighter_refused
+				has_country_flag = ENG_fighter_refused
+				has_country_flag = USA_fighter_refused
+				has_country_flag = FRA_fighter_refused
+				has_country_flag = ITA_fighter_refused
+			} 
+		}
+	}
+	desc = {
+		text = DOD_hungary.151.desc_light_fighter_refused
+		trigger = {
+			OR = {
+		 		has_country_flag = GER_fighter_refused
+				has_country_flag = ENG_fighter_refused
+				has_country_flag = USA_fighter_refused
+				has_country_flag = FRA_fighter_refused
+				has_country_flag = ITA_fighter_refused
+		 	}
+		}
+	}
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# Select German Plane
+		name = DOD_hungary.151.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Fighter_1936}
+					HUN = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					GER = { has_tech = Fighter_1940}
+					HUN = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					GER = { has_tech = Fighter_1943}
+					HUN = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_fighter_refused }
+		}
+		GER = { country_event = DOD_hungary.153 }	
+	}
+
+	option = {# select italian plane
+		name = DOD_hungary.151.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Fighter_1936}
+					HUN = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = Fighter_1940}
+					HUN = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = Fighter_1943}
+					HUN = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_fighter_refused }
+		}
+		ITA = { country_event = DOD_hungary.153 }	
+	}
+
+	option = {# select french plane
+		name = DOD_hungary.151.c
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Fighter_1936}
+					HUN = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = Fighter_1940}
+					HUN = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = Fighter_1943}
+					HUN = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_fighter_refused }
+			
+		}
+		FRA = { country_event = DOD_hungary.153 }	
+	}
+	option = {# select british plane
+		name = DOD_hungary.151.d
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Fighter_1936}
+					HUN = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = Fighter_1940}
+					HUN = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = Fighter_1943}
+					HUN = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_fighter_refused }
+		}
+		ENG = { country_event = DOD_hungary.153 }	
+	}
+	option = {# select american plane
+		name = DOD_hungary.151.e
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = Fighter_1936}
+					HUN = { NOT = { has_tech = Fighter_1936 } }
+				}
+				AND = {
+					USA = { has_tech = Fighter_1940}
+					HUN = { NOT = { has_tech = Fighter_1940 } }
+				}
+				AND = {
+					USA = { has_tech = Fighter_1943}
+					HUN = { NOT = { has_tech = Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_fighter_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_fighter_HUN = yes
+					}
+					FRA = {
+						is_available_fighter_HUN = yes
+					}
+					ITA = {
+						is_available_fighter_HUN = yes
+					}
+					ENG = {
+						is_available_fighter_HUN = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = DOD_hungary.153 }	
+	}
+	option = {# failsafe
+		name = DOD_hungary.151.f	
+		trigger = {
+			OR = {
+				has_country_flag = GER_fighter_refused
+				has_country_flag = ITA_fighter_refused
+				has_country_flag = ENG_fighter_refused
+				has_country_flag = FRA_fighter_refused
+				has_country_flag = USA_fighter_refused
+			}
+		}
+		air_experience = 50
+	}
+
+}
+
+#Fighter competition - Hungary is looking for a heavy fighter
+country_event = {
+	id = DOD_hungary.152
+	title = DOD_hungary.152.t
+	desc = {
+		text = DOD_hungary.152.desc_heavy_fighter
+		trigger = {
+			NOT = { 
+				has_country_flag = GER_heavy_fighter_refused
+				has_country_flag = ENG_heavy_fighter_refused
+				has_country_flag = USA_heavy_fighter_refused
+				has_country_flag = FRA_heavy_fighter_refused
+				has_country_flag = ITA_heavy_fighter_refused
+			} 
+		}
+	}
+	desc = {
+		text = DOD_hungary.152.desc_heavy_fighter_refused
+		trigger = {
+			OR = {
+		 		has_country_flag = GER_heavy_fighter_refused
+				has_country_flag = ENG_heavy_fighter_refused
+				has_country_flag = USA_heavy_fighter_refused
+				has_country_flag = FRA_heavy_fighter_refused
+				has_country_flag = ITA_heavy_fighter_refused
+		 	}
+		}
+	}
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# Select German Plane
+		name = DOD_hungary.151.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Heavy_Fighter_1936}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					GER = { has_tech = Heavy_Fighter_1940}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					GER = { has_tech = Heavy_Fighter_1943}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_heavy_fighter_refused }
+		}
+		GER = { country_event = DOD_hungary.154 }	
+	}
+
+	option = {# select italian plane
+		name = DOD_hungary.151.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Heavy_Fighter_1936}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = Heavy_Fighter_1940}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = Heavy_Fighter_1943}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_heavy_fighter_refused }
+		}
+		ITA = { country_event = DOD_hungary.154 }	
+	}
+
+	option = {# select french plane
+		name = DOD_hungary.151.c
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Heavy_Fighter_1936}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = Heavy_Fighter_1940}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = Heavy_Fighter_1943}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_heavy_fighter_refused }
+			
+		}
+		FRA = { country_event = DOD_hungary.154 }	
+	}
+	option = {# select british plane
+		name = DOD_hungary.151.d
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Heavy_Fighter_1936}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = Heavy_Fighter_1940}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = Heavy_Fighter_1943}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_heavy_fighter_refused }
+		}
+		ENG = { country_event = DOD_hungary.154 }	
+	}
+	option = {# select american plane
+		name = DOD_hungary.151.e
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = Heavy_Fighter_1936
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Heavy_Fighter_1940
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Heavy_Fighter_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = Heavy_Fighter_1936}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1936 } }
+				}
+				AND = {
+					USA = { has_tech = Heavy_Fighter_1940}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1940 } }
+				}
+				AND = {
+					USA = { has_tech = Heavy_Fighter_1943}
+					HUN = { NOT = { has_tech = Heavy_Fighter_1943 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_heavy_fighter_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_heavy_fighter_HUN = yes
+					}
+					FRA = {
+						is_available_heavy_fighter_HUN = yes
+					}
+					ITA = {
+						is_available_heavy_fighter_HUN = yes
+					}
+					ENG = {
+						is_available_heavy_fighter_HUN = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = DOD_hungary.154 }	
+	}
+	option = {# failsafe
+		name = DOD_hungary.151.f	
+		trigger = {
+			OR = {
+				has_country_flag = GER_heavy_fighter_refused
+				has_country_flag = ITA_heavy_fighter_refused
+				has_country_flag = ENG_heavy_fighter_refused
+				has_country_flag = FRA_heavy_fighter_refused
+				has_country_flag = USA_heavy_fighter_refused
+			}
+		}
+		air_experience = 50
+	}
+
+}
+
+#fighter competition - light fighter competition winner gets a choice whether to permit license production
+country_event = {
+	id = DOD_hungary.153
+	title = DOD_hungary.153.t
+	desc = DOD_hungary.153.desc 
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# certainly
+		name = DOD_hungary.153.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		HUN = { country_event = DOD_hungary.155 }
+		air_experience = 20
+		if = {
+			limit = {
+				has_tech = Fighter_1936
+				NOT = { has_tech = Fighter_1940 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Fighter_equipment_1936
+					
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Fighter_1940
+				NOT = { has_tech = Fighter_1943 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Fighter_equipment_1940
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Fighter_1943
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Fighter_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+	}
+
+	option = {# no
+		name = DOD_hungary.153.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			HUN = { set_country_flag = GER_fighter_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			HUN = { set_country_flag = ITA_fighter_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			HUN = { set_country_flag = FRA_fighter_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			HUN = { set_country_flag = ENG_fighter_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			HUN = { set_country_flag = USA_fighter_refused }
+		}
+		HUN = { country_event = DOD_hungary.151 }
+		reverse_add_opinion_modifier = { target = HUN modifier = refused_help }
+	}
+}
+
+#fighter competition - heavy fighter competition winner gets a choice whether to permit license production
+country_event = {
+	id = DOD_hungary.154
+	title = DOD_hungary.153.t
+	desc = DOD_hungary.154.desc 
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# certainly
+		name = DOD_hungary.153.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		air_experience = 20
+		HUN = { country_event = DOD_hungary.155 }
+		if = {
+			limit = {
+				has_tech = Heavy_Fighter_1936
+				NOT = { has_tech = Heavy_Fighter_1940 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Heavy_Fighter_equipment_1936
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Heavy_Fighter_1940
+				NOT = { has_tech = Heavy_Fighter_1943 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Heavy_Fighter_equipment_1940	
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Heavy_Fighter_1943
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Heavy_Fighter_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+		
+	}
+
+	option = {# no
+		name = DOD_hungary.153.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			HUN = { set_country_flag = GER_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			HUN = { set_country_flag = ITA_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			HUN = { set_country_flag = FRA_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			HUN = { set_country_flag = ENG_heavy_fighter_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			HUN = { set_country_flag = USA_heavy_fighter_refused }
+		}
+		HUN = { country_event = DOD_hungary.152 }
+		reverse_add_opinion_modifier = { target = HUN modifier = refused_help }
+	}
+}
+
+#fighter competition - license production approved
+country_event = {
+	id = DOD_hungary.155
+	title = DOD_hungary.155.t
+	desc = DOD_hungary.155.desc 
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+
+	option = {# neat
+		name = DOD_hungary.155.a
+		
+	}
+}
+
+#bomber competition - initial choice for Hungary
+country_event = {
+	id = DOD_hungary.160
+	title = DOD_hungary.160.t
+	desc = DOD_hungary.160.desc 
+	picture = GFX_report_event_generic_bombers
+	
+	is_triggered_only = yes
+
+	option = {# CAS
+		name = DOD_hungary.160.a
+		trigger = {
+			OR = {
+				GER = {
+					is_available_cas_HUN = yes
+				}
+				FRA = {
+					is_available_cas_HUN = yes
+				}
+				ITA = {
+					is_available_cas_HUN = yes
+				}
+				ENG = {
+					is_available_cas_HUN = yes
+				}
+				USA = {
+					is_available_cas_HUN = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = CAS_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = CAS_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = CAS_1943
+				factor = 0
+			}
+		}
+		country_event = DOD_hungary.161 	
+	}
+
+	option = {# TAC
+		name = DOD_hungary.160.b
+		trigger = {
+			OR = {
+				GER = {
+					is_available_tac_HUN = yes
+				}
+				FRA = {
+					is_available_tac_HUN = yes
+				}
+				ITA = {
+					is_available_tac_HUN = yes
+				}
+				ENG = {
+					is_available_tac_HUN = yes
+				}
+				USA = {
+					is_available_tac_HUN = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_tech = Tactical_Bomber_1936
+				add = -10
+			}
+			modifier = {
+				has_tech = Tactical_Bomber_1940
+				add = -10
+			}
+			modifier = {
+				has_tech = Tactical_Bomber_1943
+				factor = 0
+			}
+		}
+		country_event = DOD_hungary.162
+	}
+}
+
+#Bomber competition - Hungary is looking for a CAS
+country_event = {
+	id = DOD_hungary.161
+	title = DOD_hungary.161.t
+	desc = {
+		text = DOD_hungary.161.desc_cas
+		trigger = {
+			NOT = { 
+				has_country_flag = GER_CAS_refused
+				has_country_flag = ENG_CAS_refused
+				has_country_flag = USA_CAS_refused
+				has_country_flag = FRA_CAS_refused
+				has_country_flag = ITA_CAS_refused
+			} 
+		}
+	}
+	desc = {
+		text = DOD_hungary.161.desc_cas_refused
+		trigger = {
+			OR = {
+		 		has_country_flag = GER_CAS_refused
+				has_country_flag = ENG_CAS_refused
+				has_country_flag = USA_CAS_refused
+				has_country_flag = FRA_CAS_refused
+				has_country_flag = ITA_CAS_refused
+		 	}
+		}
+	}
+	picture = GFX_report_event_generic_bombers
+	
+	is_triggered_only = yes
+
+	option = {# Select German Plane
+		name = DOD_hungary.151.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = CAS_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = CAS_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = CAS_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = CAS_1936}
+					HUN = { NOT = { has_tech = CAS_1936 } }
+				}
+				AND = {
+					GER = { has_tech = CAS_1940}
+					HUN = { NOT = { has_tech = CAS_1940 } }
+				}
+				AND = {
+					GER = { has_tech = CAS_1943}
+					HUN = { NOT = { has_tech = CAS_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_CAS_refused }
+		}
+		GER = { country_event = DOD_hungary.163 }	
+	}
+
+	option = {# select italian plane
+		name = DOD_hungary.151.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = CAS_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = CAS_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = CAS_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = CAS_1936}
+					HUN = { NOT = { has_tech = CAS_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = CAS_1940}
+					HUN = { NOT = { has_tech = CAS_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = CAS_1943}
+					HUN = { NOT = { has_tech = CAS_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_CAS_refused }
+		}
+		ITA = { country_event = DOD_hungary.163 }	
+	}
+
+	option = {# select french plane
+		name = DOD_hungary.151.c
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = CAS_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = CAS_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = CAS_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = CAS_1936}
+					HUN = { NOT = { has_tech = CAS_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = CAS_1940}
+					HUN = { NOT = { has_tech = CAS_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = CAS_1943}
+					HUN = { NOT = { has_tech = CAS_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_CAS_refused }
+		}
+		FRA = { country_event = DOD_hungary.163 }	
+	}
+	option = {# select british plane
+		name = DOD_hungary.151.d
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = CAS_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = CAS_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = CAS_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = CAS_1936}
+					HUN = { NOT = { has_tech = CAS_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = CAS_1940}
+					HUN = { NOT = { has_tech = CAS_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = CAS_1943}
+					HUN = { NOT = { has_tech = CAS_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_CAS_refused }
+		}
+		ENG = { country_event = DOD_hungary.163 }	
+	}
+	option = {# select american plane
+		name = DOD_hungary.151.e
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = CAS_1936
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = CAS_1940
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = CAS_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = CAS_1936}
+					HUN = { NOT = { has_tech = CAS_1936 } }
+				}
+				AND = {
+					USA = { has_tech = CAS_1940}
+					HUN = { NOT = { has_tech = CAS_1940 } }
+				}
+				AND = {
+					USA = { has_tech = CAS_1943}
+					HUN = { NOT = { has_tech = CAS_1943 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_CAS_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_cas_HUN = yes
+					}
+					FRA = {
+						is_available_cas_HUN = yes
+					}
+					ITA = {
+						is_available_cas_HUN = yes
+					}
+					ENG = {
+						is_available_cas_HUN = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = DOD_hungary.163 }	
+	}
+	option = {# failsafe
+		name = DOD_hungary.151.f	
+		trigger = {
+			OR = {
+				has_country_flag = GER_CAS_refused
+				has_country_flag = ITA_CAS_refused
+				has_country_flag = ENG_CAS_refused
+				has_country_flag = FRA_CAS_refused
+				has_country_flag = USA_CAS_refused
+			}
+		}
+		air_experience = 50
+	}
+
+}
+#bomber competition - Hungary is looking for a tacbomber
+country_event = {
+	id = DOD_hungary.162
+	title = DOD_hungary.162.t
+	desc = {
+		text = DOD_hungary.162.desc_tac
+		trigger = {
+			NOT = { 
+				has_country_flag = GER_tactical_bomber_refused
+				has_country_flag = ENG_tactical_bomber_refused
+				has_country_flag = USA_tactical_bomber_refused
+				has_country_flag = FRA_tactical_bomber_refused
+				has_country_flag = ITA_tactical_bomber_refused
+			} 
+		}
+	}
+	desc = {
+		text = DOD_hungary.162.desc_tac_refused
+		trigger = {
+			OR = {
+		 		has_country_flag = GER_tactical_bomber_refused
+				has_country_flag = ENG_tactical_bomber_refused
+				has_country_flag = USA_tactical_bomber_refused
+				has_country_flag = FRA_tactical_bomber_refused
+				has_country_flag = ITA_tactical_bomber_refused
+		 	}
+		}
+	}
+	picture = GFX_report_event_generic_bombers
+	
+	is_triggered_only = yes
+
+	option = {# Select German Plane
+		name = DOD_hungary.151.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = GER
+				factor = 10
+			}
+			modifier = {
+				GER = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				GER = {
+					has_tech = Tactical_Bomber_1936
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Tactical_Bomber_1940
+				}
+				add = 10
+			}
+			modifier = {
+				GER = {
+					has_tech = Tactical_Bomber_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					GER = { has_tech = Tactical_Bomber_1936}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1936 } }
+				}
+				AND = {
+					GER = { has_tech = Tactical_Bomber_1940}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1940 } }
+				}
+				AND = {
+					GER = { has_tech = Tactical_Bomber_1943}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1943 } }
+				}
+			}
+			NOT = { has_war_with = GER }
+			NOT = { has_country_flag = GER_tactical_bomber_refused }
+		}
+		GER = { country_event = DOD_hungary.164 }	
+	}
+
+	option = {# select italian plane
+		name = DOD_hungary.151.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ITA
+				factor = 10
+			}
+			modifier = {
+				ITA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ITA = {
+					has_tech = Tactical_Bomber_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Tactical_Bomber_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ITA = {
+					has_tech = Tactical_Bomber_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ITA = { has_tech = Tactical_Bomber_1936}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1936 } }
+				}
+				AND = {
+					ITA = { has_tech = Tactical_Bomber_1940}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1940 } }
+				}
+				AND = {
+					ITA = { has_tech = Tactical_Bomber_1943}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1943 } }
+				}
+			}
+			NOT = { has_war_with = ITA }
+			NOT = { has_country_flag = ITA_tactical_bomber_refused }
+		}
+		ITA = { country_event = DOD_hungary.164 }	
+	}
+
+	option = {# select french plane
+		name = DOD_hungary.151.c
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = FRA
+				factor = 10
+			}
+			modifier = {
+				FRA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				FRA = {
+					has_tech = Tactical_Bomber_1936
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Tactical_Bomber_1940
+				}
+				add = 10
+			}
+			modifier = {
+				FRA = {
+					has_tech = Tactical_Bomber_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					FRA = { has_tech = Tactical_Bomber_1936}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1936 } }
+				}
+				AND = {
+					FRA = { has_tech = Tactical_Bomber_1940}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1940 } }
+				}
+				AND = {
+					FRA = { has_tech = Tactical_Bomber_1943}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1943 } }
+				}
+			}
+			NOT = { has_war_with = FRA }
+			NOT = { has_country_flag = FRA_tactical_bomber_refused }
+		}
+		FRA = { country_event = DOD_hungary.164 }	
+	}
+	option = {# select british plane
+		name = DOD_hungary.151.d
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = ENG
+				factor = 10
+			}
+			modifier = {
+				ENG = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				ENG = {
+					has_tech = Tactical_Bomber_1936
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Tactical_Bomber_1940
+				}
+				add = 10
+			}
+			modifier = {
+				ENG = {
+					has_tech = Tactical_Bomber_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					ENG = { has_tech = Tactical_Bomber_1936}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1936 } }
+				}
+				AND = {
+					ENG = { has_tech = Tactical_Bomber_1940}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1940 } }
+				}
+				AND = {
+					ENG = { has_tech = Tactical_Bomber_1943}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1943 } }
+				}
+			}
+			NOT = { has_war_with = ENG }
+			NOT = { has_country_flag = ENG_tactical_bomber_refused }
+		}
+		ENG = { country_event = DOD_hungary.164 }	
+	}
+	option = {# select american plane
+		name = DOD_hungary.151.e
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction_with = USA
+				factor = 10
+			}
+			modifier = {
+				USA = { has_government = ROOT }
+				factor = 2
+			}
+			modifier = {
+				USA = {
+					has_tech = Tactical_Bomber_1936
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Tactical_Bomber_1940
+				}
+				add = 10
+			}
+			modifier = {
+				USA = {
+					has_tech = Tactical_Bomber_1943
+				}
+				add = 10
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					USA = { has_tech = Tactical_Bomber_1936}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1936 } }
+				}
+				AND = {
+					USA = { has_tech = Tactical_Bomber_1940}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1940 } }
+				}
+				AND = {
+					USA = { has_tech = Tactical_Bomber_1943}
+					HUN = { NOT = { has_tech = Tactical_Bomber_1943 } }
+				}
+			}
+			NOT = { has_war_with = USA }
+			NOT = { has_country_flag = USA_tactical_bomber_refused }
+			NOT = { #to prevent overflow issues
+				AND = {
+					GER = {
+						is_available_tac_HUN = yes
+					}
+					FRA = {
+						is_available_tac_HUN = yes
+					}
+					ITA = {
+						is_available_tac_HUN = yes
+					}
+					ENG = {
+						is_available_tac_HUN = yes
+					}
+				}
+			}
+		}
+		USA = { country_event = DOD_hungary.164 }	
+	}
+	option = {# failsafe
+		name = DOD_hungary.151.f	
+		trigger = {
+			OR = {
+				has_country_flag = GER_tactical_bomber_refused
+				has_country_flag = ITA_tactical_bomber_refused
+				has_country_flag = ENG_tactical_bomber_refused
+				has_country_flag = FRA_tactical_bomber_refused
+				has_country_flag = USA_tactical_bomber_refused
+			}
+		}
+		air_experience = 50
+	}
+
+}
+
+#bomber competition - CAS competition winner gets a choice whether to permit license production
+country_event = {
+	id = DOD_hungary.163
+	title = DOD_hungary.163.t
+	desc = DOD_hungary.163.desc 
+	picture = GFX_report_event_generic_bombers
+	
+	is_triggered_only = yes
+
+	option = {# certainly
+		name = DOD_hungary.153.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		air_experience = 20
+		HUN = { country_event = DOD_hungary.165 }
+		if = {
+			limit = {
+				has_tech = CAS_1936
+				NOT = { has_tech = CAS_1940 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = CAS_equipment_1
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = CAS_1940
+				NOT = { has_tech = CAS_1943 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = CAS_equipment_1940	
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = CAS_1943
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = CAS_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+	}
+
+	option = {# no
+		name = DOD_hungary.153.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			HUN = { set_country_flag = GER_CAS_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			HUN = { set_country_flag = ITA_CAS_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			HUN = { set_country_flag = FRA_CAS_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			HUN = { set_country_flag = ENG_CAS_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			HUN = { set_country_flag = USA_CAS_refused }
+		}
+		HUN = { country_event = DOD_hungary.161 }
+		reverse_add_opinion_modifier = { target = HUN modifier = refused_help }
+	}
+}
+
+#bomber competition - tac bomber competition winner gets a choice whether to permit license production
+country_event = {
+	id = DOD_hungary.164
+	title = DOD_hungary.164.t
+	desc = DOD_hungary.164.desc 
+	picture = GFX_report_event_generic_bombers
+	
+	is_triggered_only = yes
+
+	option = {# certainly
+		name = DOD_hungary.153.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0.5
+			}
+		}
+		HUN = { country_event = DOD_hungary.165 }
+		air_experience = 20
+		if = {
+			limit = {
+				has_tech = Tactical_Bomber_1936
+				NOT = { has_tech = Tactical_Bomber_1940 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Tactical_Bomber_equipment_1936
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Tactical_Bomber_1940
+				NOT = { has_tech = Tactical_Bomber_1943 }
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Tactical_Bomber_equipment_1940	
+				}
+				cost_factor = 0
+			}
+		}
+		if = {
+			limit = {
+				has_tech = Tactical_Bomber_1943
+			}
+			create_production_license = {
+				target = HUN 
+				equipment = {
+					type = Tactical_Bomber_equipment_1943
+				}
+				cost_factor = 0
+			}
+		}
+	}
+
+	option = {# no
+		name = DOD_hungary.153.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+		}
+		if = {
+			limit = { tag = GER }
+			HUN = { set_country_flag = GER_tactical_bomber_refused }
+		}
+		if = {
+			limit = { tag = ITA }
+			HUN = { set_country_flag = ITA_tactical_bomber_refused }
+		}
+		if = {
+			limit = { tag = FRA }
+			HUN = { set_country_flag = FRA_tactical_bomber_refused }
+		}
+		if = {
+			limit = { tag = ENG }
+			HUN = { set_country_flag = ENG_tactical_bomber_refused }
+		}
+		if = {
+			limit = { tag = USA }
+			HUN = { set_country_flag = USA_tactical_bomber_refused }
+		}
+		HUN = { country_event = DOD_hungary.162 }
+		reverse_add_opinion_modifier = { target = HUN modifier = refused_help }
+	}
+}
+
+#bomber competition - license production approved
+country_event = {
+	id = DOD_hungary.165
+	title = DOD_hungary.165.t
+	desc = DOD_hungary.165.desc 
+	picture = GFX_report_event_generic_bombers
+	
+	is_triggered_only = yes
+
+	option = {# neat
+		name = DOD_hungary.165.a
+		
+	}
+}
+
+#Hungary rearms since there are no one left to oppose
+country_event = {
+	id = DOD_hungary.170
+	title = DOD_hungary.170.t
+	desc = DOD_hungary.170.desc 
+	picture = GFX_report_event_generic_military_parade
+	
+	mean_time_to_happen = { days = 2 }
+
+	trigger = {
+		#Trigger matches bypass trigger for normal rearm process
+		tag = HUN
+		OR = {
+			has_idea = HUN_treaty_of_triannon
+			has_idea = HUN_treaty_of_triannon_2
+		}
+		AND = {
+			ROM = {
+				OR = {
+					exists = no
+					is_puppet = yes
+				}
+			}
+			FRA = {
+				OR = {
+					exists = no
+					is_puppet = yes
+				}
+			}
+		}
+	}
+
+	option = {# Great
+		name = DOD_hungary.170.a
+		if = {
+			limit = { has_idea = HUN_treaty_of_triannon }
+			remove_ideas = HUN_treaty_of_triannon
+		}
+		if = {
+			limit = { has_idea = HUN_treaty_of_triannon_2 }
+			remove_ideas = HUN_treaty_of_triannon_2
+		}
+	}
+}
+###########################
+# Hungarian Events
+###########################
+
+add_namespace = hungary
+
+# Second Vienna Award - No Territory
+country_event = {
+	id = hungary.1
+	title = hungary.1.t
+	desc = hungary.1.d
+	picture = GFX_report_event_finnish_letter
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hungary.1.a
+	}
+}
+
+# Second Vienna Award - Northern Transylvania
+country_event = {
+	id = hungary.2
+	title = hungary.2.t
+	desc = hungary.2.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hungary.2.a
+		HUN = { 
+			transfer_state = 76
+			transfer_state = 839
+			transfer_state = 838
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = news.15 }
+		}
+	}
+}
+
+# Second Vienna Award - All of Transylvania
+country_event = {
+	id = hungary.3
+	title = hungary.2.t
+	desc = hungary.3.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hungary.2.a
+		HUN = { 
+			transfer_state = 76
+			transfer_state = 83
+			transfer_state = 84
+			transfer_state = 839
+			transfer_state = 838
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = news.16 }
+		}
+	}
+}
+
+# Second Vienna Award - Romania Rejects Verdict (Northern Transylvania)
+country_event = {
+	id = hungary.4
+	title = hungary.2.t
+	desc = hungary.4.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hungary.4.a
+		add_state_claim = 76
+		hidden_effect = {
+			news_event = { days = 1 id = news.17 }
+		}
+	}
+}
+
+# Second Vienna Award - Romania Rejects Verdict (All of Transylvania)
+country_event = {
+	id = hungary.5
+	title = hungary.2.t
+	desc = hungary.5.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hungary.4.a
+		add_state_claim = 76
+		add_state_claim = 83
+		add_state_claim = 84
+		hidden_effect = {
+			news_event = { days = 1 id = news.18 }
+		}
+	}
+}
+
+# Hungary (First Ljubljana Award) from german focus
+country_event = {
+	id = hungary.6
+	title = hungary.6.t
+	desc = hungary.6.d
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hungary.6.a
+		HUN = { transfer_state = 45 }
+	}
+}
