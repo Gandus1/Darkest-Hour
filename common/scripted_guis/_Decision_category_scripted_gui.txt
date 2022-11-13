@@ -482,11 +482,134 @@ scripted_gui = {
 			}
 		}
 	}
-	
+
 	sov_operation_groza_decision_gui = {
 		context_type = decision_category
 
 		window_name = "sov_operation_groza_decision_gui"
+
+		effects = {
+			indicator_icon_click = {
+				if = {
+					limit = {
+						NOT = { check_variable = { SOV_operation_readiness < 1 } }
+					}
+					set_temp_variable = { current_phase_temp = 3 }
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT_ANY
+					show_ideas_tooltip = SOV_Operation_Groza_3
+				}
+				else_if = {
+					limit = {
+						NOT = { check_variable = { SOV_operation_readiness < 0.85 } }
+					}
+					set_temp_variable = { current_phase_temp = 2 }
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT_ANY
+					show_ideas_tooltip = SOV_Operation_Groza_2
+				}
+				else_if = {
+					limit = {
+						NOT = { check_variable = { SOV_operation_readiness < 0.7 } }
+					}
+					set_temp_variable = { current_phase_temp = 1 }
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT_ANY
+					show_ideas_tooltip = SOV_Operation_Groza_1
+				}
+				else = {
+					set_temp_variable = { current_phase_temp = 0 }
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT_NONE
+				}
+			}
+			phase_icon_1_click = {
+				if = {
+					limit = {
+						check_variable = { SOV_operation_readiness < 0.7 }
+					}
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_PHASE_1_TT_NOT_REACHED
+				}
+				else = {
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_PHASE_1_TT_REACHED
+				}
+				show_ideas_tooltip = SOV_Operation_Groza_1
+			}
+			phase_icon_2_click = {
+				if = {
+					limit = {
+						check_variable = { SOV_operation_readiness < 0.85 }
+					}
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_PHASE_2_TT_NOT_REACHED
+				}
+				else = {
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_PHASE_2_TT_REACHED
+				}
+				show_ideas_tooltip = SOV_Operation_Groza_2
+			}
+			phase_icon_3_click = {
+				if = {
+					limit = {
+						check_variable = { SOV_operation_readiness < 1 }
+					}
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_PHASE_3_TT_NOT_REACHED
+				}
+				else = {
+					custom_effect_tooltip = SOV_OPERATION_GROZA_DECISION_GUI_PHASE_3_TT_REACHED
+				}
+				show_ideas_tooltip = SOV_Operation_Groza_3
+			}
+		}
+
+		triggers = {
+			progressbar_visible = {
+				check_variable = { SOV_operation_readiness_progressbar_var > 0 }
+			}
+			phase_icon_1_visible = {
+				check_variable = { SOV_operation_readiness < 0.7 }
+			}
+			phase_text_1_visible = {
+				check_variable = { SOV_operation_readiness < 0.7 }
+			}
+			phase_icon_1_active_visible = {
+				NOT = { check_variable = { SOV_operation_readiness < 0.7 } }
+			}
+			phase_text_1_active_visible = {
+				NOT = { check_variable = { SOV_operation_readiness < 0.7 } }
+			}
+			phase_icon_2_visible = {
+				check_variable = { SOV_operation_readiness < 0.85 }
+			}
+			phase_text_2_visible = {
+				check_variable = { SOV_operation_readiness < 0.85 }
+			}
+			phase_icon_2_active_visible = {
+				NOT = { check_variable = { SOV_operation_readiness < 0.85 } }
+			}
+			phase_text_2_active_visible = {
+				NOT = { check_variable = { SOV_operation_readiness < 0.85 } }
+			}
+			phase_icon_3_visible = {
+				check_variable = { SOV_operation_readiness < 1 }
+			}
+			phase_text_3_visible = {
+				check_variable = { SOV_operation_readiness < 1 }
+			}
+			phase_icon_3_active_visible = {
+				NOT = { check_variable = { SOV_operation_readiness < 1 } }
+			}
+			phase_text_3_active_visible = {
+				NOT = { check_variable = { SOV_operation_readiness < 1 } }
+			}
+		}
+
+		properties = {
+			progressbar = {
+				frame = SOV_operation_readiness_progressbar_var
+			}
+			indicator_icon = {
+				x = SOV_operation_readiness_progressbar_indicator_var
+			}
+			indicator_value_text = {
+				x = SOV_operation_readiness_progressbar_indicator_var
+			}
+		}
 	}
 
 	jap_faction_list_decision_gui = {

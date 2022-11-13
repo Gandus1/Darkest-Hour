@@ -3,22 +3,48 @@ guiTypes = {
 	containerWindowType = {
 		name = "ingamemenu"
 		position = { x = 0 y = 0 }
-		size = { width = 320 height = 455}
+		size = { width = 320 height = 415}
 		Orientation = center
 		Origo = center
 		fade_time = 500
 		fade_type = linear
 		show_sound = click_expand
 
+		clipping = no
+
 		background = {
 			name = "Background"
-			quadTextureSprite ="GFX_tiled_window"
+			quadTextureSprite ="GFX_main_menu_window"
+			position = { x = -14 y = -115 }
+		}
+
+		instantTextBoxType = {
+			name = "header"
+			position = { x = 70 y = -105 }
+			font = "hoi_18mbs"
+			format = center
+			text = "MENU_MENU"
+			maxWidth = 180
+			maxHeight = 10
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "menu_close_button"
+			position = { x = 16 y = 18 }
+			quadTextureSprite ="GFX_main_menu_button"
+			buttonFont = "hoi_24header"
+			buttonText = "CONTINUE"
+			shortcut = "ESCAPE"
+			clicksound = click_default
+			oversound = ui_menu_over
 		}
 
 		buttonType = {
 			name = "menu_load_button"
-			position = { x = 16 y = 18 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 16 y = 58 }
+			quadTextureSprite ="GFX_main_menu_button"
 			buttonText = "MENU_BAR_LOAD_GAME"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -27,8 +53,8 @@ guiTypes = {
 
 		buttonType = {
 			name = "menu_save_button"
-			position = { x = 16 y = 58 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 16 y = 98 }
+			quadTextureSprite ="GFX_main_menu_button"
 			buttonText = "MENU_BAR_SAVE_GAME"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -37,37 +63,18 @@ guiTypes = {
 
 		buttonType = {
 			name = "menu_gamesettings_button"
-			position = { x = 16 y = 98}
-			quadTextureSprite ="GFX_main_lobby_button"
-			buttonText = "MENU_BAR_GAME_OPTIONS"
+			position = { x = 16 y = 138 }
+			quadTextureSprite ="GFX_main_menu_button"
+			buttonText = "MENU_BAR_GAME_SETTINGS"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
 			oversound = ui_menu_over
 		}
 
-		buttonType = {
-			name = "menu_playthrough_stats_button"
-			position = { x = 16 y = 138}
-			quadTextureSprite ="GFX_main_lobby_button"	
-			buttonText = "MENU_BAR_PLAYTHROUGH_STATS"
-			buttonFont = "hoi_24header"
-			clicksound = click_default
-			oversound = ui_menu_over
-		}
-
-		iconType = {
-			name = "menu_playthrough_stats_button_star"
-			position = { x = -37 y = 155 }
-			spriteType = "GFX_icon_best_in_career"
-			centerposition = yes
-			orientation = upper_right
-			alwaysTransparent = yes
-		}
-		
 		buttonType = {
 			name = "menu_wiki_button"
-			position = { x = 16 y = 138}
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = -10000 y = 178 }
+			quadTextureSprite ="GFX_main_menu_button"
 			buttonText = "MENU_BAR_GAME_WIKI"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -76,9 +83,20 @@ guiTypes = {
 		}
 
 		buttonType = {
+			name = "menu_discord_button"
+			position = { x = 16 y = 178 }
+			quadTextureSprite ="GFX_main_menu_button"
+			buttonText = "MENU_BAR_GAME_DISCORD"
+			buttonFont = "hoi_24header"
+			clicksound = click_default
+			oversound = ui_menu_over
+			web_link = "https://discord.gg/EvTZfaEyrE"
+		}
+
+		buttonType = {
 			name = "menu_resign_button"
-			position = { x = 16 y = 178}
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 16 y = 260 }
+			quadTextureSprite ="GFX_main_menu_button"
 			buttonText = "MENU_BAR_GAME_RESIGN"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -87,21 +105,10 @@ guiTypes = {
 
 		buttonType = {
 			name = "menu_quit_button"
-			position = {  x = 16 y = 218 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 16 y = 300 }
+			quadTextureSprite ="GFX_main_menu_button"
 			buttonText = "MENU_BAR_QUIT"
 			buttonFont = "hoi_24header"
-			clicksound = click_default
-			oversound = ui_menu_over
-		}
-
-		buttonType = {
-			name = "menu_close_button"
-			position = { x = 16 y = 340 }
-			quadTextureSprite ="GFX_main_lobby_button"
-			buttonFont = "hoi_24header"
-			buttonText = "CLOSE"
-			shortcut = "ESCAPE"
 			clicksound = click_default
 			oversound = ui_menu_over
 		}
@@ -109,7 +116,7 @@ guiTypes = {
 		## facebook etc.
 		ButtonType = {
 			name = "homepage_button"
-			position = { x = 59 y = 389 }
+			position = { x = -10000 y = 349 }
 			quadTextureSprite ="homepage"
 			clicksound = click_default
 			pdx_tooltip = "MENU_HOMEPAGE"
@@ -117,15 +124,15 @@ guiTypes = {
 		}
 		ButtonType = {
 			name = "forum_button"
-			position = { x = 99 y = 389 }
+			position = { x = -10000 y = 349 }
 			quadTextureSprite ="forum"
 			clicksound = click_default
 			pdx_tooltip = "MENU_FORUM"
-			web_link = "https://forum.paradoxplaza.com/forum/index.php?forums/hearts-of-iron-iv.844/"
+			web_link = "http://forum.paradoxplaza.com/forum/forumdisplay.php?844-Hearts-of-Iron-IV"
 		}
 		ButtonType = {
 			name = "facebook_button"
-			position = { x = 139 y = 389 }
+			position = { x = -10000 y = 349 }
 			quadTextureSprite ="facebook"
 			clicksound = click_default
 			pdx_tooltip = "MENU_FACEBOOK"
@@ -134,7 +141,7 @@ guiTypes = {
 
 		ButtonType = {
 			name = "twitter_button"
-			position = { x = 179 y = 389 }
+			position = { x = -10000 y = 349 }
 			quadTextureSprite ="twitter"
 			#clicksound = click_default
 			pdx_tooltip = "MENU_TWITTER"
@@ -143,22 +150,37 @@ guiTypes = {
 
 		ButtonType = {
 			name = "privacy_policy_button"
-			position = { x = 219 y = 389 }
+			position = { x = -10000 y = 349 }
 			quadTextureSprite ="privacy"
 			#clicksound = click_default
 			pdx_tooltip = "MENU_PRIVACY_POLICY"
 		}
 		ButtonType = {
 			name = "achievements_button"
-			position = { x = 259 y = 389 }
+			position = { x = -10000 y = 349 }
 			quadTextureSprite ="achievements"
 			pdx_tooltip = "MENU_ACHIEVEMENTS"
+		}
+
+		buttonType = {
+			name = "steam_button"
+			position = { x = 113 y = 349 }
+			spriteType = "GFX_main_menu_social_steam"
+			pdx_tooltip = "MENU_STEAM"
+			web_link = "https://steamcommunity.com/sharedfiles/filedetails/?id=2824483457"
+		}
+		buttonType = {
+			name = "wiki_button"
+			position = { x = 162 y = 349 }
+			spriteType = "GFX_main_menu_social_wiki"
+			pdx_tooltip = "MENU_WIKI"
+			web_link = "https://darkest-hour-hoi-iv.fandom.com/wiki/Darkest_Hour_HoI_IV_Wiki"
 		}
 	}
 
 	containerWindowType = {
 		name ="ingamemenu_load"
-		position = { x = -236 y = -270 }
+		position = { x = -210 y = -250 }
 		size = { width = 420 height = 500}
 		Orientation = center
 
@@ -169,17 +191,16 @@ guiTypes = {
 			position = { x = 75 y = 126 }
 			size = { width = 350 height = 370}
 			verticalScrollbar = "right_vertical_slider"
-			scroll_wheel_factor = 55
-			smooth_scrolling = yes
+			vertical_scroll_step = 5
 
 			background = {
 				name = "Background"
-				quadTextureSprite ="GFX_no_frame_special_bg"
+				quadTextureSprite ="GFX_no_frame_special_bg_save"
 			}
 
 			gridBoxType = {
 				name = "games_grid"
-				position = { x=13 y =24}
+				position = { x=13 y =2}
 				size = { width =280 height = 400}
 				slotsize = { width = 280 height = 55 }
 				format = "UPPER_LEFT"
@@ -191,8 +212,20 @@ guiTypes = {
 		{
 			name ="menu"
 			spriteType = "GFX_load_save_top_screen"
-			position = { x= 76 y = 63 }
+			position = { x= 76 y = 27 }
 			Orientation = "UPPER_LEFT"
+		}
+
+		instantTextBoxType = {
+			name = "header"
+			position = { x = 160 y = 35 }
+			font = "hoi_18mbs"
+			format = center
+			text = "MENU_LOAD"
+			maxWidth = 180
+			maxHeight = 10
+			fixedsize = yes
+			alwaystransparent = yes
 		}
 
 
@@ -200,7 +233,7 @@ guiTypes = {
 		{
 			name ="menu_bottom"
 			spriteType = "GFX_load_save_bottom"
-			position = { x= 76 y = 490 }
+			position = { x= 76 y = 470 }
 			Orientation = "UPPER_LEFT"
 		}
 
@@ -264,7 +297,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "load"
-			position = { x = 245 y = 503 }
+			position = { x = 245 y = 475 }
 			quadTextureSprite ="GFX_button_148x34"
 			buttonText = "MENU_BAR_LOAD"
 			buttonFont = "hoi_20b"
@@ -276,7 +309,7 @@ guiTypes = {
 
 		buttonType = {
 			name = "cancel"
-			position = { x = 100 y = 503 }
+			position = { x = 100 y = 475 }
 			quadTextureSprite ="GFX_button_148x34"
 			buttonText = "BACK"
 			buttonFont = "hoi_20b"
@@ -289,7 +322,7 @@ guiTypes = {
 
 	containerWindowType = {
 		name ="ingamemenu_save"
-		position = { x = -236 y = -270 }
+		position = { x=-210 y =-250 }
 		size = { width = 420 height = 500}
 		Orientation = center
 
@@ -297,15 +330,27 @@ guiTypes = {
 		{
 			name ="menu"
 			spriteType = "GFX_load_save_top_screen"
-			position = { x= 76 y = 60 }
+			position = { x= 76 y = 27 }
 			Orientation = "UPPER_LEFT"
+		}
+
+		instantTextBoxType = {
+			name = "header"
+			position = { x = 160 y = 35 }
+			font = "hoi_18mbs"
+			format = center
+			text = "MENU_SAVE"
+			maxWidth = 180
+			maxHeight = 10
+			fixedsize = yes
+			alwaystransparent = yes
 		}
 
 		iconType =
 		{
 			name ="menu_bottom"
 			spriteType = "GFX_load_save_bottom_screen"
-			position = { x= 76 y = 446 }
+			position = { x= 76 y = 440 }
 			Orientation = "UPPER_LEFT"
 		}
 
@@ -387,7 +432,7 @@ guiTypes = {
 
 			background = {
 				name = "Background"
-				quadTextureSprite ="GFX_no_frame_special_bg"
+				quadTextureSprite ="GFX_no_frame_special_bg_save"
 			}
 
 			gridBoxType = {
@@ -461,14 +506,14 @@ guiTypes = {
 		iconType = {
 			name ="player_shield"
 			quadTextureSprite = "GFX_flag_small2_not_masked"
-			position = { x= 6 y = 14 }
+			position = { x= 5 y = 12 }
 			alwaystransparent = yes
 		}
 
 		iconType = {
 			name ="player_shield_overlay"
 			quadTextureSprite = "GFX_flag_small2_not_masked"
-			position = { x= 6 y = 14 }
+			position = { x= 5 y = 12 }
 			alwaystransparent = yes
 		}
 
@@ -480,7 +525,7 @@ guiTypes = {
 		}
 
 		instantTextBoxType={
-			position = {x = 55 y = 5 }
+			position = {x = 53 y = 5 }
 			name = "name"
 			font = "hoi_18mbs"
 			maxWidth = 224
@@ -491,7 +536,7 @@ guiTypes = {
 		}
 
 		instantTextBoxType={
-			position = {x = 52 y = 24 }
+			position = {x = 50 y = 24 }
 			name = "date"
 			font = "hoi_18mbs"
 			maxWidth = 217
