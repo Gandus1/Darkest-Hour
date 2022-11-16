@@ -88,6 +88,10 @@ technologies = {
 		enable_subunits = {
 			engineer
 		}
+		enable_building = {
+			building = bunker
+			level = 1
+		}
 		path = {
 			leads_to_tech = tech_assault_weapons_1
 			research_cost_coeff = 1
@@ -129,6 +133,8 @@ technologies = {
 	tech_assault_weapons_1 = {
 		engineer = {
 			soft_attack = 0.02
+			experience_loss_factor = 0.02
+			casualty_trickleback = 0.02
 		}
 		path = {
 			leads_to_tech = tech_assault_weapons_2
@@ -158,6 +164,8 @@ technologies = {
 	tech_assault_weapons_2 = {
 		engineer = {
 			soft_attack = 0.05
+			experience_loss_factor = 0.02
+			casualty_trickleback = 0.02
 		}
 		path = {
 			leads_to_tech = tech_assault_weapons_3
@@ -187,6 +195,9 @@ technologies = {
 	tech_assault_weapons_3 = {
 		engineer = {
 			soft_attack = 0.03
+			experience_loss_factor = 0.02
+			casualty_trickleback = 0.02
+			breakthrough = 0.05
 		}
 		path = {
 			leads_to_tech = tech_assault_weapons_4
@@ -216,6 +227,7 @@ technologies = {
 	tech_assault_weapons_4 = {
 		engineer = {
 			soft_attack = 0.05
+			hard_attack = 0.1
 		}
 		path = {
 			leads_to_tech = tech_assault_weapons_5
@@ -244,7 +256,8 @@ technologies = {
 	}
 	tech_assault_weapons_5 = {
 		engineer = {
-			soft_attack = 0.05
+			attack = 0.08
+			casualty_trickleback = 0.15
 		}
 		path = {
 			leads_to_tech = tech_assault_weapons_6
@@ -277,7 +290,8 @@ technologies = {
 	}
 	tech_assault_weapons_6 = {
 		engineer = {
-			soft_attack = 0.05
+			attack = 0.05
+			defense = 0.07
 		}
 		research_cost = 1.5
 		start_year = 1942
@@ -311,11 +325,12 @@ technologies = {
 	###############
 	tech_entrenchment_1 = {
 		engineer = {
-			entrenchment = 1
+			entrenchment = 0.1
+			defense = 0.05
 		}
 		enable_building = {
 			building = bunker
-			level = 1
+			level = 4
 		}
 		path = {
 			leads_to_tech = tech_entrenchment_2
@@ -344,11 +359,12 @@ technologies = {
 	}
 	tech_entrenchment_2 = {
 		engineer = {
-			entrenchment = 1
+			entrenchment = 0.1
+			defense = 0.05
 		}
 		enable_building = {
 			building = bunker
-			level = 4
+			level = 6
 		}
 		path = {
 			leads_to_tech = tech_entrenchment_3
@@ -377,11 +393,12 @@ technologies = {
 	}
 	tech_entrenchment_3 = {
 		engineer = {
-			entrenchment = 2
+			entrenchment = 0.1
+			defense = 0.05
 		}
 		enable_building = {
 			building = bunker
-			level = 5
+			level = 7
 		}
 		path = {
 			leads_to_tech = tech_entrenchment_4
@@ -410,11 +427,12 @@ technologies = {
 	}
 	tech_entrenchment_4 = {
 		engineer = {
-			entrenchment = 2
+			entrenchment = 0.1
+			defense = 0.05
 		}
 		enable_building = {
 			building = bunker
-			level = 7
+			level = 8
 		}
 		path = {
 			leads_to_tech = tech_entrenchment_5
@@ -443,7 +461,8 @@ technologies = {
 	}
 	tech_entrenchment_5 = {
 		engineer = {
-			entrenchment = 2
+			entrenchment = 0.15
+			defense = 0.05
 		}
 		enable_building = {
 			building = bunker
@@ -480,7 +499,8 @@ technologies = {
 	}
 	tech_entrenchment_6 = {
 		engineer = {
-			entrenchment = 2
+			entrenchment = 0.15
+			defense = 0.05
 		}
 		enable_building = {
 			building = bunker
@@ -553,8 +573,9 @@ technologies = {
 	tech_amphibious_2 = {
 		engineer = {
 			river = {
-				movement = 0.03
+				movement = 0.05
 			}
+			initiative = 0.05
 		}
 		on_research_complete = {
 			custom_effect_tooltip = TECH_River_Effect_3Percent
@@ -587,8 +608,9 @@ technologies = {
 	tech_amphibious_3 = {
 		engineer = {
 			river = {
-				movement = 0.05
+				movement = 0.1
 			}
+			initiative = 0.05
 		}
 		on_research_complete = {
 			custom_effect_tooltip = TECH_River_Effect_5Percent
@@ -621,8 +643,12 @@ technologies = {
 	tech_amphibious_4 = {
 		engineer = {
 			river = {
-				movement = 0.05
+				movement = 0.1
 			}
+			marsh = {
+				movement = 0.1
+			}
+			initiative = 0.05
 		}
 		on_research_complete = {
 			custom_effect_tooltip = TECH_River_Effect_5Percent
@@ -655,8 +681,9 @@ technologies = {
 	tech_amphibious_5 = {
 		engineer = {
 			river = {
-				movement = 0.03
+				movement = 0.1
 			}
+			defense = 0.05
 		}
 		on_research_complete = {
 			custom_effect_tooltip = TECH_River_Effect_3Percent
@@ -695,6 +722,7 @@ technologies = {
 			river = {
 				movement = 0.1
 			}
+			defense = 0.1
 		}
 		on_research_complete = {
 			custom_effect_tooltip = TECH_River_Effect_10Percent
@@ -762,7 +790,7 @@ technologies = {
 	}
 	tech_recon2 = {
 		category_recon = {
-			recon = 1
+			recon = 0.15
 		}
 		path = {
 			leads_to_tech = tech_recon3
@@ -792,7 +820,7 @@ technologies = {
 	}
 	tech_recon3 = {
 		category_recon = {
-			recon = 1
+			recon = 0.1
 		}
 		enable_subunits = {
 			mot_recon
@@ -824,7 +852,7 @@ technologies = {
 	}
 	tech_recon4 = {
 		category_recon = {
-			recon = 1
+			recon = 0.15
 		}
 		enable_subunits = {
 			armored_car_recon
@@ -857,7 +885,7 @@ technologies = {
 	}
 	tech_recon5 = {
 		category_recon = {
-			recon = 1
+			recon = 0.15
 		}
 		path = {
 			leads_to_tech = tech_recon6
@@ -886,7 +914,7 @@ technologies = {
 	}
 	tech_recon6 = {
 		category_recon = {
-			recon = 2
+			recon = 0.25
 		}
 		path = {
 			leads_to_tech = tech_recon7
@@ -919,7 +947,7 @@ technologies = {
 	}
 	tech_recon7 = {
 		category_recon = {
-			recon = 1
+			recon = 0.15
 		}
 		path = {
 			leads_to_tech = tech_recon_in_force
@@ -956,7 +984,7 @@ technologies = {
 	}
 	tech_recon_in_force = {
 		category_recon = {
-			recon = 2
+			recon = 0.25
 			soft_attack = 0.05
 		}
 		xor = {
@@ -989,7 +1017,7 @@ technologies = {
 	}
 	tech_recon_by_fire = {
 		category_recon = {
-			recon = 2
+			recon = 0.25
 			defense = 0.05
 		}
 		xor = {
@@ -1058,8 +1086,11 @@ technologies = {
 	}
 	tech_military_police2 = {
 		military_police = {
-			max_organisation = 4
-			suppression_factor = 0.1
+			max_organisation = 2
+			max_strength = 0.05
+			initiative = 0.05
+			movement = 0.02
+			soft_attack = 0.03
 		}
 		path = {
 			leads_to_tech = tech_military_police3
@@ -1088,8 +1119,10 @@ technologies = {
 	}
 	tech_military_police3 = {
 		military_police = {
-			max_organisation = 4
-			suppression_factor = 0.1
+			max_organisation = 2
+			max_strength = 0.05
+			initiative = 0.05
+			soft_attack = 0.03
 		}
 		path = {
 			leads_to_tech = tech_military_police4
@@ -1118,8 +1151,9 @@ technologies = {
 	}
 	tech_military_police4 = {
 		military_police = {
-			max_organisation = 4
-			suppression_factor = 0.1
+			max_organisation = 2
+			max_strength = 0.2
+			soft_attack = 0.08
 		}
 		path = {
 			leads_to_tech = tech_military_police5
@@ -1149,7 +1183,7 @@ technologies = {
 	tech_military_police5 = {
 		military_police = {
 			max_organisation = 4
-			suppression_factor = 0.1
+			max_strength = 0.3
 		}
 		path = {
 			leads_to_tech = tech_military_police6
@@ -1179,7 +1213,9 @@ technologies = {
 	tech_military_police6 = {
 		military_police = {
 			max_organisation = 2
-			suppression_factor = 0.1
+			max_strength = 0.15
+			initiative = 0.03
+			movement = 0.05
 		}
 		path = {
 			leads_to_tech = tech_military_police7
@@ -1212,8 +1248,10 @@ technologies = {
 	}
 	tech_military_police7 = {
 		military_police = {
-			max_organisation = 4
-			suppression_factor = 0.1
+			max_organisation = 2
+			initiative = 0.05
+			movement = 0.05
+			soft_attack = 0.03
 		}
 		research_cost = 1.5
 		start_year = 1942
@@ -1255,9 +1293,9 @@ technologies = {
 			leads_to_tech = tech_signal_company2
 			research_cost_coeff = 1
 		}
-		dependencies = {
+		#dependencies = {
 			#motorised_infantry = 1
-		}
+		#}
 		research_cost = 2
 		start_year = 1914
 		folder = {
@@ -1283,6 +1321,9 @@ technologies = {
 	tech_signal_company2 = {
 		signal_company = {
 			initiative = 0.07
+			movement = 0.05
+			soft_attack = 0.03
+			defense = 0.03
 		}
 		path = {
 			leads_to_tech = tech_signal_company3
@@ -1313,6 +1354,9 @@ technologies = {
 	tech_signal_company3 = {
 		signal_company = {
 			initiative = 0.07
+			movement = 0.05
+			soft_attack = 0.03
+			defense = 0.03
 		}
 		path = {
 			leads_to_tech = tech_signal_company4
@@ -1343,6 +1387,9 @@ technologies = {
 	tech_signal_company4 = {
 		signal_company = {
 			initiative = 0.07
+			movement = 0.05
+			soft_attack = 0.03
+			defense = 0.03
 		}
 		dependencies = {
 			radar_1 = 1
@@ -1380,6 +1427,9 @@ technologies = {
 	tech_signal_company5 = {
 		signal_company = {
 			initiative = 0.07
+			movement = 0.05
+			soft_attack = 0.03
+			defense = 0.03
 		}
 		path = {
 			leads_to_tech = tech_signal_company6
@@ -1413,7 +1463,7 @@ technologies = {
 	}
 	tech_signal_company6 = {
 		signal_company = {
-			initiative = 0.07
+			initiative = 0.15
 		}
 		research_cost = 1.5
 		start_year = 1942
