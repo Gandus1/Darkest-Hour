@@ -1,0 +1,350 @@
+guiTypes = {
+	containerWindowType = {
+		name = "dh_open_war_room_window"
+		position = { x = 656 y = 38 }
+		size = { width = 50 height = 50 }
+
+		buttonType = {
+			name = "open_button"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_war_room_button"
+			frame = 1
+			clicksound = click_close
+			oversound = ui_menu_over
+			pdx_tooltip = "DH_WAR_ROOM_WINDOW_BUTTON_TT"
+			pdx_disabled_tooltip = "DH_WAR_ROOM_WINDOW_BUTTON_TT_DISABLED"
+			shortcut = "ctrl+w"
+		}
+
+		buttonType = {
+			name = "close_button"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_war_room_button"
+			frame = 2
+			clicksound = click_close
+			oversound = ui_menu_over
+			pdx_tooltip = "DH_WAR_ROOM_WINDOW_BUTTON_TT"
+			shortcut = "ctrl+w"
+		}
+
+		containerWindowType = {
+			name = "value_window"
+			position = { x = 2 y = 21 }
+			size = { width = 100%% height = 100%% }
+
+			containerWindowType = {
+				name = "background_window"
+				position = { x = 2 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "value_bg"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_topbar_alert_bg"
+					frame = 1
+					alwaystransparent = yes
+				}
+			}
+
+			instantTextBoxType = {
+				name = "value"
+				position = { x = 0 y = 0 }
+				font = "hoi_16mbs"
+				text = "[?active_war_room_operations_array^num]"
+				format = center
+				maxWidth = 20
+				maxHeight = 20
+				fixedsize = yes
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "dh_war_room_window"
+		position = { x = -606 y = 78 }
+		show_position = { x = -6 y = 78 }
+		size = { width = 550 height = 100%% }
+
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+
+		show_sound = menu_open_window
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+
+		iconType = {
+			name = "header_bg"
+			position = { x = 5 y = 7 }
+			spriteType = "GFX_header_bg"
+		}
+
+		instantTextboxType = {
+			name = "header"
+			position = { x = 50 y = 7 }
+			font = "hoi_36header"
+			text = "DH_WAR_ROOM_HEADER"
+			format = left
+			maxWidth = 410
+			maxHeight = 20
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "entry_window"
+			position = { x = 0 y = 43 }
+			size = { width = 100%% height = 100%% }
+
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_window2_1b_border"
+			}
+
+			containerWindowType = {
+				name = "background_window"
+				position = { x = 12 y = 12 }
+				size = { width = -24 height = -12 }
+
+				background = {
+					name = "background"
+					spriteType = "GFX_war_room_tiled_background"
+				}
+
+				iconType = {
+					name = "info_background"
+					position = { x = 257 y = -200 }
+					centerposition = yes
+					orientation = lower_left
+					spriteType = "GFX_war_room_background_info"
+				}
+
+				instantTextboxType = {
+					name = "info_text"
+					position = { x = 120 y = -150 }
+					orientation = lower_left
+					font = "hoi_18mbs"
+					text = "DH_WAR_ROOM_BACKGROUND_INFO_TEXT"
+					format = center
+					maxWidth = 270
+					maxHeight = 55
+					fixedsize = yes
+					alwaystransparent = yes
+					text_color_code = q
+				}
+			}
+
+			containerWindowType = {
+				name = "info_window"
+				position = { x = 14 y = 14 }
+				size = { width = 100%% height = 147 }
+
+				iconType = {
+					name = "war_room_background"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_war_room_background_generic"
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "war_room_icon"
+					position = { x = 95 y = 65 }
+					centerposition = yes
+					spriteType = "GFX_war_room_icon_generic"
+					alwaystransparent = yes
+				}
+
+				instantTextboxType = {
+					name = "desc"
+					position = { x = 195 y = 7 }
+					font = "hoi_18mbs"
+					text = "DH_WAR_ROOM_DESC"
+					format = left
+					maxWidth = 300
+					maxHeight = 130
+					fixedsize = yes
+					vertical_alignment = center
+				}
+			}
+
+			containerWindowType = {
+				name = "possible_operations_window"
+				position = { x = 8 y = 145 }
+				size = { width = 100%% height = 177 }
+
+				background = {
+					name = "background"
+					spriteType = "GFX_planning_board_bg"
+				}
+
+				instantTextboxType = {
+					name = "possible_operations_title"
+					position = { x = 41 y = 11 }
+					font = "hoi_20b"
+					text = "DH_WAR_ROOM_POSSIBLE_OPERATIONS_TITLE"
+					format = center
+					maxWidth = 120
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				containerWindowType = {
+					name = "list_window"
+					position = { x = 5 y = 41 }
+					size = { width = -29 height = 107 }
+					margin = { left = 4 }
+					horizontalScrollbar = "war_room_horizontal_slider"
+
+					background = {
+						name = "background"
+						spriteType = "GFX_tiled_window_transparent"
+					}
+
+					gridboxtype = {
+						name = "war_room_possible_operations_gridbox"
+						position = { x = 3 y = 0 }
+						size = { width = 100%% height = 100%% }
+						slotsize = { width = 1 height = 1 }
+						add_horizontal = yes
+						max_slots_vertical = 1
+						format = "UPPER_LEFT"
+					}
+				}
+
+				instantTextboxType = {
+					name = "active_operations_title"
+					position = { x = 25 y = 148 }
+					font = "hoi_18mbs"
+					text = "DH_WAR_ROOM_ACTIVE_OPERATIONS_TITLE"
+					format = center
+					maxWidth = 144
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "active_operations_window"
+				position = { x = 0 y = 315 }
+				size = { width = 100%% height = 100%% }
+				margin = { left = 12 right = 24 top = 5 bottom = 15 }
+				verticalScrollbar = "right_vertical_slider"
+
+				background = {
+					name = "background"
+					spriteType = "GFX_tiled_window_transparent"
+				}
+			}
+		}
+
+		buttonType = {
+			name = "close_button"
+			position = { x = -43 y = 10 }
+			orientation = upper_right
+			spriteType = "GFX_closebutton"
+			clicksound = click_close
+			pdx_tooltip = "DIPLOMACY_CLOSE"
+			shortcut = "ESCAPE"
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_possible_operations_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 120 height = 89 }
+
+		iconType = {
+			name = "operation_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_operation_folder_icons"
+			frame = 1
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_POSSIBLE_ENTRY_TT"
+			pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_POSSIBLE_ENTRY_TT_DELAYED"
+		}
+
+		instantTextboxType = {
+			name = "operation_name"
+			position = { x = 18 y = 18 }
+			font = "hoi4_typewriter16"
+			text = "DH_WAR_ROOM_OPERATION_POSSIBLE_ENTRY_NAME"
+			format = center
+			maxWidth = 70
+			maxHeight = 33
+			fixedsize = yes
+			vertical_alignment = center
+			alwaystransparent = yes
+			text_color_code = f
+		}
+
+		instantTextboxType = {
+			name = "operation_name_failed"
+			position = { x = 18 y = 18 }
+			font = "hoi4_typewriter16"
+			text = "DH_WAR_ROOM_OPERATION_POSSIBLE_ENTRY_NAME"
+			format = center
+			maxWidth = 70
+			maxHeight = 33
+			fixedsize = yes
+			vertical_alignment = center
+			alwaystransparent = yes
+			text_color_code = W
+		}
+
+		instantTextboxType = {
+			name = "operation_status"
+			position = { x = 15 y = 57 }
+			font = "hoi4_typewriter16"
+			text = "DH_WAR_ROOM_OPERATION_POSSIBLE_ENTRY_TEXT"
+			format = center
+			maxWidth = 82
+			maxHeight = 20
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+	}
+
+	# Scrollbars
+	extendedScrollbarType = {
+		name = "war_room_horizontal_slider"
+		position = { x = 0 y = -6 }
+		size = { width = 18 height = 18 }
+		tileSize = { width = 12 height = 12}
+		maxValue =1
+		minValue =0
+		stepSize =0.01
+		startValue = 0
+		horizontal = yes
+		orientation = lower_left
+		origo = lower_left
+
+		slider = {
+			name = "Slider"
+			quadTextureSprite = "GFX_scroll_drager"
+			position = { x=0 y = -2 }
+		}
+
+		track = {
+			name = "Track"
+			quadTextureSprite = "GFX_scroll_track_horisontal"
+			position = { x=0 y = 3 }
+			alwaystransparent = yes
+		}
+
+		decreaseButton = {
+			name = "Decrease"
+			quadTextureSprite = "GFX_scroll_left"
+			position = { x=3 y = 1 }
+		}
+
+		increaseButton = {
+			name = "Increase"
+			quadTextureSprite = "GFX_scroll_right"
+			position = { x=-19 y = -17 }
+		}
+	}
+}

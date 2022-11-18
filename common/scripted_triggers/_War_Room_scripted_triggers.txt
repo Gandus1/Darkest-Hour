@@ -1,0 +1,162 @@
+########################################################################################################
+## This file includes scripted triggers for the war room and general scripted triggers for operations ##
+########################################################################################################
+
+# usage:
+## country_has_custom_war_room_background = yes
+country_has_custom_war_room_background = {
+	OR = {
+		original_tag = SOV
+	}
+}
+
+# usage:
+## country_has_custom_war_room_icon = yes
+country_has_custom_war_room_icon = {
+	OR = {
+		AND = {
+			original_tag = SOV
+			has_government = communist
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { amount = 1 }
+## has_amount_of_possible_war_room_operations = yes
+has_amount_of_possible_war_room_operations = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_AMOUNT_OF_POSSIBLE_WAR_ROOM_OPERATIONS_TT
+		NOT = { check_variable = { possible_war_room_operations_array^num < amount } }
+	}
+}
+
+# usage:
+## set_temp_variable = { amount = 1 }
+## has_less_amount_of_possible_war_room_operations = yes
+has_less_amount_of_possible_war_room_operations = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_AMOUNT_OF_POSSIBLE_WAR_ROOM_OPERATIONS_TT
+		check_variable = { possible_war_room_operations_array^num < amount }
+	}
+}
+
+# usage:
+## set_temp_variable = { amount = 1 }
+## has_amount_of_active_war_room_operations = yes
+has_amount_of_active_war_room_operations = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_AMOUNT_OF_ACTIVE_WAR_ROOM_OPERATIONS_TT
+		NOT = { check_variable = { active_war_room_operations_array^num < amount } }
+	}
+}
+
+# usage:
+## set_temp_variable = { amount = 1 }
+## has_less_amount_of_active_war_room_operations = yes
+has_less_amount_of_active_war_room_operations = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_AMOUNT_OF_ACTIVE_WAR_ROOM_OPERATIONS_TT
+		check_variable = { active_war_room_operations_array^num < amount }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_possible_war_room_operation = yes
+has_possible_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_POSSIBLE_WAR_ROOM_OPERATION_TT
+		is_in_array = { possible_war_room_operations_array = operation_id }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_not_possible_war_room_operation = yes
+has_not_possible_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NOT_POSSIBLE_WAR_ROOM_OPERATION_TT
+		NOT = { is_in_array = { possible_war_room_operations_array = operation_id } }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_active_war_room_operation = yes
+has_active_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_ACTIVE_WAR_ROOM_OPERATION_TT
+		is_in_array = { active_war_room_operations_array = operation_id }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_not_active_war_room_operation = yes
+has_not_active_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NOT_ACTIVE_WAR_ROOM_OPERATION_TT
+		NOT = { is_in_array = { active_war_room_operations_array = operation_id } }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_completed_war_room_operation = yes
+has_completed_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_COMPLETED_WAR_ROOM_OPERATION_TT
+		meta_trigger = {
+			text = {
+				has_country_flag = has_completed_war_room_operation_[ID]
+			}
+			ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_not_completed_war_room_operation = yes
+has_not_completed_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NOT_COMPLETED_WAR_ROOM_OPERATION_TT
+		meta_trigger = {
+			text = {
+				NOT = { has_country_flag = has_completed_war_room_operation_[ID] }
+			}
+			ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_failed_war_room_operation = yes
+has_failed_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_FAILED_WAR_ROOM_OPERATION_TT
+		meta_trigger = {
+			text = {
+				has_country_flag = has_failed_war_room_operation_[ID]
+			}
+			ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_not_failed_war_room_operation = yes
+has_not_failed_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = HAS_NOT_FAILED_WAR_ROOM_OPERATION_TT
+		meta_trigger = {
+			text = {
+				NOT = { has_country_flag = has_failed_war_room_operation_[ID] }
+			}
+			ID = "[?operation_id]"
+		}
+	}
+}

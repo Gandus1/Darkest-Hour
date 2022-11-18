@@ -1,0 +1,149 @@
+######################################################################################################
+## This file includes scripted effects for the war room and general scripted effects for operations ##
+######################################################################################################
+
+# usage:
+## update_war_room_window = yes
+update_war_room_window = {
+	if = {
+		limit = {
+			has_variable = show_war_room_window
+		}
+		if = {
+			limit = {
+				check_variable = { show_war_room_window > 1000 }
+			}
+			set_variable = { show_war_room_window = 0 }
+		}
+		add_to_variable = { show_war_room_window = 1 }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## add_possible_war_room_operation = yes
+add_possible_war_room_operation = {
+	if = {
+		limit = {
+			has_not_possible_war_room_operation = yes
+		}
+		custom_effect_tooltip = ADD_POSSIBLE_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			add_to_array = { possible_war_room_operations_array = operation_id }
+			update_war_room_window = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## remove_possible_war_room_operation = yes
+remove_possible_war_room_operation = {
+	if = {
+		limit = {
+			has_possible_war_room_operation = yes
+		}
+		custom_effect_tooltip = REMOVE_POSSIBLE_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			if = {
+				limit = {
+					has_active_war_room_operation = yes
+				}
+				remove_active_war_room_operation = yes
+			}
+			remove_from_array = { possible_war_room_operations_array = operation_id }
+			update_war_room_window = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## add_active_war_room_operation = yes
+add_active_war_room_operation = {
+	if = {
+		limit = {
+			has_possible_war_room_operation = yes
+			has_not_active_war_room_operation = yes
+		}
+		custom_effect_tooltip = ADD_ACTIVE_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			add_to_array = { active_war_room_operations_array = operation_id }
+			update_war_room_window = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## remove_active_war_room_operation = yes
+remove_active_war_room_operation = {
+	if = {
+		limit = {
+			has_active_war_room_operation = yes
+		}
+		custom_effect_tooltip = REMOVE_ACTIVE_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			remove_from_array = { active_war_room_operations_array = operation_id }
+			update_war_room_window = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## complete_war_room_operation = yes
+complete_war_room_operation = {
+	if = {
+		limit = {
+			has_possible_war_room_operation = yes
+			has_not_completed_war_room_operation = yes
+			has_not_failed_war_room_operation = yes
+		}
+		custom_effect_tooltip = COMPLETE_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_country_flag = has_completed_war_room_operation_[ID]
+				}
+				ID = "[?operation_id]"
+			}
+			if = {
+				limit = {
+					has_active_war_room_operation = yes
+				}
+				remove_active_war_room_operation = yes
+			}
+			update_war_room_window = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## fail_war_room_operation = yes
+fail_war_room_operation = {
+	if = {
+		limit = {
+			has_possible_war_room_operation = yes
+			has_not_completed_war_room_operation = yes
+			has_not_failed_war_room_operation = yes
+		}
+		custom_effect_tooltip = FAIL_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_country_flag = has_failed_war_room_operation_[ID]
+				}
+				ID = "[?operation_id]"
+			}
+			if = {
+				limit = {
+					has_active_war_room_operation = yes
+				}
+				remove_active_war_room_operation = yes
+			}
+			update_war_room_window = yes
+		}
+	}
+}

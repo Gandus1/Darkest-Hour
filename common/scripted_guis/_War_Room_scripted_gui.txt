@@ -1,0 +1,142 @@
+scripted_gui = {
+	dh_open_war_room_window = {
+		context_type = player_context
+
+		window_name = "dh_open_war_room_window"
+		parent_window_token = top_bar
+
+		visible = {
+			is_ai = no
+		}
+
+		effects = {
+			open_button_click = {
+				set_variable = { show_war_room_window = 1 }
+			}
+			close_button_click = {
+				clear_variable = show_war_room_window
+			}
+		}
+
+		triggers = {
+			open_button_visible = {
+				NOT = { has_variable = show_war_room_window }
+			}
+			open_button_click_enabled = {
+				set_temp_variable = { amount = 1 }
+				has_amount_of_possible_war_room_operations = yes
+			}
+			close_button_visible = {
+				has_variable = show_war_room_window
+			}
+			value_bg_visible = {
+				set_temp_variable = { amount = 1 }
+				has_amount_of_active_war_room_operations = yes
+			}
+			value_visible = {
+				set_temp_variable = { amount = 1 }
+				has_amount_of_active_war_room_operations = yes
+			}
+		}
+
+		properties = {
+			open_button = {
+				x = global.dh_war_room_top_bar_button_position
+			}
+			close_button = {
+				x = global.dh_war_room_top_bar_button_position
+			}
+			value_bg_button = {
+				x = global.dh_war_room_top_bar_button_position
+			}
+			value_button = {
+				x = global.dh_war_room_top_bar_button_position
+			}
+		}
+	}
+
+	dh_war_room_window = {
+		context_type = player_context
+
+		window_name = "dh_war_room_window"
+
+		dirty = show_war_room_window
+
+		visible = {
+			has_variable = show_war_room_window
+		}
+
+		effects = {
+			close_button_click = {
+				clear_variable = show_war_room_window
+			}
+		#	Purely for testing:
+		#	close_button_right_click = {
+		#		set_temp_variable = { operation_id = 1 }
+		#		add_active_war_room_operation = yes
+		#		complete_war_room_operation = yes
+		#		fail_war_room_operation = yes
+		#		clr_country_flag = has_completed_war_room_operation_1
+		#		clr_country_flag = has_failed_war_room_operation_1
+		#		update_war_room_window = yes
+		#	}
+		}
+
+		triggers = {
+			operation_icon_visible = {
+				set_temp_variable = { operation_id = v }
+				if = {
+					limit = {
+						has_active_war_room_operation = yes
+					}
+					set_temp_variable = { operation_icon_frame = 1 }
+				}
+				else_if = {
+					limit = {
+						has_completed_war_room_operation = yes
+					}
+					set_temp_variable = { operation_icon_frame = 3 }
+				}
+				else_if = {
+					limit = {
+						has_failed_war_room_operation = yes
+					}
+					set_temp_variable = { operation_icon_frame = 4 }
+				}
+				else = {
+					set_temp_variable = { operation_icon_frame = 2 }
+				}
+			}
+			operation_name_visible = {
+				set_temp_variable = { operation_id = v }
+				OR = {
+					has_active_war_room_operation = yes
+					has_completed_war_room_operation = yes
+				}
+			}
+			operation_name_failed_visible = {
+				set_temp_variable = { operation_id = v }
+				has_failed_war_room_operation = yes
+			}
+		}
+
+		dynamic_lists = {
+			war_room_possible_operations_gridbox = {
+				array = possible_war_room_operations_array
+				entry_container = war_room_possible_operations_entry
+			}
+		}
+
+		properties = {
+			war_room_background = {
+				image = "[This.GetWarRoomBackground]"
+			}
+			war_room_icon = {
+				image = "[This.GetWarRoomIcon]"
+			}
+			operation_icon = {
+				frame = operation_icon_frame
+			}
+		}
+	}
+}
