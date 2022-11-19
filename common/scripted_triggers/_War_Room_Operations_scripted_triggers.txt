@@ -1,3 +1,39 @@
+##################################
+######		TEMPLATE		######
+##################################
+## <operation id> is a placeholder for the ID assigned (added in the array and used in scripted loc to grab the name)
+## <decision name> is a placeholder for the code name of the specific decision
+##################################################################################################################################################################################
+##	can_complete_war_room_operation_<operation id> = {
+##		# the triggers that must be fulfilled to successfully complete the operation
+##	}
+##
+##	can_fail_war_room_operation_<operation id> = {
+##		# the triggers that must be fulfilled to fail the operation
+##	}
+##
+##	war_room_operation_decision_visible_trigger_<decision name> = {
+##		# the triggers that must be fulfilled for this decision to be visible, excluding the is_ai = yes condition that is additionally added to the decision
+##		# use always = yes if there are no additional conditions required
+##	}
+##	war_room_operation_decision_available_trigger_<decision name> = {
+##		# the triggers that must be fulfilled for this decision to enactabe, excluding the costs
+##	}
+##	war_room_operation_decision_remove_trigger_<decision name> = {
+##		# the triggers that must be fulfilled for this decision to be removed after it was enacted (useful if it has a timer and you want it to end earlier)
+##		# use always = no if the decision should never be removed early
+##	}
+##	war_room_operation_decision_cancel_trigger_<decision name> = {
+##		# the triggers that must be fulfilled for this decision to be canceled after it was enacted (this will mean it can be enacted again)
+##		# use always = no if the decision should never be canceled
+##	}
+##	war_room_operation_decision_cost_calculation_<decision name> = {
+##		# set the two temp variables cp_cost (command power) & generals_cost (assigned generals required while active, max is 4)
+##		# set generals_cost to 0 for decisions that are instant and have no remove timer
+##	}
+##################################################################################################################################################################################
+
+
 #############
 ### GROZA ###
 #############
@@ -17,4 +53,24 @@ can_complete_war_room_operation_1 = {
 ## can_fail_war_room_operation_1 = yes
 can_fail_war_room_operation_1 = {
 	has_capitulated = yes
+}
+
+## Decisions ##
+war_room_operation_decision_visible_trigger_operation_test_decision = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_test_decision = {
+	set_temp_variable = { amount = 10 }
+	has_less_amount_of_war_room_operation_progress = yes
+}
+war_room_operation_decision_remove_trigger_operation_test_decision = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_test_decision = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_test_decision = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 10 }
 }

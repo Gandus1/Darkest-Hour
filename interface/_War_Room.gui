@@ -519,7 +519,7 @@ guiTypes = {
 						maxWidth = 169
 						maxHeight = 20
 						fixedsize = yes
-						text_color_code = R
+						text_color_code = f
 					}
 				}
 
@@ -561,7 +561,7 @@ guiTypes = {
 						maxWidth = 169
 						maxHeight = 20
 						fixedsize = yes
-						text_color_code = R
+						text_color_code = f
 					}
 				}
 
@@ -603,7 +603,7 @@ guiTypes = {
 						maxWidth = 169
 						maxHeight = 20
 						fixedsize = yes
-						text_color_code = R
+						text_color_code = f
 					}
 				}
 
@@ -645,7 +645,7 @@ guiTypes = {
 						maxWidth = 169
 						maxHeight = 20
 						fixedsize = yes
-						text_color_code = R
+						text_color_code = f
 					}
 				}
 			}
@@ -757,6 +757,14 @@ guiTypes = {
 				format = "UPPER_LEFT"
 			}
 
+			# Only used to populate decisions temp array
+			iconType = {
+				name = "active_operation_get_decisions"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_tiled_window_transparent_transparent"
+				alwaystransparent = yes
+			}
+
 			containerWindowType = {
 				name = "decisions_list_window"
 				position = { x = 0 y = 135 }
@@ -771,23 +779,14 @@ guiTypes = {
 					spriteType = "GFX_tiled_window_transparent"
 				}
 
-				containerWindowType = {
-					name = "war_room_operations_decisions_entry"
+				gridboxtype = {
+					name = "war_room_operations_decisions_gridbox"
 					position = { x = 0 y = 0 }
-					size = { width = 460 height = 48 }
-
-					iconType = {
-						name = "decision_background"
-						position = { x = 0 y = 0 }
-						spriteType = "GFX_war_room_operation_decision_bg"
-					}
-
-					buttonType = {
-						name = "decision_button"
-						position = { x = -45 y = 12 }
-						orientation = upper_right
-						spriteType = "GFX_war_room_operation_decision_button"
-					}
+					size = { width = 100%% height = 100%% }
+					slotsize = { width = 1 height = 1 }
+					add_horizontal = no
+					max_slots_horizontal = 1
+					format = "UPPER_LEFT"
 				}
 			}
 		}
@@ -851,6 +850,214 @@ guiTypes = {
 				spriteType = "GFX_tiled_window_transparent_transparent"
 				alwaystransparent = yes
 			}
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_operations_decisions_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 460 height = 45 }
+
+		# Only used to grab tooltips
+		iconType = {
+			name = "decision_get_remove_and_cancel_triggers"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_tiled_window_transparent_transparent"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "decision_background"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_war_room_operation_decision_bg"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT"
+		}
+
+		iconType = {
+			name = "decision_icon"
+			position = { x = 28 y = 23 }
+			spriteType = "GFX_decision_unknown"
+			centerposition = yes
+			alwaystransparent = yes
+			scale = 0.9
+		}
+
+		buttonType = {
+			name = "decision_button"
+			position = { x = -45 y = 12 }
+			orientation = upper_right
+			spriteType = "GFX_war_room_operation_decision_button"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT"
+			clicksound = "decisions_ui_button"
+		}
+
+		instantTextboxType = {
+			name = "decision_name"
+			position = { x = 74 y = 0 }
+			font = "hoi4_typewriter16"
+			text = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_NAME"
+			format = left
+			maxWidth = 295
+			maxHeight = 33
+			fixedsize = yes
+			vertical_alignment = bottom
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "cost_window"
+			position = { x = 0 y = 0 }
+			position = { x = -87 y = 7 }
+			orientation = upper_right
+			size = { width = 100%% height = 100%% }
+
+			containerWindowType = {
+				name = "generals_window"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "decision_cost_icon_generals"
+					position = { x = 1 y = 2 }
+					spriteType = "GFX_war_room_general_icon"
+					scale = 0.75
+					alwaystransparent = yes
+				}
+
+				instantTextboxType = {
+					name = "decision_cost_value_generals"
+					position = { x = 16 y = 0 }
+					font = "hoi4_typewriter16"
+					text = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_COST_TEXT_GENERALS"
+					format = center
+					maxWidth = 28
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "command_power_window"
+				position = { x = 0 y = 16 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "decision_cost_icon_command_power"
+					position = { x = 0 y = 1 }
+					spriteType = "GFX_command_power"
+					scale = 0.7
+					alwaystransparent = yes
+				}
+
+				instantTextboxType = {
+					name = "decision_cost_value_command_power"
+					position = { x = 16 y = 0 }
+					font = "hoi4_typewriter16"
+					text = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_COST_TEXT_COMMAND_POWER"
+					format = center
+					maxWidth = 28
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_operations_decisions_entry_active"
+		position = { x = 0 y = 0 }
+		size = { width = 460 height = 53 }
+
+		# Only used to grab tooltips
+		iconType = {
+			name = "decision_get_remove_and_cancel_triggers"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_tiled_window_transparent_transparent"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "decision_background_active"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_war_room_operation_decision_bg_active"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_ACTIVE"
+		}
+
+		iconType = {
+			name = "decision_icon"
+			position = { x = 28 y = 23 }
+			spriteType = "GFX_decision_unknown"
+			centerposition = yes
+			alwaystransparent = yes
+			scale = 0.9
+		}
+
+		iconType = {
+			name = "decision_button_active"
+			position = { x = -45 y = 12 }
+			orientation = upper_right
+			spriteType = "GFX_war_room_operation_decision_button"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_ACTIVE"
+		}
+
+		instantTextboxType = {
+			name = "decision_name"
+			position = { x = 74 y = 0 }
+			font = "hoi4_typewriter16"
+			text = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_NAME"
+			format = left
+			maxWidth = 295
+			maxHeight = 33
+			fixedsize = yes
+			vertical_alignment = bottom
+			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_operations_decisions_entry_completed"
+		position = { x = 0 y = 0 }
+		size = { width = 460 height = 45 }
+
+		iconType = {
+			name = "decision_background_completed"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_war_room_operation_decision_bg_completed"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_COMPLETED"
+			pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_DELAYED_COMPLETED"
+		}
+
+		iconType = {
+			name = "decision_icon"
+			position = { x = 28 y = 23 }
+			spriteType = "GFX_decision_unknown"
+			centerposition = yes
+			alwaystransparent = yes
+			scale = 0.9
+		}
+
+		iconType = {
+			name = "decision_button_completed"
+			position = { x = -45 y = 12 }
+			orientation = upper_right
+			spriteType = "GFX_war_room_operation_decision_button"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_COMPLETED"
+			pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_DELAYED_COMPLETED"
+		}
+
+		instantTextboxType = {
+			name = "decision_name"
+			position = { x = 74 y = 0 }
+			font = "hoi4_typewriter16"
+			text = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_NAME"
+			format = left
+			maxWidth = 295
+			maxHeight = 33
+			fixedsize = yes
+			vertical_alignment = bottom
+			alwaystransparent = yes
 		}
 	}
 

@@ -1,3 +1,39 @@
+##################################
+######		TEMPLATE		######
+##################################
+## <operation id> is a placeholder for the ID assigned (added in the array and used in scripted loc to grab the name)
+## <decision name> is a placeholder for the code name of the specific decision
+##################################################################################################################################################
+##	complete_war_room_operation_<operation id> = {
+##		# the effects that should be executed when the operation is successfully completed after launch
+##	}
+##
+##	fail_war_room_operation_<operation id> = {
+##		# the effects that should be executed when the operation is failed after launch
+##	}
+##
+##	set_up_decisions_for_war_room_operation_<operation id> = {
+##		# setting up the array with decisions
+##		clear_array = global.war_room_operation_<operation id>_decisions_array
+##		add_to_array = { global.war_room_operation_<operation id>_decisions_array = token:<decision name> }
+##	}
+##
+##	war_room_operation_decision_complete_effect_<decision name> = {
+##		show_complete_effect_war_room_operation_decision_general_tooltip = yes # use this, if there are any visible effects
+##		# the effects that should be executed when the decision is enacted
+##	}
+##	war_room_operation_decision_remove_effect_<decision name> = {
+##		set_temp_variable = { days_remove = <amount of days used for the decision's days_remove> }
+##		show_remove_effect_war_room_operation_decision_general_tooltip = yes # use this, if there are any visible effects
+##		# the effects that should be executed when the decision is enacted
+##	}
+##	war_room_operation_decision_cancel_effect_<decision name> = {
+##		show_cancel_effect_war_room_operation_decision_general_tooltip = yes # use this, if there are any visible effects
+##		# the effects that should be executed when the decision is enacted
+##	}
+##################################################################################################################################################
+
+
 #############
 ### GROZA ###
 #############
@@ -12,4 +48,27 @@ complete_war_room_operation_1 = {
 ## fail_war_room_operation_1 = yes
 fail_war_room_operation_1 = {
 	add_political_power = -100
+}
+
+# usage:
+## set_up_decisions_for_war_room_operation_1 = yes
+set_up_decisions_for_war_room_operation_1 = {
+	clear_array = global.war_room_operation_1_decisions_array
+	add_to_array = { global.war_room_operation_1_decisions_array = token:operation_test_decision }
+}
+
+## Decisions ##
+war_room_operation_decision_complete_effect_operation_test_decision = {
+	show_complete_effect_war_room_operation_decision_general_tooltip = yes # use this, if there are any visible effects
+	add_stability = -0.01
+}
+war_room_operation_decision_remove_effect_operation_test_decision = {
+	set_temp_variable = { days_remove = 10 } # set to the days_remove of the specific decision
+	show_remove_effect_war_room_operation_decision_general_tooltip = yes # use this, if there are any visible effects
+	army_experience = 20
+	set_temp_variable = { amount = 5 }
+	add_war_room_operation_progress = yes
+}
+war_room_operation_decision_cancel_effect_operation_test_decision = {
+	#show_cancel_effect_war_room_operation_decision_general_tooltip = yes # use this, if there are any visible effects
 }

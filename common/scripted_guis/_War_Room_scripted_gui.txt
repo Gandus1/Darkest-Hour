@@ -68,18 +68,19 @@ scripted_gui = {
 
 		effects = {
 			close_button_click = {
+				clear_variable = show_dh_war_room_assign_generals_window
 				clear_variable = show_war_room_window
 			}
 		#	Purely for testing:
-			close_button_right_click = {
-				set_temp_variable = { operation_id = 1 }
-				add_active_war_room_operation = yes
+		#	close_button_right_click = {
+		#		set_temp_variable = { operation_id = 1 }
+		#		add_active_war_room_operation = yes
 		#		complete_war_room_operation = yes
 		#		fail_war_room_operation = yes
 		#		clr_country_flag = has_completed_war_room_operation_1
 		#		clr_country_flag = has_failed_war_room_operation_1
-				update_war_room_window = yes
-			}
+		#		update_war_room_window = yes
+		#	}
 
 			# Active Operations:
 			## expand/collapse buttons
@@ -122,6 +123,39 @@ scripted_gui = {
 			active_operation_tab_button_decisions_click = {
 				set_temp_variable = { operation_id = v }
 				select_decisions_tab_for_war_room_operation = yes
+			}
+			## decisions
+			decision_name_click = {
+				set_temp_variable = { decision_id = decision_v }
+				meta_effect = {
+					text = {
+						custom_effect_tooltip = [ID]_desc
+					}
+					ID = "[?decision_id.GetTokenLocalizedKey]"
+				}
+			}
+			decision_button_click = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				hidden_effect = {
+					meta_effect = {
+						text = {
+							activate_decision = [ID]
+						}
+						ID = "[?decision_id.GetTokenLocalizedKey]"
+					}
+				}
+				set_temp_variable = { show_tooltip = 1 }
+				effect_tooltip = {
+					if = {
+						limit = {
+							NOT = { is_war_room_operation_decision_in_progress = yes }
+						}
+						execute_complete_effect_war_room_operation_decision = yes
+					}
+					execute_remove_effect_war_room_operation_decision = yes
+					execute_cancel_effect_war_room_operation_decision = yes
+				}
 			}
 		}
 
@@ -322,6 +356,57 @@ scripted_gui = {
 				set_temp_variable = { operation_id = v }
 				NOT = { has_war_room_operation_selected_decisions_tab = yes }
 			}
+			## decisions
+			active_operation_get_decisions_visible = {
+				clear_temp_array = active_operation_decisions_array_temp
+				set_temp_variable = { operation_id = v }
+				has_war_room_operation_selected_decisions_tab = yes
+				meta_trigger = {
+					text = {
+						all_of = {
+							array = global.war_room_operation_[ID]_decisions_array
+							value = value_temp
+							index = index_temp
+							set_temp_variable = { decision_id = value_temp }
+							if = {
+								limit = {
+									is_war_room_operation_decision_visible = yes
+								}
+								add_to_temp_array = { active_operation_decisions_array_temp = value_temp }
+							}
+						}
+					}
+					ID = "[?operation_id]"
+				}
+			}
+			### individual decisions
+			decision_get_remove_and_cancel_triggers_visible = {
+				hidden_trigger = {
+					always = no
+				}
+				set_temp_variable = { decision_id = decision_v }
+				is_war_room_operation_decision_removing = yes
+			}
+			decision_get_remove_and_cancel_triggers_click_enabled = {
+				set_temp_variable = { decision_id = decision_v }
+				is_war_room_operation_decision_canceling = yes
+			}
+			decision_background_click_enabled = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				is_war_room_operation_decision_available = yes
+				hidden_trigger = {
+					can_afford_war_room_operation_decision_cost = yes
+				}
+			}
+			decision_button_click_enabled = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				is_war_room_operation_decision_available = yes
+				hidden_trigger = {
+					can_afford_war_room_operation_decision_cost = yes
+				}
+			}
 			## progress bar
 			### generic
 			active_operation_progressbar_visible = {
@@ -343,6 +428,12 @@ scripted_gui = {
 			war_room_active_operation_progress_bar_gridbox = {
 				array = war_room_active_operation_progress_bar_array_temp
 				entry_container = "[This.GetWarRoomActiveOperationProgressBar]"
+			}
+			war_room_operations_decisions_gridbox = {
+				array = active_operation_decisions_array_temp
+				entry_container = "[This.GetWarRoomOperationDecisionEntryContainer]"
+				value = decision_v
+				index = decision_i
 			}
 		}
 
@@ -376,6 +467,10 @@ scripted_gui = {
 			}
 			active_operation_assigned_general_4_bg = {
 				frame = active_operation_assigned_general_4_bg_frame
+			}
+			## decisions
+			decision_icon = {
+				image = "GFX_operation_decision_[?decision_v.GetTokenKey]"
 			}
 			## progress bars
 			### generic

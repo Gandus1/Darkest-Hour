@@ -359,3 +359,178 @@ has_less_amount_of_war_room_operation_progress = {
 		check_variable = { operation_progress < amount }
 	}
 }
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_war_room_operation_decision_completed = yes
+is_war_room_operation_decision_completed = {
+	custom_trigger_tooltip = {
+		tooltip = IS_WAR_ROOM_OPERATION_DECISION_COMPLETED_TT
+		is_in_array = { war_room_operation_completed_decisions_array = decision_id }
+		NOT = { is_war_room_operation_decision_in_progress = yes }
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_not_war_room_operation_decision_completed = yes
+is_not_war_room_operation_decision_completed = {
+	custom_trigger_tooltip = {
+		tooltip = IS_NOT_WAR_ROOM_OPERATION_DECISION_COMPLETED_TT
+		OR = {
+			NOT = { is_in_array = { war_room_operation_completed_decisions_array = decision_id } }
+			is_war_room_operation_decision_in_progress = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_war_room_operation_decision_in_progress = yes
+is_war_room_operation_decision_in_progress = {
+	meta_trigger = {
+		text = {
+			has_decision = [ID]
+		}
+		ID = "[?decision_id.GetTokenKey]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## is_any_war_room_operation_decision_in_progress = yes
+is_any_war_room_operation_decision_in_progress = {
+	custom_trigger_tooltip = {
+		tooltip = IS_ANY_WAR_ROOM_OPERATION_DECISION_IN_PROGRESS_TT
+		meta_trigger = {
+			text = {
+				any_of = {
+					array = global.war_room_operation_[OPERATION_ID]_decisions_array
+					value = value_temp
+					index = index_temp
+					set_temp_variable = { decision_id = value_temp }
+					is_war_room_operation_decision_in_progress = yes
+				}
+			}
+			OPERATION_ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## is_not_any_war_room_operation_decision_in_progress = yes
+is_not_any_war_room_operation_decision_in_progress = {
+	custom_trigger_tooltip = {
+		tooltip = IS_NOT_ANY_WAR_ROOM_OPERATION_DECISION_IN_PROGRESS_TT
+		meta_trigger = {
+			text = {
+				all_of = {
+					array = global.war_room_operation_[OPERATION_ID]_decisions_array
+					value = value_temp
+					index = index_temp
+					set_temp_variable = { decision_id = value_temp }
+					NOT = { is_war_room_operation_decision_in_progress = yes }
+				}
+			}
+			OPERATION_ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_war_room_operation_decision_visible = yes
+is_war_room_operation_decision_visible = {
+	meta_trigger = {
+		text = {
+			war_room_operation_decision_visible_trigger_[ID] = yes
+		}
+		ID = "[?decision_id.GetTokenKey]"
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_war_room_operation_decision_available = yes
+is_war_room_operation_decision_available = {
+	meta_trigger = {
+		text = {
+			war_room_operation_decision_available_trigger_[ID] = yes
+		}
+		ID = "[?decision_id.GetTokenKey]"
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_war_room_operation_decision_removing = yes
+is_war_room_operation_decision_removing = {
+	meta_trigger = {
+		text = {
+			war_room_operation_decision_cancel_trigger_[ID] = yes
+		}
+		ID = "[?decision_id.GetTokenKey]"
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## is_war_room_operation_decision_canceling = yes
+is_war_room_operation_decision_canceling = {
+	meta_trigger = {
+		text = {
+			war_room_operation_decision_cancel_trigger_[ID] = yes
+		}
+		ID = "[?decision_id.GetTokenKey]"
+	}
+}
+
+# usage:
+## set_temp_variable = { decision_id = token:name }
+## calculate_war_room_operation_decision_cost = yes
+calculate_war_room_operation_decision_cost = {
+	meta_trigger = {
+		text = {
+			war_room_operation_decision_cost_calculation_[ID] = yes
+		}
+		ID = "[?decision_id.GetTokenKey]"
+	}
+	clamp_temp_variable = {
+		var = cp_cost
+		min = 0
+	}
+	clamp_temp_variable = {
+		var = generals_cost
+		min = 0
+		max = 4
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { decision_id = token:name }
+## can_afford_war_room_operation_decision_cost = yes
+can_afford_war_room_operation_decision_cost = {
+	calculate_war_room_operation_decision_cost = yes
+	can_afford_war_room_operation_decision_cost_cp = yes
+	can_afford_war_room_operation_decision_cost_generals = yes
+}
+
+# usage:
+## set_temp_variable = { cp_cost = 1 }
+## can_afford_war_room_operation_decision_cost_cp = yes
+can_afford_war_room_operation_decision_cost_cp = {
+	NOT = { command_power < cp_cost }
+}
+
+# usage:
+## set_temp_variable = { generals_cost = 1 }
+## can_afford_war_room_operation_decision_cost_generals = yes
+can_afford_war_room_operation_decision_cost_generals = {
+	calculate_amount_of_war_room_operation_used_generals = yes
+	calculate_amount_of_war_room_operation_assigned_generals = yes
+	set_temp_variable = { available_generals = assigned_generals }
+	subtract_from_temp_variable = { available_generals = used_generals }
+	NOT = { check_variable = { available_generals < generals_cost } }
+}

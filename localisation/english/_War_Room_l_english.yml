@@ -37,13 +37,21 @@
  DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_CONDITIONS_TEXT: "Ending Conditions"
  DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_CONDITIONS_TT: "The operation can either be completed successfully or fail. For each case specific contions have to be met. \n\n§YRequirements to complete:§! \n[!active_operation_complete_conditions_and_effects_visible] \n§YRequirements to fail:§! \n[!active_operation_fail_conditions_and_effects_visible]"
  DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_EFFECTS_TEXT: "Effects"
- DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_EFFECTS_TT: "The operation can either be completed successfully or fail. For each case there will be different effects. \n\n§YEffects when completed:§! \n[!active_operation_complete_conditions_and_effects_click] \n§YEffects when failed:§! \n[!active_operation_fail_conditions_and_effects_click]"
+ DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_EFFECTS_TT: "The operation can either be completed successfully or fail. For each case there will be different effects. \n\n§YEffects when completed:§! \n[!active_operation_complete_conditions_and_effects_click] \n\n§YEffects when failed:§! \n[!active_operation_fail_conditions_and_effects_click]"
 
- DH_WAR_ROOM_OPERATION_ASSIGN_GENERALS_WINDOW_HEADER: "Assign General"
+ DH_WAR_ROOM_OPERATION_ASSIGN_GENERALS_WINDOW_HEADER: "Assign to §Y[This.GetWarRoomOperationNameToAssignGeneralTo]§!"
  DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_WINDOW_ASSIGN_BUTTON_TEXT: "Assign"
  DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_WINDOW_ASSIGN_BUTTON_TT: "[This.GetWarRoomOperationAssignGeneralAssignButtonTooltip]"
 
- DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_TT: "The progress of the §YOperation [This.GetWarRoomOperationName]§! is currently at §Y[?operation_progress|2%%]§!."
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_NAME: "[?decision_v.GetTokenLocalizedKey]"
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT: "§Y[?decision_v.GetTokenLocalizedKey]§! \n§L[!decision_name_click]§! \n\n§YPrerequisites:§! \n[!decision_button_click_enabled] \n§YInstantly removed if:§! \n[!decision_get_remove_and_cancel_triggers_visible] \n§YInstantly aborted if:§! \n[!decision_get_remove_and_cancel_triggers_click_enabled][!decision_button_click]"
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_ACTIVE: "§Y[?decision_v.GetTokenLocalizedKey]§! \n§L[!decision_name_click]§! \n\n§YInstantly removed if:§! \n[!decision_get_remove_and_cancel_triggers_visible] \n§YInstantly aborted if:§! \n[!decision_get_remove_and_cancel_triggers_click_enabled][!decision_button_click]"
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_COMPLETED: "§Y[?decision_v.GetTokenLocalizedKey]§! \n§L[!decision_name_click]§!"
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_DELAYED_COMPLETED: "This decision was already completed."
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_COST_TEXT_GENERALS: "[This.GetWarRoomOperationDecisionCostTextGenerals]"
+ DH_WAR_ROOM_OPERATION_DECISION_ENTRY_COST_TEXT_COMMAND_POWER: "[This.GetWarRoomOperationDecisionCostTextCommandPower]"
+
+ DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_TT: "The planning progress of the §YOperation [This.GetWarRoomOperationName]§! is currently at §Y[?operation_progress|2%%]§!."
 
  # Scripted Localisation:
  WAR_ROOM_OPERATION_STATUS_TEXT_AVAILABLE: "§fAvailable§!"
@@ -69,6 +77,18 @@
  REMOVE_ACTIVE_WAR_ROOM_OPERATION_TT: "The §YOperation [This.GetWarRoomOperationNameOtherContext]§! is no longer active.\n"
  COMPLETE_WAR_ROOM_OPERATION_TT: "The §YOperation [This.GetWarRoomOperationNameOtherContext]§! is §Gsuccessfully completed§!, which has the following effects:\n"
  FAIL_WAR_ROOM_OPERATION_TT: "The §YOperation [This.GetWarRoomOperationNameOtherContext]§! is §Rfailed§!, which has the following effects:\n"
+ ASSIGN_GENERAL_TO_WAR_ROOM_OPERATION_TT: "The leader §Y[?general_id.GetName]§! gets assigned to §YOperation [This.GetWarRoomOperationNameOtherContext]§!.\n"
+ UNASSIGN_GENERAL_FROM_WAR_ROOM_OPERATION_TT: "The leader §Y[?general_id.GetName]§! gets unassigned from §YOperation [This.GetWarRoomOperationNameOtherContext]§!.\n"
+ SET_WAR_ROOM_OPERATION_PROGRESS_TT: "Set the planning progress for §YOperation [This.GetWarRoomOperationNameOtherContext]§! to §Y[?amount|2%%]§!.\n"
+ ADD_WAR_ROOM_OPERATION_PROGRESS_TT: "Change the planning progress for §YOperation [This.GetWarRoomOperationNameOtherContext]§! by [?amount|2%%+=].\n"
+ EXECUTE_COMPLETE_EFFECT_WAR_ROOM_OPERATION_DECISION_TT_COST_CP_AND_GENERALS: "\nIt costs £command_power£§Y[This.GetWarRoomOperationDecisionCostTextCommandPower]§! to take the decision and §Y[This.GetWarRoomOperationDecisionCostTextGenerals]§! of the assigned generals will be used while the decision is active.\n"
+ EXECUTE_COMPLETE_EFFECT_WAR_ROOM_OPERATION_DECISION_TT_COST_CP: "\nIt costs £command_power£§Y[This.GetWarRoomOperationDecisionCostTextCommandPower]§! to take the decision.\n"
+ EXECUTE_COMPLETE_EFFECT_WAR_ROOM_OPERATION_DECISION_TT_GENERALS: "\nWhile the decision is active, §Y[This.GetWarRoomOperationDecisionCostTextGenerals]§! of the assigned generals will be used.\n"
+ WAR_ROOM_OPERATION_DECISION_COMPLETE_EFFECT_TT: "\n§YEffects when selected:§!"
+ WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_ACTIVE: "\n§gThis decision is currently active. You can see the remaining time in the decisions tab.§!"
+ WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_INACTIVE: "\nActive for §Y[?days_remove|0]§! days. "
+ WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT: "§YEffects when removed:§!"
+ WAR_ROOM_OPERATION_DECISION_CANCEL_EFFECT_TT: "\n§YWhen aborted:§!"
 
  # Scripted Triggers:
  HAS_AMOUNT_OF_POSSIBLE_WAR_ROOM_OPERATIONS_TT: "Has at least §Y[?amount]§! possible operations (currently §Y[?possible_war_room_operations_array^num]§!)"
@@ -83,6 +103,26 @@
  HAS_NOT_COMPLETED_WAR_ROOM_OPERATION_TT: "The operation §Y[This.GetWarRoomOperationNameOtherContext]§! was NOT successfully completed"
  HAS_FAILED_WAR_ROOM_OPERATION_TT: "The operation §Y[This.GetWarRoomOperationNameOtherContext]§! was failed"
  HAS_NOT_FAILED_WAR_ROOM_OPERATION_TT: "The operation §Y[This.GetWarRoomOperationNameOtherContext]§! was NOT failed"
+ IS_GENERAL_ASSIGNED_TO_WAR_ROOM_OPERATION_TT: "The leader §Y[?general_id.GetName]§! is assigned to the operation §Y[This.GetWarRoomOperationNameOtherContext]§!"
+ IS_NOT_GENERAL_ASSIGNED_TO_WAR_ROOM_OPERATION_TT: "The leader §Y[?general_id.GetName]§! is NOT assigned to the operation §Y[This.GetWarRoomOperationNameOtherContext]§!"
+ HAS_AMOUNT_OF_WAR_ROOM_OPERATION_ASSIGNED_GENERALS_TT: "At least §Y[?amount]§! generals are assigned to the operation §Y[This.GetWarRoomOperationNameOtherContext]§! (currently §Y[?assigned_generals]§!)"
+ HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_ASSIGNED_GENERALS_TT: "Less than §Y[?amount]§! generals are assigned to the operation §Y[This.GetWarRoomOperationNameOtherContext]§! (currently §Y[?assigned_generals]§!)"
+ HAS_AMOUNT_OF_WAR_ROOM_OPERATION_USED_GENERALS_TT: "At least §Y[?amount]§! of the generals assigned to the operation §Y[This.GetWarRoomOperationNameOtherContext]§! are used by decisions (currently §Y[?used_generals]§!)"
+ HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_USED_GENERALS_TT: "Less than §Y[?amount]§! of the generals assigned to the operation §Y[This.GetWarRoomOperationNameOtherContext]§! are used by decisions (currently §Y[?used_generals]§!)"
+ HAS_AMOUNT_OF_WAR_ROOM_OPERATION_PROGRESS_TT: "The planning progress for §YOperation [This.GetWarRoomOperationNameOtherContext]§! is at least §Y[?amount|2%%]§! (currently §Y[?operation_progress|2%%]§!)"
+ HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_PROGRESS_TT: "The planning progress for §YOperation [This.GetWarRoomOperationNameOtherContext]§! is less than §Y[?amount|2%%]§! (currently §Y[?operation_progress|2%%]§!)"
+ IS_WAR_ROOM_OPERATION_DECISION_COMPLETED_TT: "Has completed the operation decision §Y[?decision_id.GetTokenLocalizedKey]§!"
+ IS_NOT_WAR_ROOM_OPERATION_DECISION_COMPLETED_TT: "Has NOT completed the operation decision §Y[?decision_id.GetTokenLocalizedKey]§!"
+ IS_ANY_WAR_ROOM_OPERATION_DECISION_IN_PROGRESS_TT: "Any decision of §YOperation [This.GetWarRoomOperationNameOtherContext]§! is currently in progress"
+ IS_NOT_ANY_WAR_ROOM_OPERATION_DECISION_IN_PROGRESS_TT: "No decision of §YOperation [This.GetWarRoomOperationNameOtherContext]§! is currently in progress"
+
+ # Decision Custom Cost Text:
+ war_room_operation_decision_custom_cost_text: "£war_room_general_text_icon£ §Y[?generals_cost]§! £command_power£ §Y[?cp_cost]§!"
+ war_room_operation_decision_custom_cost_text_blocked: "£war_room_general_text_icon£ §R[?generals_cost]§! £command_power£ §R[?cp_cost]§!"
+
+ # Decision Categories:
+ war_room_operation_category_1: "$WAR_ROOM_OPERATION_1_NAME$"
+ war_room_operation_category_1_desc: "$WAR_ROOM_OPERATION_1_DESC$"
 
  # Operations:
  WAR_ROOM_OPERATION_1_NAME: "Groza"

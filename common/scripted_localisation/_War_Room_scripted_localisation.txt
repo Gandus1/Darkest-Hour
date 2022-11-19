@@ -1,16 +1,4 @@
 defined_text = {
-	name = GetWarRoomOperationName
-
-	text = {
-		trigger = {
-			set_temp_variable = { operation_id = v }
-			always = yes
-		}
-		localization_key = "[This.GetWarRoomOperationNameOtherContext]"
-	}
-}
-
-defined_text = {
 	name = GetWarRoomOperationNameOtherContext
 
 	text = {
@@ -25,18 +13,6 @@ defined_text = {
 			always = yes
 		}
 		localization_key = "???"
-	}
-}
-
-defined_text = {
-	name = GetWarRoomOperationDesc
-
-	text = {
-		trigger = {
-			set_temp_variable = { operation_id = v }
-			always = yes
-		}
-		localization_key = "[This.GetWarRoomOperationDescOtherContext]"
 	}
 }
 
@@ -63,6 +39,42 @@ defined_text = {
 ################################################################
 ### No edits required when adding operations below this line ###
 ################################################################
+
+defined_text = {
+	name = GetWarRoomOperationName
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			always = yes
+		}
+		localization_key = "[This.GetWarRoomOperationNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationNameToAssignGeneralTo
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+			always = yes
+		}
+		localization_key = "[This.GetWarRoomOperationNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationDesc
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			always = yes
+		}
+		localization_key = "[This.GetWarRoomOperationDescOtherContext]"
+	}
+}
 
 defined_text = {
 	name = GetWarRoomBackground
@@ -390,5 +402,71 @@ defined_text = {
 			always = yes
 		}
 		localization_key = "dh_war_room_active_operation_progress_bar_generic"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationDecisionCostTextGenerals
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			set_temp_variable = { decision_id = decision_v }
+			calculate_war_room_operation_decision_cost = yes
+			can_afford_war_room_operation_decision_cost_generals = yes
+		}
+		localization_key = "[?generals_cost|0l]"
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { decision_id = decision_v }
+			calculate_war_room_operation_decision_cost = yes
+		}
+		localization_key = "[?generals_cost|0f]"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationDecisionCostTextCommandPower
+
+	text = {
+		trigger = {
+			set_temp_variable = { decision_id = decision_v }
+			calculate_war_room_operation_decision_cost = yes
+			can_afford_war_room_operation_decision_cost_cp = yes
+		}
+		localization_key = "[?cp_cost|0l]"
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { decision_id = decision_v }
+			calculate_war_room_operation_decision_cost = yes
+		}
+		localization_key = "[?cp_cost|0f]"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationDecisionEntryContainer
+
+	text = {
+		trigger = {
+			set_temp_variable = { decision_id = decision_v }
+			is_war_room_operation_decision_in_progress = yes
+		}
+		localization_key = "war_room_operations_decisions_entry_active"
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { decision_id = decision_v }
+			is_war_room_operation_decision_completed = yes
+		}
+		localization_key = "war_room_operations_decisions_entry_completed"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "war_room_operations_decisions_entry"
 	}
 }
