@@ -71,18 +71,62 @@ scripted_gui = {
 				clear_variable = show_war_room_window
 			}
 		#	Purely for testing:
-		#	close_button_right_click = {
-		#		set_temp_variable = { operation_id = 1 }
-		#		add_active_war_room_operation = yes
+			close_button_right_click = {
+				set_temp_variable = { operation_id = 1 }
+				add_active_war_room_operation = yes
 		#		complete_war_room_operation = yes
 		#		fail_war_room_operation = yes
 		#		clr_country_flag = has_completed_war_room_operation_1
 		#		clr_country_flag = has_failed_war_room_operation_1
-		#		update_war_room_window = yes
-		#	}
+				update_war_room_window = yes
+			}
+
+			# Active Operations:
+			## expand/collapse buttons
+			active_operation_expand_button_click = {
+				set_temp_variable = { operation_id = v }
+				expand_war_room_operation_tab = yes
+			}
+			active_operation_collapse_button_click = {
+				set_temp_variable = { operation_id = v }
+				collapse_war_room_operation_tab = yes
+			}
+			## get tooltips for effects
+			active_operation_complete_conditions_and_effects_click = {
+				# just used or tooltips
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { no_tooltip = 1 }
+				effect_tooltip = {
+					complete_war_room_operation = yes
+				}
+			}
+			active_operation_fail_conditions_and_effects_click = {
+				# just used or tooltips
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { no_tooltip = 1 }
+				effect_tooltip = {
+					fail_war_room_operation = yes
+				}
+			}
+			## generals
+			active_operation_assign_general_button_click = {
+				set_temp_variable = { operation_id = v }
+				set_variable = { show_dh_war_room_assign_generals_window = operation_id }
+				update_war_room_window = yes
+			}
+			## tabs
+			active_operation_tab_button_description_click = {
+				set_temp_variable = { operation_id = v }
+				deselect_decisions_tab_for_war_room_operation = yes
+			}
+			active_operation_tab_button_decisions_click = {
+				set_temp_variable = { operation_id = v }
+				select_decisions_tab_for_war_room_operation = yes
+			}
 		}
 
 		triggers = {
+			# Possible Operations:
 			operation_icon_visible = {
 				set_temp_variable = { operation_id = v }
 				if = {
@@ -118,6 +162,173 @@ scripted_gui = {
 				set_temp_variable = { operation_id = v }
 				has_failed_war_room_operation = yes
 			}
+			# Active Operations:
+			## get tooltips for conditions
+			active_operation_complete_conditions_and_effects_visible = {
+				hidden_trigger = {
+					always = no # just used or tooltips
+				}
+				set_temp_variable = { operation_id = v }
+				can_complete_war_room_operation = yes
+			}
+			active_operation_fail_conditions_and_effects_visible = {
+				hidden_trigger = {
+					always = no # just used or tooltips
+				}
+				set_temp_variable = { operation_id = v }
+				can_fail_war_room_operation = yes
+			}
+			## generals
+			active_operation_assign_general_button_click_enabled = {
+				set_temp_variable = { active_operation_assign_general_button_frame = 2 }
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 4 }
+				has_less_amount_of_war_room_operation_assigned_generals = yes
+				set_temp_variable = { active_operation_assign_general_button_frame = 1 }
+			}
+			active_operation_assigned_general_1_bg_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 1 }
+				if = {
+					limit = {
+						has_amount_of_war_room_operation_used_generals = yes
+						has_amount_of_war_room_operation_assigned_generals = yes
+					}
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 1 }
+				}
+			}
+			active_operation_assigned_general_1_name_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 1 }
+				OR = {
+					has_less_amount_of_war_room_operation_used_generals = yes
+					has_less_amount_of_war_room_operation_assigned_generals = yes
+				}
+			}
+			active_operation_assigned_general_1_name_red_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 1 }
+				has_amount_of_war_room_operation_used_generals = yes
+				has_amount_of_war_room_operation_assigned_generals = yes
+			}
+			active_operation_assigned_general_2_bg_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 2 }
+				if = {
+					limit = {
+						has_amount_of_war_room_operation_used_generals = yes
+						has_amount_of_war_room_operation_assigned_generals = yes
+					}
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 1 }
+				}
+			}
+			active_operation_assigned_general_2_name_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 2 }
+				OR = {
+					has_less_amount_of_war_room_operation_used_generals = yes
+					has_less_amount_of_war_room_operation_assigned_generals = yes
+				}
+			}
+			active_operation_assigned_general_2_name_red_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 2 }
+				has_amount_of_war_room_operation_used_generals = yes
+				has_amount_of_war_room_operation_assigned_generals = yes
+			}
+			active_operation_assigned_general_3_bg_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 3 }
+				if = {
+					limit = {
+						has_amount_of_war_room_operation_used_generals = yes
+						has_amount_of_war_room_operation_assigned_generals = yes
+					}
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 1 }
+				}
+			}
+			active_operation_assigned_general_3_name_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 3 }
+				OR = {
+					has_less_amount_of_war_room_operation_used_generals = yes
+					has_less_amount_of_war_room_operation_assigned_generals = yes
+				}
+			}
+			active_operation_assigned_general_3_name_red_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 3 }
+				has_amount_of_war_room_operation_used_generals = yes
+				has_amount_of_war_room_operation_assigned_generals = yes
+			}
+			active_operation_assigned_general_4_bg_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 4 }
+				if = {
+					limit = {
+						has_amount_of_war_room_operation_used_generals = yes
+						has_amount_of_war_room_operation_assigned_generals = yes
+					}
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { active_operation_assigned_general_1_bg_frame = 1 }
+				}
+			}
+			active_operation_assigned_general_4_name_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 4 }
+				OR = {
+					has_less_amount_of_war_room_operation_used_generals = yes
+					has_less_amount_of_war_room_operation_assigned_generals = yes
+				}
+			}
+			active_operation_assigned_general_4_name_red_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 4 }
+				has_amount_of_war_room_operation_used_generals = yes
+				has_amount_of_war_room_operation_assigned_generals = yes
+			}
+			## tabs
+			active_operation_tab_button_description_visible = {
+				set_temp_variable = { operation_id = v }
+				has_war_room_operation_selected_decisions_tab = yes
+			}
+			active_operation_tab_icon_description_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_selected_decisions_tab = yes }
+			}
+			active_operation_tab_button_decisions_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_selected_decisions_tab = yes }
+			}
+			active_operation_tab_icon_decisions_visible = {
+				set_temp_variable = { operation_id = v }
+				has_war_room_operation_selected_decisions_tab = yes
+				clear_temp_array = war_room_active_operation_progress_bar_array_temp
+				add_to_temp_array = { war_room_active_operation_progress_bar_array_temp = v }
+			}
+			## desc
+			active_operation_desc_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_selected_decisions_tab = yes }
+			}
+			## progress bar
+			### generic
+			active_operation_progressbar_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { amount = 1 }
+				has_amount_of_war_room_operation_progress = yes
+			}
 		}
 
 		dynamic_lists = {
@@ -125,17 +336,117 @@ scripted_gui = {
 				array = possible_war_room_operations_array
 				entry_container = war_room_possible_operations_entry
 			}
+			war_room_active_operations_gridbox = {
+				array = active_war_room_operations_array
+				entry_container = "[This.GetWarRoomActiveOperationEntryContainer]"
+			}
+			war_room_active_operation_progress_bar_gridbox = {
+				array = war_room_active_operation_progress_bar_array_temp
+				entry_container = "[This.GetWarRoomActiveOperationProgressBar]"
+			}
 		}
 
 		properties = {
+			# war room
 			war_room_background = {
 				image = "[This.GetWarRoomBackground]"
 			}
 			war_room_icon = {
 				image = "[This.GetWarRoomIcon]"
 			}
+			# possible operations
 			operation_icon = {
 				frame = operation_icon_frame
+			}
+			# active operations
+			active_operation_picture = {
+				image = "GFX_war_room_operation_picture_[?v]"
+			}
+			active_operation_assign_general_button = {
+				frame = active_operation_assign_general_button_frame
+			}
+			active_operation_assigned_general_1_bg = {
+				frame = active_operation_assigned_general_1_bg_frame
+			}
+			active_operation_assigned_general_2_bg = {
+				frame = active_operation_assigned_general_2_bg_frame
+			}
+			active_operation_assigned_general_3_bg = {
+				frame = active_operation_assigned_general_3_bg_frame
+			}
+			active_operation_assigned_general_4_bg = {
+				frame = active_operation_assigned_general_4_bg_frame
+			}
+			## progress bars
+			### generic
+			active_operation_progressbar = {
+				frame = operation_progress
+			}
+		}
+	}
+
+	dh_war_room_assign_generals_window_panel = {
+		context_type = player_context
+
+		window_name = "dh_war_room_assign_generals_window_panel"
+		parent_window_name = "dh_war_room_window"
+
+		visible = {
+			has_variable = show_war_room_window
+		}
+	}
+
+	dh_war_room_assign_generals_window = {
+		context_type = player_context
+
+		window_name = "dh_war_room_assign_generals_window"
+		parent_window_name = "dh_war_room_assign_generals_window_panel_instance"
+
+		dirty = show_war_room_window
+
+		visible = {
+			has_variable = show_dh_war_room_assign_generals_window
+		}
+
+		triggers = {
+			assign_button_click_enabled = {
+				ROOT = {
+					set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+					set_temp_variable = { amount = 4 }
+					has_less_amount_of_war_room_operation_assigned_generals = yes
+					all_of = {
+						array = active_war_room_operations_array
+						value = value_temp
+						index = index_temp
+						set_temp_variable = { operation_id = value_temp }
+						set_temp_variable = { general_id = v }
+						is_not_general_assigned_to_war_room_operation = yes
+					}
+				}
+			}
+		}
+
+		effects = {
+			close_button_click = {
+				clear_variable = show_dh_war_room_assign_generals_window
+				update_war_room_window = yes
+			}
+			assign_button_click = {
+				ROOT = {
+					set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+					set_temp_variable = { general_id = PREV.id }
+					assign_general_to_war_room_operation = yes
+					clear_variable = show_dh_war_room_assign_generals_window
+					update_war_room_window = yes
+				}
+			}
+		}
+
+		dynamic_lists = {
+			war_room_operations_assign_general_gridbox = {
+				array = army_leaders
+				entry_container = war_room_operations_assign_general_entry
+				change_scope = yes
 			}
 		}
 	}

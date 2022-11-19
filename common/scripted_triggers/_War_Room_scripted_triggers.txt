@@ -22,6 +22,15 @@ country_has_custom_war_room_icon = {
 }
 
 # usage:
+## set_temp_variable = { operation_id = 1 }
+## war_room_operation_has_unique_progress_bar = yes
+war_room_operation_has_unique_progress_bar = {
+	OR = {
+		check_variable = { operation_id = 1 }
+	}
+}
+
+# usage:
 ## set_temp_variable = { amount = 1 }
 ## has_amount_of_possible_war_room_operations = yes
 has_amount_of_possible_war_room_operations = {
@@ -158,5 +167,195 @@ has_not_failed_war_room_operation = {
 			}
 			ID = "[?operation_id]"
 		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_war_room_operation_collapsed = yes
+has_war_room_operation_collapsed = {
+	meta_trigger = {
+		text = {
+			has_country_flag = has_minimized_war_room_operation_[ID]
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_war_room_operation_selected_decisions_tab = yes
+has_war_room_operation_selected_decisions_tab = {
+	meta_trigger = {
+		text = {
+			has_country_flag = has_selected_decisions_tab_war_room_operation_[ID]
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## can_complete_war_room_operation = yes
+can_complete_war_room_operation = {
+	meta_trigger = {
+		text = {
+			can_complete_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## can_fail_war_room_operation = yes
+can_fail_war_room_operation = {
+	meta_trigger = {
+		text = {
+			can_fail_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { general_id = 1 }
+## is_general_assigned_to_war_room_operation = yes
+is_general_assigned_to_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = IS_GENERAL_ASSIGNED_TO_WAR_ROOM_OPERATION_TT
+		meta_trigger = {
+			text = {
+				is_in_array = { war_room_operation_[ID]_assigned_generals_array = general_id }
+			}
+			ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { general_id = 1 }
+## is_not_general_assigned_to_war_room_operation = yes
+is_not_general_assigned_to_war_room_operation = {
+	custom_trigger_tooltip = {
+		tooltip = IS_NOT_GENERAL_ASSIGNED_TO_WAR_ROOM_OPERATION_TT
+		meta_trigger = {
+			text = {
+				NOT = { is_in_array = { war_room_operation_[ID]_assigned_generals_array = general_id } }
+			}
+			ID = "[?operation_id]"
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## calculate_amount_of_war_room_operation_assigned_generals = yes
+calculate_amount_of_war_room_operation_assigned_generals = {
+	meta_trigger = {
+		text = {
+			set_temp_variable = { assigned_generals = war_room_operation_[ID]_assigned_generals_array^num }
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_amount_of_war_room_operation_assigned_generals = yes
+has_amount_of_war_room_operation_assigned_generals = {
+	calculate_amount_of_war_room_operation_assigned_generals = yes
+	custom_trigger_tooltip = {
+		tooltip = HAS_AMOUNT_OF_WAR_ROOM_OPERATION_ASSIGNED_GENERALS_TT
+		NOT = { check_variable = { assigned_generals < amount } }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_less_amount_of_war_room_operation_assigned_generals = yes
+has_less_amount_of_war_room_operation_assigned_generals = {
+	calculate_amount_of_war_room_operation_assigned_generals = yes
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_ASSIGNED_GENERALS_TT
+		check_variable = { assigned_generals < amount }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## calculate_amount_of_war_room_operation_used_generals = yes
+calculate_amount_of_war_room_operation_used_generals = {
+	meta_trigger = {
+		text = {
+			set_temp_variable = { used_generals = war_room_operation_[ID]_used_generals_amount }
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_amount_of_war_room_operation_used_generals = yes
+has_amount_of_war_room_operation_used_generals = {
+	calculate_amount_of_war_room_operation_used_generals = yes
+	custom_trigger_tooltip = {
+		tooltip = HAS_AMOUNT_OF_WAR_ROOM_OPERATION_USED_GENERALS_TT
+		NOT = { check_variable = { used_generals < amount } }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_less_amount_of_war_room_operation_used_generals = yes
+has_less_amount_of_war_room_operation_used_generals = {
+	calculate_amount_of_war_room_operation_used_generals = yes
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_USED_GENERALS_TT
+		check_variable = { used_generals < amount }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_amount_of_war_room_operation_progress = yes
+has_amount_of_war_room_operation_progress = {
+	hidden_trigger = {
+		meta_trigger = {
+			text = {
+				set_temp_variable = { operation_progress = war_room_operation_[ID]_progress }
+			}
+			ID = "[?operation_id]"
+		}
+	}
+	custom_trigger_tooltip = {
+		tooltip = HAS_AMOUNT_OF_WAR_ROOM_OPERATION_PROGRESS_TT
+		NOT = { check_variable = { operation_progress < amount } }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_less_amount_of_war_room_operation_progress = yes
+has_less_amount_of_war_room_operation_progress = {
+	hidden_trigger = {
+		meta_trigger = {
+			text = {
+				set_temp_variable = { operation_progress = war_room_operation_[ID]_progress }
+			}
+			ID = "[?operation_id]"
+		}
+	}
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_PROGRESS_TT
+		check_variable = { operation_progress < amount }
 	}
 }

@@ -69,6 +69,8 @@ guiTypes = {
 		hide_animation_type = accelerated
 		animation_time = 300
 
+		clipping = no
+
 		show_sound = menu_open_window
 
 		background = {
@@ -231,13 +233,25 @@ guiTypes = {
 			containerWindowType = {
 				name = "active_operations_window"
 				position = { x = 0 y = 315 }
-				size = { width = 100%% height = 100%% }
-				margin = { left = 12 right = 24 top = 5 bottom = 15 }
+				size = { width = -2 height = 100%% }
+				margin = { left = 12 right = 22 top = 5 bottom = 15 }
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 103
+				smooth_scrolling = yes
 
 				background = {
 					name = "background"
 					spriteType = "GFX_tiled_window_transparent"
+				}
+
+				gridboxtype = {
+					name = "war_room_active_operations_gridbox"
+					position = { x = 3 y = 0 }
+					size = { width = 100%% height = 100%% }
+					slotsize = { width = 1 height = 1 }
+					add_horizontal = no
+					max_slots_horizontal = 1
+					format = "UPPER_LEFT"
 				}
 			}
 		}
@@ -305,6 +319,1060 @@ guiTypes = {
 			maxHeight = 20
 			fixedsize = yes
 			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_active_operations_entry_collapsed"
+		position = { x = 0 y = 0 }
+		size = { width = 512 height = 206 }
+
+		iconType = {
+			name = "active_operation_background"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_active_operation_background_collapsed"
+		}
+
+		buttonType = {
+			name = "active_operation_expand_button"
+			position = { x = -125 y = -4 }
+			orientation = upper_right
+			spriteType = "GFX_war_room_operation_expand_button"
+			buttonFont = "hoi4_typewriter16"
+			buttonText = "DH_WAR_ROOM_ACTIVE_OPERATIONS_OPEN_BUTTON_TEXT"
+			pdx_tooltip = "DH_WAR_ROOM_ACTIVE_OPERATIONS_OPEN_BUTTON_TT"
+			clicksound = "war_room_paper_sound_effect"
+		}
+
+		instantTextboxType = {
+			name = "active_operation_name"
+			position = { x = 53 y = 18 }
+			font = "hoi4_typewriter22"
+			text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_NAME"
+			format = left
+			maxWidth = 250
+			maxHeight = 23
+			fixedsize = yes
+			text_color_code = f
+		}
+
+		iconType = {
+			name = "active_operation_picture"
+			position = { x = 13 y = 58 }
+			spriteType = "GFX_tiled_window_transparent"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "paper_clip_icon"
+			position = { x = -3 y = 60 }
+			spriteType = "GFX_war_room_operation_paper_clip"
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_active_operations_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 512 height = 624 }
+
+		iconType = {
+			name = "active_operation_background"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_active_operation_background"
+		}
+
+		buttonType = {
+			name = "active_operation_collapse_button"
+			position = { x = -125 y = -4 }
+			orientation = upper_right
+			spriteType = "GFX_war_room_operation_expand_button"
+			buttonFont = "hoi4_typewriter16"
+			buttonText = "DH_WAR_ROOM_ACTIVE_OPERATIONS_CLOSE_BUTTON_TEXT"
+			pdx_tooltip = "DH_WAR_ROOM_ACTIVE_OPERATIONS_CLOSE_BUTTON_TT"
+			clicksound = "war_room_paper_sound_effect"
+		}
+
+		instantTextboxType = {
+			name = "active_operation_name"
+			position = { x = 53 y = 18 }
+			font = "hoi4_typewriter22"
+			text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_NAME"
+			format = left
+			maxWidth = 250
+			maxHeight = 23
+			fixedsize = yes
+			text_color_code = f
+		}
+
+		iconType = {
+			name = "active_operation_picture"
+			position = { x = 13 y = 58 }
+			spriteType = "GFX_tiled_window_transparent"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "paper_clip_icon"
+			position = { x = -3 y = 60 }
+			spriteType = "GFX_war_room_operation_paper_clip"
+		}
+
+		containerWindowType = {
+			name = "generals_window"
+			position = { x = 0 y = 155 }
+			size = { width = 100%% height = 90 }
+
+			containerWindowType = {
+				name = "title_window"
+				position = { x = 25 y = 12 }
+				size = { width = 100%% height = 100%% }
+
+				instantTextboxType = {
+					name = "active_operation_generals_text"
+					position = { x = 0 y = 0 }
+					font = "hoi4_typewriter16"
+					text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_GENERALS_TEXT"
+					format = center
+					maxWidth = 150
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "active_operation_generals_value_bg"
+					position = { x = 154 y = 0 }
+					spriteType = "GFX_war_room_operation_generals_number_bg"
+					alwaystransparent = yes
+				}
+
+				instantTextboxType = {
+					name = "active_operation_generals_value"
+					position = { x = 155 y = 0 }
+					font = "hoi4_typewriter16"
+					text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_GENERALS_VALUE"
+					format = center
+					maxWidth = 30
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "list_window"
+				position = { x = 25 y = 31 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "active_operation_generals_bg"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_war_room_operation_generals_bg"
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name = "active_operation_assign_general_button"
+					position = { x = -74 y = 2 }
+					orientation = upper_right
+					spriteType = "GFX_war_room_add_general_button"
+					frame = 1
+					pdx_disabled_tooltip = "DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_BUTTON_TT_DISABLED"
+					pdx_tooltip = "DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_BUTTON_TT"
+				}
+
+				containerWindowType = {
+					name = "assigned_general_1_window"
+					position = { x = 4 y = 3 }
+					size = { width = 100%% height = 100%% }
+
+					iconType = {
+						name = "active_operation_assigned_general_1_icon"
+						position = { x = 0 y = 1 }
+						spriteType = "GFX_war_room_general_icon"
+					}
+
+					iconType = {
+						name = "active_operation_assigned_general_1_bg"
+						position = { x = 22 y = 0 }
+						spriteType = "GFX_war_room_general_tab_icon"
+						frame = 1
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_1_name"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_1"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_1_name_red"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_1"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+						text_color_code = R
+					}
+				}
+
+				containerWindowType = {
+					name = "assigned_general_2_window"
+					position = { x = 210 y = 3 }
+					size = { width = 100%% height = 100%% }
+
+					iconType = {
+						name = "active_operation_assigned_general_2_icon"
+						position = { x = 0 y = 1 }
+						spriteType = "GFX_war_room_general_icon"
+					}
+
+					iconType = {
+						name = "active_operation_assigned_general_2_bg"
+						position = { x = 22 y = 0 }
+						spriteType = "GFX_war_room_general_tab_icon"
+						frame = 1
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_2_name"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_2"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_2_name_red"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_2"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+						text_color_code = R
+					}
+				}
+
+				containerWindowType = {
+					name = "assigned_general_3_window"
+					position = { x = 4 y = 25 }
+					size = { width = 100%% height = 100%% }
+
+					iconType = {
+						name = "active_operation_assigned_general_3_icon"
+						position = { x = 0 y = 1 }
+						spriteType = "GFX_war_room_general_icon"
+					}
+
+					iconType = {
+						name = "active_operation_assigned_general_3_bg"
+						position = { x = 22 y = 0 }
+						spriteType = "GFX_war_room_general_tab_icon"
+						frame = 1
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_3_name"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_3"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_3_name_red"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_3"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+						text_color_code = R
+					}
+				}
+
+				containerWindowType = {
+					name = "assigned_general_4_window"
+					position = { x = 210 y = 25 }
+					size = { width = 100%% height = 100%% }
+
+					iconType = {
+						name = "active_operation_assigned_general_4_icon"
+						position = { x = 0 y = 1 }
+						spriteType = "GFX_war_room_general_icon"
+					}
+
+					iconType = {
+						name = "active_operation_assigned_general_4_bg"
+						position = { x = 22 y = 0 }
+						spriteType = "GFX_war_room_general_tab_icon"
+						frame = 1
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_4_name"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_4"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+					}
+
+					instantTextboxType = {
+						name = "active_operation_assigned_general_4_name_red"
+						position = { x = 27 y = 2 }
+						font = "hoi4_typewriter16"
+						text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_ASSIGNED_GENERAL_NAME_4"
+						format = left
+						maxWidth = 169
+						maxHeight = 20
+						fixedsize = yes
+						text_color_code = R
+					}
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "tabs_window"
+			position = { x = 15 y = 240 }
+			size = { width = 100%% height = 50 }
+
+			containerWindowType = {
+				name = "tab_description_window"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				buttonType = {
+					name = "active_operation_tab_button_description"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_war_room_operation_tab"
+					frame = 2
+					clicksound = "war_room_paper_sound_effect"
+				}
+
+				iconType = {
+					name = "active_operation_tab_icon_description"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_war_room_operation_tab"
+					frame = 1
+				}
+
+				instantTextboxType = {
+					name = "active_operation_tab_text_description"
+					position = { x = 15 y = 15 }
+					font = "hoi4_typewriter16"
+					text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_TAB_DESCRIPTION_BUTTON_TEXT"
+					format = center
+					maxWidth = 190
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "tab_decisions_window"
+				position = { x = 240 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				buttonType = {
+					name = "active_operation_tab_button_decisions"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_war_room_operation_tab"
+					frame = 2
+					clicksound = "war_room_paper_sound_effect"
+				}
+
+				iconType = {
+					name = "active_operation_tab_icon_decisions"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_war_room_operation_tab"
+					frame = 1
+				}
+
+				instantTextboxType = {
+					name = "active_operation_tab_text_decisions"
+					position = { x = 15 y = 15 }
+					font = "hoi4_typewriter16"
+					text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_TAB_DECISIONS_BUTTON_TEXT"
+					format = center
+					maxWidth = 190
+					maxHeight = 20
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "desc_window"
+			position = { x = 5 y = 288 }
+			size = { width = 100%% height = -50 }
+
+			instantTextboxType = {
+				name = "active_operation_desc"
+				position = { x = 20 y = 8 }
+				font = "hoi4_typewriter16"
+				text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_DESC"
+				format = left
+				maxWidth = 460
+				maxHeight = 275
+				fixedsize = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "decisions_window"
+			position = { x = 5 y = 288 }
+			size = { width = 100%% height = -50 }
+			margin = { left = 10 top = 10 }
+
+			# gridbox used to be able to populate it with different windows
+			gridboxtype = {
+				name = "war_room_active_operation_progress_bar_gridbox"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 0 height = 0 }
+				add_horizontal = yes
+				max_slots = { x = 1 y = 1 }
+				format = "UPPER_LEFT"
+			}
+
+			containerWindowType = {
+				name = "decisions_list_window"
+				position = { x = 0 y = 135 }
+				size = { width = -8 height = 100%% }
+				margin = { bottom = 3 }
+				verticalScrollbar = "right_vertical_sliderno_bg"
+				scroll_wheel_factor = 45
+				smooth_scrolling = yes
+
+				background = {
+					name = "background"
+					spriteType = "GFX_tiled_window_transparent"
+				}
+
+				containerWindowType = {
+					name = "war_room_operations_decisions_entry"
+					position = { x = 0 y = 0 }
+					size = { width = 460 height = 48 }
+
+					iconType = {
+						name = "decision_background"
+						position = { x = 0 y = 0 }
+						spriteType = "GFX_war_room_operation_decision_bg"
+					}
+
+					buttonType = {
+						name = "decision_button"
+						position = { x = -45 y = 12 }
+						orientation = upper_right
+						spriteType = "GFX_war_room_operation_decision_button"
+					}
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "conditions_and_effects_window"
+			position = { x = 0 y = -47 }
+			orientation = lower_left
+			size = { width = 100%% height = 100%% }
+
+			instantTextboxType = {
+				name = "active_operation_conditions_text"
+				position = { x = 80 y = 18 }
+				font = "hoi4_typewriter16"
+				text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_CONDITIONS_TEXT"
+				format = left
+				maxWidth = 145
+				maxHeight = 20
+				fixedsize = yes
+				alwaystransparent = yes
+			}
+
+			iconType = {
+				name = "active_operation_conditions_icon"
+				position = { x = 230 y = 15 }
+				spriteType = "GFX_war_room_conditions_rewards_icon"
+				scale = 0.9
+				pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_CONDITIONS_TT"
+			}
+
+			instantTextboxType = {
+				name = "active_operation_effects_text"
+				position = { x = 317 y = 18 }
+				font = "hoi4_typewriter16"
+				text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_EFFECTS_TEXT"
+				format = left
+				maxWidth = 75
+				maxHeight = 20
+				fixedsize = yes
+				alwaystransparent = yes
+			}
+
+			iconType = {
+				name = "active_operation_effects_icon"
+				position = { x = 397 y = 15 }
+				spriteType = "GFX_war_room_conditions_rewards_icon"
+				scale = 0.9
+				pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_EFFECTS_TT"
+			}
+
+			# Only used to grab tooltips
+			iconType = {
+				name = "active_operation_complete_conditions_and_effects"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_tiled_window_transparent_transparent"
+				alwaystransparent = yes
+			}
+			iconType = {
+				name = "active_operation_fail_conditions_and_effects"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_tiled_window_transparent_transparent"
+				alwaystransparent = yes
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "dh_war_room_assign_generals_window_panel"
+		position = { x = 548 y = 360 }
+		size = { width = 412 height = 100%% }
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window_transparent_transparent"
+		}
+	}
+
+	containerWindowType = {
+		name = "dh_war_room_assign_generals_window"
+		position = { x = -500 y = 0 }
+		show_position = { x = 0 y = 0 }
+		size = { width = 100%% height = 100%% }
+
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window"
+		}
+
+		containerWindowType = {
+			name = "background_window"
+			position = { x = 12 y = 12 }
+			size = { width = -12 height = -12 }
+
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_paper_bg2"
+			}
+		}
+
+		iconType = {
+			name = "top_bar"
+			position = { x = 4 y = 7 }
+			spriteType = "GFX_diplo_popup_header_bg"
+			scale = 0.815
+		}
+
+		instantTextboxType = {
+			name = "header"
+			position = { x = 70 y = 23 }
+			font = "hoi_24header"
+			text = "DH_WAR_ROOM_OPERATION_ASSIGN_GENERALS_WINDOW_HEADER"
+			format = center
+			maxWidth = 270
+			maxHeight = 25
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "bottom_bar"
+			position = { x = 4 y = -56 }
+			orientation = lower_left
+			spriteType = "GFX_diplo_popup_bottom"
+			scale = 0.815
+		}
+
+		buttonType = {
+			name = "close_button"
+			position = { x = 76 y = -47 }
+			orientation = lower_left
+			spriteType = "GFX_button_261x34"
+			buttonText = "DIPLOMACY_CLOSE"
+			buttonFont = "hoi_18mbs"
+			pdx_tooltip = "DIPLOMACY_CLOSE"
+			shortcut = "ESCAPE"
+			clicksound = "click_close"
+		}
+
+		containerWindowType = {
+			name = "entry_window"
+			position = { x = 12 y = 62 }
+			size = { width = -12 height = -45 }
+			margin = { top = 5 right = 0 left = 5 bottom = 5 }
+			verticalScrollbar = "right_vertical_slider"
+			scroll_wheel_factor = 62
+			smooth_scrolling = yes
+
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+
+			gridboxtype = {
+				name = "war_room_operations_assign_general_gridbox"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 180 height = 62 }
+				add_horizontal = yes
+				max_slots_horizontal = 2
+				format = "UPPER_LEFT"
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_operations_assign_general_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 176 height = 64 }
+
+		iconType = {
+			name = "background"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_two_row_container"
+		}
+
+		instantTextboxType = {
+			name = "name"
+			position = { x = 5 y = 2 }
+			font = "hoi_16mbs"
+			text = "[This.GetName]"
+			format = left
+			maxWidth = 135
+			maxHeight = 20
+			fixedsize = yes
+		}
+
+		instantTextboxType = {
+			name = "role"
+			position = { x = 5 y = 15 }
+			font = "hoi_16mbs"
+			text = "[?id.GetRank]"
+			format = left
+			maxWidth = 135
+			maxHeight = 20
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "skill_value"
+			position = { x = -30 y = 4 }
+			orientation = upper_right
+			font = "hoi_24header"
+			text = "[?skill_level]"
+			format = center
+			maxWidth = 24
+			maxHeight = 20
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "skills_window"
+			position = { x = 0 y = 26 }
+			size = { width = 100%% height = 100%% }
+
+			containerWindowType = {
+				name = "attack_window"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "icon"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_trait_attack"
+				}
+
+				instantTextboxType = {
+					name = "value"
+					position = { x = 3 y = 18 }
+					font = "hoi_16mbs"
+					maxWidth = 20
+					maxHeight = 23
+					format = center
+					fixedsize = yes
+					text = "[?attack_level]"
+				}
+			}
+
+			containerWindowType = {
+				name = "defense_window"
+				position = { x = 22 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "icon"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_trait_defense"
+				}
+
+				instantTextboxType = {
+					name = "value"
+					position = { x = 3 y = 18 }
+					font = "hoi_16mbs"
+					maxWidth = 20
+					maxHeight = 23
+					format = center
+					fixedsize = yes
+					text = "[?defense_level]"
+				}
+			}
+
+			containerWindowType = {
+				name = "planning_window"
+				position = { x = 44 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "icon"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_trait_planning"
+				}
+
+				instantTextboxType = {
+					name = "value"
+					position = { x = 3 y = 18 }
+					font = "hoi_16mbs"
+					maxWidth = 20
+					maxHeight = 23
+					format = center
+					fixedsize = yes
+					text = "[?planning_level]"
+				}
+			}
+
+			containerWindowType = {
+				name = "logistics_window"
+				position = { x = 64 y = 0 }
+				size = { width = 100%% height = 100%% }
+
+				iconType = {
+					name = "icon"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_trait_logistics"
+				}
+
+				instantTextboxType = {
+					name = "value"
+					position = { x = 3 y = 18 }
+					font = "hoi_16mbs"
+					maxWidth = 20
+					maxHeight = 23
+					format = center
+					fixedsize = yes
+					text = "[?logistics_level]"
+				}
+			}
+
+			buttonType = {
+				name = "assign_button"
+				position = { x = -77 y = -35 }
+				orientation = lower_right
+				spriteType = "GFX_77x31_button"
+				buttonFont = "hoi_16mbs"
+				buttonText = "DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_WINDOW_ASSIGN_BUTTON_TEXT"
+				pdx_tooltip = "DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_WINDOW_ASSIGN_BUTTON_TT"
+			}
+		}
+	}
+
+	# Entry Containers for Progress Bar
+	containerWindowType = {
+		name = "dh_war_room_active_operation_progress_bar_generic"
+		position = { x = 44 y = 0 }
+		size = { width = 100%% height = 135  }
+
+		iconType = {
+			name = "active_operation_progressbar_background"
+			position = { x = 2 y = 22 }
+			spriteType = "GFX_war_room_operation_progress_bar_generic_bg"
+			pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_TT"
+		}
+
+		iconType = {
+			name = "active_operation_progressbar"
+			position = { x = 2 y = 22 }
+			spriteType = "GFX_war_room_operation_progress_bar_generic"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "active_operation_progressbar_frame"
+			position = { x = 0 y = 20 }
+			spriteType = "GFX_war_room_operation_progress_bar_generic_frame"
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "active_operation_progressbar_value"
+			position = { x = 146 y = 23 }
+			font = "hoi_18mbs"
+			maxWidth = 100
+			maxHeight = 20
+			format = center
+			fixedsize = yes
+			text = "[?operation_progress|0%%]"
+			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "dh_war_room_active_operation_progress_bar_1"
+		position = { x = 44 y = 0 }
+		size = { width = 100%% height = 135  }
+
+		iconType = {
+			name = "progressbar_background"
+			position = { x = 5 y = 77 }
+			spriteType = "GFX_SOV_operation_groza_decision_gui_progressbar_background"
+			pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT"
+		}
+
+		iconType = {
+			name = "progressbar"
+			position = { x = 5 y = 77 }
+			spriteType = "GFX_SOV_operation_groza_decision_gui_progressbar"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "progressbar_frame"
+			position = { x = 0 y = 70 }
+			spriteType = "GFX_SOV_operation_groza_decision_gui_progressbar_frame"
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "phases_window"
+			position = { x = 0 y = 0 }
+			size = { width = 100%% height = 100%% }
+
+			containerWindowType = {
+				name = "phases_1_window"
+				position = { x = 102 y = 0 }
+				size = { width = 67 height = 73 }
+
+				iconType = {
+					name = "phase_icon_1"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
+					frame = 1
+					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_1_TT"
+					pdx_tooltip_anchor = {
+						x = 60
+						y = -120
+					}
+				}
+				iconType = {
+					name = "phase_icon_1_active"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
+					frame = 2
+					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_1_TT"
+					pdx_tooltip_anchor = {
+						x = 60
+						y = -120
+					}
+				}
+				instantTextBoxType = {
+					name = "phase_text_1"
+					position = { x = 15 y = 45 }
+					font = "hoi_16mbs"
+					format = center
+					text = "1"
+					maxWidth = 35
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+					text_color_code = g
+				}
+				instantTextBoxType = {
+					name = "phase_text_1_active"
+					position = { x = 15 y = 45 }
+					font = "hoi_16mbs"
+					format = center
+					text = "1"
+					maxWidth = 35
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "phases_2_window"
+				position = { x = 266 y = 0 }
+				size = { width = 67 height = 73 }
+
+				iconType = {
+					name = "phase_icon_2"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
+					frame = 3
+					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_2_TT"
+					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
+					pdx_tooltip_anchor = {
+						x = 60
+						y = -120
+					}
+				}
+				iconType = {
+					name = "phase_icon_2_active"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
+					frame = 4
+					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_2_TT"
+					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
+					pdx_tooltip_anchor = {
+						x = 60
+						y = -120
+					}
+				}
+				instantTextBoxType = {
+					name = "phase_text_2"
+					position = { x = 15 y = 45 }
+					font = "hoi_16mbs"
+					format = center
+					text = "2"
+					maxWidth = 35
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+					text_color_code = g
+				}
+				instantTextBoxType = {
+					name = "phase_text_2_active"
+					position = { x = 15 y = 45 }
+					font = "hoi_16mbs"
+					format = center
+					text = "2"
+					maxWidth = 35
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "phases_3_window"
+				position = { x = 330 y = 0 }
+				size = { width = 67 height = 73 }
+
+				iconType = {
+					name = "phase_icon_3"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
+					frame = 5
+					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_3_TT"
+					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
+					pdx_tooltip_anchor = {
+						x = 60
+						y = -120
+					}
+				}
+				iconType = {
+					name = "phase_icon_3_active"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
+					frame = 6
+					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_3_TT"
+					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
+					pdx_tooltip_anchor = {
+						x = 60
+						y = -120
+					}
+				}
+				instantTextBoxType = {
+					name = "phase_text_3"
+					position = { x = 15 y = 45 }
+					font = "hoi_16mbs"
+					format = center
+					text = "3"
+					maxWidth = 35
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+					text_color_code = g
+				}
+				instantTextBoxType = {
+					name = "phase_text_3_active"
+					position = { x = 15 y = 45 }
+					font = "hoi_16mbs"
+					format = center
+					text = "3"
+					maxWidth = 35
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "indicator_window"
+			position = { x = -32 y = 94 }
+			size = { width = 100%% height = 100%% }
+
+			iconType = {
+				name = "indicator_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_SOV_operation_groza_decision_gui_percentage_indicator"
+				pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT"
+			}
+
+			containerWindowType = {
+				name = "value_window"
+				position = { x = 20 y = 18 }
+				size = { width = 32 height = 17 }
+
+				instantTextBoxType = {
+					name = "indicator_value_text"
+					position = { x = 0 y = 0 }
+					font = "hoi_16mbs"
+					format = center
+					text = "[?SOV_operation_readiness|0%]"
+					maxWidth = 34
+					maxHeight = 10
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+			}
 		}
 	}
 

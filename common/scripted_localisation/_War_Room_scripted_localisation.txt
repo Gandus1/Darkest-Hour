@@ -192,3 +192,203 @@ defined_text = {
 		localization_key = ""
 	}
 }
+
+defined_text = {
+	name = GetWarRoomActiveOperationEntryContainer
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			has_war_room_operation_collapsed = yes
+		}
+		localization_key = "war_room_active_operations_entry_collapsed"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "war_room_active_operations_entry"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationUsedGenerals
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			calculate_amount_of_war_room_operation_used_generals = yes
+		}
+		localization_key = "[?used_generals|0]"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationAssignedGenerals
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			calculate_amount_of_war_room_operation_assigned_generals = yes
+		}
+		localization_key = "[?assigned_generals|0]"
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationAssignedGeneralName1
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			set_temp_variable = { amount = 1 }
+			has_amount_of_war_room_operation_assigned_generals = yes
+			meta_trigger = {
+				text = {
+					set_temp_variable = { war_room_general = war_room_operation_[ID]_assigned_generals_array^0 }
+				}
+				ID = "[?operation_id]"
+			}
+		}
+		localization_key = "[?war_room_general.GetName]"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_NOT_ASSIGNED_TEXT
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationAssignedGeneralName2
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			set_temp_variable = { amount = 2 }
+			has_amount_of_war_room_operation_assigned_generals = yes
+			meta_trigger = {
+				text = {
+					set_temp_variable = { war_room_general = war_room_operation_[ID]_assigned_generals_array^1 }
+				}
+				ID = "[?operation_id]"
+			}
+		}
+		localization_key = "[?war_room_general.GetName]"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_NOT_ASSIGNED_TEXT
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationAssignedGeneralName3
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			set_temp_variable = { amount = 3 }
+			has_amount_of_war_room_operation_assigned_generals = yes
+			meta_trigger = {
+				text = {
+					set_temp_variable = { war_room_general = war_room_operation_[ID]_assigned_generals_array^2 }
+				}
+				ID = "[?operation_id]"
+			}
+		}
+		localization_key = "[?war_room_general.GetName]"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_NOT_ASSIGNED_TEXT
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationAssignedGeneralName4
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			set_temp_variable = { amount = 4 }
+			has_amount_of_war_room_operation_assigned_generals = yes
+			meta_trigger = {
+				text = {
+					set_temp_variable = { war_room_general = war_room_operation_[ID]_assigned_generals_array^3 }
+				}
+				ID = "[?operation_id]"
+			}
+		}
+		localization_key = "[?war_room_general.GetName]"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_NOT_ASSIGNED_TEXT
+	}
+}
+
+defined_text = {
+	name = GetWarRoomOperationAssignGeneralAssignButtonTooltip
+
+	text = {
+		trigger = {
+			ROOT = {
+				set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+				set_temp_variable = { amount = 4 }
+				has_amount_of_war_room_operation_assigned_generals = yes
+			}
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_CANNOT_ASSIGN_BECAUSE_MAX_ASSIGNED_REACHED
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				any_of = {
+					array = active_war_room_operations_array
+					value = value_temp
+					index = index_temp
+					set_temp_variable = { operation_id = value_temp }
+					set_temp_variable = { general_id = v }
+					is_general_assigned_to_war_room_operation = yes
+				}
+				set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+			}
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_CANNOT_ASSIGN_BECAUSE_ALREADY_ASSIGNED
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+			}
+			always = yes
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_CAN_ASSIGN
+	}
+}
+
+defined_text = {
+	name = GetWarRoomActiveOperationProgressBar
+
+	text = {
+		trigger = {
+			set_temp_variable = { operation_id = v }
+			war_room_operation_has_unique_progress_bar = yes
+		}
+		localization_key = "dh_war_room_active_operation_progress_bar_[?v]"
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "dh_war_room_active_operation_progress_bar_generic"
+	}
+}
