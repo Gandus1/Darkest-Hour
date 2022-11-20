@@ -94,7 +94,7 @@ scripted_gui = {
 			}
 			## get tooltips for effects
 			active_operation_complete_conditions_and_effects_click = {
-				# just used or tooltips
+				# just used for tooltips
 				set_temp_variable = { operation_id = v }
 				set_temp_variable = { no_tooltip = 1 }
 				effect_tooltip = {
@@ -102,7 +102,7 @@ scripted_gui = {
 				}
 			}
 			active_operation_fail_conditions_and_effects_click = {
-				# just used or tooltips
+				# just used for tooltips
 				set_temp_variable = { operation_id = v }
 				set_temp_variable = { no_tooltip = 1 }
 				effect_tooltip = {
@@ -131,7 +131,7 @@ scripted_gui = {
 					text = {
 						custom_effect_tooltip = [ID]_desc
 					}
-					ID = "[?decision_id.GetTokenLocalizedKey]"
+					ID = "[?decision_id.GetTokenKey]"
 				}
 			}
 			decision_button_click = {
@@ -142,7 +142,7 @@ scripted_gui = {
 						text = {
 							activate_decision = [ID]
 						}
-						ID = "[?decision_id.GetTokenLocalizedKey]"
+						ID = "[?decision_id.GetTokenKey]"
 					}
 				}
 				set_temp_variable = { show_tooltip = 1 }
@@ -200,14 +200,14 @@ scripted_gui = {
 			## get tooltips for conditions
 			active_operation_complete_conditions_and_effects_visible = {
 				hidden_trigger = {
-					always = no # just used or tooltips
+					always = no # just used for tooltips
 				}
 				set_temp_variable = { operation_id = v }
 				can_complete_war_room_operation = yes
 			}
 			active_operation_fail_conditions_and_effects_visible = {
 				hidden_trigger = {
-					always = no # just used or tooltips
+					always = no # just used for tooltips
 				}
 				set_temp_variable = { operation_id = v }
 				can_fail_war_room_operation = yes
@@ -348,8 +348,6 @@ scripted_gui = {
 			active_operation_tab_icon_decisions_visible = {
 				set_temp_variable = { operation_id = v }
 				has_war_room_operation_selected_decisions_tab = yes
-				clear_temp_array = war_room_active_operation_progress_bar_array_temp
-				add_to_temp_array = { war_room_active_operation_progress_bar_array_temp = v }
 			}
 			## desc
 			active_operation_desc_visible = {
@@ -359,8 +357,10 @@ scripted_gui = {
 			## decisions
 			active_operation_get_decisions_visible = {
 				clear_temp_array = active_operation_decisions_array_temp
+				clear_temp_array = war_room_active_operation_progress_bar_array_temp
 				set_temp_variable = { operation_id = v }
 				has_war_room_operation_selected_decisions_tab = yes
+				add_to_temp_array = { war_room_active_operation_progress_bar_array_temp = operation_id }
 				meta_trigger = {
 					text = {
 						all_of = {
@@ -384,10 +384,12 @@ scripted_gui = {
 				hidden_trigger = {
 					always = no
 				}
+				set_temp_variable = { operation_id = v }
 				set_temp_variable = { decision_id = decision_v }
 				is_war_room_operation_decision_removing = yes
 			}
 			decision_get_remove_and_cancel_triggers_click_enabled = {
+				set_temp_variable = { operation_id = v }
 				set_temp_variable = { decision_id = decision_v }
 				is_war_room_operation_decision_canceling = yes
 			}
@@ -485,6 +487,8 @@ scripted_gui = {
 
 		window_name = "dh_war_room_assign_generals_window_panel"
 		parent_window_name = "dh_war_room_window"
+
+		dirty = show_war_room_window
 
 		visible = {
 			has_variable = show_war_room_window
