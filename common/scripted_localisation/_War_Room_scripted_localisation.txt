@@ -354,6 +354,15 @@ defined_text = {
 		trigger = {
 			ROOT = {
 				set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+				has_launched_war_room_operation = yes
+			}
+		}
+		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_CANNOT_ASSIGN_BECAUSE_ALREADY_LAUNCHED
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
 				set_temp_variable = { amount = 4 }
 				has_amount_of_war_room_operation_assigned_generals = yes
 			}
@@ -363,15 +372,8 @@ defined_text = {
 	text = {
 		trigger = {
 			ROOT = {
-				any_of = {
-					array = active_war_room_operations_array
-					value = value_temp
-					index = index_temp
-					set_temp_variable = { operation_id = value_temp }
-					set_temp_variable = { general_id = v }
-					is_general_assigned_to_war_room_operation = yes
-				}
 				set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+				is_general_assigned_to_any_war_room_operation = yes
 			}
 		}
 		localization_key = DH_WAR_ROOM_OPERATION_GENERAL_CANNOT_ASSIGN_BECAUSE_ALREADY_ASSIGNED

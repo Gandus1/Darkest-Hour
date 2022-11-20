@@ -3,13 +3,13 @@
 ##################################
 ## <operation id> is a placeholder for the ID assigned (added in the array and used in scripted loc to grab the name)
 ## <decision name> is a placeholder for the code name of the specific decision
-##################################################################################################################################################################################
+############################################################################################################################################################################################################################################
 ##	can_complete_war_room_operation_<operation id> = {
-##		# the triggers that must be fulfilled to successfully complete the operation
+##		# the triggers that must be fulfilled to successfully complete the operation after it has been launched
 ##	}
 ##
 ##	can_fail_war_room_operation_<operation id> = {
-##		# the triggers that must be fulfilled to fail the operation
+##		# the triggers that must be fulfilled to fail the operation after it has been launched
 ##	}
 ##
 ##	war_room_operation_decision_visible_trigger_<decision name> = {
@@ -18,6 +18,8 @@
 ##	}
 ##	war_room_operation_decision_available_trigger_<decision name> = {
 ##		# the triggers that must be fulfilled for this decision to enactabe, excluding the costs
+##		# most/all decisions should require has_not_launched_war_room_operation = yes in order to prevent taking them after launching
+##		# the launch decision itself should also require is_not_any_war_room_operation_decision_in_progress = yes in order to prevent weird stuff from happening when decisions end after the operation may have been ended already
 ##	}
 ##	war_room_operation_decision_remove_trigger_<decision name> = {
 ##		# the triggers that must be fulfilled for this decision to be removed after it was enacted (useful if it has a timer and you want it to end earlier)
@@ -31,7 +33,7 @@
 ##		# set the two temp variables cp_cost (command power) & generals_cost (assigned generals required while active, max is 4)
 ##		# set generals_cost to 0 for decisions that are instant and have no remove timer
 ##	}
-##################################################################################################################################################################################
+############################################################################################################################################################################################################################################
 
 
 #############
@@ -60,6 +62,7 @@ war_room_operation_decision_visible_trigger_operation_test_decision = {
 	always = yes
 }
 war_room_operation_decision_available_trigger_operation_test_decision = {
+	has_not_launched_war_room_operation = yes
 	set_temp_variable = { amount = 10 }
 	has_less_amount_of_war_room_operation_progress = yes
 }

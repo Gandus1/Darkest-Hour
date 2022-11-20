@@ -256,12 +256,35 @@ fail_war_room_operation = {
 
 # usage:
 ## set_temp_variable = { operation_id = 1 }
+## launch_war_room_operation = yes
+launch_war_room_operation = {
+	if = {
+		limit = {
+			has_active_war_room_operation = yes
+			has_not_launched_war_room_operation = yes
+		}
+		custom_effect_tooltip = LAUNCH_WAR_ROOM_OPERATION_TT
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					hidden_effect = {
+						set_country_flag = has_launched_war_room_operation_[ID]
+					}
+				}
+				ID = "[?operation_id]"
+			}
+			update_war_room_window = yes
+		}
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
 ## set_temp_variable = { general_id = 1 }
 ## assign_general_to_war_room_operation = yes
 assign_general_to_war_room_operation = {
 	if = {
 		limit = {
-			has_possible_war_room_operation = yes
 			has_active_war_room_operation = yes
 			set_temp_variable = { amount = 4 }
 			has_less_amount_of_war_room_operation_assigned_generals = yes
@@ -300,6 +323,25 @@ unassign_general_from_war_room_operation = {
 			update_war_room_window = yes
 		}
 	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## assign_random_general_to_war_room_operation = yes
+assign_random_general_to_war_room_operation = {
+	hidden_effect = {
+		random_scope_in_array = {
+			array = army_leaders
+			limit = {
+				set_temp_variable = { general_id = THIS.id }
+				ROOT = {
+					is_not_general_assigned_to_any_war_room_operation = yes
+				}
+			}
+			set_temp_variable = { general_id = THIS.id }
+		}
+	}
+	assign_general_to_war_room_operation = yes
 }
 
 # usage:

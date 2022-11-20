@@ -85,10 +85,12 @@ scripted_gui = {
 			# Active Operations:
 			## expand/collapse buttons
 			active_operation_expand_button_click = {
+				clear_variable = show_dh_war_room_assign_generals_window
 				set_temp_variable = { operation_id = v }
 				expand_war_room_operation_tab = yes
 			}
 			active_operation_collapse_button_click = {
+				clear_variable = show_dh_war_room_assign_generals_window
 				set_temp_variable = { operation_id = v }
 				collapse_war_room_operation_tab = yes
 			}
@@ -135,6 +137,7 @@ scripted_gui = {
 				}
 			}
 			decision_button_click = {
+				clear_variable = show_dh_war_room_assign_generals_window
 				set_temp_variable = { operation_id = v }
 				set_temp_variable = { decision_id = decision_v }
 				hidden_effect = {
@@ -199,23 +202,24 @@ scripted_gui = {
 			# Active Operations:
 			## get tooltips for conditions
 			active_operation_complete_conditions_and_effects_visible = {
-				hidden_trigger = {
-					always = no # just used for tooltips
-				}
 				set_temp_variable = { operation_id = v }
 				can_complete_war_room_operation = yes
-			}
-			active_operation_fail_conditions_and_effects_visible = {
 				hidden_trigger = {
 					always = no # just used for tooltips
 				}
+			}
+			active_operation_fail_conditions_and_effects_visible = {
 				set_temp_variable = { operation_id = v }
 				can_fail_war_room_operation = yes
+				hidden_trigger = {
+					always = no # just used for tooltips
+				}
 			}
 			## generals
 			active_operation_assign_general_button_click_enabled = {
 				set_temp_variable = { active_operation_assign_general_button_frame = 2 }
 				set_temp_variable = { operation_id = v }
+				has_not_launched_war_room_operation = yes
 				set_temp_variable = { amount = 4 }
 				has_less_amount_of_war_room_operation_assigned_generals = yes
 				set_temp_variable = { active_operation_assign_general_button_frame = 1 }
@@ -359,6 +363,7 @@ scripted_gui = {
 				clear_temp_array = active_operation_decisions_array_temp
 				clear_temp_array = war_room_active_operation_progress_bar_array_temp
 				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
 				has_war_room_operation_selected_decisions_tab = yes
 				add_to_temp_array = { war_room_active_operation_progress_bar_array_temp = operation_id }
 				meta_trigger = {
@@ -381,12 +386,12 @@ scripted_gui = {
 			}
 			### individual decisions
 			decision_get_remove_and_cancel_triggers_visible = {
-				hidden_trigger = {
-					always = no
-				}
 				set_temp_variable = { operation_id = v }
 				set_temp_variable = { decision_id = decision_v }
 				is_war_room_operation_decision_removing = yes
+				hidden_trigger = {
+					always = no # just used for tooltips
+				}
 			}
 			decision_get_remove_and_cancel_triggers_click_enabled = {
 				set_temp_variable = { operation_id = v }
@@ -511,16 +516,13 @@ scripted_gui = {
 			assign_button_click_enabled = {
 				ROOT = {
 					set_temp_variable = { operation_id = show_dh_war_room_assign_generals_window }
+					has_not_launched_war_room_operation = yes
 					set_temp_variable = { amount = 4 }
 					has_less_amount_of_war_room_operation_assigned_generals = yes
-					all_of = {
-						array = active_war_room_operations_array
-						value = value_temp
-						index = index_temp
-						set_temp_variable = { operation_id = value_temp }
-						set_temp_variable = { general_id = v }
-						is_not_general_assigned_to_war_room_operation = yes
-					}
+				}
+				set_temp_variable = { general_id = v }
+				ROOT = {
+					is_not_general_assigned_to_any_war_room_operation = yes
 				}
 			}
 		}
