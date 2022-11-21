@@ -111,7 +111,13 @@ can_complete_war_room_operation_1 = {
 }
 
 can_fail_war_room_operation_1 = {
-	has_capitulated = yes
+	OR = {
+		has_capitulated = yes
+		AND = {
+			NOT = { has_war_with = GER }
+			has_global_flag = Barbarossa_Initiated
+		}
+	}
 }
 
 has_progress_phase_1_for_war_room_operation_1 = {
@@ -198,7 +204,8 @@ war_room_operation_decision_visible_trigger_operation_groza_decision_form_the_st
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_form_the_state_defense_committee = {
 	has_not_launched_war_room_operation = yes
-	has_country_flag = SOV_Evaluated_STAVKA
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_stavka }
+	is_war_room_operation_decision_completed = yes
 	has_political_power > 15
 }
 war_room_operation_decision_remove_trigger_operation_groza_decision_form_the_state_defense_committee = {
@@ -218,7 +225,8 @@ war_room_operation_decision_visible_trigger_operation_groza_decision_form_the_he
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
 	has_not_launched_war_room_operation = yes
-	has_country_flag = SOV_Evaluated_STAVKA
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_stavka }
+	is_war_room_operation_decision_completed = yes
 	has_political_power > 15
 }
 war_room_operation_decision_remove_trigger_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
@@ -238,7 +246,8 @@ war_room_operation_decision_visible_trigger_operation_groza_decision_evaluate_th
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_evaluate_the_red_airforce = {
 	has_not_launched_war_room_operation = yes
-	has_country_flag = SOV_Evaluated_STAVKA
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_stavka }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_remove_trigger_operation_groza_decision_evaluate_the_red_airforce = {
 	always = no
@@ -257,7 +266,8 @@ war_room_operation_decision_visible_trigger_operation_groza_decision_evaluate_th
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_evaluate_the_red_navy = {
 	has_not_launched_war_room_operation = yes
-	has_country_flag = SOV_Evaluated_STAVKA
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_stavka }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_remove_trigger_operation_groza_decision_evaluate_the_red_navy = {
 	always = no
@@ -276,7 +286,8 @@ war_room_operation_decision_visible_trigger_operation_groza_decision_assure_prod
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_assure_production_in_the_military_industry = {
 	has_not_launched_war_room_operation = yes
-	has_country_flag = SOV_Evaluated_STAVKA
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_stavka }
+	is_war_room_operation_decision_completed = yes
 	num_of_military_factories > 119
 	has_political_power > 30
 }
@@ -293,7 +304,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_assure_pro
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_draft_mobilization_order_41 = {
-	has_country_flag = SOV_Formed_Headquarters
+	set_temp_variable = { decision_id = token:operation_groza_decision_form_the_headquarters_of_the_supreme_high_command }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_draft_mobilization_order_41 = {
 	has_not_launched_war_room_operation = yes
@@ -312,7 +324,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_draft_mobi
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
-	has_country_flag = SOV_Formed_Headquarters
+	set_temp_variable = { decision_id = token:operation_groza_decision_form_the_headquarters_of_the_supreme_high_command }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
 	has_not_launched_war_room_operation = yes
@@ -332,7 +345,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_prepare_ke
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
-	has_country_flag = SOV_Formed_Headquarters
+	set_temp_variable = { decision_id = token:operation_groza_decision_form_the_headquarters_of_the_supreme_high_command }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
 	has_not_launched_war_room_operation = yes
@@ -357,7 +371,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_prepare_ke
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_assure_air_superiority = {
-	has_country_flag = SOV_Evaluated_Airforce
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_red_airforce }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_assure_air_superiority = {
 	has_not_launched_war_room_operation = yes
@@ -378,7 +393,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_assure_air
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_construct_new_bases_in_the_baltics = {
-	has_country_flag = SOV_Evaluated_Airforce
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_red_airforce }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_construct_new_bases_in_the_baltics = {
 	has_not_launched_war_room_operation = yes
@@ -401,7 +417,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_construct_
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_assure_control_of_baltic_seaports = {
-	has_country_flag = SOV_Evaluated_Navy
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_red_navy }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_assure_control_of_baltic_seaports = {
 	has_not_launched_war_room_operation = yes
@@ -422,7 +439,8 @@ war_room_operation_decision_cost_calculation_operation_groza_decision_assure_con
 }
 
 war_room_operation_decision_visible_trigger_operation_groza_decision_fortify_sevastopol_and_odessa = {
-	has_country_flag = SOV_Evaluated_Navy
+	set_temp_variable = { decision_id = token:operation_groza_decision_evaluate_the_red_navy }
+	is_war_room_operation_decision_completed = yes
 }
 war_room_operation_decision_available_trigger_operation_groza_decision_fortify_sevastopol_and_odessa = {
 	has_not_launched_war_room_operation = yes

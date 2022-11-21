@@ -71,17 +71,6 @@ scripted_gui = {
 				clear_variable = show_dh_war_room_assign_generals_window
 				clear_variable = show_war_room_window
 			}
-		#	Purely for testing:
-			close_button_right_click = {
-				set_temp_variable = { operation_id = 1 }
-				add_active_war_room_operation = yes
-		#		complete_war_room_operation = yes
-		#		fail_war_room_operation = yes
-		#		clr_country_flag = has_completed_war_room_operation_1
-		#		clr_country_flag = has_failed_war_room_operation_1
-		#		update_war_room_window = yes
-			}
-
 			# Active Operations:
 			## expand/collapse buttons
 			active_operation_expand_button_click = {
@@ -337,6 +326,21 @@ scripted_gui = {
 				hidden_trigger = {
 					always = no # just used for tooltips
 				}
+			}
+			## progress text when collapsed
+			active_operation_collapsed_progress_text_bg_visible = {
+				set_temp_variable = { operation_id = v }
+				has_not_launched_war_room_operation = yes
+			}
+			active_operation_collapsed_progress_text_visible = {
+				set_temp_variable = { operation_id = v }
+				has_not_launched_war_room_operation = yes
+				calculate_war_room_operation_progress = yes
+			}
+			## launched stamp
+			active_operation_launched_stamp_icon_visible = {
+				set_temp_variable = { operation_id = v }
+				has_launched_war_room_operation = yes
 			}
 			## generals
 			active_operation_assign_general_button_click_enabled = {
