@@ -69,7 +69,7 @@ NDefines.NAI.STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 300 --300		            -- If 
 NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 2 --0				                -- Amount of air superiority planes requested per enemy plane
 -- Naval Invasion Changes
 NDefines.NNavy.NAVAL_SUPREMACY_INTEL_LOW = 0.3						-- we need more intel than this to get any supremacy
-NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.8								-- required naval supremacy to perform invasions on an area. (Was 0.5)
+NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.6							-- required naval supremacy to perform invasions on an area. (Was 0.5)
 -- Naval Combat Changes
 NDefines.NNavy.COMBAT_LOW_ORG_HIT_CHANCE_PENALTY = -0.6 -- -0.35 -- -0.8, -- % of penalty applied to hit chance when ORG is very low.
 NDefines.NNavy.COMBAT_DAMAGE_RANDOMNESS = 0.6 --0.3, -- random factor in damage. So if max damage is fe. 10, and randomness is 30%, then damage will be between 7-10.
