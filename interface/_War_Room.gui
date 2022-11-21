@@ -436,7 +436,7 @@ guiTypes = {
 					maxWidth = 150
 					maxHeight = 20
 					fixedsize = yes
-					alwaystransparent = yes
+					pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_GENERALS_TT"
 				}
 
 				iconType = {
@@ -744,17 +744,351 @@ guiTypes = {
 			name = "decisions_window"
 			position = { x = 5 y = 288 }
 			size = { width = 100%% height = -50 }
-			margin = { left = 10 top = 10 }
+			margin = { left = 10 top = 5 }
 
-			# gridbox used to be able to populate it with different windows
-			gridboxtype = {
-				name = "war_room_active_operation_progress_bar_gridbox"
-				position = { x = 0 y = 0 }
-				size = { width = 100%% height = 100%% }
-				slotsize = { width = 0 height = 0 }
-				add_horizontal = yes
-				max_slots = { x = 1 y = 1 }
-				format = "UPPER_LEFT"
+			instantTextboxType = {
+				name = "active_operation_launched_info_text"
+				position = { x = 15 y = 0 }
+				font = "hoi4_typewriter16"
+				text = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_LAUNCHED_INFO_TEXT"
+				format = left
+				maxWidth = 460
+				maxHeight = 130
+				fixedsize = yes
+				alwaystransparent = yes
+			}
+
+			containerWindowType = {
+				name = "progressbar_window"
+				position = { x = 44 y = 0 }
+				size = { width = 100%% height = 135 }
+
+				containerWindowType = {
+					name = "total_bar_window"
+					position = { x = 0 y = 5 }
+					size = { width = 100%% height = 100%% }
+
+					containerWindowType = {
+						name = "bar_window"
+						position = { x = 3 y = 73 }
+						size = { width = 100%% height = 100%% }
+
+						iconType = {
+							name = "active_operation_progressbar_background"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_bg"
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT"
+						}
+
+						iconType = {
+							name = "active_operation_progressbar"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar"
+							alwaystransparent = yes
+						}
+					}
+
+					containerWindowType = {
+						name = "frame_window"
+						position = { x = 0 y = 70 }
+						size = { width = 100%% height = 100%% }
+
+						iconType = {
+							name = "active_operation_progressbar_frame"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_frame"
+							alwaystransparent = yes
+						}
+					}
+
+					containerWindowType = {
+						name = "indicator_window"
+						position = { x = -14 y = 108 }
+						size = { width = 100%% height = 100%% }
+
+						containerWindowType = {
+							name = "icon_window"
+							position = { x = 17 y = 4 }
+							size = { width = 100%% height = 100%% }
+
+							iconType = {
+								name = "active_operation_progressbar_indicator"
+								position = { x = 0 y = 0 }
+								centerposition = yes
+								spriteType = "GFX_war_room_operation_generic_progressbar_indicator"
+								pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_TT"
+								pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT"
+							}
+						}
+
+						containerWindowType = {
+							name = "value_window"
+							position = { x = 0 y = 0 }
+							size = { width = 32 height = 17 }
+
+							instantTextBoxType = {
+								name = "active_operation_progressbar_indicator_text"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "[?operation_progress|0%%]"
+								maxWidth = 34
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+							}
+						}
+					}
+				}
+
+				containerWindowType = {
+					name = "phases_window"
+					position = { x = 0 y = 0 }
+					size = { width = 100%% height = 100%% }
+
+					containerWindowType = {
+						name = "phases_1_window"
+						position = { x = -36 y = 0 }
+						size = { width = 80 height = 75 }
+
+						iconType = {
+							name = "active_operation_phase_icon_1"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 1
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_1_TT"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+						iconType = {
+							name = "active_operation_phase_icon_1_active"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 2
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_1_TT"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+
+						containerWindowType = {
+							name = "text_window"
+							position = { x = 21 y = 47 }
+							size = { width = 100%% height = 100%% }
+
+							instantTextBoxType = {
+								name = "active_operation_phase_text_1"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "1"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+								text_color_code = g
+							}
+							instantTextBoxType = {
+								name = "active_operation_phase_text_1_active"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "1"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+							}
+						}
+					}
+
+					containerWindowType = {
+						name = "phases_2_window"
+						position = { x = -36 y = 0 }
+						size = { width = 80 height = 75 }
+
+						iconType = {
+							name = "active_operation_phase_icon_2"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 3
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_2_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_TT_DELAYED"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+						iconType = {
+							name = "active_operation_phase_icon_2_active"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 4
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_2_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_TT_DELAYED"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+
+						containerWindowType = {
+							name = "text_window"
+							position = { x = 21 y = 47 }
+							size = { width = 100%% height = 100%% }
+
+							instantTextBoxType = {
+								name = "active_operation_phase_text_2"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "2"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+								text_color_code = g
+							}
+							instantTextBoxType = {
+								name = "active_operation_phase_text_2_active"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "2"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+							}
+						}
+					}
+
+					containerWindowType = {
+						name = "phases_3_window"
+						position = { x = -36 y = 0 }
+						size = { width = 80 height = 75 }
+
+						iconType = {
+							name = "active_operation_phase_icon_3"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 5
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_3_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_TT_DELAYED"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+						iconType = {
+							name = "active_operation_phase_icon_3_active"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 6
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_3_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_TT_DELAYED"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+
+						containerWindowType = {
+							name = "text_window"
+							position = { x = 21 y = 47 }
+							size = { width = 100%% height = 100%% }
+
+							instantTextBoxType = {
+								name = "active_operation_phase_text_3"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "3"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+								text_color_code = g
+							}
+							instantTextBoxType = {
+								name = "active_operation_phase_text_3_active"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "3"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+							}
+						}
+					}
+
+					containerWindowType = {
+						name = "phases_4_window"
+						position = { x = -36 y = 0 }
+						size = { width = 80 height = 75 }
+
+						iconType = {
+							name = "active_operation_phase_icon_4"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 7
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_4_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_TT_DELAYED"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+						iconType = {
+							name = "active_operation_phase_icon_4_active"
+							position = { x = 0 y = 0 }
+							spriteType = "GFX_war_room_operation_generic_progressbar_phases_icons"
+							frame = 8
+							pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_4_TT"
+							pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_TT_DELAYED"
+							pdx_tooltip_anchor = {
+								x = 90
+								y = -100
+							}
+						}
+
+						containerWindowType = {
+							name = "text_window"
+							position = { x = 21 y = 47 }
+							size = { width = 100%% height = 100%% }
+
+							instantTextBoxType = {
+								name = "active_operation_phase_text_4"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "4"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+								text_color_code = g
+							}
+							instantTextBoxType = {
+								name = "active_operation_phase_text_4_active"
+								position = { x = 0 y = 0 }
+								font = "hoi_16mbs"
+								format = center
+								text = "4"
+								maxWidth = 35
+								maxHeight = 10
+								fixedsize = yes
+								alwaystransparent = yes
+							}
+						}
+					}
+				}
 			}
 
 			# Only used to populate decisions temp array
@@ -767,11 +1101,11 @@ guiTypes = {
 
 			containerWindowType = {
 				name = "decisions_list_window"
-				position = { x = 0 y = 135 }
+				position = { x = 0 y = 138 }
 				size = { width = -8 height = 100%% }
-				margin = { bottom = 3 }
+				margin = { bottom = 4 }
 				verticalScrollbar = "right_vertical_sliderno_bg"
-				scroll_wheel_factor = 45
+				scroll_wheel_factor = 40
 				smooth_scrolling = yes
 
 				background = {
@@ -887,6 +1221,7 @@ guiTypes = {
 			position = { x = -45 y = 12 }
 			orientation = upper_right
 			spriteType = "GFX_war_room_operation_decision_button"
+			frame = 1
 			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT"
 			clicksound = "decisions_ui_button"
 		}
@@ -916,12 +1251,18 @@ guiTypes = {
 				position = { x = 0 y = 0 }
 				size = { width = 100%% height = 100%% }
 
-				iconType = {
-					name = "decision_cost_icon_generals"
+				containerWindowType = {
+					name = "icon_window"
 					position = { x = 1 y = 2 }
-					spriteType = "GFX_war_room_general_icon"
-					scale = 0.75
-					alwaystransparent = yes
+					size = { width = 100%% height = 100%% }
+
+					iconType = {
+						name = "decision_cost_icon_generals"
+						position = { x = 0 y = 0 }
+						spriteType = "GFX_war_room_general_icon"
+						scale = 0.75
+						alwaystransparent = yes
+					}
 				}
 
 				instantTextboxType = {
@@ -942,12 +1283,18 @@ guiTypes = {
 				position = { x = 0 y = 16 }
 				size = { width = 100%% height = 100%% }
 
-				iconType = {
-					name = "decision_cost_icon_command_power"
+				containerWindowType = {
+					name = "icon_window"
 					position = { x = 0 y = 1 }
-					spriteType = "GFX_command_power"
-					scale = 0.7
-					alwaystransparent = yes
+					size = { width = 100%% height = 100%% }
+
+					iconType = {
+						name = "decision_cost_icon_command_power"
+						position = { x = 0 y = 0 }
+						spriteType = "GFX_command_power"
+						scale = 0.7
+						alwaystransparent = yes
+					}
 				}
 
 				instantTextboxType = {
@@ -986,6 +1333,13 @@ guiTypes = {
 		}
 
 		iconType = {
+			name = "decision_background_active_animated_bar"
+			position = { x = 54 y = 41 }
+			spriteType = "GFX_war_room_operation_decision_bg_active_animated_bar"
+			alwaystransparent = yes
+		}
+
+		iconType = {
 			name = "decision_icon"
 			position = { x = 28 y = 23 }
 			spriteType = "GFX_decision_unknown"
@@ -999,7 +1353,8 @@ guiTypes = {
 			position = { x = -45 y = 12 }
 			orientation = upper_right
 			spriteType = "GFX_war_room_operation_decision_button"
-			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_ACTIVE"
+			frame = 3
+			alwaystransparent = yes
 		}
 
 		instantTextboxType = {
@@ -1043,8 +1398,8 @@ guiTypes = {
 			position = { x = -45 y = 12 }
 			orientation = upper_right
 			spriteType = "GFX_war_room_operation_decision_button"
-			pdx_tooltip = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_COMPLETED"
-			pdx_tooltip_delayed = "DH_WAR_ROOM_OPERATION_DECISION_ENTRY_BUTTON_TT_DELAYED_COMPLETED"
+			frame = 2
+			alwaystransparent = yes
 		}
 
 		instantTextboxType = {
@@ -1311,274 +1666,10 @@ guiTypes = {
 				name = "assign_button"
 				position = { x = -77 y = -35 }
 				orientation = lower_right
-				spriteType = "GFX_77x31_button"
+				spriteType = "GFX_war_room_assign_general_button"
 				buttonFont = "hoi_16mbs"
 				buttonText = "DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_WINDOW_ASSIGN_BUTTON_TEXT"
 				pdx_tooltip = "DH_WAR_ROOM_ACTIVE_OPERATIONS_ASSIGN_GENERAL_WINDOW_ASSIGN_BUTTON_TT"
-			}
-		}
-	}
-
-	# Entry Containers for Progress Bar
-	containerWindowType = {
-		name = "dh_war_room_active_operation_progress_bar_generic"
-		position = { x = 44 y = 0 }
-		size = { width = 100%% height = 135  }
-
-		iconType = {
-			name = "active_operation_progressbar_background"
-			position = { x = 2 y = 22 }
-			spriteType = "GFX_war_room_operation_progress_bar_generic_bg"
-			pdx_tooltip = "DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_TT"
-		}
-
-		iconType = {
-			name = "active_operation_progressbar"
-			position = { x = 2 y = 22 }
-			spriteType = "GFX_war_room_operation_progress_bar_generic"
-			alwaystransparent = yes
-		}
-
-		iconType = {
-			name = "active_operation_progressbar_frame"
-			position = { x = 0 y = 20 }
-			spriteType = "GFX_war_room_operation_progress_bar_generic_frame"
-			alwaystransparent = yes
-		}
-
-		instantTextboxType = {
-			name = "active_operation_progressbar_value"
-			position = { x = 146 y = 23 }
-			font = "hoi_18mbs"
-			maxWidth = 100
-			maxHeight = 20
-			format = center
-			fixedsize = yes
-			text = "[?operation_progress|0%%]"
-			alwaystransparent = yes
-		}
-	}
-
-	containerWindowType = {
-		name = "dh_war_room_active_operation_progress_bar_1"
-		position = { x = 44 y = 0 }
-		size = { width = 100%% height = 135  }
-
-		iconType = {
-			name = "progressbar_background"
-			position = { x = 5 y = 77 }
-			spriteType = "GFX_SOV_operation_groza_decision_gui_progressbar_background"
-			pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT"
-		}
-
-		iconType = {
-			name = "progressbar"
-			position = { x = 5 y = 77 }
-			spriteType = "GFX_SOV_operation_groza_decision_gui_progressbar"
-			alwaystransparent = yes
-		}
-
-		iconType = {
-			name = "progressbar_frame"
-			position = { x = 0 y = 70 }
-			spriteType = "GFX_SOV_operation_groza_decision_gui_progressbar_frame"
-			alwaystransparent = yes
-		}
-
-		containerWindowType = {
-			name = "phases_window"
-			position = { x = 0 y = 0 }
-			size = { width = 100%% height = 100%% }
-
-			containerWindowType = {
-				name = "phases_1_window"
-				position = { x = 102 y = 0 }
-				size = { width = 67 height = 73 }
-
-				iconType = {
-					name = "phase_icon_1"
-					position = { x = 0 y = 0 }
-					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
-					frame = 1
-					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_1_TT"
-					pdx_tooltip_anchor = {
-						x = 60
-						y = -120
-					}
-				}
-				iconType = {
-					name = "phase_icon_1_active"
-					position = { x = 0 y = 0 }
-					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
-					frame = 2
-					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_1_TT"
-					pdx_tooltip_anchor = {
-						x = 60
-						y = -120
-					}
-				}
-				instantTextBoxType = {
-					name = "phase_text_1"
-					position = { x = 15 y = 45 }
-					font = "hoi_16mbs"
-					format = center
-					text = "1"
-					maxWidth = 35
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-					text_color_code = g
-				}
-				instantTextBoxType = {
-					name = "phase_text_1_active"
-					position = { x = 15 y = 45 }
-					font = "hoi_16mbs"
-					format = center
-					text = "1"
-					maxWidth = 35
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-			}
-
-			containerWindowType = {
-				name = "phases_2_window"
-				position = { x = 266 y = 0 }
-				size = { width = 67 height = 73 }
-
-				iconType = {
-					name = "phase_icon_2"
-					position = { x = 0 y = 0 }
-					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
-					frame = 3
-					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_2_TT"
-					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
-					pdx_tooltip_anchor = {
-						x = 60
-						y = -120
-					}
-				}
-				iconType = {
-					name = "phase_icon_2_active"
-					position = { x = 0 y = 0 }
-					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
-					frame = 4
-					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_2_TT"
-					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
-					pdx_tooltip_anchor = {
-						x = 60
-						y = -120
-					}
-				}
-				instantTextBoxType = {
-					name = "phase_text_2"
-					position = { x = 15 y = 45 }
-					font = "hoi_16mbs"
-					format = center
-					text = "2"
-					maxWidth = 35
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-					text_color_code = g
-				}
-				instantTextBoxType = {
-					name = "phase_text_2_active"
-					position = { x = 15 y = 45 }
-					font = "hoi_16mbs"
-					format = center
-					text = "2"
-					maxWidth = 35
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-			}
-
-			containerWindowType = {
-				name = "phases_3_window"
-				position = { x = 330 y = 0 }
-				size = { width = 67 height = 73 }
-
-				iconType = {
-					name = "phase_icon_3"
-					position = { x = 0 y = 0 }
-					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
-					frame = 5
-					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_3_TT"
-					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
-					pdx_tooltip_anchor = {
-						x = 60
-						y = -120
-					}
-				}
-				iconType = {
-					name = "phase_icon_3_active"
-					position = { x = 0 y = 0 }
-					spriteType = "GFX_SOV_operation_groza_decision_gui_phases_icons"
-					frame = 6
-					pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_3_TT"
-					pdx_tooltip_delayed = "SOV_OPERATION_GROZA_DECISION_GUI_PHASE_TT_DELAYED"
-					pdx_tooltip_anchor = {
-						x = 60
-						y = -120
-					}
-				}
-				instantTextBoxType = {
-					name = "phase_text_3"
-					position = { x = 15 y = 45 }
-					font = "hoi_16mbs"
-					format = center
-					text = "3"
-					maxWidth = 35
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-					text_color_code = g
-				}
-				instantTextBoxType = {
-					name = "phase_text_3_active"
-					position = { x = 15 y = 45 }
-					font = "hoi_16mbs"
-					format = center
-					text = "3"
-					maxWidth = 35
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-			}
-		}
-
-		containerWindowType = {
-			name = "indicator_window"
-			position = { x = -32 y = 94 }
-			size = { width = 100%% height = 100%% }
-
-			iconType = {
-				name = "indicator_icon"
-				position = { x = 0 y = 0 }
-				spriteType = "GFX_SOV_operation_groza_decision_gui_percentage_indicator"
-				pdx_tooltip = "SOV_OPERATION_GROZA_DECISION_GUI_CURRENT_PHASE_TT"
-			}
-
-			containerWindowType = {
-				name = "value_window"
-				position = { x = 20 y = 18 }
-				size = { width = 32 height = 17 }
-
-				instantTextBoxType = {
-					name = "indicator_value_text"
-					position = { x = 0 y = 0 }
-					font = "hoi_16mbs"
-					format = center
-					text = "[?SOV_operation_readiness|0%]"
-					maxWidth = 34
-					maxHeight = 10
-					fixedsize = yes
-					alwaystransparent = yes
-				}
 			}
 		}
 	}

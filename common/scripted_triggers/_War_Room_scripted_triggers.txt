@@ -112,6 +112,102 @@ has_not_active_war_room_operation = {
 
 # usage:
 ## set_temp_variable = { operation_id = 1 }
+## has_war_room_operation_progress_phase_1 = yes
+has_war_room_operation_progress_phase_1 = {
+	meta_trigger = {
+		text = {
+			has_progress_phase_1_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## is_war_room_operation_progress_phase_1_active = yes
+is_war_room_operation_progress_phase_1_active = {
+	meta_trigger = {
+		text = {
+			is_progress_phase_1_active_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_war_room_operation_progress_phase_2 = yes
+has_war_room_operation_progress_phase_2 = {
+	meta_trigger = {
+		text = {
+			has_progress_phase_2_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## is_war_room_operation_progress_phase_2_active = yes
+is_war_room_operation_progress_phase_2_active = {
+	meta_trigger = {
+		text = {
+			is_progress_phase_2_active_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_war_room_operation_progress_phase_3 = yes
+has_war_room_operation_progress_phase_3 = {
+	meta_trigger = {
+		text = {
+			has_progress_phase_3_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## is_war_room_operation_progress_phase_3_active = yes
+is_war_room_operation_progress_phase_3_active = {
+	meta_trigger = {
+		text = {
+			is_progress_phase_3_active_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## has_war_room_operation_progress_phase_4 = yes
+has_war_room_operation_progress_phase_4 = {
+	meta_trigger = {
+		text = {
+			has_progress_phase_4_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## is_war_room_operation_progress_phase_4_active = yes
+is_war_room_operation_progress_phase_4_active = {
+	meta_trigger = {
+		text = {
+			is_progress_phase_4_active_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
 ## has_completed_war_room_operation = yes
 has_completed_war_room_operation = {
 	custom_trigger_tooltip = {
@@ -367,6 +463,42 @@ has_less_amount_of_war_room_operation_assigned_generals = {
 
 # usage:
 ## set_temp_variable = { operation_id = 1 }
+## calculate_amount_of_war_room_operation_pre_launch_assigned_generals = yes
+calculate_amount_of_war_room_operation_pre_launch_assigned_generals = {
+	meta_trigger = {
+		text = {
+			set_temp_variable = { pre_launch_assigned_generals = war_room_operation_[ID]_pre_launch_assigned_generals_array^num }
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_amount_of_war_room_operation_pre_launch_assigned_generals = yes
+has_amount_of_war_room_operation_pre_launch_assigned_generals = {
+	calculate_amount_of_war_room_operation_pre_launch_assigned_generals = yes
+	custom_trigger_tooltip = {
+		tooltip = HAS_AMOUNT_OF_WAR_ROOM_OPERATION_PRE_LAUNCH_ASSIGNED_GENERALS_TT
+		NOT = { check_variable = { pre_launch_assigned_generals < amount } }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_less_amount_of_war_room_operation_pre_launch_assigned_generals = yes
+has_less_amount_of_war_room_operation_pre_launch_assigned_generals = {
+	calculate_amount_of_war_room_operation_pre_launch_assigned_generals = yes
+	custom_trigger_tooltip = {
+		tooltip = HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_PRE_ASSIGNED_ASSIGNED_GENERALS_TT
+		check_variable = { pre_launch_assigned_generals < amount }
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
 ## calculate_amount_of_war_room_operation_used_generals = yes
 calculate_amount_of_war_room_operation_used_generals = {
 	meta_trigger = {
@@ -403,9 +535,8 @@ has_less_amount_of_war_room_operation_used_generals = {
 
 # usage:
 ## set_temp_variable = { operation_id = 1 }
-## set_temp_variable = { amount = 1 }
-## has_amount_of_war_room_operation_progress = yes
-has_amount_of_war_room_operation_progress = {
+## calculate_war_room_operation_progress = yes
+calculate_war_room_operation_progress = {
 	hidden_trigger = {
 		meta_trigger = {
 			text = {
@@ -414,6 +545,14 @@ has_amount_of_war_room_operation_progress = {
 			ID = "[?operation_id]"
 		}
 	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { amount = 1 }
+## has_amount_of_war_room_operation_progress = yes
+has_amount_of_war_room_operation_progress = {
+	calculate_war_room_operation_progress = yes
 	custom_trigger_tooltip = {
 		tooltip = HAS_AMOUNT_OF_WAR_ROOM_OPERATION_PROGRESS_TT
 		NOT = { check_variable = { operation_progress < amount } }
@@ -425,14 +564,7 @@ has_amount_of_war_room_operation_progress = {
 ## set_temp_variable = { amount = 1 }
 ## has_less_amount_of_war_room_operation_progress = yes
 has_less_amount_of_war_room_operation_progress = {
-	hidden_trigger = {
-		meta_trigger = {
-			text = {
-				set_temp_variable = { operation_progress = war_room_operation_[ID]_progress }
-			}
-			ID = "[?operation_id]"
-		}
-	}
+	calculate_war_room_operation_progress = yes
 	custom_trigger_tooltip = {
 		tooltip = HAS_LESS_AMOUNT_OF_WAR_ROOM_OPERATION_PROGRESS_TT
 		check_variable = { operation_progress < amount }
@@ -479,6 +611,7 @@ is_war_room_operation_decision_in_progress = {
 ## set_temp_variable = { operation_id = 1 }
 ## is_any_war_room_operation_decision_in_progress = yes
 is_any_war_room_operation_decision_in_progress = {
+	set_temp_variable = { decision_id_temp = decision_id }
 	custom_trigger_tooltip = {
 		tooltip = IS_ANY_WAR_ROOM_OPERATION_DECISION_IN_PROGRESS_TT
 		meta_trigger = {
@@ -494,12 +627,14 @@ is_any_war_room_operation_decision_in_progress = {
 			OPERATION_ID = "[?operation_id]"
 		}
 	}
+	set_temp_variable = { decision_id = decision_id_temp }
 }
 
 # usage:
 ## set_temp_variable = { operation_id = 1 }
 ## is_not_any_war_room_operation_decision_in_progress = yes
 is_not_any_war_room_operation_decision_in_progress = {
+	set_temp_variable = { decision_id_temp = decision_id }
 	custom_trigger_tooltip = {
 		tooltip = IS_NOT_ANY_WAR_ROOM_OPERATION_DECISION_IN_PROGRESS_TT
 		meta_trigger = {
@@ -515,6 +650,7 @@ is_not_any_war_room_operation_decision_in_progress = {
 			OPERATION_ID = "[?operation_id]"
 		}
 	}
+	set_temp_variable = { decision_id = decision_id_temp }
 }
 
 # usage:
@@ -547,7 +683,7 @@ is_war_room_operation_decision_available = {
 is_war_room_operation_decision_removing = {
 	meta_trigger = {
 		text = {
-			war_room_operation_decision_cancel_trigger_[ID] = yes
+			war_room_operation_decision_remove_trigger_[ID] = yes
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
@@ -575,9 +711,11 @@ calculate_war_room_operation_decision_cost = {
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
-	clamp_temp_variable = {
-		var = cp_cost
-		min = 0
+	if = {
+		limit = {
+			check_variable = { cp_cost < 0 }
+		}
+		set_temp_variable = { cp_cost = 0 }
 	}
 	clamp_temp_variable = {
 		var = generals_cost

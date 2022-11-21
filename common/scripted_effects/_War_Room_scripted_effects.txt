@@ -149,29 +149,16 @@ remove_active_war_room_operation = {
 		}
 		custom_effect_tooltip = REMOVE_ACTIVE_WAR_ROOM_OPERATION_TT
 		hidden_effect = {
-			clear_temp_array = war_room_operation_assigned_generals_array_temp
+			expand_war_room_operation_tab = yes
 			meta_effect = {
 				text = {
-					for_each_loop = {
-						array = war_room_operation_[ID]_assigned_generals_array
-						value = value_temp
-						index = index_temp
-						add_to_temp_array = { war_room_operation_assigned_generals_array_temp = value_temp }
-					}
-					for_each_loop = {
-						array = war_room_operation_assigned_generals_array_temp
-						value = value_temp
-						index = index_temp
-						set_temp_variable = { general_id = value_temp }
-						unassign_general_from_war_room_operation = yes
-					}
-					clear_array = war_room_operation_[ID]_assigned_generals_array
 					clear_variable = war_room_operation_[ID]_progress
+					clear_variable = war_room_operation_[ID]_used_generals_amount
+					clear_array = war_room_operation_[ID]_pre_launch_assigned_generals_array
+					clr_country_flag = has_launched_war_room_operation_[ID]
 				}
 				ID = "[?operation_id]"
 			}
-			clear_temp_array = war_room_operation_assigned_generals_array_temp
-			expand_war_room_operation_tab = yes
 			remove_from_array = { active_war_room_operations_array = operation_id }
 			update_war_room_window = yes
 		}
@@ -264,15 +251,69 @@ launch_war_room_operation = {
 			has_not_launched_war_room_operation = yes
 		}
 		custom_effect_tooltip = LAUNCH_WAR_ROOM_OPERATION_TT
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_war_room_operation_progress_phase_1 = yes
+						is_war_room_operation_progress_phase_1_active = yes
+					}
+					AND = {
+						has_war_room_operation_progress_phase_2 = yes
+						is_war_room_operation_progress_phase_2_active = yes
+					}
+					AND = {
+						has_war_room_operation_progress_phase_3 = yes
+						is_war_room_operation_progress_phase_3_active = yes
+					}
+					AND = {
+						has_war_room_operation_progress_phase_4 = yes
+						is_war_room_operation_progress_phase_4_active = yes
+					}
+				}
+			}
+			custom_effect_tooltip = LAUNCH_WAR_ROOM_OPERATION_PHASES_TT
+			if = {
+				limit = {
+					has_war_room_operation_progress_phase_4 = yes
+					is_war_room_operation_progress_phase_4_active = yes
+				}
+				execute_war_room_operation_progress_phase_4_effect = yes
+			}
+			else_if = {
+				limit = {
+					has_war_room_operation_progress_phase_3 = yes
+					is_war_room_operation_progress_phase_3_active = yes
+				}
+				execute_war_room_operation_progress_phase_3_effect = yes
+			}
+			else_if = {
+				limit = {
+					has_war_room_operation_progress_phase_2 = yes
+					is_war_room_operation_progress_phase_2_active = yes
+				}
+				execute_war_room_operation_progress_phase_2_effect = yes
+			}
+			else = {
+				execute_war_room_operation_progress_phase_1_effect = yes
+			}
+			custom_effect_tooltip = LAUNCH_WAR_ROOM_OPERATION_PHASES_TT_EMPTY_LINE
+		}
 		hidden_effect = {
 			meta_effect = {
 				text = {
-					hidden_effect = {
-						set_country_flag = has_launched_war_room_operation_[ID]
+					clear_array = war_room_operation_[ID]_pre_launch_assigned_generals_array
+					for_each_loop = {
+						array = war_room_operation_[ID]_assigned_generals_array
+						value = value_temp
+						index = index_temp
+						add_to_array = { war_room_operation_[ID]_pre_launch_assigned_generals_array = value_temp }
 					}
+					set_country_flag = has_launched_war_room_operation_[ID]
 				}
 				ID = "[?operation_id]"
 			}
+			unassign_all_generals_from_war_room_operation = yes
 			update_war_room_window = yes
 		}
 	}
@@ -342,6 +383,88 @@ assign_random_general_to_war_room_operation = {
 		}
 	}
 	assign_general_to_war_room_operation = yes
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## unassign_all_generals_from_war_room_operation = yes
+unassign_all_generals_from_war_room_operation = {
+	custom_effect_tooltip = UNASSIGN_ALL_GENERALS_FROM_WAR_ROOM_OPERATION_TT
+	hidden_effect = {
+		clear_temp_array = war_room_operation_assigned_generals_array_temp
+		meta_effect = {
+			text = {
+				for_each_loop = {
+					array = war_room_operation_[ID]_assigned_generals_array
+					value = value_temp
+					index = index_temp
+					add_to_temp_array = { war_room_operation_assigned_generals_array_temp = value_temp }
+				}
+				for_each_loop = {
+					array = war_room_operation_assigned_generals_array_temp
+					value = value_temp
+					index = index_temp
+					set_temp_variable = { general_id = value_temp }
+					unassign_general_from_war_room_operation = yes
+				}
+				clear_array = war_room_operation_[ID]_assigned_generals_array
+			}
+			ID = "[?operation_id]"
+		}
+		clear_temp_array = war_room_operation_assigned_generals_array_temp
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## set_temp_variable = { general_id = 1 }
+## unassign_all_unavailable_generals_from_all_war_room_operations = yes
+unassign_all_unavailable_generals_from_all_war_room_operations = {
+	hidden_effect = {
+		if = {
+			limit = {
+				set_temp_variable = { amount = 1 }
+				has_amount_of_active_war_room_operations = yes
+			}
+			for_each_loop = {
+				array = active_war_room_operations_array
+				value = value_temp_temp
+				index = index_temp_temp
+				set_temp_variable = { operation_id = value_temp_temp }
+				if = {
+					limit = {
+						set_temp_variable = { amount = 1 }
+						has_amount_of_war_room_operation_assigned_generals = yes
+					}
+					clear_temp_array = war_room_operation_assigned_generals_array_temp
+					meta_effect = {
+						text = {
+							for_each_loop = {
+								array = war_room_operation_[ID]_assigned_generals_array
+								value = value_temp
+								index = index_temp
+								add_to_temp_array = { war_room_operation_assigned_generals_array_temp = value_temp }
+							}
+						}
+						ID = "[?operation_id]"
+					}
+					for_each_loop = {
+						array = war_room_operation_assigned_generals_array_temp
+						value = value_temp
+						index = index_temp
+						set_temp_variable = { general_id = value_temp }
+						if = {
+							limit = {
+								NOT = { is_in_array = { army_leaders = general_id } }
+							}
+							unassign_general_from_war_room_operation = yes
+						}
+					}
+					clear_temp_array = war_room_operation_assigned_generals_array_temp
+				}
+			}
+		}
+	}
 }
 
 # usage:
@@ -439,10 +562,11 @@ execute_complete_effect_war_room_operation_decision = {
 			meta_effect = {
 				text = {
 					add_to_variable = { war_room_operation_[ID]_used_generals_amount = generals_cost }
+					set_temp_variable = { temp = war_room_operation_[ID]_assigned_generals_array^num }
 					clamp_variable = {
 						var = war_room_operation_[ID]_used_generals_amount
 						min = 0
-						max = war_room_operation_[ID]_assigned_generals_array^num
+						max = temp
 					}
 				}
 				ID = "[?operation_id]"
@@ -479,10 +603,11 @@ execute_remove_effect_war_room_operation_decision = {
 			meta_effect = {
 				text = {
 					subtract_from_variable = { war_room_operation_[ID]_used_generals_amount = generals_cost }
+					set_temp_variable = { temp = war_room_operation_[ID]_assigned_generals_array^num }
 					clamp_variable = {
 						var = war_room_operation_[ID]_used_generals_amount
 						min = 0
-						max = war_room_operation_[ID]_assigned_generals_array^num
+						max = temp
 					}
 				}
 				ID = "[?operation_id]"
@@ -511,10 +636,11 @@ execute_cancel_effect_war_room_operation_decision = {
 			meta_effect = {
 				text = {
 					subtract_from_variable = { war_room_operation_[ID]_used_generals_amount = generals_cost }
+					set_temp_variable = { temp = war_room_operation_[ID]_assigned_generals_array^num }
 					clamp_variable = {
 						var = war_room_operation_[ID]_used_generals_amount
 						min = 0
-						max = war_room_operation_[ID]_assigned_generals_array^num
+						max = temp
 					}
 				}
 				ID = "[?operation_id]"
@@ -552,12 +678,20 @@ show_remove_effect_war_room_operation_decision_general_tooltip = {
 		}
 		if = {
 			limit = {
-				is_war_room_operation_decision_in_progress = yes
+				check_variable = { days_remove = -1 }
 			}
-			custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_ACTIVE
+			custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_ENDLESS
 		}
 		else = {
-			custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_INACTIVE
+			if = {
+				limit = {
+					is_war_room_operation_decision_in_progress = yes
+				}
+				custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_ACTIVE
+			}
+			else = {
+				custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT_INACTIVE
+			}
 		}
 		custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_REMOVE_EFFECT_TT
 	}
@@ -572,5 +706,53 @@ show_cancel_effect_war_room_operation_decision_general_tooltip = {
 			check_variable = { show_tooltip = 1 }
 		}
 		custom_effect_tooltip = WAR_ROOM_OPERATION_DECISION_CANCEL_EFFECT_TT
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## execute_war_room_operation_progress_phase_1_effect = yes
+execute_war_room_operation_progress_phase_1_effect = {
+	meta_effect = {
+		text = {
+			execute_progress_phase_1_effect_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## execute_war_room_operation_progress_phase_2_effect = yes
+execute_war_room_operation_progress_phase_2_effect = {
+	meta_effect = {
+		text = {
+			execute_progress_phase_2_effect_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## execute_war_room_operation_progress_phase_3_effect = yes
+execute_war_room_operation_progress_phase_3_effect = {
+	meta_effect = {
+		text = {
+			execute_progress_phase_3_effect_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
+	}
+}
+
+# usage:
+## set_temp_variable = { operation_id = 1 }
+## execute_war_room_operation_progress_phase_4_effect = yes
+execute_war_room_operation_progress_phase_4_effect = {
+	meta_effect = {
+		text = {
+			execute_progress_phase_4_effect_for_war_room_operation_[ID] = yes
+		}
+		ID = "[?operation_id]"
 	}
 }

@@ -72,15 +72,15 @@ scripted_gui = {
 				clear_variable = show_war_room_window
 			}
 		#	Purely for testing:
-		#	close_button_right_click = {
-		#		set_temp_variable = { operation_id = 1 }
-		#		add_active_war_room_operation = yes
+			close_button_right_click = {
+				set_temp_variable = { operation_id = 1 }
+				add_active_war_room_operation = yes
 		#		complete_war_room_operation = yes
 		#		fail_war_room_operation = yes
 		#		clr_country_flag = has_completed_war_room_operation_1
 		#		clr_country_flag = has_failed_war_room_operation_1
 		#		update_war_room_window = yes
-		#	}
+			}
 
 			# Active Operations:
 			## expand/collapse buttons
@@ -149,6 +149,7 @@ scripted_gui = {
 					}
 				}
 				set_temp_variable = { show_tooltip = 1 }
+				set_temp_variable = { no_tooltip = 0 }
 				effect_tooltip = {
 					if = {
 						limit = {
@@ -158,6 +159,128 @@ scripted_gui = {
 					}
 					execute_remove_effect_war_room_operation_decision = yes
 					execute_cancel_effect_war_room_operation_decision = yes
+				}
+			}
+			## progressbar
+			active_operation_progressbar_indicator_click = {
+				# get tooltip for current phase
+				set_temp_variable = { operation_id = v }
+				if = {
+					limit = {
+						OR = {
+							has_war_room_operation_progress_phase_1 = yes
+							has_war_room_operation_progress_phase_2 = yes
+							has_war_room_operation_progress_phase_3 = yes
+							has_war_room_operation_progress_phase_4 = yes
+						}
+					}
+					if = {
+						limit = {
+							has_war_room_operation_progress_phase_4 = yes
+							is_war_room_operation_progress_phase_4_active = yes
+						}
+						custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT_4
+						effect_tooltip = {
+							execute_war_room_operation_progress_phase_4_effect = yes
+						}
+					}
+					else_if = {
+						limit = {
+							has_war_room_operation_progress_phase_3 = yes
+							is_war_room_operation_progress_phase_3_active = yes
+						}
+						custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT_3
+						effect_tooltip = {
+							execute_war_room_operation_progress_phase_3_effect = yes
+						}
+					}
+					else_if = {
+						limit = {
+							has_war_room_operation_progress_phase_2 = yes
+							is_war_room_operation_progress_phase_2_active = yes
+						}
+						custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT_2
+						effect_tooltip = {
+							execute_war_room_operation_progress_phase_2_effect = yes
+						}
+					}
+					else_if = {
+						limit = {
+							has_war_room_operation_progress_phase_1 = yes
+							is_war_room_operation_progress_phase_1_active = yes
+						}
+						custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT_1
+						effect_tooltip = {
+							execute_war_room_operation_progress_phase_1_effect = yes
+						}
+					}
+					else = {
+						custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_CURRENT_PHASE_TT_NONE
+					}
+				}
+			}
+			active_operation_phase_icon_1_click = {
+				# get tooltip for current phase
+				set_temp_variable = { operation_id = v }
+				if = {
+					limit = {
+						is_war_room_operation_progress_phase_1_active = yes
+					}
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_1_TT_ACTIVE
+				}
+				else = {
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_1_TT_INACTIVE
+				}
+				effect_tooltip = {
+					execute_war_room_operation_progress_phase_1_effect = yes
+				}
+			}
+			active_operation_phase_icon_2_click = {
+				# get tooltip for current phase
+				set_temp_variable = { operation_id = v }
+				if = {
+					limit = {
+						is_war_room_operation_progress_phase_2_active = yes
+					}
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_2_TT_ACTIVE
+				}
+				else = {
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_2_TT_INACTIVE
+				}
+				effect_tooltip = {
+					execute_war_room_operation_progress_phase_2_effect = yes
+				}
+			}
+			active_operation_phase_icon_3_click = {
+				# get tooltip for current phase
+				set_temp_variable = { operation_id = v }
+				if = {
+					limit = {
+						is_war_room_operation_progress_phase_3_active = yes
+					}
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_3_TT_ACTIVE
+				}
+				else = {
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_3_TT_INACTIVE
+				}
+				effect_tooltip = {
+					execute_war_room_operation_progress_phase_3_effect = yes
+				}
+			}
+			active_operation_phase_icon_4_click = {
+				# get tooltip for current phase
+				set_temp_variable = { operation_id = v }
+				if = {
+					limit = {
+						is_war_room_operation_progress_phase_4_active = yes
+					}
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_4_TT_ACTIVE
+				}
+				else = {
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_ENTRY_PROGRESS_BAR_PHASE_4_TT_INACTIVE
+				}
+				effect_tooltip = {
+					execute_war_room_operation_progress_phase_4_effect = yes
 				}
 			}
 		}
@@ -361,11 +484,9 @@ scripted_gui = {
 			## decisions
 			active_operation_get_decisions_visible = {
 				clear_temp_array = active_operation_decisions_array_temp
-				clear_temp_array = war_room_active_operation_progress_bar_array_temp
 				set_temp_variable = { operation_id = v }
 				NOT = { has_war_room_operation_collapsed = yes }
 				has_war_room_operation_selected_decisions_tab = yes
-				add_to_temp_array = { war_room_active_operation_progress_bar_array_temp = operation_id }
 				meta_trigger = {
 					text = {
 						all_of = {
@@ -414,12 +535,206 @@ scripted_gui = {
 					can_afford_war_room_operation_decision_cost = yes
 				}
 			}
-			## progress bar
-			### generic
+			decision_cost_icon_generals_visible = {
+				set_temp_variable = { cost_icon_y = 0 }
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				calculate_war_room_operation_decision_cost = yes
+				check_variable = { generals_cost > 0 }
+				if = {
+					limit = {
+						check_variable = { cp_cost = 0 }
+					}
+					set_temp_variable = { cost_icon_y = 8 }
+				}
+			}
+			decision_cost_value_generals_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				calculate_war_room_operation_decision_cost = yes
+				check_variable = { generals_cost > 0 }
+			}
+			decision_cost_icon_command_power_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				calculate_war_room_operation_decision_cost = yes
+				check_variable = { cp_cost > 0 }
+				if = {
+					limit = {
+						check_variable = { generals_cost = 0 }
+					}
+					set_temp_variable = { cost_icon_y = -8 }
+				}
+			}
+			decision_cost_value_command_power_visible = {
+				set_temp_variable = { operation_id = v }
+				set_temp_variable = { decision_id = decision_v }
+				calculate_war_room_operation_decision_cost = yes
+				check_variable = { cp_cost > 0 }
+			}
+			## info text
+			active_operation_launched_info_text_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_launched_war_room_operation = yes
+			}
+			## progressbar
+			active_operation_progressbar_background_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+			}
 			active_operation_progressbar_visible = {
 				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
 				set_temp_variable = { amount = 1 }
 				has_amount_of_war_room_operation_progress = yes
+			}
+			active_operation_progressbar_frame_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+			}
+			active_operation_progressbar_indicator_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				calculate_war_room_operation_progress = yes
+				set_temp_variable = { active_operation_progressbar_indicator_x = operation_progress }
+				multiply_temp_variable = { active_operation_progressbar_indicator_x = 3.85 }
+				round_temp_variable = active_operation_progressbar_indicator_x
+			}
+			active_operation_progressbar_indicator_text_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+			}
+			active_operation_phase_icon_1_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_1 = yes
+				NOT = { is_war_room_operation_progress_phase_1_active = yes }
+			}
+			active_operation_phase_icon_1_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_1_active = yes
+			}
+			active_operation_phase_text_1_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_1 = yes
+				NOT = { is_war_room_operation_progress_phase_1_active = yes }
+			}
+			active_operation_phase_text_1_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_1_active = yes
+			}
+			active_operation_phase_icon_2_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_2 = yes
+				NOT = { is_war_room_operation_progress_phase_2_active = yes }
+			}
+			active_operation_phase_icon_2_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_2_active = yes
+			}
+			active_operation_phase_text_2_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_2 = yes
+				NOT = { is_war_room_operation_progress_phase_2_active = yes }
+			}
+			active_operation_phase_text_2_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_2_active = yes
+			}
+			active_operation_phase_icon_3_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_3 = yes
+				NOT = { is_war_room_operation_progress_phase_3_active = yes }
+			}
+			active_operation_phase_icon_3_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_3_active = yes
+			}
+			active_operation_phase_text_3_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_3 = yes
+				NOT = { is_war_room_operation_progress_phase_3_active = yes }
+			}
+			active_operation_phase_text_3_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_3_active = yes
+			}
+			active_operation_phase_icon_4_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_4 = yes
+				NOT = { is_war_room_operation_progress_phase_4_active = yes }
+			}
+			active_operation_phase_icon_4_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_4_active = yes
+			}
+			active_operation_phase_text_4_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				has_war_room_operation_progress_phase_4 = yes
+				NOT = { is_war_room_operation_progress_phase_4_active = yes }
+			}
+			active_operation_phase_text_4_active_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_not_launched_war_room_operation = yes
+				is_war_room_operation_progress_phase_4_active = yes
 			}
 		}
 
@@ -431,10 +746,6 @@ scripted_gui = {
 			war_room_active_operations_gridbox = {
 				array = active_war_room_operations_array
 				entry_container = "[This.GetWarRoomActiveOperationEntryContainer]"
-			}
-			war_room_active_operation_progress_bar_gridbox = {
-				array = war_room_active_operation_progress_bar_array_temp
-				entry_container = "[This.GetWarRoomActiveOperationProgressBar]"
 			}
 			war_room_operations_decisions_gridbox = {
 				array = active_operation_decisions_array_temp
@@ -479,10 +790,99 @@ scripted_gui = {
 			decision_icon = {
 				image = "GFX_operation_decision_[?decision_v.GetTokenKey]"
 			}
-			## progress bars
-			### generic
+			decision_cost_icon_generals = {
+				y = cost_icon_y
+			}
+			decision_cost_value_generals = {
+				y = cost_icon_y
+			}
+			decision_cost_icon_command_power = {
+				y = cost_icon_y
+			}
+			decision_cost_value_command_power = {
+				y = cost_icon_y
+			}
+			## progressbars
+			active_operation_progressbar_bg = {
+				image = "[This.GetWarRoomActiveOperationProgressBarBg]"
+			}
 			active_operation_progressbar = {
+				image = "[This.GetWarRoomActiveOperationProgressBar]"
 				frame = operation_progress
+			}
+			active_operation_progressbar_frame = {
+				image = "[This.GetWarRoomActiveOperationProgressBarFrame]"
+			}
+			active_operation_progressbar_indicator = {
+				image = "[This.GetWarRoomActiveOperationProgressBarIndicator]"
+				x = active_operation_progressbar_indicator_x
+			}
+			active_operation_progressbar_indicator_text = {
+				x = active_operation_progressbar_indicator_x
+			}
+			active_operation_phase_icon_1 = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 1
+				x = active_operation_phase_1_x
+			}
+			active_operation_phase_icon_1_active = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 2
+				x = active_operation_phase_1_x
+			}
+			active_operation_phase_text_1 = {
+				x = active_operation_phase_1_x
+			}
+			active_operation_phase_text_1_active = {
+				x = active_operation_phase_1_x
+			}
+			active_operation_phase_icon_2 = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 3
+				x = active_operation_phase_2_x
+			}
+			active_operation_phase_icon_2_active = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 4
+				x = active_operation_phase_2_x
+			}
+			active_operation_phase_text_2 = {
+				x = active_operation_phase_2_x
+			}
+			active_operation_phase_text_2_active = {
+				x = active_operation_phase_2_x
+			}
+			active_operation_phase_icon_3 = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 5
+				x = active_operation_phase_3_x
+			}
+			active_operation_phase_icon_3_active = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 6
+				x = active_operation_phase_3_x
+			}
+			active_operation_phase_text_3 = {
+				x = active_operation_phase_3_x
+			}
+			active_operation_phase_text_3_active = {
+				x = active_operation_phase_3_x
+			}
+			active_operation_phase_icon_4 = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 7
+				x = active_operation_phase_4_x
+			}
+			active_operation_phase_icon_4_active = {
+				image = "[This.GetWarRoomActiveOperationProgressBarPhaseIcon]"
+				frame = 8
+				x = active_operation_phase_4_x
+			}
+			active_operation_phase_text_4 = {
+				x = active_operation_phase_4_x
+			}
+			active_operation_phase_text_4_active = {
+				x = active_operation_phase_4_x
 			}
 		}
 	}

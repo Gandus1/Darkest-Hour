@@ -4,6 +4,8 @@
 ## <operation id> is a placeholder for the ID assigned (added in the array and used in scripted loc to grab the name)
 ## <decision name> is a placeholder for the code name of the specific decision
 ############################################################################################################################################################################################################################################
+#### Operation Specific ###
+###########################
 ##	can_complete_war_room_operation_<operation id> = {
 ##		# the triggers that must be fulfilled to successfully complete the operation after it has been launched
 ##	}
@@ -12,6 +14,65 @@
 ##		# the triggers that must be fulfilled to fail the operation after it has been launched
 ##	}
 ##
+##	has_progress_phase_1_for_war_room_operation_<operation id> = {
+##		# use always = yes if the operation uses at least 1 phases to give additional bonuses when launching based on amount of preparation done
+##		# else use always = no
+##		# if it uses always = yes, set the position for the phase icon with the temp var below: (0 is the min (left), 385 the max (right))
+##		set_temp_variable = { active_operation_phase_1_x = 134 }
+##	}
+##
+##	is_progress_phase_1_active_for_war_room_operation_<operation id> = {
+##		# check for the required progress to reach the phase, e.g.:
+##		#	set_temp_variable = { amount = 25 }
+##		#	has_amount_of_war_room_operation_progress = yes
+##		# if the operation doesn't use that many phases, use always = no instead
+##	}
+##
+##	has_progress_phase_2_for_war_room_operation_<operation id> = {
+##		# use always = yes if the operation uses at least 2 phases to give additional bonuses when launching based on amount of preparation done
+##		# else use always = no
+##		# if it uses always = yes, set the position for the phase icon with the temp var below: (0 is the min (left), 385 the max (right))
+##		set_temp_variable = { active_operation_phase_2_x = 134 }
+##	}
+##
+##	is_progress_phase_2_active_for_war_room_operation_<operation id> = {
+##		# check for the required progress to reach the phase, e.g.:
+##		#	set_temp_variable = { amount = 50 }
+##		#	has_amount_of_war_room_operation_progress = yes
+##		# if the operation doesn't use that many phases, use always = no instead
+##	}
+##
+##	has_progress_phase_3_for_war_room_operation_<operation id> = {
+##		# use always = yes if the operation uses at least 3 phases to give additional bonuses when launching based on amount of preparation done
+##		# else use always = no
+##		# if it uses always = yes, set the position for the phase icon with the temp var below: (0 is the min (left), 385 the max (right))
+##		set_temp_variable = { active_operation_phase_3_x = 134 }
+##	}
+##
+##	is_progress_phase_3_active_for_war_room_operation_<operation id> = {
+##		# check for the required progress to reach the phase, e.g.:
+##		#	set_temp_variable = { amount = 75 }
+##		#	has_amount_of_war_room_operation_progress = yes
+##		# if the operation doesn't use that many phases, use always = no instead
+##	}
+##
+##	has_progress_phase_4_for_war_room_operation_<operation id> = {
+##		# use always = yes if the operation uses 4 phases to give additional bonuses when launching based on amount of preparation done
+##		# else use always = no
+##		# if it uses always = yes, set the position for the phase icon with the temp var below: (0 is the min (left), 385 the max (right))
+##		set_temp_variable = { active_operation_phase_4_x = 134 }
+##	}
+##
+##	is_progress_phase_4_active_for_war_room_operation_<operation id> = {
+##		# check for the required progress to reach the phase, e.g.:
+##		#	set_temp_variable = { amount = 100 }
+##		#	has_amount_of_war_room_operation_progress = yes
+##		# if the operation doesn't use that many phases, use always = no instead
+##	}
+##
+########################
+### Decision Specific ##
+########################
 ##	war_room_operation_decision_visible_trigger_<decision name> = {
 ##		# the triggers that must be fulfilled for this decision to be visible, excluding the is_ai = yes condition that is additionally added to the decision
 ##		# use always = yes if there are no additional conditions required
@@ -40,8 +101,6 @@
 ### GROZA ###
 #############
 
-# usage:
-## can_complete_war_room_operation_1 = yes
 can_complete_war_room_operation_1 = {
 	has_capitulated = no
 	OR = {
@@ -51,29 +110,334 @@ can_complete_war_room_operation_1 = {
 	controls_state = 1057
 }
 
-# usage:
-## can_fail_war_room_operation_1 = yes
 can_fail_war_room_operation_1 = {
 	has_capitulated = yes
 }
 
-## Decisions ##
-war_room_operation_decision_visible_trigger_operation_test_decision = {
+has_progress_phase_1_for_war_room_operation_1 = {
+	set_temp_variable = { active_operation_phase_1_x = 134 }
 	always = yes
 }
-war_room_operation_decision_available_trigger_operation_test_decision = {
+
+is_progress_phase_1_active_for_war_room_operation_1 = {
+	set_temp_variable = { amount = 70 }
+	has_amount_of_war_room_operation_progress = yes
+}
+
+has_progress_phase_2_for_war_room_operation_1 = {
+	set_temp_variable = { active_operation_phase_2_x = 296 }
+	always = yes
+}
+
+is_progress_phase_2_active_for_war_room_operation_1 = {
+	set_temp_variable = { amount = 85 }
+	has_amount_of_war_room_operation_progress = yes
+}
+
+has_progress_phase_3_for_war_room_operation_1 = {
+	set_temp_variable = { active_operation_phase_3_x = 358 }
+	always = yes
+}
+
+is_progress_phase_3_active_for_war_room_operation_1 = {
+	set_temp_variable = { amount = 100 }
+	has_amount_of_war_room_operation_progress = yes
+}
+
+has_progress_phase_4_for_war_room_operation_1 = {
+	always = no
+}
+
+is_progress_phase_4_active_for_war_room_operation_1 = {
+	always = no
+}
+
+## Decisions ##
+war_room_operation_decision_visible_trigger_operation_groza_decision_launch_operation = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_launch_operation = {
 	has_not_launched_war_room_operation = yes
-	set_temp_variable = { amount = 10 }
-	has_less_amount_of_war_room_operation_progress = yes
+	is_not_any_war_room_operation_decision_in_progress = yes
+	set_temp_variable = { amount = 70 }
+	has_amount_of_war_room_operation_progress = yes
 }
-war_room_operation_decision_remove_trigger_operation_test_decision = {
+war_room_operation_decision_remove_trigger_operation_groza_decision_launch_operation = {
+	can_complete_war_room_operation = yes
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_launch_operation = {
+	can_fail_war_room_operation = yes
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_launch_operation = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 0 }
+	set_temp_variable = { cp_cost = 25 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_evaluate_the_stavka = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_evaluate_the_stavka = {
+	has_not_launched_war_room_operation = yes
+	has_political_power > 50
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_evaluate_the_stavka = {
 	always = no
 }
-war_room_operation_decision_cancel_trigger_operation_test_decision = {
+war_room_operation_decision_cancel_trigger_operation_groza_decision_evaluate_the_stavka = {
 	always = no
 }
-war_room_operation_decision_cost_calculation_operation_test_decision = {
+war_room_operation_decision_cost_calculation_operation_groza_decision_evaluate_the_stavka = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 1 }
+	set_temp_variable = { cp_cost = 30 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_form_the_state_defense_committee = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_form_the_state_defense_committee = {
+	has_not_launched_war_room_operation = yes
+	has_country_flag = SOV_Evaluated_STAVKA
+	has_political_power > 15
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_form_the_state_defense_committee = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_form_the_state_defense_committee = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_form_the_state_defense_committee = {
 	# set the temp variables generals_cost & cp_cost
 	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 15 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
+	has_not_launched_war_room_operation = yes
+	has_country_flag = SOV_Evaluated_STAVKA
+	has_political_power > 15
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_form_the_headquarters_of_the_supreme_high_command = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 15 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_evaluate_the_red_airforce = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_evaluate_the_red_airforce = {
+	has_not_launched_war_room_operation = yes
+	has_country_flag = SOV_Evaluated_STAVKA
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_evaluate_the_red_airforce = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_evaluate_the_red_airforce = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_evaluate_the_red_airforce = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 1 }
 	set_temp_variable = { cp_cost = 10 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_evaluate_the_red_navy = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_evaluate_the_red_navy = {
+	has_not_launched_war_room_operation = yes
+	has_country_flag = SOV_Evaluated_STAVKA
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_evaluate_the_red_navy = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_evaluate_the_red_navy = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_evaluate_the_red_navy = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 1 }
+	set_temp_variable = { cp_cost = 10 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_assure_production_in_the_military_industry = {
+	always = yes
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_assure_production_in_the_military_industry = {
+	has_not_launched_war_room_operation = yes
+	has_country_flag = SOV_Evaluated_STAVKA
+	num_of_military_factories > 119
+	has_political_power > 30
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_assure_production_in_the_military_industry = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_assure_production_in_the_military_industry = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_assure_production_in_the_military_industry = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 3 }
+	set_temp_variable = { cp_cost = 0 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_draft_mobilization_order_41 = {
+	has_country_flag = SOV_Formed_Headquarters
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_draft_mobilization_order_41 = {
+	has_not_launched_war_room_operation = yes
+	has_political_power > 200
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_draft_mobilization_order_41 = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_draft_mobilization_order_41 = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_draft_mobilization_order_41 = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 4 }
+	set_temp_variable = { cp_cost = 60 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
+	has_country_flag = SOV_Formed_Headquarters
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
+	has_not_launched_war_room_operation = yes
+	controls_state = 202
+	has_political_power > 100
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_prepare_key_infrastructure_in_ukraine = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 0 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
+	has_country_flag = SOV_Formed_Headquarters
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
+	has_not_launched_war_room_operation = yes
+	OR = {
+		controls_state = 189
+		controls_state = 12
+		controls_state = 805
+		controls_state = 11
+	}
+	has_political_power > 100
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_prepare_key_infrastructure_in_the_baltics = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 0 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_assure_air_superiority = {
+	has_country_flag = SOV_Evaluated_Airforce
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_assure_air_superiority = {
+	has_not_launched_war_room_operation = yes
+	has_deployed_air_force_size = {
+		size > 3499
+	}
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_assure_air_superiority = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_assure_air_superiority = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_assure_air_superiority = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 30 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_construct_new_bases_in_the_baltics = {
+	has_country_flag = SOV_Evaluated_Airforce
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_construct_new_bases_in_the_baltics = {
+	has_not_launched_war_room_operation = yes
+	OR = {
+		controls_state = 12
+		controls_state = 805
+	}
+	has_political_power > 50
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_construct_new_bases_in_the_baltics = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_construct_new_bases_in_the_baltics = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_construct_new_bases_in_the_baltics = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 1 }
+	set_temp_variable = { cp_cost = 0 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_assure_control_of_baltic_seaports = {
+	has_country_flag = SOV_Evaluated_Navy
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_assure_control_of_baltic_seaports = {
+	has_not_launched_war_room_operation = yes
+	has_navy_size = {
+		size > 99
+	}
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_assure_control_of_baltic_seaports = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_assure_control_of_baltic_seaports = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_assure_control_of_baltic_seaports = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 30 }
+}
+
+war_room_operation_decision_visible_trigger_operation_groza_decision_fortify_sevastopol_and_odessa = {
+	has_country_flag = SOV_Evaluated_Navy
+}
+war_room_operation_decision_available_trigger_operation_groza_decision_fortify_sevastopol_and_odessa = {
+	has_not_launched_war_room_operation = yes
+	controls_state = 137
+	controls_state = 192
+	has_political_power > 50
+}
+war_room_operation_decision_remove_trigger_operation_groza_decision_fortify_sevastopol_and_odessa = {
+	always = no
+}
+war_room_operation_decision_cancel_trigger_operation_groza_decision_fortify_sevastopol_and_odessa = {
+	always = no
+}
+war_room_operation_decision_cost_calculation_operation_groza_decision_fortify_sevastopol_and_odessa = {
+	# set the temp variables generals_cost & cp_cost
+	set_temp_variable = { generals_cost = 2 }
+	set_temp_variable = { cp_cost = 0 }
 }
