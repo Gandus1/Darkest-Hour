@@ -303,11 +303,16 @@ launch_war_room_operation = {
 			meta_effect = {
 				text = {
 					clear_array = war_room_operation_[ID]_pre_launch_assigned_generals_array
-					for_each_loop = {
-						array = war_room_operation_[ID]_assigned_generals_array
-						value = value_temp
-						index = index_temp
-						add_to_array = { war_room_operation_[ID]_pre_launch_assigned_generals_array = value_temp }
+					if = {
+						limit = {
+							check_variable = { war_room_operation_[ID]_assigned_generals_array^num > 0 }
+						}
+						for_each_loop = {
+							array = war_room_operation_[ID]_assigned_generals_array
+							value = value_temp
+							index = index_temp
+							add_to_array = { war_room_operation_[ID]_pre_launch_assigned_generals_array = value_temp }
+						}
 					}
 					set_country_flag = has_launched_war_room_operation_[ID]
 				}

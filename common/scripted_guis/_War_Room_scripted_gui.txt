@@ -496,7 +496,11 @@ scripted_gui = {
 							set_temp_variable = { decision_id = value_temp }
 							if = {
 								limit = {
-									is_war_room_operation_decision_visible = yes
+									OR = {
+										is_war_room_operation_decision_visible = yes
+										is_war_room_operation_decision_in_progress = yes
+										is_war_room_operation_decision_completed = yes
+									}
 								}
 								add_to_temp_array = { active_operation_decisions_array_temp = value_temp }
 							}
@@ -573,6 +577,12 @@ scripted_gui = {
 				check_variable = { cp_cost > 0 }
 			}
 			## info text
+			active_operation_launched_info_text_title_visible = {
+				set_temp_variable = { operation_id = v }
+				NOT = { has_war_room_operation_collapsed = yes }
+				has_war_room_operation_selected_decisions_tab = yes
+				has_launched_war_room_operation = yes
+			}
 			active_operation_launched_info_text_visible = {
 				set_temp_variable = { operation_id = v }
 				NOT = { has_war_room_operation_collapsed = yes }
