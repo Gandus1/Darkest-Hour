@@ -37,12 +37,20 @@ news_event = {
 	title = DNZ_Politics.2.t
 	desc = DNZ_Politics.2.d
 	picture = GFX_news_DNZ_Nazi_Leadership
-	is_triggered_only = yes
+	trigger = {
+		tag = DNZ
+		NOT = { has_government = fascist }
+		fascist_largest_ideology = yes
+		date > 1933.5.28
+	}
 	major=yes
 	option = {
 		name = DNZ_Politics.2.A
 		trigger = {
 			has_government = fascist
+			NOT = {
+				tag = DNZ
+			}
 		}
 	}
 	option = {
@@ -51,7 +59,18 @@ news_event = {
 			NOT = {
 				has_government = fascist
 			}
+			NOT = {
+				tag = DNZ
+			}
 		}
+	}
+	option = {
+		name = DNZ_Politics.2.C
+		trigger = {
+			tag = DNZ
+		}
+		add_ideas = legalistic_restrictions
+		set_politics = { ruling_party = fascist elections_allowed = yes }
 	}
 }
 
