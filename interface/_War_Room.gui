@@ -116,26 +116,42 @@ guiTypes = {
 					spriteType = "GFX_war_room_tiled_background"
 				}
 
-				iconType = {
-					name = "info_background"
-					position = { x = 257 y = -200 }
-					centerposition = yes
-					orientation = lower_left
-					spriteType = "GFX_war_room_background_info"
-				}
+				containerWindowType = {
+					name = "bottom_background_window"
+					position = { x = 0 y = 305 }
+					size = { width = 100%% height = 100%% }
 
-				instantTextboxType = {
-					name = "info_text"
-					position = { x = 120 y = -150 }
-					orientation = lower_left
-					font = "hoi_18mbs"
-					text = "DH_WAR_ROOM_BACKGROUND_INFO_TEXT"
-					format = center
-					maxWidth = 270
-					maxHeight = 55
-					fixedsize = yes
-					alwaystransparent = yes
-					text_color_code = q
+					background = {
+						name = "background"
+						spriteType = "GFX_war_room_tiled_wooden_background"
+					}
+
+					containerWindowType = {
+						name = "info_window"
+						position = { x = 0 y = -160 }
+						orientation = lower_left
+						size = { width = 100%% height = 100%% }
+
+						iconType = {
+							name = "info_background"
+							position = { x = 257 y = 0 }
+							centerposition = yes
+							spriteType = "GFX_war_room_background_info"
+						}
+
+						instantTextboxType = {
+							name = "info_text"
+							position = { x = 120 y = 50 }
+							font = "hoi_18mbs"
+							text = "DH_WAR_ROOM_BACKGROUND_INFO_TEXT"
+							format = center
+							maxWidth = 270
+							maxHeight = 55
+							fixedsize = yes
+							alwaystransparent = yes
+							text_color_code = q
+						}
+					}
 				}
 			}
 
@@ -1158,7 +1174,7 @@ guiTypes = {
 				position = { x = 0 y = 138 }
 				size = { width = -8 height = 100%% }
 				margin = { bottom = 4 }
-				verticalScrollbar = "right_vertical_sliderno_bg"
+				verticalScrollbar = "war_room_vertical_slider"
 				scroll_wheel_factor = 40
 				smooth_scrolling = yes
 
@@ -1728,6 +1744,76 @@ guiTypes = {
 		}
 	}
 
+	containerWindowType = {
+		name = "dh_war_room_operations_completed_popup_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100%% height = 100%% }
+
+		gridboxtype = {
+			name = "war_room_operations_popup_completed_gridbox"
+			position = { x = 0 y = 0 }
+			size = { width = 100%% height = 100%% }
+			slotsize = { width = 0 height = 0 }
+			add_horizontal = no
+			max_slots_horizontal = 1
+			format = "UPPER_LEFT"
+		}
+	}
+
+	containerWindowType = {
+		name = "dh_war_room_operations_failed_popup_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100%% height = 100%% }
+
+		gridboxtype = {
+			name = "war_room_operations_popup_failed_gridbox"
+			position = { x = 0 y = 0 }
+			size = { width = 100%% height = 100%% }
+			slotsize = { width = 0 height = 0 }
+			add_horizontal = no
+			max_slots_horizontal = 1
+			format = "UPPER_LEFT"
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_operations_popup_completed_entry"
+		position = { x = 0 y = 0 }
+		orientation = center
+		origo = center
+		size = { width = 300 height = 250 }
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+
+		buttonType = {
+			name = "entry_close_button"
+			position = { x = 100 y = 100 }
+			spriteType = "GFX_closebutton"
+		}
+	}
+
+	containerWindowType = {
+		name = "war_room_operations_popup_failed_entry"
+		position = { x = 0 y = 0 }
+		orientation = center
+		origo = center
+		size = { width = 300 height = 250 }
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+
+		buttonType = {
+			name = "entry_close_button"
+			position = { x = 100 y = 100 }
+			spriteType = "GFX_closebutton"
+		}
+	}
+
 	# Scrollbars
 	extendedScrollbarType = {
 		name = "war_room_horizontal_slider"
@@ -1744,27 +1830,62 @@ guiTypes = {
 
 		slider = {
 			name = "Slider"
-			quadTextureSprite = "GFX_scroll_drager"
-			position = { x=0 y = -2 }
+			quadTextureSprite = "GFX_war_room_scroll_drager"
+			position = { x = 0 y = -2 }
 		}
 
 		track = {
 			name = "Track"
-			quadTextureSprite = "GFX_scroll_track_horisontal"
-			position = { x=0 y = 3 }
+			quadTextureSprite = "GFX_war_room_scroll_track_horizontal"
+			position = { x = 0 y = 3 }
 			alwaystransparent = yes
 		}
 
 		decreaseButton = {
 			name = "Decrease"
-			quadTextureSprite = "GFX_scroll_left"
-			position = { x=3 y = 1 }
+			quadTextureSprite = "GFX_war_room_scroll_left"
+			position = { x = 0 y = 1 }
 		}
 
 		increaseButton = {
 			name = "Increase"
-			quadTextureSprite = "GFX_scroll_right"
-			position = { x=-19 y = -17 }
+			quadTextureSprite = "GFX_war_room_scroll_right"
+			position = { x = -17 y = -17 }
+		}
+	}
+
+	extendedScrollbarType = {
+		name = "war_room_vertical_slider"
+		position = { x = -8 y = 0 }
+ 		size = { width = 18 height = 18 }
+		startValue = 0
+		orientation = upper_right
+		origo = upper_right
+
+		slider = {
+			name = "Slider"
+			quadTextureSprite = "GFX_war_room_scroll_drager"
+			frame = 1
+			position = { x = -2 y = -2 }
+		}
+
+		track = {
+			name = "Track"
+			quadTextureSprite = "GFX_war_room_scroll_track"
+			position = { x = 4 y = 0 }
+			alwaystransparent = yes
+		}
+
+		decreaseButton = {
+			name = "Decrease"
+			quadTextureSprite = "GFX_war_room_scroll_up"
+			position = { x = 2 y = 3 }
+		}
+
+		increaseButton = {
+			name = "Increase"
+			quadTextureSprite = "GFX_war_room_scroll_down"
+			position = { x = -17 y = -19 }
 		}
 	}
 }

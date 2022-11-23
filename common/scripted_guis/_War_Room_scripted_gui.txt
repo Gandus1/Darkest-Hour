@@ -12,6 +12,53 @@ scripted_gui = {
 		effects = {
 			open_button_click = {
 				set_variable = { show_war_room_window = 1 }
+				if = {
+					limit = {
+						set_temp_variable = { amount = 1 }
+						has_amount_of_active_war_room_operations = yes
+					}
+					set_temp_variable = { operation_id = 1 }
+					custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_OPERATIONS_LIST_TT
+					if = {
+						limit = {
+							set_temp_variable = { amount = 2 }
+							has_amount_of_active_war_room_operations = yes
+						}
+						set_temp_variable = { operation_id = 2 }
+						custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_OPERATIONS_LIST_TT
+						if = {
+							limit = {
+								set_temp_variable = { amount = 3 }
+								has_amount_of_active_war_room_operations = yes
+							}
+							set_temp_variable = { operation_id = 3 }
+							custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_OPERATIONS_LIST_TT
+							if = {
+								limit = {
+									set_temp_variable = { amount = 4 }
+									has_amount_of_active_war_room_operations = yes
+								}
+								set_temp_variable = { operation_id = 4 }
+								custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_OPERATIONS_LIST_TT
+								if = {
+									limit = {
+										set_temp_variable = { amount = 5 }
+										has_amount_of_active_war_room_operations = yes
+									}
+									set_temp_variable = { operation_id = 5 }
+									custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_OPERATIONS_LIST_TT
+									if = {
+										limit = {
+											set_temp_variable = { amount = 6 }
+											has_amount_of_active_war_room_operations = yes
+										}
+										custom_effect_tooltip = DH_WAR_ROOM_OPERATION_ACTIVE_OPERATIONS_LIST_TT_MORE
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 			close_button_click = {
 				clear_variable = show_war_room_window
@@ -53,6 +100,10 @@ scripted_gui = {
 				x = global.dh_war_room_top_bar_button_position
 			}
 		}
+
+		ai_enabled = {
+			always = no
+		}
 	}
 
 	dh_war_room_window = {
@@ -70,6 +121,10 @@ scripted_gui = {
 			close_button_click = {
 				clear_variable = show_dh_war_room_assign_generals_window
 				clear_variable = show_war_room_window
+			}
+			close_button_right_click = {
+				set_temp_variable = { operation_id = 1 }
+				add_active_war_room_operation = yes
 			}
 			# Active Operations:
 			## expand/collapse buttons
@@ -899,6 +954,10 @@ scripted_gui = {
 				x = active_operation_phase_4_x
 			}
 		}
+
+		ai_enabled = {
+			always = no
+		}
 	}
 
 	dh_war_room_assign_generals_window_panel = {
@@ -911,6 +970,10 @@ scripted_gui = {
 
 		visible = {
 			has_variable = show_war_room_window
+		}
+
+		ai_enabled = {
+			always = no
 		}
 	}
 
@@ -963,6 +1026,68 @@ scripted_gui = {
 				entry_container = war_room_operations_assign_general_entry
 				change_scope = yes
 			}
+		}
+
+		ai_enabled = {
+			always = no
+		}
+	}
+
+	dh_war_room_operations_completed_popup_window = {
+		context_type = player_context
+
+		window_name = "dh_war_room_operations_completed_popup_window"
+
+		dirty = war_room_operations_popup_completed_array^num
+
+		visible = {
+			check_variable = { war_room_operations_popup_completed_array^num > 0 }
+		}
+
+		effects = {
+			entry_close_button_click = {
+				remove_from_array = { war_room_operations_popup_completed_array = v }
+			}
+		}
+
+		dynamic_lists = {
+			war_room_operations_popup_completed_gridbox = {
+				array = war_room_operations_popup_completed_array
+				entry_container = war_room_operations_popup_completed_entry
+			}
+		}
+
+		ai_enabled = {
+			always = no
+		}
+	}
+
+	dh_war_room_operations_failed_popup_window = {
+		context_type = player_context
+
+		window_name = "dh_war_room_operations_failed_popup_window"
+
+		dirty = war_room_operations_popup_failed_array^num
+
+		visible = {
+			check_variable = { war_room_operations_popup_failed_array^num > 0 }
+		}
+
+		effects = {
+			entry_close_button_click = {
+				remove_from_array = { war_room_operations_popup_failed_array = v }
+			}
+		}
+
+		dynamic_lists = {
+			war_room_operations_popup_failed_gridbox = {
+				array = war_room_operations_popup_failed_array
+				entry_container = war_room_operations_popup_failed_entry
+			}
+		}
+
+		ai_enabled = {
+			always = no
 		}
 	}
 }
