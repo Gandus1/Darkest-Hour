@@ -16,7 +16,7 @@ NDefines.NMilitary.MIN_DIVISION_DEPLOYMENT_TRAINING = 0.3
 NDefines.NMilitary.SLOWEST_SPEED = 0.5
 NDefines.NProduction.MAX_CIV_FACTORIES_PER_LINE = 10
 NDefines.NProduction.BASE_FACTORY_MAX_EFFICIENCY_FACTOR = 10
-NDefines.NProduction.BASE_FACTORY_SPEED = 1
+NDefines.NProduction.BASE_FACTORY_SPEED = 2.5
 NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 4.5
 NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 2.5
 -- Diplomatic changes
