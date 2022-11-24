@@ -122,10 +122,6 @@ scripted_gui = {
 				clear_variable = show_dh_war_room_assign_generals_window
 				clear_variable = show_war_room_window
 			}
-			close_button_right_click = {
-				set_temp_variable = { operation_id = 1 }
-				add_active_war_room_operation = yes
-			}
 			# Active Operations:
 			## expand/collapse buttons
 			active_operation_expand_button_click = {
@@ -1041,19 +1037,39 @@ scripted_gui = {
 		dirty = war_room_operations_popup_completed_array^num
 
 		visible = {
+			is_ai = no
 			check_variable = { war_room_operations_popup_completed_array^num > 0 }
 		}
 
 		effects = {
 			entry_close_button_click = {
-				remove_from_array = { war_room_operations_popup_completed_array = v }
+				set_temp_variable = { operation_id = v }
+				remove_from_array = { war_room_operations_popup_completed_array = operation_id }
+				custom_effect_tooltip = DH_WAR_ROOM_OPERATION_POPUP_ENTRY_EFFECTS_TT_COMPLETED
+				meta_effect = {
+					text = {
+						effect_tooltip = {
+							complete_war_room_operation_[ID] = yes
+						}
+					}
+					ID = "[?operation_id]"
+				}
+			}
+		}
+
+		properties = {
+			operation_picture = {
+				image = "GFX_war_room_operation_picture_[?v]"
+			}
+			operation_stamp_icon = {
+				frame = 1
 			}
 		}
 
 		dynamic_lists = {
 			war_room_operations_popup_completed_gridbox = {
 				array = war_room_operations_popup_completed_array
-				entry_container = war_room_operations_popup_completed_entry
+				entry_container = war_room_operations_popup_entry
 			}
 		}
 
@@ -1070,19 +1086,39 @@ scripted_gui = {
 		dirty = war_room_operations_popup_failed_array^num
 
 		visible = {
+			is_ai = no
 			check_variable = { war_room_operations_popup_failed_array^num > 0 }
 		}
 
 		effects = {
 			entry_close_button_click = {
-				remove_from_array = { war_room_operations_popup_failed_array = v }
+				set_temp_variable = { operation_id = v }
+				remove_from_array = { war_room_operations_popup_failed_array = operation_id }
+				custom_effect_tooltip = DH_WAR_ROOM_OPERATION_POPUP_ENTRY_EFFECTS_TT_FAILED
+				meta_effect = {
+					text = {
+						effect_tooltip = {
+							fail_war_room_operation_[ID] = yes
+						}
+					}
+					ID = "[?operation_id]"
+				}
+			}
+		}
+
+		properties = {
+			operation_picture = {
+				image = "GFX_war_room_operation_picture_[?v]"
+			}
+			operation_stamp_icon = {
+				frame = 2
 			}
 		}
 
 		dynamic_lists = {
 			war_room_operations_popup_failed_gridbox = {
 				array = war_room_operations_popup_failed_array
-				entry_container = war_room_operations_popup_failed_entry
+				entry_container = war_room_operations_popup_entry
 			}
 		}
 
