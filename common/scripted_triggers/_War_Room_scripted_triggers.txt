@@ -577,8 +577,30 @@ has_less_amount_of_war_room_operation_progress = {
 is_war_room_operation_decision_completed = {
 	custom_trigger_tooltip = {
 		tooltip = IS_WAR_ROOM_OPERATION_DECISION_COMPLETED_TT
-		is_in_array = { war_room_operation_completed_decisions_array = decision_id }
-		NOT = { is_war_room_operation_decision_in_progress = yes }
+		if = {
+			limit = {
+				is_in_array = { war_room_operation_completed_decisions_array = decision_id }
+				NOT = { is_war_room_operation_decision_in_progress = yes }
+			}
+			if = {
+				limit = {
+					NOT = { check_variable = { decision_id_temp = 0 } }
+				}
+				set_temp_variable = { decision_id = decision_id_temp }
+				set_temp_variable = { decision_id_temp = 0 }
+			}
+			always = yes
+		}
+		else = {
+			if = {
+				limit = {
+					NOT = { check_variable = { decision_id_temp = 0 } }
+				}
+				set_temp_variable = { decision_id = decision_id_temp }
+				set_temp_variable = { decision_id_temp = 0 }
+			}
+			always = no
+		}
 	}
 }
 
@@ -588,9 +610,31 @@ is_war_room_operation_decision_completed = {
 is_not_war_room_operation_decision_completed = {
 	custom_trigger_tooltip = {
 		tooltip = IS_NOT_WAR_ROOM_OPERATION_DECISION_COMPLETED_TT
-		OR = {
-			NOT = { is_in_array = { war_room_operation_completed_decisions_array = decision_id } }
-			is_war_room_operation_decision_in_progress = yes
+		if = {
+			limit = {
+				OR = {
+					NOT = { is_in_array = { war_room_operation_completed_decisions_array = decision_id } }
+					is_war_room_operation_decision_in_progress = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = { check_variable = { decision_id_temp = 0 } }
+				}
+				set_temp_variable = { decision_id = decision_id_temp }
+				set_temp_variable = { decision_id_temp = 0 }
+			}
+			always = yes
+		}
+		else = {
+			if = {
+				limit = {
+					NOT = { check_variable = { decision_id_temp = 0 } }
+				}
+				set_temp_variable = { decision_id = decision_id_temp }
+				set_temp_variable = { decision_id_temp = 0 }
+			}
+			always = no
 		}
 	}
 }
@@ -599,11 +643,33 @@ is_not_war_room_operation_decision_completed = {
 ## set_temp_variable = { decision_id = token:name }
 ## is_war_room_operation_decision_in_progress = yes
 is_war_room_operation_decision_in_progress = {
-	meta_trigger = {
-		text = {
-			has_decision = [ID]
+	if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_decision = [ID]
+				}
+				ID = "[?decision_id.GetTokenKey]"
+			}
 		}
-		ID = "[?decision_id.GetTokenKey]"
+		if = {
+			limit = {
+				NOT = { check_variable = { decision_id_temp = 0 } }
+			}
+			set_temp_variable = { decision_id = decision_id_temp }
+			set_temp_variable = { decision_id_temp = 0 }
+		}
+		always = yes
+	}
+	else = {
+		if = {
+			limit = {
+				NOT = { check_variable = { decision_id_temp = 0 } }
+			}
+			set_temp_variable = { decision_id = decision_id_temp }
+			set_temp_variable = { decision_id_temp = 0 }
+		}
+		always = no
 	}
 }
 
@@ -627,7 +693,13 @@ is_any_war_room_operation_decision_in_progress = {
 			OPERATION_ID = "[?operation_id]"
 		}
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 }
 
 # usage:
@@ -650,7 +722,13 @@ is_not_any_war_room_operation_decision_in_progress = {
 			OPERATION_ID = "[?operation_id]"
 		}
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 }
 
 # usage:
@@ -664,7 +742,13 @@ is_war_room_operation_decision_visible = {
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 }
 
 # usage:
@@ -678,7 +762,13 @@ is_war_room_operation_decision_available = {
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 }
 
 # usage:
@@ -692,7 +782,13 @@ is_war_room_operation_decision_removing = {
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 }
 
 # usage:
@@ -706,7 +802,13 @@ is_war_room_operation_decision_canceling = {
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 }
 
 # usage:
@@ -720,7 +822,13 @@ calculate_war_room_operation_decision_cost = {
 		}
 		ID = "[?decision_id.GetTokenKey]"
 	}
-	set_temp_variable = { decision_id = decision_id_temp }
+	if = {
+		limit = {
+			NOT = { check_variable = { decision_id_temp = 0 } }
+		}
+		set_temp_variable = { decision_id = decision_id_temp }
+		set_temp_variable = { decision_id_temp = 0 }
+	}
 	if = {
 		limit = {
 			check_variable = { cp_cost < 0 }

@@ -539,6 +539,9 @@ scripted_gui = {
 			## decisions
 			active_operation_get_decisions_visible = {
 				clear_temp_array = active_operation_decisions_array_temp
+				clear_temp_array = active_operation_decisions_array_active_temp
+				clear_temp_array = active_operation_decisions_array_completed_temp
+				clear_temp_array = active_operation_decisions_array_visible_temp
 				set_temp_variable = { operation_id = v }
 				NOT = { has_war_room_operation_collapsed = yes }
 				has_war_room_operation_selected_decisions_tab = yes
@@ -551,17 +554,58 @@ scripted_gui = {
 							set_temp_variable = { decision_id = value_temp }
 							if = {
 								limit = {
-									OR = {
-										is_war_room_operation_decision_visible = yes
-										is_war_room_operation_decision_in_progress = yes
-										is_war_room_operation_decision_completed = yes
-									}
+									is_war_room_operation_decision_in_progress = yes
 								}
-								add_to_temp_array = { active_operation_decisions_array_temp = value_temp }
+								add_to_temp_array = { active_operation_decisions_array_active_temp = decision_id }
+							}
+							else_if = {
+								limit = {
+									is_war_room_operation_decision_completed = yes
+								}
+								add_to_temp_array = { active_operation_decisions_array_completed_temp = decision_id }
+							}
+							else_if = {
+								limit = {
+									is_war_room_operation_decision_visible = yes
+								}
+								add_to_temp_array = { active_operation_decisions_array_visible_temp = decision_id }
 							}
 						}
 					}
 					ID = "[?operation_id]"
+				}
+				if = {
+					limit = {
+						check_variable = { active_operation_decisions_array_active_temp^num > 0 }
+					}
+					all_of = {
+						array = active_operation_decisions_array_active_temp
+						value = value_temp
+						index = index_temp
+						add_to_temp_array = { active_operation_decisions_array_temp = value_temp }
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { active_operation_decisions_array_visible_temp^num > 0 }
+					}
+					all_of = {
+						array = active_operation_decisions_array_visible_temp
+						value = value_temp
+						index = index_temp
+						add_to_temp_array = { active_operation_decisions_array_temp = value_temp }
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { active_operation_decisions_array_completed_temp^num > 0 }
+					}
+					all_of = {
+						array = active_operation_decisions_array_completed_temp
+						value = value_temp
+						index = index_temp
+						add_to_temp_array = { active_operation_decisions_array_temp = value_temp }
+					}
 				}
 			}
 			### individual decisions
