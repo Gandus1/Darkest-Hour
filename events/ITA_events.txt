@@ -1325,7 +1325,7 @@ country_event = { #Approach IG Farben (ITA)
 		}
 	}
 }
-country_event = { #Italy Proposes Negotiations to IG Farben (GER)
+country_event = { # Italy Proposes Negotiations to IG Farben (GER)
 	id = ITA_IG_Farben_Negotation.2
 	title = ITA_IG_Farben_Negotation.2.t
 	desc = ITA_IG_Farben_Negotation.2.d
@@ -1354,24 +1354,24 @@ country_event = { #Italy Proposes Negotiations to IG Farben (GER)
 			ITA = {
 				country_event = { id = ITA_IG_Farben_Negotation.3 days = 2 }
 			}
+			GER = {
+				country_event = { id = ITA_IG_Farben_Negotation.3 days = 2 }
+			}
 		}
 	}
 }
-country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
 	id = ITA_IG_Farben_Negotation.3
 	title = ITA_IG_Farben_Negotation.3.t
 	desc = ITA_IG_Farben_Negotation.3.d
 	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
 	is_triggered_only = yes
 	option = { # 
 		name = ITA_IG_Farben_Negotation.3.A
-		GER = {
-			hidden_effect = {
-				country_event = { id = ITA_IG_Farben_Negotation.4 days = 2 }
-			}
+		trigger = {
+			original_tag = GER
 		}
-		set_temp_variable = { money_to_gain = -100 }
+		set_temp_variable = { money_to_gain = -1000 }
 		add_money_with_inflation_included_with_tooltip_effect = yes
 		add_opinion_modifier = {
 			target = GER
@@ -1385,17 +1385,12 @@ country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (ITA
 		}
 		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
 	}
-}
-country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (GER)
-	id = ITA_IG_Farben_Negotation.4
-	title = ITA_IG_Farben_Negotation.4.t
-	desc = ITA_IG_Farben_Negotation.4.d
-	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
-	is_triggered_only = yes
 	option = { # 
-		name = ITA_IG_Farben_Negotation.4.A
-		set_temp_variable = { money_to_gain = 100 }
+		name = ITA_IG_Farben_Negotation.3.B
+		trigger = {
+			original_tag = ITA
+		}
+		set_temp_variable = { money_to_gain = 1000 }
 		add_money_with_inflation_included_with_tooltip_effect = yes
 		add_opinion_modifier = {
 			target = ITA
@@ -1403,7 +1398,7 @@ country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (GER
 		}
 	}
 }
-country_event = { #IG Farben asks to Increase Price (ITA)
+country_event = { # IG Farben asks to Increase Price (ITA)
 	id = ITA_IG_Farben_Negotation.5
 	title = ITA_IG_Farben_Negotation.5.t
 	desc = ITA_IG_Farben_Negotation.5.d
@@ -1428,22 +1423,27 @@ country_event = { #IG Farben asks to Increase Price (ITA)
 			GER = {
 				country_event = { id = ITA_IG_Farben_Negotation.8 days = 2 }
 			}
+			ITA = {
+				country_event = { id = ITA_IG_Farben_Negotation.8 days = 2 }
+			}
 		}
 	}
 }
-country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
+country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
 	id = ITA_IG_Farben_Negotation.6
 	title = ITA_IG_Farben_Negotation.6.t
 	desc = ITA_IG_Farben_Negotation.6.d
 	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
 	is_triggered_only = yes
 	option = { # 
 		name = ITA_IG_Farben_Negotation.6.A
+		trigger = {
+			original_tag = ITA
+		}
 		GER = {
 			country_event = { id = ITA_IG_Farben_Negotation.7 days = 2 }
 		}
-		set_temp_variable = { money_to_gain = -200 }
+		set_temp_variable = { money_to_gain = -2000 }
 		add_money_with_inflation_included_with_tooltip_effect = yes
 		add_opinion_modifier = {
 			target = GER
@@ -1457,17 +1457,12 @@ country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (ITA
 		}
 		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
 	}
-}
-country_event = { #Agreement on Synthetic Oil Patents with IG Farben Signed (GER)
-	id = ITA_IG_Farben_Negotation.7
-	title = ITA_IG_Farben_Negotation.7.t
-	desc = ITA_IG_Farben_Negotation.7.d
-	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
-	is_triggered_only = yes
 	option = { # 
-		name = ITA_IG_Farben_Negotation.7.A
-		set_temp_variable = { money_to_gain = 200 }
+		name = ITA_IG_Farben_Negotation.6.B
+		trigger = {
+			original_tag = GER
+		}
+		set_temp_variable = { money_to_gain = 2000 }
 		add_money_with_inflation_included_with_tooltip_effect = yes
 		add_opinion_modifier = {
 			target = ITA
@@ -1493,17 +1488,6 @@ country_event = { # Spaghetti-Eaters Ask for Price Reduction (GER)
 			}
 		}
 	}
-	option = { # Insist on our Proposal
-		name = ITA_IG_Farben_Negotation.8.B
-		ai_chance = {
-			factor = 50
-		}
-		hidden_effect = {
-			ITA = {
-				country_event = { id = ITA_IG_Farben_Negotation.12 days = 2 }
-			}
-		}
-	}
 }
 country_event = { # IG Farben Agreed to Reduce Price (ITA)
 	id = ITA_IG_Farben_Negotation.9
@@ -1514,7 +1498,14 @@ country_event = { # IG Farben Agreed to Reduce Price (ITA)
 	is_triggered_only = yes
 	option = { # 
 		name = ITA_IG_Farben_Negotation.9.A
-		country_event = { id = ITA_IG_Farben_Negotation.10 days = 2 }
+		ITA = {
+			country_event = { id = ITA_IG_Farben_Negotation.10 days = 2 }
+		}
+		hidden_effect = {
+			GER = {
+				country_event = { id = ITA_IG_Farben_Negotation.10 days = 2 }
+			}
+		}
 	}
 }
 country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
@@ -1522,14 +1513,13 @@ country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (IT
 	title = ITA_IG_Farben_Negotation.10.t
 	desc = ITA_IG_Farben_Negotation.10.d
 	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
 	is_triggered_only = yes
 	option = { # 
 		name = ITA_IG_Farben_Negotation.10.A
-		GER = {
-			country_event = { id = ITA_IG_Farben_Negotation.11 days = 2 }
+		trigger = {
+			original_tag = ITA
 		}
-		set_temp_variable = { money_to_gain = -150 }
+		set_temp_variable = { money_to_gain = -1500 }
 		add_money_with_inflation_included_with_tooltip_effect = yes
 		add_opinion_modifier = {
 			target = GER
@@ -1543,70 +1533,17 @@ country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (IT
 		}
 		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
 	}
-}
-country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (GER)
-	id = ITA_IG_Farben_Negotation.11
-	title = ITA_IG_Farben_Negotation.11.t
-	desc = ITA_IG_Farben_Negotation.11.d
-	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
-	is_triggered_only = yes
 	option = { # 
-		name = ITA_IG_Farben_Negotation.11.A
-		set_temp_variable = { money_to_gain = 150 }
+		name = ITA_IG_Farben_Negotation.10.B
+		trigger = {
+			original_tag = GER
+		}
+		set_temp_variable = { money_to_gain = 1500 }
 		add_money_with_inflation_included_with_tooltip_effect = yes
 		add_opinion_modifier = {
 			target = ITA
 			modifier = ITA_Negotiations_with_IG_Farben_3
 		}
-	}
-}
-country_event = { # IG Farben Folds to Our Demands (ITA)
-	id = ITA_IG_Farben_Negotation.12
-	title = ITA_IG_Farben_Negotation.12.t
-	desc = ITA_IG_Farben_Negotation.12.d
-	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
-	is_triggered_only = yes
-	option = { # 
-		name = ITA_IG_Farben_Negotation.12.A
-		country_event = { id = ITA_IG_Farben_Negotation.13 days = 2 }
-	}
-}
-country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
-	id = ITA_IG_Farben_Negotation.13
-	title = ITA_IG_Farben_Negotation.13.t
-	desc = ITA_IG_Farben_Negotation.13.d
-	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
-	is_triggered_only = yes
-	option = { # 
-		name = ITA_IG_Farben_Negotation.13.A
-		GER = {
-			country_event = { id = ITA_IG_Farben_Negotation.14 days = 2 }
-		}
-		set_temp_variable = { money_to_gain = -200 }
-		add_money_with_inflation_included_with_tooltip_effect = yes
-		add_tech_bonus = {
-			name = synth_tech_bonus
-			bonus = 1
-			uses = 1
-			category = synth_resources
-		}
-		set_country_flag = ITA_Negotiated_for_Synthetic_Oil_Patents
-	}
-}
-country_event = { # Agreement on Synthetic Oil Patents with IG Farben Signed (ITA)
-	id = ITA_IG_Farben_Negotation.14
-	title = ITA_IG_Farben_Negotation.14.t
-	desc = ITA_IG_Farben_Negotation.14.d
-	picture = GFX_report_GER_IG_Farben
-	fire_only_once = yes
-	is_triggered_only = yes
-	option = { # 
-		name = ITA_IG_Farben_Negotation.14.A
-		set_temp_variable = { money_to_gain = 200 }
-		add_money_with_inflation_included_with_tooltip_effect = yes
 	}
 }
 country_event = { # General Confederation of Italian Industry
@@ -2125,20 +2062,6 @@ news_event = {
 				}
 			}
 		}
-	}
-}
-###########################
-# No more Pacts with the Plutocrats
-###########################
-country_event = {
-	id = ITA_Political_Tree.16
-	title = ITA_Political_Tree.16.t
-	desc = ITA_Political_Tree.16.d
-	picture = GFX_report_event_generic_read_write
-	is_triggered_only = yes
-	# 
-	option = {
-		name = ITA_Political_Tree.16.A
 	}
 }
 ###########################
