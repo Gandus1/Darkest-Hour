@@ -1170,4 +1170,79 @@ scripted_gui = {
 			always = no
 		}
 	}
+
+	dh_war_room_operations_new_popup_window = {
+		context_type = player_context
+
+		window_name = "dh_war_room_operations_new_popup_window"
+
+		dirty = war_room_operations_popup_new_array^num
+
+		visible = {
+			is_ai = no
+			check_variable = { war_room_operations_popup_new_array^num > 0 }
+		}
+
+		effects = {
+			entry_close_button_click = {
+				set_temp_variable = { operation_id = v }
+				meta_effect = {
+					text = {
+						clear_variable = war_room_operation_[ID]_random_number
+					}
+					ID = "[?operation_id]"
+				}
+				remove_from_array = { war_room_operations_popup_new_array = operation_id }
+				update_war_room_window = yes
+			}
+			entry_close_button_right_click = {
+				set_temp_variable = { operation_id = v }
+				meta_effect = {
+					text = {
+						clear_variable = war_room_operation_[ID]_random_number
+					}
+					ID = "[?operation_id]"
+				}
+				remove_from_array = { war_room_operations_popup_new_array = operation_id }
+				if = {
+					limit = {
+						has_variable = show_war_room_window
+					}
+					update_war_room_window = yes
+				}
+				else = {
+					set_variable = { show_war_room_window = 1 }
+				}
+			}
+		}
+
+		triggers = {
+			operation_name_visible = {
+				set_temp_variable = { operation_id = v }
+				meta_trigger = {
+					text = {
+						set_temp_variable = { random_temp_number = war_room_operation_[ID]_random_number }
+					}
+					ID = "[?operation_id]"
+				}
+			}
+		}
+
+		properties = {
+			operation_picture = {
+				image = "GFX_war_room_operation_picture_[?v]"
+			}
+		}
+
+		dynamic_lists = {
+			war_room_operations_popup_new_gridbox = {
+				array = war_room_operations_popup_new_array
+				entry_container = war_room_operations_popup_new_entry
+			}
+		}
+
+		ai_enabled = {
+			always = no
+		}
+	}
 }
