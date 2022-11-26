@@ -27,6 +27,12 @@ d_darkest_hour_console_commands = {
 	## Other Console Commands
 	log = "   add_research_slot"
 	log = "   log_country_factories"
+	## War Room Operation Console Commands
+	log = "   activate_war_room_operation"
+	log = "   complete_war_room_operation"
+	log = "   fail_war_room_operation"
+	log = "   set_war_room_operation_progress"
+	log = "   add_war_room_operation_progress"
 	log = " "
 	log = D_DARKEST_HOUR_CONSOLE_COMMANDS_TT_3
 	log = D_DARKEST_HOUR_CONSOLE_COMMANDS_TT_4
@@ -490,4 +496,92 @@ d_log_country_factories = {
 	}
 	log = "D_LOG_COUNTRY_FACTORIES_1"
 	log = "D_LOG_COUNTRY_FACTORIES_2"
+}
+
+## War Room Operations Console Commands ##
+d_activate_war_room_operation = {
+	set_temp_variable = { operation_id = args^0 }
+	if = {
+		limit = {
+			NOT = { check_variable = { operation_id = 0 } }
+			FROM = { has_possible_war_room_operation = yes }
+		}
+		log = D_ACTIVATE_WAR_ROOM_OPERATION_TT
+		FROM = {
+			add_active_war_room_operation = yes
+		}
+	}
+	else = {
+		log = D_ACTIVATE_WAR_ROOM_OPERATION_TT_INVALID
+	}
+}
+
+d_complete_war_room_operation = {
+	set_temp_variable = { operation_id = args^0 }
+	if = {
+		limit = {
+			NOT = { check_variable = { operation_id = 0 } }
+			FROM = { has_active_war_room_operation = yes }
+		}
+		log = D_COMPLETE_WAR_ROOM_OPERATION_TT
+		FROM = {
+			complete_war_room_operation = yes
+		}
+	}
+	else = {
+		log = D_COMPLETE_WAR_ROOM_OPERATION_TT_INVALID
+	}
+}
+
+d_fail_war_room_operation = {
+	set_temp_variable = { operation_id = args^0 }
+	if = {
+		limit = {
+			NOT = { check_variable = { operation_id = 0 } }
+			FROM = { has_active_war_room_operation = yes }
+		}
+		log = D_FAIL_WAR_ROOM_OPERATION_TT
+		FROM = {
+			fail_war_room_operation = yes
+		}
+	}
+	else = {
+		log = D_FAIL_WAR_ROOM_OPERATION_TT_INVALID
+	}
+}
+
+d_set_war_room_operation_progress = {
+	set_temp_variable = { operation_id = args^0 }
+	set_temp_variable = { amount = args^1?10 }
+	if = {
+		limit = {
+			NOT = { check_variable = { operation_id = 0 } }
+			FROM = { has_active_war_room_operation = yes }
+		}
+		log = D_SET_WAR_ROOM_OPERATION_PROGRESS_TT
+		FROM = {
+			set_war_room_operation_progress = yes
+		}
+	}
+	else = {
+		log = D_SET_WAR_ROOM_OPERATION_PROGRESS_TT_INVALID
+	}
+}
+
+d_add_war_room_operation_progress = {
+	set_temp_variable = { operation_id = args^0 }
+	set_temp_variable = { amount = args^1?10 }
+	if = {
+		limit = {
+			NOT = { check_variable = { operation_id = 0 } }
+			FROM = { has_active_war_room_operation = yes }
+		}
+		log = D_ADD_WAR_ROOM_OPERATION_PROGRESS_TT
+		FROM = {
+			add_war_room_operation_progress = yes
+		}
+	}
+	else = {
+		log = D_ADD_WAR_ROOM_OPERATION_PROGRESS_TT_INVALID
+	}
 }
