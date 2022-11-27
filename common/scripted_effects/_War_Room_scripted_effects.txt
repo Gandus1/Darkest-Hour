@@ -217,13 +217,15 @@ complete_war_room_operation = {
 						NOT = { check_variable = { no_effect = 1 } }
 					}
 					complete_war_room_operation_[ID] = yes
-					if = {
-						limit = {
-							is_ai = no
-							NOT = { is_in_array = { war_room_operations_popup_completed_array = operation_id } }
+					hidden_effect = {
+						if = {
+							limit = {
+								is_ai = no
+								NOT = { is_in_array = { war_room_operations_popup_completed_array = operation_id } }
+							}
+							add_to_array = { war_room_operations_popup_completed_array = operation_id }
+							scoped_sound_effect = war_room_operation_completed_sound_effect
 						}
-						add_to_array = { war_room_operations_popup_completed_array = operation_id }
-						scoped_sound_effect = war_room_operation_completed_sound_effect
 					}
 				}
 				hidden_effect = {
@@ -269,13 +271,15 @@ fail_war_room_operation = {
 						NOT = { check_variable = { no_effect = 1 } }
 					}
 					fail_war_room_operation_[ID] = yes
-					if = {
-						limit = {
-							is_ai = no
-							NOT = { is_in_array = { war_room_operations_popup_failed_array = operation_id } }
+					hidden_effect = {
+						if = {
+							limit = {
+								is_ai = no
+								NOT = { is_in_array = { war_room_operations_popup_failed_array = operation_id } }
+							}
+							add_to_array = { war_room_operations_popup_failed_array = operation_id }
+							scoped_sound_effect = war_room_operation_failed_sound_effect
 						}
-						add_to_array = { war_room_operations_popup_failed_array = operation_id }
-						scoped_sound_effect = war_room_operation_failed_sound_effect
 					}
 				}
 				hidden_effect = {
