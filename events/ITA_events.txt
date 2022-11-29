@@ -1967,7 +1967,11 @@ country_event = {
 	option = {
 		name = ITA_Political_Tree.12.A
 		ai_chance = {
-			factor = 100
+			base = 50
+		}
+		modifier = {
+			factor = 0
+			is_historical_focus_on = yes
 		}
 		ITA = {
 			country_event = { id = ITA_Political_Tree.13 }
@@ -1982,7 +1986,7 @@ country_event = {
 	option = {
 		name = ITA_Political_Tree.12.B
 		ai_chance = {
-			factor = 0
+			base = 50
 		}
 		ITA = {
 			country_event = { id = ITA_Political_Tree.14 }
@@ -2015,6 +2019,9 @@ country_event = {
 	# Accept the Refusal
 	option = {
 		name = ITA_Political_Tree.14.A
+		ai_chance = {
+			base = 0
+		}
 		add_war_support = -0.1
 		# Mussolinists
 		set_temp_variable = { faction_id = 32 }
@@ -2024,9 +2031,60 @@ country_event = {
 	# Declare War
 	option = {
 		name = ITA_Political_Tree.14.A
-		declare_war_on = {
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+			country_event = { id = ITA_Political_Tree.141 days = 3 }
+		}
+	}
+}
+###########################
+# Naval Landings in Albania Succeed
+###########################
+country_event = {
+	id = ITA_Political_Tree.141
+	title = ITA_Political_Tree.141.t
+	desc = ITA_Political_Tree.141.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		name = ITA_Political_Tree.141.A
+		hidden_effect = {
+			country_event = { id = ITA_Political_Tree.142 days = 4 }
+		}
+	}
+}
+###########################
+# Albanian Resistance Crumbles (Albanians attempted to fall back to the mountains but were sabotaged by Italian agents, King Zog flees the country with his family and everything crumbles. Parliament then votes to deposed Zog and united with Italy in personal union)
+###########################
+country_event = {
+	id = ITA_Political_Tree.142
+	title = ITA_Political_Tree.142.t
+	desc = ITA_Political_Tree.142.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		name = ITA_Political_Tree.142.A
+		hidden_effect = {
+			country_event = { id = ITA_Political_Tree.143 days = 5 }
+		}
+	}
+}
+###########################
+# Victor Emmanuel III crowned as King of the Albanians  
+###########################
+news_event = {
+	id = ITA_Political_Tree.143
+	title = ITA_Political_Tree.143.t
+	desc = ITA_Political_Tree.143.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		name = ITA_Political_Tree.143.A
+		annex_country = {
 			target = ALB
-			type = annex_everything
+			transfer_troops = no
 		}
 	}
 }
