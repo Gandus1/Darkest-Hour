@@ -1,0 +1,166 @@
+scripted_gui = {
+	dh_features_window = {
+		context_type = player_context
+
+		window_name = "dh_features_window"
+
+		dirty = show_dh_features_window
+
+		visible = {
+			is_ai = no
+			has_variable = show_dh_features_window
+		}
+
+		effects = {
+			prev_tab_button_click = {
+				set_temp_variable = { last_index_temp = global.dh_features_tab_list_array^num }
+				subtract_from_temp_variable = { last_index_temp = 1 }
+				set_temp_variable = { temp = show_dh_features_window }
+				subtract_from_temp_variable = { temp = 1 }
+				if = {
+					limit = {
+						check_variable = { global.dh_features_tab_list_array^temp = 0 }
+					}
+					for_loop_effect = {
+						start = 0
+						end = global.dh_features_tab_list_array^num
+						break = break_temp
+						if = {
+							limit = {
+								check_variable = { global.dh_features_tab_list_array^temp = 0 }
+							}
+							subtract_from_temp_variable = { temp = 1 }
+						}
+						else = {
+							set_temp_variable = { break_temp = 1 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { temp < 0 }
+					}
+					set_temp_variable = { temp = last_index_temp }
+					if = {
+						limit = {
+							check_variable = { global.dh_features_tab_list_array^temp = 0 }
+						}
+						for_loop_effect = {
+							start = 0
+							end = global.dh_features_tab_list_array^num
+							break = break_temp
+							if = {
+								limit = {
+									check_variable = { global.dh_features_tab_list_array^temp = 0 }
+								}
+								subtract_from_temp_variable = { temp = 1 }
+							}
+							else = {
+								set_temp_variable = { break_temp = 1 }
+							}
+						}
+					}
+				}
+				set_variable = { show_dh_features_window = temp }
+			}
+			next_tab_button_click = {
+				set_temp_variable = { last_index_temp = global.dh_features_tab_list_array^num }
+				subtract_from_temp_variable = { last_index_temp = 1 }
+				set_temp_variable = { temp = show_dh_features_window }
+				add_to_temp_variable = { temp = 1 }
+				if = {
+					limit = {
+						check_variable = { global.dh_features_tab_list_array^temp = 0 }
+					}
+					for_loop_effect = {
+						start = 0
+						end = global.dh_features_tab_list_array^num
+						break = break_temp
+						if = {
+							limit = {
+								check_variable = { global.dh_features_tab_list_array^temp = 0 }
+							}
+							add_to_temp_variable = { temp = 1 }
+						}
+						else = {
+							set_temp_variable = { break_temp = 1 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { temp > last_index_temp }
+					}
+					set_temp_variable = { temp = 0 }
+					if = {
+						limit = {
+							check_variable = { global.dh_features_tab_list_array^temp = 0 }
+						}
+						for_loop_effect = {
+							start = 0
+							end = global.dh_features_tab_list_array^num
+							break = break_temp
+							if = {
+								limit = {
+									check_variable = { global.dh_features_tab_list_array^temp = 0 }
+								}
+								add_to_temp_variable = { temp = 1 }
+							}
+							else = {
+								set_temp_variable = { break_temp = 1 }
+							}
+						}
+					}
+				}
+				set_variable = { show_dh_features_window = temp }
+			}
+			close_button_click = {
+				clear_variable = show_dh_features_window
+				# WELCOME SCREEN #
+				if = {
+					limit = {
+						country_gets_dh_welcome_screen = yes
+					}
+					set_variable = { show_dh_welcome_screen_window = 1 }
+				}
+			}
+			entry_button_click = {
+				set_variable = { show_dh_features_window = i }
+			}
+		}
+
+		triggers = {
+			entry_button_visible = {
+				check_variable = { v > 0 }
+				if = {
+					limit = {
+						check_variable = { show_dh_features_window = i }
+					}
+					set_temp_variable = { entry_button_frame = v }
+					divide_temp_variable = { entry_button_frame = 1000 }
+					multiply_temp_variable = { entry_button_frame = 1000 }
+					add_to_temp_variable = { entry_button_frame = 1 }
+				}
+				else = {
+					set_temp_variable = { entry_button_frame = 1 }
+				}
+			}
+		}
+
+		properties = {
+			feature_image = {
+				image = "GFX_features_window_image_[?global.dh_features_tab_list_array^show_dh_features_window|1]"
+			}
+			entry_button = {
+				frame = entry_button_frame
+			}
+		}
+
+		dynamic_lists = {
+			dh_features_tab_list_gridbox = {
+				array = global.dh_features_tab_list_array
+				entry_container = dh_features_tab_list_entry
+			}
+		}
+	}
+}
