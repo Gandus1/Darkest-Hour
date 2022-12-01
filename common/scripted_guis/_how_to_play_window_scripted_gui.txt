@@ -1,0 +1,145 @@
+scripted_gui = {
+	open_how_to_play_window = {
+		context_type = player_context
+
+		window_name = "open_how_to_play_window"
+		parent_window_name = "ingamemenu"
+
+		visible = {
+			is_ai = no
+		}
+
+		effects = {
+			how_to_play_button_click = {
+				if = {
+					limit = {
+						has_country_flag = how_to_play_window_hidden
+					}
+					clr_country_flag = how_to_play_window_hidden
+				}
+				else = {
+					set_country_flag = how_to_play_window_hidden
+				}
+			}
+		}
+	}
+
+	how_to_play_window = {
+		context_type = player_context
+
+		window_name = "how_to_play_window"
+		parent_window_name = "ingamemenu"
+
+		visible = {
+			is_ai = no
+			NOT = { has_country_flag = how_to_play_window_hidden }
+		}
+
+		effects = {
+			tab_button_mechanics_click = {
+				clr_country_flag = how_to_play_window_show_tab_other
+			}
+			tab_button_other_click = {
+				set_country_flag = how_to_play_window_show_tab_other
+			}
+		}
+
+		triggers = {
+			tab_button_mechanics_visible = {
+				has_country_flag = how_to_play_window_show_tab_other
+			}
+			tab_icon_mechanics_visible = {
+				NOT = { has_country_flag = how_to_play_window_show_tab_other }
+			}
+			tab_button_other_visible = {
+				NOT = { has_country_flag = how_to_play_window_show_tab_other }
+			}
+			tab_icon_other_visible = {
+				has_country_flag = how_to_play_window_show_tab_other
+			}
+		}
+	}
+
+	how_to_play_window_mechanics_subwindow = {
+		context_type = player_context
+
+		window_name = "how_to_play_window_mechanics_subwindow"
+		parent_window_name = "how_to_play_window_subwindow_anchor"
+
+		visible = {
+			is_ai = no
+			NOT = { has_country_flag = how_to_play_window_show_tab_other }
+		}
+
+		effects = {
+			entry_expand_button_click = {
+				add_to_array = { how_to_play_window_expanded_mechanics_entries_array = v }
+			}
+			entry_collapse_button_click = {
+				remove_from_array = { how_to_play_window_expanded_mechanics_entries_array = v }
+			}
+		}
+
+		properties = {
+			entry_icon = {
+				frame = v
+			}
+		}
+
+		dynamic_lists = {
+			how_to_play_window_mechanics_gridbox = {
+				array = global.dh_how_to_play_window_array
+				entry_container = "[This.GetHowToPlayWindowMechanicsGridBoxEntry]"
+			}
+		}
+	}
+
+	how_to_play_window_other_subwindow = {
+		context_type = player_context
+
+		window_name = "how_to_play_window_other_subwindow"
+		parent_window_name = "how_to_play_window_subwindow_anchor"
+
+		visible = {
+			is_ai = no
+			has_country_flag = how_to_play_window_show_tab_other
+		}
+	}
+
+	how_to_play_window_mechanics_welcome_screen_subwindow = {
+		context_type = player_context
+
+		window_name = "how_to_play_window_mechanics_welcome_screen_subwindow"
+		parent_window_name = "how_to_play_window_mechanics_welcome_screen_subwindow_anchor"
+
+		visible = {
+			is_ai = no
+			NOT = { has_country_flag = how_to_play_window_show_tab_other }
+		}
+
+		effects = {
+			entry_expand_button_click = {
+				add_to_array = { how_to_play_window_expanded_mechanics_entries_array = v }
+			}
+			entry_collapse_button_click = {
+				remove_from_array = { how_to_play_window_expanded_mechanics_entries_array = v }
+			}
+		}
+
+		properties = {
+			entry_background = {
+				frame = 2
+			}
+			entry_icon = {
+				frame = v
+			}
+		}
+
+		dynamic_lists = {
+			how_to_play_window_mechanics_gridbox = {
+				array = global.dh_how_to_play_window_array
+				entry_container = "[This.GetHowToPlayWindowMechanicsGridBoxEntry]"
+			}
+		}
+	}
+}
