@@ -1,18 +1,4 @@
 ﻿#########################################################################
-# Characters
-#########################################################################
-recruit_character = CHI_Chiang_Kai_Shek
-recruit_character = CHI_Xu_Fulin
-recruit_character = CHI_Huang_Qixiang
-recruit_character = CHI_Chen_Duxiu
-recruit_character = CHI_Wang_Jingwei
-recruit_character = CHI_Zhang_Qun
-recruit_character = CHI_Yu_Feipeng
-recruit_character = CHI_Dai_Chunfeng
-recruit_character = CHI_He_Yingqin
-recruit_character = CHI_Chen_Shaokuan
-recruit_character = CHI_Zhou_Zhirou
-#########################################################################
 # Republic of China - 1933
 #########################################################################
 1933.1.1 = {
@@ -137,10 +123,10 @@ recruit_character = CHI_Zhou_Zhirou
 	}
 	set_popularities = {
 		fascist = 15
-		authoritarian = 56
-		democratic = 14
-		socialist = 7
-		communist = 8
+		authoritarian = 40
+		democratic = 20
+		socialist = 0
+		communist = 25
 	}
 	### Unequal Treaties
 	#set_variable = { CHI_treaties_stability = -0.2 }
@@ -171,6 +157,9 @@ recruit_character = CHI_Zhou_Zhirou
 	# ### Rural Reconstruction
 	# set_variable = { rural_reconstruction_cost = 25 }
 	add_ideas = {
+		CHI_Faction_Infighting_Whampoa
+		#CHI_Incompetent_NRA
+		#CHI_Depression_1
 		free_trade
 		industrializing_economy
 		neutrality
@@ -180,16 +169,16 @@ recruit_character = CHI_Zhou_Zhirou
 		social_spending_level_1
 		army_spending_level_2
 		# Cabinet
-		CHI_Wang_Jingwei_HoG
-		CHI_Zhang_Qun_FM
-		CHI_Yu_Feipeng_AM
-		CHI_Dai_Chunfeng_MoS
-		CHI_Dai_Chunfeng_HoI
+		CHI_D_Wang_Jingwei
+		CHI_FM_Zhang_Qun
+		CHI_AM_Yu_Feipeng
+		CHI_MoS_Dai_Chunfeng
+		CHI_HoI_Dai_Chunfeng
 		# Military Staff
-		CHI_He_Yingqin_CoStaff
-		CHI_He_Yingqin_CoArmy
-		CHI_Chen_Shaokuan_CoNavy
-		CHI_Zhou_Zhirou_CoAir
+		CHI_CoStaff_He_Yingqin
+		CHI_CoArmy_He_Yingqin
+		CHI_CoNavy_Chen_Shaokuan
+		CHI_CoAir_Zhou_Zhirou
 	}
 	save_global_event_target_as = WTT_current_china_leader
 	#######################
@@ -256,6 +245,53 @@ recruit_character = CHI_Zhou_Zhirou
 		type = infantry_equipment
 		amount = 20000
 		producer = CHI
+	}
+	#######################
+	# Leaders
+	#######################
+	# Paternal Autocracy
+	create_country_leader = {
+		name = "Chiang Kai-shek"
+		desc = "Chiang_Kai_Shek_desc"
+		picture = GFX_P_A_Chiang_Kai_Shek
+		expire = "1965.1.1"
+		ideology = despotism
+		traits = {
+			POSITION_Generalissimo
+			SUBIDEOLOGY_Despotism
+			L_Pious_Generalissimo
+			L_Butcher_of_Shanghai
+		}
+	}
+	# Democracy
+	create_country_leader = {
+		name = "Xu Fulin"
+		desc = ""
+		picture = GFX_P_A_Xu_Fulin
+		expire = "1965.1.1"
+		ideology = socialism
+		traits = {
+		}
+	}
+	# Left-Wing Radicalism
+	create_country_leader = {
+		name = "Huang Qixiang"
+		desc = ""
+		picture = GFX_P_S_Huang_Qixiang_CHI
+		expire = "1965.1.1"
+		ideology = socialism
+		traits = {
+		}
+	}
+	# Bolshevik-Leninism
+	create_country_leader = {
+		name = "Chen Duxiu"
+		desc = ""
+		picture = GFX_P_C_Chen_Duxiu
+		expire = "1965.1.1"
+		ideology = marxism_leninism
+		traits = {
+		}
 	}
 	#######################
 	# Generals

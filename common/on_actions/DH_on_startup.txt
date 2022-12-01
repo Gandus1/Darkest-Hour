@@ -19,22 +19,42 @@ on_actions = {
 					}
 				}
 			}
-			# WELCOME SCREEN #
+			# HOW TO PLAY WINDOW #
 			random_country = {
-				clear_array = global.dh_starting_screen_tab_1_list_array
-				add_to_array = { global.dh_starting_screen_tab_1_list_array = 1.01 }
-				add_to_array = { global.dh_starting_screen_tab_1_list_array = 1.02 }
-				add_to_array = { global.dh_starting_screen_tab_1_list_array = 1.03 }
-				clear_array = global.dh_starting_screen_tab_2_list_array
-				add_to_array = { global.dh_starting_screen_tab_2_list_array = 2.01 }
+				clear_array = global.dh_how_to_play_window_array
+				add_to_array = { global.dh_how_to_play_window_array = 1 }
+				add_to_array = { global.dh_how_to_play_window_array = 2 }
+				add_to_array = { global.dh_how_to_play_window_array = 3 }
+				add_to_array = { global.dh_how_to_play_window_array = 4 }
+				add_to_array = { global.dh_how_to_play_window_array = 5 }
 			}
-			# OPTIMISATION
+			# FEATURES WINDOW #
+			random_country = {
+				clear_array = global.dh_features_tab_list_array
+				add_to_array = { global.dh_features_tab_list_array = 1.1 }
+				add_to_array = { global.dh_features_tab_list_array = 0 }
+				add_to_array = { global.dh_features_tab_list_array = 2.1 }
+				add_to_array = { global.dh_features_tab_list_array = 2.2 }
+				add_to_array = { global.dh_features_tab_list_array = 3.1 }
+				add_to_array = { global.dh_features_tab_list_array = 3.2 }
+				add_to_array = { global.dh_features_tab_list_array = 3.3 }
+				add_to_array = { global.dh_features_tab_list_array = 3.4 }
+				add_to_array = { global.dh_features_tab_list_array = 3.5 }
+				add_to_array = { global.dh_features_tab_list_array = 3.6 }
+			}
 			every_country = {
 				limit = {
 					is_ai = no
 				}
-				country_event = { id = Optimisation.1 hours = 1}
+				set_variable = { show_dh_features_window = 0 } # yes this should be 0
 			}
+			# OPTIMISATION
+			#every_country = {
+			#	limit = {
+			#		is_ai = no
+			#	}
+			#	country_event = { id = Optimisation.1 hours = 1}
+			#}
 			# EVENT TRIGGERED
 			if = {
 				limit = {
@@ -46,12 +66,6 @@ on_actions = {
 				}
 			}
 			# MONEY SYSTEM #
-			every_country = {
-				limit = {
-					is_ai = no
-				}
-				set_variable = { show_dh_welcome_screen_window = 1 }
-			}
 			every_country = {
 				if = {
 					limit = {

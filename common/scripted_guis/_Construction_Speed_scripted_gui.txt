@@ -1,40 +1,54 @@
 scripted_gui = {
 	NW_construction_speed_view_opener_menu = {
 		context_type = player_context
-		
+
 		window_name = "cons_speed_opener_container"
 		parent_window_token = construction_tab
 
 		visible = {
 			is_ai = no
 		}
-		
+
+		effects = {
+			show_construction_speed_button_click = {
+				clr_country_flag = cons_speed_off
+			}
+			hide_construction_speed_button_click = {
+				set_country_flag = cons_speed_off
+			}
+		}
+
+		triggers = {
+			show_construction_speed_button_visible = {
+				has_country_flag = cons_speed_off
+			}
+			show_construction_speed_button_text_visible = {
+				has_country_flag = cons_speed_off
+			}
+			hide_construction_speed_button_visible = {
+				NOT = { has_country_flag = cons_speed_off }
+			}
+			hide_construction_speed_button_text_visible = {
+				NOT = { has_country_flag = cons_speed_off }
+			}
+		}
+
 		ai_enabled = {
 			always = no
 		}
-		
-		effects = {
-			construction_speed_open_click = {
-				if = {
-					limit = { NOT = { has_country_flag = cons_speed_on } }
-					set_country_flag = cons_speed_on
-				}
-				else = { clr_country_flag = cons_speed_on }
-			}
-		}
 	}
-	
+
 	NW_construction_speed_view_menu = {
 		context_type = player_context
-		
+
 		window_name = "cons_speed_container"
 		parent_window_token = construction_tab
 
 		visible = {
-			NOT = { has_country_flag = cons_speed_on }
 			is_ai = no
+			NOT = { has_country_flag = cons_speed_off }
 		}
-		
+
 		ai_enabled = {
 			always = no
 		}
