@@ -1,0 +1,21 @@
+scripted_gui = {
+	dh_christmas_letter_window = {
+		context_type = player_context
+
+		window_name = "dh_christmas_letter_window"
+
+		visible = {
+			is_ai = no
+			NOT = { has_country_flag = had_christmas_letter_popup }
+			NOT = { has_variable = show_dh_welcome_screen_window }
+			NOT = { has_variable = show_dh_features_window }
+			date < 1933.1.20
+		}
+
+		effects = {
+			close_button_click = {
+				set_country_flag = had_christmas_letter_popup
+			}
+		}
+	}
+}
