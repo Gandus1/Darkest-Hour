@@ -130,6 +130,7 @@ country_event = {
 					country_event = { id = Surrender_SOV_Response.1 }
 				}
 			}
+			set_global_flag = SOV_ROM_surrendered
 		}
 	}
 
@@ -237,6 +238,30 @@ country_event = {
 			}
 			SOV = {
 				transfer_state = 73 # Transfer of Ruthenian Carpathia
+				transfer_state = 1106
+			}
+			if = {
+				limit = {
+					is_in_faction_with = ROM
+				}
+				ROM = {
+					if = {
+						limit = {
+							has_global_flag = Upper_Transylvania_Awarded
+						}
+						transfer_state = 839
+						transfer_state = 838
+						transfer_state = 76
+					}
+					if = {
+						limit = {
+							has_global_flag = Transylvania_Awarded
+						}
+						transfer_state = 82
+						transfer_state = 83
+						transfer_state = 84
+					}
+				}
 			}
 			HUN = {
 				add_to_war = {
@@ -247,6 +272,7 @@ country_event = {
 					country_event = { id = Surrender_SOV_Response.1 }
 				}
 			}
+			set_global_flag = SOV_HUN_surrendered
 		}
 	}	
 
@@ -370,6 +396,7 @@ country_event = {
 					country_event = { id = Surrender_SOV_Response.1 }
 				}
 			}
+			set_global_flag = SOV_BUL_surrendered
 		}
 	}	
 
@@ -418,7 +445,7 @@ country_event = {
 		}
 		leave_faction = yes
 		SOV = {
-			country_event = { id = Surrender_BUL.2 }
+			country_event = { id = Surrender_FIN.2 }
 		}
 	}
 
@@ -483,6 +510,7 @@ country_event = {
 					country_event = { id = Surrender_SOV_Response.1 }
 				}
 			}
+			set_global_flag = SOV_FIN_surrendered
 		}
 	}	
 
