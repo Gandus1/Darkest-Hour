@@ -1,0 +1,204 @@
+# possible - Filters out achivements on game start so we dont have to check everything all the time.
+## happened - Checks if achivement happened.
+
+unique_id = DHachievements_28244
+
+You_Maniacs_You_blew_it_up = {
+	
+	possible = {
+		difficulty > 1
+	}
+	
+	happened = {
+		has_country_flag = Nuked_New_York
+	}
+}
+
+How_Did_We_Get_Here = {
+	
+	possible = {
+		difficulty > 1
+		is_major = no
+	}
+	
+	happened = {
+		hidden_trigger = {
+			set_temp_variable = { num_of_major_enemies = 0 }
+			all_enemy_country = {
+				if = {
+					limit = {
+						is_major = yes
+					}
+					add_to_temp_variable = { num_of_major_enemies = 1 }
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = How_Did_We_Get_Here_tt
+			check_variable = { num_of_major_enemies > 4 }
+		}
+	}
+}
+
+Socialism_has_been_Achieved = {
+	
+	possible = {
+		difficulty > 1
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = Socialism_has_been_Achieved_tt
+			OR = {
+				communism > 0.95
+				socialism > 0.95
+			}
+		}
+	}
+}
+
+Literally_1984 = {
+	
+	possible = {
+		difficulty > 1
+	}
+	
+	happened = {
+		date > 1984.1.1
+	}
+}
+
+Animal_Farm = {
+	
+	possible = {
+		difficulty > 1
+		original_tag = SOV
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = Animal_Farm_tt
+			has_tech = Industrial_Pasteurization
+		}
+	}
+}
+
+Poland_is_not_Yet_Lost = {
+	
+	possible = {
+		difficulty > 1
+		original_tag = POL
+	}
+	
+	happened = {
+		date > 1945.1.1
+		has_capitulated = no
+		country_exists = POL
+	}
+}
+
+Im_Something_of_a_Scientist_Myself = {
+	
+	possible = {
+		difficulty > 1
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = Im_Something_of_a_Scientist_Myself_tt
+			has_tech = radar_8
+			has_tech = radar_5
+			has_tech = radar_3
+			has_tech = computing_8
+			has_tech = encryption_3
+			has_tech = decryption_3
+			has_tech = wartime_train
+			has_tech = railway_gun
+			has_tech = rocketry_5
+			has_tech = rocketry_jet_2
+			has_tech = rocketry_interceptor_2
+			has_tech = nukes
+		}
+	}
+}
+
+Pimp_My_Reich = {
+	
+	possible = {
+		difficulty > 1
+		original_tag = GER
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = Pimp_My_Reich_tt
+			has_cosmetic_tag = GER_BIG
+		}
+	}
+}
+
+Royal_Flush = {
+	
+	possible = {
+		difficulty > 1
+		original_tag = ENG
+	}
+	
+	happened = {
+		hidden_trigger = {
+			set_temp_variable = { num_of_licensing = 0 }
+			all_allied_country = {
+				if = {
+					limit = {
+						ENG = {
+							is_licensing_any_to = FROM
+						}
+					}
+					add_to_temp_variable = { num_of_licensing = 1 }
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = Royal_Flush_tt
+			check_variable = { num_of_licensing > 4 }
+		}
+	}
+}
+
+We_Solved_World_Hunger = {
+	
+	possible = {
+		difficulty > 1
+		original_tag = HUN
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = We_Solved_World_Hunger_tt
+			TUR = {
+				every_core_state = {
+					is_controlled_by = HUN
+				}
+			}
+		}
+	}
+}
+
+Graveyard_of_the_Superpowers = {
+	
+	possible = {
+		difficulty > 1
+		original_tag = AFG
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = Graveyard_of_the_Superpowers_tt
+			VIE = {
+				every_core_state = {
+					is_controlled_by = AFG
+				}
+			}
+		}
+	}
+}
